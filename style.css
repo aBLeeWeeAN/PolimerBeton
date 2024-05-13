@@ -1,0 +1,354 @@
+/**========================================================================
+ **                            CSS RESET
+ *========================================================================**/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+img,
+picture,
+svg,
+video,
+canvas {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    font-style: italic;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transition: none;
+    }
+}
+
+body,
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+/*============================ END OF CSS RESET ============================*/
+
+#wrapper {
+    margin-right: auto;
+    margin-left: auto;
+
+    max-width: 1280px;
+
+    /* padding-right: 10px;
+    padding-left:  10px; */
+}
+
+header .top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 30px;
+    background-color: #363535;
+}
+
+header .top p {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+
+    color: #fff;
+    font-size: 15px;
+}
+
+header .center {
+    height: 140px;
+    background-color: #767676;
+
+    padding-left: 48px;
+    padding-right: 48px;
+
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+#favicon {
+    width: 66px;
+    height: 66px;
+}
+
+header .center .company_name {
+    text-align: center;
+    margin-left: 16px;
+}
+
+header .center .company_name h1 {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+
+    color: #fff;
+    font-size: 30px;
+}
+
+header .center .company_name h2 {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+
+    color: #D0D0D0;
+    font-size: 20px;
+}
+
+header .center .group_phone_sale {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    margin-right: -8px;
+    /* margin-left: 80px; */
+}
+
+header .center .group_phone_sale h3.phone {
+    font-family: "Ramabhadra", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    color: #fff;
+    font-size: 25px;
+}
+
+#sale {
+    margin-left: 10px;
+
+    width: 120px;
+    height: 120px;
+}
+
+header .center .group_email_subtext {
+    text-align: center;
+    margin-left: auto;
+}
+
+header .center .group_email_subtext h3.email {
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+
+    color: #fff;
+    font-size: 25px;
+}
+
+header .center .group_email_subtext h4 {
+    margin-top: 16px;
+
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+
+    color: #D0D0D0;
+    font-size: 16px;
+}
+
+header nav {
+    height: 30px;
+    background-color: #b1b1b1;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-left: 165px;
+    padding-right: 165px;
+}
+
+header nav a {
+    text-decoration: none;
+
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+    "wdth" 100;
+
+    color: #fff;
+    font-size: 16px;
+}
+
+header nav a:active {
+    text-decoration: none;
+
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+    "wdth" 100;
+
+    color: #FC9F4A;
+    font-size: 16px;
+}
+
+section#main .content_wrap {
+    height: 760px;
+    overflow: hidden;
+    position: relative;
+}
+
+section#main .content_bc {
+    opacity: 0.05;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+}
+
+section#main .content {
+    position: relative;
+    text-align: center;
+}
+
+section#main .content h2 {
+    margin-top: 155px;
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    color: #000;
+    font-size: 50px;
+}
+
+section#main .content div.concretes_types {
+    margin-top: 96px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-left: 130px;
+    padding-right: 130px;
+}
+
+section#main .content div.concretes_types img {
+    width: 130px;
+    height: 130px;
+}
+
+section#main .content h3 {
+    margin-top: 96px;
+
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    background-image: linear-gradient(to right, #057F57, #AB413D); /* Градиент из трех цветов слева направо */
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+
+    color: transparent;
+    font-size: 50px;
+}
+
+section#description {
+    padding-left: 110px;
+    padding-right: 110px;
+}
+
+section#description h2 {
+    margin-top: 96px;
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    color: #000;
+    font-size: 50px;
+
+    text-align: center;
+}
+
+section#description div {
+    margin-top: 48px;
+    text-align: justify;
+}
+
+section#description p {
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+    "wdth" 100;
+
+    color: #000;
+    font-size: 18px;
+
+    text-indent: 60px;
+    line-height: 250%;
+}
+
+section#description div.concretes_types {
+    margin-top: 72px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+    height: 160px;
+}
+
+section#description div.concretes_types img {
+    width: 130px;
+    height: 130px;
+}
