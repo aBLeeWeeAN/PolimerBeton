@@ -230,18 +230,12 @@ header nav a {
     font-size: 16px;
 }
 
+header nav a:hover {
+    color: #fed2aa;
+}
+
 header nav a:active {
-    text-decoration: none;
-
-    font-family: "Open Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-    font-variation-settings:
-        "wdth" 100;
-
-    color: #FC9F4A;
-    font-size: 16px;
+    color: #fdc18a;
 }
 
 /*============================ END OF HEADER SECTION ============================*/
@@ -879,14 +873,21 @@ footer .company_logo .company_name h2 {
 }
 
 footer div.copyright {
-    height: 60px;
+    display: block;
+    text-align: center;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+footer div.copyright img {
+    width: 60px;
+    height: auto;
 }
 
 footer div.copyright p {
+    margin-top: 16px;
+
     font-family: "Arimo", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -895,6 +896,33 @@ footer div.copyright p {
     color: #fff;
     font-size: 16px;
 }
+
+footer div.copyright a {
+    display: inline-block;
+    margin-top: 8px;
+
+    font-family: "Arimo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    color: #fff;
+    font-size: 16px;
+
+    text-decoration: none;
+}
+
+footer div.copyright a:hover {
+    color: #fed2aa;
+}
+
+footer div.copyright a:active {
+    color: #fdc18a;
+}
+
+/* footer div.copyright a:visited {
+    color: #4a3929;
+} */
 
  /*============================ END OF FOOTER SECTION ============================*/
  
