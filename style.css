@@ -852,16 +852,7 @@ footer .company_logo .company_name {
     margin-left: 16px;
 }
 
-footer .company_logo .company_name h1 {
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: normal;
-
-    color: #fff;
-    font-size: 30px;
-}
-
+/* с нами легко */
 footer .company_logo .company_name h2 {
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
@@ -870,6 +861,17 @@ footer .company_logo .company_name h2 {
 
     color: #D0D0D0;
     font-size: 20px;
+}
+
+/* ПОЛИМЕРБЕТОН */
+footer .company_logo .company_name h2:first-child {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+
+    color: #fff;
+    font-size: 30px;
 }
 
 footer div.copyright {
