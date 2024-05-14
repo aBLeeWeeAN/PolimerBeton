@@ -164,8 +164,8 @@ header .center .group_phone_sale {
 }
 
 header .center .group_phone_sale h3.phone {
-    font-family: "Ramabhadra", sans-serif;
-    font-weight: 400;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
     font-style: normal;
 
     color: #fff;
@@ -328,10 +328,10 @@ section#main .content h3 {
  *========================================================================**/
 
 #group_additional_sections {
-    background-image: url("./images/use_section_bc.png");
+    background-image: url("./images/use_section_bc_2.svg");
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center 800px;
+    background-position: center 900px;
 }
 
 /*============================ END OF ADDITIONAL SECTIONS BACKGROUND ============================*/
@@ -573,8 +573,8 @@ section#examples div div {
     display: flex;
     justify-content: space-between;
 
-    padding-left: 200px;
-    padding-right: 200px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 section#examples div div .img_container {
@@ -586,6 +586,9 @@ section#examples div div .img_container {
 
     /* Градиентная рамка */
     background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+
+    width: 600px;
+    height: auto;
 }
 
 section#examples div div .img_container img {
@@ -659,8 +662,8 @@ section#advantages ol {
     list-style: none;
     counter-reset: li;
 
-    padding-left: 130px;
-    padding-right: 130px;
+    /* padding-left: 130px;
+    padding-right: 130px; */
 }
 
 .bullet_list li {
@@ -751,17 +754,21 @@ section#safety h3 {
     letter-spacing: 4px;
 }
 
-section#safety div#wrapper div {
-    margin-top: 32px;
+section#safety .global_img_block .img_block {
+    margin-top: 82px;
 
     display: flex;
     justify-content: space-between;
 
-    padding-left: 110px;
-    padding-right: 110px;
+    /* padding-left: 110px;
+    padding-right: 110px; */
 }
 
-section#safety div#wrapper div div.img_container {
+section#safety .global_img_block .img_block:first-child {
+    margin-top: 64px;
+}
+
+section#safety .global_img_block .img_block .img_container {
     /* Чтобы рамка соответствовала размерам изображения */
     display: inline-block;
 
@@ -774,13 +781,13 @@ section#safety div#wrapper div div.img_container {
     border-image: radial-gradient(#038d63, #f59e01, #be5450) 1;
 
     /* Изображение не будет превышать размер контейнера */
-    max-width: 520px;
+    max-width: 600px;
 
     /* Автоматическое определение высоты */
     height: auto;
 }
 
-section#safety div#wrapper div div.img_container img {
+section#safety .global_img_block .img_block .img_container img {
     /* Изображение не будет превышать размер контейнера */
     max-width: 100%;
 
@@ -799,8 +806,94 @@ section#safety div#wrapper div div.img_container img {
 footer {
     margin-top: 144px;
 
-    height: 80px;
     background-color: #767676;
+    opacity: 0.87;
+
+    align-items: center;
+}
+
+footer .footer_content {
+    height: 150px;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+footer .footer_content .contacts {
+    display: block;
+}
+
+footer .footer_content .contacts p {
+    margin-top: 10px;
+
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+    color: #fff;
+    font-size: 20px;
+
+    text-align: right;
+}
+
+footer .footer_content .contacts p:first-child {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+    color: #fff;
+    font-size: 20px;
+}
+
+footer .company_logo {
+    display: flex;
+}
+
+footer .company_logo .company_name {
+    text-align: center;
+    margin-left: 16px;
+}
+
+footer .company_logo .company_name h1 {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+
+    color: #fff;
+    font-size: 30px;
+}
+
+footer .company_logo .company_name h2 {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+
+    color: #D0D0D0;
+    font-size: 20px;
+}
+
+footer div.copyright {
+    height: 60px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer div.copyright p {
+    font-family: "Arimo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    color: #fff;
+    font-size: 16px;
 }
 
  /*============================ END OF FOOTER SECTION ============================*/
