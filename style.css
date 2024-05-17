@@ -82,8 +82,7 @@ html {
 
     max-width: 1280px;
 
-    /* padding-right: 10px;
-    padding-left:  10px; */
+    padding: 0 16px 0 16px;
 }
 
 /*============================ END OF BODY ============================*/
@@ -91,19 +90,18 @@ html {
 
 
 /**========================================================================
- **                            HEADER SECTION
+ **                            HEADER TOP
  *========================================================================**/
 
-header .top {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: 30px;
+header.top {
+    height: 50px;
     background-color: #363535;
+
+    text-align: center;
+    align-content: center;
 }
 
-header .top p {
+header.top p {
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
@@ -113,15 +111,28 @@ header .top p {
     font-size: 15px;
 }
 
-header .center {
+/*============================ END OF HEADER TOP ============================*/
+
+
+
+/**========================================================================
+ **                            HEADER CENTER
+ *========================================================================**/
+
+header.center {
     height: 140px;
     background-color: #767676;
 
-    padding-left: 48px;
-    padding-right: 48px;
+    align-content: center;
+}
+
+header.center div#wrapper {
+    /* padding-left: 48px;
+    padding-right: 48px; */
 
     display: flex;
     align-items: center;
+
     white-space: nowrap;
 }
 
@@ -130,12 +141,19 @@ header .center {
     height: 66px;
 }
 
-header .center .company_name {
+header.center .company_name {
+    display: flex;
     text-align: center;
-    margin-left: 16px;
 }
 
-header .center .company_name h1 {
+header.center .company_name div {
+    display: block;
+    margin-left: 16px;
+
+    align-content: center;
+}
+
+header.center .company_name div h1 {
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
     font-weight: 800;
@@ -145,7 +163,7 @@ header .center .company_name h1 {
     font-size: 30px;
 }
 
-header .center .company_name h2 {
+header.center .company_name div h2 {
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
     font-weight: 800;
@@ -155,7 +173,7 @@ header .center .company_name h2 {
     font-size: 20px;
 }
 
-header .center .group_phone_sale {
+header.center .group_phone_sale {
     display: flex;
     align-items: center;
     margin: 0 auto;
@@ -163,7 +181,7 @@ header .center .group_phone_sale {
     /* margin-left: 80px; */
 }
 
-header .center .group_phone_sale h3.phone {
+header.center .group_phone_sale h3.phone {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-style: normal;
@@ -179,12 +197,12 @@ header .center .group_phone_sale h3.phone {
     height: 120px;
 }
 
-header .center .group_email_subtext {
+header.center .group_email_subtext {
     text-align: center;
     margin-left: auto;
 }
 
-header .center .group_email_subtext h3.email {
+header.center .group_email_subtext h3.email {
     font-family: "Raleway", sans-serif;
     font-weight: 600;
     font-style: normal;
@@ -193,7 +211,7 @@ header .center .group_email_subtext h3.email {
     font-size: 25px;
 }
 
-header .center .group_email_subtext h4 {
+header.center .group_email_subtext h4 {
     margin-top: 16px;
 
     font-family: "Raleway", sans-serif;
@@ -204,19 +222,32 @@ header .center .group_email_subtext h4 {
     font-size: 16px;
 }
 
-header nav {
-    height: 30px;
+/*============================ END OF HEADER CENTER ============================*/
+
+
+/**========================================================================
+ **                            HEADER BOTTOM
+ *========================================================================**/
+
+header.bottom {
+    height: auto;
     background-color: #b1b1b1;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding-left: 165px;
-    padding-right: 165px;
+    align-content: center;
 }
 
-header nav a {
+header.bottom nav {
+    display: flex;
+
+    padding: 0 144px 0 144px;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+header.bottom nav a {
+    margin: 10px;
+
     text-decoration: none;
 
     font-family: "Open Sans", sans-serif;
@@ -230,15 +261,15 @@ header nav a {
     font-size: 16px;
 }
 
-header nav a:hover {
+header.bottom nav a:hover {
     color: #fed2aa;
 }
 
-header nav a:active {
+header.bottom nav a:active {
     color: #fdc18a;
 }
 
-/*============================ END OF HEADER SECTION ============================*/
+/*============================ END OF HEADER BOTTOM ============================*/
 
 
 
@@ -246,29 +277,17 @@ header nav a:active {
  **                            MAIN SECTION
  *========================================================================**/
 
-section#main .content_wrap {
-    height: 760px;
-    overflow: hidden;
-    position: relative;
-}
-
-section#main .content_bc {
-    opacity: 0.05;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: auto;
-}
-
 section#main .content {
+    padding: 155px 0 155px 0;
+
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0 100%), url("./images/main_bc.jpg");
+    background-size: cover;
+
     position: relative;
     text-align: center;
 }
 
 section#main .content h2 {
-    margin-top: 155px;
-
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -285,8 +304,7 @@ section#main .content div.concretes_types {
     align-items: center;
     justify-content: space-between;
 
-    padding-left: 130px;
-    padding-right: 130px;
+    padding: 0 10% 0 10%;
 }
 
 section#main .content div.concretes_types img {
@@ -323,9 +341,9 @@ section#main .content h3 {
 
 #group_additional_sections {
     background-image: url("./images/use_section_bc_2.svg");
-    background-size: contain;
+    background-size: auto;
     background-repeat: no-repeat;
-    background-position: center 900px;
+    background-position: center 55em;
 }
 
 /*============================ END OF ADDITIONAL SECTIONS BACKGROUND ============================*/
@@ -337,8 +355,7 @@ section#main .content h3 {
  *========================================================================**/
 
 section#description {
-    padding-left: 110px;
-    padding-right: 110px;
+    padding: 0;
 }
 
 section#description h2 {
@@ -382,8 +399,7 @@ section#description div.concretes_types {
     align-items: center;
     justify-content: space-between;
 
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 10% 0 10%;
 }
 
 section#description div.concretes_types img {
@@ -400,8 +416,7 @@ section#description div.concretes_types img {
  *========================================================================**/
 
 section#use {
-    padding-left: 110px;
-    padding-right: 110px;
+    padding: 0;
 }
 
 section#use h2 {
@@ -545,8 +560,7 @@ section#use h2 {
  *========================================================================**/
 
 section#examples {
-    padding-left: 110px;
-    padding-right: 110px;
+    padding: 0;
 
     text-align: center;
 }
@@ -581,7 +595,7 @@ section#examples div div .img_container {
     /* Градиентная рамка */
     background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
 
-    width: 600px;
+    width: 46.875%;
     height: auto;
 }
 
@@ -605,6 +619,9 @@ section#examples .second_example {
 }
 
 section#examples h3 {
+    margin: 0 auto;
+    width: 90%;
+
     margin-top: 64px;
     line-height: 200%;
 
@@ -629,8 +646,7 @@ section#examples h3 {
  *========================================================================**/
 
 section#advantages {
-    padding-left: 110px;
-    padding-right: 110px;
+    padding: 0;
 }
 
 section#advantages h2 {
@@ -713,8 +729,7 @@ section#advantages ol {
  *========================================================================**/
 
 section#safety {
-    padding-left: 110px;
-    padding-right: 110px;
+    padding: 0;
 
     text-align: center;
 }
@@ -775,7 +790,7 @@ section#safety .global_img_block .img_block .img_container {
     border-image: radial-gradient(#038d63, #f59e01, #be5450) 1;
 
     /* Изображение не будет превышать размер контейнера */
-    max-width: 600px;
+    max-width: 46.875%;
 
     /* Автоматическое определение высоты */
     height: auto;
@@ -848,6 +863,8 @@ footer .company_logo {
 }
 
 footer .company_logo .company_name {
+    align-content: center;
+
     text-align: center;
     margin-left: 16px;
 }
@@ -875,11 +892,13 @@ footer .company_logo .company_name h2:first-child {
 }
 
 footer div.copyright {
-    display: block;
-    text-align: center;
+    display: flex;
 
-    padding-top: 30px;
-    padding-bottom: 30px;
+    text-align: left;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 24px 0 16px 0;
 }
 
 footer div.copyright img {
@@ -887,9 +906,7 @@ footer div.copyright img {
     height: auto;
 }
 
-footer div.copyright p {
-    margin-top: 16px;
-
+footer div.copyright div p {
     font-family: "Arimo", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -899,7 +916,7 @@ footer div.copyright p {
     font-size: 16px;
 }
 
-footer div.copyright a {
+footer div.copyright div a {
     display: inline-block;
     margin-top: 8px;
 
@@ -914,19 +931,321 @@ footer div.copyright a {
     text-decoration: none;
 }
 
-footer div.copyright a:hover {
+footer div.copyright div a:hover {
     color: #fed2aa;
 }
 
-footer div.copyright a:active {
+footer div.copyright div a:active {
     color: #fdc18a;
 }
 
-/* footer div.copyright a:visited {
+/* footer div.copyright div a:visited {
     color: #4a3929;
 } */
 
- /*============================ END OF FOOTER SECTION ============================*/
- 
+/*============================ END OF FOOTER SECTION ============================*/
 
-  
+
+/**========================================================================
+ **                            ADAPTIVE SECTION
+ *========================================================================**/
+
+@media (max-width: 1280px) {
+
+    /**========================================================================
+     **                            WRAPPER
+     *========================================================================**/
+
+    #wrapper {
+        max-width: 1100px;
+    }
+
+    /*============================ END OF WRAPPER ============================*/
+
+
+
+    /**========================================================================
+     **                            HEADER CENTER
+     *========================================================================**/
+
+    header.center #favicon {
+        width: 96px;
+        height: 96px;
+    }
+
+    header.center {
+        height: auto;
+
+        text-align: center;
+        align-content: center;
+    }
+
+    header.center div#wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 116px 140px;
+
+        padding-top: 32px;
+        padding-bottom: 16px;
+    }
+
+    header.center .company_name {
+        grid-column: span 2;
+        margin: 0 auto;
+    }
+
+    header.center .group_phone_sale {
+        grid-column: 2;
+        grid-row: 2;
+
+        margin: 0 auto;
+        margin-left: 24px;
+    }
+
+    header.center .group_email_subtext {
+        grid-column: 1;
+        grid-row: 2;
+
+        margin: 0 auto;
+        margin-right: 24px;
+    }
+
+    header.center .company_name div h1 {
+        font-size: 48px;
+    }
+
+    header.center .company_name div h2 {
+        font-size: 32px;
+    }
+
+    header.center .group_phone_sale h3.phone {
+        font-size: 32px;
+    }
+
+    header.center .group_email_subtext h3.email {
+        font-size: 32px;
+    }
+
+    header.center .group_email_subtext h4 {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    /*============================ END OF HEADER CENTER ============================*/
+
+
+
+    /**========================================================================
+     **                            HEADER BOTTOM
+     *========================================================================**/
+
+    header.bottom {
+        height: auto;
+        background-color: #b1b1b1;
+
+        align-content: center;
+    }
+
+    header.bottom nav {
+        display: flex;
+
+        padding: 0 48px 0 48px;
+
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    header.bottom nav a {
+        font-size: 18px;
+        white-space: nowrap;
+    }
+
+    /*============================ END OF HEADER BOTTOM ============================*/
+
+
+
+    /**========================================================================
+     **                            MAIN SECTION
+     *========================================================================**/
+
+    section#main .content div.concretes_types {
+        padding: 0 5% 0 5%;
+    }
+
+    /*============================ END OF MAIN SECTION ============================*/
+
+
+
+    /**========================================================================
+    **                            ADDITIONAL SECTIONS BACKGROUND
+    *========================================================================**/
+
+    #group_additional_sections {
+        background-position: center 57.75em;
+    }
+
+    /*============================ END OF ADDITIONAL SECTIONS BACKGROUND ============================*/
+
+
+
+    /**========================================================================
+     **                            DESCRIPTION SECTION
+     *========================================================================**/
+
+    section#description {
+        padding: 0;
+    }
+
+    section#description h2 {
+        margin-top: 100px;
+    }
+
+    section#description div {
+        margin-top: 72px;
+        text-align: justify;
+    }
+
+    section#description div.concretes_types {
+        margin-top: 72px;
+
+        padding: 0 5% 0 5%;
+    }
+
+    /*============================ END OF DESCRIPTION SECTION ============================*/
+
+
+
+    /**========================================================================
+     **                            USE SECTION
+     *========================================================================**/
+
+    section#use h2 {
+        margin-top: 100px;
+    }
+
+    .beauty_list {
+        margin-top: 72px;
+    }
+
+    /*============================ END OF SECTION ============================*/
+
+
+
+    /**========================================================================
+     **                            EXAMPLES SECTION
+     *========================================================================**/
+
+    section#examples h2 {
+        margin-top: 100px;
+    }
+
+    section#examples .first_example {
+        margin-top: 72px;
+    }
+
+    section#examples .second_example {
+        margin-top: 72px;
+    }
+
+    section#examples h3 {
+        margin-top: 48px;
+        width: 75%;
+    }
+
+    /*============================ END OF EXAMPLES SECTION ============================*/
+
+
+
+    /**========================================================================
+ **                            ADVANTAGES SECTION
+ *========================================================================**/
+
+    section#advantages h2 {
+        margin-top: 100px;
+    }
+
+    section#advantages ol {
+        margin-top: 72px;
+    }
+
+    /*============================ END OF ADVANTAGES SECTION ============================*/
+
+
+
+    /**========================================================================
+ **                            SAFETY SECTION
+ *========================================================================**/
+
+    section#safety h2 {
+        margin-top: 100px;
+    }
+
+    section#safety h3 {
+        margin-top: 72px;
+    }
+
+    section#safety .global_img_block .img_block {
+        margin-top: 72px;
+    }
+
+    section#safety .global_img_block .img_block:first-child {
+        margin-top: 48px;
+    }
+
+    /*============================ END OF SAFETY SECTION ============================*/
+
+
+
+    /**========================================================================
+    **                            FOOTER SECTION
+    *========================================================================**/
+
+    footer {
+        margin-top: 100px;
+    }
+
+    footer .footer_content {
+        height: 150px;
+    }
+
+    footer .footer_content .contacts p {
+        margin-top: 10px;
+        font-size: 28px;
+    }
+
+    footer .footer_content .contacts p:first-child {
+        font-size: 20px;
+    }
+
+    footer .company_logo img#favicon {
+        width: 80px;
+        height: auto;
+    }
+
+    /* с нами легко */
+    footer .company_logo .company_name h2 {
+        font-size: 24px;
+    }
+
+    /* ПОЛИМЕРБЕТОН */
+    footer .company_logo .company_name h2:first-child {
+        font-size: 36px;
+    }
+
+    footer div.copyright img {
+        width: 72px;
+        height: auto;
+    }
+
+    footer div.copyright div p {
+        font-size: 20px;
+    }
+
+    footer div.copyright div a {
+        margin-top: 8px;
+        font-size: 20px;
+    }
+
+    /*============================ END OF FOOTER SECTION ============================*/
+
+}
