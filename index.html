@@ -81,6 +81,10 @@
        }
     </script>
 
+    <script>
+        if (CSS && 'paintWorklet' in CSS) CSS.paintWorklet.addModule('https://unpkg.com/smooth-corners')
+    </script>
+
 </head>
 
 <body>
@@ -139,26 +143,26 @@
                         <a href="#Main">Главная</a>
                     </div>
                     <div class="col-xl-4 menu-item">
-                        <a href="">Описание</a>
+                        <a href="#Description">Описание</a>
                     </div>
                     <div class="col-xl-4 menu-item">
-                        <a href="">Применение</a>
+                        <a href="#Use">Применение</a>
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-evenly menu-row">
                     <div class="col-xl-4 menu-item">
-                        <a href="">Примеры использования</a>
+                        <a href="#Examples">Примеры использования</a>
                     </div>
                     <div class="col-xl-4 menu-item">
-                        <a href="">Преимущества</a>
+                        <a href="#Advantages">Преимущества</a>
                     </div>
                     <div class="col-xl-4 menu-item">
-                        <a href="">Безопасность</a>
+                        <a href="#Safety">Безопасность</a>
                     </div>
                 </div> 
                 <div class="row align-items-center justify-content-evenly menu-row">
                     <div class="col-xl-4 menu-item">
-                        <a href="">Цены</a>
+                        <a href="#Prices">Цены</a>
                     </div>
                     <div class="col-xl-4 menu-item">
                         <a href="">Оставить заявку</a>
@@ -183,7 +187,7 @@
                     </strong>
                 </h1>
             </div>
-            <div class="row align-items-center justify-content-center concretes-images">
+            <div class="row align-items-center justify-content-around concretes-images">
                 <img class="col-xl-2" src="images/concrete_green.png" alt="Полимербетон - Зелёный">
                 <img class="col-xl-2" src="images/concrete_yellow.png" alt="Полимербетон - Жёлтый">
                 <img class="col-xl-2" src="images/concrete_white.png" alt="Полимербетон - Белый">
@@ -219,10 +223,201 @@
             </div>
         </div>
     </section>
-
-
-
-
+    <section id="Use">
+        <img id="bc-concrete-green" src="images/concrete_green.png" alt="Полимербетон - Зелёный">
+        <img id="bc-concrete-yellow" src="images/concrete_yellow.png" alt="Полимербетон - Жёлтый">
+        <img id="bc-concrete-white" src="images/concrete_white.png" alt="Полимербетон - Белый">
+        <img id="bc-concrete-grey" src="images/concrete_grey.png" alt="Полимербетон - Серый">
+        <img id="bc-concrete-red" src="images/concrete_red.png" alt="Полимербетон - Красный">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <h2 class="col-xl-6 block-header">Применение</h2>
+            </div>
+            <div class="row align-items-center justify-content-center content">
+                <ul>
+                    <li class="col-xl-10">Ремонт бетонных и асфальтно-бетонных поверхностей (автомобильные дороги, ВПП аэродромов, конструкции мостов и виадуков, складов, порты, причалы и др.) без длительной остановки технологического процесса;</li>
+                    <li class="col-xl-9">Восстановление жд путей и шпал;</li>
+                    <li class="col-xl-9">В переходных зонах мостовых переходов при устройстве деформационных швов и дренажных стоков;</li>
+                    <li class="col-xl-9">Ремонт столбов и мостовых опор;</li>
+                    <li class="col-xl-9">Ремонт лестниц жд платформ;</li>
+                    <li class="col-xl-9">Устройство рамп и выравнивающих слоев на мостах и зданиях;</li>
+                    <li class="col-xl-9">Анкеровка металлоконструкций и балок;</li>
+                    <li class="col-xl-11">В качестве гидроизоляции, т.к. коэффициент водопоглощения стремится к нулю;</li>
+                    <li class="col-xl-11">Ямочный ремонт особо сложных участков дорог;</li>
+                    <li class="col-xl-12">Устройство покрытий тротуаров на мостах и др, а также велосипедных дорожек;</li>
+                    <li class="col-xl-12">И многое другое...</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="Examples">
+        <div id="bc-circle"></div>
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <h2 class="col-xl-8 block-header">Примеры использования</h2>
+            </div>
+            <div class="row align-items-center justify-content-center">
+                <span class="col-xl-10">Восстановление железобетонных колонн</span>
+            </div>
+            <div class="row align-items-center justify-content-around content">
+                <div class="col-xl-6 gradient-border" id="example-1">
+                    <img src="images/kolonna_do.jpg" alt="Пример: состояние колонны до использования смеси полимербетона.">
+                </div>
+                <div class="col-xl-6 gradient-border" id="example-2">
+                    <img src="images/kolonna_posle.jpg" alt="Пример: состояние колонны до использования смеси полимербетона.">
+                </div>   
+            </div>
+            <div class="row align-items-center justify-content-around">
+                <span class="col-xl-2 img-sign">До</span>
+                <span class="col-xl-2 img-sign">После</span>
+            </div>
+            <div class="row align-items-center justify-content-center">
+                <span class="col-xl-12">Капитальный ремонт тротуара на Большеохтинском мосту (разводной мост), г. Санкт-Петербург</span>
+            </div>
+            <div class="row align-items-center justify-content-around content">
+                <div class="col-xl-6 gradient-border" id="example-3">
+                    <img src="images/doroga_do.jpg" alt="Пример: состояние дорожного полотна до использования смеси полимербетона.">
+                </div>
+                <div class="col-xl-6 gradient-border" id="example-4">
+                    <img src="images/doroga_posle.jpg" alt="Пример: состояние дорожного полотна до использования смеси полимербетона.">
+                </div>   
+            </div>
+            <div class="row align-items-center justify-content-around">
+                <span class="col-xl-2 img-sign">До</span>
+                <span class="col-xl-2 img-sign">После</span>
+            </div>
+        </div>
+    </section>
+    <section id="Advantages">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <h2 class="col-xl-8 block-header">Преимущества</h2>
+            </div>
+            <div class="content">
+                <div class="row align-items-center justify-content-end">
+                    <img class="col-xl-5" id="bc-concrete-green" src="images/concrete_green.png" alt="Полимербетон - Зелёный">
+    
+                    <div class="col-xl-7 advantage" id="advantage-1">
+                        <div class="advantage-header">
+                            <span>1</span>
+                            <strong>Удобство<br>нанесения</strong>
+                        </div>
+        
+                        <p>Не требует длительной предварительной подготовки в виде нагрева.</p>
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-start">
+                    <div class="col-xl-7 advantage" id="advantage-2">
+                        <div class="advantage-header">
+                            <span>2</span>
+                            <strong>Просто<br>и доступно</strong>
+                        </div>
+        
+                        <p>Не требует применения специальной техники и оборудования.</p>
+                    </div>
+    
+                    <img class="col-xl-5" id="bc-concrete-yellow" src="images/concrete_yellow.png" alt="Полимербетон - Жёлтый">
+                </div>
+                <div class="row align-items-center justify-content-end">
+                    <img class="col-xl-5" id="bc-concrete-white" src="images/concrete_white.png" alt="Полимербетон - Белый">
+            
+                    <div class="col-xl-7 advantage" id="advantage-3">
+                        <div class="advantage-header">
+                            <span>3</span>
+                            <strong>Универсально</strong>
+                        </div>
+        
+                        <p>Широкий диапазон применения.</p>
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-start">
+                    <div class="col-xl-7 advantage" id="advantage-4">
+                        <div class="advantage-header">
+                            <span>4</span>
+                            <strong>Быстро<br>застывает</strong>
+                        </div>
+        
+                        <p>Высокая скорость формирования прочностных характеристик (движение можно открывать через 60 минут после окончания работ, максимальный набор прочности в течении суток).</p>
+                    </div>
+    
+                    <img class="col-xl-5" id="bc-concrete-grey" src="images/concrete_grey.png" alt="Полимербетон - Серый">
+                </div>
+                <div class="row align-items-center justify-content-end">
+                    <img class="col-xl-5" id="bc-concrete-red" src="images/concrete_red.png" alt="Полимербетон - Красный">
+    
+                    <div class="col-xl-7 advantage" id="advantage-5">
+                        <div class="advantage-header">
+                            <span>5</span>
+                            <strong>Настраиваемые<br>свойства</strong>
+                        </div>
+        
+                        <p>При необходимости есть возможность подбора таких характеристик, как пластичность, цвет согласно RALa.</p>
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-start">
+                    <div class="col-xl-7 advantage" id="advantage-6">
+                        <div class="advantage-header">
+                            <span>6</span>
+                            <strong>Долговечность<br>материала</strong>
+                        </div>
+        
+                        <p>Высокая химстойкость покрытия и низкое водопоглощение увеличивают срок службы материала.</p>
+                    </div>
+    
+                    <img class="col-xl-5" id="bc-concrete-green" src="images/concrete_green.png" alt="Полимербетон - Зелёный">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="Safety">
+        <div id="bc-circle"></div>
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <h2 class="col-xl-8 block-header">Безопасность</h2>
+            </div>
+            <div class="row align-items-center justify-content-center">
+                <span class="col-xl-10">Вся наша продукция сертифицирована<br>и высокого качества</span>
+            </div>
+            <div class="row align-items-center justify-content-around content">
+                <div class="col-xl-6 gradient-border" id="safety-doc-1">
+                    <img src="images/safety_doc_1.jpg" alt="Пример: состояние колонны до использования смеси полимербетона.">
+                </div>
+                <div class="col-xl-6 gradient-border" id="safety-doc-2">
+                    <img src="images/safety_doc_2.jpg" alt="Пример: состояние колонны до использования смеси полимербетона.">
+                </div>   
+            </div>
+            <div class="row align-items-center justify-content-around content">
+                <div class="col-xl-6 gradient-border" id="safety-doc-3">
+                    <img src="images/safety_doc_3.jpg" alt="Пример: состояние колонны до использования смеси полимербетона.">
+                </div>
+                <div class="col-xl-6 gradient-border" id="safety-doc-4">
+                    <img src="images/safety_doc_4.jpg" alt="Пример: состояние колонны до использования смеси полимербетона.">
+                </div>   
+            </div>
+            <div class="row align-items-center justify-content-around content">
+                <div class="col-xl-6 gradient-border" id="safety-doc-5">
+                    <img src="images/safety_doc_5.jpg" alt="Пример: состояние колонны до использования смеси полимербетона.">
+                </div>
+                <div class="col-xl-6 gradient-border" id="safety-doc-6">
+                    <img src="images/safety_doc_6.jpg" alt="Пример: состояние колонны до использования смеси полимербетона.">
+                </div>   
+            </div>
+        </div>
+    </section>
+    <section id="Prices">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <h2 class="col-xl-8 block-header">Цены</h2>
+            </div>
+            <div class="row align-items-center justify-content-around concretes-images">
+                <img class="col-xl-2" src="images/concrete_green.png" alt="Полимербетон - Зелёный">
+                <img class="col-xl-2" src="images/concrete_yellow.png" alt="Полимербетон - Жёлтый">
+                <img class="col-xl-2" src="images/concrete_white.png" alt="Полимербетон - Белый">
+                <img class="col-xl-2" src="images/concrete_grey.png" alt="Полимербетон - Серый">
+                <img class="col-xl-2" src="images/concrete_red.png" alt="Полимербетон - Красный">
+            </div>
+        </div>
+    </section>
 
 
 
