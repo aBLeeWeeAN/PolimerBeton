@@ -63,11 +63,14 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- Bootstrap include --->
+    <!-- Reset CSS --->
+    <link rel="stylesheet" href="css/reset.css">
+
+    <!-- Bootstrap CSS --->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-    <!-- Link style.css --->
+    <!-- Page CSS --->
     <link rel="stylesheet" href="css/style.css?v=2.0">
 
     <script>
@@ -82,18 +85,20 @@
 
 <body>
     <header>
+        <div id="bc-square-1"></div>
+        <div id="bc-square-2"></div>
         <div class="container">
             <div class="row justify-content-between">
-                <div class="col-8 gy-5 logo">
+                <div class="col-xl-8 logo">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130">
                         <path d="M65 130C100.899 130 130 100.899 130 65C130 29.1015 100.899 0 65 0C29.1015 0 0 29.1015 0 65C0 100.899 29.1015 130 65 130ZM112.397 94.2085C130.229 76.3762 127.48 44.7151 106.256 23.4913C85.0321 2.26758 53.3709 -0.481758 35.5387 17.3505C17.7064 35.1828 20.4557 66.8439 41.6795 88.0677C62.9032 109.291 94.5644 112.041 112.397 94.2085Z"/>
                     </svg>
-                    <div class="logo_name">
+                    <div class="logo-name">
                         <b>ПОЛИМЕРБЕТОН</b> 
                         <i>с нами легко!</i>
                     </div>
                 </div>
-                <div class="col-4 gy-5 contacts_and_settings">
+                <div class="col-xl-4 contacts-and-settings">
                     <div class="contacts">
                         <button>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
@@ -128,12 +133,112 @@
                     </div>
                 </div>
             </div>
+            <nav class="menu">
+                <div class="row align-items-center justify-content-evenly">
+                    <div class="col-xl-4 menu-item">
+                        <a href="#Main">Главная</a>
+                    </div>
+                    <div class="col-xl-4 menu-item">
+                        <a href="">Описание</a>
+                    </div>
+                    <div class="col-xl-4 menu-item">
+                        <a href="">Применение</a>
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-evenly menu-row">
+                    <div class="col-xl-4 menu-item">
+                        <a href="">Примеры использования</a>
+                    </div>
+                    <div class="col-xl-4 menu-item">
+                        <a href="">Преимущества</a>
+                    </div>
+                    <div class="col-xl-4 menu-item">
+                        <a href="">Безопасность</a>
+                    </div>
+                </div> 
+                <div class="row align-items-center justify-content-evenly menu-row">
+                    <div class="col-xl-4 menu-item">
+                        <a href="">Цены</a>
+                    </div>
+                    <div class="col-xl-4 menu-item">
+                        <a href="">Оставить заявку</a>
+                    </div>
+                    <div class="col-xl-4 menu-item">
+                        <a href="">Наши контакты</a>
+                    </div>
+                </div>
+            </nav>
         </div>
-
     </header>
+    <section id="Main">
+        <div id="main-bc-img"></div>
+        <div id="main-fr-img"></div>
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <h1 class="col-xl-8 block-header">
+                    <strong>
+                        Полимербетон
+                        <br>
+                        <div>от производителя в г. Воронеж</div>
+                    </strong>
+                </h1>
+            </div>
+            <div class="row align-items-center justify-content-center concretes-images">
+                <img class="col-xl-2" src="images/concrete_green.png" alt="Полимербетон - Зелёный">
+                <img class="col-xl-2" src="images/concrete_yellow.png" alt="Полимербетон - Жёлтый">
+                <img class="col-xl-2" src="images/concrete_white.png" alt="Полимербетон - Белый">
+                <img class="col-xl-2" src="images/concrete_grey.png" alt="Полимербетон - Серый">
+                <img class="col-xl-2" src="images/concrete_red.png" alt="Полимербетон - Красный">
+            </div>
+            <div class="row align-items-center justify-content-center">
+                <span>лучшее решение для быстрого ремонта</span>
+            </div>
+        </div>
+    </section>
+    <section id="Description">
+        <div id="bc-circle"></div>
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <h2 class="col-xl-6 block-header">Описание</h2>
+            </div>
+            <div class="row align-items-center justify-content-center content">
+                <p>Полимербетон представляет собой быстротвердеющий ремонтный материал на основе метилметакриловой смолы и полимерных наполнителей, который состоит из двух компонентов, связующего (полимер) и инициатора полимеризации (отвердитель).</p>
+                <p>Основное назначение полимербетона — это ремонт сколов, выбоин, раковин, углублений, аэродромов, неровных поверхностей, перепады высот, речных и морских портов, железнодорожных станций, мостовых переходов, путепроводов, автомобильных стоянок, пешеходных дорожек в т.ч. для применения в различных помещениях (производственных, бытовых) и других дефектов на цементобетонном покрытии в очень короткие сроки (время ремонта 2,5 - 3 часа).</p>
+                <p>Полимербетон представляет собой быстротвердеющий ремонтный материал на основе метилметакриловой смолы и полимерных наполнителей, который состоит из двух компонентов, связующего (полимер) и инициатора полимеризации (отвердитель).</p>
+            </div>
+            <div class="concretes-images">
+                <div class="row align-items-center justify-content-center">
+                    <img class="col-xl-2" src="images/concrete_white.png" alt="Полимербетон - Белый">
+                    <img class="col-xl-2" src="images/concrete_grey.png" alt="Полимербетон - Серый">
+                    <img class="col-xl-2" src="images/concrete_red.png" alt="Полимербетон - Красный">
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <img class="col-xl-2" src="images/concrete_green.png" alt="Полимербетон - Зелёный">
+                    <img class="col-xl-2" src="images/concrete_yellow.png" alt="Полимербетон - Жёлтый">
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-    <header class="top">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <header class="top" style="margin-top: 2000px;">
         <div id="wrapper">
             <p>Полимербетон от производителя в г. Воронеж</p>
         </div>

@@ -1,77 +1,15 @@
 @charset "UTF-8";
-/**========================================================================
- **                            CSS RESET
- *========================================================================**/
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-ul[role=list],
-ol[role=list] {
-  list-style: none;
-}
-
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-
-img,
-picture,
-svg,
-video,
-canvas {
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-  font-style: italic;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-    transition: none;
-  }
-}
-body,
 html {
   height: 100%;
   scroll-behavior: smooth;
   font-size: 16px;
 }
 
-/*============================ END OF CSS RESET ============================*/
 /**========================================================================
  **                            BODY
  *========================================================================**/
 body {
+  z-index: -10;
   background-color: color-mix(in srgb, #fff, #FFE0B2 8%);
 }
 
@@ -86,6 +24,31 @@ body {
 /**========================================================================
  **                            HEADER
  *========================================================================**/
+header {
+  position: relative;
+  padding: 5rem 0 3.75rem 0;
+}
+header #bc-square-1 {
+  z-index: -5;
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background-color: rgba(209, 196, 233, 0.1019607843);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 10%) rotate(6deg);
+}
+header #bc-square-2 {
+  z-index: -6;
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background-color: rgba(255, 224, 178, 0.1019607843);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -5%) rotate(-19deg);
+}
+
 .logo {
   padding: 0;
   display: flex;
@@ -99,12 +62,12 @@ body {
   width: 8.125rem;
   height: 8.125rem;
 }
-.logo .logo_name {
+.logo .logo-name {
   margin-left: 2rem;
   display: flex;
   flex-direction: column;
 }
-.logo .logo_name b {
+.logo .logo-name b {
   font-family: "Russo One", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -112,7 +75,7 @@ body {
   font-size: 3rem;
   letter-spacing: 0.35em;
 }
-.logo .logo_name i {
+.logo .logo-name i {
   margin-left: 0.25rem;
   font-family: "Pattaya", sans-serif;
   font-weight: 400;
@@ -121,32 +84,32 @@ body {
   letter-spacing: 0.55em;
 }
 
-.contacts_and_settings {
+.contacts-and-settings {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-.contacts_and_settings .contacts {
+.contacts-and-settings .contacts {
   display: inherit;
   flex-direction: inherit;
 }
-.contacts_and_settings .contacts button {
+.contacts-and-settings .contacts button {
   margin-right: 0.5rem;
 }
-.contacts_and_settings .settings {
+.contacts-and-settings .settings {
   display: inherit;
   flex-direction: inherit;
 }
-.contacts_and_settings .settings button {
+.contacts-and-settings .settings button {
   margin-left: 0.5rem;
 }
-.contacts_and_settings button {
+.contacts-and-settings button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4rem;
-  height: 4rem;
+  width: 3.25rem;
+  height: 3.25rem;
   --squircle-smooth: 1.0;
   --squircle-radius: 0.75rem;
   mask-image: paint(squircle);
@@ -156,29 +119,163 @@ body {
   cursor: pointer;
   fill: rgba(255, 255, 255, 0.8705882353);
 }
-.contacts_and_settings span {
+.contacts-and-settings span {
   height: 2rem;
   width: 0.0625rem;
   background-color: rgba(0, 0, 0, 0.8705882353);
   border-radius: 10rem;
   margin: 0 0.5rem 0 0.5rem;
 }
-.contacts_and_settings .contacts svg {
+.contacts-and-settings .contacts svg {
   width: 1.75rem;
   height: 1.75rem;
 }
-.contacts_and_settings .settings svg {
+.contacts-and-settings .settings svg {
   width: 2.125rem;
   height: 2.125rem;
 }
-.contacts_and_settings svg {
+.contacts-and-settings svg {
   fill: inherit;
 }
-.contacts_and_settings button:hover {
+.contacts-and-settings button:hover {
   fill: #fff;
 }
 
+.menu {
+  margin-top: 3.75rem;
+}
+.menu a {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8705882353);
+  text-decoration: none;
+}
+.menu .menu-row {
+  margin-top: 2.5rem;
+}
+.menu .menu-item {
+  text-align: center;
+}
+
 /*============================ END OF HEADER ============================*/
+/**========================================================================
+ **                            MAIN
+ *========================================================================**/
+/* general css code */
+.block-header {
+  text-align: center;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: rgba(0, 0, 0, 0.8705882353);
+  text-transform: uppercase;
+  font-size: 4rem;
+  letter-spacing: 0.3em;
+}
+
+#Main {
+  position: relative;
+  padding: 10rem 0 10rem 0;
+}
+#Main #main-bc-img {
+  z-index: -2;
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+#Main #main-fr-img {
+  z-index: -1;
+  position: absolute;
+  background-image: url("/images/main_bc.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.1;
+}
+#Main h1 strong div {
+  margin-top: 2rem;
+  font-size: 1.75rem;
+  letter-spacing: 0.25em;
+}
+#Main .concretes-images {
+  margin-top: 10rem;
+}
+#Main span {
+  margin-top: 10rem;
+  font-family: "Tenor Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  background: linear-gradient(90deg, #1b5e20 0%, #ff6f00 50%, #bf360c 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#Description {
+  position: relative;
+  padding: 10rem 0 10rem 0;
+}
+#Description #bc-circle {
+  z-index: -5;
+  position: absolute;
+  width: 186rem;
+  height: 186rem;
+  border-radius: 100%;
+  /* Линейный градиент с тремя цветами и углом 45 градусов */
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d1c4e9+0,ffe0b2+100 */
+  background: rgb(209, 196, 233); /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZDFjNGU5IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZTBiMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+  background: -moz-linear-gradient(-45deg, rgb(209, 196, 233) 0%, rgb(255, 224, 178) 100%); /* FF3.6-15 */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgb(209, 196, 233)), color-stop(100%, rgb(255, 224, 178))); /* Chrome4-9,Safari4-5 */
+  background: -webkit-linear-gradient(-45deg, rgb(209, 196, 233) 0%, rgb(255, 224, 178) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: -o-linear-gradient(-45deg, rgb(209, 196, 233) 0%, rgb(255, 224, 178) 100%); /* Opera 11.10-11.50 */
+  background: -ms-linear-gradient(-45deg, rgb(209, 196, 233) 0%, rgb(255, 224, 178) 100%); /* IE10 preview */
+  background: linear-gradient(135deg, rgb(209, 196, 233) 0%, rgb(255, 224, 178) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#d1c4e9", endColorstr="#ffe0b2",GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+  top: 19.125rem;
+  left: 50%;
+  transform: translate(-77%, 0%);
+  opacity: 0.07;
+}
+#Description .content {
+  margin-top: 7.5rem;
+}
+#Description .content > *:not(:first-child) {
+  margin-top: 1.75rem;
+}
+#Description p {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5rem;
+  line-height: 150%;
+  letter-spacing: 0.2em;
+  text-align: justify;
+  text-indent: 7rem;
+  color: rgba(0, 0, 0, 0.8705882353);
+}
+#Description .concretes-images {
+  margin-top: 7.5rem;
+}
+
 /**========================================================================
  **                            HEADER TOP
  *========================================================================**/
