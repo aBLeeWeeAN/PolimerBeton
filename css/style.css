@@ -661,6 +661,299 @@ header #bc-square-2 {
 #Prices {
   margin: 10rem 0 10rem 0;
 }
+#Prices span, #Prices strong {
+  margin-top: 7.5rem;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 2rem;
+  letter-spacing: 0.2em;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8705882353);
+  text-transform: uppercase;
+}
+#Prices .price-content {
+  position: relative;
+  margin-top: 5rem;
+}
+#Prices .price-content #current-price {
+  position: relative;
+  margin: 24.75rem 0 24.75rem 0;
+  width: 20.5rem;
+  height: 20.5rem;
+}
+#Prices .price-content #current-price #bc-current-price-anim-wrapper {
+  width: 100%;
+  height: 100%;
+  animation: scale-animation 6s ease-in-out infinite alternate;
+}
+@keyframes scale-animation {
+  0% {
+    transform: scale(1.25);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1.25);
+  }
+}
+#Prices .price-content #current-price #bc-current-price-anim-wrapper #bc-current-price {
+  width: 100%;
+  height: 100%;
+  fill: #B71C1C;
+  animation: rotate-counter-clockwise 10s infinite linear;
+}
+@keyframes rotate-counter-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+#Prices .price-content #current-price span {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 3rem;
+  letter-spacing: 0.25em;
+  text-align: center;
+  color: #fff;
+  text-transform: none;
+  animation: wobble 10s infinite;
+}
+@keyframes wobble {
+  0% {
+    transform: translate(-45%, -52.5%) rotate(-21deg) rotate(-8deg);
+  }
+  50% {
+    transform: translate(-45%, -52.5%) rotate(-21deg) rotate(8deg);
+  }
+  100% {
+    transform: translate(-45%, -52.5%) rotate(-21deg) rotate(-8deg);
+  }
+}
+#Prices .price-content .orbit {
+  z-index: -1;
+}
+#Prices .price-content #ball-green {
+  position: absolute;
+  width: 20rem;
+  height: 35rem;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: bottom center;
+  animation: rotate-clockwise 10s infinite linear;
+}
+@keyframes rotate-clockwise {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+#Prices .price-content #ball-green img {
+  position: absolute;
+  width: 18.75rem;
+  height: 18.75rem;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: ball-rotate-counter-clockwise-0 10s infinite linear;
+}
+@keyframes ball-rotate-counter-clockwise-0 {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(-360deg);
+  }
+}
+#Prices .price-content #ball-yellow {
+  position: absolute;
+  width: 20rem;
+  height: 35rem;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: bottom center;
+  animation: rotate-clockwise-72 10s infinite linear;
+}
+@keyframes rotate-clockwise-72 {
+  from {
+    transform: translateX(-50%) rotate(72deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(432deg);
+  }
+}
+#Prices .price-content #ball-yellow img {
+  position: absolute;
+  width: 18.75rem;
+  height: 18.75rem;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: ball-rotate-counter-clockwise-72 10s infinite linear;
+}
+@keyframes ball-rotate-counter-clockwise-72 {
+  from {
+    transform: translateX(-50%) rotate(-72deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(-432deg);
+  }
+}
+#Prices .price-content #ball-white {
+  position: absolute;
+  width: 20rem;
+  height: 35rem;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: bottom center;
+  animation: rotate-clockwise-144 10s infinite linear;
+}
+@keyframes rotate-clockwise-144 {
+  from {
+    transform: translateX(-50%) rotate(144deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(504deg);
+  }
+}
+#Prices .price-content #ball-white img {
+  position: absolute;
+  width: 18.75rem;
+  height: 18.75rem;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: ball-rotate-counter-clockwise-144 10s infinite linear;
+}
+@keyframes ball-rotate-counter-clockwise-144 {
+  from {
+    transform: translateX(-50%) rotate(-144deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(-504deg);
+  }
+}
+#Prices .price-content #ball-grey {
+  position: absolute;
+  width: 20rem;
+  height: 35rem;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: bottom center;
+  animation: rotate-clockwise-216 10s infinite linear;
+}
+@keyframes rotate-clockwise-216 {
+  from {
+    transform: translateX(-50%) rotate(216deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(576deg);
+  }
+}
+#Prices .price-content #ball-grey img {
+  position: absolute;
+  width: 18.75rem;
+  height: 18.75rem;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: ball-rotate-counter-clockwise-216 10s infinite linear;
+}
+@keyframes ball-rotate-counter-clockwise-216 {
+  from {
+    transform: translateX(-50%) rotate(-216deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(-576deg);
+  }
+}
+#Prices .price-content #ball-red {
+  position: absolute;
+  width: 20rem;
+  height: 35rem;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: bottom center;
+  animation: rotate-clockwise-288 10s infinite linear;
+}
+@keyframes rotate-clockwise-288 {
+  from {
+    transform: translateX(-50%) rotate(288deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(648deg);
+  }
+}
+#Prices .price-content #ball-red img {
+  position: absolute;
+  width: 18.75rem;
+  height: 18.75rem;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: ball-rotate-counter-clockwise-288 10s infinite linear;
+}
+@keyframes ball-rotate-counter-clockwise-288 {
+  from {
+    transform: translateX(-50%) rotate(-288deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(-648deg);
+  }
+}
+
+/**========================================================================
+ **                            FORM
+ *========================================================================**/
+#Form span {
+  margin-top: 7.5rem;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 2rem;
+  letter-spacing: 0.2em;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8705882353);
+  text-transform: uppercase;
+}
+
+/**========================================================================
+ **                            CONTACTS
+ *========================================================================**/
+#Contacts {
+  margin: 10rem 0 10rem 0;
+}
+#Contacts span {
+  margin-top: 7.5rem;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 2rem;
+  letter-spacing: 0.2em;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8705882353);
+  text-transform: uppercase;
+}
 
 /**========================================================================
  **                            HEADER TOP
