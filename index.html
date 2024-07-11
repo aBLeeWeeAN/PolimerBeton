@@ -75,15 +75,25 @@
 
     <script>
         if ("paintWorklet" in CSS) {
-         CSS.paintWorklet.addModule(
-           "https://www.unpkg.com/css-houdini-squircle@0.3.0/squircle.min.js"
-         );
-       }
+            CSS.paintWorklet.addModule("https://www.unpkg.com/css-houdini-squircle/squircle.min.js");
+        }
     </script>
 
     <script>
-        if (CSS && 'paintWorklet' in CSS) CSS.paintWorklet.addModule('https://unpkg.com/smooth-corners')
+        (async function () {
+            if (!("paintWorklet" in CSS)) {
+                await import("css-paint-polyfill");
+            }
+        
+            CSS.paintWorklet.addModule(
+                `https://www.unpkg.com/css-houdini-squircle/squircle.min.js`
+            );
+        })();
     </script>
+
+    <!-- <script>
+        if (CSS && 'paintWorklet' in CSS) CSS.paintWorklet.addModule('https://unpkg.com/smooth-corners')
+    </script> -->
 
 </head>
 
@@ -146,7 +156,7 @@
                         <a href="#Description">Описание</a>
                     </div>
                     <div class="col-xl-4 menu-item">
-                        <a href="#Use">Применение</a>
+                        <a href="#Usage">Применение</a>
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-evenly menu-row">
@@ -165,7 +175,7 @@
                         <a href="#Prices">Цены</a>
                     </div>
                     <div class="col-xl-4 menu-item">
-                        <a href="#Form">Оставить заявку</a>
+                        <a href="#Feedback-Form">Оставить заявку</a>
                     </div>
                     <div class="col-xl-4 menu-item">
                         <a href="#Contacts">Наши контакты</a>
@@ -223,7 +233,7 @@
             </div>
         </div>
     </section>
-    <section id="Use">
+    <section id="Usage">
         <img id="bc-concrete-green" src="images/concrete_green.png" alt="Полимербетон - Зелёный">
         <img id="bc-concrete-yellow" src="images/concrete_yellow.png" alt="Полимербетон - Жёлтый">
         <img id="bc-concrete-white" src="images/concrete_white.png" alt="Полимербетон - Белый">
@@ -458,246 +468,121 @@
             </div>            
         </div>
     </section>
-    <section id="Form">
+    <section id="Feedback-Form">
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <h2 class="col-xl-10 block-header">Оставить заявку</h2>
             </div>
             <div class="row align-items-center justify-content-center">
-                <span class="col-xl-10">Оставьте свой номер и мы Вам перезвоним!</span>
+                <span class="col-xl-10">Оставьте свой номер телефона<br>и мы Вам перезвоним!</span>
+            </div>
+            <div class="row align-items-center justify-content-between content">
+                <div class="col-xl-6 concretes-pictures">
+                    <img src="images/concrete_green.png" id="ball-green" alt="Полимербетон - Зелёный">
+                    <img src="images/concrete_yellow.png" id="ball-yellow" alt="Полимербетон - Жёлтый">
+                    <img src="images/concrete_white.png" id="ball-white" alt="Полимербетон - Белый">
+                    <img src="images/concrete_grey.png" id="ball-grey" alt="Полимербетон - Серый">
+                    <img src="images/concrete_red.png" id="ball-red" alt="Полимербетон - Красный">
+                </div>
+                <div class="col-xl-6">
+                    <form>
+                        <div class="form-field">
+                            <input type="text" id="client_name" name="client_name" placeholder="Имя" maxlength="35" required>
+                        </div>
+                        <br>
+                        <div class="form-field">
+                            <input type="tel" id="client_phone" name="client_phone" placeholder="Телефон" maxlength="15" required>
+                        </div>
+                        <br>
+                        <div class="checkbox-privacy-policy">
+                            <input type="checkbox" id="privacy-policy" name="privacy-policy" required>
+                            <label for="privacy"><small>Я ознакомлен и согласен с <a href="ссылка-на-политику-конфиденциальности" target="_blank">Политикой конфиденциальности</a></small></label>
+                        </div>
+                        <br>
+                        <button type="submit">Отправить</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
     <section id="Contacts">
         <div class="container">
-            <div class="row align-items-center justify-content-center">
+            <div class="row align-items-center justify-content-center block-header">
                 <h2 class="col-xl-8 block-header">Наши контакты</h2>
+                <p class="col-xl-10">Ниже приведён полный список нашей контактной информации</p>
+            </div>
+            <div class="row align-items-center justify-content-start">
+                <div class="col-xl-9 phone-and-email">
+                    <h3>Телефон и электронная почта</h3>
+                    <p>
+                        <strong>Телефон - </strong> <a href="tel:+79202261666">8 920 226 16 66</a><br>
+                        <strong>Email - </strong> <a href="mailto:Polimerbeton-vrn@yandex.ru">Polimerbeton-vrn@yandex.ru</a>
+                    </p>
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-start">
+                <div class="col-xl-9 messengers">
+                    <h3>Мессенджеры</h3>
+                    <p>
+                        <strong>Telegram - </strong> <a href="https://t.me/89202261666">8 920 226 16 66</a><br>
+                        <strong>WhatsApp - </strong> <a href="https://wa.me/79202261666">8 920 226 16 66</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div id="bc-square-3"></div>
+        <div id="bc-square-4"></div>
+        <div class="container">
+            <div class="row justify-content-between footer-part-1">
+                <div class="col-xl-5 logo-and-privacy-policy">
+                    <div class="logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130">
+                            <path d="M65 130C100.899 130 130 100.899 130 65C130 29.1015 100.899 0 65 0C29.1015 0 0 29.1015 0 65C0 100.899 29.1015 130 65 130ZM112.397 94.2085C130.229 76.3762 127.48 44.7151 106.256 23.4913C85.0321 2.26758 53.3709 -0.481758 35.5387 17.3505C17.7064 35.1828 20.4557 66.8439 41.6795 88.0677C62.9032 109.291 94.5644 112.041 112.397 94.2085Z"/>
+                        </svg>
+                        <div class="logo-name">
+                            <b>ПОЛИМЕРБЕТОН</b> 
+                            <i>с нами легко!</i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>polimerbeton-vrn.ru</h3>
+                        <p><a href="">Политика конфиденциальности</a></p>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <nav>
+                        <h3>Навигация</h3>
+                        <ul class="navigation">
+                            <li><a href="#Main">Главная</a></li>
+                            <li><a href="#Description">Описание</a></li>
+                            <li><a href="#Usage">Применение</a></li>
+                            <li><a href="#Examples">Примеры использования</a></li>
+                            <li><a href="#Advantages">Преимущества</a></li>
+                            <li><a href="#Safety">Безопасность</a></li>
+                            <li><a href="#Prices">Цены</a></li>
+                            <li><a href="#Feedback-Form">Оставить заявку</a></li>
+                            <li><a href="#Contacts">Наши контакты</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
             <div class="row align-items-center justify-content-center">
-                <span class="col-xl-10">Ниже приведён полный список нашей контактной информации</span>
+                <div class="col-12">
+                    <hr class="rounded-hr">
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-between copyright">
+                <div class="col-xl-4" id="copyright-info">
+                    <small>&copy Copyright 2024 TIDOFF Studio</small>
+                </div>
+                <div class="col-xl-3" id="copyright-email">
+                    <small>tidoff.studio@yandex.ru</small>
+                </div>
             </div>
         </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <header class="top" style="margin-top: 2000px;">
-        <div id="wrapper">
-            <p>Полимербетон от производителя в г. Воронеж</p>
-        </div>
-    </header>
-    <header class="center">
-        <div id="wrapper">
-            <div class="company_name">
-                <img id="favicon" src="./images/favicon.svg" alt="Логотип">
-
-                <div>
-                    <h1>ПОЛИМЕРБЕТОН</h1>
-                    <h2>с нами легко</h2>
-                </div>
-            </div>
-
-            <div class="group_phone_sale">
-                <h3 class="phone">Моб. +7 920 226 16 66</h3>
-                <img id="sale" src="./images/sale.png" alt="Цена 280 ₽ за 1 кг.">
-            </div>
-
-            <div class="group_email_subtext">
-                <h3 class="email">Polimerbeton-vrn@yandex.ru</h3>
-                <h4>Производство находится в г. Воронеж</h4>
-            </div>
-        </div>
-    </header>
-    <header class="bottom">
-        <div id="wrapper">
-            <nav>
-                <a href="#main">Главная</a>
-                <a href="#description">Описание</a>
-                <a href="#use">Применение</a>
-                <a href="#examples">Примеры использования</a>
-                <a href="#advantages">Преимущества</a>
-                <a href="#safety">Безопасность</a>
-            </nav>
-        </div>
-    </header>
-    <section id="main">
-        <div id="wrapper">
-            <div class="content">
-                <h2>П О Л И М Е Р Б Е Т О Н</h2>
-                <div class="concretes_types">
-                    <img src="./images/concrete_green.png" alt="Полимербетон - зелёный цвет">
-                    <img src="./images/concrete_yellow.png" alt="Полимербетон - жёлтый цвет">
-                    <img src="./images/concrete_white.png" alt="Полимербетон - белый цвет">
-                    <img src="./images/concrete_grey.png" alt="Полимербетон - серый цвет">
-                    <img src="./images/concrete_red.png" alt="Полимербетон - красный цвет">
-                </div>
-                <h3>лучшее решение для быстрого ремонта</h3>
-            </div>
-        </div>
-    </section>
-    <div id="group_additional_sections">
-        <section id="description">
-            <div id="wrapper">
-                <h2>О П И С А Н И Е</h2>
-                <div>
-                    <p>Полимербетон представляет собой быстротвердеющий ремонтный материал на основе метилметакриловой
-                        смолы
-                        и полимерных наполнителей, который состоит из двух компонентов, связующего (полимер) и
-                        инициатора
-                        полимеризации (отвердитель).</p>
-                    <p>Основное назначение полимербетона — это ремонт сколов, выбоин, раковин, углублений, аэродромов,
-                        неровных поверхностей, перепады высот, речных и морских портов, железнодорожных станций,
-                        мостовых
-                        переходов, путепроводов, автомобильных стоянок, пешеходных дорожек в т.ч. для применения в
-                        различных
-                        помещениях (производственных, бытовых) и других дефектов на цементобетонном покрытии в очень
-                        короткие сроки (время ремонта 2,5 - 3 часа).</p>
-                    <p>Полимербетон после полной полемиризации (около 2,5 - 3 часа при 20 °C) имеет прочность на сжатие
-                        не
-                        менее 35 МПа, на растяжение при изгибе — не менее 25 МПа, морозостойкость не менее 500
-                        стандартных
-                        циклов.</p>
-                    <p>Для увеличения адгезии к поверхности старого бетонного покрытия — рекомендуем применять промоутер
-                        адгезии (пропитку).</p>
-                </div>
-                <div class="concretes_types">
-                    <img src="./images/concrete_green.png" alt="Полимербетон - зелёный цвет">
-                    <img src="./images/concrete_yellow.png" alt="Полимербетон - жёлтый цвет">
-                    <img src="./images/concrete_white.png" alt="Полимербетон - белый цвет">
-                    <img src="./images/concrete_grey.png" alt="Полимербетон - серый цвет">
-                    <img src="./images/concrete_red.png" alt="Полимербетон - красный цвет">
-                </div>
-            </div>
-        </section>
-        <section id="use">
-            <div id="wrapper">
-                <h2>П Р И М Е Н Е Н И Е</h2>
-                <ul class="beauty_list">
-                    <li>Ремонт бетонных и асфальтно-бетонных поверхностей (автомобильные дороги, ВПП аэродромов,
-                        конструкции
-                        мостов и виадуков, складов, порты, причалы и др.) без длительной остановки технологического
-                        процесса;</li>
-                    <li>Восстановление жд путей и шпал;</li>
-                    <li>В переходных зонах мостовых переходов при устройстве деформационных швов и дренажных стоков;
-                    </li>
-                    <li>Ремонт столбов и мостовых опор;</li>
-                    <li>Ремонт лестниц жд платформ;</li>
-                    <li>Устройство рамп и выравнивающих слоев на мостах и зданиях;</li>
-                    <li>Анкеровка металлоконструкций и балок;</li>
-                    <li>В качестве гидроизоляции, т.к. коэффициент водопоглощения стремится к нулю;</li>
-                    <li>Ямочный ремонт особо сложных участков дорог;</li>
-                    <li>Устройство покрытий тротуаров на мостах и др, а также велосипедных дорожек;</li>
-                    <li>И многое другое.</li>
-                </ul>
-            </div>
-        </section>
-        <section id="examples">
-            <div id="wrapper">
-                <h2>П Р И М Е Р Ы<br>И С П О Л Ь З О В А Н И Я</h2>
-                <div class="first_example">
-                    <div class="img_container">
-                        <img src="./images/use_first_example_part_1.jpg" alt="Восстановление железобетонных колонн">
-                    </div>
-                    <div class="img_container">
-                        <img src="./images/use_first_example_part_2.jpg" alt="Восстановление железобетонных колонн">
-                    </div>
-                </div>
-                <h3>ВОССТАНОВЛЕНИЕ ЖЕЛЕЗОБЕТОННЫХ КОЛОНН</h3>
-                <div class="second_example">
-                    <div class="img_container">
-                        <img src="./images/use_second_example_part_1.jpg" alt="Восстановление железобетонных колонн">
-                    </div>
-                    <div class="img_container">
-                        <img src="./images/use_second_example_part_2.jpg" alt="Восстановление железобетонных колонн">
-                    </div>
-                </div>
-                <h3>КАПИТАЛЬНЫЙ РЕМОНТ ТРОТУАРА НА БОЛЬШЕОХТИНСКОМ МОСТУ<br>(РАЗВОДНОЙ МОСТ), г. САНКТ-ПЕТЕРБУРГ</h3>
-            </div>
-        </section>
-        <section id="advantages">
-            <div id="wrapper">
-                <h2>П Р Е И М У Щ Е С Т В А</h2>
-                <ol class="bullet_list">
-                    <li>Удобство нанесения: не требует длительной предварительной подготовки в виде нагрева.</li>
-                    <li>Не требует применения специальной техники и оборудования.</li>
-                    <li>Широкий диапазон применения.</li>
-                    <li>Высокая скорость формирования прочностных характеристик (движение можно открывать через 60 минут
-                        после окончания работ, максимальный набор прочности в течении суток).</li>
-                    <li>При необходимости есть возможность подбора таких характеристик, как пластичность, цвет согласно
-                        RALa.</li>
-                    <li>Высокая химстойкость покрытия и низкое водопоглощение увеличивают срок службы материала.</li>
-                </ol>
-            </div>
-        </section>
-        <section id="safety">
-            <div id="wrapper">
-                <h2>Б Е З О П А С Н О С Т Ь</h2>
-                <h3>ВСЯ НАША ПРОДУКЦИЯ СЕРТИФИЦИРОВАНА И ВЫСОКОГО КАЧЕСТВА</h3>
-                <div class="global_img_block">
-                    <div class="img_block">
-                        <div class="img_container">
-                            <img src="./images/safety_doc_1.jpg" alt="Сертификат соответствия">
-                        </div>
-                        <div class="img_container">
-                            <img src="./images/safety_doc_2.jpg" alt="Технические условия (ТУ)">
-                        </div>
-                    </div>
-                    <div class="img_block">
-                        <div class="img_container">
-                            <img src="./images/safety_doc_3.jpg" alt="Протокол испытаний (часть 1)">
-                        </div>
-                        <div class="img_container">
-                            <img src="./images/safety_doc_4.jpg" alt="Протокол испытаений (часть 2)">
-                        </div>
-                    </div>
-                    <div class="img_block">
-                        <div class="img_container">
-                            <img src="./images/safety_doc_5.jpg" alt="Экспертное заключение">
-                        </div>
-                        <div class="img_container">
-                            <img src="./images/safety_doc_6.jpg" alt="Заключение">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer>
-            <div id="wrapper">
-                <div class="footer_content">
-                    <div class="company_logo">
-                        <img id="favicon" src="./images/favicon.svg" alt="Логотип">
-                        <div class="company_name">
-                            <h2>ПОЛИМЕРБЕТОН</h2>
-                            <h2>с нами легко</h2>
-                        </div>
-                    </div>
-                    <div class="contacts">
-                        <p>Моб. +7 920 226 16 66</p>
-                        <p>Polimerbeton-vrn@yandex.ru</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="copyright">
-                    <div>
-                        <p>© Copyright 2024 TIDOFF Studio</p>
-                        <a href="mailto:tidoff-studio@yandex.ru">tidoff-studio@yandex.ru</a>
-                    </div>
-                    <img src="./images/copyright_logo.png" alt="Логотип TIDOFF Studio">
-                </div>
-            </div>
-        </footer>
-    </div>
+    </footer>
 </body>
 
 </html>

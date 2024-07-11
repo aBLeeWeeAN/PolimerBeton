@@ -22,6 +22,8 @@ $color_deep_purple_700: #512DA8;
 $text_color_white: #ffffffde;
 $text_color_black: #000000de;
 
+$finally_bc_color: color-mix(in srgb, $bc_color, $fr_color 4%);
+
 /**========================================================================
  **                            BODY
  *========================================================================**/
@@ -29,7 +31,7 @@ $text_color_black: #000000de;
 body {
     z-index: -10;
 
-    background-color: color-mix(in srgb, $bc_color, $fr_color 4%);
+    background-color: $finally_bc_color;
 }
 
 #wrapper {
@@ -51,7 +53,7 @@ body {
 
 header {
     position: relative;
-    // overflow: hidden;
+    overflow: hidden;
 
     padding: 5rem 0 3.75rem 0;
 
@@ -422,7 +424,7 @@ header {
  **                            USE
  *========================================================================**/
 
-#Use {
+#Usage {
     position: relative;
 
     ul {
@@ -1399,7 +1401,7 @@ header {
  **                            FORM
  *========================================================================**/
 
-#Form {
+#Feedback-Form {
     span {
         margin-top: 7.5rem;
 
@@ -1415,6 +1417,229 @@ header {
         color: $text_color_black;
         
         text-transform: uppercase;
+    }
+
+    .content {
+        margin-top: 5rem;
+
+        // display: flex;
+        // flex-direction: row;
+
+        // align-items: center;
+    }
+
+    .concretes-pictures {
+        width: 41rem;
+        height: 41rem;
+
+        position: relative;
+
+        & img {
+            z-index: 0;
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+        }
+
+        & #ball-green {
+            top: 0;
+            left: 0;
+
+            z-index: -1;
+
+            width: 31.25rem;
+            height: 31.25rem;
+        }
+
+        & #ball-yellow {
+            z-index: -2;
+
+            top: 11.5rem;
+            left: 22.5rem;
+
+            width: 18.75rem;
+            height: 18.75rem;
+        }
+
+        & #ball-white {
+            top: 1rem;
+            left: 21.25rem;
+
+            width: 13.75rem;
+            height: 13.75rem;
+        }
+
+        & #ball-grey {
+            top: 19rem;
+            left: 0;
+
+            width: 22.25rem;
+            height: 22.25rem;
+        }
+
+        & #ball-red {
+            top: 26rem;
+            left: 20rem;
+
+            width: 14.25rem;
+            height: 14.25rem;
+        }
+    }
+
+    & form {
+        display: flex;
+        flex-direction: column;
+
+        & .form-field {
+            width: 100%;
+            height: 5rem;
+
+            padding: 0.25rem;
+
+            border: none;
+            border-radius: 1.25rem;
+
+            background-color: $color_deep_purple_700;
+
+            --squircle-smooth: 0.78;
+            --squircle-radius: 1.25rem;
+
+            mask-image: paint(squircle);
+        }
+
+        & input[type="text"], & input[type="tel"] {
+            width: 100%;
+            height: 100%;
+
+            padding: 1.25rem 1.75rem 1.25rem 1.75rem;
+
+            border: none;
+            border-radius: 1.25rem;
+
+            background-color: color-mix(in srgb, $finally_bc_color 100%, #D1C4E9 5%);
+
+            --squircle-smooth: 1.0;
+            --squircle-radius: 1.25rem;
+
+            mask-image: paint(squircle);
+
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+
+            font-size: 1.25rem;
+            line-height: 200%;
+            letter-spacing: 0.2em;
+
+            color: $text_color_black;
+
+            &:focus, &:active {
+                outline: none;
+            }
+
+            &:focus::placeholder {
+                color: #000;
+            }
+        }
+
+        & button {
+            width: 100%;
+            height: 5rem;
+
+            border: none;
+            border-radius: 1.25rem;
+
+            --squircle-smooth: 1.0;
+            --squircle-radius: 1.25rem;
+
+            mask-image: paint(squircle);
+            background-color: $color_deep_purple_700;
+
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+
+            font-size: 1.25rem;
+            line-height: 200%;
+            letter-spacing: 0.2em;
+
+            text-align: center;
+            color: $text_color_white;
+
+            text-transform: uppercase;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+
+        & .checkbox-privacy-policy {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 1rem;
+
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+
+            font-size: 0.875rem;
+            letter-spacing: 0.0625rem;
+
+            text-align: center;
+            color: $text_color_black;
+
+            input[type="checkbox"] {
+                appearance: none;
+                
+                width: 1.75rem;
+                height: 1.75rem;
+
+                border: 0.125rem solid $color_deep_purple_700;
+                border-radius: 100%;
+
+                position: relative;
+                cursor: pointer;
+
+                margin-right: 0.75rem;
+            }
+        
+            input[type="checkbox"]:checked {
+                background-color: $color_deep_purple_700;
+                border: none;
+            }
+        
+            input[type="checkbox"]:checked::before {
+                content: '';
+                position: absolute;
+                top: 0.3125rem;
+                left: 0.625rem;
+                width: 0.475rem;
+                height: 0.85rem;
+                border: solid #fff;
+                border-width: 0 0.125rem 0.125rem 0;
+                transform: rotate(45deg);
+            }
+
+            label {
+                cursor: pointer;
+            }
+        
+            a {
+                color: $color_deep_purple_700;
+                text-decoration: none;
+            }
+        
+            a:hover {
+                text-decoration: underline;
+            }
+        }
     }
 }
 
@@ -1427,1194 +1652,238 @@ header {
  #Contacts {
     margin: 10rem 0 10rem 0;
 
-    span {
-        margin-top: 7.5rem;
+    .block-header {
+        h2 {
+            margin: 0;
+        }
+
+        p {
+            margin-top: 7.5rem;
+    
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+    
+            font-size: 2rem;
+            letter-spacing: 0.2em;
+            text-align: center;
+    
+            color: $text_color_black;
+            
+            text-transform: uppercase;
+        }
+    }
+
+    h3 {
+        margin: 5rem 0 1.25rem 0;
+
+        font-family: "Raleway", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        
+        font-size: 2rem;
+        line-height: 200%;
+        letter-spacing: 0.2em;
+
+        color: $text_color_black;
+    }
+
+    p, strong, a {
+        margin: 0;
+
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+
+        font-size: 2rem;
+        line-height: 200%;
+        letter-spacing: 0.2em;
+
+        color: $text_color_black;
+
+        text-decoration: none;
+    }
+}
+
+
+
+/**========================================================================
+ **                            FOOTER
+ *========================================================================**/
+
+footer {
+    position: relative;
+    overflow: hidden;
+
+    #bc-square-3 {
+        z-index: -5;
+
+        position: absolute;
+        width: 120%;
+        height: 120%;
+    
+        background-color: $header_bc_color_square_1;
+
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -6%) rotate(-16deg);
+    }
+
+    #bc-square-4 {
+        z-index: -6;
+
+        position: absolute;
+        width: 120%;
+        height: 200%;
+    
+        background-color: $header_bc_color_square_2;
+
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-47.4%, -50%) rotate(45deg);
+    }
+
+    h3 {
+        margin: 0 0 1.25rem 0 ;
 
         font-family: "Raleway", sans-serif;
         font-optical-sizing: auto;
         font-weight: 600;
         font-style: normal;
 
-        font-size: 2rem;
+        font-size: 1.75rem;
         letter-spacing: 0.2em;
-        text-align: center;
+        
+        color: $text_color_black;
+    }
+
+    p, a {
+        margin: 0;
+        padding: 0;
+
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+
+        font-size: 1rem;
+        letter-spacing: 0.2em;
+        text-align: left;
 
         color: $text_color_black;
+
+        text-decoration: none;
+    }
+
+    .footer-part-1 {
+        padding: 7.5rem 0 7.5rem 0;
+
+        .logo-and-privacy-policy {
+            display: flex;
+            flex-direction: column;
+    
+            align-items: start;
+            justify-content: space-between;
+
+            .logo {
+                padding: 0;
+            
+                display: flex;
+                align-items: center;
+            
+                color: $color_deep_purple_700;
+            
+                svg {
+                    fill-rule: evenodd;
+                    clip-rule: evenodd;
+            
+                    fill: $color_deep_purple_700;  
+                    
+                    width: 5.625rem;
+                    height: 5.625rem;
+                }
+            
+                .logo-name {
+                    margin-left: 1.375rem;
+            
+                    display: flex;
+                    flex-direction: column;
+            
+                    b {
+                        font-family: "Russo One", sans-serif;
+                        font-optical-sizing: auto;
+                        font-weight: 400;
+                        font-style: normal;
+                
+                        font-size: 2.06rem;
+                        letter-spacing: 0.35em;
+                    }
+                
+                    i {
+                        margin-left: 0.1875rem;
+            
+                        font-family: "Pattaya", sans-serif;
+                        font-weight: 400;
+                        font-style: normal;
         
-        text-transform: uppercase;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**========================================================================
- **                            HEADER TOP
- *========================================================================**/
-
-header.top {
-    height: 50px;
-    background-color: #363535;
-
-    text-align: center;
-    align-content: center;
-}
-
-header.top p {
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-
-    color: #fff;
-    font-size: 15px;
-}
-
-/*============================ END OF HEADER TOP ============================*/
-
-
-
-/**========================================================================
- **                            HEADER CENTER
- *========================================================================**/
-
-header.center {
-    height: 140px;
-    background-color: #767676;
-
-    align-content: center;
-}
-
-header.center div#wrapper {
-    /* padding-left: 48px;
-    padding-right: 48px; */
-
-    display: flex;
-    align-items: center;
-
-    white-space: nowrap;
-}
-
-#favicon {
-    width: 66px;
-    height: 66px;
-}
-
-header.center .company_name {
-    display: flex;
-    text-align: center;
-}
-
-header.center .company_name div {
-    display: block;
-    margin-left: 16px;
-
-    align-content: center;
-}
-
-header.center .company_name div h1 {
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: normal;
-
-    color: #fff;
-    font-size: 30px;
-}
-
-header.center .company_name div h2 {
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: normal;
-
-    color: #D0D0D0;
-    font-size: 20px;
-}
-
-header.center .group_phone_sale {
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-    margin-right: -8px;
-    /* margin-left: 80px; */
-}
-
-header.center .group_phone_sale h3.phone {
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-
-    color: #fff;
-    font-size: 25px;
-}
-
-#sale {
-    margin-left: 10px;
-
-    width: 120px;
-    height: 120px;
-}
-
-header.center .group_email_subtext {
-    text-align: center;
-    margin-left: auto;
-}
-
-header.center .group_email_subtext h3.email {
-    font-family: "Raleway", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-
-    color: #fff;
-    font-size: 25px;
-}
-
-header.center .group_email_subtext h4 {
-    margin-top: 16px;
-
-    font-family: "Raleway", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-
-    color: #D0D0D0;
-    font-size: 16px;
-}
-
-/*============================ END OF HEADER CENTER ============================*/
-
-
-/**========================================================================
- **                            HEADER BOTTOM
- *========================================================================**/
-
-header.bottom {
-    height: auto;
-    background-color: #b1b1b1;
-
-    align-content: center;
-}
-
-header.bottom nav {
-    display: flex;
-
-    padding: 0 144px 0 144px;
-
-    align-items: center;
-    justify-content: space-between;
-}
-
-header.bottom nav a {
-    margin: 10px;
-
-    text-decoration: none;
-
-    font-family: "Open Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-    font-variation-settings:
-        "wdth" 100;
-
-    color: #fff;
-    font-size: 16px;
-}
-
-header.bottom nav a:hover {
-    color: #fed2aa;
-}
-
-header.bottom nav a:active {
-    color: #fdc18a;
-}
-
-/*============================ END OF HEADER BOTTOM ============================*/
-
-
-
-/**========================================================================
- **                            MAIN SECTION
- *========================================================================**/
-
-section#main .content {
-    padding: 155px 0 155px 0;
-
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0 100%), url("./images/main_bc.jpg");
-    background-size: cover;
-
-    position: relative;
-    text-align: center;
-}
-
-section#main .content h2 {
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-
-    color: #000;
-    font-size: 50px;
-}
-
-section#main .content div.concretes_types {
-    margin-top: 96px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 10% 0 10%;
-}
-
-section#main .content div.concretes_types img {
-    width: 130px;
-    height: 130px;
-}
-
-section#main .content h3 {
-    margin-top: 96px;
-
-    font-family: "Tenor Sans", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-
-    background-image: linear-gradient(to right, #057F57, #AB413D);
-    /* Градиент из трех цветов слева направо */
-    background-size: 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
-
-    color: transparent;
-    font-size: 50px;
-}
-
-/*============================ END OF MAIN SECTION ============================*/
-
-
-
-/**========================================================================
- **                            ADDITIONAL SECTIONS BACKGROUND
- *========================================================================**/
-
-#group_additional_sections {
-    background-image: url("./images/use_section_bc_2.svg");
-    background-size: auto;
-    background-repeat: no-repeat;
-    background-position: center 55em;
-}
-
-/*============================ END OF ADDITIONAL SECTIONS BACKGROUND ============================*/
-
-
-
-/**========================================================================
- **                            DESCRIPTION SECTION
- *========================================================================**/
-
-section#description {
-    padding: 0;
-}
-
-section#description h2 {
-    margin-top: 144px;
-
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-
-    color: #000;
-    font-size: 50px;
-
-    text-align: center;
-}
-
-section#description div {
-    margin-top: 96px;
-    text-align: justify;
-}
-
-section#description p {
-    font-family: "Open Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-    font-variation-settings:
-        "wdth" 100;
-
-    color: #000;
-    font-size: 18px;
-
-    text-indent: 60px;
-    line-height: 250%;
-}
-
-section#description div.concretes_types {
-    margin-top: 96px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 10% 0 10%;
-}
-
-section#description div.concretes_types img {
-    width: 130px;
-    height: 130px;
-}
-
-/*============================ END OF DESCRIPTION SECTION ============================*/
-
-
-
-/**========================================================================
- **                            USE SECTION
- *========================================================================**/
-
-section#use {
-    padding: 0;
-}
-
-section#use h2 {
-    margin-top: 144px;
-
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-
-    color: #000;
-    font-size: 50px;
-
-    text-align: center;
-}
-
-.beauty_list {
-    margin-top: 96px;
-
-    list-style: none;
-    padding: 0;
-}
-
-.beauty_list li {
-    margin-top: 16px;
-    text-align: justify;
-    text-indent: 0px;
-
-    font-family: "Trebuchet MS", "Lucida Sans";
-    font-size: 20px;
-    letter-spacing: 2px;
-
-    padding: 7px 20px;
-    margin-bottom: 10px;
-
-    border-radius: 5px;
-    border-left: 10px solid #f05d22;
-    box-shadow: 2px -2px 5px 0 rgba(0, 0, 0, .1),
-        -2px -2px 5px 0 rgba(0, 0, 0, .1),
-        2px 2px 5px 0 rgba(0, 0, 0, .1),
-        -2px 2px 5px 0 rgba(0, 0, 0, .1);
-
-    transition: 0.3s all linear;
-    background-color: #fff;
-}
-
-.beauty_list li:nth-child(2) {
-    border-color: #8bc63e;
-}
-
-.beauty_list li:nth-child(3) {
-    border-color: #fcba30;
-}
-
-.beauty_list li:nth-child(4) {
-    border-color: #1ccfc9;
-}
-
-.beauty_list li:nth-child(5) {
-    border-color: #493224;
-}
-
-.beauty_list li:nth-child(6) {
-    border-color: #cd74f0;
-}
-
-.beauty_list li:nth-child(7) {
-    border-color: #20a476;
-}
-
-.beauty_list li:nth-child(8) {
-    border-color: #3467a4;
-}
-
-.beauty_list li:nth-child(9) {
-    border-color: #f49b17;
-}
-
-.beauty_list li:nth-child(10) {
-    border-color: #e56b6d;
-}
-
-.beauty_list li:nth-child(11) {
-    border-color: #1e7ff6;
-}
-
-.beauty_list li:hover {
-    border-left: 10px solid transparent;
-}
-
-.beauty_list li:nth-child(1):hover {
-    border-right: 10px solid #f05d22;
-}
-
-.beauty_list li:nth-child(2):hover {
-    border-right: 10px solid #8bc63e;
-}
-
-.beauty_list li:nth-child(3):hover {
-    border-right: 10px solid #fcba30;
-}
-
-.beauty_list li:nth-child(4):hover {
-    border-right: 10px solid #1ccfc9;
-}
-
-.beauty_list li:nth-child(5):hover {
-    border-right: 10px solid #493224;
-}
-
-.beauty_list li:nth-child(6):hover {
-    border-right: 10px solid #cd74f0;
-}
-
-.beauty_list li:nth-child(7):hover {
-    border-right: 10px solid #20a476;
-}
-
-.beauty_list li:nth-child(8):hover {
-    border-right: 10px solid #3467a4;
-}
-
-.beauty_list li:nth-child(9):hover {
-    border-right: 10px solid #f49b17;
-}
-
-.beauty_list li:nth-child(10):hover {
-    border-right: 10px solid #e56b6d;
-}
-
-.beauty_list li:nth-child(11):hover {
-    border-right: 10px solid #1e7ff6;
-}
-
-/*============================ END OF USE SECTION ============================*/
-
-
-
-/**========================================================================
- **                            EXAMPLES SECTION
- *========================================================================**/
-
-section#examples {
-    padding: 0;
-
-    text-align: center;
-}
-
-section#examples h2 {
-    margin-top: 144px;
-
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-
-    color: #000;
-    font-size: 50px;
-}
-
-section#examples div div {
-    display: flex;
-    justify-content: space-between;
-
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
-section#examples div div .img_container {
-    /* Чтобы рамка соответствовала размерам изображения */
-    display: inline-block;
-
-    /* Расстояние между рамкой и изображением */
-    padding: 10px;
-
-    /* Градиентная рамка */
-    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-
-    width: 46.875%;
-    height: auto;
-}
-
-section#examples div div .img_container img {
-    /* Изображение внутри контейнера */
-    display: block;
-
-    /* Изображение не будет превышать размер контейнера */
-    max-width: 100%;
-
-    /* Автоматическое определение высоты */
-    height: auto;
-}
-
-section#examples .first_example {
-    margin-top: 96px;
-}
-
-section#examples .second_example {
-    margin-top: 96px;
-}
-
-section#examples h3 {
-    margin: 0 auto;
-    width: 90%;
-
-    margin-top: 64px;
-    line-height: 200%;
-
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-
-    color: #000;
-    opacity: 0.87;
-    font-size: 24px;
-
-    letter-spacing: 4px;
-}
-
-/*============================ END OF EXAMPLES SECTION ============================*/
-
-
-
-/**========================================================================
- **                            ADVANTAGES SECTION
- *========================================================================**/
-
-section#advantages {
-    padding: 0;
-}
-
-section#advantages h2 {
-    margin-top: 144px;
-
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-
-    color: #000;
-    font-size: 50px;
-
-    text-align: center;
-}
-
-section#advantages ol {
-    margin-top: 96px;
-}
-
-.bullet_list {
-    margin-left: 0;
-    list-style: none;
-    counter-reset: li;
-
-    /* padding-left: 130px;
-    padding-right: 130px; */
-}
-
-.bullet_list li {
-    position: relative;
-
-    margin-bottom: 1.5em;
-    padding: 1.2em;
-
-    border: 3px solid #CADFCF;
-    border-radius: 4px;
-
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-
-    letter-spacing: 1px;
-    font-size: 18px;
-
-    color: #231F20;
-    background: #FEFEFE;
-}
-
-.bullet_list li:before {
-    position: absolute;
-
-    top: -0.7em;
-    padding-left: 0.4em;
-    padding-right: 0.4em;
-
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
-
-    font-size: 24px;
-
-    color: #DCC24B;
-    background: #FEFEFE;
-
-    border-radius: 50%;
-
-    counter-increment: li;
-    content: counter(li);
-}
-
-/*============================ END OF ADVANTAGES SECTION ============================*/
-
-
-
-/**========================================================================
- **                            SAFETY SECTION
- *========================================================================**/
-
-section#safety {
-    padding: 0;
-
-    text-align: center;
-}
-
-section#safety h2 {
-    margin-top: 144px;
-
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-
-    color: #000;
-    font-size: 50px;
-
-    text-align: center;
-}
-
-section#safety h3 {
-    margin-top: 96px;
-
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-
-    color: #000;
-    opacity: 0.87;
-    font-size: 24px;
-
-    letter-spacing: 4px;
-}
-
-section#safety .global_img_block .img_block {
-    margin-top: 82px;
-
-    display: flex;
-    justify-content: space-between;
-
-    /* padding-left: 110px;
-    padding-right: 110px; */
-}
-
-section#safety .global_img_block .img_block:first-child {
-    margin-top: 64px;
-}
-
-section#safety .global_img_block .img_block .img_container {
-    /* Чтобы рамка соответствовала размерам изображения */
-    display: inline-block;
-
-    /* Расстояние между рамкой и изображением */
-    padding: 10px;
-
-    /* Градиентная рамка */
-    border-style: solid;
-    border-width: 10px;
-    border-image: radial-gradient(#038d63, #f59e01, #be5450) 1;
-
-    /* Изображение не будет превышать размер контейнера */
-    max-width: 46.875%;
-
-    /* Автоматическое определение высоты */
-    height: auto;
-}
-
-section#safety .global_img_block .img_block .img_container img {
-    /* Изображение не будет превышать размер контейнера */
-    max-width: 100%;
-
-    /* Автоматическое определение высоты */
-    height: auto;
-}
-
-/*============================ END OF SAFETY SECTION ============================*/
-
-
-
-/**========================================================================
- **                            FOOTER SECTION
- *========================================================================**/
-
-footer {
-    margin-top: 144px;
-
-    background-color: #767676;
-    opacity: 0.87;
-
-    align-items: center;
-}
-
-footer .footer_content {
-    height: 150px;
-
-    display: flex;
-    align-items: center;
-
-    justify-content: space-between;
-}
-
-footer .footer_content .contacts {
-    display: block;
-}
-
-footer .footer_content .contacts p {
-    margin-top: 10px;
-
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-
-    color: #fff;
-    font-size: 20px;
-
-    text-align: right;
-}
-
-footer .footer_content .contacts p:first-child {
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-
-    color: #fff;
-    font-size: 20px;
-}
-
-footer .company_logo {
-    display: flex;
-}
-
-footer .company_logo .company_name {
-    align-content: center;
-
-    text-align: center;
-    margin-left: 16px;
-}
-
-/* с нами легко */
-footer .company_logo .company_name h2 {
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: normal;
-
-    color: #D0D0D0;
-    font-size: 20px;
-}
-
-/* ПОЛИМЕРБЕТОН */
-footer .company_logo .company_name h2:first-child {
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: normal;
-
-    color: #fff;
-    font-size: 30px;
-}
-
-footer div.copyright {
-    display: flex;
-
-    text-align: left;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 24px 0 16px 0;
-}
-
-footer div.copyright img {
-    width: 60px;
-    height: auto;
-}
-
-footer div.copyright div p {
-    font-family: "Arimo", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-
-    color: #fff;
-    font-size: 16px;
-}
-
-footer div.copyright div a {
-    display: inline-block;
-    margin-top: 8px;
-
-    font-family: "Arimo", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-
-    color: #fff;
-    font-size: 16px;
-
-    text-decoration: none;
-}
-
-footer div.copyright div a:hover {
-    color: #fed2aa;
-}
-
-footer div.copyright div a:active {
-    color: #fdc18a;
-}
-
-/* footer div.copyright div a:visited {
-    color: #4a3929;
-} */
-
-/*============================ END OF FOOTER SECTION ============================*/
-
-
-/**========================================================================
- **                            ADAPTIVE SECTION
- *========================================================================**/
-
-@media (max-width: 1280px) {
-
-    /**========================================================================
-     **                            WRAPPER
-     *========================================================================**/
-
-    #wrapper {
-        max-width: 1100px;
+                        font-size: 1.56rem;
+                        letter-spacing: 0.55em;
+                    }
+            
+                }
+            }
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+    
+        ul li:not(:first-child) {
+            margin-top: 1rem;
+        }
     }
 
-    /*============================ END OF WRAPPER ============================*/
-
-
-
-    /**========================================================================
-     **                            HEADER CENTER
-     *========================================================================**/
-
-    header.center #favicon {
-        width: 96px;
-        height: 96px;
+    .rounded-hr {
+        border: none;
+        border-top: 0.0625rem solid $text_color_black;
+        border-radius: 100%;
+        margin: 0;
     }
 
-    header.center {
-        height: auto;
+    .copyright {
+        padding: 5rem 0 5rem 0;
 
-        text-align: center;
-        align-content: center;
+        small {
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+
+            color: $text_color_black;
+        }
+
+        #copyright-info {
+            text-align: left;
+        }
+
+        #copyright-email {
+            text-align: right;
+        }
     }
-
-    header.center div#wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 116px 140px;
-
-        padding-top: 32px;
-        padding-bottom: 16px;
-    }
-
-    header.center .company_name {
-        grid-column: span 2;
-        margin: 0 auto;
-    }
-
-    header.center .group_phone_sale {
-        grid-column: 2;
-        grid-row: 2;
-
-        margin: 0 auto;
-        margin-left: 24px;
-    }
-
-    header.center .group_email_subtext {
-        grid-column: 1;
-        grid-row: 2;
-
-        margin: 0 auto;
-        margin-right: 24px;
-    }
-
-    header.center .company_name div h1 {
-        font-size: 48px;
-    }
-
-    header.center .company_name div h2 {
-        font-size: 32px;
-    }
-
-    header.center .group_phone_sale h3.phone {
-        font-size: 32px;
-    }
-
-    header.center .group_email_subtext h3.email {
-        font-size: 32px;
-    }
-
-    header.center .group_email_subtext h4 {
-        margin-top: 20px;
-        font-size: 20px;
-    }
-
-    /*============================ END OF HEADER CENTER ============================*/
-
-
-
-    /**========================================================================
-     **                            HEADER BOTTOM
-     *========================================================================**/
-
-    header.bottom {
-        height: auto;
-        background-color: #b1b1b1;
-
-        align-content: center;
-    }
-
-    header.bottom nav {
-        display: flex;
-
-        padding: 0 48px 0 48px;
-
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    header.bottom nav a {
-        font-size: 18px;
-        white-space: nowrap;
-    }
-
-    /*============================ END OF HEADER BOTTOM ============================*/
-
-
-
-    /**========================================================================
-     **                            MAIN SECTION
-     *========================================================================**/
-
-    section#main .content div.concretes_types {
-        padding: 0 5% 0 5%;
-    }
-
-    /*============================ END OF MAIN SECTION ============================*/
-
-
-
-    /**========================================================================
-    **                            ADDITIONAL SECTIONS BACKGROUND
-    *========================================================================**/
-
-    #group_additional_sections {
-        background-position: center 57.75em;
-    }
-
-    /*============================ END OF ADDITIONAL SECTIONS BACKGROUND ============================*/
-
-
-
-    /**========================================================================
-     **                            DESCRIPTION SECTION
-     *========================================================================**/
-
-    section#description {
-        padding: 0;
-    }
-
-    section#description h2 {
-        margin-top: 100px;
-    }
-
-    section#description div {
-        margin-top: 72px;
-        text-align: justify;
-    }
-
-    section#description div.concretes_types {
-        margin-top: 72px;
-
-        padding: 0 5% 0 5%;
-    }
-
-    /*============================ END OF DESCRIPTION SECTION ============================*/
-
-
-
-    /**========================================================================
-     **                            USE SECTION
-     *========================================================================**/
-
-    section#use h2 {
-        margin-top: 100px;
-    }
-
-    .beauty_list {
-        margin-top: 72px;
-    }
-
-    /*============================ END OF SECTION ============================*/
-
-
-
-    /**========================================================================
-     **                            EXAMPLES SECTION
-     *========================================================================**/
-
-    section#examples h2 {
-        margin-top: 100px;
-    }
-
-    section#examples .first_example {
-        margin-top: 72px;
-    }
-
-    section#examples .second_example {
-        margin-top: 72px;
-    }
-
-    section#examples h3 {
-        margin-top: 48px;
-        width: 75%;
-    }
-
-    /*============================ END OF EXAMPLES SECTION ============================*/
-
-
-
-    /**========================================================================
- **                            ADVANTAGES SECTION
- *========================================================================**/
-
-    section#advantages h2 {
-        margin-top: 100px;
-    }
-
-    section#advantages ol {
-        margin-top: 72px;
-    }
-
-    /*============================ END OF ADVANTAGES SECTION ============================*/
-
-
-
-    /**========================================================================
- **                            SAFETY SECTION
- *========================================================================**/
-
-    section#safety h2 {
-        margin-top: 100px;
-    }
-
-    section#safety h3 {
-        margin-top: 72px;
-    }
-
-    section#safety .global_img_block .img_block {
-        margin-top: 72px;
-    }
-
-    section#safety .global_img_block .img_block:first-child {
-        margin-top: 48px;
-    }
-
-    /*============================ END OF SAFETY SECTION ============================*/
-
-
-
-    /**========================================================================
-    **                            FOOTER SECTION
-    *========================================================================**/
-
-    footer {
-        margin-top: 100px;
-    }
-
-    footer .footer_content {
-        height: 150px;
-    }
-
-    footer .footer_content .contacts p {
-        margin-top: 10px;
-        font-size: 28px;
-    }
-
-    footer .footer_content .contacts p:first-child {
-        font-size: 20px;
-    }
-
-    footer .company_logo img#favicon {
-        width: 80px;
-        height: auto;
-    }
-
-    /* с нами легко */
-    footer .company_logo .company_name h2 {
-        font-size: 24px;
-    }
-
-    /* ПОЛИМЕРБЕТОН */
-    footer .company_logo .company_name h2:first-child {
-        font-size: 36px;
-    }
-
-    footer div.copyright img {
-        width: 72px;
-        height: auto;
-    }
-
-    footer div.copyright div p {
-        font-size: 20px;
-    }
-
-    footer div.copyright div a {
-        margin-top: 8px;
-        font-size: 20px;
-    }
-
-    /*============================ END OF FOOTER SECTION ============================*/
 
 }
+
+
+
+
+
+
