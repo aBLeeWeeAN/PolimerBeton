@@ -1,3 +1,25 @@
+/**========================================================================
+ **                            INCLUDE BOOTSTRAP
+ *========================================================================**/
+
+// Option B: Include parts of Bootstrap
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+
+// 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+
+// 4. Include any default map overrides here
+
+// 5. Include remainder of required parts
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
 html {
     // z-index: 0;
 
@@ -340,6 +362,11 @@ header {
         -webkit-text-fill-color: transparent;
     }
 
+    @include media-breakpoint-down(xxl) {
+        span {
+            font-size: 2.875rem;
+        }
+    }
 }
 
 
@@ -389,6 +416,13 @@ header {
         transform: translate(-77%, -2.1%);
 
         opacity: 0.25;
+    }
+
+    @include media-breakpoint-down(xxl) {
+        #bc-circle {
+            width: 148.8rem;
+            height: 148.8rem;
+        }
     }
 
     .content {
@@ -579,6 +613,13 @@ header {
 
     margin-top: 10rem;
 
+    .img-with-sign {
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+    }
+
     span {
         margin: 7.5rem 0 5rem 0;
 
@@ -684,6 +725,13 @@ header {
         }
     }
 
+    @include media-breakpoint-down(xxl) {
+        .gradient-border {
+            width: 32.5rem;
+            height: auto;
+        }
+    }
+
     #bc-circle {
         z-index: -5;
 
@@ -719,6 +767,13 @@ header {
         transform: translate(-38%, -23.1%);
 
         opacity: 0.25;
+    }
+
+    @include media-breakpoint-down(xxl) {
+        #bc-circle {
+            width: 228.8rem;
+            height: 228.8rem;
+        }
     }
 }
 
@@ -825,7 +880,7 @@ header {
 
 
 /**========================================================================
- **                            SECURITY
+ **                            SAFETY
  *========================================================================**/
 
  #Safety {
@@ -937,6 +992,13 @@ header {
         }
     }
 
+    @include media-breakpoint-down(xxl) {
+        .gradient-border {
+            width: 32.5rem;
+            height: auto;
+        }
+    }
+
     #bc-circle {
         z-index: -5;
 
@@ -972,6 +1034,13 @@ header {
         transform: translate(-65%, -26.5%);
 
         opacity: 0.25;
+    }
+
+    @include media-breakpoint-down(xxl) {
+        #bc-circle {
+            width: 320rem;
+            height: 320rem;
+        }
     }
 }
 
@@ -1431,62 +1500,69 @@ header {
     }
 
     .concretes-pictures {
-        width: 41rem;
         height: 41rem;
-
+        width: 41rem;
+    
         position: relative;
-
+    
         & img {
             z-index: 0;
-
+    
             position: absolute;
-
+    
             left: 0;
             top: 0;
         }
-
+    
         & #ball-green {
             top: 0;
             left: 0;
-
+    
             z-index: -1;
-
-            width: 31.25rem;
-            height: 31.25rem;
+    
+            width: 76.22%;  /* 31.25rem / 41rem * 100% */
+            height: 76.22%; /* 31.25rem / 41rem * 100% */
         }
-
+    
         & #ball-yellow {
             z-index: -2;
-
-            top: 11.5rem;
-            left: 22.5rem;
-
-            width: 18.75rem;
-            height: 18.75rem;
+    
+            top: 28.05%;   /* 11.5rem / 41rem * 100% */
+            left: 54.88%;  /* 22.5rem / 41rem * 100% */
+    
+            width: 45.73%; /* 18.75rem / 41rem * 100% */
+            height: 45.73%;/* 18.75rem / 41rem * 100% */
         }
-
+    
         & #ball-white {
-            top: 1rem;
-            left: 21.25rem;
-
-            width: 13.75rem;
-            height: 13.75rem;
+            top: 2.44%;    /* 1rem / 41rem * 100% */
+            left: 51.83%;  /* 21.25rem / 41rem * 100% */
+    
+            width: 33.54%; /* 13.75rem / 41rem * 100% */
+            height: 33.54%;/* 13.75rem / 41rem * 100% */
         }
-
+    
         & #ball-grey {
-            top: 19rem;
+            top: 46.34%;   /* 19rem / 41rem * 100% */
             left: 0;
-
-            width: 22.25rem;
-            height: 22.25rem;
+    
+            width: 54.27%; /* 22.25rem / 41rem * 100% */
+            height: 54.27%;/* 22.25rem / 41rem * 100% */
         }
-
+    
         & #ball-red {
-            top: 26rem;
-            left: 20rem;
+            top: 63.41%;   /* 26rem / 41rem * 100% */
+            left: 48.78%;  /* 20rem / 41rem * 100% */
+    
+            width: 34.76%; /* 14.25rem / 41rem * 100% */
+            height: 34.76%;/* 14.25rem / 41rem * 100% */
+        }
+    }
 
-            width: 14.25rem;
-            height: 14.25rem;
+    @include media-breakpoint-down(xxl) {
+        .concretes-pictures {
+            height: 35.5rem;
+            width: 35.5rem;
         }
     }
 
@@ -1640,6 +1716,12 @@ header {
         
             a:hover {
                 text-decoration: underline;
+            }
+        }
+
+        @include media-breakpoint-down(xxl) {
+            & .checkbox-privacy-policy {
+                font-size: 0.8125rem;
             }
         }
     }
