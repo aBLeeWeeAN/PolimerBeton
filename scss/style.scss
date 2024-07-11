@@ -55,6 +55,9 @@ $finally_bc_color: color-mix(in srgb, $bc_color, $fr_color 4%);
 body {
     z-index: -10;
 
+    overflow-x: hidden;
+    // overflow-y: scroll;
+
     background-color: $finally_bc_color;
 }
 
@@ -320,7 +323,7 @@ header {
         background-repeat: no-repeat;
         background-size: cover;
 
-        width: 100%;
+        width: 100vw;
         height: 100%;
 
         top: 0;
