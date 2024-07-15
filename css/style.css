@@ -180,9 +180,42 @@
 }
 
 html {
-  height: 100%;
+  height: 100vh;
   scroll-behavior: smooth;
   font-size: 16px;
+  margin: 0 auto;
+}
+
+/**========================================================================
+ **                            GENERIC
+ *========================================================================**/
+.title {
+  text-align: center;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: rgba(0, 0, 0, 0.8705882353);
+  text-transform: uppercase;
+  font-size: 4rem;
+  letter-spacing: 0.3em;
+}
+
+.subtitle, #Examples .img-sign {
+  margin: 7.5rem 0 5rem 0;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 2rem;
+  letter-spacing: 0.2em;
+  text-align: center;
+  line-height: 150%;
+  color: rgba(0, 0, 0, 0.8705882353);
+  text-transform: uppercase;
+}
+.subtitle.img-sign, #Examples .img-sign {
+  margin: 2.5rem 0 0 0;
+  text-transform: none;
 }
 
 /**========================================================================
@@ -201,7 +234,6 @@ body {
   padding: 0 16px 0 16px;
 }
 
-/*============================ END OF BODY ============================*/
 /**========================================================================
  **                            HEADER
  *========================================================================**/
@@ -231,41 +263,58 @@ header #bc-square-2 {
   transform: translate(-50%, -5%) rotate(-19deg);
 }
 
-.logo {
+.logo, .offcanvas-logo {
+  font-size: 1rem;
   padding: 0;
   display: flex;
   align-items: center;
   color: #512DA8;
 }
-.logo svg {
+.logo #icon, .offcanvas-logo #icon {
   fill-rule: evenodd;
   clip-rule: evenodd;
   fill: #512DA8;
-  width: 8.125rem;
-  height: 8.125rem;
+  width: 8.125em;
+  height: 8.125em;
 }
-.logo .logo-name {
-  margin-left: 2rem;
-  display: flex;
+.logo .logo-name, .offcanvas-logo .logo-name {
+  margin-left: 2em;
+  display: inline-flex;
   flex-direction: column;
 }
-.logo .logo-name b {
+.logo .logo-name b, .offcanvas-logo .logo-name b {
   font-family: "Russo One", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: 3rem;
+  font-size: 3em;
   letter-spacing: 0.35em;
 }
-.logo .logo-name i {
-  margin-left: 0.25rem;
+.logo .logo-name i, .offcanvas-logo .logo-name i {
+  margin-left: 0.25em;
   font-family: "Pattaya", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 2.25rem;
+  font-size: 2.25em;
   letter-spacing: 0.55em;
 }
 
+@media (max-width: 1199.98px) {
+  .logo, .offcanvas-logo {
+    font-size: 0.75rem;
+  }
+}
+.offcanvas-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media (max-width: 991.98px) {
+  .offcanvas-logo {
+    font-size: 0.375rem;
+  }
+}
 .contacts-and-settings {
   display: flex;
   flex-direction: row;
@@ -302,6 +351,7 @@ header #bc-square-2 {
   fill: rgba(255, 255, 255, 0.8705882353);
 }
 .contacts-and-settings span {
+  min-width: 1px;
   height: 2rem;
   width: 0.0625rem;
   background-color: rgba(0, 0, 0, 0.8705882353);
@@ -333,6 +383,7 @@ header #bc-square-2 {
   font-weight: 600;
   font-size: 1rem;
   letter-spacing: 0.3em;
+  line-height: 150%;
   text-align: center;
   color: rgba(0, 0, 0, 0.8705882353);
   text-decoration: none;
@@ -344,21 +395,17 @@ header #bc-square-2 {
   text-align: center;
 }
 
+@media (max-width: 991.98px) {
+  .menu {
+    text-align: left;
+  }
+  .menu .menu-item {
+    text-align: left;
+  }
+}
 /**========================================================================
  **                            MAIN
  *========================================================================**/
-/* general css code */
-.block-header {
-  text-align: center;
-  font-family: "Russo One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: rgba(0, 0, 0, 0.8705882353);
-  text-transform: uppercase;
-  font-size: 4rem;
-  letter-spacing: 0.3em;
-}
-
 #Main {
   position: relative;
   padding: 10rem 0 10rem 0;
@@ -556,19 +603,7 @@ header #bc-square-2 {
   flex-direction: column;
   align-items: center;
 }
-#Examples span {
-  margin: 7.5rem 0 5rem 0;
-  font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 2rem;
-  letter-spacing: 0.2em;
-  text-align: center;
-  color: rgba(0, 0, 0, 0.8705882353);
-  text-transform: uppercase;
-}
-#Examples span.img-sign {
+#Examples .img-sign {
   margin: 2.5rem 0 0 0;
   text-transform: none;
 }
@@ -646,6 +681,12 @@ header #bc-square-2 {
 @media (max-width: 1399.98px) {
   #Examples .gradient-border {
     width: 32.5rem;
+    height: auto;
+  }
+}
+@media (max-width: 1199.98px) {
+  #Examples .gradient-border {
+    width: 27.5rem;
     height: auto;
   }
 }
@@ -755,18 +796,6 @@ header #bc-square-2 {
 #Safety {
   position: relative;
 }
-#Safety span {
-  margin-top: 7.5rem;
-  font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 2rem;
-  letter-spacing: 0.2em;
-  text-align: center;
-  color: rgba(0, 0, 0, 0.8705882353);
-  text-transform: uppercase;
-}
 #Safety .content {
   margin-top: 5rem;
 }
@@ -847,6 +876,12 @@ header #bc-square-2 {
     height: auto;
   }
 }
+@media (max-width: 1199.98px) {
+  #Safety .gradient-border {
+    width: 27.5rem;
+    height: auto;
+  }
+}
 #Safety #bc-circle {
   z-index: -5;
   position: absolute;
@@ -883,21 +918,10 @@ header #bc-square-2 {
 #Prices {
   margin: 10rem 0 10rem 0;
 }
-#Prices span, #Prices strong {
-  margin-top: 7.5rem;
-  font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 2rem;
-  letter-spacing: 0.2em;
-  text-align: center;
-  color: rgba(0, 0, 0, 0.8705882353);
-  text-transform: uppercase;
-}
 #Prices .price-content {
   position: relative;
   margin-top: 5rem;
+  --ball-size: 18.75rem;
 }
 #Prices .price-content #current-price {
   position: relative;
@@ -963,10 +987,16 @@ header #bc-square-2 {
     transform: translate(-45%, -52.5%) rotate(-21deg) rotate(-8deg);
   }
 }
+@media (max-width: 1199.98px) {
+  #Prices .price-content {
+    --ball-size: 13.75rem;
+  }
+  #Prices .price-content #current-price {
+    margin: 19.75rem 0 19.75rem 0;
+  }
+}
 #Prices .price-content .orbit {
   z-index: -1;
-}
-#Prices .price-content #ball-green {
   position: absolute;
   width: 20rem;
   height: 35rem;
@@ -974,6 +1004,22 @@ header #bc-square-2 {
   left: 50%;
   transform: translateX(-50%);
   transform-origin: bottom center;
+}
+#Prices .price-content .orbit img {
+  position: absolute;
+  width: var(--ball-size);
+  height: var(--ball-size);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media (max-width: 1199.98px) {
+  #Prices .price-content .orbit {
+    width: 15rem;
+    height: 30rem;
+  }
+}
+#Prices .price-content #ball-green {
   animation: rotate-clockwise 10s infinite linear;
 }
 @keyframes rotate-clockwise {
@@ -985,12 +1031,6 @@ header #bc-square-2 {
   }
 }
 #Prices .price-content #ball-green img {
-  position: absolute;
-  width: 18.75rem;
-  height: 18.75rem;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   animation: ball-rotate-counter-clockwise-0 10s infinite linear;
 }
 @keyframes ball-rotate-counter-clockwise-0 {
@@ -1002,13 +1042,6 @@ header #bc-square-2 {
   }
 }
 #Prices .price-content #ball-yellow {
-  position: absolute;
-  width: 20rem;
-  height: 35rem;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  transform-origin: bottom center;
   animation: rotate-clockwise-72 10s infinite linear;
 }
 @keyframes rotate-clockwise-72 {
@@ -1020,12 +1053,6 @@ header #bc-square-2 {
   }
 }
 #Prices .price-content #ball-yellow img {
-  position: absolute;
-  width: 18.75rem;
-  height: 18.75rem;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   animation: ball-rotate-counter-clockwise-72 10s infinite linear;
 }
 @keyframes ball-rotate-counter-clockwise-72 {
@@ -1037,13 +1064,6 @@ header #bc-square-2 {
   }
 }
 #Prices .price-content #ball-white {
-  position: absolute;
-  width: 20rem;
-  height: 35rem;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  transform-origin: bottom center;
   animation: rotate-clockwise-144 10s infinite linear;
 }
 @keyframes rotate-clockwise-144 {
@@ -1055,12 +1075,6 @@ header #bc-square-2 {
   }
 }
 #Prices .price-content #ball-white img {
-  position: absolute;
-  width: 18.75rem;
-  height: 18.75rem;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   animation: ball-rotate-counter-clockwise-144 10s infinite linear;
 }
 @keyframes ball-rotate-counter-clockwise-144 {
@@ -1072,13 +1086,6 @@ header #bc-square-2 {
   }
 }
 #Prices .price-content #ball-grey {
-  position: absolute;
-  width: 20rem;
-  height: 35rem;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  transform-origin: bottom center;
   animation: rotate-clockwise-216 10s infinite linear;
 }
 @keyframes rotate-clockwise-216 {
@@ -1090,12 +1097,6 @@ header #bc-square-2 {
   }
 }
 #Prices .price-content #ball-grey img {
-  position: absolute;
-  width: 18.75rem;
-  height: 18.75rem;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   animation: ball-rotate-counter-clockwise-216 10s infinite linear;
 }
 @keyframes ball-rotate-counter-clockwise-216 {
@@ -1107,13 +1108,6 @@ header #bc-square-2 {
   }
 }
 #Prices .price-content #ball-red {
-  position: absolute;
-  width: 20rem;
-  height: 35rem;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  transform-origin: bottom center;
   animation: rotate-clockwise-288 10s infinite linear;
 }
 @keyframes rotate-clockwise-288 {
@@ -1125,12 +1119,6 @@ header #bc-square-2 {
   }
 }
 #Prices .price-content #ball-red img {
-  position: absolute;
-  width: 18.75rem;
-  height: 18.75rem;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   animation: ball-rotate-counter-clockwise-288 10s infinite linear;
 }
 @keyframes ball-rotate-counter-clockwise-288 {
@@ -1145,18 +1133,6 @@ header #bc-square-2 {
 /**========================================================================
  **                            FORM
  *========================================================================**/
-#Feedback-Form span {
-  margin-top: 7.5rem;
-  font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 2rem;
-  letter-spacing: 0.2em;
-  text-align: center;
-  color: rgba(0, 0, 0, 0.8705882353);
-  text-transform: uppercase;
-}
 #Feedback-Form .content {
   margin-top: 5rem;
 }
@@ -1207,6 +1183,12 @@ header #bc-square-2 {
   #Feedback-Form .concretes-pictures {
     height: 35.5rem;
     width: 35.5rem;
+  }
+}
+@media (max-width: 1199.98px) {
+  #Feedback-Form .concretes-pictures {
+    height: 20rem;
+    width: 20rem;
   }
 }
 #Feedback-Form form {
@@ -1333,21 +1315,6 @@ header #bc-square-2 {
 #Contacts {
   margin: 10rem 0 10rem 0;
 }
-#Contacts .block-header h2 {
-  margin: 0;
-}
-#Contacts .block-header p {
-  margin-top: 7.5rem;
-  font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 2rem;
-  letter-spacing: 0.2em;
-  text-align: center;
-  color: rgba(0, 0, 0, 0.8705882353);
-  text-transform: uppercase;
-}
 #Contacts h3 {
   margin: 5rem 0 1.25rem 0;
   font-family: "Raleway", sans-serif;
@@ -1359,7 +1326,7 @@ header #bc-square-2 {
   letter-spacing: 0.2em;
   color: rgba(0, 0, 0, 0.8705882353);
 }
-#Contacts p, #Contacts strong, #Contacts a {
+#Contacts .contact, #Contacts strong, #Contacts a {
   margin: 0;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
@@ -1371,7 +1338,6 @@ header #bc-square-2 {
   color: rgba(0, 0, 0, 0.8705882353);
   text-decoration: none;
 }
-
 /**========================================================================
  **                            FOOTER
  *========================================================================**/
@@ -1431,25 +1397,25 @@ footer .footer-part-1 .logo-and-privacy-policy {
   align-items: start;
   justify-content: space-between;
 }
-footer .footer-part-1 .logo-and-privacy-policy .logo {
+footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
   padding: 0;
   display: flex;
   align-items: center;
   color: #512DA8;
 }
-footer .footer-part-1 .logo-and-privacy-policy .logo svg {
+footer .footer-part-1 .logo-and-privacy-policy .logo svg, footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo svg {
   fill-rule: evenodd;
   clip-rule: evenodd;
   fill: #512DA8;
   width: 5.625rem;
   height: 5.625rem;
 }
-footer .footer-part-1 .logo-and-privacy-policy .logo .logo-name {
+footer .footer-part-1 .logo-and-privacy-policy .logo .logo-name, footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-name {
   margin-left: 1.375rem;
   display: flex;
   flex-direction: column;
 }
-footer .footer-part-1 .logo-and-privacy-policy .logo .logo-name b {
+footer .footer-part-1 .logo-and-privacy-policy .logo .logo-name b, footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-name b {
   font-family: "Russo One", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -1457,7 +1423,7 @@ footer .footer-part-1 .logo-and-privacy-policy .logo .logo-name b {
   font-size: 2.06rem;
   letter-spacing: 0.35em;
 }
-footer .footer-part-1 .logo-and-privacy-policy .logo .logo-name i {
+footer .footer-part-1 .logo-and-privacy-policy .logo .logo-name i, footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-name i {
   margin-left: 0.1875rem;
   font-family: "Pattaya", sans-serif;
   font-weight: 400;
