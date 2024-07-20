@@ -1,0 +1,43 @@
+/**========================================================================
+ **                            HTML DOCUMENT BASE SETTINGS
+ *========================================================================**/
+
+ html {
+    width: 100vw;
+    height: 100vh !important;
+
+    z-index: 1;
+    max-width: 100%;
+
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+
+    font-size: 16px;
+    margin: 0 auto;
+
+    // overflow-anchor: none;
+}
+
+
+
+/**========================================================================
+ **                            BODY
+ *========================================================================**/
+
+ body {
+    z-index: -10;
+
+    overflow-x: hidden;
+    // overflow-y: scroll;
+
+    background-color: $finally_bc_color;
+}
+
+#wrapper {
+    margin-right: auto;
+    margin-left: auto;
+
+    max-width: 1280px;
+
+    padding: 0 16px 0 16px;
+}

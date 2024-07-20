@@ -1,7 +1,96 @@
 @charset "UTF-8";
+/* Полный сброс стилей */
+/**========================================================================
+ **                            CSS RESET
+ *========================================================================**/
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 /**========================================================================
  **                            COLORS
  *========================================================================**/
+/**========================================================================
+ **                            HTML DOCUMENT BASE SETTINGS
+ *========================================================================**/
+html {
+  width: 100vw;
+  height: 100vh !important;
+  z-index: 1;
+  max-width: 100%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+/**========================================================================
+ **                            BODY
+ *========================================================================**/
+body {
+  z-index: -10;
+  overflow-x: hidden;
+  background-color: #fffbf6;
+}
+
+#wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1280px;
+  padding: 0 16px 0 16px;
+}
+
+/* Подключение сторонних библиотек */
 /**========================================================================
  **                            INCLUDE BOOTSTRAP
  *========================================================================**/
@@ -7450,20 +7539,10 @@ progress {
     display: none !important;
   }
 }
+/* Общие стили для всех секций */
 /**========================================================================
- **                            HTML DOCUMENT BASE SETTINGS
+ **                            GLOBAL STYLES
  *========================================================================**/
-html {
-  width: 100vw;
-  height: 100vh !important;
-  z-index: 1;
-  max-width: 100%;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  font-size: 16px;
-  margin: 0 auto;
-}
-
 :root {
   --paragraph-font-size: 1.5rem;
 }
@@ -7473,9 +7552,6 @@ html {
     --paragraph-font-size: 2.1rem;
   }
 }
-/**========================================================================
- **                            GENERIC STYLES
- *========================================================================**/
 .title {
   text-align: center;
   font-family: "Russo One", sans-serif;
@@ -7511,22 +7587,7 @@ html {
   text-transform: none;
 }
 
-/**========================================================================
- **                            BODY
- *========================================================================**/
-body {
-  z-index: -10;
-  overflow-x: hidden;
-  background-color: #fffbf6;
-}
-
-#wrapper {
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 1280px;
-  padding: 0 16px 0 16px;
-}
-
+/* Импорт стилей секций */
 /**========================================================================
  **                            HEADER
  *========================================================================**/
@@ -7774,13 +7835,13 @@ header #bc-square-2 {
   }
 }
 /**========================================================================
- **                            MAIN
+ **                            HERO SECTION
  *========================================================================**/
-#Main {
+#Hero {
   position: relative;
   padding: 10rem 0 10rem 0;
 }
-#Main #main-bc-img {
+#Hero #hero-bc-img {
   z-index: -2;
   position: absolute;
   background-color: #fff;
@@ -7790,10 +7851,10 @@ header #bc-square-2 {
   left: 50%;
   transform: translate(-50%, 0);
 }
-#Main #main-fr-img {
+#Hero #hero-fr-img {
   z-index: -1;
   position: absolute;
-  background-image: url("/images/main_bc.jpg");
+  background-image: url("/images/hero_bc.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -7804,16 +7865,16 @@ header #bc-square-2 {
   opacity: 0.1;
   filter: blur(2px);
 }
-#Main h1 strong div {
+#Hero h1 strong div {
   margin-top: 0.625rem;
   font-size: 1.75rem;
   letter-spacing: 0.25em;
   line-height: 150%;
 }
-#Main .concretes-images {
+#Hero .concretes-images {
   margin-top: 10rem;
 }
-#Main span {
+#Hero span {
   margin-top: 10rem;
   font-family: "Tenor Sans", sans-serif;
   font-weight: 400;
@@ -7828,7 +7889,7 @@ header #bc-square-2 {
   -webkit-text-fill-color: transparent;
 }
 @media (max-width: 1399.98px) {
-  #Main span {
+  #Hero span {
     font-size: 2.875rem;
   }
 }
@@ -7901,7 +7962,7 @@ header #bc-square-2 {
 }
 
 /**========================================================================
- **                            USE
+ **                            USAGE
  *========================================================================**/
 #Usage {
   position: relative;
@@ -8612,7 +8673,7 @@ header #bc-square-2 {
 }
 
 /**========================================================================
- **                            FORM
+ **                            FEEDBACK FORM
  *========================================================================**/
 #Feedback-Form .content {
   margin-top: 5rem;
@@ -8961,4 +9022,4 @@ footer .copyright #copyright-info {
 }
 footer .copyright #copyright-email {
   text-align: right;
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=main.css.map */

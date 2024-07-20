@@ -1,0 +1,86 @@
+/**========================================================================
+ **                            HERO SECTION
+ *========================================================================**/
+
+ #Hero {
+    position: relative;
+
+    padding: 10rem 0 10rem 0;
+
+    #hero-bc-img {
+        z-index: -2;
+
+        position: absolute;
+
+        background-color: #fff;
+
+        width: 100%;
+        height: 100%;
+
+        top: 0;
+        left: 50%;
+
+        transform: translate(-50%, 0);
+    }
+
+    #hero-fr-img {
+        z-index: -1;
+
+        position: absolute;
+
+        background-image: url("/images/hero_bc.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        width: 100vw;
+        height: 100%;
+
+        top: 0;
+        left: 0;
+
+        opacity: 0.1;
+
+        filter: blur(2px);
+
+        // box-shadow: 0 0.1875rem 0.625rem rgba($color: #000000, $alpha: 0.25);
+    }
+
+    h1 strong div {
+        margin-top: 0.625rem;
+
+        font-size: 1.75rem;
+        letter-spacing: 0.25em;
+
+        line-height: 150%;
+    }
+
+    .concretes-images {
+        margin-top: 10rem;
+    }
+
+    span {
+        margin-top: 10rem;
+
+        font-family: "Tenor Sans", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+
+        font-size: 3rem;
+        letter-spacing: 0.1em;
+        line-height: 150%;
+
+        text-align: center;
+        background: linear-gradient(90deg, #1b5e20 0%, #ff6f00 50%, #bf360c 100%);
+
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    @include media-breakpoint-down(xxl) {
+        span {
+            font-size: 2.875rem;
+        }
+    }
+}

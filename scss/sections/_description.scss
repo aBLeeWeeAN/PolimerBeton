@@ -1,0 +1,92 @@
+/**========================================================================
+ **                            DESCRIPTION
+ *========================================================================**/
+
+ #Description {
+    position: relative;
+    // overflow: hidden;
+
+    padding: 10rem 0 10rem 0;
+
+    #bc-circle {
+        z-index: -5;
+
+        position: absolute;
+
+        width: 186rem;
+        height: 186rem;
+
+        border-radius: 100%;
+
+        /* Линейный градиент с тремя цветами и углом 45 градусов */
+        // background-image: linear-gradient(147deg, #D1C4E900 0%, #D1C4E980 50%, #FFE0B2FF 100%);
+
+        // background-image: url("/images/description_bc_circle.png");
+        // background-repeat: none;
+        // background-size: cover;
+
+        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d1c4e9+0,ffe0b2+100 */
+        background: rgb(209, 196, 233);
+        /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZDFjNGU5IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZTBiMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+        background: -moz-linear-gradient(-45deg, rgba(209, 196, 233, 1) 0%, rgba(255, 224, 178, 1) 100%);
+        /* FF3.6-15 */
+        background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(209, 196, 233, 1)), color-stop(100%, rgba(255, 224, 178, 1)));
+        /* Chrome4-9,Safari4-5 */
+        background: -webkit-linear-gradient(-45deg, rgba(209, 196, 233, 1) 0%, rgba(255, 224, 178, 1) 100%);
+        /* Chrome10-25,Safari5.1-6 */
+        background: -o-linear-gradient(-45deg, rgba(209, 196, 233, 1) 0%, rgba(255, 224, 178, 1) 100%);
+        /* Opera 11.10-11.50 */
+        background: -ms-linear-gradient(-45deg, rgba(209, 196, 233, 1) 0%, rgba(255, 224, 178, 1) 100%);
+        /* IE10 preview */
+        background: linear-gradient(135deg, rgba(209, 196, 233, 1) 0%, rgba(255, 224, 178, 1) 100%);
+        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1c4e9', endColorstr='#ffe0b2', GradientType=1);
+        /* IE6-8 fallback on horizontal gradient */
+
+        top: 19.125rem;
+        left: 50%;
+
+        transform: translate(-77%, -2.1%);
+
+        opacity: 0.25;
+    }
+
+    @include media-breakpoint-down(xxl) {
+        #bc-circle {
+            width: 148.8rem;
+            height: 148.8rem;
+        }
+    }
+
+    .content {
+        margin-top: 7.5rem;
+    }
+
+    .content>*:not(:first-child) {
+        margin-top: 1.75rem;
+    }
+
+    p {
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+
+        font-size: var(--paragraph-font-size);
+        line-height: 150%;
+        letter-spacing: 0.2em;
+
+        text-align: justify;
+        text-indent: 7rem;
+
+        color: $text_color_black;
+
+        hyphens: auto;
+    }
+
+    .concretes-images {
+        margin-top: 7.5rem;
+    }
+}

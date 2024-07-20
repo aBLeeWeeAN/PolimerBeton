@@ -1,0 +1,268 @@
+/**========================================================================
+ **                            FEEDBACK FORM
+ *========================================================================**/
+
+ #Feedback-Form {
+
+    .content {
+        margin-top: 5rem;
+
+        // display: flex;
+        // flex-direction: row;
+
+        // align-items: center;
+    }
+
+    .concretes-pictures {
+        height: 41rem;
+        width: 41rem;
+
+        position: relative;
+
+        & img {
+            z-index: 0;
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+        }
+
+        & #ball-green {
+            top: 0;
+            left: 0;
+
+            z-index: -1;
+
+            width: 76.22%;
+            /* 31.25rem / 41rem * 100% */
+            height: 76.22%;
+            /* 31.25rem / 41rem * 100% */
+        }
+
+        & #ball-yellow {
+            z-index: -2;
+
+            top: 28.05%;
+            /* 11.5rem / 41rem * 100% */
+            left: 54.88%;
+            /* 22.5rem / 41rem * 100% */
+
+            width: 45.73%;
+            /* 18.75rem / 41rem * 100% */
+            height: 45.73%;
+            /* 18.75rem / 41rem * 100% */
+        }
+
+        & #ball-white {
+            top: 2.44%;
+            /* 1rem / 41rem * 100% */
+            left: 51.83%;
+            /* 21.25rem / 41rem * 100% */
+
+            width: 33.54%;
+            /* 13.75rem / 41rem * 100% */
+            height: 33.54%;
+            /* 13.75rem / 41rem * 100% */
+        }
+
+        & #ball-grey {
+            top: 46.34%;
+            /* 19rem / 41rem * 100% */
+            left: 0;
+
+            width: 54.27%;
+            /* 22.25rem / 41rem * 100% */
+            height: 54.27%;
+            /* 22.25rem / 41rem * 100% */
+        }
+
+        & #ball-red {
+            top: 63.41%;
+            /* 26rem / 41rem * 100% */
+            left: 48.78%;
+            /* 20rem / 41rem * 100% */
+
+            width: 34.76%;
+            /* 14.25rem / 41rem * 100% */
+            height: 34.76%;
+            /* 14.25rem / 41rem * 100% */
+        }
+    }
+
+    @include media-breakpoint-down(xxl) {
+        .concretes-pictures {
+            height: 35.5rem;
+            width: 35.5rem;
+        }
+    }
+
+    @include media-breakpoint-down(xl) {
+        .concretes-pictures {
+            height: 20rem;
+            width: 20rem;
+        }
+    }
+
+    & form {
+        display: flex;
+        flex-direction: column;
+
+        & .form-field {
+            width: 100%;
+            height: 5rem;
+
+            padding: 0.25rem;
+
+            border: none;
+            border-radius: 1.25rem;
+
+            background-color: $color_deep_purple_700;
+
+            --squircle-smooth: 0.78;
+            --squircle-radius: 1.25rem;
+
+            mask-image: paint(squircle);
+        }
+
+        & input[type="text"],
+        & input[type="tel"] {
+            width: 100%;
+            height: 100%;
+
+            padding: 1.25rem 1.75rem 1.25rem 1.75rem;
+
+            border: none;
+            border-radius: 1.25rem;
+
+            background-color: color-mix(in srgb, $finally_bc_color 100%, #D1C4E9 5%);
+
+            --squircle-smooth: 1.0;
+            --squircle-radius: 1.25rem;
+
+            mask-image: paint(squircle);
+
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+
+            font-size: 1.25rem;
+            line-height: 200%;
+            letter-spacing: 0.2em;
+
+            color: $text_color_black;
+
+            &:focus,
+            &:active {
+                outline: none;
+            }
+
+            &:focus::placeholder {
+                color: #000;
+            }
+        }
+
+        & button {
+            width: 100%;
+            height: 5rem;
+
+            border: none;
+            border-radius: 1.25rem;
+
+            --squircle-smooth: 1.0;
+            --squircle-radius: 1.25rem;
+
+            mask-image: paint(squircle);
+            background-color: $color_deep_purple_700;
+
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+
+            font-size: 1.25rem;
+            line-height: 200%;
+            letter-spacing: 0.2em;
+
+            text-align: center;
+            color: $text_color_white;
+
+            text-transform: uppercase;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+
+        & .checkbox-privacy-policy {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 1rem;
+
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+
+            font-size: 0.875rem;
+            letter-spacing: 0.0625rem;
+
+            text-align: center;
+            color: $text_color_black;
+
+            input[type="checkbox"] {
+                appearance: none;
+
+                width: 1.75rem;
+                height: 1.75rem;
+
+                border: 0.125rem solid $color_deep_purple_700;
+                border-radius: 100%;
+
+                position: relative;
+                cursor: pointer;
+
+                margin-right: 0.75rem;
+            }
+
+            input[type="checkbox"]:checked {
+                background-color: $color_deep_purple_700;
+                border: none;
+            }
+
+            input[type="checkbox"]:checked::before {
+                content: '';
+                position: absolute;
+                top: 0.3125rem;
+                left: 0.625rem;
+                width: 0.475rem;
+                height: 0.85rem;
+                border: solid #fff;
+                border-width: 0 0.125rem 0.125rem 0;
+                transform: rotate(45deg);
+            }
+
+            label {
+                cursor: pointer;
+            }
+
+            a {
+                color: $color_deep_purple_700;
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+        }
+
+        @include media-breakpoint-down(xxl) {
+            & .checkbox-privacy-policy {
+                font-size: 0.8125rem;
+            }
+        }
+    }
+}
