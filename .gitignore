@@ -145,3 +145,4 @@ GitHub.sublime-settings
 
 # Ignore all other modules (repositories)
 node_modules/
+old/
