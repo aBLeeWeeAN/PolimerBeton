@@ -270,10 +270,14 @@
             font-style: normal;
 
             // font-size: 1rem;
-            font-size: var(--my-text-paragraph-font-size);
+            font-size: 1rem;
             letter-spacing: 0.1em;
 
             color: $text_color_black;
+
+            @include media-breakpoint-down(lg) {
+                font-size: 1.5rem;
+            }
         }
 
         #copyright-info {

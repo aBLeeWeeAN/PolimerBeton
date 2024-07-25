@@ -114,6 +114,12 @@
         }
     }
 
+    @include media-breakpoint-down(xl) {
+        .hero-phrase {
+            font-size: 2.5625rem;
+        }
+    }
+
     @include media-breakpoint-down(lg) {
         .hero-phrase {
             font-size: 2.25rem;

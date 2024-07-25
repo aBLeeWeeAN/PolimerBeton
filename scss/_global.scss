@@ -3,6 +3,8 @@
  *========================================================================**/
 
 .title {
+    margin-bottom: 7.5rem;
+
     text-align: center;
 
     font-family: "Russo One", sans-serif;
@@ -16,13 +18,13 @@
     font-size: 4rem;
     letter-spacing: 0.3em;
     line-height: 150%;
-}
 
-@include media-breakpoint-down(lg) {
-    .title {
-        margin-bottom: 3.5rem;
-
-        font-size: 3rem;
+    @include media-breakpoint-down(lg) {
+        & {
+            margin-bottom: 3.5rem;
+    
+            font-size: 3rem;
+        }
     }
 }
 

@@ -7569,6 +7569,7 @@ body {
  **                            GLOBAL STYLES
  *========================================================================**/
 .title, #Hero .hero-headline {
+  margin-bottom: 7.5rem;
   text-align: center;
   font-family: "Russo One", sans-serif;
   font-weight: 400;
@@ -7579,13 +7580,13 @@ body {
   letter-spacing: 0.3em;
   line-height: 150%;
 }
-
 @media (max-width: 991.98px) {
   .title, #Hero .hero-headline {
     margin-bottom: 3.5rem;
     font-size: 3rem;
   }
 }
+
 .subtitle, #Prices strong, #Examples .container-for-image-and-caption .image-caption-after, #Examples .container-for-image-and-caption .image-caption-before {
   margin: 0 0 5rem 0;
   font-family: "Raleway", sans-serif;
@@ -7969,6 +7970,11 @@ header #bc-square-2 {
     font-size: 2.875rem;
   }
 }
+@media (max-width: 1199.98px) {
+  #Hero .hero-phrase {
+    font-size: 2.5625rem;
+  }
+}
 @media (max-width: 991.98px) {
   #Hero .hero-phrase {
     font-size: 2.25rem;
@@ -8117,6 +8123,14 @@ header #bc-square-2 {
  *========================================================================**/
 #Examples {
   position: relative;
+}
+#Examples #examples-second-part {
+  margin-top: 7.5rem;
+}
+@media (max-width: 991.98px) {
+  #Examples #examples-second-part {
+    margin-top: 0;
+  }
 }
 #Examples .container-for-image-and-caption {
   display: flex;
@@ -8363,7 +8377,10 @@ header #bc-square-2 {
 #Safety {
   position: relative;
 }
-#Safety .image-with-gradient-border#safety-doc-1, #Safety .image-with-gradient-border#safety-doc-5 {
+#Safety .container-for-document-image .image-with-gradient-border {
+  margin-bottom: 1.5rem;
+}
+#Safety .container-for-document-image .image-with-gradient-border#safety-doc-1, #Safety .container-for-document-image .image-with-gradient-border#safety-doc-5 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff9800+0,673ab7+100;orange_to_purple */
   background: rgb(255, 152, 0);
   /* Old browsers */
@@ -8384,7 +8401,7 @@ header #bc-square-2 {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff9800", endColorstr="#673ab7", GradientType=1);
   /* IE6-8 fallback on horizontal gradient */
 }
-#Safety .image-with-gradient-border#safety-doc-2, #Safety .image-with-gradient-border#safety-doc-6 {
+#Safety .container-for-document-image .image-with-gradient-border#safety-doc-2, #Safety .container-for-document-image .image-with-gradient-border#safety-doc-6 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#673ab7+0,ff9800+100 */
   background: rgb(103, 58, 183);
   /* Old browsers */
@@ -8405,7 +8422,7 @@ header #bc-square-2 {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#673ab7", endColorstr="#ff9800", GradientType=1);
   /* IE6-8 fallback on horizontal gradient */
 }
-#Safety .image-with-gradient-border#safety-doc-3 {
+#Safety .container-for-document-image .image-with-gradient-border#safety-doc-3 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff9800+0,673ab7+100;orange_to_purple */
   background: rgb(255, 152, 0);
   /* Old browsers */
@@ -8426,7 +8443,7 @@ header #bc-square-2 {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff9800", endColorstr="#673ab7", GradientType=1);
   /* IE6-8 fallback on horizontal gradient */
 }
-#Safety .image-with-gradient-border#safety-doc-4 {
+#Safety .container-for-document-image .image-with-gradient-border#safety-doc-4 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#673ab7+0,ff9800+100;purple_to_orange */
   background: rgb(103, 58, 183);
   /* Old browsers */
@@ -8448,10 +8465,7 @@ header #bc-square-2 {
   /* IE6-8 fallback on horizontal gradient */
 }
 @media (max-width: 991.98px) {
-  #Safety .image-with-gradient-border {
-    margin-bottom: 3rem;
-  }
-  #Safety .image-with-gradient-border#safety-doc-6 {
+  #Safety .container-for-document-image .image-with-gradient-border#safety-doc-6 {
     margin: 0;
   }
 }
@@ -9119,9 +9133,14 @@ footer .copyright small {
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  font-size: var(--my-text-paragraph-font-size);
+  font-size: 1rem;
   letter-spacing: 0.1em;
   color: rgba(0, 0, 0, 0.8705882353);
+}
+@media (max-width: 991.98px) {
+  footer .copyright small {
+    font-size: 1.5rem;
+  }
 }
 footer .copyright #copyright-info {
   text-align: left;

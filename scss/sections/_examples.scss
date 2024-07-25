@@ -7,6 +7,14 @@
 
     // margin-top: 10rem;
 
+    #examples-second-part {
+        margin-top: 7.5rem;
+
+        @include media-breakpoint-down(lg) {
+            margin-top: 0;
+        }
+    }
+
     .container-for-image-and-caption {
         display: flex;
         flex-direction: column;
