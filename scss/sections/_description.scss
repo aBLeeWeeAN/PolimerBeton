@@ -6,8 +6,6 @@
     position: relative;
     // overflow: hidden;
 
-    padding: 10rem 0 10rem 0;
-
     #bc-circle {
         z-index: -5;
 
@@ -60,13 +58,13 @@
         }
     }
 
-    .content {
-        margin-top: 7.5rem;
-    }
+    // .content {
+    //     margin-top: 7.5rem;
+    // }
 
-    .content>*:not(:first-child) {
-        margin-top: 1.75rem;
-    }
+    // .content>*:not(:first-child) {
+    //     margin-top: 1.75rem;
+    // }
 
     p {
         font-family: "Montserrat", sans-serif;
@@ -74,9 +72,10 @@
         font-weight: 400;
         font-style: normal;
 
-        font-size: var(--paragraph-font-size);
+        font-size: var(--my-text-paragraph-font-size);
+        letter-spacing: var(--my-text-paragraph-letter-spacing);
+
         line-height: 150%;
-        letter-spacing: 0.2em;
 
         text-align: justify;
         text-indent: 7rem;
@@ -84,9 +83,19 @@
         color: $text_color_black;
 
         hyphens: auto;
+
+        &:not(:first-child) {
+            margin-top: var(--my-text-paragraph-margin-top);
+        }
     }
 
     .concretes-images {
         margin-top: 7.5rem;
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    .concretes-images {
+        margin-top: 3.5rem;
     }
 }

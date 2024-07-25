@@ -4,14 +4,14 @@
 
  #Feedback-Form {
 
-    .content {
-        margin-top: 5rem;
+    // .content {
+    //     margin-top: 5rem;
 
-        // display: flex;
-        // flex-direction: row;
+    //     // display: flex;
+    //     // flex-direction: row;
 
-        // align-items: center;
-    }
+    //     // align-items: center;
+    // }
 
     .concretes-pictures {
         height: 41rem;
@@ -195,7 +195,7 @@
             }
         }
 
-        & .checkbox-privacy-policy {
+        .checkbox-privacy-policy {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -257,11 +257,17 @@
             a:hover {
                 text-decoration: underline;
             }
-        }
 
-        @include media-breakpoint-down(xxl) {
-            & .checkbox-privacy-policy {
-                font-size: 0.8125rem;
+            @include media-breakpoint-down(xxl) {
+                & {
+                    font-size: 0.8125rem;
+                }
+            }
+
+            @include media-breakpoint-down(lg) {
+                & {
+                    font-size: 1.2rem;
+                }
             }
         }
     }

@@ -3,42 +3,54 @@
  *========================================================================**/
 
  #Contacts {
-    margin: 10rem 0 10rem 0;
+    // margin: 10rem 0 10rem 0;
 
-    h3 {
-        margin: 5rem 0 1.25rem 0;
-
-        font-family: "Raleway", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 600;
-        font-style: normal;
-
-        font-size: 2rem;
-        line-height: 200%;
-        letter-spacing: 0.2em;
-
-        color: $text_color_black;
+    .phone-and-email, .messengers {
+        .contact-header {
+            // margin: 5rem 0 1.25rem 0;
+            margin: 0 0 1rem 0;
+    
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+    
+            font-size: 2rem;
+            line-height: 200%;
+            letter-spacing: 0.2em;
+    
+            color: $text_color_black;
+        }
+    
+        .contact {
+            margin: 0;
+    
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+    
+            font-size: 2rem;
+            line-height: 200%;
+            letter-spacing: 0.2em;
+    
+            color: $text_color_black;
+    
+            text-decoration: none;
+    
+            a {
+                @extend .contact;
+    
+                strong {
+                    @extend .contact;
+    
+                    margin-bottom: 0.25rem;
+                }
+            }
+        }
     }
 
-    .contact {
-        margin: 0;
-
-        font-family: "Montserrat", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 300;
-        font-style: normal;
-
-        font-size: 2rem;
-        line-height: 200%;
-        letter-spacing: 0.2em;
-
-        color: $text_color_black;
-
-        text-decoration: none;
-    }
-
-    strong,
-    a {
-        @extend .contact;
+    .messengers {
+        margin-top: 3rem;
     }
 }

@@ -50,7 +50,7 @@
 
     padding: 0;
 
-    display: flex;
+    display: inline-flex;
     align-items: center;
 
     color: $color_deep_purple_700;
@@ -212,6 +212,8 @@
 }
 
 .navbar {
+    margin: 0;
+    padding: 0;
 
     .navbar-brand {
         padding: 0;
@@ -219,11 +221,14 @@
     }
 
     .navbar-toggler {
-        width: auto;
-        height: auto;
+        // width: 6rem;
+        // height: 3rem;
+
+        width: fit-content;
+        height: fit-content;
     
         .navbar-toggler-icon {
-            margin: .5rem 1.25rem .5rem 1.25rem;
+            margin: .5rem 1.5rem .5rem 1.5rem;
     
             width: 2rem;
             height: 2rem;

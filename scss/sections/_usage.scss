@@ -5,17 +5,9 @@
  #Usage {
     position: relative;
 
-    ul {
-        margin-top: 7.5rem;
-    }
-
     ul>*:not(:first-child) {
-        margin-top: 1.5rem;
+        margin-top: var(--my-text-paragraph-margin-top);
     }
-
-    // $size: width('li');
-    // $radius1: $size/2;
-    // $radius2: $size/5;
 
     li {
         position: relative;
@@ -27,9 +19,10 @@
         font-weight: 400;
         font-style: normal;
 
-        font-size: var(--paragraph-font-size);
+        font-size: var(--my-text-paragraph-font-size);
+        letter-spacing: var(--my-text-paragraph-letter-spacing);
+
         line-height: 150%;
-        letter-spacing: 0.1em;
 
         text-align: justify;
 
@@ -43,47 +36,7 @@
         -webkit-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
         -moz-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
         box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
-
-        // &::before {
-        //     z-index: -1;
-
-        //     position: absolute;
-        //     content: '';
-
-        //     width: 100%;
-        //     height: 100%;
-
-        //     top: 50%;
-        //     left: 50%;
-
-        //     transform: translate(-50%, -50%);
-
-        //     background-color: rgba($color: #fff, $alpha: 0.05);
-        //     border-radius: 1.5rem;
-
-        //     filter: blur(10px);
-        // }
     }
-
-    // li::before {
-    //     z-index: -1;
-
-    //     position: absolute;
-    //     content: '';
-
-    //     width: 100%;
-    //     height: 100%;  
-
-    //     top: -0.1875rem;
-    //     left: -0.25rem;  
-
-    //     --smooth-corners: 48, 4;    
-
-    //     mask-image: paint(smooth-corners);
-    //     -webkit-mask-image: paint(smooth-corners);  
-
-    //     background-color: rgba($color: #fff, $alpha: 1.0);
-    // }
 
     img {
         z-index: -2;

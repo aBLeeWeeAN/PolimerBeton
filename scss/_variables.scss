@@ -1,21 +1,70 @@
 /**========================================================================
- **                            COLORS
+ **                            SASS Variables
  *========================================================================**/
 
- $header_bc_color_square_1: #D1C4E91A;
- $header_bc_color_square_2: #FFE0B21A;
- 
- $button_size: 3.25rem;
- 
- $bc_color: #fff;
- // $fr_color: #FFE0B2; // 100
- $fr_color: #FF9800; // 500
- // $fr_color: #F57C00; // 700
- 
- $color_deep_purple_700: #512DA8;
- 
- $text_color_white: #ffffffde;
- $text_color_black: #000000de;
- 
- // $finally_bc_color: color-mix(in srgb, $bc_color, $fr_color 4%);
- $finally_bc_color: #fffbf6;
+// // price and orbit animation block
+// $my-current-price-block-size: 20.5rem;
+
+// $my-ball-size: 20rem;
+// $my-orbit-radius: 35rem;
+
+// $my-current-price-block-margin: my-orbit-animation-calculate-margin($my-orbit-radius, $my-current-price-block-size);
+
+// @include media-breakpoint-down(xl) {
+//     // price and orbit animation block
+//     $my-current-price-block-size: 20.5rem;
+
+//     $my-ball-size: 20rem;
+//     $my-orbit-radius: 35rem;
+
+//     $my-current-price-block-margin: my-orbit-animation-calculate-margin($my-orbit-radius, $my-current-price-block-size);
+// }
+
+// @include media-breakpoint-down(lg) {
+//     // price and orbit animation block
+//     $my-current-price-block-size: 15rem;
+
+//     $my-ball-size: 12rem;
+//     $my-orbit-radius: 22.5rem;
+
+//     $my-current-price-block-margin: my-orbit-animation-calculate-margin($my-orbit-radius, $my-current-price-block-size);
+// }
+
+
+/**========================================================================
+ **                            CSS Variables
+ *========================================================================**/
+
+ :root {
+    --my-text-paragraph-margin-top: 1.75rem;
+    --my-text-paragraph-font-size: 1.5rem;
+    --my-text-paragraph-letter-spacing: 0.2em;
+
+    --my-img-caption-font-size: 2rem;
+}
+
+@include media-breakpoint-down(xl) {
+    :root {
+        --my-text-paragraph-margin-top: 1.75rem;
+        --my-text-paragraph-font-size: 1.5rem;
+        --my-text-paragraph-letter-spacing: 0.2em;
+        
+        --my-img-caption-font-size: 2rem;
+    }
+}
+
+// @include media-breakpoint-down(lg) {
+//     :root {
+//         --my-text-paragraph-margin-top: 1.75rem;
+//         --my-text-paragraph-font-size: 1.375rem;
+//         --my-text-paragraph-letter-spacing: 0.2em;
+
+//         --my-img-caption-font-size: 1.75rem;
+
+//         // price and orbit animation block
+//         --my-current-price-block-size: 20.5rem: 
+
+//         --my-ball-size: 20rem;
+//         --my-orbit-radius: 35rem;
+//     }
+// }

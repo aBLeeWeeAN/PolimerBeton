@@ -10,6 +10,38 @@
 // 2. Include any default variable overrides here
 $prefix:                            polimerbeton-vrn-;
 
+
+// set spacer
+$spacer:                            1rem;
+
+// change gutters
+$grid-gutter-width: 1.5rem;
+$gutters: (
+    0: 0,
+    1: $spacer * .25,
+    2: $spacer * .5,
+    3: $spacer,
+    4: $spacer * 1.5,
+    5: $spacer * 3,
+);
+
+// change container padding
+$container-padding-x: 0;
+
+// $enable-negative-margins: false;
+
+// headings
+$headings-margin-bottom:      0;
+$headings-font-family:        null;
+$headings-font-style:         null;
+$headings-font-weight:        500;
+$headings-line-height:        1.2;
+$headings-color:              inherit;
+
+// paragraph
+$paragraph-margin-bottom:   0;
+
+
 // reset navbar toggler
 $navbar-toggler-padding-y:          0;
 $navbar-toggler-padding-x:          0;

@@ -1,12 +1,15 @@
 /* Полный сброс стилей */
 @import 'reset';
 
-@import 'variables';
-@import 'mixins';
-@import 'base';
+/* Подгружаем цветовую схему */
+@import 'color_scheme_day';
 
 /* Подключение сторонних библиотек */
 @import 'vendors';
+
+@import 'variables';
+@import 'mixins';
+@import 'base';
 
 /* Общие стили для всех секций */
 @import 'global';

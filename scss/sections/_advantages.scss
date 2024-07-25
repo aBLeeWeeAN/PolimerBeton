@@ -3,70 +3,102 @@
  *========================================================================**/
 
  #Advantages {
-    margin: 10rem 0 10rem 0;
+    // margin: 10rem 0 10rem 0;
 
-    .content {
-        margin-top: 2.5rem;
-    }
+    // .content {
+    //     margin-top: 2.5rem;
+    // }
 
-    .content>*:first-child {
-        margin-top: 7.5rem;
-    }
-
-    .advantage-header {
-        display: flex;
-        flex-direction: row;
-
-        align-items: center;
-        justify-content: center;
-
-        & span {
-            font-family: "MuseoModerno", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 100;
-            font-style: normal;
-
-            font-size: 12.5rem;
-            letter-spacing: 0.3rem;
-            text-align: center;
-
-            color: $text_color_black;
-        }
-
-        & strong {
-            margin-left: 3.125rem;
-
-            font-family: "Raleway", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 600;
-            font-style: normal;
-
-            font-size: 3rem;
-            letter-spacing: 0.3rem;
-            text-align: left;
-
-            color: $text_color_black;
-        }
-
-    }
+    // .content>*:first-child {
+    //     margin-top: 7.5rem;
+    // }
 
     .advantage {
 
-        & p {
+        .advantage-header {
+            display: flex;
+            flex-direction: row;
+    
+            align-items: center;
+            justify-content: center;
+    
+            .advantage-number {
+                display: inline-block;
+
+                margin: 0;
+
+                font-family: "MuseoModerno", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 100;
+                font-style: normal;
+    
+                font-size: 12.5rem;
+                letter-spacing: 0.3rem;
+                text-align: center;
+    
+                color: $text_color_black;
+
+                @include media-breakpoint-down(lg) {
+                    & {
+                        font-size: 15.625rem;
+                        margin: -4.5rem 0 -4rem 0;
+                    }
+                }
+            }
+    
+            .advantage-brief-text {
+                margin-left: 3.125rem;
+    
+                font-family: "Raleway", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 600;
+                font-style: normal;
+    
+                font-size: 3rem;
+                letter-spacing: 0.3rem;
+                
+                text-align: left;
+    
+                color: $text_color_black;
+
+                @include media-breakpoint-down(lg) {
+                    & {
+                        margin: 0 0 2rem 0;
+
+                        font-size: 2.5rem;
+                        text-align: center;
+                    }
+                }
+            }
+    
+            @include media-breakpoint-down(lg) {
+                & {
+                    flex-direction: column;
+                }
+            }
+        }
+
+        .advantage-extended-text {
             font-family: "Montserrat", sans-serif;
             font-optical-sizing: auto;
             font-weight: 300;
             font-style: normal;
 
-            font-size: var(--paragraph-font-size);
+            font-size: var(--my-text-paragraph-font-size);
             line-height: 150%;
-            letter-spacing: 0.3em;
+            // letter-spacing: 0.3em;
+            letter-spacing: var(--my-text-paragraph-letter-spacing);
 
             text-align: justify;
             text-indent: 6rem;
 
 
             color: $text_color_black;
+
+            @include media-breakpoint-down(lg) {
+                text-indent: 0;
+                text-align: center;
+            }
         }
 
         &#advantage-1 {
@@ -92,6 +124,11 @@
         &#advantage-6 {
             margin-bottom: 2.5rem;
         }
-    }
 
+        @include media-breakpoint-down(lg) {
+            & {
+                margin: 0;
+            }
+        }
+    }
 }

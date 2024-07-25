@@ -57,39 +57,10 @@ table {
   border-spacing: 0;
 }
 
+/* Подгружаем цветовую схему */
 /**========================================================================
  **                            COLORS
  *========================================================================**/
-/**========================================================================
- **                            HTML DOCUMENT BASE SETTINGS
- *========================================================================**/
-html {
-  width: 100vw;
-  height: 100vh !important;
-  z-index: 1;
-  max-width: 100%;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  font-size: 16px;
-  margin: 0 auto;
-}
-
-/**========================================================================
- **                            BODY
- *========================================================================**/
-body {
-  z-index: -10;
-  overflow-x: hidden;
-  background-color: #fffbf6;
-}
-
-#wrapper {
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 1280px;
-  padding: 0 16px 0 16px;
-}
-
 /* Подключение сторонних библиотек */
 /**========================================================================
  **                            INCLUDE BOOTSTRAP
@@ -306,7 +277,7 @@ hr {
 
 h6, h5, h4, h3, h2, h1 {
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
   font-weight: 500;
   line-height: 1.2;
   color: var(--polimerbeton-vrn-heading-color);
@@ -358,7 +329,7 @@ h6 {
 
 p {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 abbr[title] {
@@ -685,7 +656,7 @@ progress {
 .container-lg,
 .container-md,
 .container-sm {
-  --polimerbeton-vrn-gutter-x: 1.5rem;
+  --polimerbeton-vrn-gutter-x: 0;
   --polimerbeton-vrn-gutter-y: 0;
   width: 100%;
   padding-right: calc(var(--polimerbeton-vrn-gutter-x) * 0.5);
@@ -7539,20 +7510,65 @@ progress {
     display: none !important;
   }
 }
+/**========================================================================
+ **                            SASS Variables
+ *========================================================================**/
+/**========================================================================
+ **                            CSS Variables
+ *========================================================================**/
+:root {
+  --my-text-paragraph-margin-top: 1.75rem;
+  --my-text-paragraph-font-size: 1.5rem;
+  --my-text-paragraph-letter-spacing: 0.2em;
+  --my-img-caption-font-size: 2rem;
+}
+
+@media (max-width: 1199.98px) {
+  :root {
+    --my-text-paragraph-margin-top: 1.75rem;
+    --my-text-paragraph-font-size: 1.5rem;
+    --my-text-paragraph-letter-spacing: 0.2em;
+    --my-img-caption-font-size: 2rem;
+  }
+}
+/**========================================================================
+ **                            FUNCTIONS
+ *========================================================================**/
+/**========================================================================
+ **                            HTML DOCUMENT BASE SETTINGS
+ *========================================================================**/
+html {
+  width: 100vw;
+  height: 100vh !important;
+  z-index: 1;
+  max-width: 100%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+/**========================================================================
+ **                            BODY
+ *========================================================================**/
+body {
+  z-index: -10;
+  overflow-x: hidden;
+  background-color: #fffbf6;
+}
+
+#wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1280px;
+  padding: 0 16px 0 16px;
+}
+
 /* Общие стили для всех секций */
 /**========================================================================
  **                            GLOBAL STYLES
  *========================================================================**/
-:root {
-  --paragraph-font-size: 1.5rem;
-}
-
-@media (max-width: 991.98px) {
-  :root {
-    --paragraph-font-size: 2.1rem;
-  }
-}
-.title {
+.title, #Hero .hero-headline {
   text-align: center;
   font-family: "Russo One", sans-serif;
   font-weight: 400;
@@ -7565,12 +7581,13 @@ progress {
 }
 
 @media (max-width: 991.98px) {
-  .title {
-    font-size: 3.25rem;
+  .title, #Hero .hero-headline {
+    margin-bottom: 3.5rem;
+    font-size: 3rem;
   }
 }
-.subtitle, #Examples .img-sign {
-  margin: 7.5rem 0 5rem 0;
+.subtitle, #Prices strong, #Examples .container-for-image-and-caption .image-caption-after, #Examples .container-for-image-and-caption .image-caption-before {
+  margin: 0 0 5rem 0;
   font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -7581,10 +7598,53 @@ progress {
   line-height: 150%;
   color: rgba(0, 0, 0, 0.8705882353);
   text-transform: uppercase;
+  font-variant-numeric: lining-nums;
 }
-.subtitle.img-sign, #Examples .img-sign {
-  margin: 2.5rem 0 0 0;
-  text-transform: none;
+@media (max-width: 991.98px) {
+  .subtitle, #Prices strong, #Examples .container-for-image-and-caption .image-caption-after, #Examples .container-for-image-and-caption .image-caption-before {
+    margin: 0 0 3rem 0;
+  }
+}
+
+section {
+  padding: 10rem 0 10rem 0;
+}
+section:not(:first-child) {
+  padding: 10rem 0 0 0;
+}
+section:last-child {
+  padding: 10rem 0 10rem 0;
+}
+
+@media (max-width: 991.98px) {
+  section {
+    padding: 7.5rem 0 7.5rem 0;
+  }
+  section:not(:first-child) {
+    padding: 7.5rem 0 0 0;
+  }
+  section:last-child {
+    padding: 7.5rem 0 7.5rem 0;
+  }
+}
+.image-with-gradient-border {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.62rem;
+  padding: 0.5rem;
+  background-clip: padding-box;
+  -webkit-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
+}
+.image-with-gradient-border img {
+  display: block;
+  border-radius: 0.31rem;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 /* Импорт стилей секций */
@@ -7625,7 +7685,7 @@ header #bc-square-2 {
 .logo, .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo {
   font-size: 1rem;
   padding: 0;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   color: #512DA8;
 }
@@ -7729,18 +7789,22 @@ header #bc-square-2 {
     box-shadow: none;
   }
 }
+.navbar {
+  margin: 0;
+  padding: 0;
+}
 .navbar .navbar-brand {
   padding: 0;
   margin: 0;
 }
 .navbar .navbar-toggler {
-  width: auto;
-  height: auto;
+  width: fit-content;
+  height: fit-content;
   border-radius: 0.75rem;
   border: solid 1px #512DA8;
 }
 .navbar .navbar-toggler .navbar-toggler-icon {
-  margin: 0.5rem 1.25rem 0.5rem 1.25rem;
+  margin: 0.5rem 1.5rem 0.5rem 1.5rem;
   width: 2rem;
   height: 2rem;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23512DA8' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
@@ -7839,7 +7903,9 @@ header #bc-square-2 {
  *========================================================================**/
 #Hero {
   position: relative;
-  padding: 10rem 0 10rem 0;
+  display: flex;
+  min-height: 56rem;
+  max-height: 64rem;
 }
 #Hero #hero-bc-img {
   z-index: -2;
@@ -7854,7 +7920,7 @@ header #bc-square-2 {
 #Hero #hero-fr-img {
   z-index: -1;
   position: absolute;
-  background-image: url("/images/hero_bc.webp");
+  background-image: url("../images/hero_bc.webp");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -7865,17 +7931,27 @@ header #bc-square-2 {
   opacity: 0.1;
   filter: blur(2px);
 }
-#Hero h1 strong div {
+#Hero .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+#Hero .hero-headline {
+  margin: 0;
+}
+#Hero .hero-headline-manufacturer-location {
   margin-top: 0.625rem;
   font-size: 1.75rem;
   letter-spacing: 0.25em;
   line-height: 150%;
 }
-#Hero .concretes-images {
-  margin-top: 10rem;
+@media (max-width: 991.98px) {
+  #Hero .hero-headline-manufacturer-location {
+    font-size: 1.625rem;
+  }
 }
-#Hero span {
-  margin-top: 10rem;
+#Hero .hero-phrase {
   font-family: "Tenor Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -7889,8 +7965,13 @@ header #bc-square-2 {
   -webkit-text-fill-color: transparent;
 }
 @media (max-width: 1399.98px) {
-  #Hero span {
+  #Hero .hero-phrase {
     font-size: 2.875rem;
+  }
+}
+@media (max-width: 991.98px) {
+  #Hero .hero-phrase {
+    font-size: 2.25rem;
   }
 }
 
@@ -7899,7 +7980,6 @@ header #bc-square-2 {
  *========================================================================**/
 #Description {
   position: relative;
-  padding: 10rem 0 10rem 0;
 }
 #Description #bc-circle {
   z-index: -5;
@@ -7938,40 +8018,39 @@ header #bc-square-2 {
     height: 148.8rem;
   }
 }
-#Description .content {
-  margin-top: 7.5rem;
-}
-#Description .content > *:not(:first-child) {
-  margin-top: 1.75rem;
-}
 #Description p {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: var(--paragraph-font-size);
+  font-size: var(--my-text-paragraph-font-size);
+  letter-spacing: var(--my-text-paragraph-letter-spacing);
   line-height: 150%;
-  letter-spacing: 0.2em;
   text-align: justify;
   text-indent: 7rem;
   color: rgba(0, 0, 0, 0.8705882353);
   hyphens: auto;
 }
+#Description p:not(:first-child) {
+  margin-top: var(--my-text-paragraph-margin-top);
+}
 #Description .concretes-images {
   margin-top: 7.5rem;
 }
 
+@media (max-width: 991.98px) {
+  .concretes-images {
+    margin-top: 3.5rem;
+  }
+}
 /**========================================================================
  **                            USAGE
  *========================================================================**/
 #Usage {
   position: relative;
 }
-#Usage ul {
-  margin-top: 7.5rem;
-}
 #Usage ul > *:not(:first-child) {
-  margin-top: 1.5rem;
+  margin-top: var(--my-text-paragraph-margin-top);
 }
 #Usage li {
   position: relative;
@@ -7980,9 +8059,9 @@ header #bc-square-2 {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: var(--paragraph-font-size);
+  font-size: var(--my-text-paragraph-font-size);
+  letter-spacing: var(--my-text-paragraph-letter-spacing);
   line-height: 150%;
-  letter-spacing: 0.1em;
   text-align: justify;
   color: rgba(0, 0, 0, 0.8705882353);
   border-radius: 1.5rem;
@@ -8038,42 +8117,33 @@ header #bc-square-2 {
  *========================================================================**/
 #Examples {
   position: relative;
-  margin-top: 10rem;
 }
-#Examples .img-with-sign {
+#Examples .container-for-image-and-caption {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-#Examples .img-sign {
+#Examples .container-for-image-and-caption .image-caption-before {
   margin: 2.5rem 0 0 0;
+  font-size: var(--my-img-caption-font-size);
   text-transform: none;
 }
 @media (max-width: 991.98px) {
-  #Examples .content > div:first-child span {
-    margin-bottom: 5rem;
+  #Examples .container-for-image-and-caption .image-caption-before {
+    margin: 1.5rem 0 3rem 0;
   }
 }
-#Examples .gradient-border {
-  position: relative;
-  display: inline-block;
-  width: 37.5rem;
-  height: auto;
-  border-radius: 0.62rem;
-  padding: 0.5rem;
-  background-clip: padding-box;
-  -webkit-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
-  box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
+#Examples .container-for-image-and-caption .image-caption-after {
+  margin: 2.5rem 0 0 0;
+  font-size: var(--my-img-caption-font-size);
+  text-transform: none;
 }
-#Examples .gradient-border img {
-  display: block;
-  border-radius: 0.31rem;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+@media (max-width: 991.98px) {
+  #Examples .container-for-image-and-caption .image-caption-after {
+    margin: 1.5rem 0 3.5rem 0;
+  }
 }
-#Examples .gradient-border#example-1 {
+#Examples #example-1 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#4caf50+0,ffeb3b+50,f44336+100 */
   background: rgb(76, 175, 80);
   /* Old browsers */
@@ -8094,7 +8164,7 @@ header #bc-square-2 {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4caf50", endColorstr="#f44336", GradientType=1);
   /* IE6-8 fallback on horizontal gradient */
 }
-#Examples .gradient-border#example-2 {
+#Examples #example-2 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f44336+0,ffeb3b+50,4caf50+100 */
   background: rgb(244, 67, 54);
   /* Old browsers */
@@ -8115,7 +8185,7 @@ header #bc-square-2 {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f44336", endColorstr="#4caf50", GradientType=1);
   /* IE6-8 fallback on horizontal gradient */
 }
-#Examples .gradient-border#example-3 {
+#Examples #example-3 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#4caf50+0,ffeb3b+50,f44336+100 */
   background: rgb(76, 175, 80);
   /* Old browsers */
@@ -8136,7 +8206,7 @@ header #bc-square-2 {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4caf50", endColorstr="#f44336", GradientType=1);
   /* IE6-8 fallback on horizontal gradient */
 }
-#Examples .gradient-border#example-4 {
+#Examples #example-4 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f44336+0,ffeb3b+50,4caf50+100 */
   background: rgb(244, 67, 54);
   /* Old browsers */
@@ -8156,24 +8226,6 @@ header #bc-square-2 {
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f44336", endColorstr="#4caf50", GradientType=1);
   /* IE6-8 fallback on horizontal gradient */
-}
-@media (max-width: 1399.98px) {
-  #Examples .gradient-border {
-    width: 32.5rem;
-    height: auto;
-  }
-}
-@media (max-width: 1199.98px) {
-  #Examples .gradient-border {
-    width: 27.5rem;
-    height: auto;
-  }
-}
-@media (max-width: 991.98px) {
-  #Examples .gradient-border {
-    width: 37.5rem;
-    height: auto;
-  }
 }
 #Examples #bc-circle {
   z-index: -5;
@@ -8216,22 +8268,15 @@ header #bc-square-2 {
 /**========================================================================
  **                            ADVANTAGES
  *========================================================================**/
-#Advantages {
-  margin: 10rem 0 10rem 0;
-}
-#Advantages .content {
-  margin-top: 2.5rem;
-}
-#Advantages .content > *:first-child {
-  margin-top: 7.5rem;
-}
-#Advantages .advantage-header {
+#Advantages .advantage .advantage-header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-#Advantages .advantage-header span {
+#Advantages .advantage .advantage-header .advantage-number {
+  display: inline-block;
+  margin: 0;
   font-family: "MuseoModerno", sans-serif;
   font-optical-sizing: auto;
   font-weight: 100;
@@ -8241,7 +8286,13 @@ header #bc-square-2 {
   text-align: center;
   color: rgba(0, 0, 0, 0.8705882353);
 }
-#Advantages .advantage-header strong {
+@media (max-width: 991.98px) {
+  #Advantages .advantage .advantage-header .advantage-number {
+    font-size: 15.625rem;
+    margin: -4.5rem 0 -4rem 0;
+  }
+}
+#Advantages .advantage .advantage-header .advantage-brief-text {
   margin-left: 3.125rem;
   font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
@@ -8252,17 +8303,35 @@ header #bc-square-2 {
   text-align: left;
   color: rgba(0, 0, 0, 0.8705882353);
 }
-#Advantages .advantage p {
+@media (max-width: 991.98px) {
+  #Advantages .advantage .advantage-header .advantage-brief-text {
+    margin: 0 0 2rem 0;
+    font-size: 2.5rem;
+    text-align: center;
+  }
+}
+@media (max-width: 991.98px) {
+  #Advantages .advantage .advantage-header {
+    flex-direction: column;
+  }
+}
+#Advantages .advantage .advantage-extended-text {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  font-size: var(--paragraph-font-size);
+  font-size: var(--my-text-paragraph-font-size);
   line-height: 150%;
-  letter-spacing: 0.3em;
+  letter-spacing: var(--my-text-paragraph-letter-spacing);
   text-align: justify;
   text-indent: 6rem;
   color: rgba(0, 0, 0, 0.8705882353);
+}
+@media (max-width: 991.98px) {
+  #Advantages .advantage .advantage-extended-text {
+    text-indent: 0;
+    text-align: center;
+  }
 }
 #Advantages .advantage#advantage-1 {
   margin-bottom: 5rem;
@@ -8282,6 +8351,11 @@ header #bc-square-2 {
 #Advantages .advantage#advantage-6 {
   margin-bottom: 2.5rem;
 }
+@media (max-width: 991.98px) {
+  #Advantages .advantage {
+    margin: 0;
+  }
+}
 
 /**========================================================================
  **                            SAFETY
@@ -8289,29 +8363,7 @@ header #bc-square-2 {
 #Safety {
   position: relative;
 }
-#Safety .content {
-  margin-top: 5rem;
-}
-#Safety .gradient-border {
-  position: relative;
-  display: inline-block;
-  width: 37.5rem;
-  height: auto;
-  border-radius: 0.62rem;
-  padding: 0.5rem;
-  background-clip: padding-box;
-  -webkit-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
-  box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
-}
-#Safety .gradient-border img {
-  display: block;
-  border-radius: 0.31rem;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-#Safety .gradient-border#safety-doc-1, #Safety .gradient-border#safety-doc-5 {
+#Safety .image-with-gradient-border#safety-doc-1, #Safety .image-with-gradient-border#safety-doc-5 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff9800+0,673ab7+100;orange_to_purple */
   background: rgb(255, 152, 0);
   /* Old browsers */
@@ -8332,7 +8384,7 @@ header #bc-square-2 {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff9800", endColorstr="#673ab7", GradientType=1);
   /* IE6-8 fallback on horizontal gradient */
 }
-#Safety .gradient-border#safety-doc-2, #Safety .gradient-border#safety-doc-6 {
+#Safety .image-with-gradient-border#safety-doc-2, #Safety .image-with-gradient-border#safety-doc-6 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#673ab7+0,ff9800+100 */
   background: rgb(103, 58, 183);
   /* Old browsers */
@@ -8353,7 +8405,7 @@ header #bc-square-2 {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#673ab7", endColorstr="#ff9800", GradientType=1);
   /* IE6-8 fallback on horizontal gradient */
 }
-#Safety .gradient-border#safety-doc-3 {
+#Safety .image-with-gradient-border#safety-doc-3 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff9800+0,673ab7+100;orange_to_purple */
   background: rgb(255, 152, 0);
   /* Old browsers */
@@ -8374,7 +8426,7 @@ header #bc-square-2 {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff9800", endColorstr="#673ab7", GradientType=1);
   /* IE6-8 fallback on horizontal gradient */
 }
-#Safety .gradient-border#safety-doc-4 {
+#Safety .image-with-gradient-border#safety-doc-4 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#673ab7+0,ff9800+100;purple_to_orange */
   background: rgb(103, 58, 183);
   /* Old browsers */
@@ -8395,25 +8447,12 @@ header #bc-square-2 {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#673ab7", endColorstr="#ff9800", GradientType=1);
   /* IE6-8 fallback on horizontal gradient */
 }
-@media (max-width: 1399.98px) {
-  #Safety .gradient-border {
-    width: 32.5rem;
-    height: auto;
-  }
-}
-@media (max-width: 1199.98px) {
-  #Safety .gradient-border {
-    width: 27.5rem;
-    height: auto;
-  }
-}
 @media (max-width: 991.98px) {
-  #Safety .content > .gradient-border:first-child {
-    margin-bottom: 5rem;
+  #Safety .image-with-gradient-border {
+    margin-bottom: 3rem;
   }
-  #Safety .gradient-border {
-    width: 37.5rem;
-    height: auto;
+  #Safety .image-with-gradient-border#safety-doc-6 {
+    margin: 0;
   }
 }
 #Safety #bc-circle {
@@ -8457,21 +8496,13 @@ header #bc-square-2 {
 /**========================================================================
  **                            PRICES
  *========================================================================**/
-#Prices {
-  margin: 10rem 0 10rem 0;
-}
-#Prices .price-content {
+#Prices .current-price-animation-container {
   position: relative;
-  margin-top: 5rem;
-  --ball-size: 18.75rem;
 }
-#Prices .price-content #current-price {
+#Prices .current-price-animation-container .current-price {
   position: relative;
-  margin: 24.75rem 0 24.75rem 0;
-  width: 20.5rem;
-  height: 20.5rem;
 }
-#Prices .price-content #current-price #bc-current-price-anim-wrapper {
+#Prices .current-price-animation-container .current-price .current-price-figure-animation-wrapper {
   width: 100%;
   height: 100%;
   animation: scale-animation 6s ease-in-out infinite alternate;
@@ -8487,7 +8518,7 @@ header #bc-square-2 {
     transform: scale(1.25);
   }
 }
-#Prices .price-content #current-price #bc-current-price-anim-wrapper #bc-current-price {
+#Prices .current-price-animation-container .current-price .current-price-figure-animation-wrapper .current-price-figure {
   width: 100%;
   height: 100%;
   fill: #B71C1C;
@@ -8501,7 +8532,7 @@ header #bc-square-2 {
     transform: rotate(-360deg);
   }
 }
-#Prices .price-content #current-price span {
+#Prices .current-price-animation-container .current-price .current-price-text {
   z-index: 1;
   position: absolute;
   top: 50%;
@@ -8511,7 +8542,6 @@ header #bc-square-2 {
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
-  font-size: 3rem;
   letter-spacing: 0.25em;
   text-align: center;
   color: #fff;
@@ -8529,39 +8559,24 @@ header #bc-square-2 {
     transform: translate(-45%, -52.5%) rotate(-21deg) rotate(-8deg);
   }
 }
-@media (max-width: 1199.98px) {
-  #Prices .price-content {
-    --ball-size: 13.75rem;
-  }
-  #Prices .price-content #current-price {
-    margin: 19.75rem 0 19.75rem 0;
-  }
-}
-#Prices .price-content .orbit {
+#Prices .current-price-animation-container .concrete-image-orbit-animation-wrapper {
   z-index: -1;
   position: absolute;
-  width: 20rem;
-  height: 35rem;
+  padding: 0;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   transform-origin: bottom center;
 }
-#Prices .price-content .orbit img {
+#Prices .current-price-animation-container .concrete-image-orbit-animation-wrapper img {
   position: absolute;
-  width: var(--ball-size);
-  height: var(--ball-size);
+  width: 100%;
+  height: auto;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
 }
-@media (max-width: 1199.98px) {
-  #Prices .price-content .orbit {
-    width: 15rem;
-    height: 30rem;
-  }
-}
-#Prices .price-content #ball-green {
+#Prices .current-price-animation-container #ball-green {
   animation: rotate-clockwise 10s infinite linear;
 }
 @keyframes rotate-clockwise {
@@ -8572,7 +8587,7 @@ header #bc-square-2 {
     transform: translateX(-50%) rotate(360deg);
   }
 }
-#Prices .price-content #ball-green img {
+#Prices .current-price-animation-container #ball-green img {
   animation: ball-rotate-counter-clockwise-0 10s infinite linear;
 }
 @keyframes ball-rotate-counter-clockwise-0 {
@@ -8583,7 +8598,7 @@ header #bc-square-2 {
     transform: translateX(-50%) rotate(-360deg);
   }
 }
-#Prices .price-content #ball-yellow {
+#Prices .current-price-animation-container #ball-yellow {
   animation: rotate-clockwise-72 10s infinite linear;
 }
 @keyframes rotate-clockwise-72 {
@@ -8594,7 +8609,7 @@ header #bc-square-2 {
     transform: translateX(-50%) rotate(432deg);
   }
 }
-#Prices .price-content #ball-yellow img {
+#Prices .current-price-animation-container #ball-yellow img {
   animation: ball-rotate-counter-clockwise-72 10s infinite linear;
 }
 @keyframes ball-rotate-counter-clockwise-72 {
@@ -8605,7 +8620,7 @@ header #bc-square-2 {
     transform: translateX(-50%) rotate(-432deg);
   }
 }
-#Prices .price-content #ball-white {
+#Prices .current-price-animation-container #ball-white {
   animation: rotate-clockwise-144 10s infinite linear;
 }
 @keyframes rotate-clockwise-144 {
@@ -8616,7 +8631,7 @@ header #bc-square-2 {
     transform: translateX(-50%) rotate(504deg);
   }
 }
-#Prices .price-content #ball-white img {
+#Prices .current-price-animation-container #ball-white img {
   animation: ball-rotate-counter-clockwise-144 10s infinite linear;
 }
 @keyframes ball-rotate-counter-clockwise-144 {
@@ -8627,7 +8642,7 @@ header #bc-square-2 {
     transform: translateX(-50%) rotate(-504deg);
   }
 }
-#Prices .price-content #ball-grey {
+#Prices .current-price-animation-container #ball-grey {
   animation: rotate-clockwise-216 10s infinite linear;
 }
 @keyframes rotate-clockwise-216 {
@@ -8638,7 +8653,7 @@ header #bc-square-2 {
     transform: translateX(-50%) rotate(576deg);
   }
 }
-#Prices .price-content #ball-grey img {
+#Prices .current-price-animation-container #ball-grey img {
   animation: ball-rotate-counter-clockwise-216 10s infinite linear;
 }
 @keyframes ball-rotate-counter-clockwise-216 {
@@ -8649,7 +8664,7 @@ header #bc-square-2 {
     transform: translateX(-50%) rotate(-576deg);
   }
 }
-#Prices .price-content #ball-red {
+#Prices .current-price-animation-container #ball-red {
   animation: rotate-clockwise-288 10s infinite linear;
 }
 @keyframes rotate-clockwise-288 {
@@ -8660,7 +8675,7 @@ header #bc-square-2 {
     transform: translateX(-50%) rotate(648deg);
   }
 }
-#Prices .price-content #ball-red img {
+#Prices .current-price-animation-container #ball-red img {
   animation: ball-rotate-counter-clockwise-288 10s infinite linear;
 }
 @keyframes ball-rotate-counter-clockwise-288 {
@@ -8671,13 +8686,50 @@ header #bc-square-2 {
     transform: translateX(-50%) rotate(-648deg);
   }
 }
+#Prices .current-price-animation-container .current-price {
+  width: 20.5rem;
+  height: 20.5rem;
+  margin: 24.75rem 0;
+}
+#Prices .current-price-animation-container .current-price .current-price-text {
+  font-size: 3rem;
+}
+#Prices .current-price-animation-container .concrete-image-orbit-animation-wrapper {
+  width: 20rem;
+  height: 35rem;
+}
+@media (max-width: 1199.98px) {
+  #Prices .current-price-animation-container .current-price {
+    width: 17.5rem;
+    height: 17.5rem;
+    margin: 23.25rem 0;
+  }
+  #Prices .current-price-animation-container .current-price .current-price-text {
+    font-size: 2.5rem;
+  }
+  #Prices .current-price-animation-container .concrete-image-orbit-animation-wrapper {
+    width: 17.5rem;
+    height: 32rem;
+  }
+}
+@media (max-width: 991.98px) {
+  #Prices .current-price-animation-container .current-price {
+    width: 15rem;
+    height: 15rem;
+    margin: 15rem 0;
+  }
+  #Prices .current-price-animation-container .current-price .current-price-text {
+    font-size: 2rem;
+  }
+  #Prices .current-price-animation-container .concrete-image-orbit-animation-wrapper {
+    width: 12rem;
+    height: 22.5rem;
+  }
+}
 
 /**========================================================================
  **                            FEEDBACK FORM
  *========================================================================**/
-#Feedback-Form .content {
-  margin-top: 5rem;
-}
 #Feedback-Form .concretes-pictures {
   height: 41rem;
   width: 41rem;
@@ -8867,15 +8919,17 @@ header #bc-square-2 {
     font-size: 0.8125rem;
   }
 }
+@media (max-width: 991.98px) {
+  #Feedback-Form form .checkbox-privacy-policy {
+    font-size: 1.2rem;
+  }
+}
 
 /**========================================================================
  **                            CONTACTS
  *========================================================================**/
-#Contacts {
-  margin: 10rem 0 10rem 0;
-}
-#Contacts h3 {
-  margin: 5rem 0 1.25rem 0;
+#Contacts .phone-and-email .contact-header, #Contacts .messengers .contact-header {
+  margin: 0 0 1rem 0;
   font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -8885,8 +8939,7 @@ header #bc-square-2 {
   letter-spacing: 0.2em;
   color: rgba(0, 0, 0, 0.8705882353);
 }
-#Contacts .contact, #Contacts strong,
-#Contacts a {
+#Contacts .phone-and-email .contact, #Contacts .phone-and-email .contact a strong, #Contacts .phone-and-email .contact a strong a, #Contacts .phone-and-email .contact a, #Contacts .messengers .contact, #Contacts .messengers .contact a strong, #Contacts .messengers .contact a strong a, #Contacts .messengers .contact a {
   margin: 0;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
@@ -8898,6 +8951,13 @@ header #bc-square-2 {
   color: rgba(0, 0, 0, 0.8705882353);
   text-decoration: none;
 }
+#Contacts .phone-and-email .contact a strong, #Contacts .messengers .contact a strong {
+  margin-bottom: 0.25rem;
+}
+#Contacts .messengers {
+  margin-top: 3rem;
+}
+
 /**========================================================================
  **                            FOOTER
  *========================================================================**/
@@ -8926,7 +8986,7 @@ footer #bc-square-4 {
   transform: translate(-47.4%, -50%) rotate(45deg);
 }
 footer h3 {
-  margin: 0 0 1.25rem 0;
+  margin-bottom: 1.5rem;
   font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -8934,6 +8994,11 @@ footer h3 {
   font-size: 1.75rem;
   letter-spacing: 0.2em;
   color: rgba(0, 0, 0, 0.8705882353);
+}
+@media (max-width: 991.98px) {
+  footer h3 {
+    font-size: 2.5rem;
+  }
 }
 footer p,
 footer a {
@@ -8949,6 +9014,13 @@ footer a {
   color: rgba(0, 0, 0, 0.8705882353);
   text-decoration: none;
 }
+@media (max-width: 991.98px) {
+  footer p,
+  footer a {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+}
 footer .footer-part-1 {
   padding: 7.5rem 0 7.5rem 0;
 }
@@ -8959,45 +9031,79 @@ footer .footer-part-1 .logo-and-privacy-policy {
   justify-content: space-between;
 }
 footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo, .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
+  font-size: 1rem;
   padding: 0;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   color: #512DA8;
 }
-footer .footer-part-1 .logo-and-privacy-policy .logo svg, footer .footer-part-1 .logo-and-privacy-policy .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo svg, .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo svg {
+footer .footer-part-1 .logo-and-privacy-policy .logo .logo-icon, footer .footer-part-1 .logo-and-privacy-policy .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo .logo-icon, .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-icon {
   fill-rule: evenodd;
   clip-rule: evenodd;
   fill: #512DA8;
-  width: 5.625em;
-  height: 5.625em;
+  width: 8.125em;
+  height: 8.125em;
 }
 footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagline-container, footer .footer-part-1 .logo-and-privacy-policy .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo .logo-company-name-and-tagline-container, .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-company-name-and-tagline-container {
-  margin-left: 1.375em;
-  display: flex;
+  margin-left: 2em;
+  display: inline-flex;
   flex-direction: column;
 }
-footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagline-container b, footer .footer-part-1 .logo-and-privacy-policy .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo .logo-company-name-and-tagline-container b, .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-company-name-and-tagline-container b {
+footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagline-container .logo-company-name, footer .footer-part-1 .logo-and-privacy-policy .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo .logo-company-name-and-tagline-container .logo-company-name, .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-company-name-and-tagline-container .logo-company-name {
   font-family: "Russo One", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: 2.06em;
+  font-size: 3em;
   letter-spacing: 0.35em;
 }
-footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagline-container i, footer .footer-part-1 .logo-and-privacy-policy .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo .logo-company-name-and-tagline-container i, .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-company-name-and-tagline-container i {
-  margin-left: 0.0625em;
+footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagline-container .logo-tagline, footer .footer-part-1 .logo-and-privacy-policy .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo .logo-company-name-and-tagline-container .logo-tagline, .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-company-name-and-tagline-container .logo-tagline {
   font-family: "Pattaya", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 1.37em;
+  font-size: 2em;
   letter-spacing: 0.55em;
 }
-footer .footer-part-1 ul {
+@media (max-width: 1399.98px) {
+  footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo, .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 991.98px) {
+  footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo, .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 991.98px) {
+  footer .footer-part-1 .logo-and-privacy-policy {
+    text-align: center;
+    align-items: center;
+  }
+  footer .footer-part-1 .logo-and-privacy-policy h3 {
+    margin-top: 3.5rem;
+  }
+}
+footer .footer-part-1 .footer-navigation {
+  margin: 0;
+  text-align: left;
+}
+footer .footer-part-1 .footer-navigation ul {
   margin: 0;
   padding: 0;
 }
-footer .footer-part-1 ul li:not(:first-child) {
-  margin-top: 1rem;
+footer .footer-part-1 .footer-navigation ul li:not(:first-child) {
+  margin-top: 1.5rem;
+}
+@media (max-width: 991.98px) {
+  footer .footer-part-1 .footer-navigation {
+    margin-top: 3.5rem;
+    text-align: center;
+  }
+}
+@media (max-width: 991.98px) {
+  footer .footer-part-1 {
+    padding: 5rem 0;
+  }
 }
 footer .rounded-hr {
   border: none;
@@ -9013,13 +9119,30 @@ footer .copyright small {
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  font-size: 1rem;
+  font-size: var(--my-text-paragraph-font-size);
   letter-spacing: 0.1em;
   color: rgba(0, 0, 0, 0.8705882353);
 }
 footer .copyright #copyright-info {
   text-align: left;
 }
+@media (max-width: 991.98px) {
+  footer .copyright #copyright-info {
+    text-align: center;
+  }
+}
 footer .copyright #copyright-email {
+  margin: 0;
   text-align: right;
+}
+@media (max-width: 991.98px) {
+  footer .copyright #copyright-email {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+}
+@media (max-width: 991.98px) {
+  footer .copyright {
+    padding: 3.5rem 0;
+  }
 }/*# sourceMappingURL=main.css.map */

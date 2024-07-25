@@ -2,16 +2,6 @@
  **                            GLOBAL STYLES
  *========================================================================**/
 
-:root {
-    --paragraph-font-size: 1.5rem;
-}
-
-@include media-breakpoint-down(lg) {
-    :root {
-        --paragraph-font-size: 2.1rem;
-    }
-}
-
 .title {
     text-align: center;
 
@@ -30,12 +20,15 @@
 
 @include media-breakpoint-down(lg) {
     .title {
-        font-size: 3.25rem;
+        margin-bottom: 3.5rem;
+
+        font-size: 3rem;
     }
 }
 
 .subtitle {
-    margin: 7.5rem 0 5rem 0;
+    // margin: 7.5rem 0 5rem 0;
+    margin: 0 0 5rem 0;
 
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
@@ -52,8 +45,68 @@
 
     text-transform: uppercase;
 
-    &.img-sign {
-        margin: 2.5rem 0 0 0;
-        text-transform: none;
+    font-variant-numeric: lining-nums;
+
+    @include media-breakpoint-down(lg) {
+        & {
+            margin: 0 0 3rem 0;
+        }
+    }
+}
+
+
+section {
+    padding: 10rem 0 10rem 0;
+
+    &:not(:first-child) {
+        padding: 10rem 0 0 0;
+    }
+
+    &:last-child {
+        padding: 10rem 0 10rem 0;
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    section {
+        padding: 7.5rem 0 7.5rem 0;
+
+        &:not(:first-child) {
+            padding: 7.5rem 0 0 0;
+        }
+
+        &:last-child {
+            padding: 7.5rem 0 7.5rem 0;
+        }
+    }
+}
+
+.image-with-gradient-border {
+    position: relative;
+    display: inline-block;
+
+    width: 100%;
+    height: auto;
+
+    // width: 37.5rem;
+    // height: auto;
+
+    border-radius: 0.62rem;
+
+    padding: 0.5rem;
+    background-clip: padding-box;
+
+    -webkit-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
+
+    & img {
+        display: block;
+        border-radius: 0.31rem;
+
+        width: 100%;
+        height: auto;
+
+        object-fit: cover;
     }
 }

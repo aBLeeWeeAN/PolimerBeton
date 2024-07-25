@@ -37,7 +37,7 @@
     }
 
     h3 {
-        margin: 0 0 1.25rem 0;
+        margin-bottom: 1.5rem;
 
         font-family: "Raleway", sans-serif;
         font-optical-sizing: auto;
@@ -48,6 +48,10 @@
         letter-spacing: 0.2em;
 
         color: $text_color_black;
+
+        @include media-breakpoint-down(lg) {
+            font-size: 2.5rem;
+        }
     }
 
     p,
@@ -67,6 +71,12 @@
         color: $text_color_black;
 
         text-decoration: none;
+
+        @include media-breakpoint-down(lg) {
+            text-align: center;
+
+            font-size: 1.5rem;
+        }
     }
 
     .footer-part-1 {
@@ -79,62 +89,167 @@
             align-items: start;
             justify-content: space-between;
 
+            // .logo {
+            //     padding: 0;
+
+            //     display: flex;
+            //     align-items: center;
+
+            //     color: $color_deep_purple_700;
+
+            //     svg {
+            //         fill-rule: evenodd;
+            //         clip-rule: evenodd;
+
+            //         fill: $color_deep_purple_700;
+
+            //         width: 5.625em;
+            //         height: 5.625em;
+            //     }
+
+            //     .logo-company-name-and-tagline-container {
+            //         margin-left: 1.375em;
+
+            //         display: flex;
+            //         flex-direction: column;
+
+            //         b {
+            //             font-family: "Russo One", sans-serif;
+            //             font-optical-sizing: auto;
+            //             font-weight: 400;
+            //             font-style: normal;
+
+            //             font-size: 2.06em;
+            //             letter-spacing: 0.35em;
+            //         }
+
+            //         i {
+            //             margin-left: 0.0625em;
+
+            //             font-family: "Pattaya", sans-serif;
+            //             font-weight: 400;
+            //             font-style: normal;
+
+            //             font-size: 1.37em;
+            //             letter-spacing: 0.55em;
+            //         }
+
+            //     }
+            // }
+
             .logo {
+                font-size: 1rem;
+            
                 padding: 0;
-
-                display: flex;
+            
+                display: inline-flex;
                 align-items: center;
-
+            
                 color: $color_deep_purple_700;
-
-                svg {
+            
+                .logo-icon {
                     fill-rule: evenodd;
                     clip-rule: evenodd;
-
+            
                     fill: $color_deep_purple_700;
-
-                    width: 5.625em;
-                    height: 5.625em;
+            
+                    width: 8.125em;
+                    height: 8.125em;
                 }
-
+            
+                // @include media-breakpoint-down(lg) {
+                //     .logo-icon {
+                //         width: 4.75em;
+                //         height: 4.75em;
+                //     }
+                // }
+            
                 .logo-company-name-and-tagline-container {
-                    margin-left: 1.375em;
-
-                    display: flex;
+                    margin-left: 2em;
+            
+                    display: inline-flex;
                     flex-direction: column;
-
-                    b {
+            
+                    .logo-company-name {
                         font-family: "Russo One", sans-serif;
                         font-optical-sizing: auto;
                         font-weight: 400;
                         font-style: normal;
-
-                        font-size: 2.06em;
+            
+                        font-size: 3em;
                         letter-spacing: 0.35em;
                     }
-
-                    i {
-                        margin-left: 0.0625em;
-
+            
+                    // @include media-breakpoint-down(lg) {
+                    //     .logo-company-name {
+                    //         font-size: 1.75em;
+                    //     }
+                    // }
+            
+                    .logo-tagline {
                         font-family: "Pattaya", sans-serif;
                         font-weight: 400;
                         font-style: normal;
-
-                        font-size: 1.37em;
+            
+                        font-size: 2em;
                         letter-spacing: 0.55em;
                     }
+            
+                    // @include media-breakpoint-down(lg) {
+                    //     .logo-tagline {
+                    //         font-size: 1.25rem;
+                    //     }
+                    // }
+                }
 
+                @include media-breakpoint-down(xxl) {
+                    & {
+                        font-size: 0.75rem;
+                    }
+                }
+                
+                @include media-breakpoint-down(lg) {
+                    & {
+                        font-size: 0.7rem;
+                    }
+                }
+            }
+
+            @include media-breakpoint-down(lg) {
+                & {
+                    text-align: center;
+                    align-items: center;
+
+                    h3 {
+                        margin-top: 3.5rem;
+                    }
                 }
             }
         }
 
-        ul {
+        .footer-navigation {
             margin: 0;
-            padding: 0;
+
+            text-align: left;
+
+            ul {
+                margin: 0;
+                padding: 0;
+            }
+    
+            ul li:not(:first-child) {
+                margin-top: 1.5rem;
+            }
+
+            @include media-breakpoint-down(lg) {
+                margin-top: 3.5rem;
+
+                text-align: center;
+            }
         }
 
-        ul li:not(:first-child) {
-            margin-top: 1rem;
+        @include media-breakpoint-down(lg) {
+            padding: 5rem 0;
         }
     }
 
@@ -154,7 +269,8 @@
             font-weight: 300;
             font-style: normal;
 
-            font-size: 1rem;
+            // font-size: 1rem;
+            font-size: var(--my-text-paragraph-font-size);
             letter-spacing: 0.1em;
 
             color: $text_color_black;
@@ -162,10 +278,26 @@
 
         #copyright-info {
             text-align: left;
+
+            @include media-breakpoint-down(lg) {
+                text-align: center;
+            }
         }
 
         #copyright-email {
+            margin: 0;
+
             text-align: right;
+
+            @include media-breakpoint-down(lg) {
+                margin-top: 1.5rem;
+
+                text-align: center;
+            }
+        }
+
+        @include media-breakpoint-down(lg) {
+            padding: 3.5rem 0;
         }
     }
 

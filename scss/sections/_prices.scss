@@ -3,22 +3,26 @@
  *========================================================================**/
 
  #Prices {
-    margin: 10rem 0 10rem 0;
+    // margin: 10rem 0 10rem 0;
 
-    .price-content {
+    & strong {
+        @extend .subtitle;
+    }
+
+    .current-price-animation-container {
         position: relative;
 
-        margin-top: 5rem;
+        // margin-top: 5rem;
 
-        #current-price {
+        .current-price { 
             position: relative;
 
-            margin: 24.75rem 0 24.75rem 0;
+            // margin: $my-current-price-block-margin 0 $my-current-price-block-margin 0;
 
-            width: 20.5rem;
-            height: 20.5rem;
+            // width: $my-current-price-block-size;
+            // height: $my-current-price-block-size;
 
-            & #bc-current-price-anim-wrapper {
+            .current-price-figure-animation-wrapper {
                 width: 100%;
                 height: 100%;
 
@@ -38,7 +42,7 @@
                     }
                 }
 
-                & #bc-current-price {
+                .current-price-figure {
                     width: 100%;
                     height: 100%;
 
@@ -58,7 +62,7 @@
                 }
             }
 
-            & span {
+            .current-price-text {
                 z-index: 1;
 
                 position: absolute;
@@ -75,7 +79,7 @@
                 font-weight: 600;
                 font-style: normal;
 
-                font-size: 3rem;
+                // font-size: 3rem;
                 letter-spacing: 0.25em;
                 text-align: center;
 
@@ -98,26 +102,52 @@
                         transform: translate(-45%, -52.5%) rotate(-21deg) rotate(-8deg);
                     }
                 }
+
+                // @keyframes wobble {
+                //     0% {
+                //         transform: translate(-44%, -51%) rotate(-21deg) rotate(-8deg);
+                //     }
+
+                //     50% {
+                //         transform: translate(-45%, -51%) rotate(-21deg) rotate(8deg);
+                //     }
+
+                //     100% {
+                //         transform: translate(-45%, -51%) rotate(-21deg) rotate(-8deg);
+                //     }
+                // }
+
+                // @include media-breakpoint-down(lg) {
+                //     font-size: 2rem;
+                // }
             }
+
+            // @include media-breakpoint-down(xl) {
+            //     & {
+            //         margin: 19.75rem 0 19.75rem 0;
+            //     }
+            // }
+
+            // @include media-breakpoint-down(lg) {
+            //     & {
+            //         width: 15rem;
+            //         height: 15rem;
+
+            //         margin: 15rem 0 15rem 0;
+            //     }
+            // }
         }
 
-        --ball-size: 18.75rem;
-
-        @include media-breakpoint-down(xl) {
-            --ball-size: 13.75rem;
-
-            #current-price {
-                margin: 19.75rem 0 19.75rem 0;
-            }
-        }
-
-        .orbit {
+        .concrete-image-orbit-animation-wrapper {
             z-index: -1;
+            // z-index: 3;
 
             position: absolute;
 
-            width: 20rem;
-            height: 35rem;
+            padding: 0;
+
+            // width: $my-ball-size;   // image size
+            // height: $my-orbit-radius;  // orbit radius
 
             top: 0;
             left: 50%;
@@ -128,21 +158,28 @@
             img {
                 position: absolute;
 
-                width: var(--ball-size);
-                height: var(--ball-size);
+                width: 100%;
+                height: auto;
 
                 top: 0;
                 left: 50%;
 
                 transform: translateX(-50%);
             }
-        }
 
-        @include media-breakpoint-down(xl) {
-            .orbit {
-                width: 15rem;
-                height: 30rem;
-            }
+            // @include media-breakpoint-down(xl) {
+            //     & {
+            //         width: 15rem;   // image size
+            //         height: 30rem;  // orbit radius
+            //     }
+            // }
+
+            // @include media-breakpoint-down(lg) {
+            //     & {
+            //         width: 12rem;   // image size
+            //         height: 22.5rem;  // orbit radius
+            //     }
+            // }
         }
 
         #ball-green {
@@ -284,5 +321,40 @@
                 }
             }
         }
+    }
+
+    $current-price-text-font-size: 3rem;
+
+    $my-current-price-block-size: 20.5rem;
+
+    $my-ball-size: 20rem;
+    $my-orbit-radius: 35rem;
+
+    $my-current-price-block-margin: my-orbit-animation-calculate-margin($my-orbit-radius, $my-current-price-block-size) 0;
+
+    // Применение начальных стилей
+    @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
+
+    // Медиа-запросы
+    @include media-breakpoint-down(xl) {
+        $current-price-text-font-size: 2.5rem;
+
+        $my-current-price-block-size: 17.5rem;
+
+        $my-ball-size: 17.5rem;
+        $my-orbit-radius: 32rem;
+
+        @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
+    }
+
+    @include media-breakpoint-down(lg) {
+        $current-price-text-font-size: 2rem;
+
+        $my-current-price-block-size: 15rem;
+
+        $my-ball-size: 12rem;
+        $my-orbit-radius: 22.5rem;
+
+        @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
     }
 }
