@@ -7,6 +7,8 @@
 
     .phone-and-email, .messengers {
         .contact-header {
+            text-align: left;
+
             // margin: 5rem 0 1.25rem 0;
             margin: 0 0 1rem 0;
     
@@ -20,9 +22,20 @@
             letter-spacing: 0.2em;
     
             color: $text_color_black;
+
+            @include media-breakpoint-down(sm) {
+                font-size: 1rem;
+
+                text-align: center;
+
+                margin: 0 0 .75rem 0;
+            }
         }
     
         .contact {
+            display: flex;
+            flex-direction: column;
+
             margin: 0;
     
             font-family: "Montserrat", sans-serif;
@@ -30,7 +43,8 @@
             font-weight: 300;
             font-style: normal;
     
-            font-size: 2rem;
+            // font-size: 2rem;
+            font-size: var(--my-text-paragraph-font-size);
             line-height: 200%;
             letter-spacing: 0.2em;
     
@@ -43,14 +57,32 @@
     
                 strong {
                     @extend .contact;
-    
-                    margin-bottom: 0.25rem;
+
+                    text-align: left;
+
+                    @include media-breakpoint-down(sm) {
+                        text-align: center;
+                    }
                 }
+            }
+
+            @include media-breakpoint-down(sm) {
+                // font-size: .75rem;
+
+                :not(:first-child) {
+                    margin-top: .25rem;
+                }
+
+                // margin: 0 0 .75rem 0;
             }
         }
     }
 
     .messengers {
         margin-top: 3rem;
+
+        @include media-breakpoint-down(sm) {
+            margin-top: 1rem;
+        }
     }
 }

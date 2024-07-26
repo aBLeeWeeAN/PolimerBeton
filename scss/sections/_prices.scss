@@ -91,15 +91,15 @@
 
                 @keyframes wobble {
                     0% {
-                        transform: translate(-45%, -52.5%) rotate(-21deg) rotate(-8deg);
+                        transform: translate(-47.5%, -52.5%) rotate(-21deg) rotate(-8deg);
                     }
 
                     50% {
-                        transform: translate(-45%, -52.5%) rotate(-21deg) rotate(8deg);
+                        transform: translate(-47.5%, -52.5%) rotate(-21deg) rotate(8deg);
                     }
 
                     100% {
-                        transform: translate(-45%, -52.5%) rotate(-21deg) rotate(-8deg);
+                        transform: translate(-47.5%, -52.5%) rotate(-21deg) rotate(-8deg);
                     }
                 }
 
@@ -354,6 +354,17 @@
 
         $my-ball-size: 12rem;
         $my-orbit-radius: 22.5rem;
+
+        @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
+    }
+
+    @include media-breakpoint-down(sm) {
+        $current-price-text-font-size: 1.25rem;
+
+        $my-current-price-block-size: 8rem;
+
+        $my-ball-size: 6rem;
+        $my-orbit-radius: 12rem;
 
         @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
     }

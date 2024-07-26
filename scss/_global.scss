@@ -3,7 +3,7 @@
  *========================================================================**/
 
 .title {
-    margin-bottom: 7.5rem;
+    margin-bottom: var(--my-text-header-title-margin-bottom);
 
     text-align: center;
 
@@ -20,11 +20,11 @@
     line-height: 150%;
 
     @include media-breakpoint-down(lg) {
-        & {
-            margin-bottom: 3.5rem;
-    
-            font-size: 3rem;
-        }
+        font-size: 3rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+        font-size: 1.35rem;
     }
 }
 
@@ -50,35 +50,49 @@
     font-variant-numeric: lining-nums;
 
     @include media-breakpoint-down(lg) {
-        & {
-            margin: 0 0 3rem 0;
-        }
+        margin: 0 0 3rem 0;
+    }
+
+    @include media-breakpoint-down(sm) {
+        margin: 0 0 1.5rem 0;
+
+        font-size: 1rem;
     }
 }
 
 
 section {
-    padding: 10rem 0 10rem 0;
+    padding: 10rem 0;
 
     &:not(:first-child) {
         padding: 10rem 0 0 0;
     }
 
     &:last-child {
-        padding: 10rem 0 10rem 0;
+        padding: 10rem 0;
     }
-}
 
-@include media-breakpoint-down(lg) {
-    section {
-        padding: 7.5rem 0 7.5rem 0;
-
+    @include media-breakpoint-down(lg) {
+        padding: 7.5rem 0;
+    
         &:not(:first-child) {
             padding: 7.5rem 0 0 0;
         }
-
+    
         &:last-child {
-            padding: 7.5rem 0 7.5rem 0;
+            padding: 7.5rem 0;
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        padding: 4.5rem 0;
+    
+        &:not(:first-child) {
+            padding: 4.5rem 0 0 0;
+        }
+    
+        &:last-child {
+            padding: 4.5rem 0;
         }
     }
 }
@@ -110,5 +124,16 @@ section {
         height: auto;
 
         object-fit: cover;
+    }
+
+    @include media-breakpoint-down(sm) {
+        padding: .3rem;
+    }
+}
+
+.container {
+
+    @include media-breakpoint-down(sm) {
+        padding: 0 1rem;
     }
 }

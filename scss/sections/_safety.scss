@@ -123,12 +123,18 @@
             // }
 
             @include media-breakpoint-down(lg) {
-                & {
-                    // margin-bottom: 1.5rem;
+                // margin-bottom: 1.5rem;
     
-                    &#safety-doc-6 {
-                        margin: 0;
-                    }
+                &#safety-doc-6 {
+                    margin: 0;
+                }
+            }
+
+            @include media-breakpoint-down(sm) {
+                margin-bottom: 1rem;
+    
+                &#safety-doc-6 {
+                    margin: 0;
                 }
             }
         }

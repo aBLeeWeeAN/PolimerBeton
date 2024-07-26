@@ -30,9 +30,11 @@
             text-transform: none;
     
             @include media-breakpoint-down(lg) {
-                & {
-                    margin: 1.5rem 0 3rem 0;
-                }
+                margin: 1.5rem 0 3rem 0;
+            }
+
+            @include media-breakpoint-down(sm) {
+                margin: .9rem 0 1.5rem 0;
             }
         }
     
@@ -45,9 +47,19 @@
             text-transform: none;
     
             @include media-breakpoint-down(lg) {
-                & {
-                    margin: 1.5rem 0 3.5rem 0;
-                }
+                margin: 1.5rem 0 3.5rem 0;
+            }
+
+            @include media-breakpoint-down(sm) {
+                margin: .9rem 0 var(--my-text-header-title-margin-bottom) 0;
+            }
+        }
+
+        .last {
+            @extend .image-caption-after;
+
+            @include media-breakpoint-down(sm) {
+                margin: .9rem 0 0 0;
             }
         }
     }

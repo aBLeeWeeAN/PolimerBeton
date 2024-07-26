@@ -12,7 +12,10 @@
     li {
         position: relative;
 
-        padding: 1rem 1.5rem 1rem 1.5rem;
+        list-style: none;
+        list-style-type: none;
+
+        padding: 1em 1.5em;
 
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
@@ -28,14 +31,54 @@
 
         color: $text_color_black;
 
-        border-radius: 1.5rem;
+        border-radius: 1.5em;
         background-color: rgba($color: #fff, $alpha: 0.05);
-
-        border-radius: 1.5rem;
 
         -webkit-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
         -moz-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
         box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
+        
+        @include media-breakpoint-down(sm) {
+            padding: .65em .9em;
+
+            border-radius: 0.75em;
+
+            // list-style-type: space-counter;
+
+            // background: none;
+
+            // border: none;
+
+            // text-indent: 2em;
+
+            // -webkit-box-shadow: none;
+            // -moz-box-shadow: none;
+            // box-shadow: none;
+
+            &:not(:first-child) {
+                margin-top: var(--my-text-paragraph-margin-top);
+            }
+        }
+    }
+
+    p {
+        @extend li;
+
+        padding: 0;
+
+        background: none;
+
+        border: none;
+
+        text-indent: 3.1em;
+
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+
+        &:not(:first-child) {
+            margin-top: var(--my-text-paragraph-margin-top);
+        }
     }
 
     img {

@@ -78,7 +78,7 @@
         line-height: 150%;
 
         text-align: justify;
-        text-indent: 7rem;
+        text-indent: 3.1em;
 
         color: $text_color_black;
 
@@ -91,11 +91,13 @@
 
     .concretes-images {
         margin-top: 7.5rem;
-    }
-}
 
-@include media-breakpoint-down(lg) {
-    .concretes-images {
-        margin-top: 3.5rem;
+        @include media-breakpoint-down(lg) {
+            margin-top: 3.5rem;
+        }
+
+        @include media-breakpoint-down(sm) {
+            margin-top: 2rem;
+        }
     }
 }

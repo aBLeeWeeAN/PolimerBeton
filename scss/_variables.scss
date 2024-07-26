@@ -36,20 +36,32 @@
  *========================================================================**/
 
  :root {
+    --my-text-header-title-margin-bottom: 7.5rem;
+
     --my-text-paragraph-margin-top: 1.75rem;
     --my-text-paragraph-font-size: 1.5rem;
     --my-text-paragraph-letter-spacing: 0.2em;
 
     --my-img-caption-font-size: 2rem;
-}
 
-@include media-breakpoint-down(xl) {
-    :root {
+    @include media-breakpoint-down(xl) {
+        --my-text-header-title-margin-bottom: 3.5rem;
+
         --my-text-paragraph-margin-top: 1.75rem;
         --my-text-paragraph-font-size: 1.5rem;
         --my-text-paragraph-letter-spacing: 0.2em;
         
         --my-img-caption-font-size: 2rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+        --my-text-header-title-margin-bottom: 2rem;
+
+        --my-text-paragraph-margin-top: 0.78rem;
+        --my-text-paragraph-font-size: .75rem;
+        --my-text-paragraph-letter-spacing: 0.2em;
+        
+        --my-img-caption-font-size: 1rem;
     }
 }
 
