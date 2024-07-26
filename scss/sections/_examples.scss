@@ -64,6 +64,7 @@
         }
     }
 
+
     #example-1 {
         /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#4caf50+0,ffeb3b+50,f44336+100 */
         background: rgb(76, 175, 80);
@@ -84,6 +85,27 @@
         /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4caf50', endColorstr='#f44336', GradientType=1);
         /* IE6-8 fallback on horizontal gradient */
+
+        background-size: 400% 400%;
+
+        // img {
+        //     visibility: hidden;
+        // }
+
+        animation: gradient-animation-ex-1 10s ease-in-out infinite;
+
+        @keyframes gradient-animation-ex-1 {
+            0% {
+                background-position: 0% 100%;
+            }
+            50% {
+                background-position: 100% 0%;
+            }
+
+            100% {
+                background-position: 0% 100%;
+            }
+        }
     }
 
     #example-2 {
@@ -106,6 +128,27 @@
         /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f44336', endColorstr='#4caf50', GradientType=1);
         /* IE6-8 fallback on horizontal gradient */
+
+        background-size: 400% 400%;
+
+        // img {
+        //     visibility: hidden;
+        // }
+
+        animation: gradient-animation-ex-2 10s ease-in-out infinite;
+
+        @keyframes gradient-animation-ex-2 {
+            0% {
+                background-position: 100% 100%;
+            }
+            50% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
+        }
     }
 
     #example-3 {
@@ -128,6 +171,27 @@
         /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4caf50', endColorstr='#f44336', GradientType=1);
         /* IE6-8 fallback on horizontal gradient */
+
+        background-size: 400% 400%;
+
+        // img {
+        //     visibility: hidden;
+        // }
+
+        animation: gradient-animation-ex-3 10s ease-in-out infinite;
+
+        @keyframes gradient-animation-ex-3 {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+
+            100% {
+                background-position: 0% 0%;
+            }
+        }
     }
 
     #example-4 {
@@ -150,28 +214,28 @@
         /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f44336', endColorstr='#4caf50', GradientType=1);
         /* IE6-8 fallback on horizontal gradient */
+
+        background-size: 400% 400%;
+
+        // img {
+        //     visibility: hidden;
+        // }
+
+        animation: gradient-animation-ex-4 10s ease-in-out infinite;
+
+        @keyframes gradient-animation-ex-4 {
+            0% {
+                background-position: 100% 0%;
+            }
+            50% {
+                background-position: 0% 100%;
+            }
+
+            100% {
+                background-position: 100% 0%;
+            }
+        }
     }
-
-    // @include media-breakpoint-down(xxl) {
-    //     .image-with-gradient-border {
-    //         width: 32.5rem;
-    //         height: auto;
-    //     }
-    // }
-
-    // @include media-breakpoint-down(xl) {
-    //     .image-with-gradient-border {
-    //         width: 27.5rem;
-    //         height: auto;
-    //     }
-    // }
-
-    // @include media-breakpoint-down(lg) {
-    //     .image-with-gradient-border {
-    //         width: 37.5rem;
-    //         height: auto;
-    //     }
-    // }
 
     #bc-circle {
         z-index: -5;
