@@ -7732,6 +7732,7 @@ header #bc-square-2 {
 }
 
 .logo, .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo {
+  font-size: 1rem;
   padding: 0;
   display: inline-flex;
   align-items: center;
