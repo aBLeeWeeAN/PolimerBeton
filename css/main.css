@@ -7703,22 +7703,72 @@ header {
 header #bc-square-1 {
   z-index: -5;
   position: absolute;
-  width: 120%;
-  height: 120%;
+  width: 10000px;
+  height: 3000px;
   background-color: rgba(209, 196, 233, 0.1019607843);
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 10%) rotate(6deg);
+  transform: translate(-50%, 1.9%) rotate(6deg);
+}
+@media (max-width: 1399.98px) {
+  header #bc-square-1 {
+    transform: translate(-50%, 0.8%) rotate(6deg);
+  }
+}
+@media (max-width: 1199.98px) {
+  header #bc-square-1 {
+    transform: translate(-50%, 1.8%) rotate(10deg);
+  }
+}
+@media (max-width: 991.98px) {
+  header #bc-square-1 {
+    transform: translate(-50%, 0.7%) rotate(3.8deg);
+  }
+}
+@media (max-width: 767.98px) {
+  header #bc-square-1 {
+    transform: translate(-50%, 0.5%) rotate(3.14deg);
+  }
+}
+@media (max-width: 575.98px) {
+  header #bc-square-1 {
+    transform: translate(-50%, 0.37%) rotate(4deg);
+  }
 }
 header #bc-square-2 {
   z-index: -6;
   position: absolute;
-  width: 120%;
-  height: 120%;
+  width: 10000px;
+  height: 3000px;
   background-color: rgba(255, 224, 178, 0.1019607843);
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -5%) rotate(-19deg);
+  transform: translate(-44.3%, -5%) rotate(-19deg);
+}
+@media (max-width: 1399.98px) {
+  header #bc-square-2 {
+    transform: translate(-43.7%, -5%) rotate(-30deg);
+  }
+}
+@media (max-width: 1199.98px) {
+  header #bc-square-2 {
+    transform: translate(-43.25%, -5%) rotate(-37deg);
+  }
+}
+@media (max-width: 991.98px) {
+  header #bc-square-2 {
+    transform: translate(-48%, 0%) rotate(-19deg);
+  }
+}
+@media (max-width: 767.98px) {
+  header #bc-square-2 {
+    transform: translate(-47.5%, 0%) rotate(-19deg);
+  }
+}
+@media (max-width: 575.98px) {
+  header #bc-square-2 {
+    transform: translate(-47.6%, 0%) rotate(-17deg);
+  }
 }
 header .navbar {
   margin: 0;
@@ -7727,8 +7777,7 @@ header .navbar {
 header .navbar .navbar-brand {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 0;
+  justify-content: start;
   margin: 0;
 }
 header .navbar .navbar-brand .logo, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-title .navbar-brand .offcanvas-logo {
@@ -7784,7 +7833,7 @@ header .navbar .contacts-and-settings {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
 }
 header .navbar .contacts-and-settings .contacts {
   display: inherit;
@@ -7928,6 +7977,7 @@ header .navbar .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), head
 @media (min-width: 992px) {
   header .navbar .offcanvas {
     box-shadow: none;
+    backdrop-filter: none;
   }
 }
 header .navbar .menu {
