@@ -12,30 +12,72 @@
         z-index: -5;
 
         position: absolute;
-        width: 120%;
-        height: 120%;
+        width: 10000px;
+        height: 3000px;
 
         background-color: $header_bc_color_square_1;
+        // background-color: none;
 
         top: 50%;
         left: 50%;
 
-        transform: translate(-50%, 10%) rotate(6deg);
+        transform: translate(-50%, 1.9%) rotate(6deg);
+
+        @include media-breakpoint-down(xxl) {
+            transform: translate(-50%, 0.8%) rotate(6deg);
+        }
+
+        @include media-breakpoint-down(xl) {
+            transform: translate(-50%, 1.8%) rotate(10deg);
+        }
+
+        @include media-breakpoint-down(lg) {
+            transform: translate(-50%, 0.7%) rotate(3.8deg);
+        }
+
+        @include media-breakpoint-down(md) {
+            transform: translate(-50%, 0.5%) rotate(3.14deg);
+        }
+
+        @include media-breakpoint-down(sm) {
+            transform: translate(-50%, 0.37%) rotate(4deg);
+        }
     }
 
     #bc-square-2 {
         z-index: -6;
 
         position: absolute;
-        width: 120%;
-        height: 120%;
+        width: 10000px;
+        height: 3000px;
 
         background-color: $header_bc_color_square_2;
+        // background-color: red;
 
         top: 50%;
         left: 50%;
 
-        transform: translate(-50%, -5%) rotate(-19deg);
+        transform: translate(-44.3%, -5%) rotate(-19deg);
+
+        @include media-breakpoint-down(xxl) {
+            transform: translate(-43.7%, -5%) rotate(-30deg);
+        }
+
+        @include media-breakpoint-down(xl) {
+            transform: translate(-43.25%, -5%) rotate(-37deg);
+        }
+
+        @include media-breakpoint-down(lg) {
+            transform: translate(-48%, 0%) rotate(-19deg);
+        }
+
+        @include media-breakpoint-down(md) {
+            transform: translate(-47.5%, 0%) rotate(-19deg);
+        }
+
+        @include media-breakpoint-down(sm) {
+            transform: translate(-47.6%, 0%) rotate(-17deg);
+        }
     }
 
     .navbar {
@@ -44,10 +86,11 @@
     
         .navbar-brand {
             display: inline-flex;
+
             align-items: center;
-            justify-content: center;
+            justify-content: start;
     
-            padding: 0;
+            // padding: 0;
             margin: 0;
     
             .logo {
@@ -136,7 +179,7 @@
             flex-direction: row;
         
             align-items: center;
-            justify-content: center;
+            justify-content: end;
         
             .contacts {
                 display: inherit;
