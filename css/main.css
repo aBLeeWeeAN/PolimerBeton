@@ -7970,6 +7970,16 @@ header #bc-square-2 {
     text-align: left;
   }
 }
+@media (max-width: 991.98px) {
+  header {
+    padding: 2rem 0;
+  }
+}
+@media (max-width: 575.98px) {
+  header {
+    padding: 1rem 0;
+  }
+}
 
 /**========================================================================
  **                            HERO SECTION
