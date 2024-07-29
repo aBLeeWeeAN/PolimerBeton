@@ -12,7 +12,7 @@
     overflow-y: scroll;
     scroll-behavior: smooth;
 
-    font-size: 16px;
+    font-size: var(--base-font-size);
     margin: 0 auto;
 
     // overflow-anchor: none;

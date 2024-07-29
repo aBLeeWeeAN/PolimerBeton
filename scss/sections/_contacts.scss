@@ -7,7 +7,7 @@
 
     .phone-and-email, .messengers {
         .contact-header {
-            text-align: left;
+            text-align: center;
 
             // margin: 5rem 0 1.25rem 0;
             margin: 0 0 1rem 0;
@@ -58,7 +58,7 @@
                 strong {
                     @extend .contact;
 
-                    text-align: left;
+                    text-align: center;
 
                     @include media-breakpoint-down(sm) {
                         text-align: center;

@@ -82,7 +82,7 @@
 
         color: $text_color_black;
 
-        hyphens: auto;
+        hyphens: none;
 
         &:not(:first-child) {
             margin-top: var(--my-text-paragraph-margin-top);

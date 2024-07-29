@@ -95,8 +95,8 @@
         }
     
         @include media-breakpoint-down(xl) {
-            height: 20rem;
-            width: 20rem;
+            height: 30rem;
+            width: 30rem;
         }
     }
 
@@ -123,6 +123,19 @@
             --squircle-radius: 1.25rem;
 
             mask-image: paint(squircle);
+
+            @include media-breakpoint-down(xl) {
+                padding: 0.25rem;
+
+                height: 3.8rem;
+
+                border-radius: .625rem;
+
+                --squircle-smooth: 0.78;
+                --squircle-radius: .625rem;
+
+                mask-image: paint(squircle);
+            }
 
             @include media-breakpoint-down(sm) {
                 padding: 0.125rem;
@@ -172,7 +185,20 @@
             }
 
             &:focus::placeholder {
-                color: #000;
+                color: $text_color_black;
+            }
+
+            @include media-breakpoint-down(xl) {
+                padding: .625rem .875rem;
+
+                border-radius: .625rem;
+
+                --squircle-smooth: 0.78;
+                --squircle-radius: .625rem;
+
+                mask-image: paint(squircle);
+
+                font-size: 1rem;
             }
 
             @include media-breakpoint-down(sm) {
@@ -222,6 +248,21 @@
                 color: #fff;
             }
 
+            @include media-breakpoint-down(xl) {
+                margin-top: 1.5rem;
+
+                height: 3.8rem;
+
+                border-radius: .625rem;
+
+                --squircle-smooth: 0.78;
+                --squircle-radius: .625rem;
+
+                mask-image: paint(squircle);
+
+                font-size: 1rem;
+            }
+
             @include media-breakpoint-down(sm) {
                 margin-top: 1.5rem;
 
@@ -250,7 +291,7 @@
             font-weight: 600;
             font-style: normal;
 
-            font-size: 0.875rem;
+            font-size: 1rem;
             letter-spacing: 0.0625rem;
 
             text-align: center;
@@ -323,11 +364,15 @@
             }
 
             @include media-breakpoint-down(xxl) {
-                font-size: 0.8125rem;
+                font-size: 1rem;
+            }
+
+            @include media-breakpoint-down(xl) {
+                font-size: .91rem;
             }
 
             @include media-breakpoint-down(lg) {
-                font-size: 1.2rem;
+                font-size: .86rem;
             }
 
             @include media-breakpoint-down(sm) {

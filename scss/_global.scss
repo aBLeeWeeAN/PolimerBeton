@@ -2,7 +2,7 @@
  **                            GLOBAL STYLES
  *========================================================================**/
 
-.title {
+.headings {
     margin-bottom: var(--my-text-header-title-margin-bottom);
 
     text-align: center;
@@ -15,20 +15,25 @@
 
     text-transform: uppercase;
 
-    font-size: 4rem;
+    // font-size: 4rem;
+    font-size: var(--my-text-headings-font-size);
     letter-spacing: 0.3em;
     line-height: 150%;
 
+    @include media-breakpoint-down(xl) {
+        font-size: 2.75rem;
+    }
+
     @include media-breakpoint-down(lg) {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 
     @include media-breakpoint-down(sm) {
-        font-size: 1.35rem;
+        font-size: 1.3125rem;
     }
 }
 
-.subtitle {
+.subheadings {
     // margin: 7.5rem 0 5rem 0;
     margin: 0 0 5rem 0;
 
@@ -49,14 +54,19 @@
 
     font-variant-numeric: lining-nums;
 
+    @include media-breakpoint-down(xl) {
+        font-size: 1.5rem;
+        margin: 0 0 2.5rem 0;
+    }
+
     @include media-breakpoint-down(lg) {
-        margin: 0 0 3rem 0;
+        margin: 0 0 2rem 0;
     }
 
     @include media-breakpoint-down(sm) {
         margin: 0 0 1.5rem 0;
 
-        font-size: 1rem;
+        font-size: 1.0625rem;
     }
 }
 
@@ -70,6 +80,18 @@ section {
 
     &:last-child {
         padding: 10rem 0;
+    }
+
+    @include media-breakpoint-down(xl) {
+        padding: 6.5rem 0;
+    
+        &:not(:first-child) {
+            padding: 6.5rem 0 0 0;
+        }
+    
+        &:last-child {
+            padding: 6.5rem 0;
+        }
     }
 
     @include media-breakpoint-down(lg) {
@@ -133,7 +155,7 @@ section {
 
 .container {
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(mobile-m) {
         padding: 0 1rem;
     }
 }

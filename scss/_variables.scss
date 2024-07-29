@@ -1,4 +1,72 @@
 /**========================================================================
+ **                            CSS Variables
+ *========================================================================**/
+
+ :root {
+    --base-font-size: 21px;
+
+    // 21px
+    --my-text-paragraph-font-size: 1rem;
+    --my-text-paragraph-letter-spacing: 0.17em;
+    --my-text-paragraph-margin-top: 1.75rem;
+
+    // headings 1.96 * paragraph font-size
+    // 48px
+    --my-text-headings-font-size: 1.96rem;
+    --my-text-headings-margin-bottom: 7.5rem;
+
+    // subheadings 1.9 * paragraph font-size
+    // 40px
+    --my-text-subheadings-font-size: 2.5rem;        // 40 px
+
+    // --my-text-header-title-margin-bottom: 7.5rem;
+
+    // --my-text-paragraph-margin-top: 1.75rem;
+    // --my-text-paragraph-font-size: 1.3125rem;       // 21px
+    // --my-text-paragraph-letter-spacing: 0.17em;
+
+    --my-img-caption-font-size: 1.75rem;
+
+    @include media-breakpoint-down(xl) {
+        --my-text-header-title-margin-bottom: 2.5rem;
+
+        --my-text-paragraph-margin-top: 1.15rem;
+        --my-text-paragraph-font-size: 1.5rem;
+        --my-text-paragraph-letter-spacing: 0.2em;
+        
+        --my-img-caption-font-size: 1.4rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+        --my-text-header-title-margin-bottom: 2rem;
+
+        --my-text-paragraph-margin-top: 0.78rem;
+        --my-text-paragraph-font-size: .875rem;
+        --my-text-paragraph-letter-spacing: 0.2em;
+        
+        --my-img-caption-font-size: 1rem;
+    }
+}
+
+// @include media-breakpoint-down(lg) {
+//     :root {
+//         --my-text-paragraph-margin-top: 1.75rem;
+//         --my-text-paragraph-font-size: 1.375rem;
+//         --my-text-paragraph-letter-spacing: 0.2em;
+
+//         --my-img-caption-font-size: 1.75rem;
+
+//         // price and orbit animation block
+//         --my-current-price-block-size: 20.5rem: 
+
+//         --my-ball-size: 20rem;
+//         --my-orbit-radius: 35rem;
+//     }
+// }
+
+
+
+/**========================================================================
  **                            SASS Variables
  *========================================================================**/
 
@@ -28,55 +96,4 @@
 //     $my-orbit-radius: 22.5rem;
 
 //     $my-current-price-block-margin: my-orbit-animation-calculate-margin($my-orbit-radius, $my-current-price-block-size);
-// }
-
-
-/**========================================================================
- **                            CSS Variables
- *========================================================================**/
-
- :root {
-    --my-text-header-title-margin-bottom: 7.5rem;
-
-    --my-text-paragraph-margin-top: 1.75rem;
-    --my-text-paragraph-font-size: 1.5rem;
-    --my-text-paragraph-letter-spacing: 0.2em;
-
-    --my-img-caption-font-size: 2rem;
-
-    @include media-breakpoint-down(xl) {
-        --my-text-header-title-margin-bottom: 3.5rem;
-
-        --my-text-paragraph-margin-top: 1.75rem;
-        --my-text-paragraph-font-size: 1.5rem;
-        --my-text-paragraph-letter-spacing: 0.2em;
-        
-        --my-img-caption-font-size: 2rem;
-    }
-
-    @include media-breakpoint-down(sm) {
-        --my-text-header-title-margin-bottom: 2rem;
-
-        --my-text-paragraph-margin-top: 0.78rem;
-        --my-text-paragraph-font-size: .75rem;
-        --my-text-paragraph-letter-spacing: 0.2em;
-        
-        --my-img-caption-font-size: 1rem;
-    }
-}
-
-// @include media-breakpoint-down(lg) {
-//     :root {
-//         --my-text-paragraph-margin-top: 1.75rem;
-//         --my-text-paragraph-font-size: 1.375rem;
-//         --my-text-paragraph-letter-spacing: 0.2em;
-
-//         --my-img-caption-font-size: 1.75rem;
-
-//         // price and orbit animation block
-//         --my-current-price-block-size: 20.5rem: 
-
-//         --my-ball-size: 20rem;
-//         --my-orbit-radius: 35rem;
-//     }
 // }

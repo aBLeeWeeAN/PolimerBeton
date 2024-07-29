@@ -22,9 +22,9 @@
         align-items: center;
 
         .image-caption-before {
-            @extend .subtitle;
+            @extend .subheadings;
     
-            margin: 2.5rem 0 0 0;
+            margin: 1.5rem 0 0 0;
     
             font-size: var(--my-img-caption-font-size);
             text-transform: none;
@@ -39,9 +39,9 @@
         }
     
         .image-caption-after {
-            @extend .subtitle;
+            @extend .subheadings;
     
-            margin: 2.5rem 0 0 0;
+            margin: 1.5rem 0 0 0;
     
             font-size: var(--my-img-caption-font-size);
             text-transform: none;

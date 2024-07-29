@@ -6,7 +6,7 @@
     // margin: 10rem 0 10rem 0;
 
     & strong {
-        @extend .subtitle;
+        @extend .subheadings;
     }
 
     .current-price-animation-container {
