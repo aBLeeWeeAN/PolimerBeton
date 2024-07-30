@@ -2,84 +2,15 @@
  **                            GLOBAL STYLES
  *========================================================================**/
 
-.headings {
-    margin-bottom: var(--my-text-header-title-margin-bottom);
-
-    text-align: center;
-
-    font-family: "Russo One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-
-    color: $text_color_black;
-
-    text-transform: uppercase;
-
-    // font-size: 4rem;
-    font-size: var(--my-text-headings-font-size);
-    letter-spacing: 0.3em;
-    line-height: 150%;
-
-    @include media-breakpoint-down(xl) {
-        font-size: 2.75rem;
-    }
-
-    @include media-breakpoint-down(lg) {
-        font-size: 2.5rem;
-    }
-
-    @include media-breakpoint-down(sm) {
-        font-size: 1.3125rem;
-    }
-}
-
-.subheadings {
-    // margin: 7.5rem 0 5rem 0;
-    margin: 0 0 5rem 0;
-
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-
-    font-size: 2rem;
-    letter-spacing: 0.2em;
-    text-align: center;
-
-    line-height: 150%;
-
-    color: $text_color_black;
-
-    text-transform: uppercase;
-
-    font-variant-numeric: lining-nums;
-
-    @include media-breakpoint-down(xl) {
-        font-size: 1.5rem;
-        margin: 0 0 2.5rem 0;
-    }
-
-    @include media-breakpoint-down(lg) {
-        margin: 0 0 2rem 0;
-    }
-
-    @include media-breakpoint-down(sm) {
-        margin: 0 0 1.5rem 0;
-
-        font-size: 1.0625rem;
-    }
-}
-
-
 section {
-    padding: 10rem 0;
+    padding: var(--my-section-padding-value) 0;
 
     &:not(:first-child) {
-        padding: 10rem 0 0 0;
+        padding: var(--my-section-padding-value) 0 0 0;
     }
 
     &:last-child {
-        padding: 10rem 0;
+        padding: var(--my-section-padding-value) 0;
     }
 
     @include media-breakpoint-down(xl) {
@@ -119,6 +50,117 @@ section {
     }
 }
 
+.container {
+
+    @include media-breakpoint-down(mobile-m) {
+        padding: 0 1rem;
+    }
+}
+
+.heading {
+    margin-bottom: var(--my-text-heading-margin-bottom);
+
+    text-align: center;
+
+    // font-family: "Russo One", sans-serif;
+    // font-weight: 400;
+    // font-style: normal;
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: var(--my-text-heading-font-weight);
+    font-style: normal;
+
+    color: var(--my-text-heading-color);
+
+    text-transform: uppercase;
+
+    // font-size: 4rem;
+    font-size: var(--my-text-heading-font-size);
+    letter-spacing: var(--my-text-heading-letter-spacing);
+    line-height: var(--my-text-heading-line-height);
+
+    @include media-breakpoint-down(xl) {
+        font-size: 2.75rem;
+    }
+
+    @include media-breakpoint-down(lg) {
+        font-size: 2.5rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+        font-size: 1.3125rem;
+    }
+}
+
+.subheading {
+    // margin: 7.5rem 0 5rem 0;
+    margin-bottom: var(--my-text-subheading-margin-bottom);
+
+    // font-family: "Raleway", sans-serif;
+    // font-optical-sizing: auto;
+    // font-weight: 600;
+    // font-style: normal;
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: var(--my-text-subheading-font-weight);
+    font-style: normal;
+
+    font-size: var(--my-text-subheading-font-size);
+    letter-spacing: var(--my-text-subheading-letter-spacing);
+    text-align: center;
+
+    line-height: var(--my-text-subheading-line-height);
+
+    color: $text_color_black;
+
+    text-transform: none;
+
+    font-variant-numeric: lining-nums;
+
+    @include media-breakpoint-down(xl) {
+        font-size: 1.5rem;
+        margin: 0 0 2.5rem 0;
+    }
+
+    @include media-breakpoint-down(lg) {
+        margin: 0 0 2rem 0;
+    }
+
+    @include media-breakpoint-down(sm) {
+        margin: 0 0 1.5rem 0;
+
+        font-size: 1.0625rem;
+    }
+}
+
+.caption {
+    
+    margin-top: var(--my-text-caption-margin-top);
+    margin-bottom: var(--my-text-caption-margin-bottom);
+
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+    // font-family: "Montserrat", sans-serif;
+    // font-optical-sizing: auto;
+    // font-weight: 400;
+    // font-style: normal;
+    
+    font-size: var(--my-text-caption-font-size);
+
+    letter-spacing: var(--my-text-caption-letter-spacing);
+    line-height: var(--my-text-caption-line-height);
+
+    color: $text_color_black;
+
+    text-align: center;
+    text-transform: none;
+}
+
 .image-with-gradient-border {
     position: relative;
     display: inline-block;
@@ -150,12 +192,5 @@ section {
 
     @include media-breakpoint-down(sm) {
         padding: .3rem;
-    }
-}
-
-.container {
-
-    @include media-breakpoint-down(mobile-m) {
-        padding: 0 1rem;
     }
 }

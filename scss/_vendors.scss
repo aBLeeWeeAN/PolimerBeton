@@ -59,7 +59,7 @@ $offcanvas-transition-duration:     .3s;
 // $offcanvas-border-color:            $modal-content-border-color;
 $offcanvas-border-width:            0;
 // $offcanvas-title-line-height:       $modal-title-line-height;
-$offcanvas-bg-color:                rgba($color: $finally_bc_color, $alpha: 0.87);
+$offcanvas-bg-color:                rgba($color: var(--finally-bc-color), $alpha: 0.87);
 // $offcanvas-color:                   var(--#{$prefix}body-color);
 $offcanvas-box-shadow:              none;
 // $offcanvas-backdrop-bg:             $modal-backdrop-bg;

@@ -13,9 +13,9 @@
     //     // align-items: center;
     // }
 
-    .concretes-pictures {
-        height: 41rem;
-        width: 41rem;
+    .image-container {
+        width: 100%;
+        height: 25rem;
 
         position: relative;
 
@@ -91,12 +91,10 @@
 
         @include media-breakpoint-down(xxl) {
             height: 35.5rem;
-            width: 35.5rem;
         }
     
         @include media-breakpoint-down(xl) {
             height: 30rem;
-            width: 30rem;
         }
     }
 
@@ -105,14 +103,16 @@
         flex-direction: column;
 
         :not(:first-child) {
-            margin-top: .75rem;
+            margin-top: .6rem;
         }
 
         .form-field {
-            width: 100%;
-            height: 5rem;
+            font-size: inherit;
 
-            padding: 0.25rem;
+            width: 100%;
+            height: 3.5rem;
+
+            padding: 0.2rem;
 
             border: none;
             border-radius: 1.25rem;
@@ -153,31 +153,33 @@
 
         input[type="text"],
         input[type="tel"] {
+            font-size: inherit;
+
             width: 100%;
             height: 100%;
 
-            padding: 1.25rem 1.75rem;
+            padding: .9rem 1.125rem;
 
             border: none;
-            border-radius: 1.25rem;
+            border-radius: 1.025rem;
 
             background-color: color-mix(in srgb, $finally_bc_color 100%, #D1C4E9 5%);
 
-            --squircle-smooth: 1.0;
+            --squircle-smooth: 1;
             --squircle-radius: 1.25rem;
 
             mask-image: paint(squircle);
 
             font-family: "Montserrat", sans-serif;
             font-optical-sizing: auto;
-            font-weight: 600;
+            font-weight: 400;
             font-style: normal;
 
-            font-size: 1.25rem;
-            line-height: 200%;
-            letter-spacing: 0.2em;
+            font-size: var(--my-text-paragraph-font-size);
+            line-height: var(--my-text-paragraph-line-height);
+            letter-spacing: var(--my-text-paragraph-letter-spacing);
 
-            color: $text_color_black;
+            color: var(--my-text-paragraph-color);
 
             &:focus,
             &:active {
@@ -185,7 +187,7 @@
             }
 
             &:focus::placeholder {
-                color: $text_color_black;
+                color: var(--my-text-paragraph-color);
             }
 
             @include media-breakpoint-down(xl) {
@@ -216,10 +218,12 @@
         }
 
         #feedback-form-submit-button {
-            margin-top: 2.25rem;
+            // font-size: inherit;
+
+            margin-top: 1.25rem;
 
             width: 100%;
-            height: 5rem;
+            height: 3.5rem;
 
             border: none;
             border-radius: 1.25rem;
@@ -235,14 +239,14 @@
             font-weight: 600;
             font-style: normal;
 
-            font-size: 1.25rem;
-            line-height: 200%;
-            letter-spacing: 0.2em;
+            // font-size: 1.25em;
+            line-height: var(--my-text-paragraph-line-height);
+            letter-spacing: var(--my-text-paragraph-letter-spacing);
 
             text-align: center;
-            color: $text_color_white;
+            color: var(--my-text-paragraph-color-alt);
 
-            text-transform: uppercase;
+            text-transform: none;
 
             &:hover {
                 color: #fff;
@@ -280,6 +284,8 @@
         }
 
         .checkbox-privacy-policy {
+            margin-top: .85rem;
+
             display: flex;
             align-items: center;
             justify-content: center;
@@ -291,20 +297,20 @@
             font-weight: 600;
             font-style: normal;
 
-            font-size: 1rem;
+            font-size: .8rem;
             letter-spacing: 0.0625rem;
 
             text-align: center;
-            color: $text_color_black;
+            color: var(--my-text-paragraph-color);
 
             input[type="checkbox"] {
                 appearance: none;
 
-                width: 1.75rem;
-                height: 1.75rem;
+                width: 1.75em;
+                height: 1.75em;
 
                 border: 0.125rem solid $color_deep_purple_700;
-                border-radius: 100%;
+                border-radius: 50%;
 
                 position: relative;
                 cursor: pointer;

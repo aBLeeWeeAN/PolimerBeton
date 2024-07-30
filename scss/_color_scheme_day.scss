@@ -2,20 +2,36 @@
  **                            COLORS
  *========================================================================**/
 
+:root {
+    --bc-color: #fff;
+    // --fr-color: #EFF8E2;
+    --fr-color: #BF360C;
+
+    --finally-bc-color: color-mix(in srgb, var(--bc-color), var(--fr-color) 0%);
+    // --finally-bc-color: #F7F3E3;
+
+    --my-text-heading-color: #212121de;
+
+    --my-text-paragraph-color: #000000de;
+    --my-text-paragraph-color-alt: #ffffffde;
+}
+
  $header_bc_color_square_1: #D1C4E91A;
  $header_bc_color_square_2: #FFE0B21A;
- 
- $button_size: 3.25rem;
  
  $bc_color: #fff;
  // $fr_color: #FFE0B2; // 100
  $fr_color: #FF9800; // 500
  // $fr_color: #F57C00; // 700
  
- $color_deep_purple_700: #512DA8;
+ $fr_color:  #FF5252; // 200
+ 
+ $color_deep_purple_700: #573280;
+ $color_deep_purple_700: #4527A0;
  
  $text_color_white: #ffffffde;
  $text_color_black: #000000de;
+//  $text_color_black: #23022Ede;
  
  // $finally_bc_color: color-mix(in srgb, $bc_color, $fr_color 4%);
  $finally_bc_color: #fffbf6;

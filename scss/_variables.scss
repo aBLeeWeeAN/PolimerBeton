@@ -7,25 +7,69 @@
 
     // 21px
     --my-text-paragraph-font-size: 1rem;
+    --my-text-paragraph-font-weight: 400;
+
     --my-text-paragraph-letter-spacing: 0.17em;
-    --my-text-paragraph-margin-top: 1.75rem;
+
+    --my-text-paragraph-margin-top: .75em;
+
+    --my-text-paragraph-line-height: 1.5em;
+    --my-text-paragraph-text-indent: 4.75em;
+
+    // h1
+    // 105px
+    --my-text-h1-font-size: 5rem;
+    --my-text-h1-font-weight: 400;
+
+    --my-text-h1-letter-spacing: 0.22em;
+    --my-text-h1-line-height: 1em;
 
     // headings 1.96 * paragraph font-size
     // 48px
-    --my-text-headings-font-size: 1.96rem;
-    --my-text-headings-margin-bottom: 7.5rem;
+    --my-text-heading-font-size: 1.96rem;
+    --my-text-heading-font-weight: 400;
+
+    --my-text-heading-letter-spacing: 0.22em;
+    --my-text-heading-margin-bottom: 1.3em;
+    --my-text-heading-line-height: 1.5em;
 
     // subheadings 1.9 * paragraph font-size
     // 40px
-    --my-text-subheadings-font-size: 2.5rem;        // 40 px
+    --my-text-subheading-font-size: 1.25rem;
+    --my-text-subheading-font-weight: 400;
 
-    // --my-text-header-title-margin-bottom: 7.5rem;
+    --my-text-subheading-letter-spacing: 0.14em;
+    --my-text-subheading-margin-bottom: 1.8em;
+    --my-text-subheading-line-height: 1.5em;
 
-    // --my-text-paragraph-margin-top: 1.75rem;
-    // --my-text-paragraph-font-size: 1.3125rem;       // 21px
-    // --my-text-paragraph-letter-spacing: 0.17em;
+    // caption after images
+    --my-text-caption-font-size: 1.25rem;
+    --my-text-caption-letter-spacing: 0.12em;
 
-    --my-img-caption-font-size: 1.75rem;
+    --my-text-caption-margin-top: 0.75em;
+    --my-text-caption-margin-bottom: 0;
+
+    --my-text-caption-line-height: 1.5em;
+
+    // header
+    --my-header-padding-value: .5rem;
+    --my-header-child-non-first-margin-top: 1.25rem;
+
+    // header logo size (font-size)
+    --my-header-logo-size: .8rem;
+
+    // header button size (font-size)
+    --my-header-button-size: .8rem;
+    // --my-header-button-left-icons-padding-value: .4rem;
+    // --my-header-button-right-icons-padding-value: .4rem;
+
+    // sections
+    --my-section-padding-value: 5rem;
+    --my-section-child-non-first-margin-top: 2.75rem;
+
+    // hero section
+    --my-section-hero-padding-value: 7.5rem;
+    --my-section-hero-child-non-first-margin-top: 5.5rem;
 
     @include media-breakpoint-down(xl) {
         --my-text-header-title-margin-bottom: 2.5rem;

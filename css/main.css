@@ -61,6 +61,15 @@ table {
 /**========================================================================
  **                            COLORS
  *========================================================================**/
+:root {
+  --bc-color: #fff;
+  --fr-color: #BF360C;
+  --finally-bc-color: color-mix(in srgb, var(--bc-color), var(--fr-color) 0%);
+  --my-text-heading-color: #212121de;
+  --my-text-paragraph-color: #000000de;
+  --my-text-paragraph-color-alt: #ffffffde;
+}
+
 /* Подключение сторонних библиотек */
 /**========================================================================
  **                            INCLUDE BOOTSTRAP
@@ -2658,7 +2667,7 @@ progress {
   --polimerbeton-vrn-offcanvas-padding-x: 1rem;
   --polimerbeton-vrn-offcanvas-padding-y: 1rem;
   --polimerbeton-vrn-offcanvas-color: var(--polimerbeton-vrn-body-color);
-  --polimerbeton-vrn-offcanvas-bg: rgba(255, 251, 246, 0.87);
+  --polimerbeton-vrn-offcanvas-bg: rgba(var(--finally-bc-color), 0.87);
   --polimerbeton-vrn-offcanvas-border-width: 0;
   --polimerbeton-vrn-offcanvas-border-color: var(--polimerbeton-vrn-border-color-translucent);
   --polimerbeton-vrn-offcanvas-box-shadow: none;
@@ -9226,12 +9235,38 @@ progress {
 :root {
   --base-font-size: 21px;
   --my-text-paragraph-font-size: 1rem;
+  --my-text-paragraph-font-weight: 400;
   --my-text-paragraph-letter-spacing: 0.17em;
-  --my-text-paragraph-margin-top: 1.75rem;
-  --my-text-headings-font-size: 1.96rem;
-  --my-text-headings-margin-bottom: 7.5rem;
-  --my-text-subheadings-font-size: 2.5rem;
-  --my-img-caption-font-size: 1.75rem;
+  --my-text-paragraph-margin-top: .75em;
+  --my-text-paragraph-line-height: 1.5em;
+  --my-text-paragraph-text-indent: 4.75em;
+  --my-text-h1-font-size: 5rem;
+  --my-text-h1-font-weight: 400;
+  --my-text-h1-letter-spacing: 0.22em;
+  --my-text-h1-line-height: 1em;
+  --my-text-heading-font-size: 1.96rem;
+  --my-text-heading-font-weight: 400;
+  --my-text-heading-letter-spacing: 0.22em;
+  --my-text-heading-margin-bottom: 1.3em;
+  --my-text-heading-line-height: 1.5em;
+  --my-text-subheading-font-size: 1.25rem;
+  --my-text-subheading-font-weight: 400;
+  --my-text-subheading-letter-spacing: 0.14em;
+  --my-text-subheading-margin-bottom: 1.8em;
+  --my-text-subheading-line-height: 1.5em;
+  --my-text-caption-font-size: 1.25rem;
+  --my-text-caption-letter-spacing: 0.12em;
+  --my-text-caption-margin-top: 0.75em;
+  --my-text-caption-margin-bottom: 0;
+  --my-text-caption-line-height: 1.5em;
+  --my-header-padding-value: .5rem;
+  --my-header-child-non-first-margin-top: 1.25rem;
+  --my-header-logo-size: .8rem;
+  --my-header-button-size: .8rem;
+  --my-section-padding-value: 5rem;
+  --my-section-child-non-first-margin-top: 2.75rem;
+  --my-section-hero-padding-value: 7.5rem;
+  --my-section-hero-child-non-first-margin-top: 5.5rem;
 }
 @media (max-width: 1199.98px) {
   :root {
@@ -9278,7 +9313,7 @@ html {
 body {
   z-index: -10;
   overflow-x: hidden;
-  background-color: #fffbf6;
+  background-color: var(--finally-bc-color);
 }
 
 #wrapper {
@@ -9292,74 +9327,14 @@ body {
 /**========================================================================
  **                            GLOBAL STYLES
  *========================================================================**/
-.headings, #Hero .hero-headline {
-  margin-bottom: var(--my-text-header-title-margin-bottom);
-  text-align: center;
-  font-family: "Russo One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: rgba(0, 0, 0, 0.8705882353);
-  text-transform: uppercase;
-  font-size: var(--my-text-headings-font-size);
-  letter-spacing: 0.3em;
-  line-height: 150%;
-}
-@media (max-width: 1199.98px) {
-  .headings, #Hero .hero-headline {
-    font-size: 2.75rem;
-  }
-}
-@media (max-width: 991.98px) {
-  .headings, #Hero .hero-headline {
-    font-size: 2.5rem;
-  }
-}
-@media (max-width: 575.98px) {
-  .headings, #Hero .hero-headline {
-    font-size: 1.3125rem;
-  }
-}
-
-.subheadings, #Prices strong, #Examples .container-for-image-and-caption .image-caption-after, #Examples .container-for-image-and-caption .last, #Examples .container-for-image-and-caption .image-caption-before {
-  margin: 0 0 5rem 0;
-  font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 2rem;
-  letter-spacing: 0.2em;
-  text-align: center;
-  line-height: 150%;
-  color: rgba(0, 0, 0, 0.8705882353);
-  text-transform: uppercase;
-  font-variant-numeric: lining-nums;
-}
-@media (max-width: 1199.98px) {
-  .subheadings, #Prices strong, #Examples .container-for-image-and-caption .image-caption-after, #Examples .container-for-image-and-caption .last, #Examples .container-for-image-and-caption .image-caption-before {
-    font-size: 1.5rem;
-    margin: 0 0 2.5rem 0;
-  }
-}
-@media (max-width: 991.98px) {
-  .subheadings, #Prices strong, #Examples .container-for-image-and-caption .image-caption-after, #Examples .container-for-image-and-caption .last, #Examples .container-for-image-and-caption .image-caption-before {
-    margin: 0 0 2rem 0;
-  }
-}
-@media (max-width: 575.98px) {
-  .subheadings, #Prices strong, #Examples .container-for-image-and-caption .image-caption-after, #Examples .container-for-image-and-caption .last, #Examples .container-for-image-and-caption .image-caption-before {
-    margin: 0 0 1.5rem 0;
-    font-size: 1.0625rem;
-  }
-}
-
 section {
-  padding: 10rem 0;
+  padding: var(--my-section-padding-value) 0;
 }
 section:not(:first-child) {
-  padding: 10rem 0 0 0;
+  padding: var(--my-section-padding-value) 0 0 0;
 }
 section:last-child {
-  padding: 10rem 0;
+  padding: var(--my-section-padding-value) 0;
 }
 @media (max-width: 1199.98px) {
   section {
@@ -9395,6 +9370,88 @@ section:last-child {
   }
 }
 
+@media (max-width: 320.98px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+.heading, #Hero .hero-h1 {
+  margin-bottom: var(--my-text-heading-margin-bottom);
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: var(--my-text-heading-font-weight);
+  font-style: normal;
+  color: var(--my-text-heading-color);
+  text-transform: uppercase;
+  font-size: var(--my-text-heading-font-size);
+  letter-spacing: var(--my-text-heading-letter-spacing);
+  line-height: var(--my-text-heading-line-height);
+}
+@media (max-width: 1199.98px) {
+  .heading, #Hero .hero-h1 {
+    font-size: 2.75rem;
+  }
+}
+@media (max-width: 991.98px) {
+  .heading, #Hero .hero-h1 {
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 575.98px) {
+  .heading, #Hero .hero-h1 {
+    font-size: 1.3125rem;
+  }
+}
+
+.subheading, #Prices strong {
+  margin-bottom: var(--my-text-subheading-margin-bottom);
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: var(--my-text-subheading-font-weight);
+  font-style: normal;
+  font-size: var(--my-text-subheading-font-size);
+  letter-spacing: var(--my-text-subheading-letter-spacing);
+  text-align: center;
+  line-height: var(--my-text-subheading-line-height);
+  color: rgba(0, 0, 0, 0.8705882353);
+  text-transform: none;
+  font-variant-numeric: lining-nums;
+}
+@media (max-width: 1199.98px) {
+  .subheading, #Prices strong {
+    font-size: 1.5rem;
+    margin: 0 0 2.5rem 0;
+  }
+}
+@media (max-width: 991.98px) {
+  .subheading, #Prices strong {
+    margin: 0 0 2rem 0;
+  }
+}
+@media (max-width: 575.98px) {
+  .subheading, #Prices strong {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.0625rem;
+  }
+}
+
+.caption, #Examples .container-for-image-and-caption .image-caption-after, #Examples .container-for-image-and-caption .last, #Examples .container-for-image-and-caption .image-caption-before {
+  margin-top: var(--my-text-caption-margin-top);
+  margin-bottom: var(--my-text-caption-margin-bottom);
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: var(--my-text-caption-font-size);
+  letter-spacing: var(--my-text-caption-letter-spacing);
+  line-height: var(--my-text-caption-line-height);
+  color: rgba(0, 0, 0, 0.8705882353);
+  text-align: center;
+  text-transform: none;
+}
+
 .image-with-gradient-border {
   position: relative;
   display: inline-block;
@@ -9420,20 +9477,19 @@ section:last-child {
   }
 }
 
-@media (max-width: 320.98px) {
-  .container {
-    padding: 0 1rem;
-  }
-}
-
 /* Импорт стилей секций */
 /**========================================================================
  **                            HEADER
  *========================================================================**/
 header {
-  position: relative;
+  position: fixed;
+  box-shadow: 0 0.625rem 0.625rem rgba(0, 0, 0, 0.1);
+  z-index: 1030; /* Ensure the header is above other content */
+  background-color: var(--finally-bc-color);
+  top: 0;
+  width: 100%;
   overflow: hidden;
-  padding: 5rem 0 3.75rem 0;
+  padding: var(--my-header-padding-value) 0;
 }
 header #bc-square-1 {
   z-index: -5;
@@ -9513,58 +9569,60 @@ header .navbar .navbar-brand {
   display: inline-flex;
   align-items: center;
   justify-content: start;
+  padding: 0;
   margin: 0;
 }
-header .navbar .navbar-brand .logo, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-title .navbar-brand .offcanvas-logo {
-  font-size: 1rem;
+header .navbar .navbar-brand .logo, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-heading .navbar-brand .offcanvas-logo {
+  font-size: var(--my-header-logo-size);
   padding: 0;
   display: inline-flex;
   align-items: center;
-  color: #512DA8;
+  color: #4527A0;
 }
-header .navbar .navbar-brand .logo .logo-icon, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo .logo-icon, header .navbar .offcanvas .offcanvas-header .offcanvas-title .navbar-brand .offcanvas-logo .logo-icon {
+header .navbar .navbar-brand .logo .logo-icon, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo .logo-icon, header .navbar .offcanvas .offcanvas-header .offcanvas-heading .navbar-brand .offcanvas-logo .logo-icon {
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: #512DA8;
-  width: 9em;
-  height: 9em;
+  fill: #4527A0;
+  width: 4.5em;
+  height: auto;
 }
-header .navbar .navbar-brand .logo .logo-company-name-and-tagline-container, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo .logo-company-name-and-tagline-container, header .navbar .offcanvas .offcanvas-header .offcanvas-title .navbar-brand .offcanvas-logo .logo-company-name-and-tagline-container {
-  margin-left: 2em;
+header .navbar .navbar-brand .logo .logo-company-name-and-tagline-container, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo .logo-company-name-and-tagline-container, header .navbar .offcanvas .offcanvas-header .offcanvas-heading .navbar-brand .offcanvas-logo .logo-company-name-and-tagline-container {
+  margin-left: 1em;
   display: inline-flex;
   flex-direction: column;
 }
-header .navbar .navbar-brand .logo .logo-company-name-and-tagline-container .logo-company-name, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo .logo-company-name-and-tagline-container .logo-company-name, header .navbar .offcanvas .offcanvas-header .offcanvas-title .navbar-brand .offcanvas-logo .logo-company-name-and-tagline-container .logo-company-name {
+header .navbar .navbar-brand .logo .logo-company-name-and-tagline-container .logo-company-name, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo .logo-company-name-and-tagline-container .logo-company-name, header .navbar .offcanvas .offcanvas-header .offcanvas-heading .navbar-brand .offcanvas-logo .logo-company-name-and-tagline-container .logo-company-name {
   font-family: "Russo One", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: 3em;
+  font-size: 1.5em;
   letter-spacing: 0.35em;
 }
-header .navbar .navbar-brand .logo .logo-company-name-and-tagline-container .logo-tagline, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo .logo-company-name-and-tagline-container .logo-tagline, header .navbar .offcanvas .offcanvas-header .offcanvas-title .navbar-brand .offcanvas-logo .logo-company-name-and-tagline-container .logo-tagline {
+header .navbar .navbar-brand .logo .logo-company-name-and-tagline-container .logo-tagline, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo .logo-company-name-and-tagline-container .logo-tagline, header .navbar .offcanvas .offcanvas-header .offcanvas-heading .navbar-brand .offcanvas-logo .logo-company-name-and-tagline-container .logo-tagline {
   font-family: "Pattaya", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 2em;
+  font-size: 1em;
   letter-spacing: 0.55em;
 }
 @media (max-width: 1399.98px) {
-  header .navbar .navbar-brand .logo, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-title .navbar-brand .offcanvas-logo {
+  header .navbar .navbar-brand .logo, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-heading .navbar-brand .offcanvas-logo {
     font-size: 0.75rem;
   }
 }
 @media (max-width: 991.98px) {
-  header .navbar .navbar-brand .logo, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-title .navbar-brand .offcanvas-logo {
+  header .navbar .navbar-brand .logo, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-heading .navbar-brand .offcanvas-logo {
     font-size: 0.5625rem;
   }
 }
 @media (max-width: 575.98px) {
-  header .navbar .navbar-brand .logo, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-title .navbar-brand .offcanvas-logo {
+  header .navbar .navbar-brand .logo, header .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-heading .navbar-brand .offcanvas-logo {
     font-size: 0.27rem;
   }
 }
 header .navbar .contacts-and-settings {
+  font-size: var(--my-header-button-size);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -9575,45 +9633,44 @@ header .navbar .contacts-and-settings .contacts {
   flex-direction: inherit;
 }
 header .navbar .contacts-and-settings .contacts button {
-  margin-right: 0.5rem;
+  margin-right: 0.5em;
 }
 header .navbar .contacts-and-settings .settings {
   display: inherit;
   flex-direction: inherit;
 }
 header .navbar .contacts-and-settings .settings button {
-  margin-left: 0.5rem;
+  margin-left: 0.5em;
 }
 header .navbar .contacts-and-settings button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 2.6em;
+  height: 2.6em;
   --squircle-smooth: 1.0;
-  --squircle-radius: 0.75rem;
+  --squircle-radius: 0.75em;
   mask-image: paint(squircle);
-  background-color: #512DA8;
+  background-color: #4527A0;
   border: none;
   outline: none;
   cursor: pointer;
   fill: rgba(255, 255, 255, 0.8705882353);
 }
-header .navbar .contacts-and-settings span {
-  min-width: 1px;
-  height: 2rem;
-  width: 0.0625rem;
+header .navbar .contacts-and-settings .separator {
+  height: 2em;
+  width: 1px;
   background-color: rgba(0, 0, 0, 0.8705882353);
-  border-radius: 10rem;
-  margin: 0 0.5rem 0 0.5rem;
+  border-radius: 50%;
+  margin: 0 0.25em;
 }
 header .navbar .contacts-and-settings .contacts svg {
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.4em;
+  height: auto;
 }
 header .navbar .contacts-and-settings .settings svg {
-  width: 2.125rem;
-  height: 2.125rem;
+  width: 1.7em;
+  height: auto;
 }
 header .navbar .contacts-and-settings svg {
   fill: inherit;
@@ -9621,16 +9678,25 @@ header .navbar .contacts-and-settings svg {
 header .navbar .contacts-and-settings button:hover {
   fill: #fff;
 }
+header .navbar .separator {
+  font-size: var(--my-header-button-size);
+  height: 2.5em;
+  width: 1px;
+  background-color: rgba(0, 0, 0, 0.8705882353);
+  border-radius: 50%;
+  margin: 0 1.5em;
+}
 header .navbar .navbar-toggler {
-  width: fit-content;
-  height: fit-content;
+  font-size: var(--my-header-button-size);
+  width: auto;
+  height: 2.6em;
   border-radius: 0.75em;
-  border: solid 1px #512DA8;
+  border: solid 1px #4527A0;
 }
 header .navbar .navbar-toggler .navbar-toggler-icon {
-  margin: 0.5em 1.3em;
-  width: 2em;
-  height: 2em;
+  margin: 0 1.3em;
+  width: 1.7em;
+  height: 1.7em;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23512DA8' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 @media (max-width: 575.98px) {
@@ -9639,6 +9705,7 @@ header .navbar .navbar-toggler .navbar-toggler-icon {
   }
 }
 header .navbar .offcanvas {
+  height: 100vh;
   width: auto;
   max-width: 90vw;
   box-shadow: -0.625rem 0 0.625rem rgba(0, 0, 0, 0.1);
@@ -9651,23 +9718,24 @@ header .navbar .offcanvas .offcanvas-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 2.5em 2em;
+  padding: 1em 1.5em;
 }
-header .navbar .offcanvas .offcanvas-header .offcanvas-title {
+header .navbar .offcanvas .offcanvas-header .offcanvas-heading {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: left;
 }
-header .navbar .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo {
+header .navbar .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo {
   font-size: 0.5rem;
 }
 @media (max-width: 575.98px) {
-  header .navbar .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo {
+  header .navbar .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo {
     font-size: 0.27rem;
   }
 }
 header .navbar .offcanvas .offcanvas-header .btn-close {
+  padding: 0;
   margin-left: 2em;
   width: 2em;
   height: 2em;
@@ -9689,7 +9757,7 @@ header .navbar .offcanvas .offcanvas-separator {
   border-radius: 50%;
 }
 header .navbar .offcanvas .offcanvas-body {
-  padding: 3em 2em 2.5em 3em;
+  padding: 1.5em 3em;
 }
 header .navbar .offcanvas .offcanvas-body .navbar-nav {
   display: flex;
@@ -9709,23 +9777,18 @@ header .navbar .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), head
     font-size: 0.75rem;
   }
 }
-@media (min-width: 992px) {
-  header .navbar .offcanvas {
-    box-shadow: none;
-    backdrop-filter: none;
-  }
-}
 header .navbar .menu {
-  margin-top: 3.75rem;
+  margin-top: var(--my-header-child-non-first-margin-top);
 }
 header .navbar .menu a {
+  display: block;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-  font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 0.3em;
-  line-height: 150%;
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  line-height: 1.5em;
   text-align: center;
   color: rgba(0, 0, 0, 0.8705882353);
   text-decoration: none;
@@ -9759,10 +9822,16 @@ header .navbar .menu .menu-item {
  **                            HERO SECTION
  *========================================================================**/
 #Hero {
+  margin-top: 5.22476rem;
   position: relative;
   display: flex;
-  min-height: 70rem;
-  max-height: 70rem;
+  padding: var(--my-section-hero-padding-value) 0;
+}
+#Hero:not(:first-child) {
+  padding: var(--my-section-hero-padding-value) 0 0 0;
+}
+#Hero:last-child {
+  padding: var(--my-section-hero-padding-value) 0;
 }
 #Hero #hero-bc-img {
   z-index: -2;
@@ -9788,38 +9857,35 @@ header .navbar .menu .menu-item {
   opacity: 0.1;
   filter: blur(2px);
 }
-#Hero .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-#Hero .hero-headline {
+#Hero .hero-h1 {
   margin: 0;
+  font-size: var(--my-text-h1-font-size);
+  font-weight: var(--my-text-h1-font-weigh);
+  letter-spacing: var(--my-text-h1-letter-spacing);
+  line-height: var(--my-text-h1-line-height);
 }
-#Hero .hero-headline .hero-headline-manufacturer-location {
-  margin-top: 0.625rem;
-  font-size: 1.75rem;
-  letter-spacing: 0.25em;
-  line-height: 150%;
+#Hero .hero-h1 .hero-h1-manufacturer-location {
+  margin-top: 1em;
+  font-size: 0.23em;
+  letter-spacing: 0.6em;
+  line-height: 1em;
 }
-@media (max-width: 991.98px) {
-  #Hero .hero-headline .hero-headline-manufacturer-location {
-    font-size: 1.625rem;
-  }
+#Hero .image-container {
+  margin-top: var(--my-section-hero-child-non-first-margin-top);
 }
-@media (max-width: 575.98px) {
-  #Hero .hero-headline .hero-headline-manufacturer-location {
-    font-size: 0.8rem;
-  }
+#Hero .image-container img {
+  display: inline-block;
+  width: 10.5em;
+  height: auto;
 }
 #Hero .hero-phrase {
+  margin-top: var(--my-section-hero-child-non-first-margin-top);
   font-family: "Tenor Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 3rem;
-  letter-spacing: 0.1em;
-  line-height: 150%;
+  font-size: var(--my-text-heading-font-size);
+  letter-spacing: var(--my-text-subheading-letter-spacing);
+  line-height: var(--my-text-subheading-line-height);
   text-align: center;
   background: linear-gradient(90deg, #1b5e20 0%, #ff6f00 50%, #bf360c 100%);
   background-clip: text;
@@ -9844,12 +9910,6 @@ header .navbar .menu .menu-item {
 @media (max-width: 575.98px) {
   #Hero .hero-phrase {
     font-size: 1.25rem;
-  }
-}
-@media (max-width: 575.98px) {
-  #Hero {
-    min-height: 28rem;
-    max-height: 32.5rem;
   }
 }
 
@@ -9903,9 +9963,9 @@ header .navbar .menu .menu-item {
   font-style: normal;
   font-size: var(--my-text-paragraph-font-size);
   letter-spacing: var(--my-text-paragraph-letter-spacing);
-  line-height: 150%;
+  line-height: var(--my-text-paragraph-line-height);
   text-align: justify;
-  text-indent: 3.1em;
+  text-indent: var(--my-text-paragraph-text-indent);
   color: rgba(0, 0, 0, 0.8705882353);
   hyphens: none;
 }
@@ -9913,7 +9973,7 @@ header .navbar .menu .menu-item {
   margin-top: var(--my-text-paragraph-margin-top);
 }
 #Description .concretes-images {
-  margin-top: 7.5rem;
+  margin-top: var(--my-section-child-non-first-margin-top);
 }
 @media (max-width: 991.98px) {
   #Description .concretes-images {
@@ -10024,7 +10084,7 @@ header .navbar .menu .menu-item {
   position: relative;
 }
 #Examples #examples-second-part {
-  margin-top: 7.5rem;
+  margin-top: var(--my-section-child-non-first-margin-top);
 }
 @media (max-width: 991.98px) {
   #Examples #examples-second-part {
@@ -10036,11 +10096,6 @@ header .navbar .menu .menu-item {
   flex-direction: column;
   align-items: center;
 }
-#Examples .container-for-image-and-caption .image-caption-before {
-  margin: 1.5rem 0 0 0;
-  font-size: var(--my-img-caption-font-size);
-  text-transform: none;
-}
 @media (max-width: 991.98px) {
   #Examples .container-for-image-and-caption .image-caption-before {
     margin: 1.5rem 0 3rem 0;
@@ -10050,11 +10105,6 @@ header .navbar .menu .menu-item {
   #Examples .container-for-image-and-caption .image-caption-before {
     margin: 0.9rem 0 1.5rem 0;
   }
-}
-#Examples .container-for-image-and-caption .image-caption-after, #Examples .container-for-image-and-caption .last {
-  margin: 1.5rem 0 0 0;
-  font-size: var(--my-img-caption-font-size);
-  text-transform: none;
 }
 @media (max-width: 991.98px) {
   #Examples .container-for-image-and-caption .image-caption-after, #Examples .container-for-image-and-caption .last {
@@ -10257,7 +10307,7 @@ header .navbar .menu .menu-item {
 #Advantages .advantage .advantage-header .advantage-number {
   display: inline-block;
   margin: 0;
-  font-family: "MuseoModerno", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 100;
   font-style: normal;
@@ -10775,16 +10825,16 @@ header .navbar .menu .menu-item {
   }
 }
 #Prices .current-price-animation-container .current-price {
-  width: 20.5rem;
-  height: 20.5rem;
-  margin: 24.75rem 0;
+  width: 10.5rem;
+  height: 10.5rem;
+  margin: 11.75rem 0;
 }
 #Prices .current-price-animation-container .current-price .current-price-text {
-  font-size: 3rem;
+  font-size: 1.25rem;
 }
 #Prices .current-price-animation-container .concrete-image-orbit-animation-wrapper {
-  width: 20rem;
-  height: 35rem;
+  width: 9rem;
+  height: 17rem;
 }
 @media (max-width: 1199.98px) {
   #Prices .current-price-animation-container .current-price {
@@ -10832,18 +10882,18 @@ header .navbar .menu .menu-item {
 /**========================================================================
  **                            FEEDBACK FORM
  *========================================================================**/
-#Feedback-Form .concretes-pictures {
-  height: 41rem;
-  width: 41rem;
+#Feedback-Form .image-container {
+  width: 100%;
+  height: 25rem;
   position: relative;
 }
-#Feedback-Form .concretes-pictures img {
+#Feedback-Form .image-container img {
   z-index: 0;
   position: absolute;
   left: 0;
   top: 0;
 }
-#Feedback-Form .concretes-pictures #ball-green {
+#Feedback-Form .image-container #ball-green {
   top: 0;
   left: 0;
   z-index: -1;
@@ -10852,7 +10902,7 @@ header .navbar .menu .menu-item {
   height: 76.22%;
   /* 31.25rem / 41rem * 100% */
 }
-#Feedback-Form .concretes-pictures #ball-yellow {
+#Feedback-Form .image-container #ball-yellow {
   z-index: -2;
   top: 28.05%;
   /* 11.5rem / 41rem * 100% */
@@ -10863,7 +10913,7 @@ header .navbar .menu .menu-item {
   height: 45.73%;
   /* 18.75rem / 41rem * 100% */
 }
-#Feedback-Form .concretes-pictures #ball-white {
+#Feedback-Form .image-container #ball-white {
   top: 2.44%;
   /* 1rem / 41rem * 100% */
   left: 51.83%;
@@ -10873,7 +10923,7 @@ header .navbar .menu .menu-item {
   height: 33.54%;
   /* 13.75rem / 41rem * 100% */
 }
-#Feedback-Form .concretes-pictures #ball-grey {
+#Feedback-Form .image-container #ball-grey {
   top: 46.34%;
   /* 19rem / 41rem * 100% */
   left: 0;
@@ -10882,7 +10932,7 @@ header .navbar .menu .menu-item {
   height: 54.27%;
   /* 22.25rem / 41rem * 100% */
 }
-#Feedback-Form .concretes-pictures #ball-red {
+#Feedback-Form .image-container #ball-red {
   top: 63.41%;
   /* 26rem / 41rem * 100% */
   left: 48.78%;
@@ -10893,15 +10943,13 @@ header .navbar .menu .menu-item {
   /* 14.25rem / 41rem * 100% */
 }
 @media (max-width: 1399.98px) {
-  #Feedback-Form .concretes-pictures {
+  #Feedback-Form .image-container {
     height: 35.5rem;
-    width: 35.5rem;
   }
 }
 @media (max-width: 1199.98px) {
-  #Feedback-Form .concretes-pictures {
+  #Feedback-Form .image-container {
     height: 30rem;
-    width: 30rem;
   }
 }
 #Feedback-Form form {
@@ -10909,15 +10957,16 @@ header .navbar .menu .menu-item {
   flex-direction: column;
 }
 #Feedback-Form form :not(:first-child) {
-  margin-top: 0.75rem;
+  margin-top: 0.6rem;
 }
 #Feedback-Form form .form-field {
+  font-size: inherit;
   width: 100%;
-  height: 5rem;
-  padding: 0.25rem;
+  height: 3.5rem;
+  padding: 0.2rem;
   border: none;
   border-radius: 1.25rem;
-  background-color: #512DA8;
+  background-color: #4527A0;
   --squircle-smooth: 0.78;
   --squircle-radius: 1.25rem;
   mask-image: paint(squircle);
@@ -10944,23 +10993,24 @@ header .navbar .menu .menu-item {
 }
 #Feedback-Form form input[type=text],
 #Feedback-Form form input[type=tel] {
+  font-size: inherit;
   width: 100%;
   height: 100%;
-  padding: 1.25rem 1.75rem;
+  padding: 0.9rem 1.125rem;
   border: none;
-  border-radius: 1.25rem;
+  border-radius: 1.025rem;
   background-color: color-mix(in srgb, #fffbf6 100%, #D1C4E9 5%);
-  --squircle-smooth: 1.0;
+  --squircle-smooth: 1;
   --squircle-radius: 1.25rem;
   mask-image: paint(squircle);
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 600;
+  font-weight: 400;
   font-style: normal;
-  font-size: 1.25rem;
-  line-height: 200%;
-  letter-spacing: 0.2em;
-  color: rgba(0, 0, 0, 0.8705882353);
+  font-size: var(--my-text-paragraph-font-size);
+  line-height: var(--my-text-paragraph-line-height);
+  letter-spacing: var(--my-text-paragraph-letter-spacing);
+  color: var(--my-text-paragraph-color);
 }
 #Feedback-Form form input[type=text]:focus, #Feedback-Form form input[type=text]:active,
 #Feedback-Form form input[type=tel]:focus,
@@ -10969,7 +11019,7 @@ header .navbar .menu .menu-item {
 }
 #Feedback-Form form input[type=text]:focus::placeholder,
 #Feedback-Form form input[type=tel]:focus::placeholder {
-  color: rgba(0, 0, 0, 0.8705882353);
+  color: var(--my-text-paragraph-color);
 }
 @media (max-width: 1199.98px) {
   #Feedback-Form form input[type=text],
@@ -10994,25 +11044,24 @@ header .navbar .menu .menu-item {
   }
 }
 #Feedback-Form form #feedback-form-submit-button {
-  margin-top: 2.25rem;
+  margin-top: 1.25rem;
   width: 100%;
-  height: 5rem;
+  height: 3.5rem;
   border: none;
   border-radius: 1.25rem;
   --squircle-smooth: 1.0;
   --squircle-radius: 1.25rem;
   mask-image: paint(squircle);
-  background-color: #512DA8;
+  background-color: #4527A0;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
-  font-size: 1.25rem;
-  line-height: 200%;
-  letter-spacing: 0.2em;
+  line-height: var(--my-text-paragraph-line-height);
+  letter-spacing: var(--my-text-paragraph-letter-spacing);
   text-align: center;
-  color: rgba(255, 255, 255, 0.8705882353);
-  text-transform: uppercase;
+  color: var(--my-text-paragraph-color-alt);
+  text-transform: none;
 }
 #Feedback-Form form #feedback-form-submit-button:hover {
   color: #fff;
@@ -11040,6 +11089,7 @@ header .navbar .menu .menu-item {
   }
 }
 #Feedback-Form form .checkbox-privacy-policy {
+  margin-top: 0.85rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11047,17 +11097,17 @@ header .navbar .menu .menu-item {
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
-  font-size: 1rem;
+  font-size: 0.8rem;
   letter-spacing: 0.0625rem;
   text-align: center;
-  color: rgba(0, 0, 0, 0.8705882353);
+  color: var(--my-text-paragraph-color);
 }
 #Feedback-Form form .checkbox-privacy-policy input[type=checkbox] {
   appearance: none;
-  width: 1.75rem;
-  height: 1.75rem;
-  border: 0.125rem solid #512DA8;
-  border-radius: 100%;
+  width: 1.75em;
+  height: 1.75em;
+  border: 0.125rem solid #4527A0;
+  border-radius: 50%;
   position: relative;
   cursor: pointer;
   margin-right: 0.75rem;
@@ -11071,7 +11121,7 @@ header .navbar .menu .menu-item {
   }
 }
 #Feedback-Form form .checkbox-privacy-policy input[type=checkbox]:checked {
-  background-color: #512DA8;
+  background-color: #4527A0;
   border: none;
 }
 #Feedback-Form form .checkbox-privacy-policy input[type=checkbox]:checked::before {
@@ -11099,7 +11149,7 @@ header .navbar .menu .menu-item {
   cursor: pointer;
 }
 #Feedback-Form form .checkbox-privacy-policy a {
-  color: #512DA8;
+  color: #4527A0;
   text-decoration: none;
 }
 #Feedback-Form form .checkbox-privacy-policy a:hover {
@@ -11285,26 +11335,26 @@ footer .footer-part-1 .logo-and-privacy-policy {
   align-items: start;
   justify-content: space-between;
 }
-footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
+footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-heading footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
   font-size: 1rem;
   padding: 0;
   display: inline-flex;
   align-items: center;
-  color: #512DA8;
+  color: #4527A0;
 }
-footer .footer-part-1 .logo-and-privacy-policy .logo .logo-icon, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo .logo-icon, header .navbar .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-icon {
+footer .footer-part-1 .logo-and-privacy-policy .logo .logo-icon, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo .logo-icon, header .navbar .offcanvas .offcanvas-header .offcanvas-heading footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-icon {
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: #512DA8;
+  fill: #4527A0;
   width: 8.125em;
   height: 8.125em;
 }
-footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagline-container, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo .logo-company-name-and-tagline-container, header .navbar .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-company-name-and-tagline-container {
+footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagline-container, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo .logo-company-name-and-tagline-container, header .navbar .offcanvas .offcanvas-header .offcanvas-heading footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-company-name-and-tagline-container {
   margin-left: 2em;
   display: inline-flex;
   flex-direction: column;
 }
-footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagline-container .logo-company-name, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo .logo-company-name-and-tagline-container .logo-company-name, header .navbar .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-company-name-and-tagline-container .logo-company-name {
+footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagline-container .logo-company-name, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo .logo-company-name-and-tagline-container .logo-company-name, header .navbar .offcanvas .offcanvas-header .offcanvas-heading footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-company-name-and-tagline-container .logo-company-name {
   font-family: "Russo One", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -11312,7 +11362,7 @@ footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagl
   font-size: 3em;
   letter-spacing: 0.35em;
 }
-footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagline-container .logo-tagline, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo .logo-company-name-and-tagline-container .logo-tagline, header .navbar .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-company-name-and-tagline-container .logo-tagline {
+footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagline-container .logo-tagline, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo .logo-company-name-and-tagline-container .logo-tagline, header .navbar .offcanvas .offcanvas-header .offcanvas-heading footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-company-name-and-tagline-container .logo-tagline {
   font-family: "Pattaya", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -11320,17 +11370,17 @@ footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagl
   letter-spacing: 0.55em;
 }
 @media (max-width: 1399.98px) {
-  footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
+  footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-heading footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
     font-size: 0.75rem;
   }
 }
 @media (max-width: 991.98px) {
-  footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
+  footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-heading footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
     font-size: 0.7rem;
   }
 }
 @media (max-width: 575.98px) {
-  footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-title .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-title footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
+  footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy header .navbar .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo, header .navbar .offcanvas .offcanvas-header .offcanvas-heading footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
     font-size: 0.35rem;
   }
 }

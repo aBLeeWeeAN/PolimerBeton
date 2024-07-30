@@ -8,7 +8,7 @@
     // margin-top: 10rem;
 
     #examples-second-part {
-        margin-top: 7.5rem;
+        margin-top: var(--my-section-child-non-first-margin-top);
 
         @include media-breakpoint-down(lg) {
             margin-top: 0;
@@ -22,12 +22,7 @@
         align-items: center;
 
         .image-caption-before {
-            @extend .subheadings;
-    
-            margin: 1.5rem 0 0 0;
-    
-            font-size: var(--my-img-caption-font-size);
-            text-transform: none;
+            @extend .caption;
     
             @include media-breakpoint-down(lg) {
                 margin: 1.5rem 0 3rem 0;
@@ -39,12 +34,7 @@
         }
     
         .image-caption-after {
-            @extend .subheadings;
-    
-            margin: 1.5rem 0 0 0;
-    
-            font-size: var(--my-img-caption-font-size);
-            text-transform: none;
+            @extend .caption;
     
             @include media-breakpoint-down(lg) {
                 margin: 1.5rem 0 3.5rem 0;

@@ -49,48 +49,38 @@
         transform: translate(-77%, -2.1%);
 
         opacity: 0.25;
-    }
 
-    @include media-breakpoint-down(xxl) {
-        #bc-circle {
+        @include media-breakpoint-down(xxl) {
             width: 148.8rem;
             height: 148.8rem;
         }
     }
-
-    // .content {
-    //     margin-top: 7.5rem;
-    // }
-
-    // .content>*:not(:first-child) {
-    //     margin-top: 1.75rem;
-    // }
 
     p {
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
         font-weight: 400;
         font-style: normal;
-
+    
         font-size: var(--my-text-paragraph-font-size);
         letter-spacing: var(--my-text-paragraph-letter-spacing);
-
-        line-height: 150%;
-
+    
+        line-height: var(--my-text-paragraph-line-height);
+    
         text-align: justify;
-        text-indent: 3.1em;
-
+        text-indent: var(--my-text-paragraph-text-indent);
+    
         color: $text_color_black;
-
+    
         hyphens: none;
-
+    
         &:not(:first-child) {
             margin-top: var(--my-text-paragraph-margin-top);
         }
     }
 
     .concretes-images {
-        margin-top: 7.5rem;
+        margin-top: var(--my-section-child-non-first-margin-top);
 
         @include media-breakpoint-down(lg) {
             margin-top: 3.5rem;

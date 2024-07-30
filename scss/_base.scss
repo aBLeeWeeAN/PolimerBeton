@@ -30,7 +30,8 @@
     overflow-x: hidden;
     // overflow-y: scroll;
 
-    background-color: $finally_bc_color;
+    // background-color: $finally_bc_color;
+    background-color: var(--finally-bc-color);
 }
 
 #wrapper {
