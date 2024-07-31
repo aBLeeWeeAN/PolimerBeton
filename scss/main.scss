@@ -14,6 +14,9 @@
 /* Общие стили для всех секций */
 @import 'global';
 
+/* Импорт стиля навигационного меню */
+// @import 'nav_menu';
+
 /* Импорт стилей секций */
 @import 'sections/header';
 @import 'sections/hero';
