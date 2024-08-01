@@ -138,13 +138,13 @@
         //     font-size: 2.5625rem;
         // }
     
-        @include media-breakpoint-down(lg) {
-            font-size: 2.25rem;
-        }
+        // @include media-breakpoint-down(lg) {
+        //     font-size: 2.25rem;
+        // }
 
-        @include media-breakpoint-down(sm) {
-            font-size: 1.25rem;
-        }
+        // @include media-breakpoint-down(sm) {
+        //     font-size: 1.25rem;
+        // }
     }
 
     // @include media-breakpoint-down(sm) {

@@ -74,11 +74,11 @@
 
         color: $text_color_black;
 
-        @include media-breakpoint-down(lg) {
-            margin-top: 3.5rem;
+        // @include media-breakpoint-down(lg) {
+        //     margin-top: 3.5rem;
 
-            font-size: 2.5rem;
-        }
+        //     font-size: 2.5rem;
+        // }
 
         @include media-breakpoint-down(sm) {
             margin-top: 1.5rem;
@@ -108,11 +108,11 @@
 
         text-decoration: none;
 
-        @include media-breakpoint-down(lg) {
-            text-align: center;
+        // @include media-breakpoint-down(lg) {
+        //     text-align: center;
 
-            font-size: 1.5rem;
-        }
+        //     font-size: 1.5rem;
+        // }
 
         @include media-breakpoint-down(sm) {
             text-align: center;
@@ -151,6 +151,8 @@
             
                     width: 4.5em;
                     height: auto;
+
+                    aspect-ratio: 1 / 1;
                 }
             
                 .logo-company-name-and-tagline-container {
@@ -199,16 +201,16 @@
                 //     font-size: 0.75rem;
                 // }
                 
-                @include media-breakpoint-down(lg) {
-                    font-size: 0.5625rem;
-                }
+                // @include media-breakpoint-down(lg) {
+                //     font-size: 0.5625rem;
+                // }
             
-                @include media-breakpoint-down(sm) {
-                    font-size: 0.27rem;
-                }
+                // @include media-breakpoint-down(sm) {
+                //     font-size: 0.27rem;
+                // }
             }
 
-            @include media-breakpoint-down(lg) {
+            @include media-breakpoint-down(md) {
                 text-align: center;
                 align-items: center;
             }
@@ -238,11 +240,11 @@
                 }
             }
 
-            @include media-breakpoint-down(lg) {
-                margin-top: 3.5rem;
+            // @include media-breakpoint-down(lg) {
+            //     margin-top: 3.5rem;
 
-                text-align: center;
-            }
+            //     text-align: center;
+            // }
 
             @include media-breakpoint-down(sm) {
                 margin-top: 1.5rem;
@@ -251,9 +253,9 @@
             }
         }
 
-        @include media-breakpoint-down(lg) {
-            padding: 5rem 0;
-        }
+        // @include media-breakpoint-down(lg) {
+        //     padding: 5rem 0;
+        // }
 
         @include media-breakpoint-down(sm) {
             padding: 1.5rem 0;
@@ -282,9 +284,9 @@
 
             color: $text_color_black;
 
-            @include media-breakpoint-down(lg) {
-                font-size: 1.5rem;
-            }
+            // @include media-breakpoint-down(lg) {
+            //     font-size: 1.5rem;
+            // }
 
             @include media-breakpoint-down(sm) {
                 font-size: .8rem;
@@ -294,9 +296,9 @@
         #copyright-info {
             text-align: left;
 
-            @include media-breakpoint-down(lg) {
-                text-align: center;
-            }
+            // @include media-breakpoint-down(lg) {
+            //     text-align: center;
+            // }
         }
 
         #copyright-email {
@@ -304,11 +306,11 @@
 
             text-align: right;
 
-            @include media-breakpoint-down(lg) {
-                margin-top: 1.5rem;
+            // @include media-breakpoint-down(lg) {
+            //     margin-top: 1.5rem;
 
-                text-align: center;
-            }
+            //     text-align: center;
+            // }
 
             @include media-breakpoint-down(sm) {
                 margin-top: .8rem;
@@ -317,9 +319,9 @@
             }
         }
 
-        @include media-breakpoint-down(lg) {
-            padding: 3.5rem 0;
-        }
+        // @include media-breakpoint-down(lg) {
+        //     padding: 3.5rem 0;
+        // }
 
         @include media-breakpoint-down(sm) {
             padding: 1.5rem 0;

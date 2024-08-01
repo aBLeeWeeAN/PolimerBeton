@@ -204,7 +204,23 @@
             //     }
             // }
 
-            @include media-breakpoint-down(lg) {
+            @include media-breakpoint-up(xxl) {
+                &#safety-doc-4, &#safety-doc-5, &#safety-doc-6 {
+                    margin: 0;
+                }
+            }
+
+            @include media-breakpoint-up(md) {
+                &#safety-doc-5, &#safety-doc-6 {
+                    margin: 0;
+                }
+            }
+
+
+
+
+
+            @include media-breakpoint-down(md) {
                 // margin-bottom: 1.5rem;
     
                 &#safety-doc-6 {
@@ -271,13 +287,19 @@
         @include media-breakpoint-down(xxl) {
             width: 260rem;
 
-            transform: translate(-71%, -18%);
+            transform: translate(-75.2%, -18%);
         }
 
         @include media-breakpoint-down(xl) {
             width: 235rem;
 
-            transform: translate(-71%, -16%);
+            transform: translate(-76.6%, -16%);
+        }
+
+        @include media-breakpoint-down(lg) {
+            width: 218rem;
+
+            transform: translate(-76.6%, -15%);
         }
     }
 }

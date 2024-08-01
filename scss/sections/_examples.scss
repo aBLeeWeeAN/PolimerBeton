@@ -10,9 +10,9 @@
     #examples-second-part {
         margin-top: var(--my-section-child-non-first-margin-top);
 
-        @include media-breakpoint-down(lg) {
-            margin-top: 0;
-        }
+        // @include media-breakpoint-down(lg) {
+        //     margin-top: 0;
+        // }
     }
 
     .container-for-image-and-caption {
@@ -24,25 +24,25 @@
         .image-caption-before {
             @extend .caption;
     
-            @include media-breakpoint-down(lg) {
-                margin: 1.5rem 0 3rem 0;
-            }
+            // @include media-breakpoint-down(lg) {
+            //     margin: 1.5rem 0 3rem 0;
+            // }
 
-            @include media-breakpoint-down(sm) {
-                margin: .9rem 0 1.5rem 0;
-            }
+            // @include media-breakpoint-down(sm) {
+            //     margin: .9rem 0 1.5rem 0;
+            // }
         }
     
         .image-caption-after {
             @extend .caption;
     
-            @include media-breakpoint-down(lg) {
-                margin: 1.5rem 0 3.5rem 0;
-            }
+            // @include media-breakpoint-down(lg) {
+            //     margin: 1.5rem 0 3.5rem 0;
+            // }
 
-            @include media-breakpoint-down(sm) {
-                margin: .9rem 0 var(--my-text-header-title-margin-bottom) 0;
-            }
+            // @include media-breakpoint-down(sm) {
+            //     margin: .9rem 0 var(--my-text-header-title-margin-bottom) 0;
+            // }
         }
 
         .last {
@@ -275,6 +275,10 @@
 
         @include media-breakpoint-down(xl) {
             width: 135rem;
+        }
+
+        @include media-breakpoint-down(lg) {
+            width: 122rem;
         }
     }
 }

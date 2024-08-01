@@ -25,29 +25,29 @@ section {
     //     }
     // }
 
-    @include media-breakpoint-down(lg) {
-        padding: 7.5rem 0;
+    // @include media-breakpoint-down(lg) {
+    //     padding: 7.5rem 0;
     
-        &:not(:first-child) {
-            padding: 7.5rem 0 0 0;
-        }
+    //     &:not(:first-child) {
+    //         padding: 7.5rem 0 0 0;
+    //     }
     
-        &:last-child {
-            padding: 7.5rem 0;
-        }
-    }
+    //     &:last-child {
+    //         padding: 7.5rem 0;
+    //     }
+    // }
 
-    @include media-breakpoint-down(sm) {
-        padding: 4.5rem 0;
+    // @include media-breakpoint-down(sm) {
+    //     padding: 4.5rem 0;
     
-        &:not(:first-child) {
-            padding: 4.5rem 0 0 0;
-        }
+    //     &:not(:first-child) {
+    //         padding: 4.5rem 0 0 0;
+    //     }
     
-        &:last-child {
-            padding: 4.5rem 0;
-        }
-    }
+    //     &:last-child {
+    //         padding: 4.5rem 0;
+    //     }
+    // }
 }
 
 .container {
@@ -124,15 +124,15 @@ section {
     //     margin: 0 0 2.5rem 0;
     // }
 
-    @include media-breakpoint-down(lg) {
-        margin: 0 0 2rem 0;
-    }
+    // @include media-breakpoint-down(lg) {
+    //     margin: 0 0 2rem 0;
+    // }
 
-    @include media-breakpoint-down(sm) {
-        margin: 0 0 1.5rem 0;
+    // @include media-breakpoint-down(sm) {
+    //     margin: 0 0 1.5rem 0;
 
-        font-size: 1.0625rem;
-    }
+    //     font-size: 1.0625rem;
+    // }
 }
 
 .caption {

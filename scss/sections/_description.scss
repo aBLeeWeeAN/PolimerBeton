@@ -55,7 +55,13 @@
         @include media-breakpoint-down(xl) {
             width: 135rem;
 
-            // transform: translate(-77%, -10.1%);
+            transform: translate(-73.8%, -10.1%);
+        }
+
+        @include media-breakpoint-down(lg) {
+            width: 140rem;
+
+            transform: translate(-73.4%, -10.1%);
         }
     }
 
