@@ -84,58 +84,46 @@
     img {
         z-index: -2;
         position: absolute;
+
+        height: auto;
+        aspect-ratio: 1 / 1;
+
+        top: 50%;
+        left: 50%;
     }
 
     #bc-concrete-green {
         width: 33.75rem;
-        height: 33.75rem;
 
-        top: 50%;
-        left: 50%;
-
-        transform: translate(78%, -120%);
-    }
-
-    #bc-concrete-yellow {
-        width: 12.5rem;
-        height: 12.5rem;
-
-        top: 50%;
-        left: 50%;
-
-        transform: translate(315%, -75%);
-    }
-
-    #bc-concrete-white {
-        width: 25rem;
-        height: 25rem;
-
-        top: 50%;
-        left: 50%;
-
-        transform: translate(85%, -18%);
-    }
-
-    #bc-concrete-grey {
-        width: 12.5rem;
-        height: 12.5rem;
-
-        top: 50%;
-        left: 50%;
-
-        transform: translate(290%, 150%);
+        transform: translate(55%, -120%);
     }
 
     #bc-concrete-red {
+        width: 18rem;
+
+        transform: translate(180%, -62.5%);
+    }
+
+    #bc-concrete-white {
         z-index: -1;
 
-        width: 17.3125rem;
-        height: 17.3125rem;
+        width: 10.5rem;
 
-        top: 50%;
-        left: 50%;
+        transform: translate(175%, -137.5%);
+    }
 
-        transform: translate(120%, -120%);
+    #bc-concrete-yellow {
+        width: 22rem;
+
+        transform: translate(65%, -30%);
+    }
+
+    #bc-concrete-grey {
+        z-index: -5;
+        
+        width: 32.5rem;
+
+        transform: translate(90%, 10%);
     }
 
 }

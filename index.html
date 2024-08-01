@@ -713,7 +713,7 @@
                     </span>
                 </div>
                 <div class="row align-items-center justify-content-center">
-                    <div class="col-xl-6 col-lg-6 col-xxl-5 d-none d-lg-block">
+                    <div class="col-xl-6 col-lg-6 d-none d-lg-block">
                         <div class="image-container">
                             <img src="images/concrete_green.webp" id="ball-green" alt="Полимербетон - Зелёный">
                             <img src="images/concrete_yellow.webp" id="ball-yellow" alt="Полимербетон - Жёлтый">
@@ -722,7 +722,7 @@
                             <img src="images/concrete_red.webp" id="ball-red" alt="Полимербетон - Красный">
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-xxl-5">
+                    <div class="col-xl-6 col-lg-6">
                         <form>
                             <div class="form-field">
                                 <input type="text" id="client_name" name="client_name" placeholder="Имя" maxlength="35"
@@ -737,7 +737,7 @@
                                 <label for="privacy">
                                     <small>
                                         Я ознакомлен и согласен с
-                                        <br class="d-block d-sm-none d-lg-block d-xxl-block">
+                                        <br class="d-block d-sm-none d-lg-block d-xxl-none">
                                         <a href="ссылка-на-политику-конфиденциальности" target="_blank">
                                             Политикой конфиденциальности
                                         </a>
@@ -763,7 +763,7 @@
                         контактной информации
                     </p>
                 </div>
-                <div class="row align-items-center justify-content-start">
+                <div class="row align-items-center justify-content-between">
                     <div class="col-12 phone-and-email">
                         <h3 class="contact-header">
                             Телефон
@@ -782,9 +782,7 @@
                                 Polimerbeton-vrn@yandex.ru
                             </strong></a>
                         </p>
-                    </div>
-                </div>
-                <div class="row align-items-center justify-content-start">
+                    </div>                
                     <div class="col-12 messengers">
                         <h3 class="contact-header">Мессенджеры</h3>
                         <p class="contact">
@@ -803,8 +801,20 @@
 
         <div class="container">
             <div class="row justify-content-between footer-part-1">
-                <div class="col-lg-5 col-12 logo-and-privacy-policy">
-                    <div class="logo">
+                <div class="col-lg-5 col-12 align-items-start logo-and-privacy-policy">
+                    <a class="navbar-brand col-6" href="#">
+                        <div class="logo">
+                            <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 134 134">
+                                <path
+                                    d="M65 130C100.899 130 130 100.899 130 65C130 29.1015 100.899 0 65 0C29.1015 0 0 29.1015 0 65C0 100.899 29.1015 130 65 130ZM112.397 94.2085C130.229 76.3762 127.48 44.7151 106.256 23.4913C85.0321 2.26758 53.3709 -0.481758 35.5387 17.3505C17.7064 35.1828 20.4557 66.8439 41.6795 88.0677C62.9032 109.291 94.5644 112.041 112.397 94.2085Z" />
+                            </svg>
+                            <div class="logo-company-name-and-tagline-container">
+                                <b class="logo-company-name">ПОЛИМЕРБЕТОН</b>
+                                <i class="logo-tagline">быстро и надёжно!</i>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- <div class="logo">
                         <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 134 134">
                             <path
                                 d="M65 130C100.899 130 130 100.899 130 65C130 29.1015 100.899 0 65 0C29.1015 0 0 29.1015 0 65C0 100.899 29.1015 130 65 130ZM112.397 94.2085C130.229 76.3762 127.48 44.7151 106.256 23.4913C85.0321 2.26758 53.3709 -0.481758 35.5387 17.3505C17.7064 35.1828 20.4557 66.8439 41.6795 88.0677C62.9032 109.291 94.5644 112.041 112.397 94.2085Z" />
@@ -813,10 +823,10 @@
                             <b class="logo-company-name">ПОЛИМЕРБЕТОН</b>
                             <i class="logo-tagline">быстро и надёжно!</i>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="d-none d-lg-block">
                         <h3>polimerbeton-vrn.ru</h3>
-                        <p><a href="">Политика конфиденциальности</a></p>
+                        <a href="">Политика конфиденциальности</a>
                     </div>
                 </div>
                 <div class="col-12 col-lg-4 col-xxl-3">
@@ -837,7 +847,7 @@
                 </div>
                 <div class="col-lg-5 col-12 d-md-block d-lg-none logo-and-privacy-policy" #id="second-privacy-policy">
                     <h3>polimerbeton-vrn.ru</h3>
-                    <p><a href="">Политика конфиденциальности</a></p>
+                    <a href="">Политика конфиденциальности</a>
                 </div>
             </div>
             <div class="row align-items-center justify-content-center">
@@ -850,7 +860,7 @@
                     <small>&copy Copyright 2024 TIDOFF Studio</small>
                 </div>
                 <div class="col-4 col-lg-5 col-12" id="copyright-email">
-                    <a href="mailto:tidoff.studio@yandex.ru"><small>tidoff.studio@yandex.ru</small></a>
+                    <small><a href="mailto:tidoff.studio@yandex.ru">tidoff.studio@yandex.ru</a></small>
                 </div>
             </div>
         </div>

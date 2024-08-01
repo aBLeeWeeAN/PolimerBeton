@@ -5,19 +5,23 @@
 :root {
     --bc-color: #fff;
     // --fr-color: #EFF8E2;
-    --fr-color: #BF360C;
+    --fr-color: #FFF3E0;
 
-    --finally-bc-color: color-mix(in srgb, var(--bc-color), var(--fr-color) 0%);
+    --finally-bc-color: color-mix(in srgb, var(--bc-color), var(--fr-color) 8%);
     // --finally-bc-color: #F7F3E3;
 
-    --my-text-heading-color: #212121de;
+    --my-text-heading-color: #121212de;
 
-    --my-text-paragraph-color: #000000de;
+    --my-text-paragraph-color: #121212de;
     --my-text-paragraph-color-alt: #ffffffde;
+
+    --color-bc-square-1: #D1C4E91A;
+
+    --header-bc-color: color-mix(in srgb, var(--finally-bc-color) 100%, var(--color-bc-square-1));
 }
 
- $header_bc_color_square_1: #D1C4E91A;
- $header_bc_color_square_2: #FFE0B21A;
+ $header_bc_color_square_1: #EDE7F63D;
+ $header_bc_color_square_2: #FFF3E03D;
  
  $bc_color: #fff;
  // $fr_color: #FFE0B2; // 100

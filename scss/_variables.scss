@@ -51,6 +51,26 @@
 
     --my-text-caption-line-height: 1.5em;
 
+    // footer h3 text
+    --my-text-h3-font-size: 1.25rem;
+    --my-text-h3-font-weight: 600;
+
+    --my-text-h3-letter-spacing: 0.17em;
+
+    --my-text-h3-margin-bottom: 1em;
+
+    --my-text-h3-line-height: 100%;
+
+    // footer small paragraph text
+    --my-text-small-paragraph-font-size: .8rem;
+    --my-text-small-paragraph-font-weight: 300;
+
+    --my-text-small-paragraph-letter-spacing: 0.17em;
+
+    --my-text-small-paragraph-margin-bottom: .75em;
+
+    --my-text-small-paragraph-line-height: 100%;
+
     // header
     --my-header-padding-value: .5rem;
     --my-header-child-non-first-margin-top: 1.25rem;
@@ -62,6 +82,16 @@
     --my-header-button-size: .8rem;
     // --my-header-button-left-icons-padding-value: .4rem;
     // --my-header-button-right-icons-padding-value: .4rem;
+
+    // footer
+    --my-footer-padding-value: .5rem;
+    --my-footer-child-non-first-margin-top: 1.25rem;
+
+    // header logo size (font-size)
+    --my-footer-logo-size: .8rem;
+
+    // header button size (font-size)
+    --my-footer-button-size: .8rem;
 
     // sections
     --my-section-padding-value: 5rem;

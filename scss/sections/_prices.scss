@@ -80,12 +80,14 @@
                 font-style: normal;
 
                 // font-size: 3rem;
-                letter-spacing: 0.25em;
+                letter-spacing: 0.2em;
                 text-align: center;
 
                 color: #fff;
 
                 text-transform: none;
+
+                font-variant-numeric: lining-nums;
 
                 animation: wobble 10s infinite;
 
@@ -323,12 +325,12 @@
         }
     }
 
-    $current-price-text-font-size: 1.25rem;
+    $current-price-text-font-size: 1.5rem;
 
-    $my-current-price-block-size: 10.5rem;
+    $my-current-price-block-size: 14rem;
 
-    $my-ball-size: 9rem;
-    $my-orbit-radius: 17rem;
+    $my-ball-size: 14rem;
+    $my-orbit-radius: 25rem;
 
     $my-current-price-block-margin: my-orbit-animation-calculate-margin($my-orbit-radius, $my-current-price-block-size) 0;
 

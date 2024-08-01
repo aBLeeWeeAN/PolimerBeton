@@ -63,11 +63,13 @@ table {
  *========================================================================**/
 :root {
   --bc-color: #fff;
-  --fr-color: #BF360C;
-  --finally-bc-color: color-mix(in srgb, var(--bc-color), var(--fr-color) 0%);
-  --my-text-heading-color: #212121de;
-  --my-text-paragraph-color: #000000de;
+  --fr-color: #FFF3E0;
+  --finally-bc-color: color-mix(in srgb, var(--bc-color), var(--fr-color) 8%);
+  --my-text-heading-color: #121212de;
+  --my-text-paragraph-color: #121212de;
   --my-text-paragraph-color-alt: #ffffffde;
+  --color-bc-square-1: #D1C4E91A;
+  --header-bc-color: color-mix(in srgb, var(--finally-bc-color) 100%, var(--color-bc-square-1));
 }
 
 /* Подключение сторонних библиотек */
@@ -2144,7 +2146,7 @@ progress {
   --polimerbeton-vrn-navbar-disabled-color: rgba(var(--polimerbeton-vrn-emphasis-color-rgb), 0.3);
   --polimerbeton-vrn-navbar-active-color: rgba(var(--polimerbeton-vrn-emphasis-color-rgb), 1);
   --polimerbeton-vrn-navbar-brand-padding-y: 0.3125rem;
-  --polimerbeton-vrn-navbar-brand-margin-end: 1rem;
+  --polimerbeton-vrn-navbar-brand-margin-end: 0;
   --polimerbeton-vrn-navbar-brand-font-size: 1.25rem;
   --polimerbeton-vrn-navbar-brand-color: rgba(var(--polimerbeton-vrn-emphasis-color-rgb), 1);
   --polimerbeton-vrn-navbar-brand-hover-color: rgba(var(--polimerbeton-vrn-emphasis-color-rgb), 1);
@@ -9259,10 +9261,24 @@ progress {
   --my-text-caption-margin-top: 0.75em;
   --my-text-caption-margin-bottom: 0;
   --my-text-caption-line-height: 1.5em;
+  --my-text-h3-font-size: 1.25rem;
+  --my-text-h3-font-weight: 600;
+  --my-text-h3-letter-spacing: 0.17em;
+  --my-text-h3-margin-bottom: 1em;
+  --my-text-h3-line-height: 100%;
+  --my-text-small-paragraph-font-size: .8rem;
+  --my-text-small-paragraph-font-weight: 300;
+  --my-text-small-paragraph-letter-spacing: 0.17em;
+  --my-text-small-paragraph-margin-bottom: .75em;
+  --my-text-small-paragraph-line-height: 100%;
   --my-header-padding-value: .5rem;
   --my-header-child-non-first-margin-top: 1.25rem;
   --my-header-logo-size: .8rem;
   --my-header-button-size: .8rem;
+  --my-footer-padding-value: .5rem;
+  --my-footer-child-non-first-margin-top: 1.25rem;
+  --my-footer-logo-size: .8rem;
+  --my-footer-button-size: .8rem;
   --my-section-padding-value: 5rem;
   --my-section-child-non-first-margin-top: 2.75rem;
   --my-section-hero-padding-value: 7.5rem;
@@ -9297,8 +9313,12 @@ progress {
  **                            HTML DOCUMENT BASE SETTINGS
  *========================================================================**/
 html {
-  width: 100vw;
-  height: 100vh !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
   z-index: 1;
   max-width: 100%;
   overflow-y: scroll;
@@ -9311,16 +9331,12 @@ html {
  **                            BODY
  *========================================================================**/
 body {
+  margin: 0 auto;
+  padding-right: 0 !important;
   z-index: -10;
+  overflow: hidden;
   overflow-x: hidden;
   background-color: var(--finally-bc-color);
-}
-
-#wrapper {
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 1280px;
-  padding: 0 16px 0 16px;
 }
 
 /* Общие стили для всех секций */
@@ -9457,8 +9473,8 @@ section:last-child {
   display: inline-block;
   width: 100%;
   height: auto;
-  border-radius: 0.62rem;
-  padding: 0.5rem;
+  border-radius: 0.8rem;
+  padding: 0.35rem;
   background-clip: padding-box;
   -webkit-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
@@ -9466,7 +9482,7 @@ section:last-child {
 }
 .image-with-gradient-border img {
   display: block;
-  border-radius: 0.31rem;
+  border-radius: 0.5rem;
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -9501,11 +9517,11 @@ header .fixed-top-navbar #bc-square-1 {
   z-index: -5;
   position: absolute;
   width: 10000px;
-  height: 3000px;
-  background-color: rgba(209, 196, 233, 0.1019607843);
+  height: 700%;
+  background-color: rgba(255, 243, 224, 0.2392156863);
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 1.9%) rotate(6deg);
+  transform: translate(-42.1%, 0%) rotate(23deg);
 }
 @media (max-width: 1399.98px) {
   header .fixed-top-navbar #bc-square-1 {
@@ -9536,11 +9552,12 @@ header .fixed-top-navbar #bc-square-2 {
   z-index: -6;
   position: absolute;
   width: 10000px;
-  height: 3000px;
-  background-color: rgba(255, 224, 178, 0.1019607843);
+  height: 200%;
+  background-color: rgba(237, 231, 246, 0.2392156863);
+  background-color: transparent;
   top: 50%;
   left: 50%;
-  transform: translate(-44.3%, -5%) rotate(-19deg);
+  transform: translate(-56%, 0%) rotate(-7deg);
 }
 @media (max-width: 1399.98px) {
   header .fixed-top-navbar #bc-square-2 {
@@ -9604,6 +9621,7 @@ header .fixed-top-navbar .navbar .navbar-brand .logo .logo-company-name-and-tagl
   font-style: normal;
   font-size: 1.5em;
   letter-spacing: 0.35em;
+  line-height: 1.5em;
 }
 header .fixed-top-navbar .navbar .navbar-brand .logo .logo-company-name-and-tagline-container .logo-tagline, header .fixed-top-navbar .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo .logo-company-name-and-tagline-container .logo-tagline, header .offcanvas .offcanvas-header .offcanvas-heading .fixed-top-navbar .navbar .navbar-brand .offcanvas-logo .logo-company-name-and-tagline-container .logo-tagline {
   font-family: "Pattaya", sans-serif;
@@ -9611,6 +9629,7 @@ header .fixed-top-navbar .navbar .navbar-brand .logo .logo-company-name-and-tagl
   font-style: normal;
   font-size: 1em;
   letter-spacing: 0.55em;
+  line-height: 1.5em;
 }
 @media (max-width: 1399.98px) {
   header .fixed-top-navbar .navbar .navbar-brand .logo, header .fixed-top-navbar .navbar .navbar-brand .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo, header .offcanvas .offcanvas-header .offcanvas-heading .fixed-top-navbar .navbar .navbar-brand .offcanvas-logo {
@@ -9971,8 +9990,8 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
 #Description #bc-circle {
   z-index: -5;
   position: absolute;
-  width: 186rem;
-  height: 186rem;
+  width: 120rem;
+  height: 120rem;
   border-radius: 100%;
   /* Линейный градиент с тремя цветами и углом 45 градусов */
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d1c4e9+0,ffe0b2+100 */
@@ -9996,7 +10015,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   /* IE6-8 fallback on horizontal gradient */
   top: 19.125rem;
   left: 50%;
-  transform: translate(-77%, -2.1%);
+  transform: translate(-77%, -10.1%);
   opacity: 0.25;
 }
 @media (max-width: 1399.98px) {
@@ -10088,42 +10107,32 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
 #Usage img {
   z-index: -2;
   position: absolute;
+  height: auto;
+  aspect-ratio: 1/1;
+  top: 50%;
+  left: 50%;
 }
 #Usage #bc-concrete-green {
   width: 33.75rem;
-  height: 33.75rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(78%, -120%);
-}
-#Usage #bc-concrete-yellow {
-  width: 12.5rem;
-  height: 12.5rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(315%, -75%);
-}
-#Usage #bc-concrete-white {
-  width: 25rem;
-  height: 25rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(85%, -18%);
-}
-#Usage #bc-concrete-grey {
-  width: 12.5rem;
-  height: 12.5rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(290%, 150%);
+  transform: translate(55%, -120%);
 }
 #Usage #bc-concrete-red {
+  width: 18rem;
+  transform: translate(180%, -62.5%);
+}
+#Usage #bc-concrete-white {
   z-index: -1;
-  width: 17.3125rem;
-  height: 17.3125rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(120%, -120%);
+  width: 10.5rem;
+  transform: translate(175%, -137.5%);
+}
+#Usage #bc-concrete-yellow {
+  width: 22rem;
+  transform: translate(65%, -30%);
+}
+#Usage #bc-concrete-grey {
+  z-index: -5;
+  width: 32.5rem;
+  transform: translate(90%, 10%);
 }
 
 /**========================================================================
@@ -10309,8 +10318,8 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
 #Examples #bc-circle {
   z-index: -5;
   position: absolute;
-  width: 286rem;
-  height: 286rem;
+  width: 155rem;
+  height: 155rem;
   border-radius: 100%;
   /* Линейный градиент с тремя цветами и углом 45 градусов */
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffe0b2+0,d1c4e9+70,d1c4e9+100 */
@@ -10334,7 +10343,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   /* IE6-8 fallback on horizontal gradient */
   top: 50%;
   left: 50%;
-  transform: translate(-38%, -23.1%);
+  transform: translate(-39%, -27.1%);
   opacity: 0.25;
 }
 @media (max-width: 1399.98px) {
@@ -10360,10 +10369,12 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   font-optical-sizing: auto;
   font-weight: 100;
   font-style: normal;
-  font-size: 12.5rem;
+  font-size: 10.5rem;
   letter-spacing: 0;
   text-align: center;
+  line-height: 100%;
   color: rgba(0, 0, 0, 0.8705882353);
+  font-variant-numeric: lining-nums;
 }
 @media (max-width: 991.98px) {
   #Advantages .advantage .advantage-header .advantage-number {
@@ -10379,12 +10390,12 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
 }
 #Advantages .advantage .advantage-header .advantage-brief-text {
   margin-left: 3.125rem;
-  font-family: "Raleway", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 600;
+  font-weight: 400;
   font-style: normal;
-  font-size: 3rem;
-  letter-spacing: 0.3rem;
+  font-size: 1.5rem;
+  letter-spacing: 0.22rem;
   text-align: left;
   color: rgba(0, 0, 0, 0.8705882353);
 }
@@ -10408,12 +10419,13 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   }
 }
 #Advantages .advantage .advantage-extended-text {
+  margin-top: 1.5rem;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
   font-size: var(--my-text-paragraph-font-size);
-  line-height: 150%;
+  line-height: 1.5em;
   letter-spacing: var(--my-text-paragraph-letter-spacing);
   text-align: justify;
   text-indent: 6rem;
@@ -10426,7 +10438,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   }
 }
 #Advantages .advantage#advantage-1 {
-  margin-bottom: 5rem;
+  margin-bottom: 2.5rem;
 }
 @media (max-width: 575.98px) {
   #Advantages .advantage#advantage-1 {
@@ -10434,7 +10446,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   }
 }
 #Advantages .advantage#advantage-2 {
-  margin-bottom: 2.75rem;
+  margin-bottom: 1 rem;
 }
 @media (max-width: 575.98px) {
   #Advantages .advantage#advantage-2 {
@@ -10442,7 +10454,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   }
 }
 #Advantages .advantage#advantage-3 {
-  margin-bottom: 6rem;
+  margin-bottom: 1.75rem;
 }
 @media (max-width: 575.98px) {
   #Advantages .advantage#advantage-3 {
@@ -10450,7 +10462,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   }
 }
 #Advantages .advantage#advantage-4 {
-  margin-bottom: 3rem;
+  margin-bottom: 0.75rem;
 }
 @media (max-width: 575.98px) {
   #Advantages .advantage#advantage-4 {
@@ -10458,7 +10470,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   }
 }
 #Advantages .advantage#advantage-5 {
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 @media (max-width: 575.98px) {
   #Advantages .advantage#advantage-5 {
@@ -10466,7 +10478,8 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   }
 }
 #Advantages .advantage#advantage-6 {
-  margin-bottom: 2.5rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0rem;
 }
 @media (max-width: 575.98px) {
   #Advantages .advantage#advantage-6 {
@@ -10645,8 +10658,8 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
 #Safety #bc-circle {
   z-index: -5;
   position: absolute;
-  width: 400rem;
-  height: 400rem;
+  width: 178rem;
+  height: 178rem;
   border-radius: 100%;
   /* Линейный градиент с тремя цветами и углом 45 градусов */
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d1c4e9+0,d1c4e9+30,ffe0b2+100 */
@@ -10670,7 +10683,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   /* IE6-8 fallback on horizontal gradient */
   top: 50%;
   left: 50%;
-  transform: translate(-65%, -26.5%);
+  transform: translate(-71%, -6.5%);
   opacity: 0.25;
 }
 @media (max-width: 1399.98px) {
@@ -10729,10 +10742,11 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.2em;
   text-align: center;
   color: #fff;
   text-transform: none;
+  font-variant-numeric: lining-nums;
   animation: wobble 10s infinite;
 }
 @keyframes wobble {
@@ -10874,16 +10888,16 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   }
 }
 #Prices .current-price-animation-container .current-price {
-  width: 10.5rem;
-  height: 10.5rem;
-  margin: 11.75rem 0;
+  width: 14rem;
+  height: 14rem;
+  margin: 18rem 0;
 }
 #Prices .current-price-animation-container .current-price .current-price-text {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 #Prices .current-price-animation-container .concrete-image-orbit-animation-wrapper {
-  width: 9rem;
-  height: 17rem;
+  width: 14rem;
+  height: 25rem;
 }
 @media (max-width: 1199.98px) {
   #Prices .current-price-animation-container .current-price {
@@ -10933,7 +10947,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
  *========================================================================**/
 #Feedback-Form .image-container {
   width: 100%;
-  height: 25rem;
+  aspect-ratio: 1/1;
   position: relative;
 }
 #Feedback-Form .image-container img {
@@ -10947,8 +10961,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   left: 0;
   z-index: -1;
   width: 76.22%;
-  /* 31.25rem / 41rem * 100% */
-  height: 76.22%;
+  aspect-ratio: 1/1;
   /* 31.25rem / 41rem * 100% */
 }
 #Feedback-Form .image-container #ball-yellow {
@@ -10958,8 +10971,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   left: 54.88%;
   /* 22.5rem / 41rem * 100% */
   width: 45.73%;
-  /* 18.75rem / 41rem * 100% */
-  height: 45.73%;
+  aspect-ratio: 1/1;
   /* 18.75rem / 41rem * 100% */
 }
 #Feedback-Form .image-container #ball-white {
@@ -10968,8 +10980,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   left: 51.83%;
   /* 21.25rem / 41rem * 100% */
   width: 33.54%;
-  /* 13.75rem / 41rem * 100% */
-  height: 33.54%;
+  aspect-ratio: 1/1;
   /* 13.75rem / 41rem * 100% */
 }
 #Feedback-Form .image-container #ball-grey {
@@ -10977,8 +10988,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   /* 19rem / 41rem * 100% */
   left: 0;
   width: 54.27%;
-  /* 22.25rem / 41rem * 100% */
-  height: 54.27%;
+  aspect-ratio: 1/1;
   /* 22.25rem / 41rem * 100% */
 }
 #Feedback-Form .image-container #ball-red {
@@ -10987,8 +10997,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   left: 48.78%;
   /* 20rem / 41rem * 100% */
   width: 34.76%;
-  /* 14.25rem / 41rem * 100% */
-  height: 34.76%;
+  aspect-ratio: 1/1;
   /* 14.25rem / 41rem * 100% */
 }
 @media (max-width: 1399.98px) {
@@ -11004,15 +11013,20 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
 #Feedback-Form form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 #Feedback-Form form :not(:first-child) {
   margin-top: 0.6rem;
 }
 #Feedback-Form form .form-field {
-  font-size: inherit;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 3.5rem;
-  padding: 0.2rem;
+  height: auto;
+  padding: 0.19rem;
   border: none;
   border-radius: 1.25rem;
   background-color: #4527A0;
@@ -11023,7 +11037,6 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
 @media (max-width: 1199.98px) {
   #Feedback-Form form .form-field {
     padding: 0.25rem;
-    height: 3.8rem;
     border-radius: 0.625rem;
     --squircle-smooth: 0.78;
     --squircle-radius: .625rem;
@@ -11042,22 +11055,21 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
 }
 #Feedback-Form form input[type=text],
 #Feedback-Form form input[type=tel] {
-  font-size: inherit;
   width: 100%;
-  height: 100%;
+  height: auto;
   padding: 0.9rem 1.125rem;
   border: none;
   border-radius: 1.025rem;
-  background-color: color-mix(in srgb, #fffbf6 100%, #D1C4E9 5%);
+  background-color: #fff;
   --squircle-smooth: 1;
-  --squircle-radius: 1.25rem;
+  --squircle-radius: 1.025rem;
   mask-image: paint(squircle);
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
-  font-size: var(--my-text-paragraph-font-size);
-  line-height: var(--my-text-paragraph-line-height);
+  font-size: 0.8rem;
+  line-height: 100%;
   letter-spacing: var(--my-text-paragraph-letter-spacing);
   color: var(--my-text-paragraph-color);
 }
@@ -11095,7 +11107,8 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
 #Feedback-Form form #feedback-form-submit-button {
   margin-top: 1.25rem;
   width: 100%;
-  height: 3.5rem;
+  height: auto;
+  padding: 1rem 1.125rem;
   border: none;
   border-radius: 1.25rem;
   --squircle-smooth: 1.0;
@@ -11106,6 +11119,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
+  font-size: 0.8rem;
   line-height: var(--my-text-paragraph-line-height);
   letter-spacing: var(--my-text-paragraph-letter-spacing);
   text-align: center;
@@ -11138,7 +11152,6 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   }
 }
 #Feedback-Form form .checkbox-privacy-policy {
-  margin-top: 0.85rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11147,14 +11160,14 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   font-weight: 600;
   font-style: normal;
   font-size: 0.8rem;
-  letter-spacing: 0.0625rem;
+  letter-spacing: 0.05rem;
   text-align: center;
   color: var(--my-text-paragraph-color);
 }
 #Feedback-Form form .checkbox-privacy-policy input[type=checkbox] {
   appearance: none;
-  width: 1.75em;
-  height: 1.75em;
+  width: 1.5rem;
+  height: 1.5rem;
   border: 0.125rem solid #4527A0;
   border-radius: 50%;
   position: relative;
@@ -11176,10 +11189,10 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
 #Feedback-Form form .checkbox-privacy-policy input[type=checkbox]:checked::before {
   content: "";
   position: absolute;
-  top: 0.3125rem;
-  left: 0.625rem;
-  width: 0.475rem;
-  height: 0.85rem;
+  top: 0.3rem;
+  left: 0.56rem;
+  width: 0.375rem;
+  height: 0.75rem;
   border: solid #fff;
   border-width: 0 0.125rem 0.125rem 0;
   transform: rotate(45deg);
@@ -11235,9 +11248,9 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
-  font-size: 2rem;
-  line-height: 200%;
-  letter-spacing: 0.2em;
+  font-size: var(--my-text-paragraph-font-size);
+  line-height: 100%;
+  letter-spacing: var(--my-text-paragraph-letter-spacing);
   color: rgba(0, 0, 0, 0.8705882353);
 }
 @media (max-width: 575.98px) {
@@ -11257,7 +11270,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   font-style: normal;
   font-size: var(--my-text-paragraph-font-size);
   line-height: 200%;
-  letter-spacing: 0.2em;
+  letter-spacing: var(--my-text-paragraph-letter-spacing);
   color: rgba(0, 0, 0, 0.8705882353);
   text-decoration: none;
 }
@@ -11275,7 +11288,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   }
 }
 #Contacts .messengers {
-  margin-top: 3rem;
+  margin-top: var(--my-text-subheading-margin-bottom);
 }
 @media (max-width: 575.98px) {
   #Contacts .messengers {
@@ -11293,12 +11306,12 @@ footer {
 footer #bc-square-3 {
   z-index: -5;
   position: absolute;
-  width: 120%;
+  width: 10000px;
   height: 120%;
-  background-color: rgba(209, 196, 233, 0.1019607843);
+  background-color: rgba(237, 231, 246, 0.2392156863);
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -6%) rotate(-16deg);
+  transform: translate(-48.1%, -30%) rotate(-17deg);
 }
 @media (max-width: 575.98px) {
   footer #bc-square-3 {
@@ -11310,12 +11323,12 @@ footer #bc-square-3 {
 footer #bc-square-4 {
   z-index: -6;
   position: absolute;
-  width: 120%;
-  height: 200%;
-  background-color: rgba(255, 224, 178, 0.1019607843);
+  width: 10000px;
+  height: 180%;
+  background-color: rgba(255, 243, 224, 0.2392156863);
   top: 50%;
   left: 50%;
-  transform: translate(-47.4%, -50%) rotate(45deg);
+  transform: translate(-48.2%, -50%) rotate(40deg);
 }
 @media (max-width: 575.98px) {
   footer #bc-square-4 {
@@ -11325,13 +11338,14 @@ footer #bc-square-4 {
   }
 }
 footer h3 {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--my-text-h3-margin-bottom);
   font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 600;
+  font-weight: var(-my-text-h3-font-weight);
   font-style: normal;
-  font-size: 1.75rem;
-  letter-spacing: 0.2em;
+  font-size: var(--my-text-h3-font-size);
+  letter-spacing: var(--my-text-h3-letter-spacing);
+  line-height: var(--my-text-h3-line-height);
   color: rgba(0, 0, 0, 0.8705882353);
 }
 @media (max-width: 991.98px) {
@@ -11347,36 +11361,33 @@ footer h3 {
     margin-bottom: 1rem;
   }
 }
-footer p,
 footer a {
   margin: 0;
-  padding: 0;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 300;
+  font-weight: var(--my-text-small-paragraph-font-weight);
   font-style: normal;
-  font-size: 1rem;
-  letter-spacing: 0.2em;
+  font-size: var(--my-text-small-paragraph-font-size);
+  letter-spacing: var(--my-text-small-paragraph-letter-spacing);
   text-align: left;
+  line-height: var(--my-text-small-paragraph-line-height);
   color: rgba(0, 0, 0, 0.8705882353);
   text-decoration: none;
 }
 @media (max-width: 991.98px) {
-  footer p,
   footer a {
     text-align: center;
     font-size: 1.5rem;
   }
 }
 @media (max-width: 575.98px) {
-  footer p,
   footer a {
     text-align: center;
     font-size: 0.8rem;
   }
 }
 footer .footer-part-1 {
-  padding: 7.5rem 0 7.5rem 0;
+  padding: var(--my-section-padding-value) 0;
 }
 footer .footer-part-1 .logo-and-privacy-policy {
   display: flex;
@@ -11385,7 +11396,7 @@ footer .footer-part-1 .logo-and-privacy-policy {
   justify-content: space-between;
 }
 footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy header .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo, header .offcanvas .offcanvas-header .offcanvas-heading footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
-  font-size: 1rem;
+  font-size: var(--my-header-logo-size);
   padding: 0;
   display: inline-flex;
   align-items: center;
@@ -11395,11 +11406,11 @@ footer .footer-part-1 .logo-and-privacy-policy .logo .logo-icon, footer .footer-
   fill-rule: evenodd;
   clip-rule: evenodd;
   fill: #4527A0;
-  width: 8.125em;
-  height: 8.125em;
+  width: 4.5em;
+  height: auto;
 }
 footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagline-container, footer .footer-part-1 .logo-and-privacy-policy header .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo .logo-company-name-and-tagline-container, header .offcanvas .offcanvas-header .offcanvas-heading footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-company-name-and-tagline-container {
-  margin-left: 2em;
+  margin-left: 1em;
   display: inline-flex;
   flex-direction: column;
 }
@@ -11408,15 +11419,17 @@ footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagl
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: 3em;
+  font-size: 1.5em;
   letter-spacing: 0.35em;
+  line-height: 1.5em;
 }
 footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagline-container .logo-tagline, footer .footer-part-1 .logo-and-privacy-policy header .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo .logo-company-name-and-tagline-container .logo-tagline, header .offcanvas .offcanvas-header .offcanvas-heading footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo .logo-company-name-and-tagline-container .logo-tagline {
   font-family: "Pattaya", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 2em;
+  font-size: 1em;
   letter-spacing: 0.55em;
+  line-height: 1.5em;
 }
 @media (max-width: 1399.98px) {
   footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy header .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo, header .offcanvas .offcanvas-header .offcanvas-heading footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
@@ -11425,12 +11438,12 @@ footer .footer-part-1 .logo-and-privacy-policy .logo .logo-company-name-and-tagl
 }
 @media (max-width: 991.98px) {
   footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy header .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo, header .offcanvas .offcanvas-header .offcanvas-heading footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
-    font-size: 0.7rem;
+    font-size: 0.5625rem;
   }
 }
 @media (max-width: 575.98px) {
   footer .footer-part-1 .logo-and-privacy-policy .logo, footer .footer-part-1 .logo-and-privacy-policy header .offcanvas .offcanvas-header .offcanvas-heading .offcanvas-logo, header .offcanvas .offcanvas-header .offcanvas-heading footer .footer-part-1 .logo-and-privacy-policy .offcanvas-logo {
-    font-size: 0.35rem;
+    font-size: 0.27rem;
   }
 }
 @media (max-width: 991.98px) {
@@ -11448,7 +11461,7 @@ footer .footer-part-1 .footer-navigation ul {
   padding: 0;
 }
 footer .footer-part-1 .footer-navigation ul li:not(:first-child), footer .footer-part-1 .footer-navigation ul #Usage p:not(:first-child), #Usage footer .footer-part-1 .footer-navigation ul p:not(:first-child) {
-  margin-top: 1.5rem;
+  margin-top: var(--my-text-small-paragraph-margin-bottom);
 }
 @media (max-width: 575.98px) {
   footer .footer-part-1 .footer-navigation ul li:not(:first-child), footer .footer-part-1 .footer-navigation ul #Usage p:not(:first-child), #Usage footer .footer-part-1 .footer-navigation ul p:not(:first-child) {
@@ -11484,15 +11497,15 @@ footer .rounded-hr {
   margin: 0;
 }
 footer .copyright {
-  padding: 5rem 0 5rem 0;
+  padding: 1.75rem 0;
 }
 footer .copyright small {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  font-size: 1rem;
-  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
   color: rgba(0, 0, 0, 0.8705882353);
 }
 @media (max-width: 991.98px) {

@@ -15,7 +15,8 @@
 
     .image-container {
         width: 100%;
-        height: 25rem;
+        aspect-ratio: 1 / 1;
+        // height: 25rem;
 
         position: relative;
 
@@ -35,9 +36,10 @@
             z-index: -1;
 
             width: 76.22%;
+            aspect-ratio: 1 / 1;
             /* 31.25rem / 41rem * 100% */
-            height: 76.22%;
-            /* 31.25rem / 41rem * 100% */
+            // height: 76.22%;
+            // /* 31.25rem / 41rem * 100% */
         }
 
         & #ball-yellow {
@@ -49,9 +51,10 @@
             /* 22.5rem / 41rem * 100% */
 
             width: 45.73%;
+            aspect-ratio: 1 / 1;
             /* 18.75rem / 41rem * 100% */
-            height: 45.73%;
-            /* 18.75rem / 41rem * 100% */
+            // height: 45.73%;
+            // /* 18.75rem / 41rem * 100% */
         }
 
         & #ball-white {
@@ -61,9 +64,10 @@
             /* 21.25rem / 41rem * 100% */
 
             width: 33.54%;
+            aspect-ratio: 1 / 1;
             /* 13.75rem / 41rem * 100% */
-            height: 33.54%;
-            /* 13.75rem / 41rem * 100% */
+            // height: 33.54%;
+            // /* 13.75rem / 41rem * 100% */
         }
 
         & #ball-grey {
@@ -72,9 +76,10 @@
             left: 0;
 
             width: 54.27%;
+            aspect-ratio: 1 / 1;
             /* 22.25rem / 41rem * 100% */
-            height: 54.27%;
-            /* 22.25rem / 41rem * 100% */
+            // height: 54.27%;
+            // /* 22.25rem / 41rem * 100% */
         }
 
         & #ball-red {
@@ -84,9 +89,10 @@
             /* 20rem / 41rem * 100% */
 
             width: 34.76%;
+            aspect-ratio: 1 / 1;
             /* 14.25rem / 41rem * 100% */
-            height: 34.76%;
-            /* 14.25rem / 41rem * 100% */
+            // height: 34.76%;
+            // /* 14.25rem / 41rem * 100% */
         }
 
         @include media-breakpoint-down(xxl) {
@@ -102,17 +108,24 @@
         display: flex;
         flex-direction: column;
 
+        justify-content: center;
+        align-items: center;
+
         :not(:first-child) {
             margin-top: .6rem;
         }
 
         .form-field {
-            font-size: inherit;
+            display: flex;
+            flex-direction: row;
+
+            align-items: center;
+            justify-content: center;
 
             width: 100%;
-            height: 3.5rem;
+            height: auto;
 
-            padding: 0.2rem;
+            padding: .19rem;
 
             border: none;
             border-radius: 1.25rem;
@@ -127,7 +140,7 @@
             @include media-breakpoint-down(xl) {
                 padding: 0.25rem;
 
-                height: 3.8rem;
+                // height: 3.8rem;
 
                 border-radius: .625rem;
 
@@ -153,30 +166,29 @@
 
         input[type="text"],
         input[type="tel"] {
-            font-size: inherit;
-
             width: 100%;
-            height: 100%;
+            height: auto;
 
             padding: .9rem 1.125rem;
 
             border: none;
             border-radius: 1.025rem;
 
-            background-color: color-mix(in srgb, $finally_bc_color 100%, #D1C4E9 5%);
+            // background-color: color-mix(in srgb, $finally_bc_color 100%, #D1C4E9 5%);
+            background-color: #fff;
 
             --squircle-smooth: 1;
-            --squircle-radius: 1.25rem;
+            --squircle-radius: 1.025rem;
 
             mask-image: paint(squircle);
 
             font-family: "Montserrat", sans-serif;
             font-optical-sizing: auto;
-            font-weight: 400;
+            font-weight: 600;
             font-style: normal;
 
-            font-size: var(--my-text-paragraph-font-size);
-            line-height: var(--my-text-paragraph-line-height);
+            font-size: .8rem;
+            line-height: 100%;
             letter-spacing: var(--my-text-paragraph-letter-spacing);
 
             color: var(--my-text-paragraph-color);
@@ -223,7 +235,9 @@
             margin-top: 1.25rem;
 
             width: 100%;
-            height: 3.5rem;
+            height: auto;
+
+            padding: 1rem 1.125rem;
 
             border: none;
             border-radius: 1.25rem;
@@ -239,7 +253,7 @@
             font-weight: 600;
             font-style: normal;
 
-            // font-size: 1.25em;
+            font-size: .8rem;
             line-height: var(--my-text-paragraph-line-height);
             letter-spacing: var(--my-text-paragraph-letter-spacing);
 
@@ -284,7 +298,7 @@
         }
 
         .checkbox-privacy-policy {
-            margin-top: .85rem;
+            // margin-top: .6rem;
 
             display: flex;
             align-items: center;
@@ -298,7 +312,7 @@
             font-style: normal;
 
             font-size: .8rem;
-            letter-spacing: 0.0625rem;
+            letter-spacing: 0.05rem;
 
             text-align: center;
             color: var(--my-text-paragraph-color);
@@ -306,8 +320,8 @@
             input[type="checkbox"] {
                 appearance: none;
 
-                width: 1.75em;
-                height: 1.75em;
+                width: 1.5rem;
+                height: 1.5rem;
 
                 border: 0.125rem solid $color_deep_purple_700;
                 border-radius: 50%;
@@ -336,10 +350,10 @@
             input[type="checkbox"]:checked::before {
                 content: '';
                 position: absolute;
-                top: 0.3125rem;
-                left: 0.625rem;
-                width: 0.475rem;
-                height: 0.85rem;
+                top: 0.3rem;
+                left: 0.56rem;
+                width: 0.375rem;
+                height: 0.75rem;
                 border: solid #fff;
                 border-width: 0 0.125rem 0.125rem 0;
                 transform: rotate(45deg);

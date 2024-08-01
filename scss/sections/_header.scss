@@ -29,15 +29,15 @@
     
             position: absolute;
             width: 10000px;
-            height: 3000px;
+            height: 700%;
     
-            background-color: $header_bc_color_square_1;
-            // background-color: none;
+            background-color: $header_bc_color_square_2;
+            // background-color: transparent;
     
             top: 50%;
             left: 50%;
     
-            transform: translate(-50%, 1.9%) rotate(6deg);
+            transform: translate(-42.1%, 0%) rotate(23deg);
     
             @include media-breakpoint-down(xxl) {
                 transform: translate(-50%, 0.8%) rotate(6deg);
@@ -65,15 +65,16 @@
     
             position: absolute;
             width: 10000px;
-            height: 3000px;
+            height: 200%;
     
-            background-color: $header_bc_color_square_2;
+            background-color: $header_bc_color_square_1;
+            background-color: transparent;
             // background-color: red;
     
             top: 50%;
             left: 50%;
     
-            transform: translate(-44.3%, -5%) rotate(-19deg);
+            transform: translate(-56%, 0%) rotate(-7deg);
     
             @include media-breakpoint-down(xxl) {
                 transform: translate(-43.7%, -5%) rotate(-30deg);
@@ -143,6 +144,8 @@
                 
                             font-size: 1.5em;
                             letter-spacing: 0.35em;
+
+                            line-height: 1.5em;
                         }
                 
                         // @include media-breakpoint-down(lg) {
@@ -158,6 +161,8 @@
                 
                             font-size: 1em;
                             letter-spacing: 0.55em;
+
+                            line-height: 1.5em;
                         }
                 
                         // @include media-breakpoint-down(lg) {
