@@ -39,25 +39,25 @@
     
             transform: translate(-42.1%, 0%) rotate(23deg);
     
-            @include media-breakpoint-down(xxl) {
-                transform: translate(-50%, 0.8%) rotate(6deg);
-            }
+            // @include media-breakpoint-down(xxl) {
+            //     transform: translate(-50%, 0.8%) rotate(6deg);
+            // }
     
-            @include media-breakpoint-down(xl) {
-                transform: translate(-50%, 1.8%) rotate(10deg);
-            }
+            // @include media-breakpoint-down(xl) {
+            //     transform: translate(-50%, 1.8%) rotate(10deg);
+            // }
     
-            @include media-breakpoint-down(lg) {
-                transform: translate(-50%, 0.7%) rotate(3.8deg);
-            }
+            // @include media-breakpoint-down(lg) {
+            //     transform: translate(-50%, 0.7%) rotate(3.8deg);
+            // }
     
-            @include media-breakpoint-down(md) {
-                transform: translate(-50%, 0.5%) rotate(3.14deg);
-            }
+            // @include media-breakpoint-down(md) {
+            //     transform: translate(-50%, 0.5%) rotate(3.14deg);
+            // }
     
-            @include media-breakpoint-down(sm) {
-                transform: translate(-50%, 0.37%) rotate(4deg);
-            }
+            // @include media-breakpoint-down(sm) {
+            //     transform: translate(-50%, 0.37%) rotate(4deg);
+            // }
         }
     
         #bc-square-2 {
@@ -76,25 +76,25 @@
     
             transform: translate(-56%, 0%) rotate(-7deg);
     
-            @include media-breakpoint-down(xxl) {
-                transform: translate(-43.7%, -5%) rotate(-30deg);
-            }
+            // @include media-breakpoint-down(xxl) {
+            //     transform: translate(-43.7%, -5%) rotate(-30deg);
+            // }
     
-            @include media-breakpoint-down(xl) {
-                transform: translate(-43.25%, -5%) rotate(-37deg);
-            }
+            // @include media-breakpoint-down(xl) {
+            //     transform: translate(-43.25%, -5%) rotate(-37deg);
+            // }
     
-            @include media-breakpoint-down(lg) {
-                transform: translate(-48%, 0%) rotate(-19deg);
-            }
+            // @include media-breakpoint-down(lg) {
+            //     transform: translate(-48%, 0%) rotate(-19deg);
+            // }
     
-            @include media-breakpoint-down(md) {
-                transform: translate(-47.5%, 0%) rotate(-19deg);
-            }
+            // @include media-breakpoint-down(md) {
+            //     transform: translate(-47.5%, 0%) rotate(-19deg);
+            // }
     
-            @include media-breakpoint-down(sm) {
-                transform: translate(-47.6%, 0%) rotate(-17deg);
-            }
+            // @include media-breakpoint-down(sm) {
+            //     transform: translate(-47.6%, 0%) rotate(-17deg);
+            // }
         }
     
         .navbar {

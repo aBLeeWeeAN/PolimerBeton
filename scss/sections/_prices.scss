@@ -338,16 +338,16 @@
     @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
 
     // Медиа-запросы
-    @include media-breakpoint-down(xl) {
-        $current-price-text-font-size: 2.5rem;
+    // @include media-breakpoint-down(xl) {
+    //     $current-price-text-font-size: 2.5rem;
 
-        $my-current-price-block-size: 17.5rem;
+    //     $my-current-price-block-size: 17.5rem;
 
-        $my-ball-size: 17.5rem;
-        $my-orbit-radius: 32rem;
+    //     $my-ball-size: 17.5rem;
+    //     $my-orbit-radius: 32rem;
 
-        @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
-    }
+    //     @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
+    // }
 
     @include media-breakpoint-down(lg) {
         $current-price-text-font-size: 2rem;

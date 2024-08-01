@@ -13,17 +13,17 @@ section {
         padding: var(--my-section-padding-value) 0;
     }
 
-    @include media-breakpoint-down(xl) {
-        padding: 6.5rem 0;
+    // @include media-breakpoint-down(xl) {
+    //     padding: 6.5rem 0;
     
-        &:not(:first-child) {
-            padding: 6.5rem 0 0 0;
-        }
+    //     &:not(:first-child) {
+    //         padding: 6.5rem 0 0 0;
+    //     }
     
-        &:last-child {
-            padding: 6.5rem 0;
-        }
-    }
+    //     &:last-child {
+    //         padding: 6.5rem 0;
+    //     }
+    // }
 
     @include media-breakpoint-down(lg) {
         padding: 7.5rem 0;
@@ -80,9 +80,9 @@ section {
     letter-spacing: var(--my-text-heading-letter-spacing);
     line-height: var(--my-text-heading-line-height);
 
-    @include media-breakpoint-down(xl) {
-        font-size: 2.75rem;
-    }
+    // @include media-breakpoint-down(xl) {
+    //     font-size: 2.75rem;
+    // }
 
     @include media-breakpoint-down(lg) {
         font-size: 2.5rem;
@@ -119,10 +119,10 @@ section {
 
     font-variant-numeric: lining-nums;
 
-    @include media-breakpoint-down(xl) {
-        font-size: 1.5rem;
-        margin: 0 0 2.5rem 0;
-    }
+    // @include media-breakpoint-down(xl) {
+    //     font-size: 1.5rem;
+    //     margin: 0 0 2.5rem 0;
+    // }
 
     @include media-breakpoint-down(lg) {
         margin: 0 0 2rem 0;

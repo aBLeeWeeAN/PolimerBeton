@@ -134,7 +134,7 @@
             justify-content: space-between;
 
             .logo {            
-                font-size: var(--my-header-logo-size);
+                font-size: var(--my-footer-logo-size);
             
                 padding: 0;
             
@@ -195,9 +195,9 @@
                     // }
                 }
             
-                @include media-breakpoint-down(xxl) {
-                    font-size: 0.75rem;
-                }
+                // @include media-breakpoint-down(xxl) {
+                //     font-size: 0.75rem;
+                // }
                 
                 @include media-breakpoint-down(lg) {
                     font-size: 0.5625rem;

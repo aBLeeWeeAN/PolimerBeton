@@ -88,7 +88,7 @@
     --my-footer-child-non-first-margin-top: 1.25rem;
 
     // header logo size (font-size)
-    --my-footer-logo-size: .8rem;
+    --my-footer-logo-size: 1.25rem;
 
     // header button size (font-size)
     --my-footer-button-size: .8rem;
@@ -101,14 +101,26 @@
     --my-section-hero-padding-value: 7.5rem;
     --my-section-hero-child-non-first-margin-top: 5.5rem;
 
-    @include media-breakpoint-down(xl) {
-        --my-text-header-title-margin-bottom: 2.5rem;
+    @include media-breakpoint-down(xxl) {
+        --base-font-size: 18px;
 
-        --my-text-paragraph-margin-top: 1.15rem;
-        --my-text-paragraph-font-size: 1.5rem;
-        --my-text-paragraph-letter-spacing: 0.2em;
+        // --my-text-header-title-margin-bottom: 2.5rem;
+
+        // --my-text-paragraph-margin-top: 1.15rem;
+        // --my-text-paragraph-font-size: 1.5rem;
+        // --my-text-paragraph-letter-spacing: 0.2em;
         
-        --my-img-caption-font-size: 1.4rem;
+        // --my-img-caption-font-size: 1.4rem;
+    }
+
+    @include media-breakpoint-down(xl) {
+        --base-font-size: 18px;
+
+        --my-text-h1-font-size: 4rem;
+        --my-text-h1-font-weight: 400;
+
+        --my-text-h1-letter-spacing: 0.22em;
+        --my-text-h1-line-height: 1em;
     }
 
     @include media-breakpoint-down(sm) {

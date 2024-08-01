@@ -96,6 +96,10 @@
         width: 33.75rem;
 
         transform: translate(55%, -120%);
+
+        @include media-breakpoint-down(xl) {
+            transform: translate(60%, -120%);
+        }
     }
 
     #bc-concrete-red {
@@ -110,12 +114,22 @@
         width: 10.5rem;
 
         transform: translate(175%, -137.5%);
+
+        @include media-breakpoint-down(xl) {
+            width: 11rem;
+
+            transform: translate(165%, -142%);
+        }
     }
 
     #bc-concrete-yellow {
         width: 22rem;
 
         transform: translate(65%, -30%);
+
+        @include media-breakpoint-down(xl) {
+            transform: translate(85%, -35%);
+        }
     }
 
     #bc-concrete-grey {

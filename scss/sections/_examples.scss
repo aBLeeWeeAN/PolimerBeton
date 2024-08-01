@@ -233,9 +233,11 @@
         position: absolute;
 
         width: 155rem;
-        height: 155rem;
+        height: auto;
 
-        border-radius: 100%;
+        aspect-ratio: 1 / 1;
+
+        border-radius: 50%;
 
         /* Линейный градиент с тремя цветами и углом 45 градусов */
         // background-image: linear-gradient(147deg, #D1C4E900 0%, #D1C4E980 50%, #FFE0B2FF 100%);
@@ -270,12 +272,9 @@
         transform: translate(-39%, -27.1%);
 
         opacity: 0.25;
-    }
 
-    @include media-breakpoint-down(xxl) {
-        #bc-circle {
-            width: 228.8rem;
-            height: 228.8rem;
+        @include media-breakpoint-down(xl) {
+            width: 135rem;
         }
     }
 }
