@@ -228,6 +228,10 @@
                     border-radius: 50%;
             
                     margin: 0 0.25em;
+
+                    @include media-breakpoint-down(md) {
+                        border-radius: 0;
+                    }
                 }
             
                 .contacts svg {
@@ -265,6 +269,10 @@
                 border-radius: 50%;
         
                 margin: 0 1.25em;
+
+                @include media-breakpoint-down(md) {
+                    border-radius: 0;
+                }
             }
         
             .navbar-toggler {
@@ -356,6 +364,7 @@
         // box-shadow: 0 10px 12px rgba(0, 0, 0, 0.1);
         // backdrop-filter: blur(24px);
 
+        background-color: rgba($color: #fff, $alpha: .2);
         box-shadow: 0 .476rem .571rem rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(1.143rem);
 

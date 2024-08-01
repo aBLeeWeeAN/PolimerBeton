@@ -349,24 +349,24 @@
     //     @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
     // }
 
-    @include media-breakpoint-down(lg) {
-        $current-price-text-font-size: 2rem;
+    // @include media-breakpoint-down(lg) {
+    //     $current-price-text-font-size: 2rem;
 
-        $my-current-price-block-size: 15rem;
+    //     $my-current-price-block-size: 15rem;
 
-        $my-ball-size: 12rem;
-        $my-orbit-radius: 22.5rem;
+    //     $my-ball-size: 12rem;
+    //     $my-orbit-radius: 22.5rem;
 
-        @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
-    }
+    //     @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
+    // }
 
-    @include media-breakpoint-down(sm) {
-        $current-price-text-font-size: 1.25rem;
+    @include media-breakpoint-down(md) {
+        $current-price-text-font-size: 1.5rem;
 
-        $my-current-price-block-size: 8rem;
+        $my-current-price-block-size: 11rem;
 
-        $my-ball-size: 6rem;
-        $my-orbit-radius: 12rem;
+        $my-ball-size: 11rem;
+        $my-orbit-radius: 20rem;
 
         @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
     }

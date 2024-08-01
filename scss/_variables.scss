@@ -116,8 +116,19 @@
 
         --my-text-h1-font-size: 3.5rem;
 
-        
+
         --my-footer-logo-size: 1rem;
+
+        // --my-section-padding-value: 3.5rem;
+    }
+
+    @include media-breakpoint-down(md) {
+        --base-font-size: 15px;
+
+        --my-text-h1-font-size: 2.8rem;
+        
+        --my-header-logo-size: .65rem;
+        --my-footer-logo-size: .8rem;
 
         // --my-section-padding-value: 3.5rem;
     }

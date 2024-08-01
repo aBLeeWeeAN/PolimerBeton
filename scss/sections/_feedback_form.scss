@@ -118,15 +118,13 @@
                 mask-image: paint(squircle);
             }
 
-            @include media-breakpoint-down(sm) {
-                padding: 0.125rem;
+            @include media-breakpoint-down(md) {
+                padding: .2rem;
 
-                height: 3rem;
-
-                border-radius: .625rem;
+                border-radius: .37rem;
 
                 --squircle-smooth: 0.78;
-                --squircle-radius: .625rem;
+                --squircle-radius: .37rem;
 
                 mask-image: paint(squircle);
             }
@@ -181,18 +179,29 @@
                 mask-image: paint(squircle);
             }
 
-            @include media-breakpoint-down(sm) {
-                padding: .625rem .875rem;
+            @include media-breakpoint-down(md) {
+                padding: .525rem .575rem;
 
-                border-radius: .625rem;
+                border-radius: .15rem;
 
                 --squircle-smooth: 0.78;
-                --squircle-radius: .625rem;
+                --squircle-radius: .15rem;
 
                 mask-image: paint(squircle);
-
-                font-size: .625rem;
             }
+
+            // @include media-breakpoint-down(sm) {
+            //     padding: .625rem .875rem;
+
+            //     border-radius: .625rem;
+
+            //     --squircle-smooth: 0.78;
+            //     --squircle-radius: .625rem;
+
+            //     mask-image: paint(squircle);
+
+            //     font-size: .625rem;
+            // }
         }
 
         #feedback-form-submit-button {
@@ -232,6 +241,28 @@
                 color: #fff;
             }
 
+            @include media-breakpoint-down(lg) {
+                padding: .8rem 1rem;
+
+                border-radius: .625rem;
+
+                --squircle-smooth: 0.78;
+                --squircle-radius: .625rem;
+
+                mask-image: paint(squircle);
+            }
+
+            @include media-breakpoint-down(md) {
+                padding: .75rem .75rem;
+
+                border-radius: .37rem;
+
+                --squircle-smooth: 0.78;
+                --squircle-radius: .37rem;
+
+                mask-image: paint(squircle);
+            }
+
             // @include media-breakpoint-down(xl) {
             //     margin-top: 1.5rem;
 
@@ -266,7 +297,9 @@
         .checkbox-privacy-policy {
             // margin-top: .6rem;
 
-            display: flex;
+            display: inline-flex;
+            flex-direction: row;
+
             align-items: center;
             justify-content: center;
 
@@ -284,10 +317,16 @@
             color: var(--my-text-paragraph-color);
 
             input[type="checkbox"] {
+                display: inline-block;
+
                 appearance: none;
 
+                min-width: 1.5rem;
                 width: 1.5rem;
-                height: 1.5rem;
+
+                height: auto;
+
+                aspect-ratio: 1 / 1;
 
                 border: 0.125rem solid $color_deep_purple_700;
                 border-radius: 50%;
@@ -295,17 +334,23 @@
                 position: relative;
                 cursor: pointer;
 
-                margin-right: 0.75rem;
+                margin-right: .75rem;
 
-                @include media-breakpoint-down(sm) {
-                    // margin: 0;
+                @include media-breakpoint-down(md) {        
+                    border: 0.135rem solid $color_deep_purple_700;
 
-                    min-width: 1.5rem;
-                    min-height: 1.5rem;
-
-                    width: fit-content;
-                    height: fit-content;
+                    margin-right: .5rem;
                 }
+
+                // @include media-breakpoint-down(sm) {
+                //     // margin: 0;
+
+                //     min-width: 1.5rem;
+                //     min-height: 1.5rem;
+
+                //     width: fit-content;
+                //     height: fit-content;
+                // }
             }
 
             input[type="checkbox"]:checked {
@@ -320,26 +365,30 @@
                 width: .4rem;
                 height: .8rem;
 
-                top: 0.31rem;
-                left: 0.56rem;
+                top: 20%;
+                left: 37%;
 
                 border: solid #fff;
-                border-width: 0 0.125rem 0.125rem 0;
+                border-width: 0 .125rem .125rem 0;
 
                 transform: rotate(45deg);
+
+                @include media-breakpoint-down(md) {
+                    border-width: 0 .135rem .135rem 0;
+                }
 
                 @include media-breakpoint-down(sm) {
                     width: 0.345rem;
                     height: 0.7rem;
 
-                    top: 0.32rem;
-                    left: .59rem;
+                    top: 50%;
+                    left: 50%;
+
+                    transform: translate(-50%, -50%);
                 }
             }
 
             label {
-                display: inline-block;
-
                 margin: 0;
 
                 cursor: pointer;
@@ -354,21 +403,21 @@
                 text-decoration: underline;
             }
 
-            @include media-breakpoint-down(xxl) {
-                font-size: 1rem;
-            }
+            // @include media-breakpoint-down(xxl) {
+            //     font-size: 1rem;
+            // }
 
-            @include media-breakpoint-down(xl) {
-                font-size: .91rem;
-            }
+            // @include media-breakpoint-down(xl) {
+            //     font-size: .91rem;
+            // }
 
-            @include media-breakpoint-down(lg) {
-                font-size: .86rem;
-            }
+            // @include media-breakpoint-down(lg) {
+            //     font-size: .86rem;
+            // }
 
-            @include media-breakpoint-down(sm) {
-                font-size: .75rem;
-            }
+            // @include media-breakpoint-down(sm) {
+            //     font-size: .75rem;
+            // }
         }
     }
 }

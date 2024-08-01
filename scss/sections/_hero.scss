@@ -91,9 +91,15 @@
     
             // line-height: 150%;
     
-            // @include media-breakpoint-down(lg) {
-            //     font-size: 1.625rem;
-            // }
+            @include media-breakpoint-down(lg) {
+                font-size: .25em;
+            }
+
+            @include media-breakpoint-down(md) {
+                line-height: 2em;
+
+                font-size: .33em;
+            }
     
             // @include media-breakpoint-down(sm) {
             //     font-size: .8rem;

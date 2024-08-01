@@ -78,6 +78,10 @@
                 //     text-align: center;
                 // }
 
+                @include media-breakpoint-down(md) {
+                    margin-left: 2rem;
+                }
+
                 @include media-breakpoint-down(sm) {
                     
                     margin: 0 0 1rem 0;
@@ -87,7 +91,7 @@
                 }
             }
     
-            @include media-breakpoint-down(md) {
+            @include media-breakpoint-down(sm) {
                 flex-direction: column;
             }
         }
@@ -111,7 +115,11 @@
 
             color: $text_color_black;
 
-            @include media-breakpoint-down(md) {
+            @include media-breakpoint-down(lg) {
+                text-indent: 4.5rem;
+            }
+
+            @include media-breakpoint-down(sm) {
                 text-indent: 0;
                 text-align: center;
             }

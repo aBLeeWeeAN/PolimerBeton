@@ -9302,6 +9302,14 @@ progress {
     --my-footer-logo-size: 1rem;
   }
 }
+@media (max-width: 767.98px) {
+  :root {
+    --base-font-size: 15px;
+    --my-text-h1-font-size: 2.8rem;
+    --my-header-logo-size: .65rem;
+    --my-footer-logo-size: .8rem;
+  }
+}
 @media (max-width: 575.98px) {
   :root {
     --my-text-header-title-margin-bottom: 2rem;
@@ -9579,6 +9587,11 @@ header .fixed-top-navbar .navbar .contacts-and-settings .separator {
   border-radius: 50%;
   margin: 0 0.25em;
 }
+@media (max-width: 767.98px) {
+  header .fixed-top-navbar .navbar .contacts-and-settings .separator {
+    border-radius: 0;
+  }
+}
 header .fixed-top-navbar .navbar .contacts-and-settings .contacts svg {
   width: 1.4em;
   height: auto;
@@ -9600,6 +9613,11 @@ header .fixed-top-navbar .navbar .separator {
   background-color: rgba(0, 0, 0, 0.8705882353);
   border-radius: 50%;
   margin: 0 1.25em;
+}
+@media (max-width: 767.98px) {
+  header .fixed-top-navbar .navbar .separator {
+    border-radius: 0;
+  }
 }
 header .fixed-top-navbar .navbar .navbar-toggler {
   font-size: var(--my-header-button-size);
@@ -9648,6 +9666,7 @@ header .offcanvas {
   max-height: 40vh;
   width: 100%;
   z-index: 1050;
+  background-color: rgba(255, 255, 255, 0.2);
   box-shadow: 0 0.476rem 0.571rem rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(1.143rem);
 }
@@ -9754,6 +9773,17 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   font-size: 0.23em;
   letter-spacing: 0.6em;
   line-height: 1em;
+}
+@media (max-width: 991.98px) {
+  #Hero .hero-h1 .hero-h1-manufacturer-location {
+    font-size: 0.25em;
+  }
+}
+@media (max-width: 767.98px) {
+  #Hero .hero-h1 .hero-h1-manufacturer-location {
+    line-height: 2em;
+    font-size: 0.33em;
+  }
 }
 #Hero .image-container {
   margin-top: var(--my-section-hero-child-non-first-margin-top);
@@ -10193,6 +10223,11 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   text-align: left;
   color: rgba(0, 0, 0, 0.8705882353);
 }
+@media (max-width: 767.98px) {
+  #Advantages .advantage .advantage-header .advantage-brief-text {
+    margin-left: 2rem;
+  }
+}
 @media (max-width: 575.98px) {
   #Advantages .advantage .advantage-header .advantage-brief-text {
     margin: 0 0 1rem 0;
@@ -10200,7 +10235,7 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
     text-align: center;
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 575.98px) {
   #Advantages .advantage .advantage-header {
     flex-direction: column;
   }
@@ -10218,7 +10253,12 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   text-indent: 6rem;
   color: rgba(0, 0, 0, 0.8705882353);
 }
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
+  #Advantages .advantage .advantage-extended-text {
+    text-indent: 4.5rem;
+  }
+}
+@media (max-width: 575.98px) {
   #Advantages .advantage .advantage-extended-text {
     text-indent: 0;
     text-align: center;
@@ -10464,13 +10504,8 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
     margin: 0;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 576px) {
   #Safety .container-for-document-image .image-with-gradient-border#safety-doc-5, #Safety .container-for-document-image .image-with-gradient-border#safety-doc-6 {
-    margin: 0;
-  }
-}
-@media (max-width: 767.98px) {
-  #Safety .container-for-document-image .image-with-gradient-border#safety-doc-6 {
     margin: 0;
   }
 }
@@ -10739,32 +10774,18 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   width: 14rem;
   height: 25rem;
 }
-@media (max-width: 991.98px) {
+@media (max-width: 767.98px) {
   #Prices .current-price-animation-container .current-price {
-    width: 15rem;
-    height: 15rem;
-    margin: 15rem 0;
+    width: 11rem;
+    height: 11rem;
+    margin: 14.5rem 0;
   }
   #Prices .current-price-animation-container .current-price .current-price-text {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   #Prices .current-price-animation-container .concrete-image-orbit-animation-wrapper {
-    width: 12rem;
-    height: 22.5rem;
-  }
-}
-@media (max-width: 575.98px) {
-  #Prices .current-price-animation-container .current-price {
-    width: 8rem;
-    height: 8rem;
-    margin: 8rem 0;
-  }
-  #Prices .current-price-animation-container .current-price .current-price-text {
-    font-size: 1.25rem;
-  }
-  #Prices .current-price-animation-container .concrete-image-orbit-animation-wrapper {
-    width: 6rem;
-    height: 12rem;
+    width: 11rem;
+    height: 20rem;
   }
 }
 
@@ -10849,13 +10870,12 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
     mask-image: paint(squircle);
   }
 }
-@media (max-width: 575.98px) {
+@media (max-width: 767.98px) {
   #Feedback-Form form .form-field {
-    padding: 0.125rem;
-    height: 3rem;
-    border-radius: 0.625rem;
+    padding: 0.2rem;
+    border-radius: 0.37rem;
     --squircle-smooth: 0.78;
-    --squircle-radius: .625rem;
+    --squircle-radius: .37rem;
     mask-image: paint(squircle);
   }
 }
@@ -10898,15 +10918,14 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
     mask-image: paint(squircle);
   }
 }
-@media (max-width: 575.98px) {
+@media (max-width: 767.98px) {
   #Feedback-Form form input[type=text],
   #Feedback-Form form input[type=tel] {
-    padding: 0.625rem 0.875rem;
-    border-radius: 0.625rem;
+    padding: 0.525rem 0.575rem;
+    border-radius: 0.15rem;
     --squircle-smooth: 0.78;
-    --squircle-radius: .625rem;
+    --squircle-radius: .15rem;
     mask-image: paint(squircle);
-    font-size: 0.625rem;
   }
 }
 #Feedback-Form form #feedback-form-submit-button {
@@ -10934,6 +10953,24 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
 #Feedback-Form form #feedback-form-submit-button:hover {
   color: #fff;
 }
+@media (max-width: 991.98px) {
+  #Feedback-Form form #feedback-form-submit-button {
+    padding: 0.8rem 1rem;
+    border-radius: 0.625rem;
+    --squircle-smooth: 0.78;
+    --squircle-radius: .625rem;
+    mask-image: paint(squircle);
+  }
+}
+@media (max-width: 767.98px) {
+  #Feedback-Form form #feedback-form-submit-button {
+    padding: 0.75rem 0.75rem;
+    border-radius: 0.37rem;
+    --squircle-smooth: 0.78;
+    --squircle-radius: .37rem;
+    mask-image: paint(squircle);
+  }
+}
 @media (max-width: 575.98px) {
   #Feedback-Form form #feedback-form-submit-button {
     margin-top: 1.5rem;
@@ -10946,7 +10983,8 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   }
 }
 #Feedback-Form form .checkbox-privacy-policy {
-  display: flex;
+  display: inline-flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-family: "Montserrat", sans-serif;
@@ -10959,21 +10997,22 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   color: var(--my-text-paragraph-color);
 }
 #Feedback-Form form .checkbox-privacy-policy input[type=checkbox] {
+  display: inline-block;
   appearance: none;
+  min-width: 1.5rem;
   width: 1.5rem;
-  height: 1.5rem;
+  height: auto;
+  aspect-ratio: 1/1;
   border: 0.125rem solid #4527A0;
   border-radius: 50%;
   position: relative;
   cursor: pointer;
   margin-right: 0.75rem;
 }
-@media (max-width: 575.98px) {
+@media (max-width: 767.98px) {
   #Feedback-Form form .checkbox-privacy-policy input[type=checkbox] {
-    min-width: 1.5rem;
-    min-height: 1.5rem;
-    width: fit-content;
-    height: fit-content;
+    border: 0.135rem solid #4527A0;
+    margin-right: 0.5rem;
   }
 }
 #Feedback-Form form .checkbox-privacy-policy input[type=checkbox]:checked {
@@ -10985,22 +11024,27 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
   position: absolute;
   width: 0.4rem;
   height: 0.8rem;
-  top: 0.31rem;
-  left: 0.56rem;
+  top: 20%;
+  left: 37%;
   border: solid #fff;
   border-width: 0 0.125rem 0.125rem 0;
   transform: rotate(45deg);
+}
+@media (max-width: 767.98px) {
+  #Feedback-Form form .checkbox-privacy-policy input[type=checkbox]:checked::before {
+    border-width: 0 0.135rem 0.135rem 0;
+  }
 }
 @media (max-width: 575.98px) {
   #Feedback-Form form .checkbox-privacy-policy input[type=checkbox]:checked::before {
     width: 0.345rem;
     height: 0.7rem;
-    top: 0.32rem;
-    left: 0.59rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 #Feedback-Form form .checkbox-privacy-policy label {
-  display: inline-block;
   margin: 0;
   cursor: pointer;
 }
@@ -11010,26 +11054,6 @@ header .offcanvas .offcanvas-body .navbar-nav li:not(:first-child), header .offc
 }
 #Feedback-Form form .checkbox-privacy-policy a:hover {
   text-decoration: underline;
-}
-@media (max-width: 1399.98px) {
-  #Feedback-Form form .checkbox-privacy-policy {
-    font-size: 1rem;
-  }
-}
-@media (max-width: 1199.98px) {
-  #Feedback-Form form .checkbox-privacy-policy {
-    font-size: 0.91rem;
-  }
-}
-@media (max-width: 991.98px) {
-  #Feedback-Form form .checkbox-privacy-policy {
-    font-size: 0.86rem;
-  }
-}
-@media (max-width: 575.98px) {
-  #Feedback-Form form .checkbox-privacy-policy {
-    font-size: 0.75rem;
-  }
 }
 
 /**========================================================================
@@ -11261,7 +11285,7 @@ footer .copyright small {
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  font-size: 0.8rem;
+  font-size: var(--my-text-small-paragraph-font-size);
   letter-spacing: 0.14em;
   color: rgba(0, 0, 0, 0.8705882353);
 }

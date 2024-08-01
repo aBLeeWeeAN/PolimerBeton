@@ -210,7 +210,7 @@
                 }
             }
 
-            @include media-breakpoint-up(md) {
+            @include media-breakpoint-up(sm) {
                 &#safety-doc-5, &#safety-doc-6 {
                     margin: 0;
                 }
@@ -220,13 +220,13 @@
 
 
 
-            @include media-breakpoint-down(md) {
-                // margin-bottom: 1.5rem;
+            // @include media-breakpoint-down(md) {
+            //     // margin-bottom: 1.5rem;
     
-                &#safety-doc-6 {
-                    margin: 0;
-                }
-            }
+            //     &#safety-doc-6 {
+            //         margin: 0;
+            //     }
+            // }
 
             @include media-breakpoint-down(sm) {
                 margin-bottom: 1rem;
