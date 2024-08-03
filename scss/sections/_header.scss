@@ -228,10 +228,14 @@
                     width: 2.6em;
                     height: 2.6em;
             
+                    border-radius: .75em;
+
                     --squircle-smooth: 1.0;
                     --squircle-radius: 0.75em;
             
                     mask-image: paint(squircle);
+                    -webkit-mask-image: paint(squircle);
+
                     background-color: $color_deep_purple_700;
             
                     border: none;
@@ -623,6 +627,8 @@
                         --squircle-radius: 0.75em;
                 
                         mask-image: paint(squircle);
+                        -webkit-mask-image: paint(squircle);
+                        
                         background-color: $color_deep_purple_700;
                 
                         border: none;

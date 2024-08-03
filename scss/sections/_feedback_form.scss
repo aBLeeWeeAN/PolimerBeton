@@ -102,6 +102,7 @@
             --squircle-radius: 1.25rem;
 
             mask-image: paint(squircle);
+            -webkit-mask-image: paint(squircle);
 
             @include media-breakpoint-down(xxl) {
                 padding: .22rem;
@@ -116,6 +117,7 @@
                 --squircle-radius: .625rem;
 
                 mask-image: paint(squircle);
+                -webkit-mask-image: paint(squircle);
             }
 
             @include media-breakpoint-down(md) {
@@ -127,17 +129,19 @@
                 --squircle-radius: .37rem;
 
                 mask-image: paint(squircle);
+                -webkit-mask-image: paint(squircle);
             }
 
             @include media-breakpoint-down(sm) {
                 padding: .15rem;
 
-                // border-radius: .37rem;
+                border-radius: .37rem;
 
-                // --squircle-smooth: 0.78;
-                // --squircle-radius: .37rem;
+                --squircle-smooth: 0.78;
+                --squircle-radius: .37rem;
 
-                // mask-image: paint(squircle);
+                mask-image: paint(squircle);
+                -webkit-mask-image: paint(squircle);
             }
         }
 
@@ -158,6 +162,7 @@
             --squircle-radius: 1.025rem;
 
             mask-image: paint(squircle);
+            -webkit-mask-image: paint(squircle);
 
             font-family: "Montserrat", sans-serif;
             font-optical-sizing: auto;
@@ -188,6 +193,7 @@
                 --squircle-radius: .625rem;
 
                 mask-image: paint(squircle);
+                -webkit-mask-image: paint(squircle);
             }
 
             @include media-breakpoint-down(md) {
@@ -199,6 +205,7 @@
                 --squircle-radius: .15rem;
 
                 mask-image: paint(squircle);
+                -webkit-mask-image: paint(squircle);
             }
 
             @include media-breakpoint-down(sm) {
@@ -206,12 +213,13 @@
 
                 padding: .75rem 1rem;
 
-                // border-radius: .15rem;
+                border-radius: .15rem;
 
-                // --squircle-smooth: 0.78;
-                // --squircle-radius: .15rem;
+                --squircle-smooth: 0.78;
+                --squircle-radius: .15rem;
 
-                // mask-image: paint(squircle);
+                mask-image: paint(squircle);
+                -webkit-mask-image: paint(squircle);
             }
 
             // @include media-breakpoint-down(sm) {
@@ -245,6 +253,8 @@
             --squircle-radius: 1.25rem;
 
             mask-image: paint(squircle);
+            -webkit-mask-image: paint(squircle);
+
             background-color: $color_deep_purple_700;
 
             font-family: "Montserrat", sans-serif;
@@ -274,6 +284,7 @@
                 --squircle-radius: .625rem;
 
                 mask-image: paint(squircle);
+                -webkit-mask-image: paint(squircle);
             }
 
             @include media-breakpoint-down(md) {
@@ -285,6 +296,7 @@
                 --squircle-radius: .37rem;
 
                 mask-image: paint(squircle);
+                -webkit-mask-image: paint(squircle);
             }
 
             // @include media-breakpoint-down(xl) {
@@ -405,8 +417,8 @@
                 }
 
                 @include media-breakpoint-down(sm) {
-                    top: 18%;
-                    left: 42%;
+                    top: 19%;
+                    left: 39%;
 
                     width: .42rem;
                     height: .9rem;

@@ -92,6 +92,10 @@
         &:not(:first-child) {
             margin-top: var(--my-text-paragraph-margin-top);
         }
+
+        @include media-breakpoint-down(sm) {
+            hyphens: auto;
+        }
     }
 
     .image-container {

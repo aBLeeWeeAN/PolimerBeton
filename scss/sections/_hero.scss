@@ -44,13 +44,17 @@
 
         position: absolute;
 
-        background-image: url("../images/hero_bc.webp");
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
+        // background-image: url("../images/hero/hero_bc_xxl.webp");
+        // background-position: center center;
+        // background-repeat: no-repeat;
+        // background-size: cover;
 
         width: 100vw;
-        height: 100%;
+        height: 100%;   
+
+        object-fit: cover;
+
+        // aspect-ratio: 1280 / 760;
 
         top: 0;
         left: 0;
