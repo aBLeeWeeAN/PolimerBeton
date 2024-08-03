@@ -24,11 +24,12 @@
             color: $text_color_black;
 
             @include media-breakpoint-down(sm) {
-                font-size: 1rem;
+                line-height: 150%;
+                font-size: 1.15rem;
 
-                text-align: center;
+                // text-align: center;
 
-                margin: 0 0 .75rem 0;
+                // margin: 0 0 .75rem 0;
             }
         }
     
@@ -66,23 +67,23 @@
                 }
             }
 
-            @include media-breakpoint-down(sm) {
-                // font-size: .75rem;
+            // @include media-breakpoint-down(sm) {
+            //     // font-size: .75rem;
 
-                :not(:first-child) {
-                    margin-top: .25rem;
-                }
+            //     :not(:first-child) {
+            //         margin-top: .25rem;
+            //     }
 
-                // margin: 0 0 .75rem 0;
-            }
+            //     // margin: 0 0 .75rem 0;
+            // }
         }
     }
 
     .messengers {
         margin-top: var(--my-text-subheading-margin-bottom);
 
-        @include media-breakpoint-down(sm) {
-            margin-top: 1rem;
-        }
+        // @include media-breakpoint-down(sm) {
+        //     margin-top: 1rem;
+        // }
     }
 }

@@ -238,7 +238,7 @@
         }
     }
 
-    #bc-circle {
+    #bc-decorative-circle {
         z-index: -5;
 
         position: absolute;
@@ -297,9 +297,15 @@
         }
 
         @include media-breakpoint-down(lg) {
-            width: 218rem;
+            width: 224rem;
 
             transform: translate(-76.6%, -15%);
+        }
+
+        @include media-breakpoint-down(md) {
+            width: 188rem;
+
+            transform: translate(-76.6%, -13%);
         }
     }
 }

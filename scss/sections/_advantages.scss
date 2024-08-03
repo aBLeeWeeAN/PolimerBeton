@@ -48,10 +48,7 @@
                 // }
 
                 @include media-breakpoint-down(sm) {
-                    font-size: 10rem;
-                    
-                    margin: -2.5rem 0 -2.7rem 0;
-                    // margin: 0;
+                    line-height: 80%;
                 }
             }
     
@@ -84,9 +81,9 @@
 
                 @include media-breakpoint-down(sm) {
                     
-                    margin: 0 0 1rem 0;
+                    margin: 1.25rem 0 .75rem 0;
 
-                    font-size: 1.5rem;
+                    font-size: 1.25rem;
                     text-align: center;
                 }
             }
@@ -120,6 +117,9 @@
             }
 
             @include media-breakpoint-down(sm) {
+                margin-top: 0;
+                // margin-bottom: var(--my-section-child-non-first-margin-top);
+
                 text-indent: 0;
                 text-align: center;
             }
@@ -133,7 +133,7 @@
             }
 
             @include media-breakpoint-down(sm) {
-                margin-bottom: var(--my-text-header-title-margin-bottom);
+                margin-bottom: var(--my-section-child-non-first-margin-top);
             }
         }
 
@@ -145,7 +145,7 @@
             }
 
             @include media-breakpoint-down(sm) {
-                margin-bottom: var(--my-text-header-title-margin-bottom);
+                margin-bottom: var(--my-section-child-non-first-margin-top);
             }
         }
 
@@ -157,7 +157,7 @@
             }
 
             @include media-breakpoint-down(sm) {
-                margin-bottom: var(--my-text-header-title-margin-bottom);
+                margin-bottom: var(--my-section-child-non-first-margin-top);
             }
         }
 
@@ -169,7 +169,7 @@
             }
 
             @include media-breakpoint-down(sm) {
-                margin-bottom: var(--my-text-header-title-margin-bottom);
+                margin-bottom: var(--my-section-child-non-first-margin-top);
             }
         }
 
@@ -181,7 +181,7 @@
             }
 
             @include media-breakpoint-down(sm) {
-                margin-bottom: var(--my-text-header-title-margin-bottom);
+                margin-bottom: var(--my-section-child-non-first-margin-top);
             }
         }
 
@@ -194,6 +194,10 @@
             }
 
             @include media-breakpoint-down(sm) {
+                // .advantage-extended-text {
+                //     margin-bottom: 0;
+                // }
+
                 margin-bottom: 0;
             }
         }

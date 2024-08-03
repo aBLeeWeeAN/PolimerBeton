@@ -128,6 +128,17 @@
 
                 mask-image: paint(squircle);
             }
+
+            @include media-breakpoint-down(sm) {
+                padding: .15rem;
+
+                // border-radius: .37rem;
+
+                // --squircle-smooth: 0.78;
+                // --squircle-radius: .37rem;
+
+                // mask-image: paint(squircle);
+            }
         }
 
         input[type="text"],
@@ -188,6 +199,19 @@
                 --squircle-radius: .15rem;
 
                 mask-image: paint(squircle);
+            }
+
+            @include media-breakpoint-down(sm) {
+                font-size: 1rem;
+
+                padding: .75rem 1rem;
+
+                // border-radius: .15rem;
+
+                // --squircle-smooth: 0.78;
+                // --squircle-radius: .15rem;
+
+                // mask-image: paint(squircle);
             }
 
             // @include media-breakpoint-down(sm) {
@@ -279,18 +303,16 @@
             // }
 
             @include media-breakpoint-down(sm) {
-                margin-top: 1.5rem;
-
-                height: 3rem;
-
-                border-radius: .625rem;
-
-                --squircle-smooth: 0.78;
-                --squircle-radius: .625rem;
-
-                mask-image: paint(squircle);
-
                 font-size: 1rem;
+
+                padding: .9rem 1rem;
+
+                // border-radius: .15rem;
+
+                // --squircle-smooth: 0.78;
+                // --squircle-radius: .15rem;
+
+                // mask-image: paint(squircle);
             }
         }
 
@@ -342,6 +364,11 @@
                     margin-right: .5rem;
                 }
 
+                @include media-breakpoint-down(sm) {        
+                    min-width: 1.75rem;
+                    width: 1.75rem;
+                }
+
                 // @include media-breakpoint-down(sm) {
                 //     // margin: 0;
 
@@ -378,14 +405,16 @@
                 }
 
                 @include media-breakpoint-down(sm) {
-                    width: 0.345rem;
-                    height: 0.7rem;
+                    top: 18%;
+                    left: 42%;
 
-                    top: 50%;
-                    left: 50%;
-
-                    transform: translate(-50%, -50%);
+                    width: .42rem;
+                    height: .9rem;
                 }
+
+                // @include media-breakpoint-down(sm) {
+                //     border-width: 0 .15rem .16rem 0;
+                // }
             }
 
             label {
@@ -415,9 +444,9 @@
             //     font-size: .86rem;
             // }
 
-            // @include media-breakpoint-down(sm) {
-            //     font-size: .75rem;
-            // }
+            @include media-breakpoint-down(sm) {
+                font-size: .9rem;
+            }
         }
     }
 }

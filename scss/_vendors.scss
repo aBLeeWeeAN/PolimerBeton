@@ -70,10 +70,11 @@ $offcanvas-backdrop-opacity:        0;
 // override grid breakpoints
 $grid-breakpoints: (
     // xs
-    mobile-s: 0,
-    mobile-m: 321px,
-    mobile-l: 376px,
+    // mobile-s: 0,
+    // mobile-m: 321px,
+    // mobile-l: 376px,
 
+    xs: 0,
     sm: 576px,
     md: 768px,
     lg: 992px,
@@ -84,10 +85,11 @@ $grid-breakpoints: (
 // override container-max-width
 $container-max-widths: (
     // xs
-    mobile-s: 100%,
-    mobile-m: 288px,
-    mobile-l: 344px,
+    // mobile-s: 100%,
+    // mobile-m: 288px,
+    // mobile-l: 344px,
 
+    xs: 100%,
     sm: 540px,
     md: 720px,
     lg: 960px,

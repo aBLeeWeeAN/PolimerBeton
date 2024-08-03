@@ -80,6 +80,7 @@
 
     // header button size (font-size)
     --my-header-button-size: .8rem;
+    --my-offcanvas-icon-size: .8rem;
     // --my-header-button-left-icons-padding-value: .4rem;
     // --my-header-button-right-icons-padding-value: .4rem;
 
@@ -100,6 +101,8 @@
     // hero section
     --my-section-hero-padding-value: 7.5rem;
     --my-section-hero-child-non-first-margin-top: 5.5rem;
+
+    // --my-image-caption-margin-bottom: 0;
 
     @include media-breakpoint-down(xxl) {
         --base-font-size: 18px;
@@ -134,13 +137,35 @@
     }
 
     @include media-breakpoint-down(sm) {
-        --my-text-header-title-margin-bottom: 2rem;
+        --base-font-size: 13px;
 
-        --my-text-paragraph-margin-top: 0.78rem;
-        --my-text-paragraph-font-size: .875rem;
-        --my-text-paragraph-letter-spacing: 0.2em;
-        
-        --my-img-caption-font-size: 1rem;
+        --my-header-logo-size: .62rem;
+        // --my-header-button-size: .75rem;
+
+        --my-footer-logo-size: .82rem;
+
+        --my-text-h1-font-size: 1.8rem;
+
+        --my-text-heading-font-size: 1.62rem;
+
+        --my-section-padding-value: 4rem;
+        // --my-section-child-non-first-margin-top: 10rem;
+
+        // hero section
+        --my-section-hero-padding-value: 5rem;
+        --my-section-hero-child-non-first-margin-top: 3.5rem;
+
+        // caption
+        --my-text-caption-margin-top: .8em;
+        --my-text-caption-margin-bottom: 1.5rem;
+
+        --my-footer-child-non-first-margin-top: 1.75rem;
+
+        --my-offcanvas-icon-size: 1rem;
+
+        // --my-text-h3-margin-bottom: .8em;
+
+        // --my-image-caption-margin-bottom: 1rem;
     }
 }
 

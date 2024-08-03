@@ -100,6 +100,12 @@
 
                 font-size: .33em;
             }
+
+            @include media-breakpoint-down(sm) {
+                line-height: 2em;
+
+                font-size: .45em;
+            }
     
             // @include media-breakpoint-down(sm) {
             //     font-size: .8rem;
@@ -113,8 +119,14 @@
         img {
             display: inline-block;
 
-            width: 10.5em;
+            width: 10.5rem;
             height: auto;
+
+            aspect-ratio: initial;
+
+            @include media-breakpoint-down(sm) {
+                width: 7rem;
+            }
         }
     }
 

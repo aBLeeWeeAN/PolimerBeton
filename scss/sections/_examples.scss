@@ -29,7 +29,7 @@
             // }
 
             // @include media-breakpoint-down(sm) {
-            //     margin: .9rem 0 1.5rem 0;
+            //     margin-bottom: var(--my-image-caption-margin-bottom);
             // }
         }
     
@@ -41,7 +41,8 @@
             // }
 
             // @include media-breakpoint-down(sm) {
-            //     margin: .9rem 0 var(--my-text-header-title-margin-bottom) 0;
+            //     margin-bottom: var(--my-image-caption-margin-bottom);
+            //     // margin: .9rem 0 var(--my-text-header-title-margin-bottom) 0;
             // }
         }
 
@@ -227,7 +228,7 @@
         }
     }
 
-    #bc-circle {
+    #bc-decorative-circle {
         z-index: -5;
 
         position: absolute;
@@ -278,7 +279,13 @@
         }
 
         @include media-breakpoint-down(lg) {
-            width: 122rem;
+            width: 124rem;
+        }
+
+        @include media-breakpoint-down(md) {
+            width: 115rem;
+
+            transform: translate(-39%, -25.1%);
         }
     }
 }

@@ -6,7 +6,7 @@
     position: relative;
     // overflow: hidden;
 
-    #bc-circle {
+    #bc-decorative-circle {
         z-index: -5;
 
         position: absolute;
@@ -63,6 +63,12 @@
 
             transform: translate(-73.4%, -10.1%);
         }
+
+        @include media-breakpoint-down(md) {
+            width: 145rem;
+
+            transform: translate(-73.4%, -9.8%);
+        }
     }
 
     p {
@@ -88,15 +94,15 @@
         }
     }
 
-    .concretes-images {
+    .image-container {
         margin-top: var(--my-section-child-non-first-margin-top);
 
-        @include media-breakpoint-down(lg) {
-            margin-top: 3.5rem;
-        }
+        // @include media-breakpoint-down(lg) {
+        //     margin-top: 3.5rem;
+        // }
 
-        @include media-breakpoint-down(sm) {
-            margin-top: 2rem;
-        }
+        // @include media-breakpoint-down(sm) {
+        //     margin-top: 2rem;
+        // }
     }
 }
