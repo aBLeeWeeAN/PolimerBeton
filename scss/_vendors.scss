@@ -97,6 +97,20 @@ $container-max-widths: (
     xxl: 1320px
 );
 
+// menu button close 
+$btn-close-width:            16px;
+$btn-close-height:           $btn-close-width;
+$btn-close-padding-x:        0;
+$btn-close-padding-y:        $btn-close-padding-x;
+$btn-close-color:            var(--menu-text-color);
+$btn-close-bg:               url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/></svg>");
+// $btn-close-focus-shadow:     $focus-ring-box-shadow;
+$btn-close-opacity:          .87;
+$btn-close-hover-opacity:    1;
+$btn-close-focus-opacity:    1;
+$btn-close-disabled-opacity: .6;
+$btn-close-white-filter:     invert(1) grayscale(100%) brightness(200%);
+
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/variables-dark";
