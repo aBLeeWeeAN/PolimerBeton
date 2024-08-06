@@ -164,7 +164,7 @@
     }
 
     #bc-decorative-circle {
-        z-index: -5;
+        z-index: -10;
 
         position: absolute;
 
@@ -185,6 +185,7 @@
         /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffe0b2+0,d1c4e9+70,d1c4e9+100 */
         // background: rgb(255, 224, 178);
         background: linear-gradient(135deg, rgba(255, 224, 178, 1) 0%, rgba(209, 196, 233, 1) 70%, rgba(209, 196, 233, 1) 100%);
+        // background: red;
 
         top: 50%;
         left: 50%;
