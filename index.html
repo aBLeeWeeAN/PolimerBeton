@@ -1003,7 +1003,7 @@
               $(window).resize(update_offcanvas_body_height); // Recalculate on resize
             });
           </script>
-
+<!-- 
           <script>
               function handleOffcanvasScroll() {
                   // only when XS size
@@ -1028,7 +1028,7 @@
   
               onResizeOrLoad(); // Initial calculation
               $(window).resize(onResizeOrLoad); // Recalculate on resize
-          </script>
+          </script> -->
 
         <script>
             let lastScrollTop = 0;
@@ -1039,14 +1039,34 @@
             // Переменная для отслеживания состояния offcanvas
             let offcanvasIsShown = false;
 
+            // Функция для обновления состояния прокрутки
+            function updateScrollState() {
+                if (document.documentElement.clientWidth < 576) {
+                    if (offcanvasIsShown) {
+                        document.documentElement.style.overflowY = 'hidden';
+                    } else {
+                        document.documentElement.style.overflowY = 'scroll';
+                    }
+                } else {
+                    document.documentElement.style.overflowY = 'scroll';
+                }
+            }
+
             // Событие при скрытии offcanvas
-            offcanvas.addEventListener('hidden.bs.offcanvas', function(event) {
+            offcanvas.addEventListener('hide.bs.offcanvas', function(event) {
                 offcanvasIsShown = false;
+                updateScrollState();
             });
 
             // Событие при показе offcanvas
-            offcanvas.addEventListener('shown.bs.offcanvas', function(event) {
+            offcanvas.addEventListener('show.bs.offcanvas', function(event) {
                 offcanvasIsShown = true;
+                updateScrollState();
+            });
+
+            // Обработчик события изменения размера окна
+            window.addEventListener('resize', function() {
+                updateScrollState();
             });
 
             // Обработчик события прокрутки
