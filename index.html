@@ -1026,37 +1026,15 @@
                 }
             }
 
-            // Функция для обновления состояния прокрутки
-            function updateScrollState() {
-                if (document.documentElement.clientWidth < 576) {
-                    if (offcanvasIsShown) {
-                        document.documentElement.style.overflowY = 'hidden';
-                    } else {
-                        document.documentElement.style.overflowY = 'scroll';
-                    }
-                } else {
-                    document.documentElement.style.overflowY = 'scroll';
-                }
-            }
-
             // Событие при скрытии offcanvas
             offcanvas.addEventListener('hide.bs.offcanvas', function(event) {
-            offcanvas.addEventListener('hide.bs.offcanvas', function(event) {
                 offcanvasIsShown = false;
-                updateScrollState();
                 updateScrollState();
             });
 
             // Событие при показе offcanvas
             offcanvas.addEventListener('show.bs.offcanvas', function(event) {
-            offcanvas.addEventListener('show.bs.offcanvas', function(event) {
                 offcanvasIsShown = true;
-                updateScrollState();
-            });
-
-            // Обработчик события изменения размера окна
-            window.addEventListener('resize', function() {
-                updateScrollState();
                 updateScrollState();
             });
 
