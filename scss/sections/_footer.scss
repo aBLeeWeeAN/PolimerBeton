@@ -59,12 +59,6 @@
         }
     }
 
-    // @include media-breakpoint-down(sm) {
-    //     #second-privacy-policy {
-    //         margin-top: 3.5rem;
-    //     }
-    // }
-
     h3 {
         margin-bottom: var(--my-text-h3-margin-bottom);
 
@@ -128,7 +122,7 @@
     }
 
     .footer-part-1 {
-        padding: var(--my-section-padding-value) 0;
+        padding: var( --my-footer-padding-value) 0;
 
         .logo-and-privacy-policy {
             // padding: auto;
@@ -314,6 +308,7 @@
 
             @include media-breakpoint-down(sm) {
                 text-align: center;
+                line-height: 1em;
             }
         }
 
@@ -332,6 +327,7 @@
                 margin-top: var(--my-text-paragraph-margin-top);
 
                 text-align: center;
+                line-height: 1em;
             }
         }
 

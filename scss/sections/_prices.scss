@@ -372,12 +372,12 @@
     }
 
     @include media-breakpoint-down(sm) {
-        $current-price-text-font-size: 1rem;
+        $current-price-text-font-size: 1.15rem;
 
-        $my-current-price-block-size: 7.5rem;
+        $my-current-price-block-size: 8rem;
 
-        $my-ball-size: 7.5rem;
-        $my-orbit-radius: 12.5rem;
+        $my-ball-size: 8rem;
+        $my-orbit-radius: 13rem;
 
         @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
     }

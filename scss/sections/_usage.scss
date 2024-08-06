@@ -5,81 +5,104 @@
  #Usage {
     position: relative;
 
-    ul>*:not(:first-child) {
-        margin-top: var(--my-text-paragraph-margin-top);
-    }
+    ul {
+        &:not(:first-child) {
+            margin-top: var(--my-text-paragraph-margin-top);
+        }
 
-    li {
-        position: relative;
-
-        list-style: none;
-        list-style-type: none;
-
-        padding: 1em 1.5em;
-
-        font-family: "Montserrat", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-
-        font-size: var(--my-text-paragraph-font-size);
-        letter-spacing: var(--my-text-paragraph-letter-spacing);
-
-        line-height: 150%;
-
-        text-align: justify;
-
-        color: $text_color_black;
-
-        border-radius: 1.5em;
-        background-color: rgba($color: #fff, $alpha: 0.05);
-
-        -webkit-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
-        -moz-box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
-        box-shadow: 3px 4px 10px 0px rgba(0, 0, 0, 0.25);
-        
-        @include media-breakpoint-down(sm) {
-            padding: .65em .9em;
-
-            border-radius: 0.75em;
-
-            // list-style-type: space-counter;
-
-            // background: none;
-
-            // border: none;
-
-            // text-indent: 2em;
-
-            // -webkit-box-shadow: none;
-            // -moz-box-shadow: none;
-            // box-shadow: none;
-
-            &:not(:first-child) {
-                margin-top: var(--my-text-paragraph-margin-top);
+        li {
+            hyphens: none !important;
+    
+            position: relative;
+    
+            list-style: none;
+            list-style-type: none;
+    
+            padding: 1em 1.5em;
+    
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+    
+            font-size: var(--my-text-paragraph-font-size);
+            letter-spacing: var(--my-text-paragraph-letter-spacing);
+    
+            text-indent: 2.375em;
+            line-height: var(--my-text-paragraph-line-height);
+    
+            text-align: justify;
+    
+            color: $text_color_black;
+    
+            border-radius: 1.5em;
+            background-color: rgba($color: #fff, $alpha: 0.05);
+    
+            box-shadow: .142rem .19rem .476rem 0px rgba(0, 0, 0, 0.25);
+            
+            list-style: inside;
+            list-style-type: decimal;
+            list-style-position: inside;
+    
+            &::marker {
+                // color: red;
+                // font-size: 1.5rem;
+    
+                // font-size: 1.5em;
+                font-weight: 600;
+                margin-right: 0;
+            }
+    
+            @include media-breakpoint-down(sm) {
+                // word-wrap: break-word;
+                // overflow-wrap: break-word;
+    
+                // hyphens: auto;
+    
+                // hyphenate-limit-chars: 6 3 3;
+                // -ms-hyphenate-limit-lines: no-limit;
+                // hyphenate-limit-last: always;
+                // -ms-hyphenate-limit-zone: 50%;
+    
+                // list-style: inside;
+                list-style-type: decimal;
+                list-style-position: inside;
+    
+                text-align: left;
+                text-indent: 0;
+    
+                padding: 0;
+    
+                // padding: 0;
+                border: none;
+                background-color: transparent;
+                box-shadow: none;
+    
+                &:not(:first-child) {
+                    // margin-top: var(--my-text-paragraph-margin-top);
+                    margin-top: .62rem;
+                }
             }
         }
     }
 
-    p {
-        @extend li;
+    // p {
+    //     @extend li;
 
-        padding: 0;
+    //     padding: 0;
 
-        background: none;
+    //     background: none;
 
-        border: none;
+    //     border: none;
 
-        text-indent: 3.1em;
+    //     text-indent: 3.1em;
 
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
+    //     box-shadow: none;
 
-        &:not(:first-child) {
-            margin-top: var(--my-text-paragraph-margin-top);
-        }
-    }
+    //     &:not(:first-child) {
+    //         margin-top: var(--my-text-paragraph-margin-top);
+    //     }
+    // }
 
     img {
         z-index: -2;

@@ -26,24 +26,8 @@
         // background-size: cover;
 
         /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d1c4e9+0,ffe0b2+100 */
-        background: rgb(209, 196, 233);
-        /* Old browsers */
-        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
-        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZDFjNGU5IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZTBiMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-        background: -moz-linear-gradient(-45deg, rgba(209, 196, 233, 1) 0%, rgba(255, 224, 178, 1) 100%);
-        /* FF3.6-15 */
-        background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(209, 196, 233, 1)), color-stop(100%, rgba(255, 224, 178, 1)));
-        /* Chrome4-9,Safari4-5 */
-        background: -webkit-linear-gradient(-45deg, rgba(209, 196, 233, 1) 0%, rgba(255, 224, 178, 1) 100%);
-        /* Chrome10-25,Safari5.1-6 */
-        background: -o-linear-gradient(-45deg, rgba(209, 196, 233, 1) 0%, rgba(255, 224, 178, 1) 100%);
-        /* Opera 11.10-11.50 */
-        background: -ms-linear-gradient(-45deg, rgba(209, 196, 233, 1) 0%, rgba(255, 224, 178, 1) 100%);
-        /* IE10 preview */
+        // background: rgb(209, 196, 233);
         background: linear-gradient(135deg, rgba(209, 196, 233, 1) 0%, rgba(255, 224, 178, 1) 100%);
-        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1c4e9', endColorstr='#ffe0b2', GradientType=1);
-        /* IE6-8 fallback on horizontal gradient */
 
         top: 19.125rem;
         left: 50%;
@@ -68,6 +52,10 @@
             width: 145rem;
 
             transform: translate(-73.4%, -9.8%);
+        }
+
+        @include media-breakpoint-down (sm) {
+            display: none;
         }
     }
 
@@ -94,7 +82,21 @@
         }
 
         @include media-breakpoint-down(sm) {
-            hyphens: auto;
+            // font-size: 13px;
+
+            // word-wrap: break-word;
+            // overflow-wrap: break-word;
+
+            text-indent: 0;
+            text-align: left;
+
+            // // text-align: left;
+            // text-indent: 2.25em;
+            // letter-spacing: 0em;
+
+            // &:not(:first-child) {
+            //     margin-top: 2.5rem;
+            // }
         }
     }
 

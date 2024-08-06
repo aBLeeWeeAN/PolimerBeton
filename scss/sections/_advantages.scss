@@ -133,6 +133,7 @@
             }
 
             @include media-breakpoint-down(sm) {
+                margin-top: 1.5rem;
                 margin-bottom: var(--my-section-child-non-first-margin-top);
             }
         }

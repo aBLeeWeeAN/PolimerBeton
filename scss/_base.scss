@@ -3,23 +3,14 @@
  *========================================================================**/
 
  html {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
     width: 100%;
     height: auto;
 
-    z-index: 1;
-    max-width: 100%;
-
-    overflow-x: hidden;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-
     font-size: var(--base-font-size);
     margin: 0 auto;
+
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 
     // overflow-anchor: none;
 }
@@ -35,24 +26,13 @@
  *========================================================================**/
 
  body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    
     margin: 0 auto;
     padding: 0 !important;
     
     z-index: -10;
 
-    // overflow-y: scroll;
-    // overflow-x: hidden;
-    // overflow-y: scroll;
-
-    // background-color: $finally_bc_color;
     background-color: var(--finally-bc-color);
 }
-
-// #wrapper {
-//     margin-right: auto;
-//     margin-left: auto;
-
-//     max-width: 1280px;
-
-//     padding: 0 16px 0 16px;
-// }

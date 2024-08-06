@@ -77,6 +77,8 @@
     .hero-h1 {
         @extend .heading;
 
+        text-align: center;
+
         margin: 0;
 
         font-size: var(--my-text-h1-font-size);
@@ -149,7 +151,6 @@
         background: linear-gradient(90deg, #1b5e20 0%, #ff6f00 50%, #bf360c 100%);
 
         background-clip: text;
-        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
 
         // @include media-breakpoint-down(xxl) {
