@@ -9,13 +9,15 @@
     height: auto;
 
     .fixed-top-navbar {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
         position: fixed;
 
         z-index: 1200; /* Ensure the header is above other content */
 
         background-color: var(--finally-bc-color);
         // background-color: color-mix(in srgb, #fff 100%, #E64A19 2%);
-        box-shadow: 0 16px 16px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 .761rem .761rem rgba(0, 0, 0, 0.1);
 
         top: 0;
         width: 100%;
@@ -503,23 +505,53 @@
                             margin-top: 0;
                         }
                     }
-
+                }
+            
+                .menu-item {
                     .menu__decorative-circle {
+                        &.left {
+                            margin-left: -.75rem;
+
+                            @include media-breakpoint-down(sm) {
+                                margin: 1rem 0;  
+                            }     
+                        }
+
+                        &.right {
+                            margin-right: -.75rem;
+
+                            @include media-breakpoint-down(sm) {
+                                margin: 1rem 0;  
+                            }     
+                        }
+
                         font-size: 14px;
                         color: var(--menu-text-color);
 
                         line-height: 100%;
                         text-align: center;
 
-                        margin: 1rem 0;
+                        @include media-breakpoint-down(sm) {
+                            margin: 1rem 0;  
+                        }              
                     }
-                }
-            
-                .menu-item {
+
+                    a {
+                        flex-grow: 1;
+                    }
+
+                    display: flex;
+                    flex-direction: row;
+
+                    align-items: center;
+                    justify-content: space-between;
+
                     text-align: center;
 
-                    &:not(:first-child) {
-                        @include media-breakpoint-down(sm) {
+                    @include media-breakpoint-down(sm) {
+                        display: block;
+
+                        &:not(:first-child) {
                             margin-top: 0;
                         }
                     }

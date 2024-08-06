@@ -189,40 +189,43 @@
                         <div class="row d-flex align-items-center justify-content-center menu-row">
                             <div class="col-12 col-sm-4 menu-item">
                                 <a href="#Hero">Главная</a>
+                                <span class="d-inline-block d-sm-none menu__decorative-circle">•</span>
                             </div>
-                            <span class="d-block d-sm-none menu__decorative-circle">•</span>
                             <div class="col-12 col-sm-4 menu-item">
+                                <span class="d-none d-sm-inline-block menu__decorative-circle left">•</span>
                                 <a href="#Description">Описание</a>
+                                <span class="d-inline-block menu__decorative-circle right">•</span>
                             </div>
-                            <span class="d-block d-sm-none menu__decorative-circle">•</span>
                             <div class="col-12 col-sm-4 menu-item">
                                 <a href="#Usage">Применение</a>
+                                <span class="d-inline-block d-sm-none menu__decorative-circle">•</span>
                             </div>
-                            <span class="d-block d-sm-none menu__decorative-circle">•</span>
                         </div>
                         <div class="row d-flex align-items-center justify-content-center menu-row">
                             <div class="col-12 col-sm-4 menu-item">
                                 <a href="#Examples">Примеры использования</a>
+                                <span class="d-inline-block d-sm-none menu__decorative-circle">•</span>
                             </div>
-                            <span class="d-block d-sm-none menu__decorative-circle">•</span>
                             <div class="col-12 col-sm-4 menu-item">
+                                <span class="d-none d-sm-inline-block menu__decorative-circle left">•</span>
                                 <a href="#Advantages">Преимущества</a>
+                                <span class="d-inline-block menu__decorative-circle right">•</span>
                             </div>
-                            <span class="d-block d-sm-none menu__decorative-circle">•</span>
                             <div class="col-12 col-sm-4 menu-item">
                                 <a href="#Safety">Безопасность</a>
+                                <span class="d-inline-block d-sm-none menu__decorative-circle">•</span>
                             </div>
-                            <span class="d-block d-sm-none menu__decorative-circle">•</span>
                         </div>
                         <div class="row d-flex align-items-center justify-content-center menu-row">
                             <div class="col-12 col-sm-4 menu-item">
                                 <a href="#Prices">Цены</a>
+                                <span class="d-inline-block d-sm-none menu__decorative-circle">•</span>
                             </div>
-                            <span class="d-block d-sm-none menu__decorative-circle">•</span>
                             <div class="col-12 col-sm-4 menu-item">
+                                <span class="d-none d-sm-inline-block menu__decorative-circle left">•</span>
                                 <a href="#Feedback-Form">Оставить заявку</a>
+                                <span class="d-inline-block menu__decorative-circle right">•</span>
                             </div>
-                            <span class="d-block d-sm-none menu__decorative-circle">•</span>
                             <div class="col-12 col-sm-4 menu-item">
                                 <a href="#Contacts">Наши контакты</a>
                             </div>
@@ -1026,6 +1029,44 @@
               onResizeOrLoad(); // Initial calculation
               $(window).resize(onResizeOrLoad); // Recalculate on resize
           </script>
+
+        <script>
+            let lastScrollTop = 0;
+
+            const header = document.querySelector('.fixed-top-navbar');
+            const offcanvas = document.getElementById('offcanvasNavbar');
+
+            // Переменная для отслеживания состояния offcanvas
+            let offcanvasIsShown = false;
+
+            // Событие при скрытии offcanvas
+            offcanvas.addEventListener('hidden.bs.offcanvas', function(event) {
+                offcanvasIsShown = false;
+            });
+
+            // Событие при показе offcanvas
+            offcanvas.addEventListener('shown.bs.offcanvas', function(event) {
+                offcanvasIsShown = true;
+            });
+
+            // Обработчик события прокрутки
+            window.addEventListener('scroll', () => {
+                // Проверка, скрыт ли .offcanvas-body
+                if (!offcanvasIsShown) {
+                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    if (scrollTop > lastScrollTop) {
+                        // Прокрутка вниз
+                        header.style.transform = 'translateY(-100%)';
+                        header.style.boxShadow = 'none';
+                    } else {
+                        // Прокрутка вверх
+                        header.style.transform = 'translateY(0)';
+                        header.style.boxShadow = '0 .761rem .761rem rgba(0, 0, 0, 0.1)';
+                    }
+                    lastScrollTop = scrollTop;
+                }
+            });
+        </script>
     </div>
 </body>
 
