@@ -8,11 +8,11 @@
     // margin-top: 10rem;
 
     #examples-second-part {
-        margin-top: var(--my-section-child-non-first-margin-top);
+        margin-top: 0;
 
-        // @include media-breakpoint-down(lg) {
-        //     margin-top: 0;
-        // }
+        @include media-breakpoint-down(xxl) {
+            margin-top: var(--my-section-child-non-first-margin-top);
+        }
     }
 
     .container-for-image-and-caption {

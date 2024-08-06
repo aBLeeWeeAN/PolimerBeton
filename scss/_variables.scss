@@ -43,7 +43,7 @@
     --my-text-subheading-line-height: 1.5em;
 
     // caption after images
-    --my-text-caption-font-size: 1.25rem;
+    --my-text-caption-font-size: 1rem;
     --my-text-caption-letter-spacing: 0.12em;
 
     --my-text-caption-margin-top: 0.75em;
@@ -207,11 +207,21 @@
 
         // sections
         --my-section-padding-value: 4rem;
+        --my-section-child-non-first-margin-top: 1.296rem;
         // --my-section-child-non-first-margin-top: 10rem;
 
         // hero section
         --my-section-hero-padding-value: 5rem;
         --my-section-hero-child-non-first-margin-top: 3.5rem;
+    }
+
+    @include media-breakpoint-down(xs) {
+        --base-font-size: 13px;
+
+        --my-section-padding-value: 3.5rem;
+
+        --my-section-hero-padding-value: 4rem;
+        --my-footer-padding-value: 3.5rem;
     }
 }
 
