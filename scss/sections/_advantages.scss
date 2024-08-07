@@ -38,7 +38,7 @@
 
                 line-height: 100%;
     
-                color: $text_color_black;
+                color: var(--text-color-87);
 
                 font-variant-numeric: lining-nums;
 
@@ -65,7 +65,7 @@
                 
                 text-align: left;
     
-                color: $text_color_black;
+                color: var(--text-color-87);
 
                 // @include media-breakpoint-down(lg) {
                     
@@ -110,7 +110,7 @@
             text-indent: 6rem;
 
 
-            color: $text_color_black;
+            color: var(--text-color-87);
 
             @include media-breakpoint-down(lg) {
                 text-indent: 4.5rem;

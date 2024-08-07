@@ -2,7 +2,12 @@
 @import 'reset';
 
 /* Подгружаем цветовую схему */
-@import 'color_scheme_light';
+@import 'color_scheme';
+
+// @import url("color_scheme_light.css");
+// @import url("color_scheme_dark.css");
+
+// @import 'color_scheme_light';
 
 /* Подключение сторонних библиотек */
 @import 'vendors';

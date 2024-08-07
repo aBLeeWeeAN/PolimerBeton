@@ -96,7 +96,7 @@
             border: none;
             border-radius: 1.25rem;
 
-            background-color: $color_deep_purple_700;
+            background-color: var(--primary-color);
 
             --squircle-smooth: 0.78;
             --squircle-radius: 1.25rem;
@@ -151,8 +151,8 @@
             border: none;
             border-radius: 1.025rem;
 
-            // background-color: color-mix(in srgb, $finally_bc_color 100%, #D1C4E9 5%);
-            background-color: #fff;
+            // background-color: color-mix(in srgb, var(--finally-bc-color) 100%, #D1C4E9 5%);
+            background-color: var(--form-field-bc-color);
 
             --squircle-smooth: 1;
             --squircle-radius: 1.025rem;
@@ -168,7 +168,11 @@
             line-height: 100%;
             letter-spacing: var(--my-text-paragraph-letter-spacing);
 
-            color: var(--my-text-paragraph-color);
+            color: var(--text-color-100);
+
+            &::placeholder {
+                color: var(--text-color-60);
+            }
 
             &:focus,
             &:active {
@@ -176,7 +180,7 @@
             }
 
             &:focus::placeholder {
-                color: var(--my-text-paragraph-color);
+                color: var(--text-color-87);
             }
 
             @include media-breakpoint-down(lg) {
@@ -247,7 +251,7 @@
 
             mask-image: paint(squircle);
 
-            background-color: $color_deep_purple_700;
+            background-color: var(--primary-color);
 
             font-family: "Montserrat", sans-serif;
             font-optical-sizing: auto;
@@ -259,12 +263,12 @@
             letter-spacing: var(--my-text-paragraph-letter-spacing);
 
             text-align: center;
-            color: var(--my-text-paragraph-color-alt);
+            color: var(--text-color-alt-87);
 
             text-transform: none;
 
             &:hover {
-                color: #fff;
+                color: var(--text-color-alt-100);
             }
 
             @include media-breakpoint-down(lg) {
@@ -345,7 +349,7 @@
             letter-spacing: 0.05rem;
 
             text-align: center;
-            color: var(--my-text-paragraph-color);
+            color: var(--text-color-87);
 
             input[type="checkbox"] {
                 display: inline-block;
@@ -359,7 +363,9 @@
 
                 aspect-ratio: 1 / 1;
 
-                border: 0.125rem solid $color_deep_purple_700;
+                background-color: var(--form-field-bc-color);
+
+                border: 0.125rem solid var(--primary-color);
                 border-radius: 50%;
 
                 position: relative;
@@ -368,7 +374,7 @@
                 margin-right: .75rem;
 
                 @include media-breakpoint-down(md) {        
-                    border: 0.135rem solid $color_deep_purple_700;
+                    border: 0.135rem solid var(--primary-color);
 
                     margin-right: .5rem;
                 }
@@ -390,7 +396,7 @@
             }
 
             input[type="checkbox"]:checked {
-                background-color: $color_deep_purple_700;
+                background-color: var(--primary-color);
                 border: none;
             }
 
@@ -404,7 +410,7 @@
                 top: 20%;
                 left: 37%;
 
-                border: solid #fff;
+                border: solid var(--text-color-alt-100);
                 border-width: 0 .125rem .125rem 0;
 
                 transform: rotate(45deg);
@@ -433,7 +439,7 @@
             }
 
             a {
-                color: $color_deep_purple_700;
+                color: var(--primary-color);
                 text-decoration: none;
             }
 

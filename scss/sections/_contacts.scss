@@ -21,7 +21,7 @@
             line-height: var(--my-text-h3-line-height);
             letter-spacing: var(--my-text-h3-letter-spacing);
     
-            color: $text_color_black;
+            color: var(--text-color-87);
 
             @include media-breakpoint-down(sm) {
                 margin-bottom: .35rem;
@@ -52,7 +52,7 @@
             line-height: 200%;
             letter-spacing: var(--my-text-paragraph-letter-spacing);
     
-            color: $text_color_black;
+            color: var(--text-color-87);
     
             text-decoration: none;
     

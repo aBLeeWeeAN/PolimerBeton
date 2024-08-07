@@ -51,6 +51,7 @@ section {
 }
 
 .container {
+    z-index: 10;
 
     @include media-breakpoint-down(sm) {
         padding: 0 22px;
@@ -71,7 +72,7 @@ section {
     font-weight: var(--my-text-heading-font-weight);
     font-style: normal;
 
-    color: var(--my-text-heading-color);
+    color: var(--text-color-87);
 
     text-transform: uppercase;
 
@@ -116,7 +117,7 @@ section {
 
     line-height: var(--my-text-subheading-line-height);
 
-    color: $text_color_black;
+    color: var(--text-color-87);
 
     text-transform: none;
 
@@ -161,7 +162,7 @@ section {
     letter-spacing: var(--my-text-caption-letter-spacing);
     line-height: var(--my-text-caption-line-height);
 
-    color: $text_color_black;
+    color: var(--text-color-87);
 
     text-align: center;
     text-transform: none;
@@ -182,7 +183,7 @@ section {
     padding: .35rem;
     background-clip: padding-box;
 
-    box-shadow: .142rem .19rem .476rem 0px rgba(0, 0, 0, 0.25);
+    box-shadow: .142rem .19rem .476rem 0px var(--box-shadow-color);
 
     & img {
         display: block;

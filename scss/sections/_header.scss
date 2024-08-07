@@ -17,7 +17,7 @@
 
         background-color: var(--finally-bc-color);
         // background-color: color-mix(in srgb, #fff 100%, #E64A19 2%);
-        box-shadow: 0 .761rem .761rem rgba(0, 0, 0, 0.1);
+        box-shadow: 0 .761rem .761rem var(--box-shadow-color);
 
         top: 0;
         width: 100%;
@@ -34,7 +34,7 @@
             width: 10000px;
             height: 700%;
     
-            background-color: $header_bc_color_square_2;
+            background-color: var(--header-decoration-1--color);
             // background-color: transparent;
     
             top: 50%;
@@ -70,7 +70,7 @@
             width: 10000px;
             height: 200%;
     
-            background-color: $header_bc_color_square_1;
+            background-color: var(--header-decoration-2--color);
             background-color: transparent;
             // background-color: red;
     
@@ -121,13 +121,13 @@
                     display: inline-flex;
                     align-items: center;
                 
-                    color: $color_deep_purple_700;
+                    color: var(--primary-color);
                 
                     .logo-icon {
                         fill-rule: evenodd;
                         clip-rule: evenodd;
                 
-                        fill: $color_deep_purple_700;
+                        fill: var(--primary-color);
                 
                         width: 4.5em;
                         height: auto;
@@ -214,7 +214,16 @@
 
                     svg {
                         width: 1.7em;
-                        // width: 100%;
+                        height: auto;
+                    }
+
+                    #my-sun-icon {
+                        width: 1.5em;
+                        height: auto;
+                    }
+
+                    #my-moon-icon {
+                        width: 1.7em;
                         height: auto;
                     }
                 }
@@ -237,17 +246,17 @@
             
                     mask-image: paint(squircle);
 
-                    background-color: $color_deep_purple_700;
+                    background-color: var(--primary-color);
             
                     border: none;
                     outline: none;
             
                     cursor: pointer;
             
-                    fill: $text_color_white; // icon color
+                    fill: var(--text-color-alt-87); // icon color
 
                     &:hover {
-                        fill: #fff;
+                        fill: var(--text-color-alt-100);
                     }
                 }
             
@@ -255,7 +264,7 @@
                     height: 2em;
                     width: 1px;
             
-                    background-color: $text_color_black;
+                    background-color: var(--text-color-87);
             
                     border-radius: 50%;
             
@@ -273,7 +282,7 @@
                 height: 2.5em;
                 width: 1px;
         
-                background-color: $text_color_black;
+                background-color: var(--text-color-87);
         
                 border-radius: 50%;
         
@@ -300,7 +309,7 @@
                     width: 1.7em;
                     height: 1.7em;
             
-                    background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23512DA8' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+                    // background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23512DA8' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
                 }
             
                 border-radius: 0.75em;
@@ -328,7 +337,7 @@
                     line-height: 1.5em;
             
                     text-align: center;
-                    color: $text_color_black;
+                    color: var(--text-color-87);
     
                     // padding: 0 .2em;
                     // padding-bottom: .35em;
@@ -373,8 +382,8 @@
         // box-shadow: 0 10px 12px rgba(0, 0, 0, 0.1);
         // backdrop-filter: blur(24px);
 
-        background-color: rgba($color: #fff, $alpha: .37);
-        box-shadow: 0 .476rem .571rem rgba(0, 0, 0, 0.1);
+        background-color: var(--offcanvas-bc-color);
+        box-shadow: 0 .476rem .571rem var(--box-shadow-color);
         backdrop-filter: blur(1.143rem);
 
         .offcanvas-top {
@@ -483,7 +492,7 @@
                     line-height: 1.5em;
             
                     text-align: center; 
-                    color: var(--menu-text-color);
+                    color: var(--text-color-87);
     
                     // padding: 0 .2em;
                     // padding-bottom: .35em;
@@ -526,7 +535,7 @@
                         }
 
                         font-size: 14px;
-                        color: var(--menu-text-color);
+                        color: var(--text-color-87);
 
                         line-height: 100%;
                         text-align: center;
@@ -639,6 +648,16 @@
                             // width: 100%;
                             height: auto;
                         }
+
+                        #my-sun-icon__mobile {
+                            width: 1.9em;
+                            height: auto;
+                        }
+    
+                        #my-moon-icon__mobile {
+                            width: 2.12em;
+                            height: auto;
+                        }
                     }
                 
                     .my-button {
@@ -659,17 +678,17 @@
                 
                         mask-image: paint(squircle);
                         
-                        background-color: $color_deep_purple_700;
+                        background-color: var(--primary-color);
                 
                         border: none;
                         outline: none;
                 
                         cursor: pointer;
                 
-                        fill: $text_color_white; // icon color
+                        fill: var(--text-color-alt-87); // icon color
         
                         &:hover {
-                            fill: #000;
+                            fill: var(--text-color-100);
                         }
 
                         &--transparent {
@@ -677,7 +696,7 @@
 
                             background-color: transparent;
 
-                            fill: var(--menu-text-color);
+                            fill: var(--text-color-87);
                         }
                     }
                 }
@@ -686,7 +705,7 @@
                     height: 1px;
                     width: 100%;
             
-                    background-color: var(--menu-text-color);
+                    background-color: var(--text-color-87);
             
                     border-radius: 50%;
             

@@ -46,7 +46,7 @@
                     width: 100%;
                     height: 100%;
 
-                    fill: #B71C1C;
+                    fill: var(--prices--price-block-bc-color);
 
                     animation: rotate-counter-clockwise 10s infinite linear;
 
@@ -83,7 +83,7 @@
                 letter-spacing: 0.2em;
                 text-align: center;
 
-                color: #fff;
+                color: var(--text-color-alt-100);
 
                 text-transform: none;
 

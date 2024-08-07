@@ -57,7 +57,7 @@
         #example-1 {
             /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#4caf50+0,ffeb3b+50,f44336+100 */
             // background: rgb(76, 175, 80);
-            background: linear-gradient(45deg, rgba(76, 175, 80, 1) 0%, rgba(255, 235, 59, 1) 50%, rgba(244, 67, 54, 1) 100%);
+            background: linear-gradient(45deg, var(--accent-color-green) 0%, var(--accent-color-yellow) 50%, var(--accent-color-red) 100%);
     
             background-size: 400% 400%;
     
@@ -84,7 +84,7 @@
         #example-2 {
             /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f44336+0,ffeb3b+50,4caf50+100 */
             // background: rgb(244, 67, 54);
-            background: linear-gradient(135deg, rgba(244, 67, 54, 1) 0%, rgba(255, 235, 59, 1) 50%, rgba(76, 175, 80, 1) 100%);
+            background: linear-gradient(135deg, var(--accent-color-red) 0%, var(--accent-color-yellow) 50%, var(--accent-color-green) 100%);
     
             background-size: 400% 400%;
     
@@ -111,7 +111,7 @@
         #example-3 {
             /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#4caf50+0,ffeb3b+50,f44336+100 */
             // background: rgb(76, 175, 80);
-            background: linear-gradient(135deg, rgba(76, 175, 80, 1) 0%, rgba(255, 235, 59, 1) 50%, rgba(244, 67, 54, 1) 100%);
+            background: linear-gradient(135deg, var(--accent-color-green) 0%, var(--accent-color-yellow) 50%, var(--accent-color-red) 100%);
     
             background-size: 400% 400%;
     
@@ -138,7 +138,7 @@
         #example-4 {
             /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f44336+0,ffeb3b+50,4caf50+100 */
             // background: rgb(244, 67, 54);
-            background: linear-gradient(45deg, rgba(244, 67, 54, 1) 0%, rgba(255, 235, 59, 1) 50%, rgba(76, 175, 80, 1) 100%);
+            background: linear-gradient(45deg, var(--accent-color-red) 0%, var(--accent-color-yellow) 50%, var(--accent-color-green) 100%);
     
             background-size: 400% 400%;
     
@@ -184,17 +184,18 @@
 
         /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffe0b2+0,d1c4e9+70,d1c4e9+100 */
         // background: rgb(255, 224, 178);
-        background: linear-gradient(135deg, rgba(255, 224, 178, 1) 0%, rgba(209, 196, 233, 1) 70%, rgba(209, 196, 233, 1) 100%);
+        background: linear-gradient(135deg, var(--secondary-color--tone-100) 0%, var(--primary-color--tone-100) 70%, var(--primary-color--tone-100) 100%);
         // background: red;
 
         top: 50%;
         left: 50%;
 
-        transform: translate(-39%, -27.1%);
+        transform: translate(-34%, 14.1%);
 
         opacity: 0.25;
 
         @include media-breakpoint-down(xl) {
+            transform: translate(-39%, -27.1%);
             width: 135rem;
         }
 

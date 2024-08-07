@@ -27,7 +27,7 @@
 
         /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d1c4e9+0,ffe0b2+100 */
         // background: rgb(209, 196, 233);
-        background: linear-gradient(135deg, rgba(209, 196, 233, 1) 0%, rgba(255, 224, 178, 1) 100%);
+        background: linear-gradient(135deg, var(--primary-color--tone-100) 0%, var(--secondary-color--tone-100) 100%);
 
         top: 19.125rem;
         left: 50%;
@@ -73,7 +73,7 @@
         text-align: justify;
         text-indent: var(--my-text-paragraph-text-indent);
     
-        color: $text_color_black;
+        color: var(--text-color-87);
     
         hyphens: none;
     

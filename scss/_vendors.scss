@@ -41,8 +41,13 @@ $headings-color:              inherit;
 // paragraph
 $paragraph-margin-bottom:   0;
 
+// color mode
+// $color-mode-type: data;
 
 // reset navbar toggler
+$navbar-light-icon-color:           #4527A0;
+$navbar-dark-icon-color:            #FFAB91;
+
 $navbar-toggler-padding-y:          0;
 $navbar-toggler-padding-x:          0;
 $navbar-toggler-font-size:          1rem;
@@ -61,7 +66,8 @@ $offcanvas-transition-duration:     .3s;
 // $offcanvas-border-color:            $modal-content-border-color;
 $offcanvas-border-width:            0;
 // $offcanvas-title-line-height:       $modal-title-line-height;
-$offcanvas-bg-color:                rgba($color: var(--finally-bc-color), $alpha: 0.87);
+// $offcanvas-bg-color:                rgba($color: var(--finally-bc-color), $alpha: 0.87);
+$offcanvas-bg-color:                none;
 // $offcanvas-color:                   var(--#{$prefix}body-color);
 $offcanvas-box-shadow:              none;
 // $offcanvas-backdrop-bg:             $modal-backdrop-bg;
@@ -104,7 +110,7 @@ $btn-close-width:            16px;
 $btn-close-height:           $btn-close-width;
 $btn-close-padding-x:        0;
 $btn-close-padding-y:        $btn-close-padding-x;
-$btn-close-color:            var(--menu-text-color);
+$btn-close-color:            var(--text-color-87);
 $btn-close-bg:               url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/></svg>");
 // $btn-close-focus-shadow:     $focus-ring-box-shadow;
 $btn-close-opacity:          .87;

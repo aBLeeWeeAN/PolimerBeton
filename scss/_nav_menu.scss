@@ -36,7 +36,7 @@
         -ms-flex-pack: justify;
         justify-content: space-between;
 
-        background-color: $color_deep_purple_700;
+        background-color: var(--primary-color);
         box-shadow: none;
 
         cursor: pointer;
@@ -60,13 +60,13 @@
             border: 0;
             align-items: center;
         
-            color: #fff;
+            color: var(--text-color-alt-100);
         
             .logo-icon {
                 fill-rule: evenodd;
                 clip-rule: evenodd;
         
-                fill: #fff;
+                fill: var(--text-color-alt-100);
         
                 width: 4.5rem;
                 height: 4.5rem;
