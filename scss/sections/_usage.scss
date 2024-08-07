@@ -28,7 +28,7 @@
             font-size: var(--my-text-paragraph-font-size);
             letter-spacing: var(--my-text-paragraph-letter-spacing);
     
-            text-indent: 2.375em;
+            text-indent: 0;
             line-height: var(--my-text-paragraph-line-height);
     
             text-align: justify;
@@ -68,8 +68,8 @@
                 list-style-type: decimal;
                 list-style-position: inside;
     
-                text-align: left;
-                text-indent: 0;
+                text-align: justify;
+                // text-indent: var(--my-text-paragraph-text-indent);
     
                 padding: 0;
     
