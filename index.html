@@ -199,9 +199,14 @@
             
                             <span class="col-auto d-none d-sm-inline-block separator"></span>
         
-                            <button class="col-auto navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                            <button class="col-auto navbar-toggler collapsed" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
+                                <!-- <span class="navbar-toggler-icon"></span> -->
+
+                                <!-- <span class="visually-hidden">Toggle navigation</span> -->
+                                <span class="toggler-icon top-bar"></span>
+                                <span class="toggler-icon middle-bar"></span>
+                                <span class="toggler-icon bottom-bar"></span>
                             </button>
                         </div>
                     </div>
@@ -1194,6 +1199,8 @@
                 });
             });
         </script>
+
+        <script src="scripts/change_menu_button_state.js" async></script>
     </div>
 </body>
 

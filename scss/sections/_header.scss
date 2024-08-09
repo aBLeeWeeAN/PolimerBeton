@@ -323,32 +323,167 @@
                 }
             }
         
+            // .navbar-toggler {
+            //     // width: 6rem;
+            //     // height: 3rem;
+        
+            //     // font-size: var(--my-header-button-size);
+        
+            //     // width: auto;
+            //     // height: 2.6em;
+
+            //     border: 0 !important;
+            //     // background: transparent !important;
+            
+            //     // .navbar-toggler-icon {
+            //     //     // margin: 0 1.3em;
+            //     //     margin: 0;
+            
+            //     //     width: 1.7em;
+            //     //     height: 1.7em;
+            
+            //     //     // background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23512DA8' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            //     // }
+
+            //     &:focus,
+            //     &:active,
+            //     &-icon:focus {
+            //         outline: none !important;
+            //         box-shadow: none !important;
+            //         border: 0 !important;
+            //     }
+
+            //     /* Lines of the Toggler */
+            //     .toggler-icon {
+            //         width: 1.45rem;
+            //         height: .145rem;
+
+            //         min-height: 1px;
+
+            //         background-color: var(--primary-color);
+
+            //         display: block;
+            //         transition: all 0.2s;
+            //     }
+
+            //     /* Adds Space between the lines */
+            //     .middle-bar{
+            //         margin: 5px auto;
+            //     }
+
+            //     /* State when navbar is opened (START) */
+            //     .top-bar {
+            //         transform: rotate(45deg);
+            //         transform-origin: 10% 10%;
+            //     }
+
+            //     .middle-bar {
+            //         opacity: 0;
+            //         filter: alpha(opacity=0);
+            //     }
+
+            //     .bottom-bar {
+            //         transform: rotate(-45deg);
+            //         transform-origin: 10% 90%;
+            //     }
+            //     /* State when navbar is opened (END) */
+
+            //     /* State when navbar is collapsed (START) */
+            //     &.collapsed .top-bar {
+            //         transform: rotate(0);
+            //     }
+
+            //     &.collapsed .middle-bar {
+            //         opacity: 1;
+            //         filter: alpha(opacity=100);
+            //     }
+
+            //     &.collapsed .bottom-bar {
+            //         transform: rotate(0);
+            //     }
+            //     /* State when navbar is collapsed (END) */
+
+            //     /* Color of Toggler when collapsed */
+            //     &.collapsed .toggler-icon {
+            //         background-color: var(--primary-color);
+            //     }
+            // }
+
             .navbar-toggler {
-                // width: 6rem;
-                // height: 3rem;
-        
-                font-size: var(--my-header-button-size);
-        
                 width: auto;
-                height: 2.6em;
+                height: auto;
+
+                font-size: 1rem;
+                border: 0 !important;
             
-                .navbar-toggler-icon {
-                    // margin: 0 1.3em;
-                    margin: 0;
-            
-                    width: 1.7em;
-                    height: 1.7em;
-            
-                    // background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23512DA8' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+                &:focus,
+                &:active,
+                &-icon:focus {
+                    outline: none !important;
+                    box-shadow: none !important;
+                    border: 0 !important;
                 }
             
-                border-radius: 0.75em;
-                // border: solid 1px $color_deep_purple_700;
-                border: 0;
-        
-                // @include media-breakpoint-down(sm) {
-                //     font-size: 0.57rem;
-                // }
+                .toggler-icon {
+                    aspect-ratio: 30 / 3;
+
+                    width: auto; /* 30px / 21 */
+                    height: 0.14286em; /* 3px / 21 */
+                    
+                    min-height: 2px;
+                    max-height: 3px
+
+                    background-color: var(--primary-color);
+                    display: block;
+                    
+                    transition: all 0.2s;
+
+                    border: 0 !important;
+
+                    @include media-breakpoint-down(xxl) {
+                        height: 2px;
+                    }
+                }
+            
+                .middle-bar {
+                    margin: 0.24em auto; /* 5px / 21 */
+                }
+            
+                /* State when navbar is opened (START) */
+                .top-bar {
+                    transform: rotate(45deg);
+                    transform-origin: 10% 10%;
+                }
+            
+                .middle-bar {
+                    opacity: 0;
+                    filter: alpha(opacity=0);
+                }
+            
+                .bottom-bar {
+                    transform: rotate(-45deg);
+                    transform-origin: 10% 90%;
+                }
+                /* State when navbar is opened (END) */
+            
+                /* State when navbar is collapsed (START) */
+                &.collapsed .top-bar {
+                    transform: rotate(0);
+                }
+            
+                &.collapsed .middle-bar {
+                    opacity: 1;
+                    filter: alpha(opacity=100);
+                }
+            
+                &.collapsed .bottom-bar {
+                    transform: rotate(0);
+                }
+                /* State when navbar is collapsed (END) */
+            
+                &.collapsed .toggler-icon {
+                    background-color: var(--primary-color);
+                }
             }
         
             .menu {
@@ -784,6 +919,16 @@
                     min-height: auto !important;
     
                     aspect-ratio: 1 / 1;
+
+                    border: 0 !important;
+            
+                    &:focus,
+                    &:active,
+                    &-icon:focus {
+                        outline: none !important;
+                        box-shadow: none !important;
+                        border: 0 !important;
+                    }
                 }
             }
     
