@@ -183,6 +183,10 @@
                 color: var(--text-color-87);
             }
 
+            &:is(:-webkit-autofill, :autofill) {
+                font-size: .8rem;
+            }
+
             @include media-breakpoint-down(lg) {
                 padding: .625rem .875rem;
 

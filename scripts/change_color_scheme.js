@@ -22,15 +22,15 @@ function setTheme(theme) {
     document.documentElement.setAttribute('data-bs-theme', theme);
 
     if (theme === "light") {
-        moon_icon.style.display = "inline";
-        moon_icon__mobile.style.display = "inline";
-        sun_icon.style.display = "none";
-        sun_icon__mobile.style.display = "none";
-    } else {
         moon_icon.style.display = "none";
         moon_icon__mobile.style.display = "none";
         sun_icon.style.display = "inline";
         sun_icon__mobile.style.display = "inline";
+    } else {
+        moon_icon.style.display = "inline";
+        moon_icon__mobile.style.display = "inline";
+        sun_icon.style.display = "none";
+        sun_icon__mobile.style.display = "none";
     }
 }
 
