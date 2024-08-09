@@ -182,10 +182,6 @@
             
                 align-items: center;
                 justify-content: end;
-                
-                svg {
-                    fill: inherit;
-                } 
 
                 .contacts {
                     display: inherit;
@@ -195,13 +191,21 @@
                         margin-right: 0.5em;
                     }
 
-                    svg {
-                        // font-size: inherit !important;
+                    // svg {
+                    //     // font-size: inherit !important;
         
-                        width: 1.4em;
-                        // width: 100%;
-                        height: auto;
-                    }
+                    //     width: 1.35em;
+                    //     // width: 100%;
+                    //     height: auto;
+                    // }
+
+
+                    // svg {
+                    //     aspect-ratio: 1 / 1;
+
+                    //     width: 1.35em;
+                    //     height: auto;
+                    // }
                 }
             
                 .settings {
@@ -212,20 +216,27 @@
                         margin-left: 0.5em;
                     }
 
-                    svg {
-                        width: 1.7em;
-                        height: auto;
-                    }
+                    // svg {
+                    //     width: 1.7em;
+                    //     height: auto;
+                    // }
 
-                    #my-sun-icon {
-                        width: 1.5em;
-                        height: auto;
-                    }
+                    // svg {
+                    //     aspect-ratio: 1 / 1;
 
-                    #my-moon-icon {
-                        width: 1.7em;
-                        height: auto;
-                    }
+                    //     width: 1.25em;
+                    //     height: auto;
+                    // }
+
+                    // #my-sun-icon {
+                    //     width: 1.5em;
+                    //     height: auto;
+                    // }
+
+                    // #my-moon-icon {
+                    //     width: 1.7em;
+                    //     height: auto;
+                    // }
                 }
             
                 .my-button-desktop {
@@ -267,6 +278,15 @@
 
                         align-items: inherit;
                         justify-content: inherit;
+                    }
+
+                    svg {
+                        fill: inherit;
+
+                        aspect-ratio: 1 / 1;
+
+                        width: 1.35em;
+                        height: auto;
                     }
                 }
             
@@ -618,9 +638,9 @@
     
                     margin-bottom: .75em;
         
-                    svg {
-                        fill: inherit;
-                    } 
+                    // svg {
+                    //     fill: inherit;
+                    // } 
         
                     .contacts {
                         display: inherit;
@@ -628,17 +648,17 @@
         
                         .my-button-mobile {
                             &:not(:first-child) {
-                                margin-left: 1.45em;
+                                margin-left: 1.7em;
                             }
                         }
         
-                        svg {
-                            // font-size: inherit !important;
+                        // svg {
+                        //     // font-size: inherit !important;
             
-                            width: 1.85em;
-                            // width: 100%;
-                            height: auto;
-                        }
+                        //     width: 1.85em;
+                        //     // width: 100%;
+                        //     height: auto;
+                        // }
                     }
                 
                     .settings {
@@ -649,25 +669,25 @@
         
                         .my-button-mobile {
                             &:not(:first-child) {
-                                margin-left: .3em;
+                                margin-left: .5em;
                             }
                         }
         
-                        svg {
-                            width: 2.12em;
-                            // width: 100%;
-                            height: auto;
-                        }
+                        // svg {
+                        //     width: 2.12em;
+                        //     // width: 100%;
+                        //     height: auto;
+                        // }
 
-                        #my-sun-icon__mobile {
-                            width: 1.9em;
-                            height: auto;
-                        }
+                        // #my-sun-icon__mobile {
+                        //     width: 1.9em;
+                        //     height: auto;
+                        // }
     
-                        #my-moon-icon__mobile {
-                            width: 2.12em;
-                            height: auto;
-                        }
+                        // #my-moon-icon__mobile {
+                        //     width: 2.12em;
+                        //     height: auto;
+                        // }
                     }
                 
                     .my-button-mobile {
@@ -717,6 +737,15 @@
 
                             align-items: inherit;
                             justify-content: inherit;
+                        }
+
+                        svg {
+                            fill: inherit;
+                            
+                            aspect-ratio: 1 / 1;
+    
+                            width: 2em;
+                            height: auto;
                         }
                     }
                 }
