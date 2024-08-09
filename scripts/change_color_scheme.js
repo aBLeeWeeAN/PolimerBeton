@@ -1,5 +1,8 @@
-var toggle = document.getElementById("toggle-color-scheme");
-var toggle__mobile = document.getElementById("toggle-color-scheme__mobile");
+var toggle_theme = document.getElementById("toggle-color-scheme");
+var toggle_theme__mobile = document.getElementById("toggle-color-scheme__mobile");
+
+var reset_to_system_theme = document.getElementById("reset-to-system-color-scheme");
+var reset_to_system_theme__mobile = document.getElementById("reset-to-system-color-scheme__mobile");
 
 var moon_icon = document.getElementById("my-moon-icon");
 var moon_icon__mobile = document.getElementById("my-moon-icon__mobile");
@@ -7,54 +10,59 @@ var moon_icon__mobile = document.getElementById("my-moon-icon__mobile");
 var sun_icon = document.getElementById("my-sun-icon");
 var sun_icon__mobile = document.getElementById("my-sun-icon__mobile");
 
-var storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-if (storedTheme) {
-    document.documentElement.setAttribute('data-theme', storedTheme);
-    document.documentElement.setAttribute('data-bs-theme', storedTheme);
+// Функция для установки темы на основе системных настроек
+function setSystemTheme() {
+    var systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    setTheme(systemTheme);
 }
 
-// change button icon
-if (storedTheme === "light") {
-    moon_icon.style.display = "inline";
-    moon_icon__mobile.style.display = "inline";
+// Функция для установки темы
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute('data-bs-theme', theme);
 
-    sun_icon.style.display = "none";
-    sun_icon__mobile.style.display = "none";
-} else {
-    moon_icon.style.display = "none";
-    moon_icon__mobile.style.display = "none";
-
-    sun_icon.style.display = "inline";
-    sun_icon__mobile.style.display = "inline";
-}
-
-toggle.onclick = function() {
-    var currentTheme = document.documentElement.getAttribute("data-theme");
-    var targetTheme = "light";
-
-    if (currentTheme === "light") {
-        targetTheme = "dark";
-    }
-
-    // change button icon
-    if (targetTheme === "light") {
+    if (theme === "light") {
         moon_icon.style.display = "inline";
         moon_icon__mobile.style.display = "inline";
-
         sun_icon.style.display = "none";
         sun_icon__mobile.style.display = "none";
     } else {
         moon_icon.style.display = "none";
         moon_icon__mobile.style.display = "none";
-
         sun_icon.style.display = "inline";
         sun_icon__mobile.style.display = "inline";
     }
+}
 
-    document.documentElement.setAttribute('data-theme', targetTheme);
-    document.documentElement.setAttribute('data-bs-theme', targetTheme);
+// Инициализация темы при загрузке страницы
+var storedTheme = localStorage.getItem('theme');
+if (storedTheme) {
+    setTheme(storedTheme);
+} else {
+    setSystemTheme();
+}
 
+// Обработчики кликов для переключения темы
+toggle_theme.onclick = function() {
+    var currentTheme = document.documentElement.getAttribute("data-theme");
+    var targetTheme = currentTheme === "light" ? "dark" : "light";
+    setTheme(targetTheme);
     localStorage.setItem('theme', targetTheme);
 };
 
-toggle__mobile.onclick = toggle.onclick;
+toggle_theme__mobile.onclick = toggle_theme.onclick;
+
+// Обработчик клика для сброса темы на системную
+reset_to_system_theme.onclick = function() {
+    localStorage.removeItem('theme');
+    setSystemTheme();
+};
+
+reset_to_system_theme__mobile.onclick = reset_to_system_theme.onclick;
+
+// Слушатель для отслеживания изменений системной темы
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function() {
+    if (!localStorage.getItem('theme')) {
+        setSystemTheme();
+    }
+});

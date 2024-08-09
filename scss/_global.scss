@@ -204,3 +204,82 @@ section {
     display: none;
     visibility: hidden;
 }
+
+
+// .tooltip-container {
+//     position: relative;
+//     display: inline-block;
+//     cursor: pointer;
+
+//     .tooltip-text {
+//         display: block;
+//         background-color: #333;
+//         color: #fff;
+//         padding: 8px;
+//         z-index: 1;
+//         white-space: nowrap;
+//         opacity: 0;
+//         border-radius: 0;
+//         transition: opacity 3s, border-radius 5s;
+
+//         &::before {
+//             content: '';
+//             position: absolute;
+//             top: 100%;
+//             left: 50%;
+//             margin-left: -5px;
+//             border-width: 5px;
+//             border-style: solid;
+//             border-color: #333 transparent transparent transparent;
+//         }
+//     }
+
+//     &:hover {
+//         .tooltip-text {
+//             opacity: 1;
+//             border-radius: 50%;
+//         }
+//     }
+// }
+
+// .tooltip-container {
+//     position: relative;
+//     display: inline-block;
+
+//     .tooltip-text {
+//         visibility: hidden;
+//         width: 140px;
+//         background-color: #555;
+//         color: #fff;
+//         text-align: center;
+//         border-radius: 6px;
+//         padding: 5px 0;
+//         position: fixed; /* Используем fixed для избегания влияния overflow */
+//         z-index: 1000; /* Высокий z-index чтобы перекрыть другие элементы */
+//         bottom: auto;
+//         left: 50%;
+//         transform: translateX(-50%);
+//         opacity: 0;
+//         transition: opacity 0.3s;
+        
+//         &::after {
+//             content: "";
+//             position: absolute;
+//             top: 100%; 
+//             left: 50%;
+//             transform: translateX(-50%);
+//             border-width: 5px;
+//             border-style: solid;
+//             border-color: #555 transparent transparent transparent;
+//         }
+//     }
+
+//     &:hover {
+//         .tooltip-text {
+//             visibility: visible;
+//             opacity: 1;
+//             /* Дополнительно можно рассчитать и задать позицию tooltip с учетом прокрутки */
+//         }
+//     }
+// }
+
