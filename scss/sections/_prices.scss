@@ -26,6 +26,7 @@
                 width: 100%;
                 height: 100%;
 
+                transform: scale(1.25);
                 animation: scale-animation 6s ease-in-out infinite alternate;
 
                 @keyframes scale-animation {
@@ -48,6 +49,7 @@
 
                     fill: var(--prices--price-block-bc-color);
 
+                    transform: rotate(0deg);
                     animation: rotate-counter-clockwise 10s infinite linear;
 
                     @keyframes rotate-counter-clockwise {
@@ -89,6 +91,7 @@
 
                 font-variant-numeric: lining-nums;
 
+                transform: translate(-47.5%, -52.5%) rotate(-21deg) rotate(-8deg);
                 animation: wobble 10s infinite;
 
                 @keyframes wobble {
@@ -104,40 +107,7 @@
                         transform: translate(-47.5%, -52.5%) rotate(-21deg) rotate(-8deg);
                     }
                 }
-
-                // @keyframes wobble {
-                //     0% {
-                //         transform: translate(-44%, -51%) rotate(-21deg) rotate(-8deg);
-                //     }
-
-                //     50% {
-                //         transform: translate(-45%, -51%) rotate(-21deg) rotate(8deg);
-                //     }
-
-                //     100% {
-                //         transform: translate(-45%, -51%) rotate(-21deg) rotate(-8deg);
-                //     }
-                // }
-
-                // @include media-breakpoint-down(lg) {
-                //     font-size: 2rem;
-                // }
             }
-
-            // @include media-breakpoint-down(xl) {
-            //     & {
-            //         margin: 19.75rem 0 19.75rem 0;
-            //     }
-            // }
-
-            // @include media-breakpoint-down(lg) {
-            //     & {
-            //         width: 15rem;
-            //         height: 15rem;
-
-            //         margin: 15rem 0 15rem 0;
-            //     }
-            // }
         }
 
         .concrete-image-orbit-animation-wrapper {
@@ -168,20 +138,6 @@
 
                 transform: translateX(-50%);
             }
-
-            // @include media-breakpoint-down(xl) {
-            //     & {
-            //         width: 15rem;   // image size
-            //         height: 30rem;  // orbit radius
-            //     }
-            // }
-
-            // @include media-breakpoint-down(lg) {
-            //     & {
-            //         width: 12rem;   // image size
-            //         height: 22.5rem;  // orbit radius
-            //     }
-            // }
         }
 
         #ball-green {

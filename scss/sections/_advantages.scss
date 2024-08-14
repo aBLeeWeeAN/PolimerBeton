@@ -3,16 +3,6 @@
  *========================================================================**/
 
  #Advantages {
-    // margin: 10rem 0 10rem 0;
-
-    // .content {
-    //     margin-top: 2.5rem;
-    // }
-
-    // .content>*:first-child {
-    //     margin-top: 7.5rem;
-    // }
-
     .advantage {
 
         .advantage-header {
@@ -211,6 +201,121 @@
 
         @include media-breakpoint-down(sm) {
             display: inline-block;
+        }
+    }
+
+    #advantage-1-img {
+        animation: gravity_move_1 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+    
+        @keyframes gravity_move_1 {
+            0% {
+                transform: translateY(-2rem);
+            }
+            50% {
+                transform: translateY(3rem);
+            }
+            100% {
+                transform: translateY(-2rem);
+            }
+        }
+    }
+
+    #advantage-2-img {
+        animation: gravity_move_2 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation-delay: -3s;
+    
+        @keyframes gravity_move_2 {
+            0% {
+                transform: translateY(-4.5rem);
+            }
+            50% {
+                transform: translateY(4.5rem);
+            }
+            100% {
+                transform: translateY(-4.5rem);
+            }
+        }
+    }
+
+    #advantage-3-img {
+        animation: gravity_move_3 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation-delay: -5s;
+    
+        @keyframes gravity_move_3 {
+            0% {
+                transform: translateY(-3rem);
+            }
+            50% {
+                transform: translateY(2rem);
+            }
+            100% {
+                transform: translateY(-3rem);
+            }
+        }
+
+        @include media-breakpoint-down(lg) {
+            @keyframes gravity_move_3 {
+                0% {
+                    transform: translateY(-3rem);
+                }
+                50% {
+                    transform: translateY(2.5rem);
+                }
+                100% {
+                    transform: translateY(-3rem);
+                }
+            }
+        }
+    }
+
+    #advantage-4-img {
+        animation: gravity_move_4 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation-delay: -1.5s;
+    
+        @keyframes gravity_move_4 {
+            0% {
+                transform: translateY(-6rem);
+            }
+            50% {
+                transform: translateY(5rem);
+            }
+            100% {
+                transform: translateY(-6rem);
+            }
+        }
+    }
+
+    #advantage-5-img {
+        animation: gravity_move_5 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation-delay: -7s;
+    
+        @keyframes gravity_move_5 {
+            0% {
+                transform: translateY(-2.5rem);
+            }
+            50% {
+                transform: translateY(5rem);
+            }
+            100% {
+                transform: translateY(-2.5rem);
+            }
+        }
+    }
+
+    #advantage-6-img {
+        animation: gravity_move_6 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation-delay: -3.5s;
+    
+        @keyframes gravity_move_6 {
+            0% {
+                transform: translateY(-4.5rem);
+            }
+            50% {
+                transform: translateY(6rem);
+            }
+            100% {
+                transform: translateY(-4.5rem);
+            }
         }
     }
 }

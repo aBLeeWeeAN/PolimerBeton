@@ -184,7 +184,7 @@
 
         /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffe0b2+0,d1c4e9+70,d1c4e9+100 */
         // background: rgb(255, 224, 178);
-        background: linear-gradient(135deg, var(--secondary-color--tone-100) 0%, var(--primary-color--tone-100) 70%, var(--primary-color--tone-100) 100%);
+        background: linear-gradient(135deg, var(--bc-circle-gradient-color-2) 0%, var(--bc-circle-gradient-color-1) 70%, var(--bc-circle-gradient-color-1) 100%);
         // background: red;
 
         top: 50%;
@@ -194,9 +194,36 @@
 
         opacity: 0.25;
 
+        @keyframes bc-2-rotate-scale {
+            0% {
+              transform: translate(-34%, 14.1%) rotate(0deg) scale(1);
+            }
+            50% {
+              transform: translate(-34%, 14.1%) rotate(-180deg) scale(0.8);
+            }
+            100% {
+              transform: translate(-34%, 14.1%) rotate(-360deg) scale(1);
+            }
+        }
+
+        animation: bc-2-rotate-scale 10s ease-in-out infinite;
+
         @include media-breakpoint-down(xl) {
-            transform: translate(-39%, -27.1%);
             width: 135rem;
+
+            transform: translate(-39%, -27.1%);
+
+            @keyframes bc-2-rotate-scale {
+                0% {
+                  transform: translate(-39%, -27.1%) rotate(0deg) scale(1);
+                }
+                50% {
+                  transform: translate(-39%, -27.1%) rotate(-180deg) scale(0.8);
+                }
+                100% {
+                  transform: translate(-39%, -27.1%) rotate(-360deg) scale(1);
+                }
+            }
         }
 
         @include media-breakpoint-down(lg) {
@@ -207,10 +234,23 @@
             width: 115rem;
 
             transform: translate(-39%, -25.1%);
+
+            @keyframes bc-2-rotate-scale {
+                0% {
+                  transform: translate(-39%, -25.1%) rotate(0deg) scale(1);
+                }
+                50% {
+                  transform: translate(-39%, -25.1%) rotate(-180deg) scale(0.8);
+                }
+                100% {
+                  transform: translate(-39%, -25.1%) rotate(-360deg) scale(1);
+                }
+            }
         }
 
         @include media-breakpoint-down (sm) {
             display: none;
+            animation: none;
         }
     }
 }

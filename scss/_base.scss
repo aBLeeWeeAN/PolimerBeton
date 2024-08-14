@@ -11,8 +11,13 @@
 
     scroll-behavior: smooth;
     overflow-x: hidden;
+    
 
     // overflow-anchor: none;
+
+    // @include media-breakpoint-down(xs) {
+    //     min-width: 300px;
+    // }
 }
 
 .no-scroll {
@@ -35,4 +40,6 @@
     z-index: -10;
 
     background-color: var(--finally-bc-color);
+
+    overflow: hidden;
 }

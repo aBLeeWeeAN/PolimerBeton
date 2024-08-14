@@ -37,6 +37,8 @@
         left: 50%;
 
         transform: translate(-50%, 0);
+
+        box-shadow: 0 0.238rem .571rem var(--box-shadow-color);
     }
 
     #hero-fr-img {
@@ -59,11 +61,13 @@
         top: 0;
         left: 0;
 
-        opacity: 0.1;
+        opacity: 0.3;
 
         filter: blur(2px);
 
-        // box-shadow: 0 0.1875rem 0.625rem rgba($color: #000000, $alpha: 0.25);
+        @include color-mode(dark) {
+            opacity: 0.1;
+        }
     }
     
     // .container {
@@ -138,37 +142,190 @@
     }
 
     .hero-phrase {
+        --bg-size: 200%;
+
         margin-top: var(--my-section-hero-child-non-first-margin-top);
 
+        // font-family: "Pattaya", sans-serif;
         font-family: "Tenor Sans", sans-serif;
         font-weight: 400;
         font-style: normal;
 
         font-size: var(--my-text-heading-font-size);
         letter-spacing: var(--my-text-subheading-letter-spacing);
+        // letter-spacing: .3em;
         line-height: var(--my-text-subheading-line-height);
 
         text-align: center;
-        background: linear-gradient(90deg, var(--hero--accent-color-green) 0%, var(--hero--accent-color-yellow) 50%, var(--hero--accent-color-red) 100%);
+        background: linear-gradient(90deg, 
+        var(--hero--accent-color-green) 0%, 
+        var(--hero--accent-color-yellow) 25%, 
+        var(--hero--accent-color-red) 50%, 
+        var(--hero--accent-color-yellow) 75%, 
+        var(--hero--accent-color-green) 100%) 
+        0 0 / var(--bg-size) 100%;
 
         background-clip: text;
+
+        color: transparent;
         -webkit-text-fill-color: transparent;
 
-        // @include media-breakpoint-down(xxl) {
-        //     font-size: 2.875rem;
-        // }
+        @keyframes hero_phrase_gradient_animation {
+            to {
+                background-position: var(--bg-size) 0;
+            }
+        }
+
+        animation: hero_phrase_gradient_animation 8s linear infinite;
+    }
     
-        // @include media-breakpoint-down(xl) {
-        //     font-size: 2.5625rem;
-        // }
-    
-        // @include media-breakpoint-down(lg) {
-        //     font-size: 2.25rem;
+    @keyframes hero_gravity_move_1 {
+        0% {
+            transform: translateY(-.5rem);
+        }
+        50% {
+            transform: translateY(.5rem);
+        }
+        100% {
+            transform: translateY(-.5rem);
+        }
+    }
+
+    @keyframes hero_gravity_move_2 {
+        0% {
+            transform: translateY(.5rem);
+        }
+        50% {
+            transform: translateY(-.5rem);
+        }
+        100% {
+            transform: translateY(.5rem);
+        }
+    }
+
+    // --ball-width: 189px;
+    // --ball-height: 162px;
+
+    // @include media-breakpoint-down(xl) {
+    //     --ball-width: 189px;
+    //     --ball-height: 162px;
+    // }
+
+    // @include media-breakpoint-down(lg) {            
+    //     --ball-width: 168px;
+    //     --ball-height: 144px;
+    // }
+
+    // @include media-breakpoint-down(md) {            
+    //     --ball-width: 157.5px;
+    //     --ball-height: 135px;
+    // }
+
+    // @include media-breakpoint-down(sm) {            
+    //     --ball-width: 105px;
+    //     --ball-height: 82.5px;
+    // }
+
+    // @include media-breakpoint-down(xs) {            
+    //     --ball-width: 91px;
+    //     --ball-height: 71.5px;
+    // }
+
+    #ball-green {
+        animation: hero_gravity_move_1 6s ease-in-out infinite;
+        animation-delay: 0;
+
+        // /* Используем calc для вычислений */
+        // --move-1: calc(var(--ball-width) * 2);
+        // --move-2: calc(var(--ball-width) * 1.5);
+        // --move-3: calc(var(--ball-width) * 0.5);
+
+        // @keyframes hero-move-trapezoid-green {
+        //     0% {
+        //         transform: translate(0, 0);
+        //     }
+        //     25% {
+        //         transform: translate(var(--move-1), 0);
+        //     }
+        //     50% {
+        //         transform: translate(var(--move-2), var(--ball-height));
+        //     }
+        //     75% {
+        //         transform: translate(var(--move-3), var(--ball-height));
+        //     }
+        //     100% {
+        //         transform: translate(0, 0);
+        //     }
         // }
 
-        // @include media-breakpoint-down(sm) {
-        //     font-size: 1.25rem;
+        @include media-breakpoint-down(xl) {
+            // animation: hero-move-trapezoid-green 10s linear infinite;
+            animation: hero_gravity_move_1 10s ease-in-out infinite;
+        }
+    }
+
+    #ball-yellow {
+        animation: hero_gravity_move_2 6s ease-in-out infinite;
+        animation-delay: 0;
+
+        // /* Используем calc для вычислений */
+        // --move-1: calc(var(--ball-width) * 1);
+        // --move-2: calc(var(--ball-width) * 0.5);
+        // --move-3: calc(var(--ball-width) * -0.5);
+        // --move-4: calc(var(--ball-width) * -1.0);
+
+        // @keyframes hero-move-trapezoid-yellow {
+        //     0% {
+        //         transform: translate(0, 0);
+        //     }
+        //     20% {
+        //         transform: translate(var(--move-1), 0);
+        //     }
+        //     40% {
+        //         transform: translate(var(--move-2), var(--ball-height));
+        //     }
+        //     60% {
+        //         transform: translate(var(--move-3), var(--ball-height));
+        //     }
+        //     80% {
+        //         transform: translate(var(--move-4), 0);
+        //     }
+        //     100% {
+        //         transform: translate(0, 0);
+        //     }
         // }
+
+        @include media-breakpoint-down(xl) {
+            // animation: hero-move-trapezoid-yellow 10s linear infinite;
+            animation: hero_gravity_move_1 6s ease-in-out infinite;
+        }
+    }
+
+    #ball-white {
+        animation: hero_gravity_move_1 6s ease-in-out infinite;
+        animation-delay: 0;
+
+        @include media-breakpoint-down(xl) {
+            animation: hero_gravity_move_1 8s ease-in-out infinite;
+        }
+    }
+
+    #ball-grey {
+        animation: hero_gravity_move_2 6s ease-in-out infinite;
+        animation-delay: 0;
+
+        @include media-breakpoint-down(xl) {
+            animation: hero_gravity_move_2 10s ease-in-out infinite;
+        }
+    }
+
+    #ball-red {
+        animation: hero_gravity_move_1 6s ease-in-out infinite;
+        animation-delay: 0;
+
+        @include media-breakpoint-down(xl) {
+            animation: hero_gravity_move_2 8s ease-in-out infinite;
+        }
     }
 
     // @include media-breakpoint-down(sm) {

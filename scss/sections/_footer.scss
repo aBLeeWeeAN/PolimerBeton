@@ -9,6 +9,9 @@
     // box-shadow: 0 -10px 12px rgba(0, 0, 0, 0.1);
     // backdrop-filter: blur(24px);
 
+    box-shadow: 0 -0.238rem .571rem var(--box-shadow-color);
+    backdrop-filter: blur(1.143rem);
+
     position: relative;
     overflow: hidden;
 
@@ -20,13 +23,16 @@
         height: 100%;
 
         background: linear-gradient(-17deg, var(--secondary-color--tone-100) 0%, var(--primary-color--tone-100) 100%);
+        // background-color: var(--offcanvas-bc-color);
     }
 
     #bc-square-3 {
+        // display: none;
+
         z-index: -5;
 
         position: absolute;
-        width: 10000px;
+        width: 20000px;
         height: 120%;
 
         background-color: var(--footer-decoration-1--color);
@@ -38,6 +44,20 @@
 
         transform: translate(-48.1%, -30%) rotate(-17deg);
 
+        @keyframes move_anim_1 {
+            0% {
+                transform: translate(-48.1%, -30%) rotate(-17deg);
+            }
+            50% {
+                transform: translate(-53.1%, -40%) rotate(-27deg);
+            }
+            100% {
+                transform: translate(-48.1%, -30%) rotate(-17deg);
+            }
+        }
+
+        animation: move_anim_1 10s ease-in-out infinite;
+
         @include media-breakpoint-down(sm) {
             display: none;
 
@@ -47,10 +67,12 @@
     }
 
     #bc-square-4 {
+        // display: none;
+
         z-index: -6;
 
         position: absolute;
-        width: 10000px;
+        width: 20000px;
         height: 180%;
 
         background-color: var(--footer-decoration-2--color);
@@ -61,6 +83,20 @@
         left: 50%;
 
         transform: translate(-48.2%, -50%) rotate(40deg);
+
+        @keyframes move_anim_2 {
+            0% {
+                transform: translate(-48.2%, -50%) rotate(40deg);
+            }
+            50% {
+                transform: translate(-50%, -30%) rotate(47deg);
+            }
+            100% {
+                transform: translate(-48.2%, -50%) rotate(40deg);
+            }
+        }
+
+        animation: move_anim_2 10s ease-in-out infinite;
 
         @include media-breakpoint-down(sm) {
             display: none;

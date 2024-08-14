@@ -115,52 +115,195 @@
         left: 50%;
     }
 
-    #bc-concrete-green {
+    #ball-green {
         width: 33.75rem;
 
         transform: translate(55%, -120%);
 
+        @keyframes usage_gravity_ball_green {
+            0% {
+                transform: translate(55%, -120%);
+            }
+            50% {
+                transform: translate(55%, -115%);
+            }
+            100% {
+                transform: translate(55%, -120%);
+            }
+        }
+
+        animation: usage_gravity_ball_green 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation-delay: 0;
+
         @include media-breakpoint-down(xl) {
             transform: translate(60%, -120%);
+
+            @keyframes usage_gravity_ball_green {
+                0% {
+                    transform: translate(60%, -120%);
+                }
+                50% {
+                    transform: translate(60%, -115%);
+                }
+                100% {
+                    transform: translate(60%, -120%);
+                }
+            }
         }
     }
 
-    #bc-concrete-red {
+    #ball-red {
         width: 18rem;
 
         transform: translate(180%, -62.5%);
+
+        @keyframes usage_gravity_ball_red {
+            0% {
+                transform: translate(180%, -62.5%);
+            }
+            50% {
+                transform: translate(190%, -65.5%);
+            }
+            100% {
+                transform: translate(180%, -62.5%);
+            }
+        }
+
+        animation: usage_gravity_ball_red 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation-delay: -.5s;
     }
 
-    #bc-concrete-white {
+    #ball-white {
         z-index: -1;
 
         width: 10.5rem;
 
-        transform: translate(175%, -137.5%);
+        transform: translate(155%, -143.5%);
+
+        @keyframes usage_gravity_ball_white {
+            0% {
+                transform: translate(155%, -143.5%);
+            }
+            50% {
+                transform: translate(165%, -135.5%);
+            }
+            100% {
+                transform: translate(155%, -143.5%);
+            }
+        }
+
+        animation: usage_gravity_ball_white 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation-delay: -6s;
+
+        @include media-breakpoint-down(xxl) {
+            transform: translate(150%, -135.5%);
+
+            @keyframes usage_gravity_ball_white {
+                0% {
+                    transform: translate(150%, -135.5%);
+                }
+                50% {
+                    transform: translate(175%, -129.5%);
+                }
+                100% {
+                    transform: translate(150%, -135.5%);
+                }
+            }
+        }
 
         @include media-breakpoint-down(xl) {
             width: 11rem;
 
-            transform: translate(165%, -142%);
+            transform: translate(155%, -146%);
+
+            @keyframes usage_gravity_ball_white {
+                0% {
+                    transform: translate(155%, -146%);
+                }
+                50% {
+                    transform: translate(175%, -133.5%);
+                }
+                100% {
+                    transform: translate(155%, -146%);
+                }
+            }
         }
     }
 
-    #bc-concrete-yellow {
+    #ball-yellow {
         width: 22rem;
 
-        transform: translate(65%, -30%);
+        transform: translate(65%, -33%);
+
+        @keyframes usage_gravity_ball_yellow {
+            0% {
+                transform: translate(65%, -33%);
+            }
+            50% {
+                transform: translate(70%, -35%);
+            }
+            100% {
+                transform: translate(65%, -33%);
+            }
+        }
+
+        animation: usage_gravity_ball_yellow 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation-delay: -1s;
+
+        @include media-breakpoint-down(xxl) {
+            transform: translate(66%, -28%);
+
+            @keyframes usage_gravity_ball_yellow {
+                0% {
+                    transform: translate(66%, -28%);
+                }
+                50% {
+                    transform: translate(70%, -32%);
+                }
+                100% {
+                    transform: translate(66%, -28%);
+                }
+            }
+        }
 
         @include media-breakpoint-down(xl) {
             transform: translate(85%, -35%);
+
+            @keyframes usage_gravity_ball_yellow {
+                0% {
+                    transform: translate(85%, -35%);
+                }
+                50% {
+                    transform: translate(82%, -32%);
+                }
+                100% {
+                    transform: translate(85%, -35%);
+                }
+            }
         }
     }
 
-    #bc-concrete-grey {
+    #ball-grey {
         z-index: -5;
         
         width: 32.5rem;
 
         transform: translate(90%, 10%);
+
+        @keyframes usage_gravity_ball_grey {
+            0% {
+                transform: translate(90%, 10%);
+            }
+            50% {
+                transform: translate(85%, 5%);
+            }
+            100% {
+                transform: translate(90%, 10%);
+            }
+        }
+
+        animation: usage_gravity_ball_grey 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation-delay: 0;
     }
 
 }

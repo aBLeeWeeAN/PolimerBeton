@@ -27,7 +27,7 @@
 
         /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d1c4e9+0,ffe0b2+100 */
         // background: rgb(209, 196, 233);
-        background: linear-gradient(135deg, var(--primary-color--tone-100) 0%, var(--secondary-color--tone-100) 100%);
+        background: linear-gradient(135deg, var(--bc-circle-gradient-color-1) 0%, var(--bc-circle-gradient-color-2) 100%);
 
         top: 19.125rem;
         left: 50%;
@@ -36,26 +36,77 @@
 
         opacity: 0.25;
 
+        @keyframes bc-1-rotate-scale {
+            0% {
+              transform: translate(-77%, -10.1%) rotate(0deg) scale(1);
+            }
+            50% {
+              transform: translate(-77%, -10.1%) rotate(180deg) scale(1.5);
+            }
+            100% {
+              transform: translate(-77%, -10.1%) rotate(360deg) scale(1);
+            }
+        }
+
+        animation: bc-1-rotate-scale 10s ease-in-out infinite;
+
         @include media-breakpoint-down(xl) {
             width: 135rem;
 
             transform: translate(-73.8%, -10.1%);
+
+            @keyframes bc-1-rotate-scale {
+                0% {
+                  transform: translate(-73.8%, -10.1%) rotate(0deg) scale(1);
+                }
+                50% {
+                  transform: translate(-73.8%, -10.1%) rotate(180deg) scale(1.5);
+                }
+                100% {
+                  transform: translate(-73.8%, -10.1%) rotate(360deg) scale(1);
+                }
+            }
         }
 
         @include media-breakpoint-down(lg) {
             width: 140rem;
 
             transform: translate(-73.4%, -10.1%);
+
+            @keyframes bc-1-rotate-scale {
+                0% {
+                  transform: translate(-73.4%, -10.1%) rotate(0deg) scale(1);
+                }
+                50% {
+                  transform: translate(-73.4%, -10.1%) rotate(180deg) scale(1.5);
+                }
+                100% {
+                  transform: translate(-73.4%, -10.1%) rotate(360deg) scale(1);
+                }
+            }
         }
 
         @include media-breakpoint-down(md) {
             width: 145rem;
 
             transform: translate(-73.4%, -9.8%);
+
+            @keyframes bc-1-rotate-scale {
+                0% {
+                  transform: translate(-73.4%, -9.8%) rotate(0deg) scale(1);
+                }
+                50% {
+                  transform: translate(-73.4%, -9.8%) rotate(180deg) scale(1.5);
+                }
+                100% {
+                  transform: translate(-73.4%, -9.8%) rotate(360deg) scale(1);
+                }
+            }
         }
 
         @include media-breakpoint-down (sm) {
             display: none;
+            animation: none;
         }
     }
 
@@ -110,5 +161,54 @@
         // @include media-breakpoint-down(sm) {
         //     margin-top: 2rem;
         // }
+    }
+
+    @keyframes description_gravity_move_1 {
+        0% {
+            transform: translateY(-.5rem);
+        }
+        50% {
+            transform: translateY(.5rem);
+        }
+        100% {
+            transform: translateY(-.5rem);
+        }
+    }
+
+    @keyframes description_gravity_move_2 {
+        0% {
+            transform: translateY(.5rem);
+        }
+        50% {
+            transform: translateY(-.5rem);
+        }
+        100% {
+            transform: translateY(.5rem);
+        }
+    }
+
+    #ball-green {
+        animation: description_gravity_move_2 8s ease-in-out infinite;
+        animation-delay: 0;
+    }
+
+    #ball-yellow {
+        animation: description_gravity_move_2 10s ease-in-out infinite;
+        animation-delay: 0;
+    }
+
+    #ball-white {
+        animation: description_gravity_move_1 8s ease-in-out infinite;
+        animation-delay: 0;
+    }
+
+    #ball-grey {
+        animation: description_gravity_move_2 6s ease-in-out infinite;
+        animation-delay: 0;
+    }
+
+    #ball-red {
+        animation: description_gravity_move_1 10s ease-in-out infinite;
+        animation-delay: 0;
     }
 }

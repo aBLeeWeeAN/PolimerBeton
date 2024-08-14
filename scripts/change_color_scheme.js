@@ -10,6 +10,8 @@ var moon_icon__mobile = document.getElementById("my-moon-icon__mobile");
 var sun_icon = document.getElementById("my-sun-icon");
 var sun_icon__mobile = document.getElementById("my-sun-icon__mobile");
 
+var hero_foreground_image = document.getElementById("hero-fr-img");
+
 // Функция для установки темы на основе системных настроек
 function setSystemTheme() {
     var systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -26,11 +28,15 @@ function setTheme(theme) {
         moon_icon__mobile.style.display = "none";
         sun_icon.style.display = "inline";
         sun_icon__mobile.style.display = "inline";
+
+        hero_foreground_image.style.opacity = 0.3;
     } else {
         moon_icon.style.display = "inline";
         moon_icon__mobile.style.display = "inline";
         sun_icon.style.display = "none";
         sun_icon__mobile.style.display = "none";
+
+        hero_foreground_image.style.opacity = 0.1;
     }
 }
 

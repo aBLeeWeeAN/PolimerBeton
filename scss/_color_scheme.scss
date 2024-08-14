@@ -6,14 +6,17 @@
     // new colors
     --bc-color: #fff;
 
-    --primary-color: #4527A0;
+    --primary-color: #512DA8;
     --secondary-color: #FFF3E0;
 
-    --primary-color--tone-100: #D1C4E9;
-    --secondary-color--tone-100: #ffe0b2;
+    --primary-color--tone-100: #D1C4E9C7;
+    --secondary-color--tone-100: #ffe0b2C7;
 
     --primary-color--tone-500: #673AB7;
     --secondary-color--tone-500: #FF9800;
+
+    --bc-circle-gradient-color-1: var(--primary-color--tone-500);
+    --bc-circle-gradient-color-2: var(--secondary-color--tone-500);
 
     --finally-bc-color: color-mix(in srgb, var(--bc-color) 100%, var(--secondary-color) 8%);
 
@@ -70,11 +73,17 @@
     --primary-color: #FFAB91;
     --secondary-color: #B39DDB;
 
-    --primary-color--tone-100: rgba(255, 255, 255, 0.07);
-    --secondary-color--tone-100: rgba(255, 255, 255, 0.07);
+    --primary-color--tone-100: #2e2c31C7;
+    --secondary-color--tone-100: #2e2c31C7;
+
+    // --primary-color--tone-500: rgba(255, 255, 255, 0.07);
+    // --secondary-color--tone-500: rgba(255, 255, 255, 0.07);
 
     --primary-color--tone-500: #FFAB91;
     --secondary-color--tone-500: #B39DDB;
+
+    --bc-circle-gradient-color-1: rgba(255, 255, 255, 0.14);
+    --bc-circle-gradient-color-2: rgba(255, 255, 255, 0.14);
 
     --finally-bc-color: color-mix(in srgb, var(--bc-color) 100%, var(--secondary-color) 8%);
 
