@@ -98,7 +98,6 @@
             letter-spacing: .6em;
 
             line-height: 1em;
-    
             // line-height: 150%;
     
             @include media-breakpoint-down(lg) {
@@ -117,10 +116,6 @@
                 font-size: .45em;
                 letter-spacing: .4em;
             }
-    
-            // @include media-breakpoint-down(sm) {
-            //     font-size: .8rem;
-            // }
         }
     }
 
@@ -203,60 +198,9 @@
         }
     }
 
-    // --ball-width: 189px;
-    // --ball-height: 162px;
-
-    // @include media-breakpoint-down(xl) {
-    //     --ball-width: 189px;
-    //     --ball-height: 162px;
-    // }
-
-    // @include media-breakpoint-down(lg) {            
-    //     --ball-width: 168px;
-    //     --ball-height: 144px;
-    // }
-
-    // @include media-breakpoint-down(md) {            
-    //     --ball-width: 157.5px;
-    //     --ball-height: 135px;
-    // }
-
-    // @include media-breakpoint-down(sm) {            
-    //     --ball-width: 105px;
-    //     --ball-height: 82.5px;
-    // }
-
-    // @include media-breakpoint-down(xs) {            
-    //     --ball-width: 91px;
-    //     --ball-height: 71.5px;
-    // }
-
     #ball-green {
-        animation: hero_gravity_move_1 6s ease-in-out infinite;
+        animation: hero_gravity_move_1 10s ease-in-out infinite;
         animation-delay: 0;
-
-        // /* Используем calc для вычислений */
-        // --move-1: calc(var(--ball-width) * 2);
-        // --move-2: calc(var(--ball-width) * 1.5);
-        // --move-3: calc(var(--ball-width) * 0.5);
-
-        // @keyframes hero-move-trapezoid-green {
-        //     0% {
-        //         transform: translate(0, 0);
-        //     }
-        //     25% {
-        //         transform: translate(var(--move-1), 0);
-        //     }
-        //     50% {
-        //         transform: translate(var(--move-2), var(--ball-height));
-        //     }
-        //     75% {
-        //         transform: translate(var(--move-3), var(--ball-height));
-        //     }
-        //     100% {
-        //         transform: translate(0, 0);
-        //     }
-        // }
 
         @include media-breakpoint-down(xl) {
             // animation: hero-move-trapezoid-green 10s linear infinite;
@@ -265,35 +209,8 @@
     }
 
     #ball-yellow {
-        animation: hero_gravity_move_2 6s ease-in-out infinite;
+        animation: hero_gravity_move_2 10s ease-in-out infinite;
         animation-delay: 0;
-
-        // /* Используем calc для вычислений */
-        // --move-1: calc(var(--ball-width) * 1);
-        // --move-2: calc(var(--ball-width) * 0.5);
-        // --move-3: calc(var(--ball-width) * -0.5);
-        // --move-4: calc(var(--ball-width) * -1.0);
-
-        // @keyframes hero-move-trapezoid-yellow {
-        //     0% {
-        //         transform: translate(0, 0);
-        //     }
-        //     20% {
-        //         transform: translate(var(--move-1), 0);
-        //     }
-        //     40% {
-        //         transform: translate(var(--move-2), var(--ball-height));
-        //     }
-        //     60% {
-        //         transform: translate(var(--move-3), var(--ball-height));
-        //     }
-        //     80% {
-        //         transform: translate(var(--move-4), 0);
-        //     }
-        //     100% {
-        //         transform: translate(0, 0);
-        //     }
-        // }
 
         @include media-breakpoint-down(xl) {
             // animation: hero-move-trapezoid-yellow 10s linear infinite;
@@ -302,7 +219,7 @@
     }
 
     #ball-white {
-        animation: hero_gravity_move_1 6s ease-in-out infinite;
+        animation: hero_gravity_move_1 10s ease-in-out infinite;
         animation-delay: 0;
 
         @include media-breakpoint-down(xl) {
@@ -311,7 +228,7 @@
     }
 
     #ball-grey {
-        animation: hero_gravity_move_2 6s ease-in-out infinite;
+        animation: hero_gravity_move_2 10s ease-in-out infinite;
         animation-delay: 0;
 
         @include media-breakpoint-down(xl) {
@@ -320,16 +237,11 @@
     }
 
     #ball-red {
-        animation: hero_gravity_move_1 6s ease-in-out infinite;
+        animation: hero_gravity_move_1 10s ease-in-out infinite;
         animation-delay: 0;
 
         @include media-breakpoint-down(xl) {
             animation: hero_gravity_move_2 8s ease-in-out infinite;
         }
     }
-
-    // @include media-breakpoint-down(sm) {
-    //     min-height: 28rem;
-    //     max-height: 32.5rem;
-    // }
 }

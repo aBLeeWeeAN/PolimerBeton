@@ -205,9 +205,9 @@
     }
 
     #advantage-1-img {
-        animation: gravity_move_1 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation: advantages_gravity_move_1 30s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
     
-        @keyframes gravity_move_1 {
+        @keyframes advantages_gravity_move_1 {
             0% {
                 transform: translateY(-2rem);
             }
@@ -221,10 +221,10 @@
     }
 
     #advantage-2-img {
-        animation: gravity_move_2 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation: advantages_gravity_move_2 30s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
         animation-delay: -3s;
     
-        @keyframes gravity_move_2 {
+        @keyframes advantages_gravity_move_2 {
             0% {
                 transform: translateY(-4.5rem);
             }
@@ -238,10 +238,10 @@
     }
 
     #advantage-3-img {
-        animation: gravity_move_3 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation: advantages_gravity_move_3 30s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
         animation-delay: -5s;
     
-        @keyframes gravity_move_3 {
+        @keyframes advantages_gravity_move_3 {
             0% {
                 transform: translateY(-3rem);
             }
@@ -254,7 +254,7 @@
         }
 
         @include media-breakpoint-down(lg) {
-            @keyframes gravity_move_3 {
+            @keyframes advantages_gravity_move_3 {
                 0% {
                     transform: translateY(-3rem);
                 }
@@ -269,10 +269,10 @@
     }
 
     #advantage-4-img {
-        animation: gravity_move_4 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation: advantages_gravity_move_4 30s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
         animation-delay: -1.5s;
     
-        @keyframes gravity_move_4 {
+        @keyframes advantages_gravity_move_4 {
             0% {
                 transform: translateY(-6rem);
             }
@@ -286,10 +286,10 @@
     }
 
     #advantage-5-img {
-        animation: gravity_move_5 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation: advantages_gravity_move_5 30s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
         animation-delay: -7s;
     
-        @keyframes gravity_move_5 {
+        @keyframes advantages_gravity_move_5 {
             0% {
                 transform: translateY(-2.5rem);
             }
@@ -303,10 +303,10 @@
     }
 
     #advantage-6-img {
-        animation: gravity_move_6 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+        animation: advantages_gravity_move_6 30s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
         animation-delay: -3.5s;
     
-        @keyframes gravity_move_6 {
+        @keyframes advantages_gravity_move_6 {
             0% {
                 transform: translateY(-4.5rem);
             }

@@ -44,7 +44,7 @@
 
         transform: translate(-48.1%, -30%) rotate(-17deg);
 
-        @keyframes move_anim_1 {
+        @keyframes footer_move_anim_1 {
             0% {
                 transform: translate(-48.1%, -30%) rotate(-17deg);
             }
@@ -56,7 +56,7 @@
             }
         }
 
-        animation: move_anim_1 10s ease-in-out infinite;
+        animation: footer_move_anim_1 90s ease-in-out infinite;
 
         @include media-breakpoint-down(sm) {
             display: none;
@@ -84,7 +84,7 @@
 
         transform: translate(-48.2%, -50%) rotate(40deg);
 
-        @keyframes move_anim_2 {
+        @keyframes footer_move_anim_2 {
             0% {
                 transform: translate(-48.2%, -50%) rotate(40deg);
             }
@@ -96,7 +96,7 @@
             }
         }
 
-        animation: move_anim_2 10s ease-in-out infinite;
+        animation: footer_move_anim_2 90s ease-in-out infinite;
 
         @include media-breakpoint-down(sm) {
             display: none;

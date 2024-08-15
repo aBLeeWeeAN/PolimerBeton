@@ -48,7 +48,7 @@
             }
         }
 
-        animation: bc-1-rotate-scale 10s ease-in-out infinite;
+        animation: bc-1-rotate-scale 180s ease-in-out infinite;
 
         @include media-breakpoint-down(xl) {
             width: 135rem;
