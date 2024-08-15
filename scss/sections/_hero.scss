@@ -69,14 +69,6 @@
             opacity: 0.1;
         }
     }
-    
-    // .container {
-    //     display: flex;
-    //     flex-direction: column;
-
-    //     align-items: center;
-    //     justify-content: space-between;
-    // }
 
     .hero-h1 {
         @extend .heading;
@@ -171,7 +163,7 @@
             }
         }
 
-        animation: hero_phrase_gradient_animation 8s linear infinite;
+        animation: hero_phrase_gradient_animation 10s linear infinite;
     }
     
     @keyframes hero_gravity_move_1 {
