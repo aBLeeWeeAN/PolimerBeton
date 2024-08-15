@@ -34,7 +34,9 @@ function setTheme(theme) {
         sun_icon.style.opacity = 1;
         sun_icon__mobile.style.opacity = 1;
 
-        hero_foreground_image.style.opacity = 0.3;
+        if (hero_foreground_image != null) {
+            hero_foreground_image.style.opacity = 0.3;
+        }
     } else {
         // moon_icon.style.display = "inline";
         // moon_icon__mobile.style.display = "inline";
@@ -46,7 +48,9 @@ function setTheme(theme) {
         sun_icon.style.opacity = 0;
         sun_icon__mobile.style.opacity = 0;
 
-        hero_foreground_image.style.opacity = 0.1;
+        if (hero_foreground_image != null) {
+            hero_foreground_image.style.opacity = 0.1;
+        }
     }
 }
 

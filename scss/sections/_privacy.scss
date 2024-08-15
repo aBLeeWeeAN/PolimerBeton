@@ -1,0 +1,234 @@
+/**========================================================================
+ **                            PRIVACY
+ *========================================================================**/
+
+#Privacy {
+
+    padding: calc( var(--my-section-padding-value) * 2) 0 var(--my-section-padding-value) 0;
+
+    h1 {
+        margin-bottom: var(--my-section-padding-value);
+    }
+
+    .main-list {
+        counter-reset: main-list__counter 0;
+
+        list-style: decimal;
+        list-style-position: inside;
+
+        margin: 0;
+        padding: 0;
+
+        li {
+            counter-increment: main-list__counter;
+
+            &::marker {
+                content: counter(main-list__counter) ". ";
+                
+                font-variant-numeric: lining-nums;
+            }
+        }
+
+        .sub-list {
+            counter-reset: sub-list__counter 0;
+
+            list-style-position: outside;
+            list-style: decimal;
+
+            li {
+                counter-increment: sub-list__counter;
+
+                &::marker {
+                    content: counter(main-list__counter) "." counter(sub-list__counter) ". ";
+
+                    font-variant-numeric: lining-nums;
+                }
+            }
+        }
+    }
+
+    .policy-point {
+        font-size: var(--my-text-heading-font-size);
+        margin-bottom: var(--my-section-padding-value);
+
+        &:is(:last-child) {
+            margin-bottom: 0;
+        }
+        
+        &__title {
+            @extend .heading;
+    
+            margin-bottom: var(--my-text-heading-margin-bottom);
+    
+            font-weight: 600;
+    
+            font-size: var(--my-text-paragraph-font-size);
+            letter-spacing: var(--my-text-paragraph-letter-spacing);
+    
+            line-height: var(--my-text-paragraph-line-height);
+    
+            text-align: left
+        }
+
+        &__content {
+            margin-left: 3.5rem;
+
+            .dashed-list {
+                counter-reset: none;
+
+                list-style: none;
+                list-style-position: outside;
+
+                margin: 0 0 0 3.5rem;
+                // margin: 0;
+
+                // padding: 0 0 0 3.5rem;
+                padding: 0;
+        
+                li {
+                    counter-increment: none;
+
+                    @extend p;
+        
+                    font-weight: 400;
+        
+                    margin-bottom: var(--my-text-paragraph-margin-top);
+        
+                    &:is(:last-child) {
+                        margin-bottom: var(--my-text-subheading-margin-bottom);
+                    }
+        
+                    &.my-last-child {
+                        margin-bottom: 0;
+                    }
+
+                    // position: relative;
+                    // text-indent: -3.5rem;
+
+                    &::marker {
+                        @include transition-all(color);
+
+                        content: "— ";
+    
+                        // position: absolute;
+                        // left: 0;
+    
+                        // margin-right: 20px;
+                        // margin-left: -100px;
+                        color: var(--text-color-87);
+                    }
+                }
+            }
+        }
+    }
+
+    h3 {
+        @extend .subheading;
+
+        margin-bottom: var(--my-text-heading-margin-bottom);
+
+        font-weight: 400;
+
+        font-size: var(--my-text-paragraph-font-size);
+        letter-spacing: var(--my-text-paragraph-letter-spacing);
+
+        line-height: var(--my-text-paragraph-line-height);
+
+        text-align: left;
+
+        &:is(:last-child) {
+            margin-bottom: 0;
+        }
+
+        &.h3--with-list {
+            margin-bottom: var(--my-text-paragraph-margin-top);
+
+            &:is(:last-child) {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    p {
+        margin-bottom: var(--my-text-heading-margin-bottom);
+
+        @include transition-all(color);
+        
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    
+        font-size: var(--my-text-paragraph-font-size);
+        letter-spacing: var(--my-text-paragraph-letter-spacing);
+    
+        line-height: var(--my-text-paragraph-line-height);
+    
+        text-align: left;
+        text-indent: 0;
+    
+        color: var(--text-color-87);
+    
+        hyphens: none;
+    
+        &:is(:last-child) {
+            margin-bottom: 0;
+        }
+
+        // @include media-breakpoint-down(sm) {
+        //     // font-size: 13px;
+
+        //     // word-wrap: break-word;
+        //     // overflow-wrap: break-word;
+
+        //     text-indent: var(--my-text-paragraph-text-indent);
+        //     text-align: justify;
+
+        //     // // text-align: left;
+        //     // text-indent: 2.25em;
+        //     // letter-spacing: 0em;
+
+        //     // &:not(:first-child) {
+        //     //     margin-top: 2.5rem;
+        //     // }
+        // }
+    }
+
+    table, th, td {
+        border: 1px solid var(--text-color-87);
+    }
+
+    table {
+        td {
+            vertical-align: middle;
+            padding: 1.25rem 2rem;
+
+            h4 {
+                @extend p;    
+                margin: 0;
+            }
+        }
+
+        .table-list {
+            margin: 0;
+            padding: 0;
+
+            list-style: disc;
+            list-style-position: outside;
+
+            counter-reset: none;
+
+            li {
+                @extend p;
+
+                margin: 0;
+                counter-increment: none;
+            }
+
+            li::marker {
+                content: '• ';
+            }
+        }
+    }
+
+}
