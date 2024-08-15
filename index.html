@@ -199,14 +199,29 @@
             
                             <span class="col-auto d-none d-sm-inline-block separator"></span>
         
-                            <button class="col-auto navbar-toggler collapsed" type="button" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                            <button id="my-menu-button" class="col-auto navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation" aria-expanded="false">
                                 <!-- <span class="navbar-toggler-icon"></span> -->
 
                                 <!-- <span class="visually-hidden">Toggle navigation</span> -->
-                                <span class="toggler-icon top-bar"></span>
+                                <!-- <span class="toggler-icon top-bar"></span>
                                 <span class="toggler-icon middle-bar"></span>
-                                <span class="toggler-icon bottom-bar"></span>
+                                <span class="toggler-icon bottom-bar"></span> -->
+
+                                <svg fill="var(--primary-color)" class="hamburger" viewBox="0 0 100 100">
+                                    <rect class="line top"
+                                        width="90" height="10"
+                                        x="5" y="22" rx=5>
+                                    </rect>
+                                    <rect class="line middle"
+                                        width="90" height="10"
+                                        x="5" y="45" rx=5>
+                                    </rect>
+                                    <rect class="line bottom"
+                                        width="90" height="10"
+                                        x="5" y="68" rx=5>
+                                    </rect>
+                                </svg>
                             </button>
                         </div>
                     </div>
@@ -265,6 +280,8 @@
 
                     <div class="col-10 d-flex d-sm-none offcanvas-body__bottom-panel">
                         
+                        <span class="col-12 separator"></span>
+
                         <div class="col-12 d-flex d-sm-none justify-content-between contacts-and-settings">
                             <div class="d-flex d-sm-none align-items-center justify-content-center contacts">
                                 <div class="my-button-mobile my-button-mobile--transparent">
@@ -352,8 +369,23 @@
                             </div>
                         </div>
 
-                        <span class="col-12 separator"></span>
-                        <button type="button" class="d-block d-sm-none btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        <!-- <span class="col-12 separator"></span> -->
+                        <!-- <button type="button" class="d-block d-sm-none btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
+
+                            <svg fill="var(--text-color-87)" class="hamburger" viewBox="0 0 100 100">
+                                <rect class="line top"
+                                    width="90" height="10"
+                                    x="5" y="45" rx=5
+                                    transform="rotate(45, 50, 50)">
+                                </rect>
+                                <rect class="line bottom"
+                                    width="90" height="10"
+                                    x="5" y="45" rx=5
+                                    transform="rotate(-45, 50, 50)">
+                                </rect>
+                            </svg>
+
+                        </button> -->
                     </div>
                 </div>
             </div>

@@ -423,67 +423,100 @@
                     box-shadow: none !important;
                     border: 0 !important;
                 }
-            
-                .toggler-icon {
-                    aspect-ratio: 30 / 3;
 
-                    width: auto; /* 30px / 21 */
-                    height: 0.14286em; /* 3px / 21 */
-                    
-                    min-height: 2px;
-                    max-height: 3px;
+                /* hamburger button */
+                .hamburger {
+                    aspect-ratio: 1 / 1;
 
-                    background-color: var(--primary-color);
-                    display: block;
-                    
-                    transition: all 0.2s;
-
-                    border: 0 !important;
-
-                    @include media-breakpoint-down(xxl) {
-                        height: 2px;
-                    }
+                    width: 1.71429em;
+                    height: auto;
                 }
-            
-                .middle-bar {
-                    margin: 0.24em auto; /* 5px / 21 */
+
+                .line {
+                    transition: y 200ms ease-in 200ms, rotate 200ms ease-in, opacity 0ms 200ms;
+                    transform-origin: center;
                 }
-            
-                /* State when navbar is opened (START) */
-                .top-bar {
-                    transform: rotate(45deg);
-                    transform-origin: 10% 10%;
+
+                &[aria-expanded="true"] .line {
+                    transition: y 200ms ease-in, rotate 200ms ease-in 200ms, opacity 0ms 200ms;
                 }
-            
-                .middle-bar {
+
+                &[aria-expanded="true"] :is(.top, .bottom) {
+                    y: 45;
+                }
+
+                &[aria-expanded="true"] .top {
+                    rotate: 45deg;
+                }
+
+                &[aria-expanded="true"] .middle {
                     opacity: 0;
-                    filter: alpha(opacity=0);
+                }
+
+                &[aria-expanded="true"] .bottom {
+                    rotate: -45deg;
                 }
             
-                .bottom-bar {
-                    transform: rotate(-45deg);
-                    transform-origin: 10% 90%;
-                }
-                /* State when navbar is opened (END) */
+                // .toggler-icon {
+                //     aspect-ratio: 30 / 3;
+
+                //     width: auto; /* 30px / 21 */
+                //     height: 0.14286em; /* 3px / 21 */
+                    
+                //     min-height: 2px;
+                //     max-height: 3px;
+
+                //     background-color: var(--primary-color);
+                //     display: block;
+                    
+                //     transition: all 0.2s;
+
+                //     border: 0 !important;
+
+                //     @include media-breakpoint-down(xxl) {
+                //         height: 2px;
+                //     }
+                // }
             
-                /* State when navbar is collapsed (START) */
-                &.collapsed .top-bar {
-                    transform: rotate(0);
-                }
+                // .middle-bar {
+                //     margin: 0.24em auto; /* 5px / 21 */
+                // }
             
-                &.collapsed .middle-bar {
-                    opacity: 1;
-                    filter: alpha(opacity=100);
-                }
+                // /* State when navbar is opened (START) */
+                // .top-bar {
+                //     transform: rotate(45deg);
+                //     transform-origin: 10% 10%;
+                // }
             
-                &.collapsed .bottom-bar {
-                    transform: rotate(0);
-                }
-                /* State when navbar is collapsed (END) */
+                // .middle-bar {
+                //     opacity: 0;
+                //     filter: alpha(opacity=0);
+                // }
             
-                &.collapsed .toggler-icon {
-                    background-color: var(--primary-color);
-                }
+                // .bottom-bar {
+                //     transform: rotate(-45deg);
+                //     transform-origin: 10% 90%;
+                // }
+                // /* State when navbar is opened (END) */
+            
+                // /* State when navbar is collapsed (START) */
+                // &.collapsed .top-bar {
+                //     transform: rotate(0);
+                // }
+            
+                // &.collapsed .middle-bar {
+                //     opacity: 1;
+                //     filter: alpha(opacity=100);
+                // }
+            
+                // &.collapsed .bottom-bar {
+                //     transform: rotate(0);
+                // }
+                // /* State when navbar is collapsed (END) */
+            
+                // &.collapsed .toggler-icon {
+                //     background-color: var(--primary-color);
+                // }
             }
         
             .menu {
@@ -771,7 +804,7 @@
                 .contacts-and-settings {
                     font-size: var(--my-offcanvas-icon-size);
     
-                    margin-bottom: .75em;
+                    margin: 1.5em 0;
         
                     // svg {
                     //     fill: inherit;
@@ -935,7 +968,7 @@
             @include media-breakpoint-down(sm) {
                 // height: 95vh;
 
-                padding: 2.25rem 0 10.119rem 0;
+                padding: 2.25rem 0 7.18333rem 0;
             }
         }
     
