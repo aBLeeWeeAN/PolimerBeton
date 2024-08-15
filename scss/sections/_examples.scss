@@ -208,42 +208,74 @@
 
         animation: bc-2-rotate-scale 180s ease-in-out infinite;
 
-        @include media-breakpoint-down(xl) {
-            width: 135rem;
+        @include media-breakpoint-down(xxl) {
+            // animation: none;
 
-            transform: translate(-39%, -27.1%);
+            transform: translate(-39%, 33.5%);
 
             @keyframes bc-2-rotate-scale {
                 0% {
-                  transform: translate(-39%, -27.1%) rotate(0deg) scale(1);
+                  transform: translate(-39%, 33.5%) rotate(0deg) scale(1);
                 }
                 50% {
-                  transform: translate(-39%, -27.1%) rotate(-180deg) scale(0.8);
+                  transform: translate(-39%, 33.5%) rotate(-180deg) scale(0.8);
                 }
                 100% {
-                  transform: translate(-39%, -27.1%) rotate(-360deg) scale(1);
+                  transform: translate(-39%, 33.5%) rotate(-360deg) scale(1);
+                }
+            }
+        }
+
+        @include media-breakpoint-down(xl) {
+            width: 135rem;
+
+            transform: translate(-39%, 35.1%);
+
+            @keyframes bc-2-rotate-scale {
+                0% {
+                  transform: translate(-39%, 35.1%) rotate(0deg) scale(1);
+                }
+                50% {
+                  transform: translate(-39%, 35.1%) rotate(-180deg) scale(0.8);
+                }
+                100% {
+                  transform: translate(-39%, 35.1%) rotate(-360deg) scale(1);
                 }
             }
         }
 
         @include media-breakpoint-down(lg) {
             width: 124rem;
+
+            transform: translate(-39%, 35.6%);
+
+            @keyframes bc-2-rotate-scale {
+                0% {
+                  transform: translate(-39%, 35.6%) rotate(0deg) scale(1);
+                }
+                50% {
+                  transform: translate(-39%, 35.6%) rotate(-180deg) scale(0.8);
+                }
+                100% {
+                  transform: translate(-39%, 35.6%) rotate(-360deg) scale(1);
+                }
+            }
         }
 
         @include media-breakpoint-down(md) {
             width: 115rem;
 
-            transform: translate(-39%, -25.1%);
+            transform: translate(-39%, 34.6%);
 
             @keyframes bc-2-rotate-scale {
                 0% {
-                  transform: translate(-39%, -25.1%) rotate(0deg) scale(1);
+                  transform: translate(-39%, 34.6%) rotate(0deg) scale(1);
                 }
                 50% {
-                  transform: translate(-39%, -25.1%) rotate(-180deg) scale(0.8);
+                  transform: translate(-39%, 34.6%) rotate(-180deg) scale(0.8);
                 }
                 100% {
-                  transform: translate(-39%, -25.1%) rotate(-360deg) scale(1);
+                  transform: translate(-39%, 34.6%) rotate(-360deg) scale(1);
                 }
             }
         }
