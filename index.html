@@ -1159,13 +1159,13 @@
             }
 
             // Событие при скрытии offcanvas
-            offcanvas.addEventListener('hide.bs.offcanvas', function(event) {
+            offcanvas.addEventListener('hidden.bs.offcanvas', function(event) {
                 offcanvasIsShown = false;
                 updateScrollState();
             });
 
             // Событие при показе offcanvas
-            offcanvas.addEventListener('show.bs.offcanvas', function(event) {
+            offcanvas.addEventListener('shown.bs.offcanvas', function(event) {
                 offcanvasIsShown = true;
                 updateScrollState();
             });
