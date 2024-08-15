@@ -35,3 +35,24 @@
         }
     }
 }
+
+// миксин для плавных переходов
+@mixin transition-all($properties...) {
+    $transition-properties: ();
+
+    @each $property in $properties {
+        $transition-properties: append($transition-properties, $property + ' ' + $transition-duration + ' ' + $transition-easing, comma);
+    }
+
+    transition: #{$transition-properties};
+}
+
+// @mixin transition-all($properties...) {
+//     transition: #{join($properties, ', ')} $transition-duration $transition-easing;
+// }
+
+// @mixin transition-all($properties...) {
+//     @each $property in $properties {
+//         transition: #{$property} $transition-duration $transition-easing;
+//     }
+// }

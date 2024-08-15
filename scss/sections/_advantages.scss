@@ -13,6 +13,8 @@
             justify-content: center;
     
             .advantage-number {
+                @include transition-all(color);
+
                 display: inline-block;
 
                 margin: 0;
@@ -43,6 +45,8 @@
             }
     
             .advantage-brief-text {
+                @include transition-all(color);
+
                 margin-left: 3.125rem;
     
                 font-family: "Montserrat", sans-serif;
@@ -84,6 +88,8 @@
         }
 
         .advantage-extended-text {
+            @include transition-all(color);
+            
             margin-top: 1.5rem;
 
             font-family: "Montserrat", sans-serif;

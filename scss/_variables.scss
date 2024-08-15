@@ -2,7 +2,7 @@
  **                            CSS Variables
  *========================================================================**/
 
- :root {
+:root {
     --base-font-size: 21px;
 
     // 21px
@@ -235,30 +235,5 @@
  **                            SASS Variables
  *========================================================================**/
 
-// // price and orbit animation block
-// $my-current-price-block-size: 20.5rem;
-
-// $my-ball-size: 20rem;
-// $my-orbit-radius: 35rem;
-
-// $my-current-price-block-margin: my-orbit-animation-calculate-margin($my-orbit-radius, $my-current-price-block-size);
-
-// @include media-breakpoint-down(xl) {
-//     // price and orbit animation block
-//     $my-current-price-block-size: 20.5rem;
-
-//     $my-ball-size: 20rem;
-//     $my-orbit-radius: 35rem;
-
-//     $my-current-price-block-margin: my-orbit-animation-calculate-margin($my-orbit-radius, $my-current-price-block-size);
-// }
-
-// @include media-breakpoint-down(lg) {
-//     // price and orbit animation block
-//     $my-current-price-block-size: 15rem;
-
-//     $my-ball-size: 12rem;
-//     $my-orbit-radius: 22.5rem;
-
-//     $my-current-price-block-margin: my-orbit-animation-calculate-margin($my-orbit-radius, $my-current-price-block-size);
-// }
+$transition-duration: .5s;
+$transition-easing: ease;

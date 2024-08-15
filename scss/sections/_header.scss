@@ -9,7 +9,9 @@
     height: auto;
 
     .fixed-top-navbar {
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        @include transition-all(background-color, transform, box-shadow);
+
+        // transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
         position: fixed;
 
@@ -28,6 +30,8 @@
         padding: var(--my-header-padding-value) 0;
 
         #bc-square-1 {
+            @include transition-all(background-color);
+
             z-index: -5;
     
             position: absolute;
@@ -64,6 +68,8 @@
         }
     
         #bc-square-2 {
+            @include transition-all(background-color);
+
             z-index: -6;
     
             position: absolute;
@@ -113,7 +119,9 @@
                 padding: 0;
                 margin: 0;
         
-                .logo {            
+                .logo {     
+                    @include transition-all(color);
+
                     font-size: var(--my-header-logo-size);
                 
                     padding: 0;
@@ -124,6 +132,8 @@
                     color: var(--primary-color);
                 
                     .logo-icon {
+                        @include transition-all(fill);
+
                         fill-rule: evenodd;
                         clip-rule: evenodd;
                 
@@ -240,6 +250,8 @@
                 }
             
                 .my-button-desktop {
+                    @include transition-all(background-color, fill);
+
                     display: flex;
             
                     align-items: center;
@@ -267,6 +279,8 @@
                     fill: var(--text-color-alt-87); // icon color
 
                     &:hover {
+                        @include transition-all(fill);
+
                         fill: var(--text-color-alt-100);
                     }
 
@@ -281,6 +295,8 @@
                     }
 
                     svg {
+                        @include transition-all(display, opacity);
+
                         fill: inherit;
 
                         aspect-ratio: 1 / 1;
@@ -290,7 +306,9 @@
                     }
                 }
             
-                .separator {        
+                .separator {   
+                    @include transition-all(background-color);
+
                     height: 2em;
                     width: 1px;
             
@@ -307,6 +325,8 @@
             }
     
             .separator {   
+                @include transition-all(background-color);
+
                 font-size: var(--my-header-button-size);
     
                 height: 2.5em;
@@ -433,12 +453,12 @@
                 }
 
                 .line {
-                    transition: y 200ms ease-in 200ms, rotate 200ms ease-in, opacity 0ms 200ms;
+                    transition: y 100ms ease-in 100ms, rotate 100ms ease-in, opacity 0ms 100ms;
                     transform-origin: center;
                 }
 
                 &[aria-expanded="true"] .line {
-                    transition: y 200ms ease-in, rotate 200ms ease-in 200ms, opacity 0ms 200ms;
+                    transition: y 100ms ease-in, rotate 100ms ease-in 100ms, opacity 0ms 100ms;
                 }
 
                 &[aria-expanded="true"] :is(.top, .bottom) {
@@ -523,6 +543,8 @@
                 margin-top: var(--my-header-child-non-first-margin-top);
             
                 a {
+                    @include transition-all(color);
+
                     display: block;
     
                     font-family: "Montserrat", sans-serif;
@@ -565,6 +587,8 @@
     }
 
     .offcanvas {
+        @include transition-all(background-color, transform);
+
         padding-top: 4.59952rem;
 
         height: auto;
@@ -678,6 +702,8 @@
                 // margin-top: var(--my-header-child-non-first-margin-top);
             
                 a {
+                    @include transition-all(color);
+
                     display: block;
     
                     font-family: "Montserrat", sans-serif;
@@ -716,6 +742,8 @@
             
                 .menu-item {
                     .menu__decorative-circle {
+                        @include transition-all(color);
+
                         &.left {
                             margin-left: -.75rem;
 
@@ -816,7 +844,7 @@
         
                         .my-button-mobile {
                             &:not(:first-child) {
-                                margin-left: 1.7em;
+                                margin-left: 1em;
                             }
                         }
         
@@ -859,6 +887,8 @@
                     }
                 
                     .my-button-mobile {
+                        @include transition-all(background-color, fill);
+
                         display: flex;
                 
                         align-items: center;
@@ -886,11 +916,18 @@
                         fill: var(--text-color-alt-87); // icon color
         
                         &:hover {
+                            @include transition-all(fill);
+
                             fill: var(--text-color-100);
                         }
 
                         &--transparent {
-                            width: auto;
+                            @include transition-all(background-color, fill);
+
+                            width: 2.6em;
+                            height: auto;
+
+                            aspect-ratio: 1 / 1;
 
                             background-color: transparent;
 
@@ -908,6 +945,8 @@
                         }
 
                         svg {
+                            @include transition-all(display, opacity);
+
                             fill: inherit;
                             
                             aspect-ratio: 1 / 1;
@@ -919,6 +958,8 @@
                 }
 
                 .separator {        
+                    @include transition-all(background-color);
+
                     height: 1px;
                     width: 100%;
             

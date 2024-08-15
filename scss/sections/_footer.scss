@@ -27,6 +27,8 @@
     }
 
     #bc-square-3 {
+        @include transition-all(background-color);
+
         // display: none;
 
         z-index: -5;
@@ -67,6 +69,8 @@
     }
 
     #bc-square-4 {
+        @include transition-all(background-color);
+
         // display: none;
 
         z-index: -6;
@@ -107,6 +111,8 @@
     }
 
     h3 {
+        @include transition-all(color);
+
         margin-bottom: var(--my-text-h3-margin-bottom);
 
         font-family: "Raleway", sans-serif;
@@ -137,6 +143,8 @@
     }
 
     a {
+        @include transition-all(color);
+
         margin: 0;
         // padding: 0;
 
@@ -180,7 +188,9 @@
             align-items: start;
             justify-content: space-between;
 
-            .logo {            
+            .logo {
+                @include transition-all(color);
+
                 font-size: var(--my-footer-logo-size);
             
                 padding: 0;
@@ -191,6 +201,8 @@
                 color: var(--text-color-87);
             
                 .logo-icon {
+                    @include transition-all(fill);
+
                     fill-rule: evenodd;
                     clip-rule: evenodd;
             
@@ -320,6 +332,8 @@
     }
 
     .rounded-hr {
+        @include transition-all(border-color);
+
         border: none;
         border-top: 0.0625rem solid var(--text-color-87);
         border-radius: 100%;
@@ -330,6 +344,8 @@
         padding: 1.75rem 0;
 
         small {
+            @include transition-all(color);
+            
             font-family: "Montserrat", sans-serif;
             font-optical-sizing: auto;
             font-weight: 300;

@@ -7,6 +7,8 @@
     // overflow: hidden;
 
     #bc-decorative-circle {
+        // @include transition-all(background);
+
         z-index: -10;
 
         position: absolute;
@@ -111,6 +113,8 @@
     }
 
     p {
+        @include transition-all(color);
+        
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
         font-weight: 400;

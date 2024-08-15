@@ -59,6 +59,8 @@ section {
 }
 
 .heading {
+    @include transition-all(color);
+
     margin-bottom: var(--my-text-heading-margin-bottom);
 
     text-align: center;
@@ -98,6 +100,8 @@ section {
 }
 
 .subheading {
+    @include transition-all(color);
+
     // margin: 7.5rem 0 5rem 0;
     margin-bottom: var(--my-text-subheading-margin-bottom);
 
@@ -143,6 +147,7 @@ section {
 }
 
 .caption {
+    @include transition-all(color);
     
     margin-top: var(--my-text-caption-margin-top);
     margin-bottom: var(--my-text-caption-margin-bottom);

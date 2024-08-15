@@ -151,6 +151,8 @@
         }
 
         .form-field {
+            @include transition-all(background-color);
+
             display: flex;
             flex-direction: row;
 
@@ -212,6 +214,8 @@
 
         input[type="text"],
         input[type="tel"] {
+            @include transition-all(background-color, color);
+
             width: 100%;
             height: auto;
 
@@ -240,6 +244,8 @@
             color: var(--text-color-100);
 
             &::placeholder {
+                @include transition-all(color);
+
                 color: var(--text-color-60);
             }
 
@@ -249,6 +255,8 @@
             }
 
             &:focus::placeholder {
+                @include transition-all(color);
+
                 color: var(--text-color-87);
             }
 
@@ -307,6 +315,7 @@
         }
 
         #feedback-form-submit-button {
+            @include transition-all(background-color, color);
             // font-size: inherit;
 
             margin-top: 1.25rem;
@@ -341,6 +350,8 @@
             text-transform: none;
 
             &:hover {
+                @include transition-all(color);
+
                 color: var(--text-color-alt-100);
             }
 
@@ -403,6 +414,7 @@
         }
 
         .checkbox-privacy-policy {
+            @include transition-all(color);
             // margin-top: .6rem;
 
             display: inline-flex;
@@ -425,6 +437,8 @@
             color: var(--text-color-87);
 
             input[type="checkbox"] {
+                @include transition-all(background-color, border-color);
+
                 display: inline-block;
 
                 appearance: none;
@@ -469,11 +483,15 @@
             }
 
             input[type="checkbox"]:checked {
+                @include transition-all(background-color);
+
                 background-color: var(--primary-color);
                 border: none;
             }
 
             input[type="checkbox"]:checked::before {
+                @include transition-all(border-color);
+
                 content: '';
                 position: absolute;
 
@@ -512,6 +530,8 @@
             }
 
             a {
+                @include transition-all(color);
+                
                 color: var(--primary-color);
                 text-decoration: none;
             }

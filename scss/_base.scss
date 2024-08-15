@@ -42,4 +42,6 @@
     background-color: var(--finally-bc-color);
 
     overflow: hidden;
+
+    @include transition-all(background-color, color, fill, opacity);
 }

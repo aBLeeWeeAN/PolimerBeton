@@ -39,6 +39,8 @@
         transform: translate(-50%, 0);
 
         box-shadow: 0 0.238rem .571rem var(--box-shadow-color);
+
+        transition: background-color .5s ease;
     }
 
     #hero-fr-img {

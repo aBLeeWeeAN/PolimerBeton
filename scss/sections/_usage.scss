@@ -7,6 +7,8 @@
 
     ul {
         li {
+            @include transition-all(background-color, color);
+
             &:not(:first-child) {
                 margin-top: var(--my-text-paragraph-margin-top);
             }

@@ -6,7 +6,10 @@
     // margin: 10rem 0 10rem 0;
 
     .phone-and-email, .messengers {
+
         .contact-header {
+            @include transition-all(color);
+
             text-align: center;
 
             // margin: 5rem 0 1.25rem 0;
@@ -37,6 +40,8 @@
         }
     
         .contact {
+            @include transition-all(color);
+            
             display: flex;
             flex-direction: column;
 
