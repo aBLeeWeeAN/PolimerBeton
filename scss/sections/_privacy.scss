@@ -203,9 +203,13 @@
             vertical-align: middle;
             padding: 1.25rem 2rem;
 
-            h4 {
+            strong {
                 @extend p;    
+
+                display: block;
                 margin: 0;
+
+                font-weight: 500;
             }
         }
 
