@@ -2,6 +2,8 @@
 <html lang="ru">
 
 <head>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.9.2/build/css/intlTelInput.css"> -->
+
     <link rel="preload" as="image" href="images/hero/hero_bc_xxl.webp"
         imagesrcset="
             images/hero/hero_bc_xs.webp 320w,
@@ -887,14 +889,19 @@
                     <form class="col-12 col-sm-6">
                         <div class="form-field">
                             <input type="text" id="client_name" name="client_name" placeholder="Имя" maxlength="35"
-                                autocomplete="name" required>
+                                autocomplete="name" required
+                                pattern="^(?![ЬЪ])[A-Za-zА-Яа-я]{1,35}$"
+                                title="Введите только буквы, от 1 до 35 символов">
                         </div>
                         <div class="form-field">
                             <input type="tel" id="client_phone" name="client_phone" placeholder="Телефон"
-                                maxlength="15" autocomplete="tel" required>
+                                maxlength="18" autocomplete="tel" required
+                                pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
+                                title="Введите только цифры, 10 символов">
                         </div>
                         <div class="checkbox-privacy-policy">
-                            <input type="checkbox" id="privacy-policy" name="privacy-policy" aria-label="Кнопка подтверждения согласия с политикой конфиденциальности" required>
+                            <input type="checkbox" id="privacy-policy" name="privacy-policy" aria-label="Кнопка подтверждения согласия с политикой конфиденциальности" required
+                            title="Подтвердите, что согласны с Политикой конфиденциальности нашего сайта — https://polimerbeton-vrn.ru/privacy">
                             <label for="privacy">
                                 <small>
                                     Я ознакомлен и согласен с
@@ -1021,12 +1028,18 @@
     <!-- Page content END --->
 
     <div class="d-none" id="Scripts-Container">
-        <!-- Bootstrap JS scripts --->
+        <!-- PopperJS JS scripts --->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous" async></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous" async></script>
+        
+        <!-- Bootstrap JS scripts --->
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" async></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous" async></script> -->
 
         <!-- jQuery JS scripts --->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" async></script>
+
+        <!-- Inputmask JS scripts Vanilla --->
+        <script src="node_modules/Inputmask/dist/jquery.inputmask.min.js" defer></script>
 
         <!-- My JS scripts --->
         <script src="scripts/update_hero_container_margin_top.js" defer></script>
@@ -1037,6 +1050,8 @@
         <script src="scripts/change_offcanvas_scroll_state.js" defer></script>
 
         <script src="scripts/change_menu_button_state.js" defer></script>
+
+        <script src="scripts/inputmask_feedback_form.js" defer></script>
     </div>
 </body>
 

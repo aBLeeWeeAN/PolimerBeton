@@ -470,16 +470,6 @@
                     min-width: 1.75rem;
                     width: 1.75rem;
                 }
-
-                // @include media-breakpoint-down(sm) {
-                //     // margin: 0;
-
-                //     min-width: 1.5rem;
-                //     min-height: 1.5rem;
-
-                //     width: fit-content;
-                //     height: fit-content;
-                // }
             }
 
             input[type="checkbox"]:checked {
@@ -489,8 +479,22 @@
                 border: none;
             }
 
+            // input[type="checkbox"]::before {
+            //     @include transition-all(opacity);
+
+            //     opacity: 0; // Прозрачный элемент
+            // }
+
+            // input[type="checkbox"]:not(:checked)::before {
+            //     @include transition-all(opacity);
+
+            //     opacity: 0; // Прозрачный элемент
+            // }
+
             input[type="checkbox"]:checked::before {
                 @include transition-all(border-color);
+
+                // opacity: 1; // Видимый элемент
 
                 content: '';
                 position: absolute;
@@ -517,10 +521,6 @@
                     width: .42rem;
                     height: .9rem;
                 }
-
-                // @include media-breakpoint-down(sm) {
-                //     border-width: 0 .15rem .16rem 0;
-                // }
             }
 
             label {
