@@ -3,7 +3,8 @@
  *========================================================================**/
 
  #Hero {
-    margin-top: 4.59952rem;
+    // margin-top: 4.59952rem;
+    margin: 0;
 
     position: relative;
     display: flex;
@@ -22,6 +23,10 @@
 
     // min-height: 70rem;
     // max-height: 70rem;
+
+    #Hero-Container {
+        margin-top: 4.59952rem;
+    }
 
     #hero-bc-img {
         z-index: -2;

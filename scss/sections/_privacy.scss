@@ -79,7 +79,8 @@
                 list-style: none;
                 list-style-position: outside;
 
-                margin: 0 0 0 3.5rem;
+                font-size: var(--my-text-paragraph-font-size);
+                margin: 0 0 var(--my-text-heading-margin-bottom) 3.5rem;
                 // margin: 0;
 
                 // padding: 0 0 0 3.5rem;
