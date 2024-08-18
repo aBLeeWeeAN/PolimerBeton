@@ -152,6 +152,10 @@
                 }
             }
         }
+
+        @include media-breakpoint-down(sm) {
+            animation: none;
+        }
     }
 
     #ball-red {
@@ -173,6 +177,10 @@
 
         animation: usage_gravity_ball_red 10s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
         animation-delay: -.5s;
+
+        @include media-breakpoint-down(sm) {
+            animation: none;
+        }
     }
 
     #ball-white {
@@ -230,6 +238,10 @@
                 }
             }
         }
+
+        @include media-breakpoint-down(sm) {
+            animation: none;
+        }
     }
 
     #ball-yellow {
@@ -283,6 +295,10 @@
                 }
             }
         }
+
+        @include media-breakpoint-down(sm) {
+            animation: none;
+        }
     }
 
     #ball-grey {
@@ -308,4 +324,7 @@
         animation-delay: 0;
     }
 
+    @include media-breakpoint-down(sm) {
+        animation: none;
+    }
 }
