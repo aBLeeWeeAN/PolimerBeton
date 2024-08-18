@@ -550,15 +550,31 @@
                         <div class="row">
                             <div class="col-12 col-sm-6 container-for-image-and-caption">
                                 <div class="image-with-gradient-border" id="example-1">
-                                    <img   src="images/examples/pillar_before.webp"
-                                        alt="Пример: состояние колонны до использования смеси полимербетона." >
+                                    <picture>
+                                         <!-- Определяем изображение для маленьких экранов -->
+                                        <source srcset="images/examples/pillar_before_sm.webp" media="(max-width: 600px)">
+                                        <!-- Определяем изображение для средних экранов -->
+                                        <source srcset="images/examples/pillar_before_md.webp" media="(max-width: 1200px)">
+           
+                                         <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
+                                        <img src="images/examples/pillar_before_lg.webp"
+                                             alt="Пример: состояние колонны до использования смеси полимербетона." >
+                                    </picture>
                                 </div>
                                 <span class="image-caption-before">До</span>
                             </div>
                             <div class="col-12 col-sm-6 container-for-image-and-caption">
                                 <div class="image-with-gradient-border" id="example-2">
-                                    <img   src="images/examples/pillar_after.webp"
-                                        alt="Пример: состояние колонны до использования смеси полимербетона." >
+                                    <picture>
+                                        <!-- Определяем изображение для маленьких экранов -->
+                                       <source srcset="images/examples/pillar_after_sm.webp" media="(max-width: 600px)">
+                                       <!-- Определяем изображение для средних экранов -->
+                                       <source srcset="images/examples/pillar_after_md.webp" media="(max-width: 1200px)">
+          
+                                        <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
+                                       <img src="images/examples/pillar_after_lg.webp"
+                                            alt="Пример: состояние колонны после использования смеси полимербетона." >
+                                   </picture>
                                 </div>
                                 <span class="image-caption-after">После</span>
                             </div>
@@ -592,15 +608,31 @@
                         <div class="row">
                             <div class="col-12 col-sm-6 container-for-image-and-caption">
                                 <div class="image-with-gradient-border" id="example-3">
-                                    <img   src="images/examples/road_before.webp"
-                                        alt="Пример: состояние дорожного полотна до использования смеси полимербетона." >
+                                    <picture>
+                                        <!-- Определяем изображение для маленьких экранов -->
+                                       <source srcset="images/examples/road_before_sm.webp" media="(max-width: 600px)">
+                                       <!-- Определяем изображение для средних экранов -->
+                                       <source srcset="images/examples/road_before_md.webp" media="(max-width: 1200px)">
+          
+                                        <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
+                                       <img src="images/examples/road_before_lg.webp"
+                                            alt="Пример: состояние дорожного полотна до использования смеси полимербетона." >
+                                   </picture>
                                 </div>
                                 <span class="image-caption-before">До</span>
                             </div>
                             <div class="col-12 col-sm-6 container-for-image-and-caption">
                                 <div class="image-with-gradient-border" id="example-4">
-                                    <img   src="images/examples/road_after.webp"
-                                        alt="Пример: состояние дорожного полотна до использования смеси полимербетона." >
+                                    <picture>
+                                        <!-- Определяем изображение для маленьких экранов -->
+                                       <source srcset="images/examples/road_after_sm.webp" media="(max-width: 600px)">
+                                       <!-- Определяем изображение для средних экранов -->
+                                       <source srcset="images/examples/road_after_md.webp" media="(max-width: 1200px)">
+          
+                                        <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
+                                       <img src="images/examples/road_after_lg.webp"
+                                            alt="Пример: состояние дорожного полотна после использования смеси полимербетона." >
+                                   </picture>
                                 </div>
                                 <span class="image-caption-after last">После</span>
                             </div>
@@ -766,38 +798,86 @@
                 <div class="row align-items-center justify-content-around">
                     <div class="col-12 col-sm-6 col-xxl-4 container-for-document-image">
                         <div class="image-with-gradient-border" id="safety-doc-1">
-                            <img   src="images/safety/safety_doc_1.webp"
-                                alt="Пример: состояние колонны до использования смеси полимербетона." >
+                            <picture>
+                                 <!-- Определяем изображение для маленьких экранов -->
+                                <source srcset="images/safety/safety_doc_1_sm.webp" media="(max-width: 600px)">
+                                <!-- Определяем изображение для средних экранов -->
+                                <source srcset="images/safety/safety_doc_1_md.webp" media="(max-width: 1200px)">
+
+                                 <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
+                                <img src="images/safety/safety_doc_1_lg.webp"
+                                     alt="Сертификат соответствия — № 0011548" >
+                            </picture>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-xxl-4 container-for-document-image">
                         <div class="image-with-gradient-border" id="safety-doc-2">
-                            <img   src="images/safety/safety_doc_2.webp"
-                                alt="Пример: состояние колонны до использования смеси полимербетона." > 
+                            <picture>
+                                 <!-- Определяем изображение для маленьких экранов -->
+                                <source srcset="images/safety/safety_doc_2_sm.webp" media="(max-width: 600px)">
+                                <!-- Определяем изображение для средних экранов -->
+                                <source srcset="images/safety/safety_doc_2_md.webp" media="(max-width: 1200px)">
+   
+                                 <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
+                                <img src="images/safety/safety_doc_2_lg.webp"
+                                     alt="Технические условия — ТУ 20.30.22-010-83637640-2018" >
+                            </picture>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-xxl-4 container-for-document-image">
                         <div class="image-with-gradient-border" id="safety-doc-3">
-                            <img   src="images/safety/safety_doc_3.webp"
-                                alt="Пример: состояние колонны до использования смеси полимербетона." >
+                            <picture>
+                                <!-- Определяем изображение для маленьких экранов -->
+                               <source srcset="images/safety/safety_doc_3_sm.webp" media="(max-width: 600px)">
+                               <!-- Определяем изображение для средних экранов -->
+                               <source srcset="images/safety/safety_doc_3_md.webp" media="(max-width: 1200px)">
+  
+                                <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
+                               <img src="images/safety/safety_doc_3_lg.webp"
+                                    alt="Протокол испытаний (лист 1) — № 001/F-19/07/21 от 19.07.2021 года" >
+                           </picture>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-xxl-4 container-for-document-image">
                         <div class="image-with-gradient-border" id="safety-doc-4">
-                            <img   src="images/safety/safety_doc_4.webp"
-                                alt="Пример: состояние колонны до использования смеси полимербетона." >
+                            <picture>
+                                <!-- Определяем изображение для маленьких экранов -->
+                               <source srcset="images/safety/safety_doc_4_sm.webp" media="(max-width: 600px)">
+                               <!-- Определяем изображение для средних экранов -->
+                               <source srcset="images/safety/safety_doc_4_md.webp" media="(max-width: 1200px)">
+  
+                                <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
+                               <img src="images/safety/safety_doc_4_lg.webp"
+                                    alt="Протокол испытаний (лист 2) — № 001/F-19/07/21 от 19.07.2021 года" >
+                           </picture>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-xxl-4 container-for-document-image">
                         <div class="image-with-gradient-border" id="safety-doc-5">
-                            <img   src="images/safety/safety_doc_5.webp"
-                                alt="Пример: состояние колонны до использования смеси полимербетона." >
+                            <picture>
+                                <!-- Определяем изображение для маленьких экранов -->
+                               <source srcset="images/safety/safety_doc_5_sm.webp" media="(max-width: 600px)">
+                               <!-- Определяем изображение для средних экранов -->
+                               <source srcset="images/safety/safety_doc_5_md.webp" media="(max-width: 1200px)">
+  
+                                <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
+                               <img src="images/safety/safety_doc_5_lg.webp"
+                                    alt="Экспертное заключение (лист 1) — № 075893" >
+                           </picture>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-xxl-4 container-for-document-image">
                         <div class="image-with-gradient-border" id="safety-doc-6">
-                            <img   src="images/safety/safety_doc_6.webp"
-                                alt="Пример: состояние колонны до использования смеси полимербетона." >
+                            <picture>
+                                <!-- Определяем изображение для маленьких экранов -->
+                               <source srcset="images/safety/safety_doc_6_sm.webp" media="(max-width: 600px)">
+                               <!-- Определяем изображение для средних экранов -->
+                               <source srcset="images/safety/safety_doc_6_md.webp" media="(max-width: 1200px)">
+  
+                                <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
+                               <img src="images/safety/safety_doc_6_lg.webp"
+                                    alt="Экспертное заключение (лист 2) — № 075893" >
+                           </picture>
                         </div>
                     </div>
                 </div>
