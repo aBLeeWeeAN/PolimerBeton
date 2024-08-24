@@ -58,19 +58,6 @@
 
     <!-- Page CSS --->
     <link id="index-css" rel="stylesheet" href="css/main.css" media="screen">
-
-    <!-- Preload Hero Img --->
-    <link rel="preload" as="image" href="images/hero/hero_bc_xxl.webp"
-        imagesrcset="
-            images/hero/hero_bc_xs.webp 320w,
-            images/hero/hero_bc_sm.webp 480w,
-            images/hero/hero_bc_md.webp 640w,
-            images/hero/hero_bc_lg.webp 800w,
-            images/hero/hero_bc_xl.webp 1024w,
-            images/hero/hero_bc_xxl.webp 1280w"
-
-        imagesizes="100vw"
-    />
 </head>
 
 <body>
@@ -376,16 +363,7 @@
     <main>
         <section id="Hero">
             <div id="hero-bc-img"></div>
-            <img id="hero-fr-img" width="1280" height="760" src="images/hero/hero_bc_xxl.webp"
-            alt="Задний фон блока Hero"
-            srcset="
-                images/hero/hero_bc_xs.webp 320w,
-                images/hero/hero_bc_sm.webp 480w,
-                images/hero/hero_bc_md.webp 640w,
-                images/hero/hero_bc_lg.webp 800w,
-                images/hero/hero_bc_xl.webp 1024w,
-                images/hero/hero_bc_xxl.webp 1280w"
-            sizes="100vw"></img>
+            <!-- hero-fr-img lazy load by dynamic js script --->          
 
             <div id="Hero-Container" class="container">
                 <div class="row align-items-center justify-content-center">
@@ -1088,6 +1066,9 @@
     <!-- Page content END --->
 
     <div class="d-none" id="Scripts-Container">
+         <!-- My non-async Scripts --->
+         <!-- <script src="scripts/prevent_paste.js"></script> -->
+
         <!-- PopperJS JS scripts --->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous" async defer></script>
         
@@ -1135,6 +1116,10 @@
 
     <div class="d-none" id="Third-Party-Cookies-Container">
         <!-- Empty by default, dynamic script load cookies --->
+    </div>
+
+    <div class="d-none" id="Lazy-Load-Images">
+        <script src="scripts/hero_image_loader.js"></script>
     </div>
 </body>
 
