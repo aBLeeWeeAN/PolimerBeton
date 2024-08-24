@@ -53,33 +53,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=Montserrat:ital,wght@0,100..900;1,100..900&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Pattaya&family=Raleway:ital,wght@0,100..900;1,100..900&family=Russo+One&family=Tenor+Sans&display=swap" rel="stylesheet" media="screen">
 
+    <!-- BoxIcons CSS --->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <!-- Page CSS --->
     <link id="privacy-css" rel="stylesheet" href="css/privacy.css" media="screen">
-
-    <!-- Yandex check --->
-    <!-- <meta name="yandex-verification" content="a6896947a5568931" /> -->
-
-    <!-- Yandex.Metrika counter START -->
-    <!-- <script type="text/javascript" async>
-        (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
-            m[i].l = 1 * new Date();
-            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
-            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-        })
-            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-        ym(97288202, "init", {
-            clickmap: true,
-            trackLinks: true,
-            accurateTrackBounce: true
-        });
-    </script> -->
-
-    <!-- <noscript>
-        <div><img  src="https://mc.yandex.ru/watch/97288202" style="position:absolute; left:-9999px;" alt="" /></div>
-    </noscript> -->
-    <!-- /Yandex.Metrika counter END -->
 </head>
 
 <body>
@@ -753,6 +731,30 @@
         <script src="scripts/change_offcanvas_scroll_state.js" defer></script>
 
         <script src="scripts/change_menu_button_state.js" defer></script>
+
+        <script src="scripts/cookies_consent_banner_manager.js" defer></script>
+    </div>
+
+    <div id="Cookies-Consent-Banner">
+        <div class="container">
+            <div class="cookies-consent-header">
+                <i class="bx bx-cookie"></i>
+                <h2>Cookies Consent</h2>
+            </div>
+
+            <div class="cookies-consent-data">
+                <p>This website use cookies to help you have a supervisor and more relevant browsing expirience on the website. <a href="">Read more...</a></p>
+            </div>
+
+            <div class="cookies-consent-buttons">
+                <button class="cookie-button" id="cookie-decline-btn">Decline</button>
+                <button class="cookie-button" id="cookie-accept-btn">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-none" id="Third-Party-Cookies-Container">
+        <!-- Empty by default, dynamic script load cookies --->
     </div>
 </body>
 
