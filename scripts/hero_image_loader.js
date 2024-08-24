@@ -29,6 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Найти контейнер #Hero и вставить код
     const hero_section = document.getElementById('Hero');
     if (hero_section) {
-        hero_section.insertAdjacentHTML('beforeend', picture_html);
+        hero_section.insertAdjacentHTML('afterbegin', picture_html);
     }
 });
