@@ -5,5 +5,5 @@ $(document).ready(function () {
     }
     
     update_hero_container_margin_top(); // Initial calculation
-    $(window).resize(update_hero_margin_top); // Recalculate on resize
+    $(window).resize(update_hero_container_margin_top); // Recalculate on resize
 });
