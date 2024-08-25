@@ -206,7 +206,7 @@ section {
     &:hover {
         transform: scale(1.025);
 
-        @include media-breakpoint-down(lg) {
+        @include media-breakpoint-down(sm) {
             transform: none;
         }
     }

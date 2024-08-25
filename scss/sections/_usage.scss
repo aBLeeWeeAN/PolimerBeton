@@ -7,7 +7,9 @@
 
     ul {
         li {
-            @include transition-all(background-color, color);
+            cursor: pointer;
+
+            @include transition-all(background-color, color, transform);
 
             &:not(:first-child) {
                 margin-top: var(--my-text-paragraph-margin-top);
@@ -45,6 +47,18 @@
             list-style: inside;
             list-style-type: decimal;
             list-style-position: inside;
+
+            &:hover {
+                transform: scale(1.025);
+
+                @include media-breakpoint-down(sm) {
+                    transform: none;
+                }
+            }
+
+            &:active {
+                transform: scale(0.995);
+            }
     
             &::marker {
                 // color: red;

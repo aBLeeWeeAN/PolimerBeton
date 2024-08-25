@@ -314,7 +314,7 @@
                         background-color: var(--primary-color--active);
 
                         svg {
-                            transform: scale(0.95);
+                            transform: scale(0.975);
                         }
                     }
 
@@ -724,7 +724,7 @@
 
                     &:active {
                         color: var(--primary-color);
-                        transform: scale(0.95);
+                        transform: scale(0.975);
                     }
 
                     @include media-breakpoint-down(sm) {
