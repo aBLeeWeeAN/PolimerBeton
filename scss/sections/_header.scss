@@ -120,7 +120,7 @@
                 margin: 0;
         
                 .logo {     
-                    @include transition-all(color);
+                    @include transition-all(color, transform);
 
                     font-size: var(--my-header-logo-size);
                 
@@ -130,14 +130,33 @@
                     align-items: center;
                 
                     color: var(--primary-color);
+                    fill: var(--primary-color);
                 
+                    &:hover {
+                        color: var(--primary-color--hover);
+                        fill: var(--primary-color--hover);
+
+                        transform: scale(1.025);
+
+                        @include media-breakpoint-down(sm) {
+                            transform: none;
+                        }
+                    }
+
+                    &:active {
+                        color: var(--primary-color--active);
+                        fill: var(--primary-color--active);
+
+                        transform: scale(0.975);
+                    }
+
                     .logo-icon {
-                        @include transition-all(fill);
+                        @include transition-all(fill, transform);
 
                         fill-rule: evenodd;
                         clip-rule: evenodd;
                 
-                        fill: var(--primary-color);
+                        fill: inherit;
                 
                         width: 4.5em;
                         height: auto;
@@ -279,9 +298,24 @@
                     fill: var(--text-color-alt-87); // icon color
 
                     &:hover {
-                        @include transition-all(fill);
-
                         fill: var(--text-color-alt-100);
+                        background-color: var(--primary-color--hover);
+
+                        svg {
+                            transform: scale(1.1);
+
+                            @include media-breakpoint-down(sm) {
+                                transform: none;
+                            }
+                        }
+                    }
+
+                    &:active {
+                        background-color: var(--primary-color--active);
+
+                        svg {
+                            transform: scale(0.95);
+                        }
                     }
 
                     a {
@@ -303,6 +337,9 @@
 
                         width: 1.35em;
                         height: auto;
+
+                        transition: transform 0.3s ease-in-out;
+                        transform-origin: center center;
                     }
                 }
             
@@ -446,10 +483,22 @@
 
                 /* hamburger button */
                 .hamburger {
+                    @include transition-all(fill);
+
                     aspect-ratio: 1 / 1;
 
                     width: 1.71429em;
                     height: auto;
+
+                    fill: var(--primary-color);
+
+                    &:hover {
+                        fill: var(--primary-color--hover);
+                    }
+
+                    &:active {
+                        fill: var(--primary-color--active);
+                    }
                 }
 
                 .line {
@@ -476,67 +525,6 @@
                 &[aria-expanded="true"] .bottom {
                     rotate: -45deg;
                 }
-            
-                // .toggler-icon {
-                //     aspect-ratio: 30 / 3;
-
-                //     width: auto; /* 30px / 21 */
-                //     height: 0.14286em; /* 3px / 21 */
-                    
-                //     min-height: 2px;
-                //     max-height: 3px;
-
-                //     background-color: var(--primary-color);
-                //     display: block;
-                    
-                //     transition: all 0.2s;
-
-                //     border: 0 !important;
-
-                //     @include media-breakpoint-down(xxl) {
-                //         height: 2px;
-                //     }
-                // }
-            
-                // .middle-bar {
-                //     margin: 0.24em auto; /* 5px / 21 */
-                // }
-            
-                // /* State when navbar is opened (START) */
-                // .top-bar {
-                //     transform: rotate(45deg);
-                //     transform-origin: 10% 10%;
-                // }
-            
-                // .middle-bar {
-                //     opacity: 0;
-                //     filter: alpha(opacity=0);
-                // }
-            
-                // .bottom-bar {
-                //     transform: rotate(-45deg);
-                //     transform-origin: 10% 90%;
-                // }
-                // /* State when navbar is opened (END) */
-            
-                // /* State when navbar is collapsed (START) */
-                // &.collapsed .top-bar {
-                //     transform: rotate(0);
-                // }
-            
-                // &.collapsed .middle-bar {
-                //     opacity: 1;
-                //     filter: alpha(opacity=100);
-                // }
-            
-                // &.collapsed .bottom-bar {
-                //     transform: rotate(0);
-                // }
-                // /* State when navbar is collapsed (END) */
-            
-                // &.collapsed .toggler-icon {
-                //     background-color: var(--primary-color);
-                // }
             }
         
             .menu {
@@ -702,7 +690,7 @@
                 // margin-top: var(--my-header-child-non-first-margin-top);
             
                 a {
-                    @include transition-all(color);
+                    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 
                     display: block;
     
@@ -724,6 +712,20 @@
                     // border-bottom: solid 2px red;
             
                     text-decoration: none;
+
+                    &:hover {
+                        color: var(--text-color-100);
+                        transform: scaleX(1.1);
+
+                        @include media-breakpoint-down(sm) {
+                            transform: none;
+                        }
+                    }
+
+                    &:active {
+                        color: var(--primary-color);
+                        transform: scale(0.95);
+                    }
 
                     @include media-breakpoint-down(sm) {
                         font-size: 1.1rem;
@@ -868,6 +870,27 @@
                                 margin-left: .5em;
                             }
                         }
+
+                        // button {
+                        //     svg {
+                        //         @include transition-all(display, opacity, width, height);
+
+                        //         fill: inherit;
+    
+                        //         aspect-ratio: 1 / 1;
+        
+                        //         width: 2em;
+                        //         height: auto;
+    
+                        //         // &:hover {
+                        //         //     width: 2.1em;
+                        //         // }
+        
+                        //         &:active {
+                        //             width: 1.9em;
+                        //         }
+                        //     }
+                        // }
         
                         // svg {
                         //     width: 2.12em;
@@ -887,7 +910,7 @@
                     }
                 
                     .my-button-mobile {
-                        @include transition-all(background-color, fill);
+                        @include transition-all(background-color, fill, width, height);
 
                         display: flex;
                 
@@ -901,38 +924,70 @@
 
                         aspect-ratio: 1 / 1;
                 
-                        --squircle-smooth: 1.0;
-                        --squircle-radius: 0.75em;
+                        // --squircle-smooth: 1.0;
+                        // --squircle-radius: 0.75em;
                 
-                        mask-image: paint(squircle);
+                        // mask-image: paint(squircle);
                         
-                        background-color: var(--primary-color);
+                        background-color: transparent;
                 
                         border: none;
                         outline: none;
                 
                         cursor: pointer;
                 
-                        fill: var(--text-color-alt-87); // icon color
+                        fill: var(--text-color-87); // icon color
         
+                        // &:hover {
+                        //     @include transition-all(fill);
+
+                        //     fill: var(--text-color-100);
+                        // }
+
                         &:hover {
-                            @include transition-all(fill);
-
                             fill: var(--text-color-100);
+
+                            svg {
+                                transform: scale(1.1);
+
+                                @include media-breakpoint-down(sm) {
+                                    transform: none;
+                                }
+                            }
                         }
 
-                        &--transparent {
-                            @include transition-all(background-color, fill);
+                        &:active {
+                            fill: var(--primary-color);
 
-                            width: 2.6em;
-                            height: auto;
-
-                            aspect-ratio: 1 / 1;
-
-                            background-color: transparent;
-
-                            fill: var(--text-color-87);
+                            svg {
+                                transform: scale(0.95);
+                            }
                         }
+
+                        // &--transparent {
+                        //     @include transition-all(background-color, fill);
+
+                        //     width: 2.6em;
+                        //     height: auto;
+
+                        //     aspect-ratio: 1 / 1;
+
+                        //     background-color: transparent;
+
+                        //     fill: var(--text-color-87);
+
+                        //     &:hover {
+                        //         fill: var(--text-color-100);
+
+                        //         border-radius: 50%;
+                        //         background-color: rgba($color: #fff, $alpha: 0.07);
+                        //     }
+
+                        //     &:active {
+                        //         fill: red;
+                        //         background-color: rgba($color: #fff, $alpha: 0.07);
+                        //     }
+                        // }
 
                         a {
                             width: 100%;
@@ -945,14 +1000,25 @@
                         }
 
                         svg {
-                            @include transition-all(display, opacity);
+                            @include transition-all(display, opacity, width, height);
 
                             fill: inherit;
-                            
+
                             aspect-ratio: 1 / 1;
     
                             width: 2em;
                             height: auto;
+
+                            transition: transform 0.3s ease-in-out;
+                            transform-origin: center center;
+
+                            // &:hover {
+                            //     width: 2.1em;
+                            // }
+    
+                            // &:active {
+                            //     width: 1.9em;
+                            // }
                         }
                     }
                 }

@@ -6,6 +6,7 @@
     // margin: 10rem 0 10rem 0;
 
     .phone-and-email, .messengers {
+        text-align: center;
 
         .contact-header {
             @include transition-all(color);
@@ -40,10 +41,11 @@
         }
     
         .contact {
-            @include transition-all(color);
+            // @include transition-all(color);
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
             
-            display: flex;
-            flex-direction: column;
+            display: inline-block;
+            // flex-direction: column;
 
             margin: 0;
     
@@ -60,6 +62,35 @@
             color: var(--text-color-87);
     
             text-decoration: none;
+
+            &:hover {
+                color: var(--text-color-100);
+                transform: scale(1.015);
+
+                @include media-breakpoint-down(sm) {
+                    transform: none;
+                }
+            }
+
+            &:active {
+                color: var(--primary-color);
+                transform: scale(0.975);
+            }
+
+            // &:hover {
+            //     @include transition-all(text-decoration, color);
+
+            //     color: var(--primary-color--hover);
+            //     // background-color: var(--primary-color);
+
+            //     font-weight: 500;
+            //     text-decoration: underline;
+            // }
+
+            // &:active {
+            //     @include transition-all(color);
+            //     color: var(--primary-color--active);
+            // }
     
             a {
                 @extend .contact;
@@ -76,7 +107,7 @@
             }
 
             @include media-breakpoint-down(sm) {
-                letter-spacing: 0.07em;
+                letter-spacing: 0.05em;
                 font-weight: 300;
             }
         }

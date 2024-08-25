@@ -174,6 +174,18 @@
 
             mask-image: paint(squircle);
 
+            &:hover {
+                background-color: var(--primary-color--hover);
+            }
+
+            &:active {
+                background-color: var(--primary-color--active);
+            }
+
+            &:focus {
+                background-color: var(--primary-color--focus);
+            }
+
             @include media-breakpoint-down(xxl) {
                 padding: .222rem;
             }
@@ -315,7 +327,7 @@
         }
 
         #feedback-form-submit-button {
-            @include transition-all(background-color, color);
+            @include transition-all(background-color, color, transform);
             // font-size: inherit;
 
             margin-top: 1.25rem;
@@ -350,9 +362,24 @@
             text-transform: none;
 
             &:hover {
-                @include transition-all(color);
+                @include transition-all(background-color, color, transform);
 
                 color: var(--text-color-alt-100);
+                background-color: var(--primary-color--hover);
+
+                transform: scale(1.025);
+
+                @include media-breakpoint-down(sm) {
+                    transform: none;
+                }
+            }
+
+            &:active {
+                @include transition-all(background-color, transform);
+
+                background-color: var(--primary-color--active);
+
+                transform: scale(0.975);
             }
 
             @include media-breakpoint-down(lg) {
@@ -460,6 +487,16 @@
 
                 margin-right: .75rem;
 
+                &:hover {
+                    @include transition-all(background-color, border-color);
+                    border: 0.125rem solid var(--primary-color--hover);
+                }
+    
+                &:active {
+                    @include transition-all(background-color, border-color);
+                    border: 0.125rem solid var(--primary-color--active);
+                }
+
                 @include media-breakpoint-down(md) {        
                     border: 0.135rem solid var(--primary-color);
 
@@ -534,10 +571,20 @@
                 
                 color: var(--primary-color);
                 text-decoration: none;
-            }
 
-            a:hover {
-                text-decoration: underline;
+                &:hover {
+                    @include transition-all(text-decoration, color);
+    
+                    color: var(--primary-color--hover);
+                    text-decoration: underline;
+                }
+    
+                &:active {
+                    @include transition-all(text-decoration, color);
+    
+                    color: var(--primary-color--active);
+                    text-decoration: underline;
+                }
             }
 
             // @include media-breakpoint-down(xxl) {

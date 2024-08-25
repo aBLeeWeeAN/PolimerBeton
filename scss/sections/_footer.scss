@@ -113,7 +113,7 @@
     }
 
     h3 {
-        @include transition-all(color);
+        @include transition-all(color, transform);
 
         margin-bottom: var(--my-text-h3-margin-bottom);
 
@@ -128,6 +128,8 @@
         line-height: var(--my-text-h3-line-height);
 
         color: var(--text-color-87);
+
+        transform-origin: center left;
 
         // @include media-breakpoint-down(lg) {
         //     margin-top: 3.5rem;
@@ -144,38 +146,70 @@
         // }
     }
 
-    a {
-        @include transition-all(color);
+    p, li {
+        transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        transform-origin: center left;
 
-        margin: 0;
-        // padding: 0;
+        a {
+            @include transition-all(color);
+    
+            margin: 0;
+            // padding: 0;
+    
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: var(--my-text-small-paragraph-font-weight);
+            font-style: normal;
+    
+            font-size: var(--my-text-small-paragraph-font-size);
+            letter-spacing: var(--my-text-small-paragraph-letter-spacing);
+            text-align: left;
+    
+            line-height: var(--my-text-small-paragraph-line-height);
+    
+            color: var(--text-color-87);
+    
+            text-decoration: none;
+    
+            // @include media-breakpoint-down(lg) {
+            //     text-align: center;
+    
+            //     font-size: 1.5rem;
+            // }
+    
+            // @include media-breakpoint-down(sm) {
+            //     text-align: center;
+    
+            //     font-size: .8rem;
+            // }
+        }
 
-        font-family: "Montserrat", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: var(--my-text-small-paragraph-font-weight);
-        font-style: normal;
+        &:hover {
+            transform: scale(1.025);
+            color: var(--text-color-100);
 
-        font-size: var(--my-text-small-paragraph-font-size);
-        letter-spacing: var(--my-text-small-paragraph-letter-spacing);
-        text-align: left;
+            a {
+                color: var(--text-color-100);
+            }
 
-        line-height: var(--my-text-small-paragraph-line-height);
+            @include media-breakpoint-down(sm) {
+                transform: none;
+            }
+        }
 
-        color: var(--text-color-87);
+        &:active {
+            transform: scale(0.975);
+            color: var(--primary-color);
 
-        text-decoration: none;
+            a {
+                color: var(--primary-color);
+                // font-weight: 500;
+            }
+        }
 
-        // @include media-breakpoint-down(lg) {
-        //     text-align: center;
-
-        //     font-size: 1.5rem;
-        // }
-
-        // @include media-breakpoint-down(sm) {
-        //     text-align: center;
-
-        //     font-size: .8rem;
-        // }
+        @include media-breakpoint-down(sm) {
+            transform-origin: center center;
+        }
     }
 
     .footer-part-1 {
@@ -191,7 +225,7 @@
             justify-content: space-between;
 
             .logo {
-                @include transition-all(color);
+                @include transition-all(color, transform);
 
                 font-size: var(--my-footer-logo-size);
             
@@ -201,14 +235,33 @@
                 align-items: center;
             
                 color: var(--text-color-87);
+                fill: var(--text-color-87);
+
+                &:hover {
+                    color: var(--text-color-100);
+                    fill: var(--text-color-100);
+
+                    transform: scale(1.025);
+
+                    @include media-breakpoint-down(sm) {
+                        transform: none;
+                    }
+                }
+
+                &:active {
+                    color: var(--primary-color);
+                    fill: var(--primary-color);
+
+                    transform: scale(0.975);
+                }
             
                 .logo-icon {
-                    @include transition-all(fill);
+                    @include transition-all(fill, transform);
 
                     fill-rule: evenodd;
                     clip-rule: evenodd;
             
-                    fill: var(--text-color-87);
+                    fill: inherit;
             
                     width: 4.5em;
                     height: auto;
@@ -292,17 +345,23 @@
 
             text-align: left;
 
+            // &:hover {
+
+            //     h3 {
+            //         // transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+                    
+            //         transform: scale(1.1);
+            //         color: var(--text-color-100);
+            //     }
+            // }
+
             ul {
                 margin: 0;
                 padding: 0;
-            }
-    
-            ul li:not(:first-child) {
-                margin-top: var(--my-text-small-paragraph-margin-bottom);
 
-                // @include media-breakpoint-down(sm) {
-                //     margin-top: .375rem;
-                // }
+                li:not(:first-child) {
+                    margin-top: var(--my-text-small-paragraph-margin-bottom);
+                }
             }
 
             // @include media-breakpoint-down(lg) {
@@ -344,6 +403,15 @@
 
     .copyright {
         padding: 1.75rem 0;
+
+        
+        p {
+            transform-origin: center right;
+
+            @include media-breakpoint-down(sm) {
+                transform-origin: center center;
+            }
+        }
 
         small {
             @include transition-all(color);
