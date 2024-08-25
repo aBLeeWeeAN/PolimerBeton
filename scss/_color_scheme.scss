@@ -5,6 +5,7 @@
 :root, html[data-theme='light'] {
     // new colors
     --bc-color: #fff;
+    --cookie-consent-banner-bc-color: rgba(255, 255, 255, 0.87);
 
     --primary-color: #512DA8;
     --secondary-color: #FFF3E0;
@@ -73,6 +74,7 @@
  html[data-theme='dark'] {
     // new colors
     --bc-color: #121212;
+    --cookie-consent-banner-bc-color: rgba(18, 18, 18, 0.87);
 
     --primary-color: #FFAB91;
     --secondary-color: #B39DDB;

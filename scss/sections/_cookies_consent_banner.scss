@@ -6,37 +6,39 @@
     z-index: 2000;
     // color: var(--text-color-87);
 
-    max-width: 550px;
+    max-width: 700px;
 
     position: fixed;
 
     padding: 25px 30px;
     margin: 0 auto;
 
-    background-color: var(--bc-color);
+    background-color: var(--cookie-consent-banner-bc-color);
 
     border-radius: .5rem;
     box-shadow: .284rem .38rem .952rem 0px var(--box-shadow-color);
 
     // left: 0;
-    right: -550px;
+    right: -700px;
     bottom: 2rem;
 
     transition: right 0.3s ease;
 
     @include media-breakpoint-down(xxl) {
-        max-width: 490px;
-        right: -490px;
+        max-width: 615px;
+        right: -615px;
     }
 
     @include media-breakpoint-down(lg) {
-        max-width: 435px;
-        right: -435px;
+        padding: 20px 25px;
+
+        max-width: 555px;
+        right: -555px;
     }
 
     @include media-breakpoint-down(md) {
-        max-width: 410px;
-        right: -410px;
+        max-width: 525px;
+        right: -525px;
     }
 
     @include media-breakpoint-down(sm) {
@@ -47,7 +49,7 @@
         left: 1rem;
         right: 1rem;
 
-        bottom: -250px;
+        bottom: -300px;
 
         padding: 20px 0px;
     }
@@ -63,12 +65,24 @@
             color: var(--primary-color);
             font-size: 60px;
 
-            @include media-breakpoint-down(sm) {
+            @include media-breakpoint-down(xxl) {
                 font-size: 48px;
             }
 
+            // @include media-breakpoint-down(lg) {
+            //     font-size: 52px;
+            // }
+
+            @include media-breakpoint-down(md) {
+                font-size: 42px;
+            }
+
+            @include media-breakpoint-down(sm) {
+                font-size: 54px;
+            }
+
             @include media-breakpoint-down(xs) {
-                font-size: 40px;
+                font-size: 50px;
             }
         }
 
@@ -81,15 +95,23 @@
             font-style: normal;
         
             font-size: 1.5rem;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
 
             text-transform: none;
             font-variant-numeric: lining-nums;
         }
 
-        @include media-breakpoint-down(sm) {
+        @include media-breakpoint-down(xxl) {
+            column-gap: 12px;
+        }
+
+        @include media-breakpoint-down(md) {
             column-gap: 10px;
         }
+
+        // @include media-breakpoint-down(sm) {
+        //     column-gap: 10px;
+        // }
 
         @include media-breakpoint-down(xs) {
             column-gap: 8px;
@@ -144,7 +166,7 @@
             font-weight: 600;
             font-style: normal;
 
-            letter-spacing: 0.08em;
+            letter-spacing: 0.035em;
 
             font-size: 1rem;
 
