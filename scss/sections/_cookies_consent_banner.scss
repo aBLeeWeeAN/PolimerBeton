@@ -6,22 +6,51 @@
     z-index: 2000;
     // color: var(--text-color-87);
 
-    max-width: 500px;
+    max-width: 550px;
 
     position: fixed;
 
     padding: 25px 30px;
     margin: 0 auto;
 
-    background: #fff;
+    background-color: var(--bc-color);
+
     border-radius: .5rem;
     box-shadow: .284rem .38rem .952rem 0px var(--box-shadow-color);
 
     // left: 0;
-    right: -500px;
+    right: -550px;
     bottom: 2rem;
 
     transition: right 0.3s ease;
+
+    @include media-breakpoint-down(xxl) {
+        max-width: 490px;
+        right: -490px;
+    }
+
+    @include media-breakpoint-down(lg) {
+        max-width: 435px;
+        right: -435px;
+    }
+
+    @include media-breakpoint-down(md) {
+        max-width: 410px;
+        right: -410px;
+    }
+
+    @include media-breakpoint-down(sm) {
+        transition: bottom 0.3s ease;
+
+        max-width: 100%;
+
+        left: 1rem;
+        right: 1rem;
+
+        bottom: -250px;
+
+        padding: 20px 0px;
+    }
 
     .cookies-consent-header {
         display: flex;
@@ -33,6 +62,14 @@
         i {
             color: var(--primary-color);
             font-size: 60px;
+
+            @include media-breakpoint-down(sm) {
+                font-size: 48px;
+            }
+
+            @include media-breakpoint-down(xs) {
+                font-size: 40px;
+            }
         }
 
         h2 {
@@ -44,9 +81,18 @@
             font-style: normal;
         
             font-size: 1.5rem;
-        
+            letter-spacing: 0.08em;
+
             text-transform: none;
             font-variant-numeric: lining-nums;
+        }
+
+        @include media-breakpoint-down(sm) {
+            column-gap: 10px;
+        }
+
+        @include media-breakpoint-down(xs) {
+            column-gap: 8px;
         }
     }
 
@@ -55,6 +101,13 @@
         margin-top: 1rem;
 
         p {
+            font-family: "Montserrat", system-ui;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+
+            letter-spacing: 0.06em;
+
             text-align: left;
 
             color: var(--text-color-87);
@@ -86,6 +139,15 @@
         // column-gap: 15px;
 
         .cookie-button {
+            font-family: "Montserrat", system-ui;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+
+            letter-spacing: 0.08em;
+
+            font-size: 1rem;
+
             width: calc(100% / 2 - 8px);
 
             padding: 15px 0;
@@ -101,14 +163,22 @@
 
             &:hover {
                 color: var(--text-color-alt-100);
-                background-color: #4527A0;
-
-                // font-weight: 600;
+                background-color: var(--primary-color--hover);
             }
 
             &:active {
                 color: var(--text-color-alt-100);
-                background-color: #311B92;
+                background-color: var(--primary-color--active);
+            }
+
+            @include media-breakpoint-down(sm) {
+                padding: 12px 0;
+                width: calc(100% / 2 - 5px);
+            }
+
+            @include media-breakpoint-down(xs) {
+                padding: 10px 0;
+                width: calc(100% / 2 - 4px);
             }
 
             // &-accept {    
@@ -158,5 +228,10 @@
 
     &.show {
         right: 2rem;
+
+        @include media-breakpoint-down(sm) {    
+            right: 1rem;
+            bottom: 1rem;
+        }
     }
 }
