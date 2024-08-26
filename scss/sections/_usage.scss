@@ -58,6 +58,10 @@
 
             &:active {
                 transform: scale(0.995);
+
+                @include media-breakpoint-down(sm) {
+                    transform: none;
+                }
             }
     
             &::marker {
