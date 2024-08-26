@@ -919,22 +919,30 @@
                             <img   src="{% static 'main_app/images/concrete_red.webp' %}" id="ball-red" alt="Полимербетон - Красный" >
                         </div>
                     </div>
-                    <form class="col-12 col-sm-6">
+                    <form class="col-12 col-sm-6" method="post" action="{% url 'index' %}">
+                        {% csrf_token %}
                         <div class="form-field">
-                            <input type="text" id="client_name" name="client_name" placeholder="Имя" maxlength="35"
-                                autocomplete="name" required
-                                pattern="^(?![ЬЪ])[A-Za-zА-Яа-я]{1,35}$"
-                                title="Введите только буквы, от 1 до 35 символов">
+                            {{ form.client_name }}
+                            {% if form.client_name.errors %}
+                                <div class="error-message">
+                                    {% for error in form.client_name.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                         </div>
                         <div class="form-field">
-                            <input type="tel" id="client_phone" name="client_phone" placeholder="Телефон"
-                                maxlength="18" autocomplete="tel" required
-                                pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
-                                title="Введите только цифры, 10 символов">
+                            {{ form.client_phone }}
+                            {% if form.client_phone.errors %}
+                                <div class="error-message">
+                                    {% for error in form.client_phone.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                         </div>
                         <div class="checkbox-privacy-policy">
-                            <input type="checkbox" id="privacy-policy" name="privacy-policy" aria-label="Кнопка подтверждения согласия с политикой конфиденциальности" required
-                            title="Подтвердите, что согласны с Политикой конфиденциальности нашего сайта — https://polimerbeton-vrn.ru/privacy">
+                            {{ form.privacy_policy }}
                             <label for="privacy-policy">
                                 <small>
                                     Я ознакомлен и согласен с
@@ -944,8 +952,17 @@
                                     </a>
                                 </small>
                             </label>
+                            <!-- <div class="error-message">
+                                    <p>Ошибка!</p>
+                            </div> -->
+                            {% if form.privacy_policy.errors %}
+                                <div class="error-message">
+                                    {% for error in form.privacy_policy.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                         </div>
-                        <!-- <br> -->
                         <button id="feedback-form-submit-button" type="submit" name="feedback-form-button" aria-label="Отправить данные по форме обратной связи">Отправить</button>
                     </form>
                 </div>
@@ -1102,7 +1119,9 @@
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" defer></script>
 
         <!-- Inputmask JS scripts Vanilla --->
-        <script src="{% static 'node_modules/Inputmask/dist/jquery.inputmask.min.js' %}" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js" defer></script>
+
+        <!-- <script src="{% static 'node_modules/Inputmask/dist/jquery.inputmask.min.js' %}" defer></script> -->
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js" integrity="sha512-F5Ul1uuyFlGnIT1dk2c4kB4DBdi5wnBJjVhL7gQlGh46Xn0VhvD8kgxLtjdZ5YN83gybk/aASUAlpdoWUjRR3g==" crossorigin="anonymous" referrerpolicy="no-referrer" async defer></script> -->
 
         <!-- My JS scripts --->
