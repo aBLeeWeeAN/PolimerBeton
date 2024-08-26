@@ -1,3 +1,7 @@
+<!-- Django load static & compress --->
+{% load static %}
+{% load compress %}
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -31,17 +35,17 @@
     <title>Полимербетон от производителя в г. Воронеж</title>
 
     <!-- Favicon (Light version) --->
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png?v=7">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png?v=7">
-    <link rel="icon" type="image/png" sizes="194x194" href="/favicons/favicon-194x194.png?v=7">
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png?v=7">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png?v=7">
-    <link rel="manifest" href="/favicons/site.webmanifest?v=7">
-    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg?v=7" color="#6200ea">
-    <link rel="shortcut icon" href="/favicons/favicon.ico?v=7">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'main_app/favicons/apple-touch-icon.png' %}?v=7">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'main_app/favicons/favicon-32x32.png' %}?v=7">
+    <link rel="icon" type="image/png" sizes="194x194" href="{% static 'main_app/favicons/favicon-194x194.png' %}?v=7">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'main_app/favicons/android-chrome-192x192.png' %}?v=7">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'main_app/favicons/favicon-16x16.png' %}?v=7">
+    <link rel="manifest" href="{% static 'main_app/favicons/site.webmanifest' %}?v=7">
+    <link rel="mask-icon" href="{% static 'main_app/favicons/safari-pinned-tab.svg' %}?v=7" color="#6200ea">
+    <link rel="shortcut icon" href="{% static 'main_app/favicons/favicon.ico' %}?v=7">
     <meta name="msapplication-TileColor" content="#603cba">
-    <meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png?v=7">
-    <meta name="msapplication-config" content="/favicons/browserconfig.xml?v=7">
+    <meta name="msapplication-TileImage" content="{% static 'main_app/favicons/mstile-144x144.png' %}?v=7">
+    <meta name="msapplication-config" content="{% static 'main_app/favicons/browserconfig.xml' %}?v=7">
     <meta name="theme-color" content="#fffefd">
 
     <!-- Favicon app name --->
@@ -57,28 +61,64 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- Page CSS --->
-    <link id="index-css" rel="stylesheet" href="css/main.css" media="screen">
+    {% compress css %}
+        <link id="index-css" rel="stylesheet" href="{% static 'main_app/css/index.css' %}" media="screen">
+    {% endcompress %}
 </head>
 
 <body>
     <div class="d-none" id="Scripts-Container-Preload">
         <!-- Houdini Squircle JS scripts --->
         <script src="https://unpkg.com/css-paint-polyfill"></script>
-        <script>
-            (async function () {
-                if (!("paintWorklet" in CSS)) {
-                    await import("css-paint-polyfill");
-                }
+        {% compress js %}
+            <script>
+                (async function () {
+                    if (!("paintWorklet" in CSS)) {
+                        await import("css-paint-polyfill");
+                    }
 
-                CSS.paintWorklet.addModule(
-                    `https://www.unpkg.com/css-houdini-squircle/squircle.min.js`
-                );
-            })();
-        </script>
+                    CSS.paintWorklet.addModule(
+                        `https://www.unpkg.com/css-houdini-squircle/squircle.min.js`
+                    );
+                })();
+            </script>
+        {% endcompress %}
 
         <!-- My JS scripts --->
-        <script src="scripts/change_favicon.js" async></script>
-        <script src="scripts/change_color_scheme.js" defer></script>
+        {% compress js %}
+            <script>
+                // Глобальные переменные для фавиконов и мета-тегов
+                window.faviconPaths = {
+                    light: {
+                        appleTouchIcon: "{% static 'main_app/favicons/apple-touch-icon.png' %}?v=7",
+                        favicon32x32: "{% static 'main_app/favicons/favicon-32x32.png' %}?v=7",
+                        favicon194x194: "{% static 'main_app/favicons/favicon-194x194.png' %}?v=7",
+                        androidChrome192x192: "{% static 'main_app/favicons/android-chrome-192x192.png' %}?v=7",
+                        favicon16x16: "{% static 'main_app/favicons/favicon-16x16.png' %}?v=7",
+                        safariPinnedTab: "{% static 'main_app/favicons/safari-pinned-tab.svg' %}?v=7",
+                        faviconIco: "{% static 'main_app/favicons/favicon.ico' %}?v=7",
+                        siteWebmanifest: "{% static 'main_app/favicons/site.webmanifest' %}?v=7",
+                        mstile144x144: "{% static 'main_app/favicons/mstile-144x144.png' %}?v=7",
+                        browserConfig: "{% static 'main_app/favicons/browserconfig.xml' %}?v=7"
+                    },
+                    dark: {
+                        appleTouchIcon: "{% static 'main_app/favicons/dark/apple-touch-icon.png' %}?v=7",
+                        favicon32x32: "{% static 'main_app/favicons/dark/favicon-32x32.png' %}?v=7",
+                        favicon194x194: "{% static 'main_app/favicons/dark/favicon-194x194.png' %}?v=7",
+                        androidChrome192x192: "{% static 'main_app/favicons/dark/android-chrome-192x192.png' %}?v=7",
+                        favicon16x16: "{% static 'main_app/favicons/dark/favicon-16x16.png' %}?v=7",
+                        safariPinnedTab: "{% static 'main_app/favicons/dark/safari-pinned-tab.svg' %}?v=7",
+                        faviconIco: "{% static 'main_app/favicons/dark/favicon.ico' %}?v=7",
+                        siteWebmanifest: "{% static 'main_app/favicons/dark/site.webmanifest' %}?v=7",
+                        mstile144x144: "{% static 'main_app/favicons/dark/mstile-144x144.png' %}?v=7",
+                        browserConfig: "{% static 'main_app/favicons/dark/browserconfig.xml' %}?v=7"
+                    }
+                };
+            </script>
+            <script src="{% static 'main_app/scripts/change_favicon.js' %}" async></script>
+            
+            <script src="{% static 'main_app/scripts/change_color_scheme.js' %}" defer></script>
+        {% endcompress %}
     </div>
 
     <!-- Page content START --->
@@ -389,29 +429,29 @@
 
                 <div class="row align-items-center justify-content-around d-none d-xl-flex image-container">
                     <div class="col-2">
-                        <img  id="ball-green" src="images/concrete_green_thumbnail.webp" alt="Полимербетон - Зелёный" >
+                        <img  id="ball-green" src="{% static 'main_app/images/concrete_green_thumbnail.webp' %}" alt="Полимербетон - Зелёный" >
                     </div>
                     <div class="col-2">
-                        <img  id="ball-yellow" src="images/concrete_yellow_thumbnail.webp" alt="Полимербетон - Жёлтый" >
+                        <img  id="ball-yellow" src="{% static 'main_app/images/concrete_yellow_thumbnail.webp' %}" alt="Полимербетон - Жёлтый" >
                     </div>
                     <div class="col-2">
-                        <img  id="ball-white" src="images/concrete_white_thumbnail.webp" alt="Полимербетон - Белый" >
+                        <img  id="ball-white" src="{% static 'main_app/images/concrete_white_thumbnail.webp' %}" alt="Полимербетон - Белый" >
                     </div>
                     <div class="col-2">
-                        <img  id="ball-grey" src="images/concrete_grey_thumbnail.webp" alt="Полимербетон - Серый" >
+                        <img  id="ball-grey" src="{% static 'main_app/images/concrete_grey_thumbnail.webp' %}" alt="Полимербетон - Серый" >
                     </div>
                     <div class="col-2">
-                        <img  id="ball-red" src="images/concrete_red_thumbnail.webp" alt="Полимербетон - Красный" >
+                        <img  id="ball-red" src="{% static 'main_app/images/concrete_red_thumbnail.webp' %}" alt="Полимербетон - Красный" >
                     </div>
                 </div>
 
                 <div class="row align-items-center justify-content-center d-lg-flex d-xl-none image-container">
-                    <img  id="ball-green" class="col-lg-2 col-3" src="images/concrete_green_thumbnail.webp" alt="Полимербетон - Зелёный" >
-                    <img  id="ball-yellow" class="col-lg-2 col-3" src="images/concrete_yellow_thumbnail.webp" alt="Полимербетон - Жёлтый" >
-                    <img  id="ball-white" class="col-lg-2 col-3" src="images/concrete_white_thumbnail.webp" alt="Полимербетон - Белый" >
+                    <img  id="ball-green" class="col-lg-2 col-3" src="{% static 'main_app/images/concrete_green_thumbnail.webp' %}" alt="Полимербетон - Зелёный" >
+                    <img  id="ball-yellow" class="col-lg-2 col-3" src="{% static 'main_app/images/concrete_yellow_thumbnail.webp' %}" alt="Полимербетон - Жёлтый" >
+                    <img  id="ball-white" class="col-lg-2 col-3" src="{% static 'main_app/images/concrete_white_thumbnail.webp' %}" alt="Полимербетон - Белый" >
                     <div class="w-100"></div>
-                    <img  id="ball-grey" class="col-lg-2 col-3" src="images/concrete_grey_thumbnail.webp" alt="Полимербетон - Серый" >
-                    <img  id="ball-red" class="col-lg-2 col-3" src="images/concrete_red_thumbnail.webp" alt="Полимербетон - Красный" >
+                    <img  id="ball-grey" class="col-lg-2 col-3" src="{% static 'main_app/images/concrete_grey_thumbnail.webp' %}" alt="Полимербетон - Серый" >
+                    <img  id="ball-red" class="col-lg-2 col-3" src="{% static 'main_app/images/concrete_red_thumbnail.webp' %}" alt="Полимербетон - Красный" >
                 </div>
 
                 <span class="row align-items-center justify-content-center hero-phrase">
@@ -438,22 +478,22 @@
 
                 <div class="image-container">
                     <div class="row align-items-center justify-content-center">
-                        <img  id="ball-white" class="col-xl-2 col-lg-3 col-md-3 col-3" src="images/concrete_white_thumbnail.webp" alt="Полимербетон - Белый" >
-                        <img  id="ball-grey" class="col-xl-2 col-lg-3 col-md-3 col-3" src="images/concrete_grey_thumbnail.webp" alt="Полимербетон - Серый" >
-                        <img  id="ball-red" class="col-xl-2 col-lg-3 col-md-3 col-3" src="images/concrete_red_thumbnail.webp" alt="Полимербетон - Красный" >
+                        <img  id="ball-white" class="col-xl-2 col-lg-3 col-md-3 col-3" src="{% static 'main_app/images/concrete_white_thumbnail.webp' %}" alt="Полимербетон - Белый" >
+                        <img  id="ball-grey" class="col-xl-2 col-lg-3 col-md-3 col-3" src="{% static 'main_app/images/concrete_grey_thumbnail.webp' %}" alt="Полимербетон - Серый" >
+                        <img  id="ball-red" class="col-xl-2 col-lg-3 col-md-3 col-3" src="{% static 'main_app/images/concrete_red_thumbnail.webp' %}" alt="Полимербетон - Красный" >
                         <div class="w-100"></div>
-                        <img  id="ball-green" class="col-xl-2 col-lg-3 col-md-3 col-3" src="images/concrete_green_thumbnail.webp" alt="Полимербетон - Зелёный" >
-                        <img  id="ball-yellow" class="col-xl-2 col-lg-3 col-md-3 col-3" src="images/concrete_yellow_thumbnail.webp" alt="Полимербетон - Жёлтый" >
+                        <img  id="ball-green" class="col-xl-2 col-lg-3 col-md-3 col-3" src="{% static 'main_app/images/concrete_green_thumbnail.webp' %}" alt="Полимербетон - Зелёный" >
+                        <img  id="ball-yellow" class="col-xl-2 col-lg-3 col-md-3 col-3" src="{% static 'main_app/images/concrete_yellow_thumbnail.webp' %}" alt="Полимербетон - Жёлтый" >
                     </div>
                 </div>
             </div>
         </section>
         <section id="Usage">
-            <img   class="d-none d-lg-inline-block" id="ball-green" src="images/concrete_green.webp" alt="Полимербетон - Зелёный" >
-            <img   class="d-none d-lg-inline-block" id="ball-yellow" src="images/concrete_yellow.webp" alt="Полимербетон - Жёлтый" >
-            <img   class="d-none d-lg-inline-block" id="ball-white" src="images/concrete_white.webp" alt="Полимербетон - Белый" >
-            <img   class="d-none d-xl-inline-block" id="ball-grey" src="images/concrete_grey.webp" alt="Полимербетон - Серый" >
-            <img   class="d-none d-xl-inline-block" id="ball-red" src="images/concrete_red.webp" alt="Полимербетон - Красный" >
+            <img   class="d-none d-lg-inline-block" id="ball-green" src="{% static 'main_app/images/concrete_green.webp' %}" alt="Полимербетон - Зелёный" >
+            <img   class="d-none d-lg-inline-block" id="ball-yellow" src="{% static 'main_app/images/concrete_yellow.webp' %}" alt="Полимербетон - Жёлтый" >
+            <img   class="d-none d-lg-inline-block" id="ball-white" src="{% static 'main_app/images/concrete_white.webp' %}" alt="Полимербетон - Белый" >
+            <img   class="d-none d-xl-inline-block" id="ball-grey" src="{% static 'main_app/images/concrete_grey.webp' %}" alt="Полимербетон - Серый" >
+            <img   class="d-none d-xl-inline-block" id="ball-red" src="{% static 'main_app/images/concrete_red.webp' %}" alt="Полимербетон - Красный" >
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <h2 class="heading">Применение</h2>
@@ -512,12 +552,12 @@
                                 <div class="image-with-gradient-border" id="example-1">
                                     <picture>
                                          <!-- Определяем изображение для маленьких экранов -->
-                                        <source srcset="images/examples/pillar_before_sm.webp" media="(max-width: 600px)">
+                                        <source srcset="{% static 'main_app/images/examples/pillar_before_sm.webp' %}" media="(max-width: 600px)">
                                         <!-- Определяем изображение для средних экранов -->
-                                        <source srcset="images/examples/pillar_before_md.webp" media="(max-width: 1200px)">
+                                        <source srcset="{% static 'main_app/images/examples/pillar_before_md.webp' %}" media="(max-width: 1200px)">
            
                                          <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
-                                        <img src="images/examples/pillar_before_lg.webp"
+                                        <img src="{% static 'main_app/images/examples/pillar_before_lg.webp' %}"
                                              alt="Пример: состояние колонны до использования смеси полимербетона." >
                                     </picture>
                                 </div>
@@ -527,12 +567,12 @@
                                 <div class="image-with-gradient-border" id="example-2">
                                     <picture>
                                         <!-- Определяем изображение для маленьких экранов -->
-                                       <source srcset="images/examples/pillar_after_sm.webp" media="(max-width: 600px)">
+                                       <source srcset="{% static 'main_app/images/examples/pillar_after_sm.webp' %}" media="(max-width: 600px)">
                                        <!-- Определяем изображение для средних экранов -->
-                                       <source srcset="images/examples/pillar_after_md.webp" media="(max-width: 1200px)">
+                                       <source srcset="{% static 'main_app/images/examples/pillar_after_md.webp' %}" media="(max-width: 1200px)">
           
                                         <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
-                                       <img src="images/examples/pillar_after_lg.webp"
+                                       <img src="{% static 'main_app/images/examples/pillar_after_lg.webp' %}"
                                             alt="Пример: состояние колонны после использования смеси полимербетона." >
                                    </picture>
                                 </div>
@@ -570,12 +610,12 @@
                                 <div class="image-with-gradient-border" id="example-3">
                                     <picture>
                                         <!-- Определяем изображение для маленьких экранов -->
-                                       <source srcset="images/examples/road_before_sm.webp" media="(max-width: 600px)">
+                                       <source srcset="{% static 'main_app/images/examples/road_before_sm.webp' %}" media="(max-width: 600px)">
                                        <!-- Определяем изображение для средних экранов -->
-                                       <source srcset="images/examples/road_before_md.webp" media="(max-width: 1200px)">
+                                       <source srcset="{% static 'main_app/images/examples/road_before_md.webp' %}" media="(max-width: 1200px)">
           
                                         <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
-                                       <img src="images/examples/road_before_lg.webp"
+                                       <img src="{% static 'main_app/images/examples/road_before_lg.webp' %}"
                                             alt="Пример: состояние дорожного полотна до использования смеси полимербетона." >
                                    </picture>
                                 </div>
@@ -585,12 +625,12 @@
                                 <div class="image-with-gradient-border" id="example-4">
                                     <picture>
                                         <!-- Определяем изображение для маленьких экранов -->
-                                       <source srcset="images/examples/road_after_sm.webp" media="(max-width: 600px)">
+                                       <source srcset="{% static 'main_app/images/examples/road_after_sm.webp' %}" media="(max-width: 600px)">
                                        <!-- Определяем изображение для средних экранов -->
-                                       <source srcset="images/examples/road_after_md.webp" media="(max-width: 1200px)">
+                                       <source srcset="{% static 'main_app/images/examples/road_after_md.webp' %}" media="(max-width: 1200px)">
           
                                         <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
-                                       <img src="images/examples/road_after_lg.webp"
+                                       <img src="{% static 'main_app/images/examples/road_after_lg.webp' %}"
                                             alt="Пример: состояние дорожного полотна после использования смеси полимербетона." >
                                    </picture>
                                 </div>
@@ -599,36 +639,6 @@
                         </div>
                     </div>
                 </div>
-
-
-                <!-- <div class="row align-items-center justify-content-center">
-                    <span class="col-12 subheading">
-                        Восстановление
-                        <br class="d-block d-sm-none d-xl-none">
-                        железобетонных колонн
-                    </span>
-                </div> -->
-
-
-                <!-- <div class="row align-items-center justify-content-center">
-                    <div class="col-12 col-sm-6 container-for-image-and-caption">
-                        <div class="image-with-gradient-border" id="example-1">
-                            <img   src="images/kolonna_do.webp"
-                                alt="Пример: состояние колонны до использования смеси полимербетона.">
-                        </div>
-                        <span class="image-caption-before">До</span>
-                    </div>
-                    <div class="col-12 col-sm-6 container-for-image-and-caption">
-                        <div class="image-with-gradient-border" id="example-2">
-                            <img   src="images/kolonna_posle.webp"
-                                alt="Пример: состояние колонны до использования смеси полимербетона.">
-                        </div>
-                        <span class="image-caption-after">После</span>
-                    </div>
-                </div> -->
-
-
-
         </section>
         <section id="Advantages">
             <div class="container">
@@ -639,7 +649,7 @@
 
                 
                 <div class="row align-items-center justify-content-center justify-content-sm-end">
-                    <img   class="col-sm-5 d-none d-sm-block" id="advantage-1-img" src="images/concrete_green.webp"
+                    <img   class="col-sm-5 d-none d-sm-block" id="advantage-1-img" src="{% static 'main_app/images/concrete_green.webp' %}"
                         alt="Полимербетон - Зелёный" >
 
                     <div class="col-12 col-sm-7 advantage" id="advantage-1">
@@ -664,14 +674,14 @@
                         <p class="advantage-extended-text">Не требует применения специальной техники и оборудования.</p>
                     </div>
 
-                    <img   class="col-sm-5 d-none d-sm-block" id="advantage-2-img" src="images/concrete_yellow.webp"
+                    <img   class="col-sm-5 d-none d-sm-block" id="advantage-2-img" src="{% static 'main_app/images/concrete_yellow.webp' %}"
                         alt="Полимербетон - Жёлтый" >
                 </div>
 
 
 
                 <div class="row align-items-center justify-content-center justify-content-sm-end">
-                    <img   class="col-sm-5 d-none d-sm-block" id="advantage-3-img" src="images/concrete_white.webp"
+                    <img   class="col-sm-5 d-none d-sm-block" id="advantage-3-img" src="{% static 'main_app/images/concrete_white.webp' %}"
                         alt="Полимербетон - Белый" >
 
                     <div class="col-12 col-sm-7 advantage" id="advantage-3">
@@ -697,14 +707,14 @@
                             60 минут после окончания работ, максимальный набор прочности в течении суток).</p>
                     </div>
 
-                    <img   class="col-sm-5 d-none d-sm-block" id="advantage-4-img" src="images/concrete_grey.webp"
+                    <img   class="col-sm-5 d-none d-sm-block" id="advantage-4-img" src="{% static 'main_app/images/concrete_grey.webp' %}"
                         alt="Полимербетон - Серый" >
                 </div>
 
 
 
                 <div class="row align-items-center justify-content-sm-center justify-content-sm-end">
-                    <img   class="col-sm-5 d-none d-sm-block" id="advantage-5-img" src="images/concrete_red.webp"
+                    <img   class="col-sm-5 d-none d-sm-block" id="advantage-5-img" src="{% static 'main_app/images/concrete_red.webp' %}"
                         alt="Полимербетон - Красный" >
 
                     <div class="col-12 col-sm-7 advantage" id="advantage-5">
@@ -731,7 +741,7 @@
                         </p>
                     </div>
 
-                    <img   class="col-sm-5 d-none d-sm-block" id="advantage-6-img" src="images/concrete_green.webp"
+                    <img   class="col-sm-5 d-none d-sm-block" id="advantage-6-img" src="{% static 'main_app/images/concrete_green.webp' %}"
                         alt="Полимербетон - Зелёный" >
                 </div>
             </div>
@@ -760,12 +770,12 @@
                         <div class="image-with-gradient-border" id="safety-doc-1">
                             <picture>
                                  <!-- Определяем изображение для маленьких экранов -->
-                                <source srcset="images/safety/safety_doc_1_sm.webp" media="(max-width: 600px)">
+                                <source srcset="{% static 'main_app/images/safety/safety_doc_1_sm.webp' %}" media="(max-width: 600px)">
                                 <!-- Определяем изображение для средних экранов -->
-                                <source srcset="images/safety/safety_doc_1_md.webp" media="(max-width: 1200px)">
+                                <source srcset="{% static 'main_app/images/safety/safety_doc_1_md.webp' %}" media="(max-width: 1200px)">
 
                                  <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
-                                <img src="images/safety/safety_doc_1_lg.webp"
+                                <img src="{% static 'main_app/images/safety/safety_doc_1_lg.webp' %}"
                                      alt="Сертификат соответствия — № 0011548" >
                             </picture>
                         </div>
@@ -774,12 +784,12 @@
                         <div class="image-with-gradient-border" id="safety-doc-2">
                             <picture>
                                  <!-- Определяем изображение для маленьких экранов -->
-                                <source srcset="images/safety/safety_doc_2_sm.webp" media="(max-width: 600px)">
+                                <source srcset="{% static 'main_app/images/safety/safety_doc_2_sm.webp' %}" media="(max-width: 600px)">
                                 <!-- Определяем изображение для средних экранов -->
-                                <source srcset="images/safety/safety_doc_2_md.webp" media="(max-width: 1200px)">
+                                <source srcset="{% static 'main_app/images/safety/safety_doc_2_md.webp' %}" media="(max-width: 1200px)">
    
                                  <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
-                                <img src="images/safety/safety_doc_2_lg.webp"
+                                <img src="{% static 'main_app/images/safety/safety_doc_2_lg.webp' %}"
                                      alt="Технические условия — ТУ 20.30.22-010-83637640-2018" >
                             </picture>
                         </div>
@@ -788,12 +798,12 @@
                         <div class="image-with-gradient-border" id="safety-doc-3">
                             <picture>
                                 <!-- Определяем изображение для маленьких экранов -->
-                               <source srcset="images/safety/safety_doc_3_sm.webp" media="(max-width: 600px)">
+                               <source srcset="{% static 'main_app/images/safety/safety_doc_3_sm.webp' %}" media="(max-width: 600px)">
                                <!-- Определяем изображение для средних экранов -->
-                               <source srcset="images/safety/safety_doc_3_md.webp" media="(max-width: 1200px)">
+                               <source srcset="{% static 'main_app/images/safety/safety_doc_3_md.webp' %}" media="(max-width: 1200px)">
   
                                 <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
-                               <img src="images/safety/safety_doc_3_lg.webp"
+                               <img src="{% static 'main_app/images/safety/safety_doc_3_lg.webp' %}"
                                     alt="Протокол испытаний (лист 1) — № 001/F-19/07/21 от 19.07.2021 года" >
                            </picture>
                         </div>
@@ -802,12 +812,12 @@
                         <div class="image-with-gradient-border" id="safety-doc-4">
                             <picture>
                                 <!-- Определяем изображение для маленьких экранов -->
-                               <source srcset="images/safety/safety_doc_4_sm.webp" media="(max-width: 600px)">
+                               <source srcset="{% static 'main_app/images/safety/safety_doc_4_sm.webp' %}" media="(max-width: 600px)">
                                <!-- Определяем изображение для средних экранов -->
-                               <source srcset="images/safety/safety_doc_4_md.webp" media="(max-width: 1200px)">
+                               <source srcset="{% static 'main_app/images/safety/safety_doc_4_md.webp' %}" media="(max-width: 1200px)">
   
                                 <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
-                               <img src="images/safety/safety_doc_4_lg.webp"
+                               <img src="{% static 'main_app/images/safety/safety_doc_4_lg.webp' %}"
                                     alt="Протокол испытаний (лист 2) — № 001/F-19/07/21 от 19.07.2021 года" >
                            </picture>
                         </div>
@@ -816,12 +826,12 @@
                         <div class="image-with-gradient-border" id="safety-doc-5">
                             <picture>
                                 <!-- Определяем изображение для маленьких экранов -->
-                               <source srcset="images/safety/safety_doc_5_sm.webp" media="(max-width: 600px)">
+                               <source srcset="{% static 'main_app/images/safety/safety_doc_5_sm.webp' %}" media="(max-width: 600px)">
                                <!-- Определяем изображение для средних экранов -->
-                               <source srcset="images/safety/safety_doc_5_md.webp" media="(max-width: 1200px)">
+                               <source srcset="{% static 'main_app/images/safety/safety_doc_5_md.webp' %}" media="(max-width: 1200px)">
   
                                 <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
-                               <img src="images/safety/safety_doc_5_lg.webp"
+                               <img src="{% static 'main_app/images/safety/safety_doc_5_lg.webp' %}"
                                     alt="Экспертное заключение (лист 1) — № 075893" >
                            </picture>
                         </div>
@@ -830,12 +840,12 @@
                         <div class="image-with-gradient-border" id="safety-doc-6">
                             <picture>
                                 <!-- Определяем изображение для маленьких экранов -->
-                               <source srcset="images/safety/safety_doc_6_sm.webp" media="(max-width: 600px)">
+                               <source srcset="{% static 'main_app/images/safety/safety_doc_6_sm.webp' %}" media="(max-width: 600px)">
                                <!-- Определяем изображение для средних экранов -->
-                               <source srcset="images/safety/safety_doc_6_md.webp" media="(max-width: 1200px)">
+                               <source srcset="{% static 'main_app/images/safety/safety_doc_6_md.webp' %}" media="(max-width: 1200px)">
   
                                 <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
-                               <img src="images/safety/safety_doc_6_lg.webp"
+                               <img src="{% static 'main_app/images/safety/safety_doc_6_lg.webp' %}"
                                     alt="Экспертное заключение (лист 2) — № 075893" >
                            </picture>
                         </div>
@@ -861,7 +871,6 @@
                 <div class="row align-items-center justify-content-around current-price-animation-container">
                     <div class="col current-price">
                         <div class="current-price-figure-animation-wrapper">
-                            <!-- <img class="current-price-figure" src="images/prices/star.svg" alt="Задний фон для текста с ценой товара"> -->
                             <svg class="current-price-figure" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 328 328">
                                 <path
                                     d="M105.194 10.8056L131.344 20.4763L150.736 0.443506L173.102 17.0899L197.353 3.33182L214.123 25.6052L241.267 19.2365L251.083 45.3324L278.922 46.869L280.988 74.6734L307.266 83.9908L301.415 111.251L324.004 127.594L310.71 152.102L327.779 174.147L308.119 193.917L318.286 219.878L293.853 233.308L296.294 261.082L269.066 267.084L263.584 294.421L235.768 292.509L222.806 317.194L196.656 307.523L177.264 327.556L154.898 310.91L130.648 324.668L113.877 302.394L86.7331 308.763L76.9171 282.667L49.0784 281.131L47.0121 253.326L20.734 244.009L26.5848 216.749L3.99612 200.405L17.29 175.898L0.220827 153.852L19.8808 134.083L9.71394 108.121L34.1473 94.6914L31.7064 66.9174L58.9337 60.9151L64.4165 33.5785L92.2319 35.4902L105.194 10.8056Z" />
@@ -871,38 +880,20 @@
                     </div>
 
                     <div class="concrete-image-orbit-animation-wrapper" id="ball-green">
-                        <img   src="images/concrete_green.webp" alt="Полимербетон - Зелёный" >
+                        <img   src="{% static 'main_app/images/concrete_green.webp' %}" alt="Полимербетон - Зелёный" >
                     </div>
                     <div class="concrete-image-orbit-animation-wrapper" id="ball-yellow">
-                        <img   src="images/concrete_yellow.webp" alt="Полимербетон - Жёлтый" >
+                        <img   src="{% static 'main_app/images/concrete_yellow.webp' %}" alt="Полимербетон - Жёлтый" >
                     </div>
                     <div class="concrete-image-orbit-animation-wrapper" id="ball-white">
-                        <img   src="images/concrete_white.webp" alt="Полимербетон - Белый" >
+                        <img   src="{% static 'main_app/images/concrete_white.webp' %}" alt="Полимербетон - Белый" >
                     </div>
                     <div class="concrete-image-orbit-animation-wrapper" id="ball-grey">
-                        <img   src="images/concrete_grey.webp" alt="Полимербетон - Серый" >
+                        <img   src="{% static 'main_app/images/concrete_grey.webp' %}" alt="Полимербетон - Серый" >
                     </div>
                     <div class="concrete-image-orbit-animation-wrapper" id="ball-red">
-                        <img   src="images/concrete_red.webp" alt="Полимербетон - Красный" >
+                        <img   src="{% static 'main_app/images/concrete_red.webp' %}" alt="Полимербетон - Красный" >
                     </div>
-
-
-
-                    <!-- <div class="orbit" id="ball-green">
-                        <img   src="images/concrete_green_old.png" alt="Полимербетон - Зелёный">
-                    </div>
-                    <div class="orbit" id="ball-yellow">
-                        <img   src="images/concrete_yellow_old.png" alt="Полимербетон - Жёлтый">
-                    </div>
-                    <div class="orbit" id="ball-white">
-                        <img   src="images/concrete_white_old.png" alt="Полимербетон - Белый">
-                    </div>
-                    <div class="orbit" id="ball-grey">
-                        <img   src="images/concrete_grey_old.png" alt="Полимербетон - Серый">
-                    </div>
-                    <div class="orbit" id="ball-red">
-                        <img   src="images/concrete_red_old.png" alt="Полимербетон - Красный">
-                    </div> -->
                 </div>
             </div>
         </section>
@@ -921,11 +912,11 @@
                 <div class="row align-items-center justify-content-center">
                     <div class="col-6 d-none d-sm-block">
                         <div class="image-container">
-                            <img   src="images/concrete_green.webp" id="ball-green" alt="Полимербетон - Зелёный" >
-                            <img   src="images/concrete_yellow.webp" id="ball-yellow" alt="Полимербетон - Жёлтый" >
-                            <img   src="images/concrete_white.webp" id="ball-white" alt="Полимербетон - Белый" >
-                            <img   src="images/concrete_grey.webp" id="ball-grey" alt="Полимербетон - Серый" >
-                            <img   src="images/concrete_red.webp" id="ball-red" alt="Полимербетон - Красный" >
+                            <img   src="{% static 'main_app/images/concrete_green.webp' %}" id="ball-green" alt="Полимербетон - Зелёный" >
+                            <img   src="{% static 'main_app/images/concrete_yellow.webp' %}" id="ball-yellow" alt="Полимербетон - Жёлтый" >
+                            <img   src="{% static 'main_app/images/concrete_white.webp' %}" id="ball-white" alt="Полимербетон - Белый" >
+                            <img   src="{% static 'main_app/images/concrete_grey.webp' %}" id="ball-grey" alt="Полимербетон - Серый" >
+                            <img   src="{% static 'main_app/images/concrete_red.webp' %}" id="ball-red" alt="Полимербетон - Красный" >
                         </div>
                     </div>
                     <form class="col-12 col-sm-6">
@@ -948,7 +939,7 @@
                                 <small>
                                     Я ознакомлен и согласен с
                                     <br class="d-block d-xl-none">
-                                    <a aria-label="Переход на страницу с политикой конфиденциальности" href="privacy.html" target="_self">
+                                    <a aria-label="Переход на страницу с политикой конфиденциальности" href="{% url 'privacy' %}" target="_self">
                                         Политикой конфиденциальности
                                     </a>
                                 </small>
@@ -1037,7 +1028,7 @@
                     </a>
                     <div class="d-none d-sm-block">
                         <h3>polimerbeton-vrn.ru</h3>
-                        <p><a aria-label="Переход на страницу с политикой конфиденциальности" href="privacy.html" target="_self">Политика конфиденциальности</a></p>
+                        <p><a aria-label="Переход на страницу с политикой конфиденциальности" href="{% url 'privacy' %}" target="_self">Политика конфиденциальности</a></p>
                     </div>
                 </div>
                 <div class="col-12 col-sm-4 col-xxl-3">
@@ -1076,7 +1067,7 @@
                 </div>
                 <div class="col-sm-5 col-12 d-sm-block d-sm-none logo-and-privacy-policy" id="second-privacy-policy">
                     <h3>polimerbeton-vrn.ru</h3>
-                    <p><a aria-label="Переход на страницу с политикой конфиденциальности" href="privacy.html" target="_self">Политика конфиденциальности</a></p>
+                    <p><a aria-label="Переход на страницу с политикой конфиденциальности" href="{% url 'privacy' %}" target="_self">Политика конфиденциальности</a></p>
                 </div>
             </div>
             <div class="row align-items-center justify-content-center">
@@ -1098,33 +1089,36 @@
 
     <div class="d-none" id="Scripts-Container">
          <!-- My non-async Scripts --->
-         <!-- <script src="scripts/prevent_paste.js"></script> -->
+         <!-- <script src="{% static 'main_app/' %}scripts/prevent_paste.js"></script> -->
 
         <!-- PopperJS JS scripts --->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous" async defer></script>
         
         <!-- Bootstrap JS scripts --->
-        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" async defer></script>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous" async></script> -->
+        <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" async defer></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous" async defer></script>
 
         <!-- jQuery JS scripts --->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" defer></script>
 
         <!-- Inputmask JS scripts Vanilla --->
-        <script src="node_modules/Inputmask/dist/jquery.inputmask.min.js" defer></script>
+        <script src="{% static 'node_modules/Inputmask/dist/jquery.inputmask.min.js' %}" defer></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js" integrity="sha512-F5Ul1uuyFlGnIT1dk2c4kB4DBdi5wnBJjVhL7gQlGh46Xn0VhvD8kgxLtjdZ5YN83gybk/aASUAlpdoWUjRR3g==" crossorigin="anonymous" referrerpolicy="no-referrer" async defer></script> -->
 
         <!-- My JS scripts --->
-        <script src="scripts/update_hero_container_margin_top.js" defer></script>
+        {% compress js %}
+            <script src="{% static 'main_app/scripts/update_hero_container_margin_top.js' %}" defer></script>
 
-        <script src="scripts/update_offcanvas_padding_top.js" defer></script>
-        <script src="scripts/update_offcanvas_body_height.js" defer></script>
+            <script src="{% static 'main_app/scripts/update_offcanvas_padding_top.js' %}" defer></script>
+            <script src="{% static 'main_app/scripts/update_offcanvas_body_height.js' %}" defer></script>
 
-        <script src="scripts/change_offcanvas_scroll_state.js" defer></script>
-        <script src="scripts/change_menu_button_state.js" defer></script>
+            <script src="{% static 'main_app/scripts/change_offcanvas_scroll_state.js' %}" defer></script>
+            <script src="{% static 'main_app/scripts/change_menu_button_state.js' %}" defer></script>
 
-        <script src="scripts/inputmask_feedback_form.js" defer></script>
+            <script src="{% static 'main_app/scripts/inputmask_feedback_form.js' %}" defer></script>
 
-        <script src="scripts/cookies_consent_banner_manager.js" defer></script>
+            <script src="{% static 'main_app/scripts/cookies_consent_banner_manager.js' %}" defer></script>
+        {% endcompress %}
     </div>
 
     <div id="Cookies-Consent-Banner">
@@ -1139,7 +1133,7 @@
             </div>
 
             <div class="cookies-consent-data">
-                <p>Мы используем аналитические Cookie от Google и Яндекс. Это помогает нам сделать наш сайт более удобным для Вас. <a href="privacy.html#Cookies" target="_self">Узнать больше об этом...</a></p>
+                <p>Мы используем аналитические Cookie от Google и Яндекс. Это помогает нам сделать наш сайт более удобным для Вас. <a href="{% url 'privacy' %}#Cookies" target="_self">Узнать больше об этом...</a></p>
             </div>
 
             <div class="cookies-consent-buttons">
@@ -1154,7 +1148,21 @@
     </div>
 
     <div class="d-none" id="Lazy-Load-Images">
-        <script src="scripts/hero_image_loader.js"></script>
+        {% compress js %}
+            <script>
+                // Объявляем глобальные переменные с URL
+                window.heroImages = {
+                    xs: "{% static 'main_app/images/hero/hero_bc_xs.webp' %}",
+                    sm: "{% static 'main_app/images/hero/hero_bc_sm.webp' %}",
+                    md: "{% static 'main_app/images/hero/hero_bc_md.webp' %}",
+                    lg: "{% static 'main_app/images/hero/hero_bc_lg.webp' %}",
+                    xl: "{% static 'main_app/images/hero/hero_bc_xl.webp' %}",
+                    xxl: "{% static 'main_app/images/hero/hero_bc_xxl.webp' %}"
+                };
+            </script>
+
+            <script src="{% static 'main_app/scripts/hero_image_loader.js' %}"></script>
+        {% endcompress %}
     </div>
 </body>
 

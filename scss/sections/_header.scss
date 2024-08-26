@@ -24,7 +24,7 @@
         top: 0;
         width: 100%;
 
-        overflow: hidden;
+        overflow: clip;
 
         // padding: 5rem 0 3.75rem 0;
         padding: var(--my-header-padding-value) 0;
@@ -668,7 +668,7 @@
             // max-height: 95vh;
             // overflow-y: auto;
 
-            overflow: hidden;
+            overflow: clip;
 
             padding: 2rem 0;
 
@@ -680,7 +680,7 @@
     
             .nav-menu-for-site-sections {
                 overflow-y: auto;
-                overflow-x: hidden;
+                overflow-x: clip;
 
                 height: 100%;
                 flex-grow: 1;

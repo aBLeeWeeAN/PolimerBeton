@@ -2,6 +2,9 @@ const cookie_box = document.getElementById('Cookies-Consent-Banner');
 const buttons = document.querySelectorAll(".cookie-button");
 const analytics_container = document.getElementById('Third-Party-Cookies-Container');
 
+// Изначально отключаем анимацию
+cookie_box.classList.add('no-transition');
+
 
 
 /**========================================================================
@@ -98,27 +101,36 @@ const execute_codes = () => {
         inject_analytics_scripts();
         return;
     } else if (analytical_cookies_value === 'false') {
+        // Если куки отклонены, не делать ничего
         return;
     } else {
+        // если куки истекли, подчистить оставшиеся, если остались
         if (has_yandex_cookies()) {
             delete_yandex_cookies();
         }
 
+        // Если куки нет, включить transition и показать баннер
+        cookie_box.classList.remove('no-transition');
         cookie_box.classList.add('show');
 
         buttons.forEach(button => {
             button.addEventListener('click', function() {
                 cookie_box.classList.remove('show');
+
+                // Ждём завершения анимации и отключаем transition, наверно это даже кастыль :/ ... Но мне надоело
+                setTimeout(() => {
+                    cookie_box.classList.add('no-transition');
+                }, 300); // 300 миллисекунд, что соответствует 0.3 секунды из transition в css
     
                 if (button.id === 'cookie-accept-btn') {
-                    document.cookie = "analytical_cookies_accepted=true; max-age=" + 60 * 60 * 24 * 30;
+                    document.cookie = "analytical_cookies_accepted=true; max-age=" + 60 * 60 * 24 * 30 + "; path=/";
     
                     inject_analytics_scripts(); // Включаем аналитику
                     return;
                 }
     
                 // decline button pressed
-                document.cookie = "analytical_cookies_accepted=false; max-age=" + 60 * 60 * 24 * 30;
+                document.cookie = "analytical_cookies_accepted=false; max-age=" + 60 * 60 * 24 * 30 + "; path=/";
             });
         });
     }

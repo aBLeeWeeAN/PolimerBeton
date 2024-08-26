@@ -13,10 +13,10 @@
     backdrop-filter: blur(1.143rem);
 
     position: relative;
-    overflow: hidden;
+    overflow: clip;
 
     #footer-bc {
-        z-index: -10;
+        z-index: -30;
 
         position: absolute;
         width: 100%;
@@ -31,7 +31,7 @@
 
         // display: none;
 
-        z-index: -5;
+        z-index: -10;
 
         position: absolute;
         width: 20000px;
@@ -74,7 +74,7 @@
 
         // display: none;
 
-        z-index: -6;
+        z-index: -20;
 
         position: absolute;
         width: 20000px;

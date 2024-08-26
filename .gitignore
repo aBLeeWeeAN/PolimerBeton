@@ -145,4 +145,8 @@ GitHub.sublime-settings
 
 # Ignore all other modules (repositories)
 # node_modules/
+alpha_old/
 old/
+
+# Ignore compiled static files folder
+staticfiles/

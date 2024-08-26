@@ -3,25 +3,24 @@
  *========================================================================**/
 
  html {
+    scroll-behavior: smooth;
+
+    // overflow: hidden;
+    overflow-x: clip !important;
+    // overflow-y: clip !important;
+    // overflow-anchor: none;
+
+    margin: 0 auto;
+
     width: 100%;
     height: auto;
 
     font-size: var(--base-font-size);
-    margin: 0 auto;
-
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    
-
-    // overflow-anchor: none;
-
-    // @include media-breakpoint-down(xs) {
-    //     min-width: 300px;
-    // }
 }
 
 .no-scroll {
-    overflow: hidden;
+    // overflow: hidden !important;
+    overflow: clip !important;
 }
 
 
@@ -31,17 +30,19 @@
  *========================================================================**/
 
  body {
+    @include transition-all(background-color, color, fill, opacity);
+
+    z-index: -100;
+
     scroll-behavior: smooth;
-    overflow-x: hidden;
+
+    overflow: clip !important;
+    overflow-x: clip !important;
+    overflow-y: clip !important;
+    // overflow-anchor: none;
     
     margin: 0 auto;
     padding: 0 !important;
-    
-    z-index: -10;
 
     background-color: var(--finally-bc-color);
-
-    overflow: hidden;
-
-    @include transition-all(background-color, color, fill, opacity);
 }

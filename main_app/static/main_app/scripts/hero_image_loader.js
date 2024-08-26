@@ -3,22 +3,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const picture_html = `
         <picture>
             <!-- Определяем изображение для самых маленьких экранов -->
-            <source type="image/webp" srcset="images/hero/hero_bc_xs.webp" media="(max-width: 320px)" sizes="(max-width: 320px) 100vw">
+            <source type="image/webp" srcset="${window.heroImages.xs}" media="(max-width: 320px)" sizes="(max-width: 320px) 100vw">
             
             <!-- Определяем изображение для маленьких экранов -->
-            <source type="image/webp" srcset="images/hero/hero_bc_sm.webp" media="(max-width: 480px)" sizes="(max-width: 480px) 100vw">
+            <source type="image/webp" srcset="${window.heroImages.sm}" media="(max-width: 480px)" sizes="(max-width: 480px) 100vw">
             
             <!-- Определяем изображение для средних экранов -->
-            <source type="image/webp" srcset="images/hero/hero_bc_md.webp" media="(max-width: 640px)" sizes="(max-width: 640px) 100vw">
+            <source type="image/webp" srcset="${window.heroImages.md}" media="(max-width: 640px)" sizes="(max-width: 640px) 100vw">
             
             <!-- Определяем изображение для больших экранов -->
-            <source type="image/webp" srcset="images/hero/hero_bc_lg.webp" media="(max-width: 800px)" sizes="(max-width: 800px) 100vw">
+            <source type="image/webp" srcset="${window.heroImages.lg}" media="(max-width: 800px)" sizes="(max-width: 800px) 100vw">
             
             <!-- Определяем изображение для очень больших экранов -->
-            <source type="image/webp" srcset="images/hero/hero_bc_xl.webp" media="(max-width: 1024px)" sizes="(max-width: 1024px) 100vw">
+            <source type="image/webp" srcset="${window.heroImages.xl}" media="(max-width: 1024px)" sizes="(max-width: 1024px) 100vw">
             
             <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
-            <img src="images/hero/hero_bc_xxl.webp" 
+            <img src="${window.heroImages.xxl}" 
                  width="1280" 
                  height="760" 
                  role="presentation"
