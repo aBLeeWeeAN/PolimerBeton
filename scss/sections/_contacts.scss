@@ -1,0 +1,123 @@
+/**========================================================================
+ **                            CONTACTS
+ *========================================================================**/
+
+ #Contacts {
+    // margin: 10rem 0 10rem 0;
+
+    .phone-and-email, .messengers {
+        text-align: center;
+
+        .contact-header {
+            @include transition-all(color);
+
+            text-align: center;
+
+            // margin: 5rem 0 1.25rem 0;
+            margin: 0 0 var(--my-text-h3-margin-bottom) 0;
+    
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: var(--my-text-h3-font-weight);
+            font-style: normal;
+    
+            font-size: var(--my-text-h3-font-size);
+            line-height: var(--my-text-h3-line-height);
+            letter-spacing: var(--my-text-h3-letter-spacing);
+    
+            color: var(--text-color-87);
+
+            @include media-breakpoint-down(sm) {
+                margin-bottom: .35rem;
+                // line-height: 150%;
+                // font-size: 1.15rem;
+
+                // letter-spacing: .14em;
+
+                // text-align: center;
+
+                // margin: 0 0 .75rem 0;
+            }
+        }
+    
+        .contact {
+            // @include transition-all(color);
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+            
+            display: inline-block;
+            // flex-direction: column;
+
+            margin: 0;
+    
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+    
+            // font-size: 2rem;
+            font-size: var(--my-text-paragraph-font-size);
+            line-height: 200%;
+            letter-spacing: var(--my-text-paragraph-letter-spacing);
+    
+            color: var(--text-color-87);
+    
+            text-decoration: none;
+
+            &:hover {
+                color: var(--text-color-100);
+                transform: scale(1.015);
+
+                @include media-breakpoint-down(sm) {
+                    transform: none;
+                }
+            }
+
+            &:active {
+                color: var(--primary-color);
+                transform: scale(0.995);
+            }
+
+            // &:hover {
+            //     @include transition-all(text-decoration, color);
+
+            //     color: var(--primary-color--hover);
+            //     // background-color: var(--primary-color);
+
+            //     font-weight: 500;
+            //     text-decoration: underline;
+            // }
+
+            // &:active {
+            //     @include transition-all(color);
+            //     color: var(--primary-color--active);
+            // }
+    
+            a {
+                @extend .contact;
+    
+                strong {
+                    @extend .contact;
+
+                    text-align: center;
+
+                    @include media-breakpoint-down(sm) {
+                        text-align: center;
+                    }
+                }
+            }
+
+            @include media-breakpoint-down(sm) {
+                letter-spacing: 0.05em;
+                font-weight: 300;
+            }
+        }
+    }
+
+    .messengers {
+        margin-top: var(--my-text-subheading-margin-bottom);
+
+        // @include media-breakpoint-down(sm) {
+        //     margin-top: 1rem;
+        // }
+    }
+}

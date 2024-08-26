@@ -142,3 +142,7 @@ GitHub.sublime-settings
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+# Ignore all other modules (repositories)
+# node_modules/
+old/

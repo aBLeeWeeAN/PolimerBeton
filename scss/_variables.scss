@@ -1,0 +1,239 @@
+/**========================================================================
+ **                            CSS Variables
+ *========================================================================**/
+
+:root {
+    --base-font-size: 21px;
+
+    // 21px
+    --my-text-paragraph-font-size: 1rem;
+    --my-text-paragraph-font-weight: 400;
+
+    --my-text-paragraph-letter-spacing: 0.14em;
+
+    --my-text-paragraph-margin-top: .75em;
+
+    --my-text-paragraph-line-height: 1.5em;
+    --my-text-paragraph-text-indent: 4.75em;
+
+    // h1
+    // 105px
+    --my-text-h1-font-size: 5rem;
+    --my-text-h1-font-weight: 400;
+
+    --my-text-h1-letter-spacing: 0.22em;
+    --my-text-h1-line-height: 1em;
+
+    // headings 1.96 * paragraph font-size
+    // 48px
+    --my-text-heading-font-size: 1.96rem;
+    --my-text-heading-font-weight: 400;
+
+    --my-text-heading-letter-spacing: 0.22em;
+    --my-text-heading-margin-bottom: 1.3em;
+    --my-text-heading-line-height: 1.5em;
+
+    // subheadings 1.9 * paragraph font-size
+    // 40px
+    --my-text-subheading-font-size: 1.25rem;
+    --my-text-subheading-font-weight: 400;
+
+    --my-text-subheading-letter-spacing: 0.14em;
+    --my-text-subheading-margin-bottom: 1.8em;
+    --my-text-subheading-line-height: 1.5em;
+
+    // caption after images
+    --my-text-caption-font-size: 1rem;
+    --my-text-caption-letter-spacing: 0.12em;
+
+    --my-text-caption-margin-top: 0.75em;
+    --my-text-caption-margin-bottom: 0;
+
+    --my-text-caption-line-height: 1.5em;
+
+    // footer h3 text
+    --my-text-h3-font-size: 1.25rem;
+    --my-text-h3-font-weight: 600;
+
+    --my-text-h3-letter-spacing: 0.17em;
+
+    --my-text-h3-margin-bottom: 1em;
+
+    --my-text-h3-line-height: 100%;
+
+    // footer small paragraph text
+    --my-text-small-paragraph-font-size: .8rem;
+    --my-text-small-paragraph-font-weight: 300;
+
+    --my-text-small-paragraph-letter-spacing: 0.17em;
+
+    --my-text-small-paragraph-margin-bottom: .75em;
+
+    --my-text-small-paragraph-line-height: 100%;
+
+    // header
+    --my-header-padding-value: .5rem;
+    --my-header-child-non-first-margin-top: 1.25rem;
+
+    // header logo size (font-size)
+    --my-header-logo-size: .8rem;
+    --my-header-button-size: .8rem;
+
+    // offcanvas
+    --my-offcanvas-icon-size: .8rem;
+    // --my-header-button-left-icons-padding-value: .4rem;
+    // --my-header-button-right-icons-padding-value: .4rem;
+
+    // footer
+    --my-footer-padding-value: 5rem;
+    --my-footer-child-non-first-margin-top: 1.25rem;
+
+    --my-footer-logo-size: 1.25rem;
+    --my-footer-button-size: .8rem;
+
+    // sections
+    --my-section-padding-value: 5rem;
+    --my-section-child-non-first-margin-top: 2.75rem;
+
+    // hero section
+    --my-section-hero-padding-value: 7.5rem;
+    --my-section-hero-child-non-first-margin-top: 5.5rem;
+
+    // --my-image-caption-margin-bottom: 0;
+
+    @include media-breakpoint-down(xxl) {
+        --base-font-size: 18px;
+    }
+
+    @include media-breakpoint-down(xl) {
+        --base-font-size: 18px;
+
+        --my-text-h1-font-size: 4rem;
+    }
+
+    @include media-breakpoint-down(lg) {
+        --base-font-size: 16px;
+
+        --my-text-h1-font-size: 3.5rem;
+
+
+        --my-footer-logo-size: 1rem;
+
+        // --my-section-padding-value: 3.5rem;
+    }
+
+    @include media-breakpoint-down(md) {
+        --base-font-size: 15px;
+
+        --my-text-h1-font-size: 2.8rem;
+        
+        --my-header-logo-size: .6rem;
+        --my-footer-logo-size: .8rem;
+
+        // --my-section-padding-value: 3.5rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+        // --base-font-size: 13px;
+        --base-font-size: 15px;
+    
+        // paragraph
+        --my-text-paragraph-letter-spacing: .03em;
+    
+        --my-text-paragraph-margin-top: 1.25em;
+    
+        --my-text-paragraph-line-height: 1.62em;
+        --my-text-paragraph-text-indent: 2.75em;
+
+        // h1 text
+        --my-text-h1-font-size: 1.8rem;
+        --my-text-h1-font-weight: 400;
+
+        --my-text-h1-letter-spacing: .16em;
+        --my-text-h1-line-height: 1em;
+
+        // headings 1.96 * paragraph font-size
+        // 48px
+        --my-text-heading-font-size: 1.62rem;
+        --my-text-heading-font-weight: 600;
+
+        --my-text-heading-letter-spacing: 0.15em;
+        --my-text-heading-margin-bottom: .8em;
+        --my-text-heading-line-height: 1.5em;
+
+        // subheaing
+        --my-text-subheading-font-size: 1.15rem;
+        --my-text-subheading-font-weight: 400;
+
+        --my-text-subheading-letter-spacing: .09em;
+        --my-text-subheading-margin-bottom: .8em;
+        --my-text-subheading-line-height: 1.5em;
+
+        // caption
+        --my-text-caption-font-size: 1rem;
+        --my-text-caption-letter-spacing: .09em;
+
+        --my-text-caption-margin-top: .35em;
+        --my-text-caption-margin-bottom: .8em;
+
+        --my-text-caption-line-height: 1.5em;
+
+        // footer h3 text
+        --my-text-h3-font-size: 1.15rem;
+        --my-text-h3-font-weight: 600;
+
+        --my-text-h3-letter-spacing: 0.14em;
+
+        --my-text-h3-margin-bottom: 1.15em;
+
+        --my-text-h3-line-height: 1.5em;
+
+        // footer small paragraph text
+        --my-text-small-paragraph-font-size: 1rem;
+        --my-text-small-paragraph-font-weight: 300;
+
+        --my-text-small-paragraph-letter-spacing: 0.12em;
+
+        --my-text-small-paragraph-margin-bottom: 1.15em;
+
+        --my-text-small-paragraph-line-height: 1.5em;
+
+        // header
+        --my-header-logo-size: .62rem;
+        --my-header-button-size: .8rem;
+
+        // footer
+        --my-footer-padding-value: 4rem;
+        --my-footer-child-non-first-margin-top: 3.5rem;
+
+        --my-footer-logo-size: .82rem;
+        --my-footer-button-size: .8rem;
+
+        // sections
+        --my-section-padding-value: 4rem;
+        --my-section-child-non-first-margin-top: 1.296rem;
+        // --my-section-child-non-first-margin-top: 10rem;
+
+        // hero section
+        --my-section-hero-padding-value: 5rem;
+        --my-section-hero-child-non-first-margin-top: 3.5rem;
+    }
+
+    @include media-breakpoint-down(xs) {
+        --base-font-size: 13px;
+
+        --my-section-padding-value: 3.5rem;
+
+        --my-section-hero-padding-value: 4rem;
+        --my-footer-padding-value: 3.5rem;
+    }
+}
+
+
+
+/**========================================================================
+ **                            SASS Variables
+ *========================================================================**/
+
+$transition-duration: .3s;
+$transition-easing: ease;

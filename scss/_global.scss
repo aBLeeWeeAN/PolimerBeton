@@ -1,0 +1,305 @@
+/**========================================================================
+ **                            GLOBAL STYLES
+ *========================================================================**/
+
+section {
+    padding: var(--my-section-padding-value) 0;
+
+    &:not(:first-child) {
+        padding: var(--my-section-padding-value) 0 0 0;
+    }
+
+    &:last-child {
+        padding: var(--my-section-padding-value) 0;
+    }
+
+    // @include media-breakpoint-down(xl) {
+    //     padding: 6.5rem 0;
+    
+    //     &:not(:first-child) {
+    //         padding: 6.5rem 0 0 0;
+    //     }
+    
+    //     &:last-child {
+    //         padding: 6.5rem 0;
+    //     }
+    // }
+
+    // @include media-breakpoint-down(lg) {
+    //     padding: 7.5rem 0;
+    
+    //     &:not(:first-child) {
+    //         padding: 7.5rem 0 0 0;
+    //     }
+    
+    //     &:last-child {
+    //         padding: 7.5rem 0;
+    //     }
+    // }
+
+    // @include media-breakpoint-down(sm) {
+    //     padding: 4.5rem 0;
+    
+    //     &:not(:first-child) {
+    //         padding: 4.5rem 0 0 0;
+    //     }
+    
+    //     &:last-child {
+    //         padding: 4.5rem 0;
+    //     }
+    // }
+}
+
+.container {
+    z-index: 10;
+
+    @include media-breakpoint-down(sm) {
+        padding: 0 22px;
+    }
+}
+
+.heading {
+    @include transition-all(color);
+
+    margin-bottom: var(--my-text-heading-margin-bottom);
+
+    text-align: center;
+
+    // font-family: "Russo One", sans-serif;
+    // font-weight: 400;
+    // font-style: normal;
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: var(--my-text-heading-font-weight);
+    font-style: normal;
+
+    color: var(--text-color-87);
+
+    text-transform: uppercase;
+
+    // font-size: 4rem;
+    font-size: var(--my-text-heading-font-size);
+    letter-spacing: var(--my-text-heading-letter-spacing);
+    line-height: var(--my-text-heading-line-height);
+
+    // @include media-breakpoint-down(xl) {
+    //     font-size: 2.75rem;
+    // }
+
+    // @include media-breakpoint-down(lg) {
+    //     font-size: 2.5rem;
+    // }
+
+    // @include media-breakpoint-down(sm) {
+    //     font-size: 1.3125rem;
+    // }
+    // @include media-breakpoint-down(sm) {
+    //     text-align: left;
+    // }
+}
+
+.subheading {
+    @include transition-all(color);
+
+    // margin: 7.5rem 0 5rem 0;
+    margin-bottom: var(--my-text-subheading-margin-bottom);
+
+    // font-family: "Raleway", sans-serif;
+    // font-optical-sizing: auto;
+    // font-weight: 600;
+    // font-style: normal;
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: var(--my-text-subheading-font-weight);
+    font-style: normal;
+
+    font-size: var(--my-text-subheading-font-size);
+    letter-spacing: var(--my-text-subheading-letter-spacing);
+    text-align: center;
+
+    line-height: var(--my-text-subheading-line-height);
+
+    color: var(--text-color-87);
+
+    text-transform: none;
+
+    font-variant-numeric: lining-nums;
+
+    // @include media-breakpoint-down(xl) {
+    //     font-size: 1.5rem;
+    //     margin: 0 0 2.5rem 0;
+    // }
+
+    // @include media-breakpoint-down(lg) {
+    //     margin: 0 0 2rem 0;
+    // }
+
+    // @include media-breakpoint-down(sm) {
+    //     margin: 0 0 1.5rem 0;
+
+    //     font-size: 1.0625rem;
+    // }
+    // @include media-breakpoint-down(sm) {
+    //     text-align: left;
+    // }
+}
+
+.caption {
+    @include transition-all(color);
+    
+    margin-top: var(--my-text-caption-margin-top);
+    margin-bottom: var(--my-text-caption-margin-bottom);
+
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+    // font-family: "Montserrat", sans-serif;
+    // font-optical-sizing: auto;
+    // font-weight: 400;
+    // font-style: normal;
+    
+    font-size: var(--my-text-caption-font-size);
+
+    letter-spacing: var(--my-text-caption-letter-spacing);
+    line-height: var(--my-text-caption-line-height);
+
+    color: var(--text-color-87);
+
+    text-align: center;
+    text-transform: none;
+}
+
+.image-with-gradient-border {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+
+    position: relative;
+    display: inline-block;
+
+    width: 100%;
+    height: auto;
+
+    // width: 37.5rem;
+    // height: auto;
+
+    border-radius: .8rem;
+
+    padding: .35rem;
+    background-clip: padding-box;
+
+    box-shadow: .142rem .19rem .476rem 0px var(--box-shadow-color);
+
+    & img {
+        display: block;
+        border-radius: .5rem;
+
+        width: 100%;
+        height: auto;
+
+        object-fit: cover;
+    }
+
+    &:hover {
+        transform: scale(1.025);
+
+        @include media-breakpoint-down(sm) {
+            transform: none;
+        }
+    }
+
+    &:active {
+        transform: scale(0.975);
+    }
+
+    // @include media-breakpoint-down(sm) {
+    //     padding: .3rem;
+    // }
+}
+
+.deffered-image {
+    display: none;
+    visibility: hidden;
+}
+
+
+// .tooltip-container {
+//     position: relative;
+//     display: inline-block;
+//     cursor: pointer;
+
+//     .tooltip-text {
+//         display: block;
+//         background-color: #333;
+//         color: #fff;
+//         padding: 8px;
+//         z-index: 1;
+//         white-space: nowrap;
+//         opacity: 0;
+//         border-radius: 0;
+//         transition: opacity 3s, border-radius 5s;
+
+//         &::before {
+//             content: '';
+//             position: absolute;
+//             top: 100%;
+//             left: 50%;
+//             margin-left: -5px;
+//             border-width: 5px;
+//             border-style: solid;
+//             border-color: #333 transparent transparent transparent;
+//         }
+//     }
+
+//     &:hover {
+//         .tooltip-text {
+//             opacity: 1;
+//             border-radius: 50%;
+//         }
+//     }
+// }
+
+// .tooltip-container {
+//     position: relative;
+//     display: inline-block;
+
+//     .tooltip-text {
+//         visibility: hidden;
+//         width: 140px;
+//         background-color: #555;
+//         color: #fff;
+//         text-align: center;
+//         border-radius: 6px;
+//         padding: 5px 0;
+//         position: fixed; /* Используем fixed для избегания влияния overflow */
+//         z-index: 1000; /* Высокий z-index чтобы перекрыть другие элементы */
+//         bottom: auto;
+//         left: 50%;
+//         transform: translateX(-50%);
+//         opacity: 0;
+//         transition: opacity 0.3s;
+        
+//         &::after {
+//             content: "";
+//             position: absolute;
+//             top: 100%; 
+//             left: 50%;
+//             transform: translateX(-50%);
+//             border-width: 5px;
+//             border-style: solid;
+//             border-color: #555 transparent transparent transparent;
+//         }
+//     }
+
+//     &:hover {
+//         .tooltip-text {
+//             visibility: visible;
+//             opacity: 1;
+//             /* Дополнительно можно рассчитать и задать позицию tooltip с учетом прокрутки */
+//         }
+//     }
+// }
+

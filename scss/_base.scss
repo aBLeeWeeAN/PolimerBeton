@@ -1,0 +1,47 @@
+/**========================================================================
+ **                            HTML DOCUMENT BASE SETTINGS
+ *========================================================================**/
+
+ html {
+    width: 100%;
+    height: auto;
+
+    font-size: var(--base-font-size);
+    margin: 0 auto;
+
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    
+
+    // overflow-anchor: none;
+
+    // @include media-breakpoint-down(xs) {
+    //     min-width: 300px;
+    // }
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+
+
+/**========================================================================
+ **                            BODY
+ *========================================================================**/
+
+ body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    
+    margin: 0 auto;
+    padding: 0 !important;
+    
+    z-index: -10;
+
+    background-color: var(--finally-bc-color);
+
+    overflow: hidden;
+
+    @include transition-all(background-color, color, fill, opacity);
+}
