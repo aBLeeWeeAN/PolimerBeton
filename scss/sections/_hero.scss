@@ -29,6 +29,8 @@
     }
 
     #hero-bc-img {
+        will-change: background-color, box-shadow;
+
         z-index: -2;
 
         position: absolute;
@@ -136,6 +138,8 @@
     }
 
     .hero-phrase {
+        will-change: background-position;
+
         --bg-size: 200%;
 
         margin-top: var(--my-section-hero-child-non-first-margin-top);
@@ -198,6 +202,8 @@
     }
 
     #ball-green {
+        will-change: transform;
+
         animation: hero_gravity_move_1 10s ease-in-out infinite;
         animation-delay: 0;
 
@@ -208,6 +214,8 @@
     }
 
     #ball-yellow {
+        will-change: transform;
+
         animation: hero_gravity_move_2 10s ease-in-out infinite;
         animation-delay: 0;
 
@@ -218,6 +226,8 @@
     }
 
     #ball-white {
+        will-change: transform;
+
         animation: hero_gravity_move_1 10s ease-in-out infinite;
         animation-delay: 0;
 
@@ -227,6 +237,8 @@
     }
 
     #ball-grey {
+        will-change: transform;
+
         animation: hero_gravity_move_2 10s ease-in-out infinite;
         animation-delay: 0;
 
@@ -236,6 +248,8 @@
     }
 
     #ball-red {
+        will-change: transform;
+        
         animation: hero_gravity_move_1 10s ease-in-out infinite;
         animation-delay: 0;
 

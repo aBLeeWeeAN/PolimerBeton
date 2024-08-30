@@ -10,6 +10,7 @@
 
     .fixed-top-navbar {
         @include transition-all(background-color, transform, box-shadow);
+        will-change: background-color, transform, box-shadow;
 
         // transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
@@ -31,6 +32,7 @@
 
         #bc-square-1 {
             @include transition-all(background-color);
+            will-change: background-color;
 
             z-index: -5;
     
@@ -69,6 +71,7 @@
     
         #bc-square-2 {
             @include transition-all(background-color);
+            will-change: background-color;
 
             z-index: -6;
     
@@ -121,6 +124,7 @@
         
                 .logo {     
                     @include transition-all(color, transform);
+                    will-change: color, transform;
 
                     font-size: var(--my-header-logo-size);
                 
@@ -152,6 +156,7 @@
 
                     .logo-icon {
                         @include transition-all(fill, transform);
+                        will-change: fill, transform;
 
                         fill-rule: evenodd;
                         clip-rule: evenodd;
@@ -270,6 +275,7 @@
             
                 .my-button-desktop {
                     @include transition-all(background-color, fill);
+                    will-change: background-color, fill;
 
                     display: flex;
             
@@ -330,6 +336,9 @@
 
                     svg {
                         @include transition-all(display, opacity);
+                        transition: transform 0.3s ease-in-out;
+
+                        will-change: display, opacity, transform;
 
                         fill: inherit;
 
@@ -338,13 +347,13 @@
                         width: 1.35em;
                         height: auto;
 
-                        transition: transform 0.3s ease-in-out;
                         transform-origin: center center;
                     }
                 }
             
                 .separator {   
                     @include transition-all(background-color);
+                    will-change: background-color;
 
                     height: 2em;
                     width: 1px;
@@ -363,6 +372,7 @@
     
             .separator {   
                 @include transition-all(background-color);
+                will-change: background-color;
 
                 font-size: var(--my-header-button-size);
     
@@ -484,6 +494,7 @@
                 /* hamburger button */
                 .hamburger {
                     @include transition-all(fill);
+                    will-change: fill;
 
                     aspect-ratio: 1 / 1;
 
@@ -503,11 +514,19 @@
 
                 .line {
                     transition: y 100ms ease-in 100ms, rotate 100ms ease-in, opacity 0ms 100ms;
+                    // transition: transform 100ms ease-in, opacity 0ms 100ms;
                     transform-origin: center;
+
+                    will-change: transform, opacity;
+                    // will-change: y, rotate, opacity;
                 }
 
                 &[aria-expanded="true"] .line {
                     transition: y 100ms ease-in, rotate 100ms ease-in 100ms, opacity 0ms 100ms;
+                    // transition: transform 100ms ease-in, opacity 0ms 100ms;
+
+                    will-change: transform, opacity;
+                    // will-change: y, rotate, opacity;
                 }
 
                 &[aria-expanded="true"] :is(.top, .bottom) {
@@ -532,6 +551,7 @@
             
                 a {
                     @include transition-all(color);
+                    will-change: color;
 
                     display: block;
     
@@ -576,6 +596,7 @@
 
     .offcanvas {
         @include transition-all(background-color, transform);
+        will-change: background-color, transform, box-shadow, opacity;
 
         padding-top: 4.59952rem;
 
@@ -603,6 +624,8 @@
         }
     
         .offcanvas-backdrop {
+            opacity: 0;
+            visibility: hidden;
             display: none; // Скрыть backdrop
         }
     
@@ -691,6 +714,7 @@
             
                 a {
                     transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+                    will-change: color, transform;
 
                     display: block;
     
@@ -745,6 +769,7 @@
                 .menu-item {
                     .menu__decorative-circle {
                         @include transition-all(color);
+                        will-change: color;
 
                         &.left {
                             margin-left: -.75rem;
@@ -911,6 +936,7 @@
                 
                     .my-button-mobile {
                         @include transition-all(background-color, fill, width, height);
+                        will-change: background-color, fill, width, height;
 
                         display: flex;
                 
@@ -1001,6 +1027,9 @@
 
                         svg {
                             @include transition-all(display, opacity, width, height);
+                            transition: transform 0.3s ease-in-out;
+
+                            will-change: display, opacity, width, height, transform;
 
                             fill: inherit;
 
@@ -1009,7 +1038,6 @@
                             width: 2em;
                             height: auto;
 
-                            transition: transform 0.3s ease-in-out;
                             transform-origin: center center;
 
                             // &:hover {
@@ -1025,6 +1053,7 @@
 
                 .separator {        
                     @include transition-all(background-color);
+                    will-change: background-color;
 
                     height: 1px;
                     width: 100%;

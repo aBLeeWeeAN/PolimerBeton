@@ -26,6 +26,7 @@
         margin-bottom: var(--my-text-heading-margin-bottom);
     
         @include transition-all(color);
+        will-change: color;
         
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
@@ -165,6 +166,7 @@
     
                     &::marker {
                         @include transition-all(color);
+                        will-change: color;
     
                         content: "— ";
     
@@ -305,6 +307,7 @@
         margin-bottom: var(--my-text-heading-margin-bottom);
     
         @include transition-all(color);
+        will-change: color;
         
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
@@ -407,6 +410,7 @@
     
                     &::marker {
                         @include transition-all(color);
+                        will-change: color;
     
                         content: "— ";
     

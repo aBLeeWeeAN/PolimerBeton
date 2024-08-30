@@ -3,6 +3,8 @@
  *========================================================================**/
 
 #Cookies-Consent-Banner {
+    will-change: background-color, box-shadow, right;
+
     z-index: 2000;
     // color: var(--text-color-87);
 
@@ -43,6 +45,7 @@
 
     @include media-breakpoint-down(sm) {
         transition: bottom 0.3s ease;
+        will-change: background-color, box-shadow, bottom;
 
         max-width: 100%;
 
@@ -181,7 +184,9 @@
             background-color: var(--primary-color);
 
             cursor: pointer;
+
             transition: all 0.3s ease;
+            will-change: all;
 
             &:hover {
                 color: var(--text-color-alt-100);
@@ -259,5 +264,6 @@
 
     &.no-transition {
         transition: none !important;
+        will-change: none !important;
     }
 }

@@ -30,7 +30,11 @@
  *========================================================================**/
 
  body {
-    @include transition-all(background-color, color, fill, opacity);
+    // @include transition-all(background-color, color, fill, opacity);
+    // will-change: background-color, color, fill, opacity;
+
+    @include transition-all(background-color, color, fill);
+    will-change: background-color, color, fill;
 
     z-index: -100;
 

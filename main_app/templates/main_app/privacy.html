@@ -55,13 +55,13 @@
     <!-- Add Google Fonts --->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=Montserrat:ital,wght@0,100..900;1,100..900&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Pattaya&family=Raleway:ital,wght@0,100..900;1,100..900&family=Russo+One&family=Tenor+Sans&display=swap" rel="stylesheet" media="screen">
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=Montserrat:ital,wght@0,100..900;1,100..900&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Pattaya&family=Raleway:ital,wght@0,100..900;1,100..900&family=Russo+One&family=Tenor+Sans&display=swap" rel="stylesheet" media="print" onload="this.media='screen'">
 
     <!-- BoxIcons CSS --->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' media="print" onload="this.media='screen'">
 
     <!-- Page CSS --->
-    {% compress css %}
+    {% compress css file privacy %}
         <link id="privacy-css" rel="stylesheet" href="{% static 'main_app/css/privacy.css' %}" media="screen">
     {% endcompress %}
 </head>
@@ -69,20 +69,34 @@
 <body>
     <div class="d-none" id="Scripts-Container-Preload">
         <!-- Houdini Squircle JS scripts --->
-        <script src="https://unpkg.com/css-paint-polyfill"></script>
-        {% compress js %}
-            <script>
-                (async function () {
-                    if (!("paintWorklet" in CSS)) {
-                        await import("css-paint-polyfill");
+        <script>
+            // Function to dynamically load a script
+            function loadScript(url) {
+                return new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = url;
+                    script.onload = () => resolve();
+                    script.onerror = () => reject(new Error(`Failed to load script: ${url}`));
+                    document.head.appendChild(script);
+                });
+            }
+    
+            (async function() {
+                try {
+                    // Check if Paint Worklet is supported
+                    if (!('paintWorklet' in CSS)) {
+                        // Load CSS Paint Polyfill if Paint Worklet is not supported
+                        await loadScript('https://unpkg.com/css-paint-polyfill');
                     }
-
-                    CSS.paintWorklet.addModule(
-                        `https://www.unpkg.com/css-houdini-squircle/squircle.min.js`
-                    );
-                })();
-            </script>
-        {% endcompress %}
+    
+                    // Add the Paint Worklet module
+                    await CSS.paintWorklet.addModule('https://www.unpkg.com/css-houdini-squircle/squircle.min.js');
+                    console.log('Paint Worklet module added successfully');
+                } catch (error) {
+                    console.error('Error loading scripts:', error);
+                }
+            })();
+        </script>
 
         <!-- My JS scripts --->
         {% compress js %}

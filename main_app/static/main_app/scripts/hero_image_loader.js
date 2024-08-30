@@ -19,9 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
             
             <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
             <img src="${window.heroImages.xxl}" 
-                 width="1280" 
-                 height="760" 
-                 role="presentation"
+                 width="3959" 
+                 height="2297"
                  decoding="async"
                  fetchpriority="high"
                  alt="Задний фон блока Hero"

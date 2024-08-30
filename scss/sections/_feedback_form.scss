@@ -23,6 +23,8 @@
         }
 
         & #ball-green {
+            will-change: transform;
+
             z-index: -1;
 
             width: 76.22%;
@@ -49,6 +51,8 @@
         }
 
         & #ball-yellow {
+            will-change: transform;
+
             z-index: -2;
 
             width: 45.73%;
@@ -73,6 +77,8 @@
         }
 
         & #ball-white {
+            will-change: transform;
+
             width: 33.54%;
 
             top: 2.44%;
@@ -95,6 +101,8 @@
         }
 
         & #ball-grey {
+            will-change: transform;
+
             width: 54.27%;
 
             top: 46.34%;
@@ -117,6 +125,8 @@
         }
 
         & #ball-red {
+            will-change: transform;
+            
             width: 34.76%;
 
             top: 63.41%;
@@ -152,6 +162,7 @@
 
         .form-field {
             @include transition-all(background-color);
+            will-change: background-color;
 
             display: flex;
             flex-direction: row;
@@ -227,6 +238,7 @@
         input[type="text"],
         input[type="tel"] {
             @include transition-all(background-color, color);
+            will-change: background-color, color;
 
             width: 100%;
             height: auto;
@@ -257,6 +269,7 @@
 
             &::placeholder {
                 @include transition-all(color);
+                will-change: color;
 
                 color: var(--text-color-60);
             }
@@ -268,7 +281,6 @@
 
             &:focus::placeholder {
                 @include transition-all(color);
-
                 color: var(--text-color-87);
             }
 
@@ -328,6 +340,7 @@
 
         #feedback-form-submit-button {
             @include transition-all(background-color, color, transform);
+            will-change: background-color, color, transform;
             // font-size: inherit;
 
             margin-top: 1.25rem;
@@ -362,8 +375,6 @@
             text-transform: none;
 
             &:hover {
-                @include transition-all(background-color, color, transform);
-
                 color: var(--text-color-alt-100);
                 background-color: var(--primary-color--hover);
 
@@ -375,8 +386,6 @@
             }
 
             &:active {
-                @include transition-all(background-color, transform);
-
                 background-color: var(--primary-color--active);
 
                 transform: scale(0.975);
@@ -442,6 +451,7 @@
 
         .checkbox-privacy-policy {
             @include transition-all(color);
+            will-change: color;
             // margin-top: .6rem;
 
             display: inline-flex;
@@ -465,6 +475,7 @@
 
             input[type="checkbox"] {
                 @include transition-all(background-color, border-color);
+                will-change: background-color, border-color;
 
                 display: inline-block;
 
@@ -488,12 +499,10 @@
                 margin-right: .75rem;
 
                 &:hover {
-                    @include transition-all(background-color, border-color);
                     border: 0.125rem solid var(--primary-color--hover);
                 }
     
                 &:active {
-                    @include transition-all(background-color, border-color);
                     border: 0.125rem solid var(--primary-color--active);
                 }
 
@@ -510,8 +519,6 @@
             }
 
             input[type="checkbox"]:checked {
-                @include transition-all(background-color);
-
                 background-color: var(--primary-color);
                 border: none;
             }
@@ -530,6 +537,7 @@
 
             input[type="checkbox"]:checked::before {
                 @include transition-all(border-color);
+                will-change: border-color;
 
                 // opacity: 1; // Видимый элемент
 
@@ -567,21 +575,18 @@
             }
 
             a {
-                @include transition-all(color);
+                @include transition-all(text-decoration, color);
+                will-change: text-decoration, color;
                 
                 color: var(--primary-color);
                 text-decoration: none;
 
-                &:hover {
-                    @include transition-all(text-decoration, color);
-    
+                &:hover {    
                     color: var(--primary-color--hover);
                     text-decoration: underline;
                 }
     
-                &:active {
-                    @include transition-all(text-decoration, color);
-    
+                &:active {    
                     color: var(--primary-color--active);
                     text-decoration: underline;
                 }

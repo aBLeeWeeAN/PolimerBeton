@@ -26,7 +26,7 @@ offcanvas.addEventListener('hidden.bs.offcanvas', function(event) {
 });
 
 // Событие при показе offcanvas
-offcanvas.addEventListener('shown.bs.offcanvas', function(event) {
+offcanvas.addEventListener('show.bs.offcanvas', function(event) {
     offcanvasIsShown = true;
     updateScrollState();
 });

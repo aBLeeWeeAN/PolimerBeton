@@ -154,3 +154,14 @@ $btn-close-white-filter:     invert(1) grayscale(100%) brightness(200%);
 @import "../node_modules/bootstrap/scss/utilities/api";
 
 // 8. Add additional custom code here
+// Enable font-display for Boxicons fonts [Lighthouse recommends]
+@font-face {
+    font-family: 'Boxicons';
+    src: url('https://unpkg.com/boxicons@2.1.4/fonts/boxicons.eot');
+    src: url('https://unpkg.com/boxicons@2.1.4/fonts/boxicons.eot?#iefix') format('embedded-opentype'),
+         url('https://unpkg.com/boxicons@2.1.4/fonts/boxicons.woff2') format('woff2'),
+         url('https://unpkg.com/boxicons@2.1.4/fonts/boxicons.woff') format('woff'),
+         url('https://unpkg.com/boxicons@2.1.4/fonts/boxicons.ttf') format('truetype'),
+         url('https://unpkg.com/boxicons@2.1.4/fonts/boxicons.svg#boxicons') format('svg');
+    font-display: swap;
+  }

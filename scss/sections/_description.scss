@@ -8,6 +8,7 @@
 
     #bc-decorative-circle {
         // @include transition-all(background);
+        will-change: transform;
 
         z-index: -40;
 
@@ -114,6 +115,7 @@
 
     p {
         @include transition-all(color);
+        will-change: color;
         
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
@@ -192,26 +194,36 @@
     }
 
     #ball-green {
+        will-change: transform;
+
         animation: description_gravity_move_2 8s ease-in-out infinite;
         animation-delay: 0;
     }
 
     #ball-yellow {
+        will-change: transform;
+
         animation: description_gravity_move_2 10s ease-in-out infinite;
         animation-delay: 0;
     }
 
     #ball-white {
+        will-change: transform;
+
         animation: description_gravity_move_1 8s ease-in-out infinite;
         animation-delay: 0;
     }
 
     #ball-grey {
+        will-change: transform;
+
         animation: description_gravity_move_2 6s ease-in-out infinite;
         animation-delay: 0;
     }
 
     #ball-red {
+        will-change: transform;
+        
         animation: description_gravity_move_1 10s ease-in-out infinite;
         animation-delay: 0;
     }

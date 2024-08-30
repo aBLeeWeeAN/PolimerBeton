@@ -10,6 +10,7 @@
             cursor: pointer;
 
             @include transition-all(background-color, color, transform);
+            will-change: background-color, color, transform, box-shadow;
 
             &:not(:first-child) {
                 margin-top: var(--my-text-paragraph-margin-top);
@@ -74,6 +75,7 @@
             }
     
             @include media-breakpoint-down(sm) {
+                will-change: color;
                 // word-wrap: break-word;
                 // overflow-wrap: break-word;
     
@@ -136,6 +138,8 @@
     }
 
     #ball-green {
+        will-change: transform;
+
         width: 33.75rem;
 
         transform: translate(55%, -120%);
@@ -172,11 +176,14 @@
         }
 
         @include media-breakpoint-down(sm) {
+            will-change: none;
             animation: none;
         }
     }
 
     #ball-red {
+        will-change: transform;
+
         width: 18rem;
 
         transform: translate(180%, -62.5%);
@@ -197,11 +204,14 @@
         animation-delay: -.5s;
 
         @include media-breakpoint-down(sm) {
+            will-change: none;
             animation: none;
         }
     }
 
     #ball-white {
+        will-change: transform;
+
         z-index: -1;
 
         width: 10.5rem;
@@ -258,11 +268,14 @@
         }
 
         @include media-breakpoint-down(sm) {
+            will-change: none;
             animation: none;
         }
     }
 
     #ball-yellow {
+        will-change: transform;
+
         width: 22rem;
 
         transform: translate(65%, -33%);
@@ -315,11 +328,14 @@
         }
 
         @include media-breakpoint-down(sm) {
+            will-change: none;
             animation: none;
         }
     }
 
     #ball-grey {
+        will-change: transform;
+
         z-index: -5;
         
         width: 32.5rem;
@@ -343,6 +359,7 @@
     }
 
     @include media-breakpoint-down(sm) {
+        will-change: transform;
         animation: none;
     }
 }

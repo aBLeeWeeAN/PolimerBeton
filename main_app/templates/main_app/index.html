@@ -55,66 +55,113 @@
     <!-- Add Google Fonts --->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=Montserrat:ital,wght@0,100..900;1,100..900&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Pattaya&family=Raleway:ital,wght@0,100..900;1,100..900&family=Russo+One&family=Tenor+Sans&display=swap" rel="stylesheet" media="screen">
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=Montserrat:ital,wght@0,100..900;1,100..900&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Pattaya&family=Raleway:ital,wght@0,100..900;1,100..900&family=Russo+One&family=Tenor+Sans&display=swap" rel="stylesheet" media="print" onload="this.media='screen'">
 
     <!-- BoxIcons CSS --->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' media="print" onload="this.media='screen'">
 
     <!-- Page CSS --->
-    {% compress css %}
+    {% compress css file index %}
         <link id="index-css" rel="stylesheet" href="{% static 'main_app/css/index.css' %}" media="screen">
     {% endcompress %}
 </head>
 
 <body>
     <div class="d-none" id="Scripts-Container-Preload">
+        <!-- My fast JS script --->
+        <!-- Решение проблемы Render Blocking Resources от Lighthouse для основного CSS файла страницы [index.css] --->
+        <!-- <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Найдите все элементы <link> на странице
+                var links = document.querySelectorAll('link[rel="stylesheet"]');
+    
+                // Итерируйте по всем найденным элементам <link>
+                links.forEach(function(link) {
+                    // Получите href атрибут
+                    var href = link.getAttribute('href');
+                    
+                    // Проверьте, начинается ли href с '/static/CACHE/css/index.'
+                    if (href.startsWith('/static/CACHE/css/index.')) {
+                        // Измените атрибут media на 'screen'
+                        link.setAttribute('media', 'screen');
+                    }
+                });
+            });
+        </script> -->
+
         <!-- Houdini Squircle JS scripts --->
-        <script src="https://unpkg.com/css-paint-polyfill"></script>
-        {% compress js %}
-            <script>
-                (async function () {
-                    if (!("paintWorklet" in CSS)) {
-                        await import("css-paint-polyfill");
+        <script>
+            // Function to dynamically load a script
+            function loadScript(url) {
+                return new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = url;
+                    script.onload = () => resolve();
+                    script.onerror = () => reject(new Error(`Failed to load script: ${url}`));
+                    document.head.appendChild(script);
+                });
+            }
+    
+            (async function() {
+                try {
+                    // Check if Paint Worklet is supported
+                    if (!('paintWorklet' in CSS)) {
+                        // Load CSS Paint Polyfill if Paint Worklet is not supported
+                        await loadScript('https://unpkg.com/css-paint-polyfill');
                     }
+    
+                    // Add the Paint Worklet module
+                    await CSS.paintWorklet.addModule('https://www.unpkg.com/css-houdini-squircle/squircle.min.js');
+                    console.log('Paint Worklet module added successfully');
+                } catch (error) {
+                    console.error('Error loading scripts:', error);
+                }
+            })();
+        </script>
+        <!-- <script src="https://unpkg.com/css-paint-polyfill"></script>
+        <script>
+            (async function () {
+                if (!("paintWorklet" in CSS)) {
+                    await import("css-paint-polyfill");
+                }
 
-                    CSS.paintWorklet.addModule(
-                        `https://www.unpkg.com/css-houdini-squircle/squircle.min.js`
-                    );
-                })();
-            </script>
-        {% endcompress %}
+                CSS.paintWorklet.addModule(
+                    `https://www.unpkg.com/css-houdini-squircle/squircle.min.js`
+                );
+            })();
+        </script> -->
 
-        <!-- My JS scripts --->
+        <!-- My JS scripts --->        
+        <script>
+            // Глобальные переменные для фавиконов и мета-тегов
+            window.faviconPaths = {
+                light: {
+                    appleTouchIcon: "{% static 'main_app/favicons/apple-touch-icon.png' %}?v=7",
+                    favicon32x32: "{% static 'main_app/favicons/favicon-32x32.png' %}?v=7",
+                    favicon194x194: "{% static 'main_app/favicons/favicon-194x194.png' %}?v=7",
+                    androidChrome192x192: "{% static 'main_app/favicons/android-chrome-192x192.png' %}?v=7",
+                    favicon16x16: "{% static 'main_app/favicons/favicon-16x16.png' %}?v=7",
+                    safariPinnedTab: "{% static 'main_app/favicons/safari-pinned-tab.svg' %}?v=7",
+                    faviconIco: "{% static 'main_app/favicons/favicon.ico' %}?v=7",
+                    siteWebmanifest: "{% static 'main_app/favicons/site.webmanifest' %}?v=7",
+                    mstile144x144: "{% static 'main_app/favicons/mstile-144x144.png' %}?v=7",
+                    browserConfig: "{% static 'main_app/favicons/browserconfig.xml' %}?v=7"
+                },
+                dark: {
+                    appleTouchIcon: "{% static 'main_app/favicons/dark/apple-touch-icon.png' %}?v=7",
+                    favicon32x32: "{% static 'main_app/favicons/dark/favicon-32x32.png' %}?v=7",
+                    favicon194x194: "{% static 'main_app/favicons/dark/favicon-194x194.png' %}?v=7",
+                    androidChrome192x192: "{% static 'main_app/favicons/dark/android-chrome-192x192.png' %}?v=7",
+                    favicon16x16: "{% static 'main_app/favicons/dark/favicon-16x16.png' %}?v=7",
+                    safariPinnedTab: "{% static 'main_app/favicons/dark/safari-pinned-tab.svg' %}?v=7",
+                    faviconIco: "{% static 'main_app/favicons/dark/favicon.ico' %}?v=7",
+                    siteWebmanifest: "{% static 'main_app/favicons/dark/site.webmanifest' %}?v=7",
+                    mstile144x144: "{% static 'main_app/favicons/dark/mstile-144x144.png' %}?v=7",
+                    browserConfig: "{% static 'main_app/favicons/dark/browserconfig.xml' %}?v=7"
+                }
+            };
+        </script>
         {% compress js %}
-            <script>
-                // Глобальные переменные для фавиконов и мета-тегов
-                window.faviconPaths = {
-                    light: {
-                        appleTouchIcon: "{% static 'main_app/favicons/apple-touch-icon.png' %}?v=7",
-                        favicon32x32: "{% static 'main_app/favicons/favicon-32x32.png' %}?v=7",
-                        favicon194x194: "{% static 'main_app/favicons/favicon-194x194.png' %}?v=7",
-                        androidChrome192x192: "{% static 'main_app/favicons/android-chrome-192x192.png' %}?v=7",
-                        favicon16x16: "{% static 'main_app/favicons/favicon-16x16.png' %}?v=7",
-                        safariPinnedTab: "{% static 'main_app/favicons/safari-pinned-tab.svg' %}?v=7",
-                        faviconIco: "{% static 'main_app/favicons/favicon.ico' %}?v=7",
-                        siteWebmanifest: "{% static 'main_app/favicons/site.webmanifest' %}?v=7",
-                        mstile144x144: "{% static 'main_app/favicons/mstile-144x144.png' %}?v=7",
-                        browserConfig: "{% static 'main_app/favicons/browserconfig.xml' %}?v=7"
-                    },
-                    dark: {
-                        appleTouchIcon: "{% static 'main_app/favicons/dark/apple-touch-icon.png' %}?v=7",
-                        favicon32x32: "{% static 'main_app/favicons/dark/favicon-32x32.png' %}?v=7",
-                        favicon194x194: "{% static 'main_app/favicons/dark/favicon-194x194.png' %}?v=7",
-                        androidChrome192x192: "{% static 'main_app/favicons/dark/android-chrome-192x192.png' %}?v=7",
-                        favicon16x16: "{% static 'main_app/favicons/dark/favicon-16x16.png' %}?v=7",
-                        safariPinnedTab: "{% static 'main_app/favicons/dark/safari-pinned-tab.svg' %}?v=7",
-                        faviconIco: "{% static 'main_app/favicons/dark/favicon.ico' %}?v=7",
-                        siteWebmanifest: "{% static 'main_app/favicons/dark/site.webmanifest' %}?v=7",
-                        mstile144x144: "{% static 'main_app/favicons/dark/mstile-144x144.png' %}?v=7",
-                        browserConfig: "{% static 'main_app/favicons/dark/browserconfig.xml' %}?v=7"
-                    }
-                };
-            </script>
             <script src="{% static 'main_app/scripts/change_favicon.js' %}" async></script>
             
             <script src="{% static 'main_app/scripts/change_color_scheme.js' %}" defer></script>

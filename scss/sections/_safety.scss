@@ -20,6 +20,8 @@
 
             &#safety-doc-1,
             &#safety-doc-5 {
+                will-change: background-position;
+
                 /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff9800+0,673ab7+100;orange_to_purple */
                 // background: rgb(255, 152, 0);
                 background: linear-gradient(135deg, var(--secondary-color--tone-500) 0%, var(--primary-color--tone-500) 100%);
@@ -48,6 +50,8 @@
         
             &#safety-doc-2,
             &#safety-doc-6 {
+                will-change: background-position;
+
                 /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#673ab7+0,ff9800+100 */
                 // background: rgb(103, 58, 183);
                 background: linear-gradient(45deg, var(--primary-color--tone-500) 0%, var(--secondary-color--tone-500) 100%);
@@ -75,6 +79,8 @@
             }
         
             &#safety-doc-3 {
+                will-change: background-position;
+
                 /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff9800+0,673ab7+100;orange_to_purple */
                 // background: rgb(255, 152, 0);
                 background: linear-gradient(45deg, var(--secondary-color--tone-500) 0%, var(--primary-color--tone-500) 100%);
@@ -102,6 +108,8 @@
             }
         
             &#safety-doc-4 {
+                will-change: background-position;
+
                 /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#673ab7+0,ff9800+100;purple_to_orange */
                 // background: rgb(103, 58, 183);
                 background: linear-gradient(135deg, var(--primary-color--tone-500) 0%, var(--secondary-color--tone-500) 100%);
@@ -175,6 +183,8 @@
     }
 
     #bc-decorative-circle {
+        will-change: transform;
+
         z-index: -60;
         // z-index: 3000;
 
@@ -292,6 +302,8 @@
         }
 
         @include media-breakpoint-down (sm) {
+            will-change: none;
+
             display: none;
             animation: none;
         }

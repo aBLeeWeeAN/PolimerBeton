@@ -28,7 +28,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'compressor', # Сжатие CSS и JS
+    # django extensions
+    'htmlmin',              # сжатие html
+    'compressor',           # сжатие CSS и JS
+
+    # my apps
     'main_app',
 ]
 
@@ -40,6 +44,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # 'django.middleware.gzip.GZipMiddleware',
+
+    # django extensions mixins
+    'htmlmin.middleware.MarkRequestMiddleware',
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+
+    # my middleware mixins
+    'main_app.middleware.cache_control_middleware.CacheControlMiddleware'
+
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -121,6 +135,22 @@ STATICFILES_DIRS = [
 ]
 
 
+# Настройки htmlmin
+HTML_MINIFY = True
+
+HTMLMIN = {
+    'remove_comments': True,
+    'remove_empty_space': True,
+    'remove_optional_attribute_quotes': False,
+    'remove_empty_tags': True,
+    'collapse_whitespace': True,
+    'minify_js': True,
+    'minify_css': True,
+    'ignore': ['.no-minify'],
+    'preprocessors': ['myapp.utils.preprocessor_function'],
+}
+
+
 # Настройки django-compressor
 COMPRESS_ROOT = STATIC_ROOT
 COMPRESS_URL = STATIC_URL
@@ -145,6 +175,8 @@ COMPRESS_JS_FILTERS = [
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+
+    # other finders
     'compressor.finders.CompressorFinder',
 ]
 

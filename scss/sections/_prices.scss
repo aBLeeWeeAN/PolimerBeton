@@ -23,6 +23,8 @@
             // height: $my-current-price-block-size;
 
             .current-price-figure-animation-wrapper {
+                will-change: transform;
+
                 width: 100%;
                 height: 100%;
 
@@ -45,6 +47,7 @@
 
                 .current-price-figure {
                     @include transition-all(fill);
+                    will-change: fill, transform;
 
                     width: 100%;
                     height: 100%;
@@ -68,6 +71,7 @@
 
             .current-price-text {
                 @include transition-all(color);
+                will-change: color, transform;
                 
                 z-index: 1;
 
@@ -145,6 +149,7 @@
         }
 
         #ball-green {
+            will-change: transform;
             animation: rotate-clockwise 10s infinite linear;
 
             @keyframes rotate-clockwise {
@@ -158,6 +163,7 @@
             }
 
             img {
+                will-change: transform;
                 animation: ball-rotate-counter-clockwise-0 10s infinite linear;
 
                 @keyframes ball-rotate-counter-clockwise-0 {
@@ -173,6 +179,7 @@
         }
 
         #ball-yellow {
+            will-change: transform;
             animation: rotate-clockwise-72 10s infinite linear;
 
             @keyframes rotate-clockwise-72 {
@@ -186,6 +193,7 @@
             }
 
             img {
+                will-change: transform;
                 animation: ball-rotate-counter-clockwise-72 10s infinite linear;
 
                 @keyframes ball-rotate-counter-clockwise-72 {
@@ -201,6 +209,7 @@
         }
 
         #ball-white {
+            will-change: transform;
             animation: rotate-clockwise-144 10s infinite linear;
 
             @keyframes rotate-clockwise-144 {
@@ -214,6 +223,7 @@
             }
 
             img {
+                will-change: transform;
                 animation: ball-rotate-counter-clockwise-144 10s infinite linear;
 
                 @keyframes ball-rotate-counter-clockwise-144 {
@@ -229,6 +239,7 @@
         }
 
         #ball-grey {
+            will-change: transform;
             animation: rotate-clockwise-216 10s infinite linear;
 
             @keyframes rotate-clockwise-216 {
@@ -242,6 +253,7 @@
             }
 
             img {
+                will-change: transform;
                 animation: ball-rotate-counter-clockwise-216 10s infinite linear;
 
                 @keyframes ball-rotate-counter-clockwise-216 {
@@ -257,6 +269,7 @@
         }
 
         #ball-red {
+            will-change: transform;
             animation: rotate-clockwise-288 10s infinite linear;
 
             @keyframes rotate-clockwise-288 {
@@ -270,6 +283,7 @@
             }
 
             img {
+                will-change: transform;
                 animation: ball-rotate-counter-clockwise-288 10s infinite linear;
 
                 @keyframes ball-rotate-counter-clockwise-288 {

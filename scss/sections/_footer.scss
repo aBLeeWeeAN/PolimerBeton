@@ -9,6 +9,8 @@
     // box-shadow: 0 -10px 12px rgba(0, 0, 0, 0.1);
     // backdrop-filter: blur(24px);
 
+    will-change: box-shadow;
+
     box-shadow: 0 -0.238rem .571rem var(--box-shadow-color);
     backdrop-filter: blur(1.143rem);
 
@@ -28,6 +30,7 @@
 
     #bc-square-3 {
         @include transition-all(background-color);
+        will-change: background-color, transform;
 
         // display: none;
 
@@ -71,6 +74,7 @@
 
     #bc-square-4 {
         @include transition-all(background-color);
+        will-change: background-color, transform;
 
         // display: none;
 
@@ -114,6 +118,7 @@
 
     h3 {
         @include transition-all(color, transform);
+        will-change: color, transform;
 
         margin-bottom: var(--my-text-h3-margin-bottom);
 
@@ -148,10 +153,13 @@
 
     p, li {
         transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        will-change: color, transform;
+
         transform-origin: center left;
 
         a {
             @include transition-all(color);
+            will-change: color;
     
             margin: 0;
             // padding: 0;
@@ -226,6 +234,7 @@
 
             .logo {
                 @include transition-all(color, transform);
+                will-change: color, transform;
 
                 font-size: var(--my-footer-logo-size);
             
@@ -257,6 +266,7 @@
             
                 .logo-icon {
                     @include transition-all(fill, transform);
+                    will-change: fill, transform;
 
                     fill-rule: evenodd;
                     clip-rule: evenodd;
@@ -394,6 +404,7 @@
 
     .rounded-hr {
         @include transition-all(border-color);
+        will-change: border-color;
 
         border: none;
         border-top: 0.0625rem solid var(--text-color-87);
@@ -415,6 +426,7 @@
 
         small {
             @include transition-all(color);
+            will-change: color;
             
             font-family: "Montserrat", sans-serif;
             font-optical-sizing: auto;

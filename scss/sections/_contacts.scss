@@ -10,6 +10,7 @@
 
         .contact-header {
             @include transition-all(color);
+            will-change: color;
 
             text-align: center;
 
@@ -43,6 +44,7 @@
         .contact {
             // @include transition-all(color);
             transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+            will-change: color, transform;
             
             display: inline-block;
             // flex-direction: column;

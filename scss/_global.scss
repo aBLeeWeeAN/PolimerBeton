@@ -59,7 +59,10 @@ section {
 }
 
 .heading {
+    z-index: 1;
+
     @include transition-all(color);
+    will-change: color;
 
     margin-bottom: var(--my-text-heading-margin-bottom);
 
@@ -101,6 +104,7 @@ section {
 
 .subheading {
     @include transition-all(color);
+    will-change: color;
 
     // margin: 7.5rem 0 5rem 0;
     margin-bottom: var(--my-text-subheading-margin-bottom);
@@ -148,6 +152,7 @@ section {
 
 .caption {
     @include transition-all(color);
+    will-change: color;
     
     margin-top: var(--my-text-caption-margin-top);
     margin-bottom: var(--my-text-caption-margin-bottom);
@@ -175,7 +180,9 @@ section {
 
 .image-with-gradient-border {
     cursor: pointer;
+
     transition: transform 0.3s ease-in-out;
+    will-change: transform, box-shadow;
 
     position: relative;
     display: inline-block;

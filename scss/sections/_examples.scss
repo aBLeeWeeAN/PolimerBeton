@@ -65,6 +65,7 @@
             //     visibility: hidden;
             // }
     
+            will-change: background-position;
             animation: gradient-animation-ex-1 10s ease-in-out infinite;
     
             @keyframes gradient-animation-ex-1 {
@@ -92,6 +93,7 @@
             //     visibility: hidden;
             // }
     
+            will-change: background-position;
             animation: gradient-animation-ex-2 10s ease-in-out infinite;
     
             @keyframes gradient-animation-ex-2 {
@@ -119,6 +121,7 @@
             //     visibility: hidden;
             // }
     
+            will-change: background-position;
             animation: gradient-animation-ex-3 10s ease-in-out infinite;
     
             @keyframes gradient-animation-ex-3 {
@@ -146,6 +149,7 @@
             //     visibility: hidden;
             // }
     
+            will-change: background-position;
             animation: gradient-animation-ex-4 10s ease-in-out infinite;
     
             @keyframes gradient-animation-ex-4 {
@@ -164,6 +168,8 @@
     }
 
     #bc-decorative-circle {
+        will-change: transform;
+
         z-index: -50;
 
         position: absolute;
