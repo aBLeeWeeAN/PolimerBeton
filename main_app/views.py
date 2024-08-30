@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
-from .forms import FeedbackForm  # Импортируйте форму, которую вы создали
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from .forms import FeedbackForm
 
 # from htmlmin.decorators import minified_response
 
@@ -9,8 +12,26 @@ def index(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
-            # Здесь можно обработать данные формы
-            # Например, сохранить их в базу данных или отправить на email
+            # Получаем данные формы
+            client_name = form.cleaned_data['client_name']
+            client_phone = form.cleaned_data['client_phone']
+            
+            # Составляем сообщение
+            subject = 'Новое сообщение с сайта Polimerbeton-vrn.ru'
+            from_email = 'tidoff-studio@yandex.ru'
+            recipient_list = ['tidoff-studio@yandex.ru']
+            
+            # Генерация HTML-сообщения
+            html_message = render_to_string('email_service/email_message.html', {
+                'client_name': client_name,
+                'client_phone': client_phone,
+            })
+            plain_message = strip_tags(html_message)  # Текстовая версия сообщения
+
+            # Создание и отправка письма
+            email = EmailMultiAlternatives(subject, plain_message, from_email, recipient_list)
+            email.attach_alternative(html_message, "text/html")
+            email.send()
 
             # Перенаправление на страницу успешной отправки
             return redirect('success')

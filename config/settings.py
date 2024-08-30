@@ -1,5 +1,6 @@
-import os
+# import os
 from pathlib import Path
+from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -9,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'default-secret-key')
+SECRET_KEY = config('DJANGO_SECRET_KEY', default='default-secret-key')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -131,7 +132,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Дополнительные директории для поиска статических файлов
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
-    ('node_modules', os.path.join(BASE_DIR, 'node_modules/')),
+    # ('node_modules', os.path.join(BASE_DIR, 'node_modules/')),
 ]
 
 
@@ -185,3 +186,13 @@ STATICFILES_FINDERS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# SMTP Yandex
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
