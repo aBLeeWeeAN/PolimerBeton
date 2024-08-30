@@ -3,6 +3,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from .forms import FeedbackForm
+from decouple import config
 
 # from htmlmin.decorators import minified_response
 
@@ -18,8 +19,8 @@ def index(request):
             
             # Составляем сообщение
             subject = 'Новое сообщение с сайта Polimerbeton-vrn.ru'
-            from_email = 'tidoff-studio@yandex.ru'
-            recipient_list = ['tidoff-studio@yandex.ru']
+            from_email = config('EMAIL_HOST_USER')
+            recipient_list = [config('EMAIL_RECIPIENT')]
             
             # Генерация HTML-сообщения
             html_message = render_to_string('email_service/email_message.html', {
