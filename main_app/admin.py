@@ -1,10 +1,24 @@
 from django.utils.translation import gettext_lazy as _
 
 from django.contrib import admin
+from django.contrib.admin.models import LogEntry
+
 from .models import Client, Request
 
 from django.db.models import Q
 import hashlib
+
+
+@admin.register(LogEntry)
+class LogEntryAdmin(admin.ModelAdmin):
+    list_display = ('action_time', 'user', 'content_type', 'object_id', 'object_repr', 'action_flag', 'change_message')
+    list_filter = ('action_time', 'user', 'content_type', 'action_flag')
+    search_fields = ('object_repr', 'change_message')
+    ordering = ('-action_time',)  # Сортировать по времени действия в убывающем порядке
+
+    def get_action_flag_display(self, obj):
+        return obj.get_action_flag_display()
+    get_action_flag_display.short_description = _('Action Type')
 
 
 class RequestInline(admin.TabularInline):
