@@ -338,7 +338,7 @@
             // }
         }
 
-        &-submit-button {
+        #my-feedback-form-submit-button {
             @include transition-all(background-color, color, transform);
             will-change: background-color, color, transform;
             // font-size: inherit;
