@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-31 21:39+0300\n"
+"POT-Creation-Date: 2024-08-31 23:39+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,61 +19,67 @@ msgstr ""
 "10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%"
 "100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\main_app\models.py:8 .\main_app\models.py:39
+#: .\main_app\admin.py:49
+msgid "Client phone number"
+msgstr "Номер телефона клиента"
+
+#: .\main_app\admin.py:54
+msgid "Client name"
+msgstr "Имя клиента"
+
+#: .\main_app\models.py:9 .\main_app\models.py:40
 msgid "Client ID"
 msgstr "ID клиента"
 
-#: .\main_app\models.py:11
-msgid "Last Name"
+#: .\main_app\models.py:12
+msgid "Last name"
 msgstr "Фамилия"
 
-#: .\main_app\models.py:12
-msgid "First Name"
+#: .\main_app\models.py:13
+msgid "First name"
 msgstr "Имя"
 
-#: .\main_app\models.py:13
-msgid "Middle Name"
+#: .\main_app\models.py:14
+msgid "Middle name"
 msgstr "Отчество"
 
-#: .\main_app\models.py:16
-msgid "Phone"
-msgstr "Телефон"
+#: .\main_app\models.py:17
+msgid "Phone number"
+msgstr "Номер телефона"
 
-#: .\main_app\models.py:19
-#, fuzzy
-#| msgid "Phone"
-msgid "Phone Hash"
-msgstr "Хэш телефона"
+#: .\main_app\models.py:20
+msgid "Phone number hash"
+msgstr "Хэш номера телефона"
 
-#: .\main_app\models.py:22
+#: .\main_app\models.py:23
 msgid "The client agrees with the privacy policy"
 msgstr "Клиент согласен с политикой конфиденциальности"
 
-#: .\main_app\models.py:32
+#: .\main_app\models.py:33
 msgid "Client"
 msgstr "Клиент"
 
-#: .\main_app\models.py:33
+#: .\main_app\models.py:34
 msgid "Clients"
 msgstr "Клиенты"
 
-#: .\main_app\models.py:36
+#: .\main_app\models.py:37
 msgid "Request ID"
-msgstr "ID заявки"
+msgstr "ID Заявки"
 
-#: .\main_app\models.py:42
+#: .\main_app\models.py:43
 msgid "Request number for this client"
-msgstr "Номер заявки для данного клиента"
+msgstr "Номер заявки у клиента"
 
-#: .\main_app\models.py:45
+#: .\main_app\models.py:46
 msgid "Date and time of registration for this request"
-msgstr "Дата и время регистрации для данной заявки"
+msgstr "Дата и время регистрации заявки на звонок у клиента"
 
-#: .\main_app\models.py:50
+#: .\main_app\models.py:51
 msgid "Request"
 msgstr "Заявка"
 
-#: .\main_app\models.py:51
+#: .\main_app\models.py:52
 msgid "Requests"
 msgstr "Заявки"
 

@@ -1,5 +1,6 @@
-from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+from django.db import models
 from encrypted_model_fields.fields import EncryptedCharField
 
 import hashlib
@@ -8,15 +9,15 @@ class Client(models.Model):
     client_id = models.AutoField(primary_key=True, verbose_name=_('Client ID'))
 
     # Фамилия, имя, отчество
-    last_name = EncryptedCharField(max_length=35, null=False, default='нет фамилии', verbose_name=_('Last Name'))
-    first_name = EncryptedCharField(max_length=35, null=False, default='нет имени', verbose_name=_('First Name'))
-    middle_name = EncryptedCharField(max_length=35, null=True, verbose_name=_('Middle Name'))
+    last_name = EncryptedCharField(max_length=35, null=False, default='нет фамилии', verbose_name=_('Last name'))
+    first_name = EncryptedCharField(max_length=35, null=False, default='нет имени', verbose_name=_('First name'))
+    middle_name = EncryptedCharField(max_length=35, null=True, verbose_name=_('Middle name'))
 
     # Телефон
-    phone_number = EncryptedCharField(max_length=18, null=False, default='нет телефона', verbose_name=_('Phone'))
+    phone_number = EncryptedCharField(max_length=18, null=False, default='нет телефона', verbose_name=_('Phone number'))
 
     # телефон шифруется разными хешами, так что этот хеш нужон чтобы отличать одинаковых клиентов
-    phone_number_hash = models.CharField(max_length=64, unique=True, default='нет хэша телефона', verbose_name=_('Phone Hash'))                  
+    phone_number_hash = models.CharField(max_length=64, unique=True, default='нет хэша телефона', verbose_name=_('Phone number hash'))                  
 
     # Согласие с политикой конфиденциальности
     privacy_policy_agree = models.BooleanField(null=False, default=False, verbose_name=_('The client agrees with the privacy policy'))
