@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-31 20:02+0300\n"
+"POT-Creation-Date: 2024-08-31 21:39+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,55 +19,61 @@ msgstr ""
 "10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%"
 "100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\main_app\models.py:6 .\main_app\models.py:27
+#: .\main_app\models.py:8 .\main_app\models.py:39
 msgid "Client ID"
 msgstr "ID клиента"
 
-#: .\main_app\models.py:9
+#: .\main_app\models.py:11
 msgid "Last Name"
 msgstr "Фамилия"
 
-#: .\main_app\models.py:10
+#: .\main_app\models.py:12
 msgid "First Name"
 msgstr "Имя"
 
-#: .\main_app\models.py:11
+#: .\main_app\models.py:13
 msgid "Middle Name"
 msgstr "Отчество"
 
-#: .\main_app\models.py:14
+#: .\main_app\models.py:16
 msgid "Phone"
 msgstr "Телефон"
 
-#: .\main_app\models.py:15
+#: .\main_app\models.py:19
+#, fuzzy
+#| msgid "Phone"
+msgid "Phone Hash"
+msgstr "Хэш телефона"
+
+#: .\main_app\models.py:22
 msgid "The client agrees with the privacy policy"
 msgstr "Клиент согласен с политикой конфиденциальности"
 
-#: .\main_app\models.py:20
+#: .\main_app\models.py:32
 msgid "Client"
 msgstr "Клиент"
 
-#: .\main_app\models.py:21
+#: .\main_app\models.py:33
 msgid "Clients"
 msgstr "Клиенты"
 
-#: .\main_app\models.py:24
+#: .\main_app\models.py:36
 msgid "Request ID"
 msgstr "ID заявки"
 
-#: .\main_app\models.py:30
+#: .\main_app\models.py:42
 msgid "Request number for this client"
 msgstr "Номер заявки для данного клиента"
 
-#: .\main_app\models.py:33
+#: .\main_app\models.py:45
 msgid "Date and time of registration for this request"
 msgstr "Дата и время регистрации для данной заявки"
 
-#: .\main_app\models.py:38
+#: .\main_app\models.py:50
 msgid "Request"
 msgstr "Заявка"
 
-#: .\main_app\models.py:39
+#: .\main_app\models.py:51
 msgid "Requests"
 msgstr "Заявки"
 

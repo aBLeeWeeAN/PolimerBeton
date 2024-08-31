@@ -8,6 +8,8 @@ from decouple import config
 
 from .models import Client, Request
 
+import hashlib
+
 # from htmlmin.decorators import minified_response
 
 def generate_token():
@@ -31,29 +33,36 @@ def index(request):
             # Получаем данные формы
             client_name = form.cleaned_data['client_name']
             client_phone = form.cleaned_data['client_phone']
+            privacy_policy_agree = form.cleaned_data['privacy_policy']  # Согласие с политикой конфиденциальности
             
-            # Создаем или обновляем клиента в базе данных
+            client_phone_hash = hashlib.sha256(client_phone.encode()).hexdigest()
+
+            # Создаем или получаем клиента по хэшу телефона
             client, created = Client.objects.get_or_create(
-                phone_number=client_phone,
+                phone_number_hash=client_phone_hash,
                 defaults={
                     'last_name': 'нет фамилии',
                     'first_name': client_name,
                     'middle_name': 'нет отчества',
-                    'privacy_policy_agree': False
+                    'phone_number': client_phone,
+                    'privacy_policy_agree': privacy_policy_agree
                 }
             )
 
-            # Определяем, является ли это первое обращение
-            is_first_request = client.requests.count() == 0
+            # Если клиент уже существовал, обновляем его согласие
+            if not created:
+                client.privacy_policy_agree = privacy_policy_agree
+                client.save()
 
-            # Создаем новый запрос для клиента
+           # Создаем новый запрос для клиента
+            request_number = client.requests.count() + 1
             request_instance = Request.objects.create(
                 client_id=client,
-                request_number_for_this_client=client.requests.count() + 1
+                request_number=request_number
             )
 
-             # Устанавливаем тему сообщения
-            if is_first_request:
+           # Устанавливаем тему сообщения
+            if created:
                 subject = f'Заявка на звонок от нового клиента. ID клиента: №{client.client_id}'
             else:
                 subject = f'Заявка на звонок от старого клиента. ID клиента: №{client.client_id}'
@@ -66,8 +75,8 @@ def index(request):
                 'client_name': client_name,
                 'client_phone': client_phone,
                 'client_id': client.client_id,
-                'request_number': request_instance.request_number_for_this_client,
-                'request_datetime': request_instance.date_time_registration_for_this_request
+                'request_number': request_instance.request_number,
+                'request_datetime': request_instance.request_datetime
             })
             
             plain_message = strip_tags(html_message)  # Текстовая версия сообщения
