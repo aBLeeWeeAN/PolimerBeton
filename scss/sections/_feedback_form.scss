@@ -149,7 +149,7 @@
         }
     }
 
-    form {
+    #my-feedback-form {
         display: flex;
         flex-direction: column;
 
@@ -338,7 +338,7 @@
             // }
         }
 
-        #feedback-form-submit-button {
+        &-submit-button {
             @include transition-all(background-color, color, transform);
             will-change: background-color, color, transform;
             // font-size: inherit;
@@ -389,6 +389,16 @@
                 background-color: var(--primary-color--active);
 
                 transform: scale(0.975);
+            }
+
+            &:disabled {
+                background-color: var(--primary-color--disabled);
+                color: var(--text-color-alt-60);
+
+                cursor: not-allowed;
+                
+                transform: none;
+                pointer-events: none; // Это дополнительно предотвращает взаимодействие с кнопкой
             }
 
             @include media-breakpoint-down(lg) {

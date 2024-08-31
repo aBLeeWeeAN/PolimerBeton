@@ -13,6 +13,7 @@
     --primary-color--hover: #673AB7;
     --primary-color--active: #311B92;
     --primary-color--focus: var(--primary-color--active);
+    --primary-color--disabled: var(--primary-color--active);
 
     --primary-color--tone-100: #D1C4E9C7;
     --secondary-color--tone-100: #ffe0b2C7;
@@ -82,6 +83,7 @@
     --primary-color--hover: #FFCCBC;
     --primary-color--active: #FF8A65;
     --primary-color--focus: var(--primary-color--active);
+    --primary-color--disabled: var(--primary-color--active);
 
     --primary-color--tone-100: #2e2c31C7;
     --secondary-color--tone-100: #2e2c31C7;

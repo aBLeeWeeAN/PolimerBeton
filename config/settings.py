@@ -111,12 +111,18 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'ru'  # Устанавливаем язык по умолчанию на русский
 
+USE_I18N = True  # Включение поддержки интернационализации
+USE_L10N = True  # Включение локализации форматов
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',  # Путь к каталогам с переводами
+]
+
+
+# Временная зона
 TIME_ZONE = 'Europe/Moscow'
-
-USE_I18N = True
-
 USE_TZ = True
 
 
@@ -131,7 +137,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Дополнительные директории для поиска статических файлов
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    # BASE_DIR / 'static',
     # ('node_modules', os.path.join(BASE_DIR, 'node_modules/')),
 ]
 
@@ -196,3 +202,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+# database encryption key
+FIELD_ENCRYPTION_KEY = config('FIELD_ENCRYPTION_KEY')

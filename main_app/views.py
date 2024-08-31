@@ -1,24 +1,63 @@
 from django.shortcuts import render, redirect
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
+from django.utils.crypto import get_random_string
 from django.utils.html import strip_tags
 from .forms import FeedbackForm
 from decouple import config
 
+from .models import Client, Request
+
 # from htmlmin.decorators import minified_response
 
-# Create your views here.
+def generate_token():
+    return get_random_string(64)
+
+
 # @minified_response
 def index(request):
+
     if request.method == 'POST':
+
+        # Получаем токен из POST данных
+        token = request.POST.get('form_token')
+        # Проверяем токен
+        if token != request.session.get('form_token'):
+            # Токен не совпадает, это может быть повторная отправка
+            return redirect('error')  # Или другое действие
+        
         form = FeedbackForm(request.POST)
         if form.is_valid():
             # Получаем данные формы
             client_name = form.cleaned_data['client_name']
             client_phone = form.cleaned_data['client_phone']
             
-            # Составляем сообщение
-            subject = 'Новое сообщение с сайта Polimerbeton-vrn.ru'
+            # Создаем или обновляем клиента в базе данных
+            client, created = Client.objects.get_or_create(
+                phone_number=client_phone,
+                defaults={
+                    'last_name': 'нет фамилии',
+                    'first_name': client_name,
+                    'middle_name': 'нет отчества',
+                    'privacy_policy_agree': False
+                }
+            )
+
+            # Определяем, является ли это первое обращение
+            is_first_request = client.requests.count() == 0
+
+            # Создаем новый запрос для клиента
+            request_instance = Request.objects.create(
+                client_id=client,
+                request_number_for_this_client=client.requests.count() + 1
+            )
+
+             # Устанавливаем тему сообщения
+            if is_first_request:
+                subject = f'Заявка на звонок от нового клиента. ID клиента: №{client.client_id}'
+            else:
+                subject = f'Заявка на звонок от старого клиента. ID клиента: №{client.client_id}'
+
             from_email = config('EMAIL_HOST_USER')
             recipient_list = [config('EMAIL_RECIPIENT')]
             
@@ -26,7 +65,11 @@ def index(request):
             html_message = render_to_string('email_service/email_message.html', {
                 'client_name': client_name,
                 'client_phone': client_phone,
+                'client_id': client.client_id,
+                'request_number': request_instance.request_number_for_this_client,
+                'request_datetime': request_instance.date_time_registration_for_this_request
             })
+            
             plain_message = strip_tags(html_message)  # Текстовая версия сообщения
 
             # Создание и отправка письма
@@ -34,12 +77,15 @@ def index(request):
             email.attach_alternative(html_message, "text/html")
             email.send()
 
-            # Перенаправление на страницу успешной отправки
+             # Устанавливаем метку, чтобы блокировать повторные отправки
+            request.session['form_token'] = None  # Удаляем токен после использования
             return redirect('success')
     else:
+        form_token = generate_token()
+        request.session['form_token'] = form_token
         form = FeedbackForm()
 
-    return render(request, 'main_app/index.html', {'form': form})
+    return render(request, 'main_app/index.html', {'form': form, 'form_token': form_token})
 
 # @minified_response
 def privacy(request):

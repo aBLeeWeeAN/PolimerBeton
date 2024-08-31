@@ -966,8 +966,9 @@
                             <img   src="{% static 'main_app/images/concrete_red.webp' %}" id="ball-red" alt="Полимербетон - Красный" >
                         </div>
                     </div>
-                    <form class="col-12 col-sm-6" method="post" action="{% url 'index' %}">
+                    <form id="my-feedback-form" class="col-12 col-sm-6" method="post" action="{% url 'index' %}">
                         {% csrf_token %}
+                        <input type="hidden" name="form_token" value="{{ form_token }}">
                         <div class="form-field">
                             {{ form.client_name }}
                             {% if form.client_name.errors %}
@@ -1010,7 +1011,7 @@
                                 </div>
                             {% endif %}
                         </div>
-                        <button id="feedback-form-submit-button" type="submit" name="feedback-form-button" aria-label="Отправить данные по форме обратной связи">Отправить</button>
+                        <button id="my-feedback-form-submit-button" type="submit" name="feedback-form-button" aria-label="Отправить данные по форме обратной связи">Отправить</button>
                     </form>
                 </div>
             </div>
@@ -1184,6 +1185,8 @@
             <script src="{% static 'main_app/scripts/inputmask_feedback_form.js' %}" defer></script>
 
             <script src="{% static 'main_app/scripts/cookies_consent_banner_manager.js' %}" defer></script>
+
+            <script src="{% static 'main_app/scripts/block_submit_button_after_form_data_is_successfully_submitted.js' %}" defer></script>
         {% endcompress %}
     </div>
 
