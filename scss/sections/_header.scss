@@ -517,16 +517,24 @@
                     // transition: transform 100ms ease-in, opacity 0ms 100ms;
                     transform-origin: center;
 
-                    will-change: transform, opacity;
+                    will-change: y, rotate, opacity, transform;
                     // will-change: y, rotate, opacity;
+
+                    // @include media-breakpoint-down(sm) {
+                    //     transition: y 50ms ease-in 50ms, rotate 50ms ease-in, opacity 0ms 50ms;
+                    // }
                 }
 
                 &[aria-expanded="true"] .line {
                     transition: y 100ms ease-in, rotate 100ms ease-in 100ms, opacity 0ms 100ms;
                     // transition: transform 100ms ease-in, opacity 0ms 100ms;
 
-                    will-change: transform, opacity;
+                    will-change: y, rotate, opacity, transform;
                     // will-change: y, rotate, opacity;
+
+                    // @include media-breakpoint-down(sm) {
+                    //     transition: y 50ms ease-in, rotate 50ms ease-in 50ms, opacity 0ms 50ms;
+                    // }
                 }
 
                 &[aria-expanded="true"] :is(.top, .bottom) {
@@ -595,7 +603,10 @@
     }
 
     .offcanvas {
-        @include transition-all(background-color, transform);
+        // @include transition-all(background-color, transform);
+        @include transition-all(background-color);
+
+        transition : transform 400ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0s ease;
         will-change: background-color, transform, box-shadow, opacity;
 
         padding-top: 4.59952rem;
@@ -616,6 +627,10 @@
         background-color: var(--offcanvas-bc-color);
         box-shadow: 0 .476rem .571rem var(--box-shadow-color);
         backdrop-filter: blur(1.143rem);
+
+        @include media-breakpoint-down(sm) {
+            transition : transform 800ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0s ease;
+        }
 
         .offcanvas-top {
             height: auto;
