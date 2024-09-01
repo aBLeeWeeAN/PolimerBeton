@@ -67,8 +67,8 @@ def index(request):
                     # unblock_time = client.blocked_until.strftime("%d %B %Y %H:%M:%S")
                     unblock_time= format_datetime(client.blocked_until, "d MMMM yyyy HH:mm:ss", locale='ru')
 
-                    m_error_h1 = 'Вы использовали слишком много попыток!'
-                    m_error_h2 = f'Мы приняли Вашу предыдущую контактную информацию и используем её для связи с Вами! При желании обновить свою контактную информацию вы сможете это сделать после {unblock_time}.'
+                    m_error_h1 = 'Слишком много попыток!'
+                    m_error_h2 = f'Мы приняли Вашу предыдущую контактную информацию и используем её для связи с Вами! Если Вы хотите обновить свою контактную информацию, Вы сможете сделать это после: {unblock_time}'
 
                     request.session['error_h1'] = m_error_h1
                     request.session['error_h2'] = m_error_h2
@@ -83,7 +83,7 @@ def index(request):
                 client.privacy_policy_agree = privacy_policy_agree
                 client.save()
 
-                m_message_h1 = 'Ваша контактная информация успешно отправлена и обновлена!'
+                m_message_h1 = 'Вы успешно обновили свою контактную информацию!'
                 m_message_h2 = 'В ближайшее время мы свяжемся с Вами для уточнения деталей заказа!'
 
             client.reduce_available_attempts()
@@ -148,8 +148,8 @@ def privacy(request):
 
 # @minified_response
 def success(request):
-    message_h1 = request.session.get('message_h1', 'Ваш запрос был успешно отправлен!')
-    message_h2 = request.session.get('message_h2', 'Мы свяжемся с вами для уточнения деталей заказа!')
+    message_h1 = request.session.get('message_h1', 'Шаблон страницы информирования об успешной отправке контактных данных через форму!')
+    message_h2 = request.session.get('message_h2', 'А Вы любознательный, раз нашли эту пасхалку! (´｡• ω •｡`)')
     
     # Очистите сообщения после использования
     request.session.pop('message_h1', None)
@@ -158,8 +158,8 @@ def success(request):
     return render(request, 'main_app/success.html', {'message_h1': message_h1, 'message_h2': message_h2})
 
 def error(request):
-    error_h1 = request.session.get('error_h1', 'Произошла ошибка. Попробуйте снова позже.')
-    error_h2 = request.session.get('error_h2', 'Произошла ошибка. Попробуйте снова позже.')
+    error_h1 = request.session.get('error_h1', 'Шаблон страницы информирования о неудачной отправке контактных данных через форму!')
+    error_h2 = request.session.get('error_h2', 'Да, это пасхалка №2 - держите поздравления от разработчика! (╯✧▽✧)╯')
 
     # Очистите сообщения после использования
     request.session.pop('error_h1', None)
