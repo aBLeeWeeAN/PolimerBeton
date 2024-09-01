@@ -1,4 +1,5 @@
-# import os
+import os
+
 from pathlib import Path
 from decouple import config
 
@@ -210,42 +211,42 @@ FIELD_ENCRYPTION_KEY = config('FIELD_ENCRYPTION_KEY')
 
 
 # Django logging
-LOGGING = {
-    'version': 1,                                   # Версия конфигурации логирования
-    'disable_existing_loggers': False,              # Не отключать существующих логеров
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {message}',
-            'style': '{',
-        },
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
-        },
-    },
-    'handlers': {
-        'file': {
-            'level': 'ERROR',                       # Минимальный уровень сообщений для записи в файл
-            'class': 'logging.FileHandler',         # Используемый класс для обработки логов
-            'filename': 'errors.log',               # Путь к файлу логов
-            'formatter': 'verbose',                 # Форматирование сообщений
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',       # Вывод в консоль
-            'formatter': 'simple',                  # Форматирование сообщений
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],                   # Используемые обработчики для этого логера
-            'level': 'ERROR',                       # Минимальный уровень сообщений для этого логера
-            'propagate': True,                      # Сообщения должны передаваться дальше по цепочке логеров
-        },
-    },
-    'main_app': {                                   # Логер для вашего приложения
-        'handlers': ['console', 'file'],            # Используемые обработчики
-        'level': 'DEBUG',                           # Минимальный уровень сообщений
-        'propagate': False,                         # Не передавать сообщения дальше
-    },
-}
+#LOGGING = {
+#    'version': 1,                                   # Версия конфигурации логирования
+#    'disable_existing_loggers': False,              # Не отключать существующих логеров
+#    'formatters': {
+#        'verbose': {
+#            'format': '{levelname} {asctime} {module} {message}',
+#            'style': '{',
+#        },
+#        'simple': {
+#            'format': '{levelname} {message}',
+#            'style': '{',
+#        },
+#    },
+#    'handlers': {
+#        'file': {
+#            'level': 'ERROR',                                       # Минимальный уровень сообщений для записи в файл
+#            'class': 'logging.FileHandler',                         # Используемый класс для обработки логов
+#            'filename': os.path.join(BASE_DIR, 'errors.log'),       # Путь к файлу логов
+#            'formatter': 'verbose',                                 # Форматирование сообщений
+#        },
+#        'console': {
+#            'level': 'DEBUG',
+#            'class': 'logging.StreamHandler',       # Вывод в консоль
+#            'formatter': 'simple',                  # Форматирование сообщений
+#        },
+#    },
+#    'loggers': {
+#        'django': {
+#            'handlers': ['file'],                   # Используемые обработчики для этого логера
+#            'level': 'ERROR',                       # Минимальный уровень сообщений для этого логера
+#            'propagate': True,                      # Сообщения должны передаваться дальше по цепочке логеров
+#        },
+#    },
+#    'main_app': {                                   # Логер для вашего приложения
+#        'handlers': ['console', 'file'],            # Используемые обработчики
+#        'level': 'DEBUG',                           # Минимальный уровень сообщений
+#        'propagate': False,                         # Не передавать сообщения дальше
+#    },
+#}
