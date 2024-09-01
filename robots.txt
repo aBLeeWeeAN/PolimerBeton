@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /success/
+Disallow: /error/
+Disallow: /admin/
+Allow: /privacy/
+Allow: /
+
+Sitemap: https://polimerbeton-vrn.ru/sitemap.xml
