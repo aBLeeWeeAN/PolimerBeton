@@ -63,15 +63,16 @@ $navbar-brand-margin-end:           0;
 // $offcanvas-padding-x:               $modal-inner-padding;
 $offcanvas-horizontal-width:        100%;
 $offcanvas-vertical-height:         auto;
-$offcanvas-transition-duration:     .3s;
-// $offcanvas-border-color:            $modal-content-border-color;
+// $offcanvas-transition-duration:     300ms;
+$offcanvas-transition-duration:     100ms;
+$offcanvas-border-color:            none;
 $offcanvas-border-width:            0;
 // $offcanvas-title-line-height:       $modal-title-line-height;
 // $offcanvas-bg-color:                rgba($color: var(--finally-bc-color), $alpha: 0.87);
 $offcanvas-bg-color:                none;
 // $offcanvas-color:                   var(--#{$prefix}body-color);
 $offcanvas-box-shadow:              none;
-// $offcanvas-backdrop-bg:             $modal-backdrop-bg;
+$offcanvas-backdrop-bg:             none;
 $offcanvas-backdrop-opacity:        0;
 
 // override grid breakpoints
