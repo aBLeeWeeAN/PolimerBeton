@@ -35,19 +35,21 @@ class RequestInline(admin.TabularInline):
 class ClientAdmin(admin.ModelAdmin):
     list_display = (
         'client_id', 'last_name', 'first_name', 'middle_name',
-        'phone_number', 'phone_number_hash', 'privacy_policy_agree'
+        'phone_number', 'phone_number_hash', 'privacy_policy_agree',
+        'available_attempts', 'blocked_until', 'is_unblocked_admin'
     )
     search_fields = (
         'client_id', 'phone_number', 'phone_number_hash',
     )
     list_filter = ('privacy_policy_agree',)
     ordering = ('-client_id',)
-    readonly_fields = ('client_id',)
+    readonly_fields = ('client_id', 'is_unblocked_admin')
+
     inlines = [RequestInline]  # Добавляем инлайн для запросов
 
     def get_readonly_fields(self, request, obj=None):
         if obj:  # Если редактируется существующий объект
-            return self.readonly_fields + ('phone_number', 'phone_number_hash')
+            return self.readonly_fields + ('phone_number', 'phone_number_hash', 'available_attempts', 'blocked_until')
         return self.readonly_fields
     
     def get_readonly_fields(self, request, obj=None):
@@ -90,6 +92,12 @@ class ClientAdmin(admin.ModelAdmin):
     def is_phone_number_format(self, value):
         # Определяем, является ли значение форматом номера телефона
         return any(char in value for char in "+()- ")
+    
+    def is_unblocked_admin(self, obj):
+        return not obj.is_blocked()
+    
+    is_unblocked_admin.boolean = True  # Отображение статуса как галочки
+    is_unblocked_admin.short_description = _('Active')  # Название колонки
 
 
 # class ClientPhoneFilter(admin.SimpleListFilter):

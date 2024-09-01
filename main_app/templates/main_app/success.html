@@ -70,27 +70,6 @@
 
 <body>
     <div class="d-none" id="Scripts-Container-Preload">
-        <!-- My fast JS script --->
-        <!-- Решение проблемы Render Blocking Resources от Lighthouse для основного CSS файла страницы [index.css] --->
-        <!-- <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Найдите все элементы <link> на странице
-                var links = document.querySelectorAll('link[rel="stylesheet"]');
-    
-                // Итерируйте по всем найденным элементам <link>
-                links.forEach(function(link) {
-                    // Получите href атрибут
-                    var href = link.getAttribute('href');
-                    
-                    // Проверьте, начинается ли href с '/static/CACHE/css/index.'
-                    if (href.startsWith('/static/CACHE/css/index.')) {
-                        // Измените атрибут media на 'screen'
-                        link.setAttribute('media', 'screen');
-                    }
-                });
-            });
-        </script> -->
-
         <!-- Houdini Squircle JS scripts --->
         <script>
             // Function to dynamically load a script
@@ -163,14 +142,11 @@
                 }
             };
         </script>
-        <!-- {% compress js %}
+        {% compress js %}
             <script src="{% static 'main_app/scripts/change_favicon.js' %}" async></script>
             
             <script src="{% static 'main_app/scripts/change_color_scheme.js' %}" defer></script>
-        {% endcompress %} -->
-
-        <script src="../../static/main_app/scripts/change_favicon.js" async></script>
-        <script src="../../static/main_app/scripts/change_color_scheme.js" defer></script>
+        {% endcompress %}
     </div>
 
     <!-- Page content START --->
@@ -465,11 +441,13 @@
             <img   class="d-none d-md-inline-block" id="ball-grey" src="../../static/main_app/images/concrete_grey_original.webp" alt="Полимербетон - Серый" >
             <img   class="d-none d-sm-inline-block" id="ball-red" src="../../static/main_app/images/concrete_red_original.webp" alt="Полимербетон - Красный" > -->
             <div class="container">
-                <h1 class="heading">Ваша контактная информация успешно отправлена!</h1>
-                <h2 class="subheading">В ближайшее время мы свяжемся с Вами для уточнения деталей заказа!</h2>
+                <!-- <h1 class="heading">Ваша контактная информация успешно отправлена!</h1>
+                <h2 class="subheading">В ближайшее время мы свяжемся с Вами для уточнения деталей заказа!</h2> -->
+                <h1 class="heading">{{ message_h1 }}</h1>
+                <h2 class="subheading">{{ message_h2 }}</h2>
 
                 <!-- <p class="success-button"><a href="../../templates/main_app/index.html">Вернуться на Главную</a></p> -->
-                <p class="success-button"><a href="{% url 'index' %}">Вернуться на Главную</a></p>
+                <p class="return-button"><a href="{% url 'index' %}">Вернуться на Главную</a></p>
             </div>
         </section>
     </main>
@@ -557,9 +535,6 @@
     <!-- Page content END --->
 
     <div class="d-none" id="Scripts-Container">
-         <!-- My non-async Scripts --->
-         <!-- <script src="{% static 'main_app/' %}scripts/prevent_paste.js"></script> -->
-
         <!-- PopperJS JS scripts --->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous" async defer></script>
         
@@ -569,12 +544,6 @@
 
         <!-- jQuery JS scripts --->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" defer></script>
-
-        <!-- Inputmask JS scripts Vanilla --->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js" defer></script>
-
-        <!-- <script src="{% static 'node_modules/Inputmask/dist/jquery.inputmask.min.js' %}" defer></script> -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js" integrity="sha512-F5Ul1uuyFlGnIT1dk2c4kB4DBdi5wnBJjVhL7gQlGh46Xn0VhvD8kgxLtjdZ5YN83gybk/aASUAlpdoWUjRR3g==" crossorigin="anonymous" referrerpolicy="no-referrer" async defer></script> -->
 
         <!-- My JS scripts --->
         {% compress js %}
@@ -586,26 +555,10 @@
             <script src="{% static 'main_app/scripts/change_offcanvas_scroll_state.js' %}" defer></script>
             <script src="{% static 'main_app/scripts/change_menu_button_state.js' %}" defer></script>
 
-            <script src="{% static 'main_app/scripts/inputmask_feedback_form.js' %}" defer></script>
-
             <script src="{% static 'main_app/scripts/cookies_consent_banner_manager.js' %}" defer></script>
 
             <script src="{% static 'main_app/scripts/block_submit_button_after_form_data_is_successfully_submitted.js' %}" defer></script>
         {% endcompress %}
-
-        <!-- <script src="../../static/main_app/scripts/update_hero_container_margin_top.js" defer></script>
-
-        <script src="../../static/main_app/scripts/update_offcanvas_padding_top.js" defer></script>
-        <script src="../../static/main_app/scripts/update_offcanvas_body_height.js" defer></script>
-
-        <script src="../../static/main_app/scripts/change_offcanvas_scroll_state.js" defer></script>
-        <script src="../../static/main_app/scripts/change_menu_button_state.js" defer></script>
-
-        <script src="../../static/main_app/scripts/inputmask_feedback_form.js" defer></script>
-
-        <script src="../../static/main_app/scripts/cookies_consent_banner_manager.js" defer></script>
-
-        <script src="../../static/main_app/scripts/block_submit_button_after_form_data_is_successfully_submitted.js" defer></script> -->
     </div>
 
     <div id="Cookies-Consent-Banner">
@@ -632,24 +585,6 @@
 
     <div class="d-none" id="Third-Party-Cookies-Container">
         <!-- Empty by default, dynamic script load cookies --->
-    </div>
-
-    <div class="d-none" id="Lazy-Load-Images">
-        {% compress js %}
-            <script>
-                // Объявляем глобальные переменные с URL
-                window.heroImages = {
-                    xs: "{% static 'main_app/images/hero/hero_bc_xs.webp' %}",
-                    sm: "{% static 'main_app/images/hero/hero_bc_sm.webp' %}",
-                    md: "{% static 'main_app/images/hero/hero_bc_md.webp' %}",
-                    lg: "{% static 'main_app/images/hero/hero_bc_lg.webp' %}",
-                    xl: "{% static 'main_app/images/hero/hero_bc_xl.webp' %}",
-                    xxl: "{% static 'main_app/images/hero/hero_bc_xxl.webp' %}"
-                };
-            </script>
-
-            <script src="{% static 'main_app/scripts/hero_image_loader.js' %}"></script>
-        {% endcompress %}
     </div>
 </body>
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-31 23:39+0300\n"
+"POT-Creation-Date: 2024-09-01 17:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,67 +19,83 @@ msgstr ""
 "10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%"
 "100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\main_app\admin.py:49
+#: .\main_app\admin.py:21
+msgid "Action Type"
+msgstr "Тип действия"
+
+#: .\main_app\admin.py:100
+msgid "Active"
+msgstr "Активен"
+
+#: .\main_app\admin.py:138
 msgid "Client phone number"
 msgstr "Номер телефона клиента"
 
-#: .\main_app\admin.py:54
+#: .\main_app\admin.py:143
 msgid "Client name"
 msgstr "Имя клиента"
 
-#: .\main_app\models.py:9 .\main_app\models.py:40
+#: .\main_app\models.py:12 .\main_app\models.py:70
 msgid "Client ID"
 msgstr "ID клиента"
 
-#: .\main_app\models.py:12
+#: .\main_app\models.py:15
 msgid "Last name"
 msgstr "Фамилия"
 
-#: .\main_app\models.py:13
+#: .\main_app\models.py:16
 msgid "First name"
 msgstr "Имя"
 
-#: .\main_app\models.py:14
+#: .\main_app\models.py:17
 msgid "Middle name"
 msgstr "Отчество"
 
-#: .\main_app\models.py:17
+#: .\main_app\models.py:20
 msgid "Phone number"
 msgstr "Номер телефона"
 
-#: .\main_app\models.py:20
+#: .\main_app\models.py:23
 msgid "Phone number hash"
 msgstr "Хэш номера телефона"
 
-#: .\main_app\models.py:23
+#: .\main_app\models.py:26
 msgid "The client agrees with the privacy policy"
 msgstr "Клиент согласен с политикой конфиденциальности"
 
-#: .\main_app\models.py:33
+#: .\main_app\models.py:29
+msgid "Available attempts"
+msgstr "Доступно попыток"
+
+#: .\main_app\models.py:30
+msgid "Blocked until"
+msgstr "Заблокирован до"
+
+#: .\main_app\models.py:63
 msgid "Client"
 msgstr "Клиент"
 
-#: .\main_app\models.py:34
+#: .\main_app\models.py:64
 msgid "Clients"
 msgstr "Клиенты"
 
-#: .\main_app\models.py:37
+#: .\main_app\models.py:67
 msgid "Request ID"
 msgstr "ID Заявки"
 
-#: .\main_app\models.py:43
+#: .\main_app\models.py:73
 msgid "Request number for this client"
 msgstr "Номер заявки у клиента"
 
-#: .\main_app\models.py:46
+#: .\main_app\models.py:76
 msgid "Date and time of registration for this request"
 msgstr "Дата и время регистрации заявки на звонок у клиента"
 
-#: .\main_app\models.py:51
+#: .\main_app\models.py:81
 msgid "Request"
 msgstr "Заявка"
 
-#: .\main_app\models.py:52
+#: .\main_app\models.py:82
 msgid "Requests"
 msgstr "Заявки"
 
@@ -1309,3 +1325,8 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:236
 msgid "Connect, get help, or contribute"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Blocked until"
+#~ msgid "Blocked"
+#~ msgstr "Заблокирован до"

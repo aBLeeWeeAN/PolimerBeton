@@ -1,14 +1,18 @@
 from django.shortcuts import render, redirect
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
+
 from django.utils.crypto import get_random_string
 from django.utils.html import strip_tags
+from django.utils import timezone
+
 from .forms import FeedbackForm
 from decouple import config
 
 from .models import Client, Request
 
 import hashlib
+from babel.dates import format_datetime
 
 # from htmlmin.decorators import minified_response
 
@@ -26,7 +30,12 @@ def index(request):
         # Проверяем токен
         if token != request.session.get('form_token'):
             # Токен не совпадает, это может быть повторная отправка
-            return redirect('error')  # Или другое действие
+            m_error_h1 = 'Упс! Что-то пошло не так!'
+            m_error_h2 = 'Неверный токен, попробуйте перезагрузить страницу!'
+            
+            request.session['error_h1'] = m_error_h1
+            request.session['error_h2'] = m_error_h2
+            return redirect('error')
         
         form = FeedbackForm(request.POST)
         if form.is_valid():
@@ -49,10 +58,40 @@ def index(request):
                 }
             )
 
-            # Если клиент уже существовал, обновляем его согласие
-            if not created:
+            if client.is_blocked():
+                # Проверяем, истекло ли время блокировки
+                if timezone.now() >= client.blocked_until:
+                    # Если время блокировки истекло, разблокируем клиента и сбрасываем попытки
+                    client.unblock_and_reset_available_attempts()
+                else:
+                    # unblock_time = client.blocked_until.strftime("%d %B %Y %H:%M:%S")
+                    unblock_time= format_datetime(client.blocked_until, "d MMMM yyyy HH:mm:ss", locale='ru')
+
+                    m_error_h1 = 'Вы использовали слишком много попыток!'
+                    m_error_h2 = f'Мы приняли Вашу предыдущую контактную информацию и используем её для связи с Вами! При желании обновить свою контактную информацию вы сможете это сделать после {unblock_time}.'
+
+                    request.session['error_h1'] = m_error_h1
+                    request.session['error_h2'] = m_error_h2
+                    return redirect('error')
+
+            if created:
+                m_message_h1 = 'Ваша контактная информация успешно отправлена!'
+                m_message_h2 = 'В ближайшее время мы свяжемся с Вами для уточнения деталей заказа!'
+            else:
+                # Обновляем имя и другие поля клиента, если он уже существует
+                client.first_name = client_name
                 client.privacy_policy_agree = privacy_policy_agree
                 client.save()
+
+                m_message_h1 = 'Ваша контактная информация успешно отправлена и обновлена!'
+                m_message_h2 = 'В ближайшее время мы свяжемся с Вами для уточнения деталей заказа!'
+
+            client.reduce_available_attempts()
+
+            # # Если клиент уже существовал, обновляем его согласие
+            # if not created:
+            #     client.privacy_policy_agree = privacy_policy_agree
+            #     client.save()
 
            # Создаем новый запрос для клиента
             request_number = client.requests.count() + 1
@@ -62,21 +101,25 @@ def index(request):
             )
 
            # Устанавливаем тему сообщения
-            if created:
-                subject = f'Заявка на звонок от нового клиента. ID клиента: №{client.client_id}'
-            else:
-                subject = f'Заявка на звонок от старого клиента. ID клиента: №{client.client_id}'
+            subject = f'Заявка на звонок от {"нового" if created else "существующего"} клиента. ID клиента: №{client.client_id}'
+            # if created:
+            #     subject = f'Заявка на звонок от нового клиента. ID клиента: №{client.client_id}'
+            # else:
+            #     subject = f'Заявка на звонок от старого клиента. ID клиента: №{client.client_id}'
 
             from_email = config('EMAIL_HOST_USER')
             recipient_list = [config('EMAIL_RECIPIENT')]
             
+            # Форматируем дату с помощью Babel
+            formatted_datetime = format_datetime(request_instance.request_datetime, "d MMMM yyyy HH:mm:ss", locale='ru')
+
             # Генерация HTML-сообщения
             html_message = render_to_string('email_service/email_message.html', {
                 'client_name': client_name,
                 'client_phone': client_phone,
                 'client_id': client.client_id,
                 'request_number': request_instance.request_number,
-                'request_datetime': request_instance.request_datetime
+                'request_datetime': formatted_datetime
             })
             
             plain_message = strip_tags(html_message)  # Текстовая версия сообщения
@@ -88,6 +131,9 @@ def index(request):
 
              # Устанавливаем метку, чтобы блокировать повторные отправки
             request.session['form_token'] = None  # Удаляем токен после использования
+
+            request.session['message_h1'] = m_message_h1
+            request.session['message_h2'] = m_message_h2
             return redirect('success')
     else:
         form_token = generate_token()
@@ -102,4 +148,21 @@ def privacy(request):
 
 # @minified_response
 def success(request):
-    return render(request, 'main_app/success.html')
+    message_h1 = request.session.get('message_h1', 'Ваш запрос был успешно отправлен!')
+    message_h2 = request.session.get('message_h2', 'Мы свяжемся с вами для уточнения деталей заказа!')
+    
+    # Очистите сообщения после использования
+    request.session.pop('message_h1', None)
+    request.session.pop('message_h2', None)
+    
+    return render(request, 'main_app/success.html', {'message_h1': message_h1, 'message_h2': message_h2})
+
+def error(request):
+    error_h1 = request.session.get('error_h1', 'Произошла ошибка. Попробуйте снова позже.')
+    error_h2 = request.session.get('error_h2', 'Произошла ошибка. Попробуйте снова позже.')
+
+    # Очистите сообщения после использования
+    request.session.pop('error_h1', None)
+    request.session.pop('error_h2', None)
+
+    return render(request, 'main_app/error.html', {'error_h1': error_h1, 'error_h2': error_h2})

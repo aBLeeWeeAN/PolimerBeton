@@ -1,5 +1,8 @@
 from django.utils.translation import gettext_lazy as _
 
+from django.utils import timezone
+from datetime import timedelta
+
 from django.db import models
 from encrypted_model_fields.fields import EncryptedCharField
 
@@ -21,6 +24,33 @@ class Client(models.Model):
 
     # Согласие с политикой конфиденциальности
     privacy_policy_agree = models.BooleanField(null=False, default=False, verbose_name=_('The client agrees with the privacy policy'))
+
+    # система блокировки пользователя, если спамит форму
+    available_attempts = models.PositiveIntegerField(default=3, verbose_name=_('Available attempts'))  # Количество попыток отправки формы
+    blocked_until = models.DateTimeField(null=True, blank=True, verbose_name=_('Blocked until'))  # Время блокировки
+
+    def is_blocked(self):
+        if self.blocked_until and timezone.now() < self.blocked_until:
+            return True
+        return False
+    
+    def reduce_available_attempts(self):
+        self.available_attempts -= 1
+
+        if self.available_attempts > 0:
+            self.save()
+            return
+        
+        self.block_this_client()
+
+    def block_this_client(self):        
+        self.blocked_until = timezone.now() + timedelta(hours=24)
+        self.save()
+
+    def unblock_and_reset_available_attempts(self):
+        self.available_attempts = 3
+        self.blocked_until = None
+        self.save()
 
     def save(self, *args, **kwargs):
         # Создаем хэш для номера телефона
