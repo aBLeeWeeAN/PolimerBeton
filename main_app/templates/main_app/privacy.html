@@ -99,36 +99,36 @@
         </script>
 
         <!-- My JS scripts --->
+        <script>
+            // Глобальные переменные для фавиконов и мета-тегов
+            window.faviconPaths = {
+                light: {
+                    appleTouchIcon: "{% static 'main_app/favicons/apple-touch-icon.png' %}?v=7",
+                    favicon32x32: "{% static 'main_app/favicons/favicon-32x32.png' %}?v=7",
+                    favicon194x194: "{% static 'main_app/favicons/favicon-194x194.png' %}?v=7",
+                    androidChrome192x192: "{% static 'main_app/favicons/android-chrome-192x192.png' %}?v=7",
+                    favicon16x16: "{% static 'main_app/favicons/favicon-16x16.png' %}?v=7",
+                    safariPinnedTab: "{% static 'main_app/favicons/safari-pinned-tab.svg' %}?v=7",
+                    faviconIco: "{% static 'main_app/favicons/favicon.ico' %}?v=7",
+                    siteWebmanifest: "{% static 'main_app/favicons/site.webmanifest' %}?v=7",
+                    mstile144x144: "{% static 'main_app/favicons/mstile-144x144.png' %}?v=7",
+                    browserConfig: "{% static 'main_app/favicons/browserconfig.xml' %}?v=7"
+                },
+                dark: {
+                    appleTouchIcon: "{% static 'main_app/favicons/dark/apple-touch-icon.png' %}?v=7",
+                    favicon32x32: "{% static 'main_app/favicons/dark/favicon-32x32.png' %}?v=7",
+                    favicon194x194: "{% static 'main_app/favicons/dark/favicon-194x194.png' %}?v=7",
+                    androidChrome192x192: "{% static 'main_app/favicons/dark/android-chrome-192x192.png' %}?v=7",
+                    favicon16x16: "{% static 'main_app/favicons/dark/favicon-16x16.png' %}?v=7",
+                    safariPinnedTab: "{% static 'main_app/favicons/dark/safari-pinned-tab.svg' %}?v=7",
+                    faviconIco: "{% static 'main_app/favicons/dark/favicon.ico' %}?v=7",
+                    siteWebmanifest: "{% static 'main_app/favicons/dark/site.webmanifest' %}?v=7",
+                    mstile144x144: "{% static 'main_app/favicons/dark/mstile-144x144.png' %}?v=7",
+                    browserConfig: "{% static 'main_app/favicons/dark/browserconfig.xml' %}?v=7"
+                }
+            };
+        </script>
         {% compress js %}
-            <script>
-                // Глобальные переменные для фавиконов и мета-тегов
-                window.faviconPaths = {
-                    light: {
-                        appleTouchIcon: "{% static 'main_app/favicons/apple-touch-icon.png' %}?v=7",
-                        favicon32x32: "{% static 'main_app/favicons/favicon-32x32.png' %}?v=7",
-                        favicon194x194: "{% static 'main_app/favicons/favicon-194x194.png' %}?v=7",
-                        androidChrome192x192: "{% static 'main_app/favicons/android-chrome-192x192.png' %}?v=7",
-                        favicon16x16: "{% static 'main_app/favicons/favicon-16x16.png' %}?v=7",
-                        safariPinnedTab: "{% static 'main_app/favicons/safari-pinned-tab.svg' %}?v=7",
-                        faviconIco: "{% static 'main_app/favicons/favicon.ico' %}?v=7",
-                        siteWebmanifest: "{% static 'main_app/favicons/site.webmanifest' %}?v=7",
-                        mstile144x144: "{% static 'main_app/favicons/mstile-144x144.png' %}?v=7",
-                        browserConfig: "{% static 'main_app/favicons/browserconfig.xml' %}?v=7"
-                    },
-                    dark: {
-                        appleTouchIcon: "{% static 'main_app/favicons/dark/apple-touch-icon.png' %}?v=7",
-                        favicon32x32: "{% static 'main_app/favicons/dark/favicon-32x32.png' %}?v=7",
-                        favicon194x194: "{% static 'main_app/favicons/dark/favicon-194x194.png' %}?v=7",
-                        androidChrome192x192: "{% static 'main_app/favicons/dark/android-chrome-192x192.png' %}?v=7",
-                        favicon16x16: "{% static 'main_app/favicons/dark/favicon-16x16.png' %}?v=7",
-                        safariPinnedTab: "{% static 'main_app/favicons/dark/safari-pinned-tab.svg' %}?v=7",
-                        faviconIco: "{% static 'main_app/favicons/dark/favicon.ico' %}?v=7",
-                        siteWebmanifest: "{% static 'main_app/favicons/dark/site.webmanifest' %}?v=7",
-                        mstile144x144: "{% static 'main_app/favicons/dark/mstile-144x144.png' %}?v=7",
-                        browserConfig: "{% static 'main_app/favicons/dark/browserconfig.xml' %}?v=7"
-                    }
-                };
-            </script>
             <script src="{% static 'main_app/scripts/change_favicon.js' %}" async></script>
             
             <script src="{% static 'main_app/scripts/change_color_scheme.js' %}" defer></script>
