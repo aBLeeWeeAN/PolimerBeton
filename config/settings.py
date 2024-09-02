@@ -15,9 +15,9 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['polimerbeton-vrn.ru', '178.208.81.224']
+ALLOWED_HOSTS = ['polimerbeton-vrn.ru', '178.208.81.224', 'localhost', '192.168.3.3', '127.0.0.1']
 
 
 # Application definition
@@ -30,14 +30,41 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+
     # django extensions
     'htmlmin',              # сжатие html
     'compressor',           # сжатие CSS и JS
 
     # my apps
     'main_app',
+    'simple_pages_app',
 ]
 
+# Получение SITE_ID из переменной окружения или файла .env и преобразование в целое число
+SITE_ID = config('SITE_ID', default=1, cast=int)
+
+
+# HTTPS/SSL settings
+# SECURE_SSL_REDIRECT = True
+
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+
+# SECURE_HSTS_SECONDS = 31536000  # 1 год
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
+
+# X_FRAME_OPTIONS = 'DENY'
+
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# SECURE_BROWSER_XSS_FILTER = True
+
+
+# middlewares
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -63,7 +90,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,7 +112,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -134,7 +161,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Директория для сбора статических файлов
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
 
 # Дополнительные директории для поиска статических файлов
 STATICFILES_DIRS = [

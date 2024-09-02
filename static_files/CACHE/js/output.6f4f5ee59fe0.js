@@ -1,0 +1,27 @@
+window.heroImages={xs:"/static/main_app/images/hero/hero_bc_xs.webp",sm:"/static/main_app/images/hero/hero_bc_sm.webp",md:"/static/main_app/images/hero/hero_bc_md.webp",lg:"/static/main_app/images/hero/hero_bc_lg.webp",xl:"/static/main_app/images/hero/hero_bc_xl.webp",xxl:"/static/main_app/images/hero/hero_bc_xxl.webp"};;document.addEventListener("DOMContentLoaded",function(){const picture_html=`
+        <picture>
+            <!-- Определяем изображение для самых маленьких экранов -->
+            <source type="image/webp" srcset="${window.heroImages.xs}" media="(max-width: 320px)" sizes="(max-width: 320px) 100vw">
+            
+            <!-- Определяем изображение для маленьких экранов -->
+            <source type="image/webp" srcset="${window.heroImages.sm}" media="(max-width: 480px)" sizes="(max-width: 480px) 100vw">
+            
+            <!-- Определяем изображение для средних экранов -->
+            <source type="image/webp" srcset="${window.heroImages.md}" media="(max-width: 640px)" sizes="(max-width: 640px) 100vw">
+            
+            <!-- Определяем изображение для больших экранов -->
+            <source type="image/webp" srcset="${window.heroImages.lg}" media="(max-width: 800px)" sizes="(max-width: 800px) 100vw">
+            
+            <!-- Определяем изображение для очень больших экранов -->
+            <source type="image/webp" srcset="${window.heroImages.xl}" media="(max-width: 1024px)" sizes="(max-width: 1024px) 100vw">
+            
+            <!-- Изображение по умолчанию для случаев, когда медиа-запросы не сработали -->
+            <img src="${window.heroImages.xxl}" 
+                 width="3959" 
+                 height="2297"
+                 decoding="async"
+                 fetchpriority="high"
+                 alt="Задний фон блока Hero"
+                 id="hero-fr-img">
+        </picture>
+    `;const hero_section=document.getElementById('Hero');if(hero_section){hero_section.insertAdjacentHTML('afterbegin',picture_html);}});
