@@ -14,6 +14,7 @@ from .models import Client, Request
 import hashlib
 from babel.dates import format_datetime
 
+# from django.http import HttpResponse
 # from htmlmin.decorators import minified_response
 
 def generate_token():
@@ -166,3 +167,7 @@ def error(request):
     request.session.pop('error_h2', None)
 
     return render(request, 'main_app/error.html', {'error_h1': error_h1, 'error_h2': error_h2})
+
+# def browserconfig_xml(request):
+#     xml_content = render_to_string('browserconfig.xml', {})
+#     return HttpResponse(xml_content, content_type='application/xml')
