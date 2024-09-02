@@ -606,7 +606,8 @@
         // @include transition-all(background-color, transform);
         @include transition-all(background-color);
 
-        transition : transform 400ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0s ease;
+        transition : transform 350ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0s ease !important;
+        transition-duration: 350ms !important;
 
         will-change: background-color, transform, box-shadow, opacity;
 
@@ -630,7 +631,7 @@
         backdrop-filter: blur(1.143rem);
 
         @include media-breakpoint-down(sm) {
-            transition : transform 600ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0s ease;
+            transition-duration: 700ms !important;
         }
 
         .offcanvas-top {
