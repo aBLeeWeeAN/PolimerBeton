@@ -144,7 +144,8 @@
             // word-wrap: break-word;
             // overflow-wrap: break-word;
 
-            text-indent: var(--my-text-paragraph-text-indent);
+            // text-indent: var(--my-text-paragraph-text-indent);
+            text-indent: none;
             text-align: justify;
 
             // // text-align: left;
