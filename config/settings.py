@@ -33,6 +33,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
 
+    'django_celery_beat',
+    'django_celery_results',
+
     # django extensions
     'htmlmin',              # сжатие html
     'compressor',           # сжатие CSS и JS
@@ -62,6 +65,18 @@ SITE_ID = config('SITE_ID', default=1, cast=int)
 
 # SECURE_CONTENT_TYPE_NOSNIFF = True
 # SECURE_BROWSER_XSS_FILTER = True
+
+
+# Caches
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://localhost:6379/1',
+    }
+}
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'
 
 
 # middlewares
@@ -282,3 +297,20 @@ FIELD_ENCRYPTION_KEY = config('FIELD_ENCRYPTION_KEY')
 #        'propagate': False,                         # Не передавать сообщения дальше
 #    },
 #}
+
+
+# Celery
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_RESULT_EXTENDED = True
+
+# CELERY_ACCEPT_CONTENT = ['json']
+# CELERY_TASK_SERIALIZER = 'json'
+# CELERY_RESULT_SERIALIZER = 'json'
+# CELERY_TIMEZONE = 'Europe/Moscow'
+
+# CELERY_TASK_ACKS_LATE = True                # Подтверждение выполнения задач после завершения
+# CELERY_TASK_REJECT_ON_WORKER_LOST = True    # Перемещать задачи, если работник теряется
+# CELERY_WORKER_CONCURRENCY = 4               # Количество потоков на одного работника

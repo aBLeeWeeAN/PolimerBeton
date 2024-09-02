@@ -141,11 +141,14 @@ def index(request):
         request.session['form_token'] = form_token
         form = FeedbackForm()
 
+    # reset_client_attempts()
     return render(request, 'main_app/index.html', {'form': form, 'form_token': form_token})
 
 # @minified_response
 def privacy(request):
     return render(request, 'main_app/privacy.html')
+
+from .tasks import reset_client_attempts
 
 # @minified_response
 def success(request):

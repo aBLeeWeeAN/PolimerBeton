@@ -53,9 +53,11 @@ class Client(models.Model):
         self.save()
 
     def save(self, *args, **kwargs):
-        # Создаем хэш для номера телефона
-        if self.phone_number:
+    # Создаем хэш для номера телефона, если он не установлен
+        if self.phone_number and not self.phone_number_hash or self.phone_number_hash == 'нет хэша телефона':
             self.phone_number_hash = hashlib.sha256(self.phone_number.encode()).hexdigest()
+        
+        # Сохраняем объект
         super().save(*args, **kwargs)
 
     class Meta:
