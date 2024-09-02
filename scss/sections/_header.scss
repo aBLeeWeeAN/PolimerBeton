@@ -606,7 +606,9 @@
         // @include transition-all(background-color, transform);
         @include transition-all(background-color);
 
-        transition : transform 400ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0s ease;
+        // transition : transform 400ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0s ease;
+        transition : transform 300ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0s ease;
+
         will-change: background-color, transform, box-shadow, opacity;
 
         padding-top: 4.59952rem;
@@ -628,9 +630,9 @@
         box-shadow: 0 .476rem .571rem var(--box-shadow-color);
         backdrop-filter: blur(1.143rem);
 
-        @include media-breakpoint-down(sm) {
-            transition : transform 800ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0s ease;
-        }
+        // @include media-breakpoint-down(sm) {
+        //     transition : transform 800ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0s ease;
+        // }
 
         .offcanvas-top {
             height: auto;

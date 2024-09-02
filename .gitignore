@@ -149,4 +149,4 @@ alpha_old/
 old/
 
 # Ignore compiled static files folder
-staticfiles/
+static_files/
