@@ -96,6 +96,13 @@ class ClientAdmin(admin.ModelAdmin):
     def is_unblocked_admin(self, obj):
         return not obj.is_blocked()
     
+    # def save_model(self, request, obj, form, change):
+    #     if change:  # Если это изменение существующего объекта
+    #         obj.is_unblocked_admin = not obj.is_blocked()
+    #     super().save_model(request, obj, form, change)
+    #     # Сохраняем изменения
+    #     obj.save()
+    
     is_unblocked_admin.boolean = True  # Отображение статуса как галочки
     is_unblocked_admin.short_description = _('Active')  # Название колонки
 

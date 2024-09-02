@@ -148,7 +148,7 @@ def index(request):
 def privacy(request):
     return render(request, 'main_app/privacy.html')
 
-from .tasks import reset_client_attempts
+# from .tasks import reset_client_attempts
 
 # @minified_response
 def success(request):

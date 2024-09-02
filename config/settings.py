@@ -1,3 +1,4 @@
+from datetime import timedelta
 import os
 
 from pathlib import Path
@@ -33,8 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
 
-    'django_celery_beat',
-    'django_celery_results',
+    # 'django_celery_beat',
+    # 'django_celery_results',
 
     # django extensions
     'htmlmin',              # сжатие html
@@ -299,17 +300,26 @@ FIELD_ENCRYPTION_KEY = config('FIELD_ENCRYPTION_KEY')
 #}
 
 
-# Celery
-CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+# Celery [ЗАЕБАЛО, ХУЙНЯ, НЕ РАБОТАЕТ]
+# CELERY_TIMEZONE = 'Europe/Moscow'
 
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'django-db'
-CELERY_RESULT_EXTENDED = True
+# CELERY_BROKER_URL = 'redis://localhost:6379/0'
+
+# CELERY_RESULT_BACKEND = 'django-db'
+# CELERY_RESULT_EXTENDED = True
+
+# CELERY_BEAT_SCHEDULE = {
+#     'reset-client-attempts-every-30-seconds': {
+#         'task': 'main_app.tasks.reset_client_attempts',
+#         'schedule': timedelta(seconds=30),
+#     },
+# }
+
+# CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 # CELERY_ACCEPT_CONTENT = ['json']
 # CELERY_TASK_SERIALIZER = 'json'
 # CELERY_RESULT_SERIALIZER = 'json'
-# CELERY_TIMEZONE = 'Europe/Moscow'
 
 # CELERY_TASK_ACKS_LATE = True                # Подтверждение выполнения задач после завершения
 # CELERY_TASK_REJECT_ON_WORKER_LOST = True    # Перемещать задачи, если работник теряется
