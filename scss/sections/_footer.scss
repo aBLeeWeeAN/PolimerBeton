@@ -232,120 +232,132 @@
             align-items: start;
             justify-content: space-between;
 
-            .logo {
-                @include transition-all(color, transform);
-                will-change: color, transform;
-
-                font-size: var(--my-footer-logo-size);
-            
-                padding: 0;
-            
+            a {
                 display: inline-flex;
+    
                 align-items: center;
-            
-                color: var(--text-color-87);
-                fill: var(--text-color-87);
+                justify-content: start;
+        
+                padding: 0;
+                margin: 0;
 
-                text-decoration: none !important;
-
-                &:hover {
-                    color: var(--text-color-100);
-                    fill: var(--text-color-100);
-
-                    transform: scale(1.025);
-
-                    @include media-breakpoint-down(sm) {
-                        transform: none;
-                    }
-                }
-
-                &:active {
-                    color: var(--primary-color);
-                    fill: var(--primary-color);
-
-                    transform: scale(0.975);
-                }
-            
-                .logo-icon {
-                    @include transition-all(fill, transform);
-                    will-change: fill, transform;
-
-                    fill-rule: evenodd;
-                    clip-rule: evenodd;
-            
-                    fill: inherit;
-            
-                    width: 4.5em;
-                    height: auto;
-
-                    aspect-ratio: 1 / 1;
-
-                    text-decoration: inherit;
-                }
-            
-                .logo-company-name-and-tagline-container {
-                    margin-left: 1em;
-            
-                    display: inline-flex;
-                    flex-direction: column;
-
-                    text-decoration: inherit;
-            
-                    .logo-company-name {
-                        font-family: "Russo One", sans-serif;
-                        font-optical-sizing: auto;
-                        font-weight: 400;
-                        font-style: normal;
-
-                        text-align: left;
-            
-                        font-size: 1.5em;
-                        letter-spacing: 0.35em;
-
-                        line-height: 1.5em;
-
-                        text-decoration: inherit;
-                    }
-            
-                    // @include media-breakpoint-down(lg) {
-                    //     .logo-company-name {
-                    //         font-size: 1.75em;
-                    //     }
-                    // }
-            
-                    .logo-tagline {
-                        font-family: "Pattaya", sans-serif;
-                        font-weight: 400;
-                        font-style: normal;
-
-                        text-align: left;
-            
-                        font-size: 1em;
-                        letter-spacing: 0.55em;
-
-                        line-height: 1.5em;
-
-                        text-decoration: inherit;
-                    }
-            
-                    // @include media-breakpoint-down(lg) {
-                    //     .logo-tagline {
-                    //         font-size: 1.25rem;
-                    //     }
-                    // }
-                }
-            
-                // @include media-breakpoint-down(xxl) {
-                //     font-size: 0.75rem;
-                // }
+                text-decoration: none;
                 
-                // @include media-breakpoint-down(lg) {
-                //     font-size: 0.5625rem;
-                // }
-            
-                // @include media-breakpoint-down(sm) {
-                //     font-size: 0.27rem;
-                // }
+                .logo {
+                    @include transition-all(color, transform);
+                    will-change: color, transform;
+    
+                    font-size: var(--my-footer-logo-size);
+                
+                    padding: 0;
+                
+                    display: inline-flex;
+                    align-items: center;
+                
+                    color: var(--text-color-87);
+                    fill: var(--text-color-87);
+    
+                    text-decoration: none !important;
+    
+                    &:hover {
+                        color: var(--text-color-100);
+                        fill: var(--text-color-100);
+    
+                        transform: scale(1.025);
+    
+                        @include media-breakpoint-down(sm) {
+                            transform: none;
+                        }
+                    }
+    
+                    &:active {
+                        color: var(--primary-color);
+                        fill: var(--primary-color);
+    
+                        transform: scale(0.975);
+                    }
+                
+                    .logo-icon {
+                        @include transition-all(fill, transform);
+                        will-change: fill, transform;
+    
+                        fill-rule: evenodd;
+                        clip-rule: evenodd;
+                
+                        fill: inherit;
+                
+                        width: 4.5em;
+                        height: auto;
+    
+                        aspect-ratio: 1 / 1;
+    
+                        text-decoration: inherit;
+                    }
+                
+                    .logo-company-name-and-tagline-container {
+                        margin-left: 1em;
+                
+                        display: inline-flex;
+                        flex-direction: column;
+    
+                        text-decoration: inherit;
+                
+                        .logo-company-name {
+                            font-family: "Russo One", sans-serif;
+                            font-optical-sizing: auto;
+                            font-weight: 400;
+                            font-style: normal;
+    
+                            text-align: left;
+                
+                            font-size: 1.5em;
+                            letter-spacing: 0.35em;
+    
+                            line-height: 1.5em;
+    
+                            text-decoration: inherit;
+                        }
+                
+                        // @include media-breakpoint-down(lg) {
+                        //     .logo-company-name {
+                        //         font-size: 1.75em;
+                        //     }
+                        // }
+                
+                        .logo-tagline {
+                            font-family: "Pattaya", sans-serif;
+                            font-weight: 400;
+                            font-style: normal;
+    
+                            text-align: left;
+                
+                            font-size: 1em;
+                            letter-spacing: 0.55em;
+    
+                            line-height: 1.5em;
+    
+                            text-decoration: inherit;
+                        }
+                
+                        // @include media-breakpoint-down(lg) {
+                        //     .logo-tagline {
+                        //         font-size: 1.25rem;
+                        //     }
+                        // }
+                    }
+                
+                    // @include media-breakpoint-down(xxl) {
+                    //     font-size: 0.75rem;
+                    // }
+                    
+                    // @include media-breakpoint-down(lg) {
+                    //     font-size: 0.5625rem;
+                    // }
+                
+                    // @include media-breakpoint-down(sm) {
+                    //     font-size: 0.27rem;
+                    // }
+                }
             }
 
             @include media-breakpoint-down(sm) {
