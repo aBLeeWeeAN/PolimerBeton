@@ -8,3 +8,10 @@ class RobotsTxtTests(SimpleTestCase):
 
         assert response.status_code == HTTPStatus.OK
         assert response["content-type"] == "text/plain"
+
+class FeedTxtTests(SimpleTestCase):
+    def test_get(self):
+        response = self.client.get("/feed.xml")
+
+        assert response.status_code == HTTPStatus.OK
+        assert response["content-type"] == "application/xml"
