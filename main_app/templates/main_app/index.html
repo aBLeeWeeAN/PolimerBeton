@@ -31,6 +31,9 @@
     <!-- Author --->
     <meta name="author" content="Vladimir Nikulin">
 
+    <!-- Copyright --->
+    <meta name="copyright" content="2024, TIDOFF Studio">
+
     <!-- Title --->
     <title>Полимербетон от производителя в г. Воронеж</title>
 
@@ -75,7 +78,50 @@
     {% compress css file index %}
         <link id="index-css" rel="stylesheet" href="{% static 'main_app/css/index.css' %}" media="screen">
     {% endcompress %}
-</head>
+
+    <!-- Social Network --->
+    <!-- локализация сайта, для русскоязычного сайта ru_RU -->
+	<meta property="og:locale" content="ru_RU">
+
+	<!-- тип контента, по умолчанию используется article -->
+	<meta property="og:type" content="website">
+
+	<!-- заголовок страницы, который будет выводится в записи социальной сети -->
+	<meta property="og:title" content="Полимербетон от производителя в г. Воронеж">
+
+	<!-- описание страницы -->
+	<meta property="og:description" content="Полимербетон от производителя в г. Воронеж. Отлично подходит для гидроизоляции, ремонта бетонных и асфальтно-бетонных поверхностей, мостов, дорог, шпал. Обладает высокой прочностью и быстро высыхает. Продаём наш полимербетон по доступным ценам!">
+
+	<!-- ссылка на изображение, которое будет публиковаться в записи -->
+	<meta property="og:image" content="{% static 'main_app/images/open_graph/large_image_home.jpg' %}">
+
+	<!-- ссылка на текущую страницу -->
+	<meta property="og:url" content="https://polimerbeton-vrn.ru/">
+
+	<!-- название сайта -->
+	<meta property="og:site_name" content="ПОЛИМЕРБЕТОН - быстро и надёжно!">
+
+    <!-- Тип карты, по умолчанию используется summary -->
+	<meta name="twitter:card" content="summary">
+
+	<!-- Имя/логин автора привязанный к странице -->
+	<meta name="twitter:site" content="@aBLeeWeeAN">
+
+	<!-- Название страницы -->
+	<meta name="twitter:title" content="Полимербетон от производителя в г. Воронеж">
+
+	<!-- Описание страницы -->
+	<meta name="twitter:description" content="Полимербетон от производителя в г. Воронеж. Отлично подходит для гидроизоляции, ремонта бетонных и асфальтно-бетонных поверхностей, мостов, дорог, шпал. Обладает высокой прочностью и быстро высыхает. Продаём наш полимербетон по доступным ценам!">
+
+	<!-- Cсылка на изображение -->
+	<meta name="twitter:image" content="{% static 'main_app/images/twitter/thumbnail_image.jpg' %}">
+
+    <!-- Описание картинки для Twitter --->
+    <meta name="twitter:image:alt" content="Логотип сайта polimerbeton-vrn.ru">
+
+    <!-- Facebook analytics --->
+    <!-- <meta property="fb:app_id" content="your_app_id" /> -->
+</head> 
 
 <body>
     <div class="d-none" id="Scripts-Container-Preload">

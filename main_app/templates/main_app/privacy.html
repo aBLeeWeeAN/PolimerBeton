@@ -31,6 +31,9 @@
     <!-- Author --->
     <meta name="author" content="Vladimir Nikulin">
 
+    <!-- Copyright --->
+    <meta name="copyright" content="2024, TIDOFF Studio">
+
     <!-- Title --->
     <title>Политика конфиденциальности — polimerbeton-vrn.ru</title>
 
@@ -64,6 +67,49 @@
     {% compress css file privacy %}
         <link id="privacy-css" rel="stylesheet" href="{% static 'main_app/css/privacy.css' %}" media="screen">
     {% endcompress %}
+
+    <!-- Social Network --->
+    <!-- локализация сайта, для русскоязычного сайта ru_RU -->
+	<meta property="og:locale" content="ru_RU">
+
+	<!-- тип контента, по умолчанию используется article -->
+	<meta property="og:type" content="website">
+
+	<!-- заголовок страницы, который будет выводится в записи социальной сети -->
+	<meta property="og:title" content="Политика конфиденциальности — polimerbeton-vrn.ru">
+
+	<!-- описание страницы -->
+	<meta property="og:description" content="Политика конфиденциальности сайта https://polimerbeton-vrn.ru: узнайте как мы обрабатываем и защищаем Ваши персональные данные.">
+
+	<!-- ссылка на изображение, которое будет публиковаться в записи -->
+	<meta property="og:image" content="{% static 'main_app/images/open_graph/large_image_privacy.jpg' %}">
+
+	<!-- ссылка на текущую страницу -->
+	<meta property="og:url" content="https://polimerbeton-vrn.ru/privacy/">
+
+	<!-- название сайта -->
+	<meta property="og:site_name" content="ПОЛИМЕРБЕТОН - быстро и надёжно!">
+
+    <!-- Тип карты, по умолчанию используется summary -->
+	<meta name="twitter:card" content="summary">
+
+	<!-- Имя/логин автора привязанный к странице -->
+	<meta name="twitter:site" content="@aBLeeWeeAN">
+
+	<!-- Название страницы -->
+	<meta name="twitter:title" content="Политика конфиденциальности — polimerbeton-vrn.ru">
+
+	<!-- Описание страницы -->
+	<meta name="twitter:description" content="Политика конфиденциальности сайта https://polimerbeton-vrn.ru: узнайте как мы обрабатываем и защищаем Ваши персональные данные.">
+
+	<!-- Cсылка на изображение -->
+	<meta name="twitter:image" content="{% static 'main_app/images/twitter/thumbnail_image.jpg' %}">
+
+    <!-- Описание картинки для Twitter --->
+    <meta name="twitter:image:alt" content="Логотип сайта polimerbeton-vrn.ru">
+
+    <!-- Facebook analytics --->
+    <!-- <meta property="fb:app_id" content="your_app_id" /> -->
 </head>
 
 <body>

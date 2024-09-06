@@ -20,7 +20,7 @@
 
     <!-- Description and Keywords --->
     <meta name="description"
-        content="Страница информирования пользователя об успешной отправке данных с формы обратной связи сайта ПОЛИМЕРБЕТОН (polimerbeton-vrn.ru)">
+        content="Страница информирования пользователя об успешной отправке данных с формы обратной связи сайта ПОЛИМЕРБЕТОН (polimerbeton-vrn.ru).">
     <meta name="keywords"
         content="ваша контактная информация успешно отправлена, мы свяжемся с вами в ближайшее время, контактная информация для уточнения деталей заказа отправлена">
 
@@ -30,6 +30,9 @@
 
     <!-- Author --->
     <meta name="author" content="Vladimir Nikulin">
+
+    <!-- Copyright --->
+    <meta name="copyright" content="2024, TIDOFF Studio">
 
     <!-- Title --->
     <title>Успешная отправка данных через форму!</title>
@@ -66,6 +69,49 @@
     {% endcompress %}
 
     <!-- <link id="success-css" rel="stylesheet" href="../../static/main_app/css/success.css" media="screen"> -->
+    
+    <!-- Social Network --->
+    <!-- локализация сайта, для русскоязычного сайта ru_RU -->
+	<meta property="og:locale" content="ru_RU">
+
+	<!-- тип контента, по умолчанию используется article -->
+	<meta property="og:type" content="website">
+
+	<!-- заголовок страницы, который будет выводится в записи социальной сети -->
+	<meta property="og:title" content="Успешная отправка данных через форму!">
+
+	<!-- описание страницы -->
+	<meta property="og:description" content="Страница информирования пользователя об успешной отправке данных с формы обратной связи сайта ПОЛИМЕРБЕТОН (polimerbeton-vrn.ru).">
+
+	<!-- ссылка на изображение, которое будет публиковаться в записи -->
+	<meta property="og:image" content="{% static 'main_app/images/open_graph/large_image_success.jpg' %}">
+
+	<!-- ссылка на текущую страницу -->
+	<meta property="og:url" content="https://polimerbeton-vrn.ru/success/">
+
+	<!-- название сайта -->
+	<meta property="og:site_name" content="ПОЛИМЕРБЕТОН - быстро и надёжно!">
+
+    <!-- Тип карты, по умолчанию используется summary -->
+	<meta name="twitter:card" content="summary">
+
+	<!-- Имя/логин автора привязанный к странице -->
+	<meta name="twitter:site" content="@aBLeeWeeAN">
+
+	<!-- Название страницы -->
+	<meta name="twitter:title" content="Успешная отправка данных через форму!">
+
+	<!-- Описание страницы -->
+	<meta name="twitter:description" content="Страница информирования пользователя об успешной отправке данных с формы обратной связи сайта ПОЛИМЕРБЕТОН (polimerbeton-vrn.ru).">
+
+	<!-- Cсылка на изображение -->
+	<meta name="twitter:image" content="{% static 'main_app/images/twitter/thumbnail_image.jpg' %}">
+
+    <!-- Описание картинки для Twitter --->
+    <meta name="twitter:image:alt" content="Логотип сайта polimerbeton-vrn.ru">
+
+    <!-- Facebook analytics --->
+    <!-- <meta property="fb:app_id" content="your_app_id" /> -->
 </head>
 
 <body>
