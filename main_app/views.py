@@ -14,6 +14,8 @@ from .models import Client, Request
 import hashlib
 from babel.dates import format_datetime
 
+from django.conf import settings
+
 # from django.http import HttpResponse
 # from htmlmin.decorators import minified_response
 
@@ -135,18 +137,47 @@ def index(request):
 
             request.session['message_h1'] = m_message_h1
             request.session['message_h2'] = m_message_h2
+
             return redirect('success')
     else:
         form_token = generate_token()
         request.session['form_token'] = form_token
         form = FeedbackForm()
 
+    # Генерация HTTP ссылки
+    http_image_url = 'http://' + request.get_host() + settings.STATIC_URL + 'main_app/images/open_graph/large_image_home.jpg'
+    
+    # Генерация HTTPS ссылки
+    https_image_url = 'https://' + request.get_host() + settings.STATIC_URL + 'main_app/images/open_graph/large_image_home.jpg'
+
+    # Генерация абсолютной ссылки для изображения Twitter Cards
+    absolute_url_for_twitter_thumbnail_image = request.build_absolute_uri(settings.STATIC_URL + 'main_app/images/twitter/thumbnail_image.jpg')
+
     # reset_client_attempts()
-    return render(request, 'main_app/index.html', {'form': form, 'form_token': form_token})
+    return render(request, 'main_app/index.html', {
+        'form': form, 
+        'form_token': form_token,
+        'http_image_url': http_image_url,
+        'https_image_url': https_image_url,
+        'twitter_thumbnail_image_url': absolute_url_for_twitter_thumbnail_image
+    })
 
 # @minified_response
 def privacy(request):
-    return render(request, 'main_app/privacy.html')
+    # Генерация HTTP ссылки
+    http_image_url = 'http://' + request.get_host() + settings.STATIC_URL + 'main_app/images/open_graph/large_image_privacy.jpg'
+    
+    # Генерация HTTPS ссылки
+    https_image_url = 'https://' + request.get_host() + settings.STATIC_URL + 'main_app/images/open_graph/large_image_privacy.jpg'
+
+    # Генерация абсолютной ссылки для изображения Twitter Cards
+    absolute_url_for_twitter_thumbnail_image = request.build_absolute_uri(settings.STATIC_URL + 'main_app/images/twitter/thumbnail_image.jpg')
+
+    return render(request, 'main_app/privacy.html', {
+        'http_image_url': http_image_url,
+        'https_image_url': https_image_url,
+        'twitter_thumbnail_image_url': absolute_url_for_twitter_thumbnail_image
+    })
 
 # from .tasks import reset_client_attempts
 
@@ -158,8 +189,23 @@ def success(request):
     # Очистите сообщения после использования
     request.session.pop('message_h1', None)
     request.session.pop('message_h2', None)
+
+    # Генерация HTTP ссылки
+    http_image_url = 'http://' + request.get_host() + settings.STATIC_URL + 'main_app/images/open_graph/large_image_success.jpg'
     
-    return render(request, 'main_app/success.html', {'message_h1': message_h1, 'message_h2': message_h2})
+    # Генерация HTTPS ссылки
+    https_image_url = 'https://' + request.get_host() + settings.STATIC_URL + 'main_app/images/open_graph/large_image_success.jpg'
+
+    # Генерация абсолютной ссылки для изображения Twitter Cards
+    absolute_url_for_twitter_thumbnail_image = request.build_absolute_uri(settings.STATIC_URL + 'main_app/images/twitter/thumbnail_image.jpg')
+    
+    return render(request, 'main_app/success.html', {
+        'message_h1': message_h1, 
+        'message_h2': message_h2,
+        'http_image_url': http_image_url,
+        'https_image_url': https_image_url,
+        'twitter_thumbnail_image_url': absolute_url_for_twitter_thumbnail_image
+    })
 
 def error(request):
     error_h1 = request.session.get('error_h1', 'Шаблон страницы информирования о неудачной отправке контактных данных через форму!')
@@ -169,7 +215,22 @@ def error(request):
     request.session.pop('error_h1', None)
     request.session.pop('error_h2', None)
 
-    return render(request, 'main_app/error.html', {'error_h1': error_h1, 'error_h2': error_h2})
+    # Генерация HTTP ссылки
+    http_image_url = 'http://' + request.get_host() + settings.STATIC_URL + 'main_app/images/open_graph/large_image_error.jpg'
+    
+    # Генерация HTTPS ссылки
+    https_image_url = 'https://' + request.get_host() + settings.STATIC_URL + 'main_app/images/open_graph/large_image_error.jpg'
+
+    # Генерация абсолютной ссылки для изображения Twitter Cards
+    absolute_url_for_twitter_thumbnail_image = request.build_absolute_uri(settings.STATIC_URL + 'main_app/images/twitter/thumbnail_image.jpg')
+
+    return render(request, 'main_app/error.html', {
+        'error_h1': error_h1,
+        'error_h2': error_h2,
+        'http_image_url': http_image_url,
+        'https_image_url': https_image_url,
+        'twitter_thumbnail_image_url': absolute_url_for_twitter_thumbnail_image
+    })
 
 # def browserconfig_xml(request):
 #     xml_content = render_to_string('browserconfig.xml', {})

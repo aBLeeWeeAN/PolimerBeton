@@ -87,10 +87,10 @@
 	<meta property="og:description" content="Страница информирования пользователя об успешной отправке данных с формы обратной связи сайта ПОЛИМЕРБЕТОН (polimerbeton-vrn.ru).">
 
 	<!-- ссылка на изображение, которое будет публиковаться в записи -->
-	<meta property="og:image" itemprop="image" content="{% static 'main_app/images/open_graph/large_image_success.jpg' %}">
+	<meta property="og:image" itemprop="image" content="{{ http_image_url }}">
 
     <!-- Ссылка на изображение по HTTPS --->
-    <meta property="og:image:secure_url" content="{% static 'main_app/images/open_graph/large_image_success.jpg' %}" />
+    <meta property="og:image:secure_url" content="{{ https_image_url }}" />
 
     <!-- Настройки изображения --->
     <meta property="og:image:width" content="1200">
@@ -117,7 +117,7 @@
 	<meta name="twitter:description" content="Страница информирования пользователя об успешной отправке данных с формы обратной связи сайта ПОЛИМЕРБЕТОН (polimerbeton-vrn.ru).">
 
 	<!-- Cсылка на изображение -->
-	<meta name="twitter:image" content="{% static 'main_app/images/twitter/thumbnail_image.jpg' %}">
+	<meta name="twitter:image" content="{{ twitter_thumbnail_image_url }}">
 
     <!-- Описание картинки для Twitter --->
     <meta name="twitter:image:alt" content="Логотип сайта polimerbeton-vrn.ru">
