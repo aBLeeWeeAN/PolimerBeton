@@ -16,11 +16,11 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 DEFAULT_DOMAIN = 'polimerbeton-vrn.ru'
 
-ALLOWED_HOSTS = ['polimerbeton-vrn.ru', '178.208.81.224']
+ALLOWED_HOSTS = ['polimerbeton-vrn.ru', '178.208.81.224', '127.0.0.1']
 
 
 # Application definition
@@ -35,6 +35,8 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
     'django.contrib.sitemaps',
+
+    'django_extensions',
 
     # 'django_celery_beat',
     # 'django_celery_results',
