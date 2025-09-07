@@ -1,4 +1,4 @@
-import { build } from "esbuild";
+import esbuild from "esbuild";
 import fs from "fs";
 import path from "path";
 
@@ -6,26 +6,34 @@ const appsDir = path.resolve("./apps");
 
 fs.readdirSync(appsDir).forEach((appName) => {
     const tsDir = path.join(appsDir, appName, "static", appName, "ts");
-    const outDir = path.join(appsDir, appName, "static", appName, "js");
+    const jsDir = path.join(appsDir, appName, "static", appName, "js");
 
     if (!fs.existsSync(tsDir)) return;
-    fs.mkdirSync(outDir, { recursive: true });
+    fs.mkdirSync(jsDir, { recursive: true });
 
     fs.readdirSync(tsDir).forEach((file) => {
-        if (file.endsWith(".ts")) {
-            build({
-                entryPoints: [path.join(tsDir, file)],
-                bundle: true,
-                outfile: path.join(outDir, file.replace(/\.ts$/, ".js")),
-                minify: false,
-                sourcemap: true,
-                watch: {
-                    onRebuild(error) {
-                        if (error) console.error(`[TS][${appName}] Build failed:`, error);
-                        else console.log(`[TS][${appName}] Build succeeded`);
-                    },
+        if (!file.endsWith(".ts")) return;
+
+        const src = path.join(tsDir, file);
+        const out = path.join(jsDir, file.replace(/\.ts$/, ".js"));
+
+        // Начальная сборка
+        esbuild.buildSync({ entryPoints: [src], outfile: out, bundle: true, sourcemap: true });
+
+        console.log(`[TS][${appName}] ${file} built`);
+
+        // watch
+        esbuild.build({
+            entryPoints: [src],
+            outfile: out,
+            bundle: true,
+            sourcemap: true,
+            watch: {
+                onRebuild(error) {
+                    if (error) console.error(`[TS][${appName}] ${file} rebuild failed`, error);
+                    else console.log(`[TS][${appName}] ${file} rebuilt`);
                 },
-            }).catch(() => process.exit(1));
-        }
+            },
+        });
     });
 });

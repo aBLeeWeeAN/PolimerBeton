@@ -6,15 +6,15 @@ const appsDir = path.resolve("./apps");
 
 fs.readdirSync(appsDir).forEach((appName) => {
     const scssDir = path.join(appsDir, appName, "static", appName, "scss");
-    const outDir = path.join(appsDir, appName, "static", appName, "css");
+    const cssDir = path.join(appsDir, appName, "static", appName, "css");
 
     if (!fs.existsSync(scssDir)) return;
-    fs.mkdirSync(outDir, { recursive: true });
+    fs.mkdirSync(cssDir, { recursive: true });
 
-    console.log(`[SCSS][${appName}] Watching ${scssDir} -> ${outDir}`);
+    console.log(`[SCSS][${appName}] Watching ${scssDir} -> ${cssDir}`);
 
-    // Sass CLI сам игнорирует файлы начинающиеся с '_'
-    const proc = spawn("sass", ["--watch", `${scssDir}:${outDir}`, "--no-source-map"], { stdio: "inherit", shell: true });
+    // Используем sass CLI с опцией polling, чтобы Windows точно ловил изменения
+    const proc = spawn("sass", ["--watch", `${scssDir}:${cssDir}`, "--no-source-map", "--poll"], { stdio: "inherit", shell: true });
 
     proc.on("close", (code) => console.log(`[SCSS][${appName}] Watch stopped with code ${code}`));
 });

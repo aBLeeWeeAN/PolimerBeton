@@ -33,7 +33,7 @@
         "watch:ts": "node scripts/watch_ts.js",
         "build:scss": "node scripts/build_scss.js",
         "watch:scss": "node scripts/watch_scss.js",
-        "watch:bs": "node scripts/watch_browsersync.js",
+        "watch:bs": "node scripts/watch_bs.js",
         "build": "npm run build:ts && npm run build:scss",
         "dev": "concurrently \"npm run watch:ts\" \"npm run watch:scss\" \"python manage.py runserver 0.0.0.0:8000\" \"npx wait-on http://127.0.0.1:8000 && npm run watch:bs\"",
         "prod": "npm run build && python manage.py migrate && python manage.py collectstatic --noinput && python manage.py compress && python manage.py runserver 0.0.0.0:80"
