@@ -1,0 +1,31 @@
+/* Полный сброс стилей */
+@import "reset";
+
+/* Подгружаем цветовую схему */
+@import "color_scheme";
+
+// @import url("color_scheme_light.css");
+// @import url("color_scheme_dark.css");
+
+// @import 'color_scheme_light';
+
+/* Подключение сторонних библиотек */
+@import "vendors";
+
+@import "variables";
+@import "mixins";
+@import "base";
+
+/* Общие стили для всех секций */
+@import "global";
+
+/* Импорт стиля навигационного меню */
+// @import 'nav_menu';
+
+/* Импорт стилей секций */
+@import "sections/header";
+@import "sections/footer";
+
+@import "sections/cookies_consent_banner";
+
+@import "sections/success";

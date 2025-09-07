@@ -1,0 +1,358 @@
+/**========================================================================
+ **                            PRICES
+ *========================================================================**/
+
+#Prices {
+    // margin: 10rem 0 10rem 0;
+
+    & strong {
+        @extend .subheading;
+    }
+
+    .current-price-animation-container {
+        position: relative;
+
+        // margin-top: 5rem;
+
+        .current-price {
+            position: relative;
+
+            // margin: $my-current-price-block-margin 0 $my-current-price-block-margin 0;
+
+            // width: $my-current-price-block-size;
+            // height: $my-current-price-block-size;
+
+            .current-price-figure-animation-wrapper {
+                will-change: transform;
+
+                width: 100%;
+                height: 100%;
+
+                transform: scale(1.25);
+                animation: scale-animation 6s ease-in-out infinite alternate;
+
+                @keyframes scale-animation {
+                    0% {
+                        transform: scale(1.25);
+                    }
+
+                    50% {
+                        transform: scale(0.9);
+                    }
+
+                    100% {
+                        transform: scale(1.25);
+                    }
+                }
+
+                .current-price-figure {
+                    @include transition-all(fill);
+                    will-change: fill, transform;
+
+                    width: 100%;
+                    height: 100%;
+
+                    fill: var(--prices--price-block-bc-color);
+
+                    transform: rotate(0deg);
+                    animation: rotate-counter-clockwise 10s infinite linear;
+
+                    @keyframes rotate-counter-clockwise {
+                        from {
+                            transform: rotate(0deg);
+                        }
+
+                        to {
+                            transform: rotate(-360deg);
+                        }
+                    }
+                }
+            }
+
+            .current-price-text {
+                @include transition-all(color);
+                will-change: color, transform;
+
+                z-index: 1;
+
+                position: absolute;
+
+                top: 50%;
+                left: 50%;
+
+                // transform: translate(-47.5%, -52.5%) rotate(-21deg);
+
+                margin: 0 auto;
+
+                font-family: "Montserrat", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 600;
+                font-style: normal;
+
+                // font-size: 3rem;
+                letter-spacing: 0.2em;
+                text-align: center;
+
+                color: var(--text-color-alt-100);
+
+                text-transform: none;
+
+                font-variant-numeric: lining-nums;
+
+                transform: translate(-47.5%, -52.5%) rotate(-21deg) rotate(-8deg);
+                animation: wobble 10s infinite;
+
+                @keyframes wobble {
+                    0% {
+                        transform: translate(-47.5%, -52.5%) rotate(-21deg) rotate(-8deg);
+                    }
+
+                    50% {
+                        transform: translate(-47.5%, -52.5%) rotate(-21deg) rotate(8deg);
+                    }
+
+                    100% {
+                        transform: translate(-47.5%, -52.5%) rotate(-21deg) rotate(-8deg);
+                    }
+                }
+            }
+        }
+
+        .concrete-image-orbit-animation-wrapper {
+            z-index: -1;
+            // z-index: 3;
+
+            position: absolute;
+
+            padding: 0;
+
+            // width: $my-ball-size;   // image size
+            // height: $my-orbit-radius;  // orbit radius
+
+            top: 0;
+            left: 50%;
+
+            transform: translateX(-50%);
+            transform-origin: bottom center;
+
+            img {
+                position: absolute;
+
+                width: 100%;
+                height: auto;
+
+                top: 0;
+                left: 50%;
+
+                transform: translateX(-50%);
+            }
+        }
+
+        #ball-green {
+            will-change: transform;
+            animation: rotate-clockwise 10s infinite linear;
+
+            @keyframes rotate-clockwise {
+                from {
+                    transform: translateX(-50%) rotate(0deg);
+                }
+
+                to {
+                    transform: translateX(-50%) rotate(360deg);
+                }
+            }
+
+            img {
+                will-change: transform;
+                animation: ball-rotate-counter-clockwise-0 10s infinite linear;
+
+                @keyframes ball-rotate-counter-clockwise-0 {
+                    from {
+                        transform: translateX(-50%) rotate(0deg);
+                    }
+
+                    to {
+                        transform: translateX(-50%) rotate(-360deg);
+                    }
+                }
+            }
+        }
+
+        #ball-yellow {
+            will-change: transform;
+            animation: rotate-clockwise-72 10s infinite linear;
+
+            @keyframes rotate-clockwise-72 {
+                from {
+                    transform: translateX(-50%) rotate(72deg);
+                }
+
+                to {
+                    transform: translateX(-50%) rotate(432deg);
+                }
+            }
+
+            img {
+                will-change: transform;
+                animation: ball-rotate-counter-clockwise-72 10s infinite linear;
+
+                @keyframes ball-rotate-counter-clockwise-72 {
+                    from {
+                        transform: translateX(-50%) rotate(-72deg);
+                    }
+
+                    to {
+                        transform: translateX(-50%) rotate(-432deg);
+                    }
+                }
+            }
+        }
+
+        #ball-white {
+            will-change: transform;
+            animation: rotate-clockwise-144 10s infinite linear;
+
+            @keyframes rotate-clockwise-144 {
+                from {
+                    transform: translateX(-50%) rotate(144deg);
+                }
+
+                to {
+                    transform: translateX(-50%) rotate(504deg);
+                }
+            }
+
+            img {
+                will-change: transform;
+                animation: ball-rotate-counter-clockwise-144 10s infinite linear;
+
+                @keyframes ball-rotate-counter-clockwise-144 {
+                    from {
+                        transform: translateX(-50%) rotate(-144deg);
+                    }
+
+                    to {
+                        transform: translateX(-50%) rotate(-504deg);
+                    }
+                }
+            }
+        }
+
+        #ball-grey {
+            will-change: transform;
+            animation: rotate-clockwise-216 10s infinite linear;
+
+            @keyframes rotate-clockwise-216 {
+                from {
+                    transform: translateX(-50%) rotate(216deg);
+                }
+
+                to {
+                    transform: translateX(-50%) rotate(576deg);
+                }
+            }
+
+            img {
+                will-change: transform;
+                animation: ball-rotate-counter-clockwise-216 10s infinite linear;
+
+                @keyframes ball-rotate-counter-clockwise-216 {
+                    from {
+                        transform: translateX(-50%) rotate(-216deg);
+                    }
+
+                    to {
+                        transform: translateX(-50%) rotate(-576deg);
+                    }
+                }
+            }
+        }
+
+        #ball-red {
+            will-change: transform;
+            animation: rotate-clockwise-288 10s infinite linear;
+
+            @keyframes rotate-clockwise-288 {
+                from {
+                    transform: translateX(-50%) rotate(288deg);
+                }
+
+                to {
+                    transform: translateX(-50%) rotate(648deg);
+                }
+            }
+
+            img {
+                will-change: transform;
+                animation: ball-rotate-counter-clockwise-288 10s infinite linear;
+
+                @keyframes ball-rotate-counter-clockwise-288 {
+                    from {
+                        transform: translateX(-50%) rotate(-288deg);
+                    }
+
+                    to {
+                        transform: translateX(-50%) rotate(-648deg);
+                    }
+                }
+            }
+        }
+    }
+
+    $current-price-text-font-size: 1.5rem;
+
+    $my-current-price-block-size: 14rem;
+
+    $my-ball-size: 14rem;
+    $my-orbit-radius: 25rem;
+
+    $my-current-price-block-margin: my-orbit-animation-calculate-margin($my-orbit-radius, $my-current-price-block-size) 0;
+
+    // Применение начальных стилей
+    @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
+
+    // Медиа-запросы
+    // @include media-breakpoint-down(xl) {
+    //     $current-price-text-font-size: 2.5rem;
+
+    //     $my-current-price-block-size: 17.5rem;
+
+    //     $my-ball-size: 17.5rem;
+    //     $my-orbit-radius: 32rem;
+
+    //     @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
+    // }
+
+    // @include media-breakpoint-down(lg) {
+    //     $current-price-text-font-size: 2rem;
+
+    //     $my-current-price-block-size: 15rem;
+
+    //     $my-ball-size: 12rem;
+    //     $my-orbit-radius: 22.5rem;
+
+    //     @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
+    // }
+
+    @include media-breakpoint-down(md) {
+        $current-price-text-font-size: 1.5rem;
+
+        $my-current-price-block-size: 11rem;
+
+        $my-ball-size: 11rem;
+        $my-orbit-radius: 20rem;
+
+        @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
+    }
+
+    @include media-breakpoint-down(sm) {
+        $current-price-text-font-size: 1.15rem;
+
+        $my-current-price-block-size: 8rem;
+
+        $my-ball-size: 8rem;
+        $my-orbit-radius: 13rem;
+
+        @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
+    }
+}

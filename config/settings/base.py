@@ -1,10 +1,10 @@
-import os
+# import os
 from pathlib import Path
 from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-SECRET_KEY = config("DJANGO_SECRET_KEY", default="unsafe-secret-key")
+SECRET_KEY = config("DJANGO_SECRET_KEY", default="secret_key_for_dummy_guys")
 
 DEBUG = config("DJANGO_DEBUG", default=True, cast=bool)
 
@@ -29,8 +29,8 @@ INSTALLED_APPS = [
     "compressor",
     # ? --- MY APPS
     # ? -----------
-    "main_app",
-    "simple_pages_app",
+    "apps.MainApp",
+    "apps.MetaPagesApp",
 ]
 
 # TODO: delete SITE_ID?
@@ -48,10 +48,6 @@ MIDDLEWARE = [
     # ? ---------------
     "htmlmin.middleware.MarkRequestMiddleware",
     "htmlmin.middleware.HtmlMinifyMiddleware",
-    # ? --- CUSTOM
-    # ? ----------
-    # TODO: удалить?
-    "main_app.middleware.cache_control_middleware.CacheControlMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -97,19 +93,22 @@ LANGUAGE_CODE = "ru"  # Устанавливаем язык по умолчан�
 TIME_ZONE = "Europe/Moscow"
 USE_I18N = True
 USE_TZ = True
-LOCALE_PATHS = [BASE_DIR / "locale"]
+LOCALE_PATHS = [BASE_DIR / "locales"]
 #! USE_L10N = True
 
 # ? --- STATIC FILES
 # ? ----------------
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "static_files"
-STATICFILES_DIRS = []
+STATIC_URL = "/static_assets/"
+STATIC_ROOT = BASE_DIR / "static_assets"
+STATICFILES_DIRS = [
+    # ? find only '/static/' folders in apps
+]
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     "compressor.finders.CompressorFinder",
 ]
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
 # ? --- COMPRESSOR
 # ? --------------
@@ -133,29 +132,21 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.yandex.ru"
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="")
-EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="")
+EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="email_address_for_dummy_guys")
+EMAIL_HOST_PASSWORD = config(
+    "EMAIL_HOST_PASSWORD", default="email_password_for_dummy_guys"
+)
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 #! EMAIL_USE_TLS = False
 
 # ? --- ENCRYPTION
 # ? --------------
-FIELD_ENCRYPTION_KEY = config("FIELD_ENCRYPTION_KEY", default="dummy-key")
+FIELD_ENCRYPTION_KEY = config(
+    "FIELD_ENCRYPTION_KEY", default="field_encryption_key_for_dummy_guys"
+)
 
-
-#! =================================================================
-#! =================================================================
-#! =================================================================
-#! =================================================================
-#! =================================================================
-#! =================================================================
-#! =================================================================
-#! =================================================================
-#! =================================================================
-#! =================================================================
-
-
-# Caches
+# ? --- REDIS CACHE
+# ? ---------------
 # CACHES = {
 #     "default": {
 #         "BACKEND": "django.core.cache.backends.redis.RedisCache",
@@ -165,19 +156,3 @@ FIELD_ENCRYPTION_KEY = config("FIELD_ENCRYPTION_KEY", default="dummy-key")
 
 # SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 # SESSION_CACHE_ALIAS = "default"
-
-
-# # Настройки htmlmin
-# HTML_MINIFY = True
-
-# HTMLMIN = {
-#     "remove_comments": True,
-#     "remove_empty_space": True,
-#     "remove_optional_attribute_quotes": False,
-#     "remove_empty_tags": True,
-#     "collapse_whitespace": True,
-#     "minify_js": True,
-#     "minify_css": True,
-#     "ignore": [".no-minify"],
-#     "preprocessors": ["myapp.utils.preprocessor_function"],
-# }

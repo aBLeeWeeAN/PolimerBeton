@@ -1,0 +1,139 @@
+/**========================================================================
+ **                            LIGHT COLORS
+ *========================================================================**/
+
+:root,
+html[data-theme="light"] {
+    // new colors
+    --bc-color: #fff;
+    --cookie-consent-banner-bc-color: rgba(255, 255, 255, 0.87);
+
+    --primary-color: #512da8;
+    --secondary-color: #fff3e0;
+
+    --primary-color--hover: #673ab7;
+    --primary-color--active: #311b92;
+    --primary-color--focus: var(--primary-color--active);
+    --primary-color--disabled: var(--primary-color--active);
+
+    --primary-color--tone-100: #d1c4e9c7;
+    --secondary-color--tone-100: #ffe0b2c7;
+
+    --primary-color--tone-500: #673ab7;
+    --secondary-color--tone-500: #ff9800;
+
+    --bc-circle-gradient-color-1: var(--primary-color--tone-500);
+    --bc-circle-gradient-color-2: var(--secondary-color--tone-500);
+
+    --finally-bc-color: color-mix(in srgb, var(--bc-color) 100%, var(--secondary-color) 8%);
+
+    // text colors
+    --text-color-60: #12121299;
+    --text-color-alt-60: #ffffff99;
+
+    --text-color-87: #121212de;
+    --text-color-alt-87: #ffffffde;
+
+    --text-color-100: #121212ff;
+    --text-color-alt-100: #ffffffff;
+
+    // form fields colors
+    --form-field-bc-color: #fff;
+
+    // accent colors
+    --accent-color-green: #4caf50;
+    --accent-color-yellow: #ffeb3b;
+    --accent-color-red: #f44336;
+
+    --header-decoration-1--color: rgba(255, 255, 255, 0.18);
+    --header-decoration-2--color: rgba(255, 255, 255, 0.12);
+
+    --footer-decoration-1--color: rgba(255, 255, 255, 0.16);
+    --footer-decoration-2--color: rgba(255, 255, 255, 0.1);
+
+    // --offcanvas-bc-color: rgba(255, 255, 255, 0.37);
+    --offcanvas-bc-color: color-mix(in srgb, var(--bc-color) 37%, var(--secondary-color) 8%);
+
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+
+    --hero-bc-color: #fff;
+
+    --hero--accent-color-green: #1b5e20;
+    --hero--accent-color-yellow: #ff6f00;
+    --hero--accent-color-red: #bf360c;
+
+    --usage--card-block-bc-color: rgba(255, 255, 255, 0.05);
+
+    --prices--price-block-bc-color: #b71c1c;
+}
+
+/**========================================================================
+ **                            DARK COLORS
+ *========================================================================**/
+
+html[data-theme="dark"] {
+    // new colors
+    --bc-color: #121212;
+    --cookie-consent-banner-bc-color: rgba(18, 18, 18, 0.87);
+
+    --primary-color: #ffab91;
+    --secondary-color: #b39ddb;
+
+    --primary-color--hover: #ffccbc;
+    --primary-color--active: #ff8a65;
+    --primary-color--focus: var(--primary-color--active);
+    --primary-color--disabled: var(--primary-color--active);
+
+    --primary-color--tone-100: #2e2c31c7;
+    --secondary-color--tone-100: #2e2c31c7;
+
+    // --primary-color--tone-500: rgba(255, 255, 255, 0.07);
+    // --secondary-color--tone-500: rgba(255, 255, 255, 0.07);
+
+    --primary-color--tone-500: #ffab91;
+    --secondary-color--tone-500: #b39ddb;
+
+    --bc-circle-gradient-color-1: rgba(255, 255, 255, 0.14);
+    --bc-circle-gradient-color-2: rgba(255, 255, 255, 0.14);
+
+    --finally-bc-color: color-mix(in srgb, var(--bc-color) 100%, var(--secondary-color) 8%);
+
+    // text colors
+    --text-color-60: #ffffff99;
+    --text-color-alt-60: #12121299;
+
+    --text-color-87: #ffffffde;
+    --text-color-alt-87: #121212de;
+
+    --text-color-100: #ffffffff;
+    --text-color-alt-100: #121212ff;
+
+    // form fields colors
+    --form-field-bc-color: color-mix(in srgb, var(--finally-bc-color) 100%, var(--primary-color) 5%);
+
+    // accent colors
+    --accent-color-green: #a5d6a7;
+    --accent-color-yellow: #fff59d;
+    --accent-color-red: #ef9a9a;
+
+    --header-decoration-1--color: rgba(255, 255, 255, 0.07);
+    --header-decoration-2--color: rgba(255, 255, 255, 0.07);
+
+    --footer-decoration-1--color: rgba(255, 255, 255, 0.07);
+    --footer-decoration-2--color: rgba(255, 255, 255, 0.07);
+
+    // --offcanvas-bc-color: rgba(18, 18, 18, 0.37);
+    --offcanvas-bc-color: color-mix(in srgb, var(--bc-color) 37%, var(--secondary-color) 8%);
+
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+
+    --hero-bc-color: #121212;
+
+    --hero--accent-color-green: #a5d6a7;
+    --hero--accent-color-yellow: #fff59d;
+    --hero--accent-color-red: #ef9a9a;
+
+    --usage--card-block-bc-color: rgba(255, 255, 255, 0.05);
+
+    --prices--price-block-bc-color: #ef9a9a;
+}

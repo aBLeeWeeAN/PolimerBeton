@@ -1,0 +1,53 @@
+/**========================================================================
+ **                            FUNCTIONS
+ *========================================================================**/
+
+// Функция для расчета значения отступа
+@function my-orbit-animation-calculate-margin($ball-container-height, $current-price-container-height) {
+    // @return ($ball-container-height * 2.0 - $current-price-container-height) / 2.0;
+    @return calc(($ball-container-height * 2 - $current-price-container-height) / 2);
+}
+
+// Миксин для применения стилей
+@mixin prices-block-apply-styles($current-price-block-size, $ball-size, $orbit-radius, $current-price-text-font-size) {
+    $current-price-block-margin: my-orbit-animation-calculate-margin($orbit-radius, $current-price-block-size);
+
+    .current-price-animation-container {
+        .current-price {
+            width: $current-price-block-size;
+            height: $current-price-block-size;
+
+            margin: $current-price-block-margin 0;
+
+            .current-price-text {
+                font-size: $current-price-text-font-size;
+            }
+        }
+
+        .concrete-image-orbit-animation-wrapper {
+            width: $ball-size;
+            height: $orbit-radius;
+        }
+    }
+}
+
+// миксин для плавных переходов
+@mixin transition-all($properties...) {
+    $transition-properties: ();
+
+    @each $property in $properties {
+        $transition-properties: append($transition-properties, $property + " " + $transition-duration + " " + $transition-easing, comma);
+    }
+
+    transition: #{$transition-properties};
+}
+
+// @mixin transition-all($properties...) {
+//     transition: #{join($properties, ', ')} $transition-duration $transition-easing;
+// }
+
+// @mixin transition-all($properties...) {
+//     @each $property in $properties {
+//         transition: #{$property} $transition-duration $transition-easing;
+//     }
+// }

@@ -29,3 +29,19 @@ X_FRAME_OPTIONS = "DENY"
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
+
+# ? --- НАСТРОЙКИ HTMLMIN
+# ? ---------------------
+HTML_MINIFY = True
+
+HTMLMIN = {
+    "remove_comments": True,
+    "remove_empty_space": True,
+    "remove_optional_attribute_quotes": False,
+    "remove_empty_tags": True,
+    "collapse_whitespace": True,
+    "minify_js": True,
+    "minify_css": True,
+    "ignore": [".no-minify"],
+    "preprocessors": [],
+}
