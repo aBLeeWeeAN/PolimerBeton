@@ -162,10 +162,10 @@ static_assets/
 
 #? Ignore all CSS and JS files and folders (SCSS and TS only in repo)
 css/
-*.css
+# *.css
 
 js/
-*.js
+# *.js
 
 #? Ignore node_modules folder
 node_modules/
