@@ -150,6 +150,7 @@ GitHub.sublime-settings
 #? node_modules/
 alpha_old/
 old/
+*.old
 
 #? Ignore compiled static files folder
 static_files/
