@@ -153,6 +153,7 @@ old/
 
 # Ignore compiled static files folder
 static_files/
+static_assets/
 
 # Ignore keys and certificate files
 *.crt
