@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "rootDir": "./apps",
+
+        "module": "ESNext",
+        "target": "ES6",
+
+        "lib": ["DOM", "ES6"],
+
+        "strict": true,
+        "noImplicitAny": true,
+        "skipLibCheck": true,
+
+        "forceConsistentCasingInFileNames": true,
+
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+
+        "sourceMap": true,
+        "removeComments": true,
+        "incremental": true
+    },
+    "include": ["apps/**/static/**/*.ts"],
+    "exclude": ["node_modules"]
+}

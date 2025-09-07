@@ -1,0 +1,39 @@
+{
+    "name": "polimerbeton",
+    "version": "2.0.0",
+    "description": "TODO: napisat opisanye",
+    "private": true,
+    "type": "module",
+    "homepage": "TODO: https://github.com/npm/example#readme",
+    "repository": {
+        "type": "git",
+        "url": "TODO: git+https://github.com/npm/example.git"
+    },
+    "author": {
+        "name": "Vladimir Nikulin",
+        "email": "mail.jorey@gmail.com",
+        "url": "https://github.com/aBLeeWeeAN"
+    },
+    "license": "TODO: ISC",
+    "devDependencies": {
+        "esbuild": "^0.25.9",
+        "glob": "^11.0.3",
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^6.0.1",
+        "sass": "^1.90.0",
+        "typescript": "^5.9.2"
+    },
+    "scripts": {
+        "clean": "rimraf --glob \"apps/**/static/**/css\" \"apps/**/static/**/js\"",
+        "build:ts": "node build.mjs ts",
+        "build:scss": "node build.mjs scss",
+        "build:all": "npm-run-all clean build:ts build:scss",
+        "watch:ts": "node build.mjs ts:watch",
+        "watch:scss": "node build.mjs scss:watch",
+        "watch": "npm-run-all --parallel watch:ts watch:scss"
+    },
+    "dependencies": {
+        "bootstrap": "^5.3.8",
+        "inputmask": "^5.0.9"
+    }
+}

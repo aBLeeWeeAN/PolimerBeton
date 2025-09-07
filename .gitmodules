@@ -1,7 +1,0 @@
-[submodule "node_modules/bootstrap"]
-	path = node_modules/bootstrap
-	url = https://github.com/twbs/bootstrap
-
-[submodule "node_modules/Inputmask"]
-	path = node_modules/Inputmask
-	url = https://github.com/RobinHerbots/Inputmask
