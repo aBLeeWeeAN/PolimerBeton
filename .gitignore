@@ -1,4 +1,4 @@
-# Django #
+#? Django #?
 *.log
 *.pot
 *.pyc
@@ -6,24 +6,24 @@ __pycache__
 db.sqlite3
 media
 
-# Backup files # 
+#? Backup files #? 
 *.bak 
 
-# If you are using PyCharm # 
-# User-specific stuff
+#? If you are using PyCharm #? 
+#? User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
 
-# AWS User-specific
+#? AWS User-specific
 .idea/**/aws.xml
 
-# Generated files
+#? Generated files
 .idea/**/contentModel.xml
 
-# Sensitive or high-churn files
+#? Sensitive or high-churn files
 .idea/**/dataSources/
 .idea/**/dataSources.ids
 .idea/**/dataSources.local.xml
@@ -32,24 +32,24 @@ media
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
 
-# Gradle
+#? Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
 
-# File-based project format
+#? File-based project format
 *.iws
 
-# IntelliJ
+#? IntelliJ
 out/
 
-# JIRA plugin
+#? JIRA plugin
 atlassian-ide-plugin.xml
 
-# Python # 
+#? Python #? 
 *.py[cod] 
 *$py.class 
 
-# Distribution / packaging 
+#? Distribution / packaging 
 .Python build/ 
 develop-eggs/ 
 dist/ 
@@ -69,11 +69,11 @@ wheels/
 *.manifest 
 *.spec 
 
-# Installer logs 
+#? Installer logs 
 pip-log.txt 
 pip-delete-this-directory.txt 
 
-# Unit test / coverage reports 
+#? Unit test / coverage reports 
 htmlcov/ 
 .tox/ 
 .coverage 
@@ -85,19 +85,19 @@ coverage.xml
 *.cover 
 .hypothesis/ 
 
-# Jupyter Notebook 
+#? Jupyter Notebook 
 .ipynb_checkpoints 
 
-# pyenv 
+#? pyenv 
 .python-version 
 
-# celery 
+#? celery 
 celerybeat-schedule.* 
 
-# SageMath parsed files 
+#? SageMath parsed files 
 *.sage.py 
 
-# Environments 
+#? Environments 
 .env 
 .venv 
 env/ 
@@ -106,55 +106,62 @@ ENV/
 env.bak/ 
 venv.bak/ 
 
-# mkdocs documentation 
+#? mkdocs documentation 
 /site 
 
-# mypy 
+#? mypy 
 .mypy_cache/ 
 
-# Sublime Text # 
+#? Sublime Text #? 
 *.tmlanguage.cache 
 *.tmPreferences.cache 
 *.stTheme.cache 
 *.sublime-workspace 
 *.sublime-project 
 
-# sftp configuration file 
+#? sftp configuration file 
 sftp-config.json 
 
-# Package control specific files Package 
+#? Package control specific files Package 
 Control.last-run 
 Control.ca-list 
 Control.ca-bundle 
 Control.system-ca-bundle 
 GitHub.sublime-settings 
 
-# Visual Studio Code # 
-# .vscode/*
-# !.vscode/settings.json
-# !.vscode/tasks.json
-# !.vscode/launch.json
-# !.vscode/extensions.json
-# !.vscode/*.code-snippets
+#? Visual Studio Code #? 
+#? .vscode/*
+#? !.vscode/settings.json
+#? !.vscode/tasks.json
+#? !.vscode/launch.json
+#? !.vscode/extensions.json
+#? !.vscode/*.code-snippets
 
-# Ignore .vscode/ folder
+#? Ignore .vscode/ folder
 .vscode/
 
-# Local History for Visual Studio Code
+#? Local History for Visual Studio Code
 .history/
 
-# Built Visual Studio Code Extensions
+#? Built Visual Studio Code Extensions
 *.vsix
 
-# Ignore all other modules (repositories)
-# node_modules/
+#? Ignore all other modules (repositories)
+#? node_modules/
 alpha_old/
 old/
 
-# Ignore compiled static files folder
+#? Ignore compiled static files folder
 static_files/
 static_assets/
 
-# Ignore keys and certificate files
+#? Ignore keys and certificate files
 *.crt
 *.key
+
+#? Ignore all CSS and JS files and folders (SCSS and TS only in repo)
+css/
+*.css
+
+js/
+*.js
