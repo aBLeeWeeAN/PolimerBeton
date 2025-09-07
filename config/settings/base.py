@@ -110,20 +110,6 @@ STATICFILES_FINDERS = [
 ]
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
-# ? --- COMPRESSOR
-# ? --------------
-COMPRESS_ROOT = STATIC_ROOT
-COMPRESS_URL = STATIC_URL
-COMPRESS_ENABLED = True
-COMPRESS_OFFLINE = True
-COMPRESS_CSS_FILTERS = [
-    "compressor.filters.css_default.CssAbsoluteFilter",
-    "compressor.filters.cssmin.CSSMinFilter",
-]
-COMPRESS_JS_FILTERS = [
-    "compressor.filters.jsmin.JSMinFilter",
-]
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # ? --- EMAIL SETTINGS

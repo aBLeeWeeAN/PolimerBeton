@@ -18,7 +18,9 @@
 
         "sourceMap": true,
         "removeComments": true,
-        "incremental": true
+        "incremental": true,
+
+        "types": ["node"]
     },
     "include": ["apps/**/static/**/*.ts"],
     "exclude": ["node_modules"]
