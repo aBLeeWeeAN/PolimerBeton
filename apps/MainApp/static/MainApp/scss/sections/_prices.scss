@@ -9,9 +9,25 @@
         @extend .subheading;
     }
 
+    $current-price-text-font-size: 1.5rem;
+
+    $my-current-price-block-size: 14rem;
+
+    $my-ball-size: 14rem;
+
+    // $my-orbit-radius: 25rem;
+    --my-orbit-radius: 25rem;
+
+    $my-current-price-block-margin: my-orbit-animation-calculate-margin(var(--my-orbit-radius), $my-current-price-block-size) 0;
+
+    // Применение начальных стилей
+    @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, var(--my-orbit-radius), $current-price-text-font-size);
+
     .current-price-animation-container {
         position: relative;
 
+        width: auto;
+        height: calc(var(--my-orbit-radius) * 2);
         // margin-top: 5rem;
 
         .current-price {
@@ -299,18 +315,6 @@
         }
     }
 
-    $current-price-text-font-size: 1.5rem;
-
-    $my-current-price-block-size: 14rem;
-
-    $my-ball-size: 14rem;
-    $my-orbit-radius: 25rem;
-
-    $my-current-price-block-margin: my-orbit-animation-calculate-margin($my-orbit-radius, $my-current-price-block-size) 0;
-
-    // Применение начальных стилей
-    @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
-
     // Медиа-запросы
     // @include media-breakpoint-down(xl) {
     //     $current-price-text-font-size: 2.5rem;
@@ -340,9 +344,16 @@
         $my-current-price-block-size: 11rem;
 
         $my-ball-size: 11rem;
-        $my-orbit-radius: 20rem;
 
-        @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
+        // $my-orbit-radius: 20rem;
+        --my-orbit-radius: 20rem;
+
+        @include prices-block-apply-styles(
+            $my-current-price-block-size,
+            $my-ball-size,
+            var(--my-orbit-radius),
+            $current-price-text-font-size
+        );
     }
 
     @include media-breakpoint-down(sm) {
@@ -351,8 +362,15 @@
         $my-current-price-block-size: 8rem;
 
         $my-ball-size: 8rem;
-        $my-orbit-radius: 13rem;
 
-        @include prices-block-apply-styles($my-current-price-block-size, $my-ball-size, $my-orbit-radius, $current-price-text-font-size);
+        // $my-orbit-radius: 13rem;
+        --my-orbit-radius: 13rem;
+
+        @include prices-block-apply-styles(
+            $my-current-price-block-size,
+            $my-ball-size,
+            var(--my-orbit-radius),
+            $current-price-text-font-size
+        );
     }
 }
