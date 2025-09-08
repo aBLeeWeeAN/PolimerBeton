@@ -44,6 +44,14 @@ COMPRESS_JS_FILTERS = [
     "compressor.filters.jsmin.JSMinFilter",
 ]
 
+# ? --- SASS/SCSS
+# ? -------------
+LIBSASS_OUTPUT_STYLE = "compressed"
+
+# ? --- STATIC FILES
+# ? ----------------
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+
 # ? --- НАСТРОЙКИ HTMLMIN
 # ? ---------------------
 HTML_MINIFY = True

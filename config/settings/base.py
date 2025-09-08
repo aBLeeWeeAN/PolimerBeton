@@ -18,15 +18,24 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    # ? --- LIVE RELOAD
+    # ? ---------------
+    "livereload",
+    # ? --- STATIC FILES
+    # ? ----------------
     "django.contrib.staticfiles",
     # ? --- ?????
     # ? ---------
     "django.contrib.sites",
     "django.contrib.sitemaps",
+    # ? --- SASS & TYPESCRIPT
+    # ? ---------------------
+    # "sass_processor",
+    # "django_sass",
     # ? --- HTML, CSS и JS сжатие
     # ? -------------------------
-    "htmlmin",
     "compressor",
+    "htmlmin",
     # ? --- MY APPS
     # ? -----------
     "apps.MainApp",
@@ -48,6 +57,9 @@ MIDDLEWARE = [
     # ? ---------------
     "htmlmin.middleware.MarkRequestMiddleware",
     "htmlmin.middleware.HtmlMinifyMiddleware",
+    # ? --- LIVE RELOAD
+    # ? ---------------
+    "livereload.middleware.LiveReloadScript",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -107,8 +119,8 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     "compressor.finders.CompressorFinder",
+    # "sass_processor.finders.CssFinder",
 ]
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -142,3 +154,11 @@ FIELD_ENCRYPTION_KEY = config(
 
 # SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 # SESSION_CACHE_ALIAS = "default"
+
+# ? --- SASS/SCSS --- ROOT FOLDER
+# ? -----------------------------
+# SASS_PROCESSOR_ROOT = BASE_DIR / "static_assets"
+
+# ? --- COMPRESSOR --- PRECOMPILERS SETTINGS
+# ? ----------------------------------------
+COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)

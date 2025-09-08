@@ -1,4 +1,6 @@
-<!-- Django load static & compress --->
+{% load livereload_tags %}
+
+<!--? Django load static & compress --->
 {% load static %} {% load compress %}
 
 <!DOCTYPE html>
@@ -80,7 +82,7 @@
 
         <!-- Page CSS --->
         {% compress css file index %}
-        <link id="index-css" rel="stylesheet" href="{% static 'MainApp/css/index.css' %}" media="screen" />
+        <link id="index-css" rel="stylesheet" type="text/x-scss" href="{% static 'MainApp/scss/index.scss' %}" media="screen" />
         {% endcompress %}
 
         <!-- Social Network --->
@@ -1565,5 +1567,7 @@
             <script src="{% static 'MainApp/js/hero_image_loader.js' %}"></script>
             {% endcompress %}
         </div>
+
+        {% livereload_script %}
     </body>
 </html>

@@ -1,3 +1,5 @@
+{% load livereload_tags %}
+
 <!-- Django load static & compress --->
 {% load static %} {% load compress %}
 
@@ -67,7 +69,7 @@
 
         <!-- Page CSS --->
         {% compress css file privacy %}
-        <link id="privacy-css" rel="stylesheet" href="{% static 'MainApp/css/privacy.css' %}" media="screen" />
+        <link id="privacy-css" rel="stylesheet" type="text/x-scss" href="{% static 'MainApp/scss/privacy.scss' %}" media="screen" />
         {% endcompress %}
 
         <!-- Social Network --->
@@ -1425,5 +1427,7 @@
         <div class="d-none" id="Third-Party-Cookies-Container">
             <!-- Empty by default, dynamic script load cookies --->
         </div>
+
+        {% livereload_script %}
     </body>
 </html>

@@ -1,3 +1,5 @@
+{% load livereload_tags %}
+
 <!-- Django load static & compress --->
 {% load static %} {% load compress %}
 
@@ -68,8 +70,8 @@
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" media="print" onload="this.media='screen'" />
 
         <!-- Page CSS --->
-        {% compress css file index %}
-        <link id="error-css" rel="stylesheet" href="{% static 'MainApp/css/error.css' %}" media="screen" />
+        {% compress css file error %}
+        <link id="error-css" rel="stylesheet" type="text/x-scss" href="{% static 'MainApp/scss/error.scss' %}" media="screen" />
         {% endcompress %}
 
         <!-- <link id="success-css" rel="stylesheet" href="../../static/MainApp/css/success.css" media="screen"> -->
@@ -780,5 +782,7 @@
         <div class="d-none" id="Third-Party-Cookies-Container">
             <!-- Empty by default, dynamic script load cookies --->
         </div>
+
+        {% livereload_script %}
     </body>
 </html>
