@@ -1,6 +1,7 @@
+<!--? Django load livereload tags --->
 {% load livereload_tags %}
 
-<!-- Django load static & compress --->
+<!--? Django load static & compress --->
 {% load static %} {% load compress %}
 
 <!DOCTYPE html>
@@ -146,7 +147,7 @@
     <body>
         <div class="d-none" id="Scripts-Container-Preload">
             <!-- Houdini Squircle JS scripts --->
-            <script>
+            <script async>
                 // Function to dynamically load a script
                 function loadScript(url) {
                     return new Promise((resolve, reject) => {
@@ -188,7 +189,7 @@
         </script> -->
 
             <!-- My JS scripts --->
-            <script>
+            <script async>
                 // Глобальные переменные для фавиконов и мета-тегов
                 window.faviconPaths = {
                     light: {
@@ -217,10 +218,10 @@
                     },
                 };
             </script>
-            {% compress js %}
-            <script src="{% static 'MainApp/js/change_favicon.js' %}" async></script>
-
-            <script src="{% static 'MainApp/js/change_color_scheme.js' %}" defer></script>
+            {% compress js file change_favicon %}
+            <script type="text/typescript" src="{% static 'MainApp/ts/change_favicon.ts' %}" async></script>
+            {% endcompress %} {% compress js file change_color_scheme %}
+            <script type="text/typescript" src="{% static 'MainApp/ts/change_color_scheme.ts' %}" async></script>
             {% endcompress %}
         </div>
 
@@ -719,38 +720,45 @@
 
         <div class="d-none" id="Scripts-Container">
             <!-- PopperJS JS scripts --->
-            <script
+            <!-- <script
                 src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
                 integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
                 crossorigin="anonymous"
-                async
-                defer></script>
+                async></script> -->
 
             <!-- Bootstrap JS scripts --->
+            {% compress js file vendors %}
+            <script type="text/typescript" src="{% static 'MainApp/ts/vendors.ts' %}" async></script>
+            {% endcompress %}
             <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" async defer></script> -->
-            <script
+            <!-- <script
                 src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
                 integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
                 crossorigin="anonymous"
                 async
-                defer></script>
+                defer></script> -->
 
             <!-- jQuery JS scripts --->
-            <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" defer></script>
+            <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" defer></script> -->
 
             <!-- My JS scripts --->
-            {% compress js %}
-            <script src="{% static 'MainApp/js/update_hero_container_margin_top.js' %}" defer></script>
-
-            <script src="{% static 'MainApp/js/update_offcanvas_padding_top.js' %}" defer></script>
-            <script src="{% static 'MainApp/js/update_offcanvas_body_height.js' %}" defer></script>
-
-            <script src="{% static 'MainApp/js/change_offcanvas_scroll_state.js' %}" defer></script>
-            <script src="{% static 'MainApp/js/change_menu_button_state.js' %}" defer></script>
-
-            <script src="{% static 'MainApp/js/cookies_consent_banner_manager.js' %}" defer></script>
-
-            <script src="{% static 'MainApp/js/block_submit_button_after_form_data_is_successfully_submitted.js' %}" defer></script>
+            {% compress js file update_hero_container_margin_top %}
+            <script type="text/typescript" src="{% static 'MainApp/ts/update_hero_container_margin_top.ts' %}" async></script>
+            {% endcompress %} {% compress js file update_offcanvas_padding_top %}
+            <script type="text/typescript" src="{% static 'MainApp/ts/update_offcanvas_padding_top.ts' %}" async></script>
+            {% endcompress %} {% compress js file update_offcanvas_body_height %}
+            <script type="text/typescript" src="{% static 'MainApp/ts/update_offcanvas_body_height.ts' %}" async></script>
+            {% endcompress %} {% compress js file change_offcanvas_scroll_state %}
+            <script type="text/typescript" src="{% static 'MainApp/ts/change_offcanvas_scroll_state.ts' %}" async></script>
+            {% endcompress %} {% compress js file change_menu_button_state %}
+            <script type="text/typescript" src="{% static 'MainApp/ts/change_menu_button_state.ts' %}" async></script>
+            {% endcompress %} {% compress js file cookies_consent_banner_manager %}
+            <script type="text/typescript" src="{% static 'MainApp/ts/cookies_consent_banner_manager.ts' %}" async></script>
+            {% endcompress %} {% compress js file block_submit_button_after_form_data_is_successfully_submitted %}
+            <script
+                type="text/typescript"
+                src="{% static 'MainApp/ts/block_submit_button_after_form_data_is_successfully_submitted.ts' %}"
+                async></script>
             {% endcompress %}
         </div>
 

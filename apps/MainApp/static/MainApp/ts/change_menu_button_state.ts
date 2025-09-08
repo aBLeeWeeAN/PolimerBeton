@@ -1,22 +1,23 @@
-// const offcanvas_navbar = document.getElementById('offcanvasNavbar');
-// const navbar_toggler = document.getElementById("my-menu-button");
+// Получаем элементы и приводим к нужным типам
+const offcanvasNavbar = document.getElementById("offcanvasNavbar") as HTMLElement | null;
+const navbarToggler = document.getElementById("my-menu-button") as HTMLElement | null;
 
-// offcanvas_navbar.addEventListener('show.bs.offcanvas', () => {
-//     navbar_toggler.setAttribute("aria-expanded", "true");
-// });
+// Проверка наличия элементов
+if (!offcanvasNavbar) {
+    throw new Error("Offcanvas navbar not found");
+}
 
-// offcanvas_navbar.addEventListener('hide.bs.offcanvas', () => {
-//     navbar_toggler.setAttribute("aria-expanded", "false");
-// });
-
-const offcanvasNavbar = document.getElementById('offcanvasNavbar');
-const navbarToggler = document.getElementById('my-menu-button');
+if (!navbarToggler) {
+    throw new Error("Navbar toggler button not found");
+}
 
 // Функция для обновления атрибута aria-expanded
-function updateAriaExpanded(isExpanded) {
-    navbarToggler.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+function updateAriaExpanded(isExpanded: boolean) {
+    navbarToggler!.setAttribute("aria-expanded", isExpanded ? "true" : "false");
 }
 
 // Обработчики событий show и hide для offcanvas
-offcanvasNavbar.addEventListener('show.bs.offcanvas', () => updateAriaExpanded(true));
-offcanvasNavbar.addEventListener('hide.bs.offcanvas', () => updateAriaExpanded(false));
+offcanvasNavbar.addEventListener("show.bs.offcanvas", () => updateAriaExpanded(true));
+offcanvasNavbar.addEventListener("hide.bs.offcanvas", () => updateAriaExpanded(false));
+
+export {};

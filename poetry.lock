@@ -312,19 +312,22 @@ django = ">=1.8"
 tornado = "*"
 
 [[package]]
-name = "django-sass-processor"
-version = "1.4.2"
-description = "SASS processor to compile SCSS files into *.css, while rendering, or offline."
+name = "django-vite"
+version = "3.1.0"
+description = "Integration of Vite in a Django project."
 optional = false
 python-versions = "*"
 groups = ["main"]
 files = [
-    {file = "django_sass_processor-1.4.2-py3-none-any.whl", hash = "sha256:604b00b19f7bbccfb838f766a284257bad3bb4ec3012f0770a1415913783bacc"},
-    {file = "django_sass_processor-1.4.2.tar.gz", hash = "sha256:59c1028b5a5bd0158a0ea92ac5d538e5d89eb547e910a45e334d9c7b3b814b18"},
+    {file = "django_vite-3.1.0-py3-none-any.whl", hash = "sha256:4e46572bd6b1ce70784be129205dc2ffcbc7a3c19fea50bebfb72b327bbde5fc"},
+    {file = "django_vite-3.1.0.tar.gz", hash = "sha256:8b4ffe4a9fa81ff568bfb195e74dde8694aaf13fd4b656ae60bf59cce08b85e8"},
 ]
 
+[package.dependencies]
+Django = ">=3.2"
+
 [package.extras]
-management-command = ["django-compressor (>=2.4)"]
+dev = ["black"]
 
 [[package]]
 name = "html5lib"
@@ -605,4 +608,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13,<4.0"
-content-hash = "9f6eed9dea43c6101abc949f7e7cb4fafcc6b46df5a61386bef62b4054446ea1"
+content-hash = "a4599b3c143a6e2e6b62d881c89384739857185b75526d1328b2a2ded69be73a"

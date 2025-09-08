@@ -15,32 +15,23 @@
         "url": "https://github.com/aBLeeWeeAN"
     },
     "license": "TODO: ISC",
-    "devDependencies": {
-        "@types/node": "^24.3.1",
-        "browser-sync": "^3.0.4",
-        "esbuild": "^0.25.9",
-        "glob": "^11.0.3",
-        "npm-run-all": "^4.1.5",
-        "rimraf": "^6.0.1",
-        "sass": "^1.90.0",
-        "typescript": "^5.9.2",
-        "vite": "^7.1.4",
-        "wait-on": "^8.0.4"
-    },
     "scripts": {
         "clean": "node scripts/clean.js",
         "build:ts": "node scripts/build_ts.js",
-        "watch:ts": "node scripts/watch_ts.js",
         "build:scss": "node scripts/build_scss.js",
+        "watch:ts": "node scripts/watch_ts.js",
         "watch:scss": "node scripts/watch_scss.js",
-        "watch:bs": "node scripts/watch_bs.js",
-        "build": "npm run build:ts && npm run build:scss",
-        "dev": "concurrently \"npm run watch:ts\" \"npm run watch:scss\" \"python manage.py runserver 0.0.0.0:8000\" \"npx wait-on http://127.0.0.1:8000 && npm run watch:bs\"",
+        "watch:all": "concurrently \"npm run watch:ts\" \"npm run watch:scss\"",
+        "dev:runserver": "python manage.py runserver",
+        "dev:livereload": "python manage.py livereload",
         "prod": "npm run build && python manage.py migrate && python manage.py collectstatic --noinput && python manage.py compress && python manage.py runserver 0.0.0.0:80"
     },
-    "dependencies": {
+    "devDependencies": {
+        "@types/jquery": "^3.5.33",
         "bootstrap": "^5.3.8",
-        "concurrently": "^9.2.1",
-        "inputmask": "^5.0.9"
+        "esbuild": "^0.25.9",
+        "jquery": "^3.7.1",
+        "ts-input-mask": "^2.2.0",
+        "typescript": "^5.9.2"
     }
 }

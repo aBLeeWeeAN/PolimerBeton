@@ -1,18 +1,28 @@
-const cookie_box = document.getElementById('Cookies-Consent-Banner');
-const buttons = document.querySelectorAll(".cookie-button");
-const analytics_container = document.getElementById('Third-Party-Cookies-Container');
+const cookieBox = document.getElementById("Cookies-Consent-Banner");
+const buttons = document.querySelectorAll<HTMLButtonElement>(".cookie-button");
+const analyticsContainer = document.getElementById("Third-Party-Cookies-Container");
+
+if (!cookieBox) {
+    throw new Error("Error --- cookies_consent_banner_manager.ts --- Cookie box not found!");
+}
+
+if (!buttons) {
+    throw new Error("Error --- cookies_consent_banner_manager.ts --- Buttons not found!");
+}
+
+if (!analyticsContainer) {
+    throw new Error("Error --- cookies_consent_banner_manager.ts --- Analytics container not found!");
+}
 
 // Изначально отключаем анимацию
-cookie_box.classList.add('no-transition');
-
-
+cookieBox?.classList.add("no-transition");
 
 /**========================================================================
  **                            THIRD PARTY COOKIES SCRIPTS
  *========================================================================**/
 
 // Яндекс.Метрика в виде строки
-const yandex_metrika_script = `
+const yandexMetrikaScript = `
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
     m[i].l=1*new Date();
     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
@@ -27,12 +37,12 @@ const yandex_metrika_script = `
     });
 `;
 
-const yandex_metrika_noscript = `
+const yandexMetrikaNoscript = `
     <div><img src="https://mc.yandex.ru/watch/98233807" style="position:absolute; left:-9999px;" alt="" /></div>
 `;
 
 // Google Analytics в виде строки
-const google_analytics_script = `
+const googleAnalyticsScript = `
     (function() {
         var script = document.createElement('script');
         script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XSZP3WXDN6';
@@ -51,105 +61,102 @@ const google_analytics_script = `
 
 /*============================ END OF THIRD PARTY COOKIES SCRIPTS ============================*/
 
-
-
 /**========================================================================
- **                            SERVICE SCRIPTS 
+ **                            SERVICE SCRIPTS
  *========================================================================**/
 
 // Функция для динамического добавления скриптов
-const inject_analytics_scripts = () => {
+const injectAnalyticsScripts = (): void => {
+    if (!analyticsContainer) return;
+
     // Добавляем Яндекс.Метрику
-    const scriptYandex = document.createElement('script');
-    scriptYandex.type = 'text/javascript';
-    scriptYandex.innerHTML = yandex_metrika_script;
+    const scriptYandex = document.createElement("script");
+    scriptYandex.type = "text/javascript";
+    scriptYandex.innerHTML = yandexMetrikaScript;
     scriptYandex.async = true;
-    document.getElementById('Third-Party-Cookies-Container').appendChild(scriptYandex);
+    analyticsContainer.appendChild(scriptYandex);
 
     // Добавляем Google Analytics
-    const scriptGoogle = document.createElement('script');
-    scriptGoogle.type = 'text/javascript';
-    scriptGoogle.innerHTML = google_analytics_script;
-    document.getElementById('Third-Party-Cookies-Container').appendChild(scriptGoogle);
+    const scriptGoogle = document.createElement("script");
+    scriptGoogle.type = "text/javascript";
+    scriptGoogle.innerHTML = googleAnalyticsScript;
+    analyticsContainer.appendChild(scriptGoogle);
 
     // Добавляем noscript для Яндекс.Метрики
-    const noscript = document.createElement('noscript');
-    noscript.innerHTML = yandex_metrika_noscript;
-    document.getElementById('Third-Party-Cookies-Container').appendChild(noscript);
+    const noscript = document.createElement("noscript");
+    noscript.innerHTML = yandexMetrikaNoscript;
+    analyticsContainer.appendChild(noscript);
 
     // Скрываем контейнер скриптов
-    analytics_container.style.display = 'none';
+    analyticsContainer.style.display = "none";
 };
 
 // Функция для получения значения куки по имени
-const get_cookie = (name) => {
+const getCookie = (name: string): string | undefined => {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
+    if (parts.length === 2) return parts.pop()?.split(";").shift();
 };
 
 // Функция для удаления куки
-const delete_cookie = (name) => {
+const deleteCookie = (name: string): void => {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 };
 
 // Функция для проверки наличия куков Яндекс.Метрики
-const has_yandex_cookies = () => {
-    const cookies = document.cookie.split('; ');
-    return cookies.some(cookie => cookie.startsWith('_ym'));
+const hasYandexCookies = (): boolean => {
+    const cookies = document.cookie.split("; ");
+    return cookies.some((cookie) => cookie.startsWith("_ym"));
 };
 
 // Функция для удаления всех куки Яндекс.Метрики
-const delete_yandex_cookies = () => {
-    const cookies = document.cookie.split('; ');
-    cookies.forEach(cookie => {
-        const [name] = cookie.split('=');
-        if (name.startsWith('_ym')) {
-            delete_cookie(name);
+const deleteYandexCookies = (): void => {
+    const cookies = document.cookie.split("; ");
+    cookies.forEach((cookie) => {
+        const [name] = cookie.split("=");
+        if (name.startsWith("_ym")) {
+            deleteCookie(name);
         }
     });
 };
 
 /*============================ END OF SERVICE SCRIPTS ============================*/
 
+const executeCodes = (): void => {
+    const analyticalCookiesValue = getCookie("analytical_cookies_accepted");
 
-
-const execute_codes = () => {
-    const analytical_cookies_value = get_cookie("analytical_cookies_accepted");
-
-    if (analytical_cookies_value === 'true') {
+    if (analyticalCookiesValue === "true") {
         // Если куки уже установлены, загрузить скрипты
-        inject_analytics_scripts();
+        injectAnalyticsScripts();
         return;
-    } else if (analytical_cookies_value === 'false') {
+    } else if (analyticalCookiesValue === "false") {
         // Если куки отклонены, не делать ничего
         return;
     } else {
         // если куки истекли, подчистить оставшиеся, если остались
-        if (has_yandex_cookies()) {
-            delete_yandex_cookies();
+        if (hasYandexCookies()) {
+            deleteYandexCookies();
         }
 
         // Если куки нет, включить transition и показать баннер
-        cookie_box.classList.remove('no-transition');
-        cookie_box.classList.add('show');
+        cookieBox?.classList.remove("no-transition");
+        cookieBox?.classList.add("show");
 
-        buttons.forEach(button => {
-            button.addEventListener('click', function() {
-                cookie_box.classList.remove('show');
+        buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+                cookieBox?.classList.remove("show");
 
-                // Ждём завершения анимации и отключаем transition, наверно это даже кастыль :/ ... Но мне надоело
+                // Ждём завершения анимации и отключаем transition
                 setTimeout(() => {
-                    cookie_box.classList.add('no-transition');
-                }, 300); // 300 миллисекунд, что соответствует 0.3 секунды из transition в css
-    
-                if (button.id === 'cookie-accept-btn') {
+                    cookieBox?.classList.add("no-transition");
+                }, 300);
+
+                if (button.id === "cookie-accept-btn") {
                     document.cookie = "analytical_cookies_accepted=true; max-age=" + 60 * 60 * 24 * 30 + "; path=/";
-    
-                    inject_analytics_scripts(); // Включаем аналитику
+                    injectAnalyticsScripts(); // Включаем аналитику
                     return;
                 }
-    
+
                 // decline button pressed
                 document.cookie = "analytical_cookies_accepted=false; max-age=" + 60 * 60 * 24 * 30 + "; path=/";
             });
@@ -157,5 +164,7 @@ const execute_codes = () => {
     }
 };
 
-// execute_codes function will be called on page load
-window.addEventListener('load', execute_codes, false);
+// executeCodes function will be called on page load
+window.addEventListener("load", executeCodes, false);
+
+export {};

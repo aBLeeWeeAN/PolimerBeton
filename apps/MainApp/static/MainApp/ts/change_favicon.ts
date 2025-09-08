@@ -1,3 +1,27 @@
+interface MaskIconLinkElement extends HTMLLinkElement {
+    color?: string;
+}
+
+interface FaviconPaths {
+    appleTouchIcon: string;
+    favicon32x32: string;
+    favicon194x194: string;
+    androidChrome192x192: string;
+    favicon16x16: string;
+    safariPinnedTab: string;
+    faviconIco: string;
+    siteWebmanifest: string;
+    mstile144x144: string;
+    browserConfig: string;
+}
+
+interface Window {
+    faviconPaths: {
+        light: FaviconPaths;
+        dark: FaviconPaths;
+    };
+}
+
 function applyLightTheme() {
     removeFaviconsAndMeta();
     setLightFavicons();
@@ -46,8 +70,8 @@ function setDarkFavicons() {
     createLink(paths.siteWebmanifest, "manifest");
 }
 
-function createFavicon(href, rel, sizes, color) {
-    const link = document.createElement("link");
+function createFavicon(href: string, rel: string, sizes?: string | null, color?: string) {
+    const link = document.createElement("link") as MaskIconLinkElement;
     link.rel = rel;
     link.href = href;
     if (sizes) link.sizes = sizes;
@@ -55,7 +79,7 @@ function createFavicon(href, rel, sizes, color) {
     document.head.appendChild(link);
 }
 
-function createLink(href, rel) {
+function createLink(href: string, rel: string) {
     const link = document.createElement("link");
     link.rel = rel;
     link.href = href;
@@ -78,7 +102,7 @@ function setDarkMetaTags() {
     createMeta("msapplication-config", paths.browserConfig);
 }
 
-function createMeta(name, content) {
+function createMeta(name: string, content: string) {
     const meta = document.createElement("meta");
     meta.name = name;
     meta.content = content;
@@ -93,8 +117,8 @@ function checkAndApplyTheme() {
     }
 }
 
+//? Start point
 checkAndApplyTheme();
-
 window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
     checkAndApplyTheme();
 });

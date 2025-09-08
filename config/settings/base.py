@@ -2,6 +2,9 @@
 from pathlib import Path
 from decouple import config
 
+DEFAULT_CHARSET = "utf-8"
+FILE_CHARSET = "utf-8"
+
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = config("DJANGO_SECRET_KEY", default="secret_key_for_dummy_guys")
@@ -32,6 +35,7 @@ INSTALLED_APPS = [
     # ? ---------------------
     # "sass_processor",
     # "django_sass",
+    # "django-vite",
     # ? --- HTML, CSS и JS сжатие
     # ? -------------------------
     "compressor",
@@ -41,6 +45,16 @@ INSTALLED_APPS = [
     "apps.MainApp",
     "apps.MetaPagesApp",
 ]
+
+# ? --- DJANGO VITE
+# ? ---------------
+# DJANGO_VITE = {
+#     "default": {
+#         "dev_mode": DEBUG,
+#         "build_folder": "vite_dist",
+#         "static_url_prefix": "/static_assets/",
+#     }
+# }
 
 # TODO: delete SITE_ID?
 SITE_ID = config("SITE_ID", default=1, cast=int)
@@ -159,6 +173,12 @@ FIELD_ENCRYPTION_KEY = config(
 # ? -----------------------------
 # SASS_PROCESSOR_ROOT = BASE_DIR / "static_assets"
 
-# ? --- COMPRESSOR --- PRECOMPILERS SETTINGS
-# ? ----------------------------------------
-COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
+# ? --- COMPRESSOR --- PRECOMPILERS SETTINGS --- SASS/SCSS & TypeScipt
+# ? ------------------------------------------------------------------
+COMPRESS_PRECOMPILERS = (
+    ("text/x-scss", "django_libsass.SassCompiler"),
+    (
+        "text/typescript",
+        "esbuild {infile} --bundle --outfile={outfile} --format=esm",
+    ),
+)
