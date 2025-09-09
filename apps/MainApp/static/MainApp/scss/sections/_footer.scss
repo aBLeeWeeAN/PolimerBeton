@@ -63,6 +63,10 @@ footer {
 
         animation: footer_move_anim_1 90s ease-in-out infinite;
 
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
+
         @include media-breakpoint-down(sm) {
             display: none;
             animation: none;
@@ -106,6 +110,10 @@ footer {
         }
 
         animation: footer_move_anim_2 90s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(sm) {
             display: none;

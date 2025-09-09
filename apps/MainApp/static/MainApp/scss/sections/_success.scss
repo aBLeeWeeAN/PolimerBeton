@@ -44,8 +44,12 @@
             }
         }
 
-        animation: usage_gravity_ball_green 16s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         animation-delay: 0;
+        animation: usage_gravity_ball_green 16s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(xxl) {
             transform: translate(-130%, 20%);
@@ -88,8 +92,12 @@
             }
         }
 
-        animation: usage_gravity_ball_red 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         animation-delay: -0.5s;
+        animation: usage_gravity_ball_red 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(xxl) {
             transform: translate(-5%, 24%);
@@ -134,8 +142,12 @@
             }
         }
 
-        animation: usage_gravity_ball_white 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         animation-delay: -6s;
+        animation: usage_gravity_ball_white 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(xxl) {
             transform: translate(-210%, -110%);
@@ -194,8 +206,12 @@
             }
         }
 
-        animation: usage_gravity_ball_yellow 14s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         animation-delay: 0;
+        animation: usage_gravity_ball_yellow 14s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(xxl) {
             transform: translate(-70%, 100%);
@@ -256,8 +272,12 @@
             }
         }
 
-        animation: usage_gravity_ball_grey 23s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         animation-delay: -10s;
+        animation: usage_gravity_ball_grey 23s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(xxl) {
             transform: translate(90%, -105%);

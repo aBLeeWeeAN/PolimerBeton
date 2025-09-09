@@ -45,8 +45,12 @@
                 }
             }
 
-            animation: feedback_from_gravity_ball_green 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
             animation-delay: 0;
+            animation: feedback_from_gravity_ball_green 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none !important;
+            }
         }
 
         & #ball-yellow {
@@ -71,8 +75,12 @@
                 }
             }
 
-            animation: feedback_from_gravity_ball_yellow 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
             animation-delay: -7s;
+            animation: feedback_from_gravity_ball_yellow 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none !important;
+            }
         }
 
         & #ball-white {
@@ -95,8 +103,12 @@
                 }
             }
 
-            animation: feedback_from_gravity_ball_white 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
             animation-delay: -5s;
+            animation: feedback_from_gravity_ball_white 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none !important;
+            }
         }
 
         & #ball-grey {
@@ -119,8 +131,12 @@
                 }
             }
 
-            animation: feedback_from_gravity_ball_grey 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
             animation-delay: -2s;
+            animation: feedback_from_gravity_ball_grey 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none !important;
+            }
         }
 
         & #ball-red {
@@ -143,8 +159,12 @@
                 }
             }
 
-            animation: feedback_from_gravity_ball_red 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
             animation-delay: -7.3s;
+            animation: feedback_from_gravity_ball_red 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none !important;
+            }
         }
     }
 

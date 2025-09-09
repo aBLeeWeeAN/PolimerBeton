@@ -156,8 +156,12 @@
             }
         }
 
-        animation: usage_gravity_ball_green 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         animation-delay: 0;
+        animation: usage_gravity_ball_green 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(xl) {
             transform: translate(60%, -120%);
@@ -200,8 +204,12 @@
             }
         }
 
-        animation: usage_gravity_ball_red 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         animation-delay: -0.5s;
+        animation: usage_gravity_ball_red 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(sm) {
             will-change: none;
@@ -230,8 +238,12 @@
             }
         }
 
-        animation: usage_gravity_ball_white 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         animation-delay: -6s;
+        animation: usage_gravity_ball_white 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(xxl) {
             transform: translate(150%, -135.5%);
@@ -292,8 +304,12 @@
             }
         }
 
-        animation: usage_gravity_ball_yellow 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         animation-delay: -1s;
+        animation: usage_gravity_ball_yellow 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(xxl) {
             transform: translate(66%, -28%);
@@ -354,8 +370,12 @@
             }
         }
 
-        animation: usage_gravity_ball_grey 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         animation-delay: 0;
+        animation: usage_gravity_ball_grey 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
     }
 
     @include media-breakpoint-down(sm) {

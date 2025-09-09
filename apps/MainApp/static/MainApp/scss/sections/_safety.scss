@@ -34,6 +34,10 @@
 
                 animation: gradient-animation-ex-3 10s ease-in-out infinite;
 
+                @media (prefers-reduced-motion: reduce) {
+                    animation: none !important;
+                }
+
                 @keyframes gradient-animation-ex-3 {
                     0% {
                         background-position: 0% 0%;
@@ -64,6 +68,10 @@
 
                 animation: gradient-animation-ex-4 10s ease-in-out infinite;
 
+                @media (prefers-reduced-motion: reduce) {
+                    animation: none !important;
+                }
+
                 @keyframes gradient-animation-ex-4 {
                     0% {
                         background-position: 100% 0%;
@@ -93,6 +101,10 @@
 
                 animation: gradient-animation-ex-1 10s ease-in-out infinite;
 
+                @media (prefers-reduced-motion: reduce) {
+                    animation: none !important;
+                }
+
                 @keyframes gradient-animation-ex-1 {
                     0% {
                         background-position: 0% 100%;
@@ -121,6 +133,10 @@
                 // }
 
                 animation: gradient-animation-ex-2 10s ease-in-out infinite;
+
+                @media (prefers-reduced-motion: reduce) {
+                    animation: none !important;
+                }
 
                 @keyframes gradient-animation-ex-2 {
                     0% {
@@ -232,6 +248,10 @@
         }
 
         animation: bc-3-rotate-scale 180s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(xxl) {
             width: 260rem;

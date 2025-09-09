@@ -30,6 +30,8 @@
         height: calc(var(--my-orbit-radius) * 2);
         // margin-top: 5rem;
 
+        --animation-duration: 10s;
+
         .current-price {
             position: relative;
 
@@ -45,7 +47,11 @@
                 height: 100%;
 
                 transform: scale(1.25);
-                animation: scale-animation 6s ease-in-out infinite alternate;
+                animation: scale-animation calc(0.6s * var(--animation-duration)) ease-in-out infinite alternate;
+
+                @media (prefers-reduced-motion: reduce) {
+                    animation: none !important;
+                }
 
                 @keyframes scale-animation {
                     0% {
@@ -71,7 +77,11 @@
                     fill: var(--prices--price-block-bc-color);
 
                     transform: rotate(0deg);
-                    animation: rotate-counter-clockwise 10s infinite linear;
+                    animation: rotate-counter-clockwise var(--animation-duration) infinite linear;
+
+                    @media (prefers-reduced-motion: reduce) {
+                        animation: none !important;
+                    }
 
                     @keyframes rotate-counter-clockwise {
                         from {
@@ -115,8 +125,14 @@
 
                 font-variant-numeric: lining-nums;
 
-                transform: translate(-47.5%, -52.5%) rotate(-21deg) rotate(-8deg);
-                animation: wobble 10s infinite;
+                transform: translate(-47.5%, -52.5%) rotate(-21deg);
+                transform-origin: center;
+
+                animation: wobble var(--animation-duration) infinite;
+
+                @media (prefers-reduced-motion: reduce) {
+                    animation: none !important;
+                }
 
                 @keyframes wobble {
                     0% {
@@ -135,21 +151,24 @@
         }
 
         .concrete-image-orbit-animation-wrapper {
+            --start: 0deg; /* для каждого шара своя */
+
             z-index: -1;
-            // z-index: 3;
-
             position: absolute;
-
             padding: 0;
-
-            // width: $my-ball-size;   // image size
-            // height: $my-orbit-radius;  // orbit radius
 
             top: 0;
             left: 50%;
 
-            transform: translateX(-50%);
+            transform: translateX(-50%) rotate(var(--start));
             transform-origin: bottom center;
+
+            will-change: transform;
+            animation: rotate-clockwise var(--animation-duration) infinite linear;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none !important;
+            }
 
             img {
                 position: absolute;
@@ -160,158 +179,54 @@
                 top: 0;
                 left: 50%;
 
-                transform: translateX(-50%);
+                transform: translateX(-50%) rotate(calc(-1 * var(--start)));
+
+                will-change: transform;
+                animation: rotate-counter var(--animation-duration) infinite linear;
+
+                @media (prefers-reduced-motion: reduce) {
+                    animation: none !important;
+                }
+            }
+        }
+
+        /* Общие анимации */
+        @keyframes rotate-clockwise {
+            from {
+                transform: translateX(-50%) rotate(var(--start));
+            }
+            to {
+                transform: translateX(-50%) rotate(calc(var(--start) + 360deg));
+            }
+        }
+
+        @keyframes rotate-counter {
+            from {
+                transform: translateX(-50%) rotate(calc(-1 * var(--start)));
+            }
+            to {
+                transform: translateX(-50%) rotate(calc(-1 * var(--start) - 360deg));
             }
         }
 
         #ball-green {
-            will-change: transform;
-            animation: rotate-clockwise 10s infinite linear;
-
-            @keyframes rotate-clockwise {
-                from {
-                    transform: translateX(-50%) rotate(0deg);
-                }
-
-                to {
-                    transform: translateX(-50%) rotate(360deg);
-                }
-            }
-
-            img {
-                will-change: transform;
-                animation: ball-rotate-counter-clockwise-0 10s infinite linear;
-
-                @keyframes ball-rotate-counter-clockwise-0 {
-                    from {
-                        transform: translateX(-50%) rotate(0deg);
-                    }
-
-                    to {
-                        transform: translateX(-50%) rotate(-360deg);
-                    }
-                }
-            }
+            --start: 0deg;
         }
 
         #ball-yellow {
-            will-change: transform;
-            animation: rotate-clockwise-72 10s infinite linear;
-
-            @keyframes rotate-clockwise-72 {
-                from {
-                    transform: translateX(-50%) rotate(72deg);
-                }
-
-                to {
-                    transform: translateX(-50%) rotate(432deg);
-                }
-            }
-
-            img {
-                will-change: transform;
-                animation: ball-rotate-counter-clockwise-72 10s infinite linear;
-
-                @keyframes ball-rotate-counter-clockwise-72 {
-                    from {
-                        transform: translateX(-50%) rotate(-72deg);
-                    }
-
-                    to {
-                        transform: translateX(-50%) rotate(-432deg);
-                    }
-                }
-            }
+            --start: 72deg;
         }
 
         #ball-white {
-            will-change: transform;
-            animation: rotate-clockwise-144 10s infinite linear;
-
-            @keyframes rotate-clockwise-144 {
-                from {
-                    transform: translateX(-50%) rotate(144deg);
-                }
-
-                to {
-                    transform: translateX(-50%) rotate(504deg);
-                }
-            }
-
-            img {
-                will-change: transform;
-                animation: ball-rotate-counter-clockwise-144 10s infinite linear;
-
-                @keyframes ball-rotate-counter-clockwise-144 {
-                    from {
-                        transform: translateX(-50%) rotate(-144deg);
-                    }
-
-                    to {
-                        transform: translateX(-50%) rotate(-504deg);
-                    }
-                }
-            }
+            --start: 144deg;
         }
 
         #ball-grey {
-            will-change: transform;
-            animation: rotate-clockwise-216 10s infinite linear;
-
-            @keyframes rotate-clockwise-216 {
-                from {
-                    transform: translateX(-50%) rotate(216deg);
-                }
-
-                to {
-                    transform: translateX(-50%) rotate(576deg);
-                }
-            }
-
-            img {
-                will-change: transform;
-                animation: ball-rotate-counter-clockwise-216 10s infinite linear;
-
-                @keyframes ball-rotate-counter-clockwise-216 {
-                    from {
-                        transform: translateX(-50%) rotate(-216deg);
-                    }
-
-                    to {
-                        transform: translateX(-50%) rotate(-576deg);
-                    }
-                }
-            }
+            --start: 216deg;
         }
 
         #ball-red {
-            will-change: transform;
-            animation: rotate-clockwise-288 10s infinite linear;
-
-            @keyframes rotate-clockwise-288 {
-                from {
-                    transform: translateX(-50%) rotate(288deg);
-                }
-
-                to {
-                    transform: translateX(-50%) rotate(648deg);
-                }
-            }
-
-            img {
-                will-change: transform;
-                animation: ball-rotate-counter-clockwise-288 10s infinite linear;
-
-                @keyframes ball-rotate-counter-clockwise-288 {
-                    from {
-                        transform: translateX(-50%) rotate(-288deg);
-                    }
-
-                    to {
-                        transform: translateX(-50%) rotate(-648deg);
-                    }
-                }
-            }
+            --start: 288deg;
         }
     }
 

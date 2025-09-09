@@ -177,6 +177,10 @@
         }
 
         animation: hero_phrase_gradient_animation 10s linear infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
     }
 
     @keyframes hero_gravity_move_1 {
@@ -206,57 +210,97 @@
     #ball-green {
         will-change: transform;
 
-        animation: hero_gravity_move_1 10s ease-in-out infinite;
         animation-delay: 0;
+        animation: hero_gravity_move_1 10s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(xl) {
             // animation: hero-move-trapezoid-green 10s linear infinite;
             animation: hero_gravity_move_1 10s ease-in-out infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none !important;
+            }
         }
     }
 
     #ball-yellow {
         will-change: transform;
 
-        animation: hero_gravity_move_2 10s ease-in-out infinite;
         animation-delay: 0;
+        animation: hero_gravity_move_2 10s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(xl) {
             // animation: hero-move-trapezoid-yellow 10s linear infinite;
             animation: hero_gravity_move_1 6s ease-in-out infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none !important;
+            }
         }
     }
 
     #ball-white {
         will-change: transform;
 
-        animation: hero_gravity_move_1 10s ease-in-out infinite;
         animation-delay: 0;
+        animation: hero_gravity_move_1 10s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(xl) {
             animation: hero_gravity_move_1 8s ease-in-out infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none !important;
+            }
         }
     }
 
     #ball-grey {
         will-change: transform;
 
-        animation: hero_gravity_move_2 10s ease-in-out infinite;
         animation-delay: 0;
+        animation: hero_gravity_move_2 10s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(xl) {
             animation: hero_gravity_move_2 10s ease-in-out infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none !important;
+            }
         }
     }
 
     #ball-red {
         will-change: transform;
 
-        animation: hero_gravity_move_1 10s ease-in-out infinite;
         animation-delay: 0;
+        animation: hero_gravity_move_1 10s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
 
         @include media-breakpoint-down(xl) {
             animation: hero_gravity_move_2 8s ease-in-out infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none !important;
+            }
         }
     }
 }
