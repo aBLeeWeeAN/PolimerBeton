@@ -399,45 +399,93 @@ header {
                     }
                 }
 
-                .line {
-                    transition: y 100ms ease-in 100ms, rotate 100ms ease-in, opacity 0ms 100ms;
-                    // transition: transform 100ms ease-in, opacity 0ms 100ms;
+                //? Old animation
+                // .line {
+                //     transition: y 0.1s ease-in 0.1s, rotate 0.1s ease-in, opacity 0s 0.1s;
+
+                //     will-change: y, rotate, opacity, transform;
+                // }
+
+                // &[aria-expanded="true"] .line {
+                //     transition: y 0.1s ease-in, rotate 0.1s ease-in 0.1s, opacity 0s 0.1s;
+
+                //     will-change: y, rotate, opacity, transform;
+                // }
+
+                // &[aria-expanded="true"] :is(.top, .bottom) {
+                //     y: 45;
+                // }
+
+                // &[aria-expanded="true"] .top {
+                //     rotate: 45deg;
+                // }
+
+                // &[aria-expanded="true"] .middle {
+                //     opacity: 0;
+                // }
+
+                // &[aria-expanded="true"] .bottom {
+                //     rotate: -45deg;
+                // }
+
+                .top-line {
+                    will-change: transform;
+                    transition: transform 0.1s ease-in 0.1s;
+
                     transform-origin: center;
-
-                    will-change: y, rotate, opacity, transform;
-                    // will-change: y, rotate, opacity;
-
-                    // @include media-breakpoint-down(sm) {
-                    //     transition: y 50ms ease-in 50ms, rotate 50ms ease-in, opacity 0ms 50ms;
-                    // }
+                }
+                &[aria-expanded="true"] .top-line {
+                    transition: transform 0.1s ease-in;
+                    transform: translateY(23px);
                 }
 
-                &[aria-expanded="true"] .line {
-                    transition: y 100ms ease-in, rotate 100ms ease-in 100ms, opacity 0ms 100ms;
-                    // transition: transform 100ms ease-in, opacity 0ms 100ms;
+                .middle-line {
+                    opacity: 1;
 
-                    will-change: y, rotate, opacity, transform;
-                    // will-change: y, rotate, opacity;
-
-                    // @include media-breakpoint-down(sm) {
-                    //     transition: y 50ms ease-in, rotate 50ms ease-in 50ms, opacity 0ms 50ms;
-                    // }
+                    will-change: opacity;
+                    transition: opacity 0s 0.1s;
                 }
-
-                &[aria-expanded="true"] :is(.top, .bottom) {
-                    y: 45;
-                }
-
-                &[aria-expanded="true"] .top {
-                    rotate: 45deg;
-                }
-
-                &[aria-expanded="true"] .middle {
+                &[aria-expanded="true"] .middle-line {
                     opacity: 0;
                 }
 
-                &[aria-expanded="true"] .bottom {
-                    rotate: -45deg;
+                .bottom-line {
+                    will-change: transform;
+                    transition: transform 0.1s ease-in 0.1s;
+
+                    transform-origin: center;
+                }
+                &[aria-expanded="true"] .bottom-line {
+                    transition: transform 0.1s ease-in;
+                    transform: translateY(-23px);
+                }
+
+                .top-line-wrapper {
+                    will-change: transform;
+                    transition: transform 0.1s ease-in;
+
+                    transform-origin: center;
+                }
+                &[aria-expanded="true"] .top-line-wrapper {
+                    transition: transform 0.1s ease-in 0.1s;
+                    transform: rotate(45deg);
+                }
+
+                // .middle-line-wrapper {
+                // }
+                // &[aria-expanded="true"] .middle-line-wrapper {
+
+                // }
+
+                .bottom-line-wrapper {
+                    will-change: transform;
+                    transition: transform 0.1s ease-in;
+
+                    transform-origin: center;
+                }
+                &[aria-expanded="true"] .bottom-line-wrapper {
+                    transition: transform 0.1s ease-in 0.1s;
+                    transform: rotate(-45deg);
                 }
             }
 
