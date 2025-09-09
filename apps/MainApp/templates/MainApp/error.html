@@ -148,34 +148,27 @@
         <div class="d-none" id="Scripts-Container-Preload">
             <!-- Houdini Squircle JS scripts --->
             <script async>
-                // Функция для динамической загрузки скрипта
-                function loadScript(url) {
-                    return new Promise((resolve, reject) => {
-                        const script = document.createElement("script");
-                        script.src = url;
-                        script.onload = () => resolve();
-                        script.onerror = () => reject(new Error(`Failed to load script: ${url}`));
-                        document.head.appendChild(script);
-                    });
-                }
-
                 (async function () {
                     try {
-                        // Проверяем поддержку Paint Worklet
-                        if (!("paintWorklet" in CSS)) {
-                            console.log("Paint Worklet не поддерживается, загружаем полифилл...");
-                            await loadScript("https://unpkg.com/css-paint-polyfill");
+                        const ua = navigator.userAgent.toLowerCase();
+                        const isFirefox = ua.includes("firefox");
+                        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+                        // Если Firefox или Safari — ничего не делаем
+                        if (isFirefox || isSafari) {
+                            console.log("Houdini Squircle не поддерживается в Firefox и Safari. Скрипт не загружается.");
+                            return;
                         }
 
-                        // Добавляем модуль Paint Worklet
+                        // Проверяем поддержку paintWorklet
                         if ("paintWorklet" in CSS) {
                             await CSS.paintWorklet.addModule("https://www.unpkg.com/css-houdini-squircle/squircle.min.js");
-                            console.log("Paint Worklet module added successfully");
+                            console.log("Paint Worklet module (Squircle) успешно загружен");
                         } else {
-                            console.log("Paint Worklet всё ещё недоступен после полифилла");
+                            console.log("Paint Worklet не поддерживается в этом браузере. Скрипт не загружен.");
                         }
                     } catch (error) {
-                        console.error("Error loading scripts:", error);
+                        console.error("Ошибка при загрузке Squircle:", error);
                     }
                 })();
             </script>
