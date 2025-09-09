@@ -235,21 +235,6 @@ header {
                     .my-button-desktop {
                         margin-right: 0.5em;
                     }
-
-                    // svg {
-                    //     // font-size: inherit !important;
-
-                    //     width: 1.35em;
-                    //     // width: 100%;
-                    //     height: auto;
-                    // }
-
-                    // svg {
-                    //     aspect-ratio: 1 / 1;
-
-                    //     width: 1.35em;
-                    //     height: auto;
-                    // }
                 }
 
                 .settings {
@@ -259,28 +244,6 @@ header {
                     .my-button-desktop {
                         margin-left: 0.5em;
                     }
-
-                    // svg {
-                    //     width: 1.7em;
-                    //     height: auto;
-                    // }
-
-                    // svg {
-                    //     aspect-ratio: 1 / 1;
-
-                    //     width: 1.25em;
-                    //     height: auto;
-                    // }
-
-                    // #my-sun-icon {
-                    //     width: 1.5em;
-                    //     height: auto;
-                    // }
-
-                    // #my-moon-icon {
-                    //     width: 1.7em;
-                    //     height: auto;
-                    // }
                 }
 
                 .my-button-desktop {
@@ -370,7 +333,7 @@ header {
 
                     background-color: var(--text-color-87);
 
-                    border-radius: 50%;
+                    border-radius: 9999px;
 
                     margin: 0 0.25em;
 
@@ -391,7 +354,7 @@ header {
 
                 background-color: var(--text-color-87);
 
-                border-radius: 50%;
+                border-radius: 9999px;
 
                 margin: 0 1.25em;
 
@@ -399,92 +362,6 @@ header {
                     border-radius: 0;
                 }
             }
-
-            // .navbar-toggler {
-            //     // width: 6rem;
-            //     // height: 3rem;
-
-            //     // font-size: var(--my-header-button-size);
-
-            //     // width: auto;
-            //     // height: 2.6em;
-
-            //     border: 0 !important;
-            //     // background: transparent !important;
-
-            //     // .navbar-toggler-icon {
-            //     //     // margin: 0 1.3em;
-            //     //     margin: 0;
-
-            //     //     width: 1.7em;
-            //     //     height: 1.7em;
-
-            //     //     // background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23512DA8' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-            //     // }
-
-            //     &:focus,
-            //     &:active,
-            //     &-icon:focus {
-            //         outline: none !important;
-            //         box-shadow: none !important;
-            //         border: 0 !important;
-            //     }
-
-            //     /* Lines of the Toggler */
-            //     .toggler-icon {
-            //         width: 1.45rem;
-            //         height: .145rem;
-
-            //         min-height: 1px;
-
-            //         background-color: var(--primary-color);
-
-            //         display: block;
-            //         transition: all 0.2s;
-            //     }
-
-            //     /* Adds Space between the lines */
-            //     .middle-bar{
-            //         margin: 5px auto;
-            //     }
-
-            //     /* State when navbar is opened (START) */
-            //     .top-bar {
-            //         transform: rotate(45deg);
-            //         transform-origin: 10% 10%;
-            //     }
-
-            //     .middle-bar {
-            //         opacity: 0;
-            //         filter: alpha(opacity=0);
-            //     }
-
-            //     .bottom-bar {
-            //         transform: rotate(-45deg);
-            //         transform-origin: 10% 90%;
-            //     }
-            //     /* State when navbar is opened (END) */
-
-            //     /* State when navbar is collapsed (START) */
-            //     &.collapsed .top-bar {
-            //         transform: rotate(0);
-            //     }
-
-            //     &.collapsed .middle-bar {
-            //         opacity: 1;
-            //         filter: alpha(opacity=100);
-            //     }
-
-            //     &.collapsed .bottom-bar {
-            //         transform: rotate(0);
-            //     }
-            //     /* State when navbar is collapsed (END) */
-
-            //     /* Color of Toggler when collapsed */
-            //     &.collapsed .toggler-icon {
-            //         background-color: var(--primary-color);
-            //     }
-            // }
 
             .navbar-toggler {
                 width: auto;
@@ -1087,7 +964,7 @@ header {
 
                     background-color: var(--text-color-87);
 
-                    border-radius: 50%;
+                    border-radius: 9999px;
 
                     margin: 0 0.25em;
 

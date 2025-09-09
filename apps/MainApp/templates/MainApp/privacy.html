@@ -144,7 +144,7 @@
         <div class="d-none" id="Scripts-Container-Preload">
             <!-- Houdini Squircle JS scripts --->
             <script async>
-                // Function to dynamically load a script
+                // Функция для динамической загрузки скрипта
                 function loadScript(url) {
                     return new Promise((resolve, reject) => {
                         const script = document.createElement("script");
@@ -157,15 +157,19 @@
 
                 (async function () {
                     try {
-                        // Check if Paint Worklet is supported
+                        // Проверяем поддержку Paint Worklet
                         if (!("paintWorklet" in CSS)) {
-                            // Load CSS Paint Polyfill if Paint Worklet is not supported
+                            console.log("Paint Worklet не поддерживается, загружаем полифилл...");
                             await loadScript("https://unpkg.com/css-paint-polyfill");
                         }
 
-                        // Add the Paint Worklet module
-                        await CSS.paintWorklet.addModule("https://www.unpkg.com/css-houdini-squircle/squircle.min.js");
-                        console.log("Paint Worklet module added successfully");
+                        // Добавляем модуль Paint Worklet
+                        if ("paintWorklet" in CSS) {
+                            await CSS.paintWorklet.addModule("https://www.unpkg.com/css-houdini-squircle/squircle.min.js");
+                            console.log("Paint Worklet module added successfully");
+                        } else {
+                            console.log("Paint Worklet всё ещё недоступен после полифилла");
+                        }
                     } catch (error) {
                         console.error("Error loading scripts:", error);
                     }
