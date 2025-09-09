@@ -6,7 +6,8 @@ $(() => {
         const $offcanvas = $(".offcanvas");
 
         if ($topNavbar.length && $offcanvas.length) {
-            const topNavbarHeight = $topNavbar.outerHeight() || 0;
+            // округляем вверх до целого числа
+            const topNavbarHeight = Math.ceil($topNavbar.outerHeight() || 0);
             $offcanvas.css("padding-top", `${topNavbarHeight}px`);
         }
     }
