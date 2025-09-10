@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     # ? --- MY APPS
     # ? -----------
     "apps.MainApp",
-    "apps.MetaPagesApp",
 ]
 
 # ? --- DJANGO VITE

@@ -11,8 +11,6 @@ class StaticViewSitemap(Sitemap):
         return [
             "index",
             "privacy",
-            "success",
-            "error",
         ]
 
     def location(self, item):
@@ -25,10 +23,6 @@ class StaticViewSitemap(Sitemap):
             return 1.0
         elif item == "privacy":
             return 0.8
-        elif item == "success":
-            return 0.0
-        elif item == "error":
-            return 0.0
 
         # Приоритет по умолчанию
         return 0.5

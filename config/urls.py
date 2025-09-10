@@ -10,9 +10,10 @@ sitemaps = {
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # ? Подключаем маршруты из приложения MainApp
+    # ? --- Подключаем маршруты из приложения MainApp
+    # ? ---------------------------------------------
     path("", include("apps.MainApp.urls")),
-    # ? Подключаем маршруты из приложения MetaPagesApp
-    path("", include("apps.MetaPagesApp.urls")),
+    # ? --- Sitemap от MainApp
+    # ? ----------------------
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
 ]
