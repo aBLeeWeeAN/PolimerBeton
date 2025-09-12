@@ -1,48 +1,64 @@
 from .base import *
 
-DEBUG = False
+# ? --- SECRET KEY SETTINGS
+# ? -----------------------
+SECRET_KEY = config("DJANGO_SECRET_KEY")
 
+# ? --- Debug settings
+# ? ------------------
+DEBUG = config("DJANGO_DEBUG", cast=bool)
+
+# ? --- Allowed hosts
+# ? -----------------
+ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS").split(",")
+
+# ? --- Need for sitemap.xml
+# ? ------------------------
+SITE_ID = config("SITE_ID", cast=int)
+
+# ? --- EMAIL SETTINGS
+# ? ------------------
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# ? --- PostgreSQL database for production mode
+# ? -------------------------------------------
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": config("POSTGRES_DB"),
         "USER": config("POSTGRES_USER"),
         "PASSWORD": config("POSTGRES_PASSWORD"),
-        "HOST": config("POSTGRES_HOST", default="db"),
-        "PORT": config("POSTGRES_PORT", default=5432, cast=int),
+        "HOST": config("POSTGRES_HOST"),
+        "PORT": config("POSTGRES_PORT", cast=int),
     }
 }
 
+# ? --- DATABASE FIELDS ENCRYPTION
+# ? ------------------------------
+FIELD_ENCRYPTION_KEY = config("FIELD_ENCRYPTION_KEY").encode()
+
 # ? --- SECURITY SETTINGS (SSL/HTTPS)
 # ? ---------------------------------
-SECURE_SSL_REDIRECT = True
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+# SECURE_SSL_REDIRECT = True
+# SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
-SECURE_HSTS_SECONDS = 31536000  # ? 1 YEAR
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+# SECURE_HSTS_SECONDS = 31536000  # ? --- 1 YEAR
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
 
-X_FRAME_OPTIONS = "DENY"
+# X_FRAME_OPTIONS = "DENY"
 
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_BROWSER_XSS_FILTER = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# SECURE_BROWSER_XSS_FILTER = True
 
 # ? --- COMPRESSOR
 # ? --------------
-COMPRESS_ROOT = STATIC_ROOT
-COMPRESS_URL = STATIC_URL
-COMPRESS_ENABLED = True
-COMPRESS_OFFLINE = True
-COMPRESS_CSS_FILTERS = [
-    "compressor.filters.css_default.CssAbsoluteFilter",
-    "compressor.filters.cssmin.CSSMinFilter",
-]
-COMPRESS_JS_FILTERS = [
-    "compressor.filters.jsmin.JSMinFilter",
-]
+COMPRESS_OFFLINE = config("COMPRESS_OFFLINE", cast=bool)
 
 # ? --- SASS/SCSS
 # ? -------------

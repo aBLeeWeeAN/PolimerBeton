@@ -7,13 +7,7 @@ FILE_CHARSET = "utf-8"
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-SECRET_KEY = config("DJANGO_SECRET_KEY", default="secret_key_for_dummy_guys")
-
-DEBUG = config("DJANGO_DEBUG", default=True, cast=bool)
-
 DEFAULT_DOMAIN = "polimerbeton-vrn.ru"
-
-ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS", default="127.0.0.1,localhost").split(",")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -54,9 +48,6 @@ INSTALLED_APPS = [
 #         "static_url_prefix": "/static_assets/",
 #     }
 # }
-
-# TODO: delete SITE_ID?
-SITE_ID = config("SITE_ID", default=1, cast=int)
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -143,18 +134,7 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.yandex.ru"
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="email_address_for_dummy_guys")
-EMAIL_HOST_PASSWORD = config(
-    "EMAIL_HOST_PASSWORD", default="email_password_for_dummy_guys"
-)
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 #! EMAIL_USE_TLS = False
-
-# ? --- ENCRYPTION
-# ? --------------
-FIELD_ENCRYPTION_KEY = config(
-    "FIELD_ENCRYPTION_KEY", default="field_encryption_key_for_dummy_guys"
-)
 
 # ? --- REDIS CACHE
 # ? ---------------
@@ -168,9 +148,12 @@ FIELD_ENCRYPTION_KEY = config(
 # SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 # SESSION_CACHE_ALIAS = "default"
 
-# ? --- SASS/SCSS --- ROOT FOLDER
-# ? -----------------------------
-# SASS_PROCESSOR_ROOT = BASE_DIR / "static_assets"
+
+# ? --- LIBSASS
+# ? -----------
+LIBSASS_ADDITIONAL_INCLUDE_PATHS = [
+    str(BASE_DIR / "node_modules"),
+]
 
 # ? --- COMPRESSOR --- PRECOMPILERS SETTINGS --- SASS/SCSS & TypeScipt
 # ? ------------------------------------------------------------------
@@ -181,3 +164,16 @@ COMPRESS_PRECOMPILERS = (
         "esbuild {infile} --bundle --outfile={outfile} --format=esm",
     ),
 )
+
+# ? --- COMPRESSOR
+# ? --------------
+COMPRESS_ROOT = STATIC_ROOT
+COMPRESS_URL = STATIC_URL
+COMPRESS_ENABLED = True
+COMPRESS_CSS_FILTERS = [
+    "compressor.filters.css_default.CssAbsoluteFilter",
+    "compressor.filters.cssmin.CSSMinFilter",
+]
+COMPRESS_JS_FILTERS = [
+    "compressor.filters.jsmin.JSMinFilter",
+]
