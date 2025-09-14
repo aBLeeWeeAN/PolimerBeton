@@ -100,7 +100,7 @@ celerybeat-schedule.*
 #? Environments 
 ENV/
 
-*.env
+.env*
 
 env/ 
 env.bak/ 
@@ -181,10 +181,11 @@ node_modules/
 *.dev*
 *.prod*
 
-!.env.dev
 !Dockerfile.prod
 !entrypoint.prod.sh
 !docker-compose.prod.yml
+
+!*.template
 
 #? Ignore all generated deploy folders
 certs/
