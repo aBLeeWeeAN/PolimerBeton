@@ -1,6 +1,5 @@
 # import os
 from pathlib import Path
-from decouple import config
 
 DEFAULT_CHARSET = "utf-8"
 FILE_CHARSET = "utf-8"
@@ -15,9 +14,6 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    # ? --- LIVE RELOAD
-    # ? ---------------
-    "livereload",
     # ? --- STATIC FILES
     # ? ----------------
     "django.contrib.staticfiles",
@@ -61,9 +57,6 @@ MIDDLEWARE = [
     # ? ---------------
     "htmlmin.middleware.MarkRequestMiddleware",
     "htmlmin.middleware.HtmlMinifyMiddleware",
-    # ? --- LIVE RELOAD
-    # ? ---------------
-    "livereload.middleware.LiveReloadScript",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -114,8 +107,9 @@ LOCALE_PATHS = [BASE_DIR / "locales"]
 
 # ? --- STATIC FILES
 # ? ----------------
-STATIC_URL = "/static_assets/"
-STATIC_ROOT = BASE_DIR / "static_assets"
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 STATICFILES_DIRS = [
     # ? find only '/static/' folders in apps
 ]
@@ -127,14 +121,6 @@ STATICFILES_FINDERS = [
 ]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# ? --- EMAIL SETTINGS
-# ? ------------------
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.yandex.ru"
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
-#! EMAIL_USE_TLS = False
 
 # ? --- REDIS CACHE
 # ? ---------------
@@ -157,11 +143,13 @@ LIBSASS_ADDITIONAL_INCLUDE_PATHS = [
 
 # ? --- COMPRESSOR --- PRECOMPILERS SETTINGS --- SASS/SCSS & TypeScipt
 # ? ------------------------------------------------------------------
+ESBUILD_BIN = BASE_DIR / "node_modules" / ".bin" / "esbuild"
+
 COMPRESS_PRECOMPILERS = (
     ("text/x-scss", "django_libsass.SassCompiler"),
     (
         "text/typescript",
-        "esbuild {infile} --bundle --outfile={outfile} --format=esm",
+        f"{ESBUILD_BIN} {{infile}} --bundle --outfile={{outfile}} --format=esm",
     ),
 )
 
@@ -169,7 +157,7 @@ COMPRESS_PRECOMPILERS = (
 # ? --------------
 COMPRESS_ROOT = STATIC_ROOT
 COMPRESS_URL = STATIC_URL
-COMPRESS_ENABLED = True
+
 COMPRESS_CSS_FILTERS = [
     "compressor.filters.css_default.CssAbsoluteFilter",
     "compressor.filters.cssmin.CSSMinFilter",
@@ -177,3 +165,5 @@ COMPRESS_CSS_FILTERS = [
 COMPRESS_JS_FILTERS = [
     "compressor.filters.jsmin.JSMinFilter",
 ]
+
+COMPRESS_ENABLED = True

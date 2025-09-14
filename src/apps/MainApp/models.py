@@ -1,12 +1,12 @@
 from django.utils.translation import gettext_lazy as _
-
 from django.utils import timezone
-from datetime import timedelta
-
 from django.db import models
-from encrypted_model_fields.fields import EncryptedCharField
 
+from datetime import timedelta
 import hashlib
+
+# from .fields import EncryptedCharField
+from encrypted_model_fields.fields import EncryptedCharField
 
 
 class Client(models.Model):

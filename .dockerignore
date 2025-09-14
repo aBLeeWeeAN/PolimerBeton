@@ -100,7 +100,7 @@ celerybeat-schedule.*
 #? Environments 
 ENV/
 
-# *.env
+*.env
 
 env/ 
 env.bak/ 
@@ -161,6 +161,7 @@ old/
 #? Ignore compiled static files folder
 static_files/
 static_assets/
+staticfiles/
 
 #? Ignore keys and certificate files
 *.crt
@@ -179,7 +180,15 @@ node_modules/
 #? Ignore all .dev (development) and .prod (production) files
 *.dev
 *.prod
+*.prod.db
 
 #? Ignore all generated deploy folders
 certs/
 certbot/
+
+#? Ignore polimerbeton project files folder
+project/
+
+#? Ignore all .git folders and files
+*.git*
+.git/

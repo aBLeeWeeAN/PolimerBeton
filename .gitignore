@@ -161,6 +161,7 @@ old/
 #? Ignore compiled static files folder
 static_files/
 static_assets/
+staticfiles/
 
 #? Ignore keys and certificate files
 *.crt
@@ -177,8 +178,13 @@ js/
 node_modules/
 
 #? Ignore all .dev (development) and .prod (production) files
-*.dev
-*.prod
+*.dev*
+*.prod*
+
+!.env.dev
+!Dockerfile.prod
+!entrypoint.prod.sh
+!docker-compose.prod.yml
 
 #? Ignore all generated deploy folders
 certs/

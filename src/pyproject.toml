@@ -1,0 +1,31 @@
+[project]
+name = "polimerbeton"
+requires-python = ">=3.13,<4.0"
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.group.prod.dependencies]
+django = "^5.2.6"
+django-htmlmin = "^0.11.0"
+django-compressor = "^4.5.1"
+django-encrypted-model-fields = "^0.6.5"
+babel = "^2.17.0"
+python-decouple = "^3.8"
+django-libsass = "^0.9"
+django-vite = "^3.1.0"
+psycopg2-binary = "^2.9.10"
+gunicorn = "^23.0.0"
+
+[tool.poetry.group.dev]
+include-groups = [
+    "prod",
+]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+django-livereload-server = "^0.5.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

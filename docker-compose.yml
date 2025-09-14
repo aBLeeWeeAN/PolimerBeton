@@ -1,69 +1,24 @@
 services:
-    webapp--polimerbeton:
-        build: . # Сборка Django проекта Polimerbeton
-        container_name: webapp--polimerbeton
-        ports:
-            - "8043:8043"
-        depends_on:
-            - database--postgres
-        environment:
-            DJANGO_DEBUG: "${DJANGO_DEBUG}"
-            DJANGO_SECRET_KEY: "${DJANGO_SECRET_KEY}"
-            DJANGO_ALLOWED_HOSTS: "${DJANGO_ALLOWED_HOSTS}"
-            DJANGO_SETTINGS_MODULE: "${DJANGO_SETTINGS_MODULE}"
-
-            POSTGRES_DB: "${POSTGRES_DB}"
-            POSTGRES_USER: "${POSTGRES_USER}"
-            POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-            POSTGRES_HOST: "${POSTGRES_HOST}"
-            POSTGRES_PORT: "${POSTGRES_PORT}"
-
-            EMAIL_HOST_USER: "${EMAIL_HOST_USER}"
-            EMAIL_HOST_PASSWORD: "${EMAIL_HOST_PASSWORD}"
-
-            EMAIL_RECIPIENT: "${EMAIL_RECIPIENT}"
-
-            FIELD_ENCRYPTION_KEY: "${FIELD_ENCRYPTION_KEY}"
+    web:
+        build: ./src
+        command: python manage.py runserver 0.0.0.0:8000
         volumes:
-            - static_assets:/www/polimerbeton/static_assets
-
-    webserver--nginx:
-        image: nginx:1.29.1
-        container_name: webserver--nginx
+            - ./src/:/www/polimerbeton/src/
         ports:
-            - "80:80"
-            # - "443:443"
-        volumes:
-            - ./deploy/nginx.conf:/etc/nginx/nginx.conf:ro
-            - static_assets:/www/polimerbeton/static_assets
-            # - ./deploy/certs:/etc/letsencrypt:ro
-            # - ./deploy/certbot:/var/www/certbot
+            - 8000:8000
+        env_file:
+            - ./.env.dev
         depends_on:
-            - webapp--polimerbeton
-        environment:
-            DATABASE_URL: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}"
+            - db
 
-    # certbot--lets-encrypt--ssl-certificate:
-    #     image: certbot/certbot:v5.0.0
-    #     container_name: certbot--lets-encrypt--ssl-certificate
-    #     volumes:
-    #         - ./deploy/certs:/etc/letsencrypt
-    #         - ./deploy/certbot:/var/www/certbot
-    #     entrypoint: >
-    #         sh -c "certbot certonly --webroot -w /var/www/certbot --email mail.jorey@gmail.com --agree-tos --no-eff-email -d polimerbeton-vrn.ru -d www.polimerbeton-vrn.ru"
-
-    database--postgres:
+    db:
         image: postgres:17.6
-        container_name: database--postgres
-        environment:
-            POSTGRES_DB: "${POSTGRES_DB}"
-            POSTGRES_USER: "${POSTGRES_USER}"
-            POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-            POSTGRES_HOST: "${POSTGRES_HOST}"
-            POSTGRES_PORT: "${POSTGRES_PORT}"
         volumes:
-            - database_data:/var/lib/postgresql/data
+            - postgres_data:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=dummy_guy
+            - POSTGRES_PASSWORD=dummy_guy_password
+            - POSTGRES_DB=polimerbeton_db
 
 volumes:
-    database_data: # Том для хранения данных БД
-    static_assets: # Том для статики
+    postgres_data:

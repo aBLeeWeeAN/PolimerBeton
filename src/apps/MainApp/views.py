@@ -118,34 +118,36 @@ def index(request):
             # else:
             #     subject = f'Заявка на звонок от старого клиента. ID клиента: №{client.client_id}'
 
-            from_email = config("EMAIL_HOST_USER")
-            recipient_list = [config("EMAIL_RECIPIENT")]
-
             # Форматируем дату с помощью Babel
             formatted_datetime = format_datetime(
                 request_instance.request_datetime, "d MMMM yyyy HH:mm:ss", locale="ru"
             )
 
-            # Генерация HTML-сообщения
-            html_message = render_to_string(
-                "email_service/email_message.html",
-                {
-                    "client_name": client_name,
-                    "client_phone": client_phone,
-                    "client_id": client.client_id,
-                    "request_number": request_instance.request_number,
-                    "request_datetime": formatted_datetime,
-                },
-            )
+            #? --- Работает только в production mode!!!
+            if not settings.DEBUG:
+                #? Генерация HTML-сообщения для отправки по Email
+                html_message = render_to_string(
+                    "email_service/email_message.html",
+                    {
+                        "client_name": client_name,
+                        "client_phone": client_phone,
+                        "client_id": client.client_id,
+                        "request_number": request_instance.request_number,
+                        "request_datetime": formatted_datetime,
+                    },
+                )
 
-            plain_message = strip_tags(html_message)  # Текстовая версия сообщения
+                plain_message = strip_tags(html_message)  # Текстовая версия сообщения
 
-            # Создание и отправка письма
-            email = EmailMultiAlternatives(
-                subject, plain_message, from_email, recipient_list
-            )
-            email.attach_alternative(html_message, "text/html")
-            email.send()
+                #? Создание и отправка письма
+                from_email = config("EMAIL_HOST_USER")
+                recipient_list = [config("EMAIL_RECIPIENT")]
+
+                email = EmailMultiAlternatives(
+                    subject, plain_message, from_email, recipient_list
+                )
+                email.attach_alternative(html_message, "text/html")
+                email.send()
 
             # Устанавливаем метку, чтобы блокировать повторные отправки
             request.session["form_token"] = None  # Удаляем токен после использования

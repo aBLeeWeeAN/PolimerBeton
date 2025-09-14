@@ -7,5 +7,7 @@ class MainAppConfig(AppConfig):
 
     def ready(self):
         from .runners import start_task_runner
+        from django.db.models.signals import post_migrate
 
-        start_task_runner()
+        post_migrate.connect(lambda **kwargs: start_task_runner())
+        # start_task_runner()

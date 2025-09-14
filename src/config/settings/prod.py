@@ -1,4 +1,5 @@
 from .base import *
+from decouple import config
 
 # ? --- SECRET KEY SETTINGS
 # ? -----------------------
@@ -18,20 +19,26 @@ SITE_ID = config("SITE_ID", cast=int)
 
 # ? --- EMAIL SETTINGS
 # ? ------------------
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.yandex.ru"
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+#! EMAIL_USE_TLS = False
+
 EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-# ? --- PostgreSQL database for production mode
-# ? -------------------------------------------
+# ? --- Database settings for production mode
+# ? -----------------------------------------
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": config("POSTGRES_DB"),
-        "USER": config("POSTGRES_USER"),
-        "PASSWORD": config("POSTGRES_PASSWORD"),
-        "HOST": config("POSTGRES_HOST"),
-        "PORT": config("POSTGRES_PORT", cast=int),
+        "ENGINE": config("SQL_ENGINE"),
+        "NAME": config("SQL_DATABASE"),
+        "USER": config("SQL_USER"),
+        "PASSWORD": config("SQL_PASSWORD"),
+        "HOST": config("SQL_HOST"),
+        "PORT": config("SQL_PORT", cast=int),
     }
 }
 
