@@ -1,7 +1,9 @@
+from django.views.generic.base import TemplateView, RedirectView
+from django.conf import settings
 from django.urls import path
+
 from . import views
 
-from django.views.generic.base import TemplateView
 
 urlpatterns = [
     # ? --- BASIC PAGES
@@ -19,4 +21,10 @@ urlpatterns = [
         ),
         name="robots",
     ),
+    # path(
+    #     "favicon.ico",
+    #     RedirectView.as_view(
+    #         url=settings.STATIC_URL + "favicons/favicon.ico", permanent=True
+    #     ),
+    # ),
 ]

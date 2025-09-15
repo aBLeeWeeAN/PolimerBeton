@@ -123,9 +123,9 @@ def index(request):
                 request_instance.request_datetime, "d MMMM yyyy HH:mm:ss", locale="ru"
             )
 
-            #? --- Работает только в production mode!!!
+            # ? --- Работает только в production mode!!!
             if not settings.DEBUG:
-                #? Генерация HTML-сообщения для отправки по Email
+                # ? Генерация HTML-сообщения для отправки по Email
                 html_message = render_to_string(
                     "email_service/email_message.html",
                     {
@@ -139,7 +139,7 @@ def index(request):
 
                 plain_message = strip_tags(html_message)  # Текстовая версия сообщения
 
-                #? Создание и отправка письма
+                # ? Создание и отправка письма
                 from_email = config("EMAIL_HOST_USER")
                 recipient_list = [config("EMAIL_RECIPIENT")]
 
@@ -327,3 +327,21 @@ def error(request):
             "twitter_thumbnail_image_url": absolute_url_for_twitter_thumbnail_image,
         },
     )
+
+
+# ? --- FAVICON.ICO
+# ? ---------------
+# from django.conf import settings
+# from django.http import FileResponse, HttpRequest, HttpResponse
+# from django.views.decorators.cache import cache_control
+# from django.views.decorators.http import require_GET
+
+
+# @require_GET
+# @cache_control(max_age=60 * 60 * 24, immutable=True, public=True)  # one day
+# def favicon_file(request: HttpRequest) -> HttpResponse:
+#     name = request.path.lstrip("/")
+#     file = (settings.BASE_DIR / "apps" / "MainApp" / "static" / "favicons" / name).open(
+#         "rb"
+#     )
+#     return FileResponse(file)
