@@ -46,10 +46,14 @@ DATABASES = {
 # ? ------------------------------
 FIELD_ENCRYPTION_KEY = config("FIELD_ENCRYPTION_KEY").encode()
 
+# ? --- CSRF
+# ? --------
+CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS").split(",")
+
 # ? --- SECURITY SETTINGS (SSL/HTTPS)
 # ? ---------------------------------
 # SECURE_SSL_REDIRECT = True
-# SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True

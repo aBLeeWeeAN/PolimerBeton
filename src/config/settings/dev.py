@@ -58,6 +58,12 @@ FIELD_ENCRYPTION_KEY = config(
     "FIELD_ENCRYPTION_KEY", default=base64.urlsafe_b64encode(b"0" * 32).decode()
 ).encode()
 
+# ? --- CSRF
+# ? --------
+CSRF_TRUSTED_ORIGINS = config(
+    "CSRF_TRUSTED_ORIGINS", default="http://127.0.0.1:8000,http://localhost:8000"
+).split(",")
+
 # ? --- COMPRESSOR
 # ? --------------
 COMPRESS_OFFLINE = config("COMPRESS_OFFLINE", default=False, cast=bool)
