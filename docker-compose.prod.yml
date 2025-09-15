@@ -29,9 +29,10 @@ services:
             - 80:80
         volumes:
             - static_volume:/home/warden/www/polimerbeton/staticfiles
-            - certs:/etc/nginx/certs
-            - html:/usr/share/nginx/html
             - vhost:/etc/nginx/vhost.d
+            - conf:/etc/nginx/conf.d
+            - html:/usr/share/nginx/html
+            - certs:/etc/nginx/certs:ro
             - /var/run/docker.sock:/tmp/docker.sock:ro
         depends_on:
             - web
@@ -42,12 +43,12 @@ services:
             - ./env/.env.prod.proxy-companion
         environment:
             - NGINX_DOCKER_GEN_CONTAINER=nginx-proxy
+        volumes_from:
+            - nginx-proxy
         volumes:
-            - /var/run/docker.sock:/var/run/docker.sock:z
-            - certs:/etc/nginx/certs
-            - html:/usr/share/nginx/html
-            - vhost:/etc/nginx/vhost.d
+            - certs:/etc/nginx/certs:rw
             - acme:/etc/acme.sh
+            - /var/run/docker.sock:/var/run/docker.sock:z
         depends_on:
             - nginx-proxy
 
