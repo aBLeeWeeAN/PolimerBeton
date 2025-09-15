@@ -102,7 +102,7 @@ ENV/
 
 .env*
 
-env/ 
+!env/
 env.bak/ 
 .env/
 .env.bak/ 
