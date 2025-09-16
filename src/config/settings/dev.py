@@ -33,11 +33,11 @@ SITE_ID = config("SITE_ID", default=1, cast=int)
 
 # ? --- EMAIL SETTINGS
 # ? ------------------
-EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="email_address_for_dummy_guys")
-EMAIL_HOST_PASSWORD = config(
-    "EMAIL_HOST_PASSWORD", default="email_password_for_dummy_guys"
-)
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="email_address_for_dummy_guys")
+# EMAIL_HOST_PASSWORD = config(
+#     "EMAIL_HOST_PASSWORD", default="email_password_for_dummy_guys"
+# )
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # ? --- Database settings for development mode
 # ? ------------------------------------------

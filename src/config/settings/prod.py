@@ -20,14 +20,19 @@ SITE_ID = config("SITE_ID", cast=int)
 # ? --- EMAIL SETTINGS
 # ? ------------------
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.yandex.ru"
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
-#! EMAIL_USE_TLS = False
 
-EMAIL_HOST_USER = config("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_HOST = config("EMAIL_HOST")
+EMAIL_PORT = config("EMAIL_PORT", cast=int)
+EMAIL_USE_SSL = config("EMAIL_USE_SSL", cast=bool)
+EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool)
+
+EMAIL_HOST_USER = config("EMAIL_BOT_ADDRESS")
+EMAIL_HOST_PASSWORD = config("EMAIL_BOT_PASSWORD")
+
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+EMAIL_BOT_ADDRESS = EMAIL_HOST_USER
+EMAIL_RECIPIENT_ADDRESS = config("EMAIL_RECIPIENT_ADDRESS")
 
 # ? --- Database settings for production mode
 # ? -----------------------------------------

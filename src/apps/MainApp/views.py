@@ -19,6 +19,10 @@ from django.conf import settings
 # from django.http import HttpResponse
 # from htmlmin.decorators import minified_response
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 def generate_token():
     return get_random_string(64)
@@ -123,8 +127,13 @@ def index(request):
                 request_instance.request_datetime, "d MMMM yyyy HH:mm:ss", locale="ru"
             )
 
+            # Получаем имя модуля настроек
+            settings_module = config("DJANGO_SETTINGS_MODULE")
+
             # ? --- Работает только в production mode!!!
-            if not settings.DEBUG:
+            if not settings.DEBUG and (
+                settings_module and "config.settings.prod" in settings_module.lower()
+            ):
                 # ? Генерация HTML-сообщения для отправки по Email
                 html_message = render_to_string(
                     "email_service/email_message.html",
@@ -140,14 +149,26 @@ def index(request):
                 plain_message = strip_tags(html_message)  # Текстовая версия сообщения
 
                 # ? Создание и отправка письма
-                from_email = config("EMAIL_HOST_USER")
-                recipient_list = [config("EMAIL_RECIPIENT")]
+                from_email = f"My Project Bot <{settings.EMAIL_BOT_ADDRESS}>"
+                recipient_list = [settings.EMAIL_RECIPIENT_ADDRESS]
 
                 email = EmailMultiAlternatives(
                     subject, plain_message, from_email, recipient_list
                 )
                 email.attach_alternative(html_message, "text/html")
-                email.send()
+
+                try:
+                    email.send()
+                except Exception as e:
+                    logger.error(f"Ошибка при отправке письма: {e}")
+
+                    m_error_h1 = "Ошибка при отправке данных!"
+                    m_error_h2 = f'К сожалению при отправе формы произошла ошибка! Но не беда! Вы всё ещё можете написать нам напрямую на нашу почту "Polimerbeton-vrn@yandex.ru" или связаться с нами по телефону "8 920 226 16 66".'
+
+                    request.session["error_h1"] = m_error_h1
+                    request.session["error_h2"] = m_error_h2
+
+                    return redirect("error")
 
             # Устанавливаем метку, чтобы блокировать повторные отправки
             request.session["form_token"] = None  # Удаляем токен после использования
