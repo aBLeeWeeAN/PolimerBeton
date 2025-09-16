@@ -43,7 +43,7 @@ WORKDIR $APP_HOME
 
 # Install system dependencies
 RUN apt-get update && \
-    apt-get install -y netcat-openbsd && \
+    apt-get install -y netcat-openbsd ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy Node.js runtime form frontend_builder
