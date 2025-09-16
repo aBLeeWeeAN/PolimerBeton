@@ -13,6 +13,9 @@ then
 fi
 
 # --- Django management commands ---
+# echo "Delete old staticfiles..."
+# rm -rf /home/warden/www/polimerbeton/staticfiles/* || true
+
 echo "Applying database migrations..."
 python manage.py migrate --noinput
 
