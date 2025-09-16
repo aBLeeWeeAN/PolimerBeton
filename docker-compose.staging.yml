@@ -21,8 +21,8 @@ services:
             - ./env/.env.staging.db
 
     nginx-proxy:
-        container_name: nginx-proxy
         build: ./web/nginx
+        container_name: nginx-proxy
         restart: always
         ports:
             - 443:443
@@ -39,25 +39,24 @@ services:
 
     acme-companion:
         image: nginxproxy/acme-companion:2.6
+        container_name: nginx-proxy-acme
         env_file:
             - ./env/.env.staging.proxy-companion
-        environment:
-            - NGINX_DOCKER_GEN_CONTAINER=nginx-proxy
         volumes:
-            - /var/run/docker.sock:/var/run/docker.sock:z
+            - acme:/etc/acme.sh
             - certs:/etc/nginx/certs:rw
             - html:/usr/share/nginx/html
             - vhost:/etc/nginx/vhost.d
             # - conf:/etc/nginx/conf.d
-            - acme:/etc/acme.sh
+            - /var/run/docker.sock:/var/run/docker.sock:ro
         depends_on:
             - nginx-proxy
 
 volumes:
     postgres_data:
     static_volume:
+    acme:
+    certs:
+    html:
     vhost:
     # conf:
-    html:
-    certs:
-    acme:
