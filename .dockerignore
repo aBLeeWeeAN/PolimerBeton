@@ -178,9 +178,11 @@ js/
 node_modules/
 
 #? Ignore all .dev (development) and .prod (production) files
-*.dev
-*.prod
-*.prod.db
+*.dev*
+*.prod*
+
+!etrypoint.prod.sh
+!entrypoint.sh
 
 #? Ignore all generated deploy folders
 certs/
