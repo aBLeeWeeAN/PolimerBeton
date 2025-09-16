@@ -33,7 +33,7 @@ SITE_ID = config("SITE_ID", default=1, cast=int)
 
 # ? --- EMAIL SETTINGS
 # ? ------------------
-PROVIDE_SMTP_PORTS_OPENED = config(
+PROVIDER_SMTP_PORTS_OPENED = config(
     "PROVIDER_SMTP_PORTS_OPENED", default=True, cast=bool
 )
 

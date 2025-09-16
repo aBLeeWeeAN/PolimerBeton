@@ -19,7 +19,7 @@ SITE_ID = config("SITE_ID", cast=int)
 
 # ? --- EMAIL SETTINGS
 # ? ------------------
-PROVIDE_SMTP_PORTS_OPENED = config("PROVIDER_SMTP_PORTS_OPENED", cast=bool)
+PROVIDER_SMTP_PORTS_OPENED = config("PROVIDER_SMTP_PORTS_OPENED", cast=bool)
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
