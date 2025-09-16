@@ -141,27 +141,28 @@ def index(request):
 
             plain_message = strip_tags(html_message)  # Текстовая версия сообщения
 
-            # ? Создание и отправка письма
-            from_email = f"PolimerBeton Bot <{settings.EMAIL_BOT_ADDRESS}>"
-            recipient_list = [settings.EMAIL_RECIPIENT_ADDRESS]
+            if settings.PROVIDER_SMTP_PORTS_OPENED:
+                # ? Создание и отправка письма
+                from_email = f"PolimerBeton Bot <{settings.EMAIL_BOT_ADDRESS}>"
+                recipient_list = [settings.EMAIL_RECIPIENT_ADDRESS]
 
-            email = EmailMultiAlternatives(
-                subject, plain_message, from_email, recipient_list
-            )
-            email.attach_alternative(html_message, "text/html")
+                email = EmailMultiAlternatives(
+                    subject, plain_message, from_email, recipient_list
+                )
+                email.attach_alternative(html_message, "text/html")
 
-            try:
-                email.send()
-            except Exception as e:
-                logger.error(f"Ошибка при отправке письма: {e}")
+                try:
+                    email.send()
+                except Exception as e:
+                    logger.error(f"Ошибка при отправке письма: {e}")
 
-                m_error_h1 = "Ошибка при отправке данных!"
-                m_error_h2 = f'К сожалению при отправе формы произошла ошибка! Но не беда! Вы всё ещё можете написать нам напрямую на нашу почту "Polimerbeton-vrn@yandex.ru" или связаться с нами по телефону "8 920 226 16 66".'
+                    m_error_h1 = "Ошибка при отправке данных!"
+                    m_error_h2 = f'К сожалению при отправе формы произошла ошибка! Но не беда! Вы всё ещё можете написать нам напрямую на нашу почту "Polimerbeton-vrn@yandex.ru" или связаться с нами по телефону "8 920 226 16 66".'
 
-                request.session["error_h1"] = m_error_h1
-                request.session["error_h2"] = m_error_h2
+                    request.session["error_h1"] = m_error_h1
+                    request.session["error_h2"] = m_error_h2
 
-                return redirect("error")
+                    return redirect("error")
 
             # Устанавливаем метку, чтобы блокировать повторные отправки
             request.session["form_token"] = None  # Удаляем токен после использования

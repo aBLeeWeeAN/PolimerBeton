@@ -33,6 +33,10 @@ SITE_ID = config("SITE_ID", default=1, cast=int)
 
 # ? --- EMAIL SETTINGS
 # ? ------------------
+PROVIDE_SMTP_PORTS_OPENED = config(
+    "PROVIDER_SMTP_PORTS_OPENED", default=True, cast=bool
+)
+
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 EMAIL_HOST = config("EMAIL_HOST", default="smtp.gmail.com")
