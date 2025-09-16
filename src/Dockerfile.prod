@@ -13,7 +13,7 @@ WORKDIR /usr/src/polimerbeton
 
 # Setup Python environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBEFFERED=1
+    PYTHONUNBUFFERED=1
 
 RUN pip install poetry
 COPY pyproject.toml poetry.lock /usr/src/polimerbeton/
@@ -23,7 +23,7 @@ RUN poetry config virtualenvs.create false \
     
 #? --- Stage 3. Execute "production" scenario for Polimerbeton
 #? -----------------------------------------------------------
-FROM python:3.13-slim AS development
+FROM python:3.13-slim AS production
 
 # Create directory for the app user
 RUN mkdir -p /home/warden
@@ -57,7 +57,7 @@ COPY --from=backend_builder /usr/local /usr/local
 # Setup Python environment variables
 # and add Node.js dependencies BINs to PATH
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBEFFERED=1 \
+    PYTHONUNBUFFERED=1 \
     PATH="$APP_HOME/node_modules/.bin:$PATH"
 
 # Copy and setup entrypoint.sh
