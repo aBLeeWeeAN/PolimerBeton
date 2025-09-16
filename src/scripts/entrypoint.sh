@@ -13,10 +13,10 @@ then
 fi
 
 # Сбрасываем базу (для dev)
-python manage.py flush --no-input
+python manage.py flush --noinput
 
 # Применяем миграции
-python manage.py migrate
+python manage.py migrate --noinput
 
 # --- Создание суперпользователя ---
 # Используем переменные окружения:
