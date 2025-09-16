@@ -1,9 +1,9 @@
-from django.views.generic.base import TemplateView, RedirectView
-from django.conf import settings
+from django.views.generic.base import TemplateView
 from django.urls import path
-
 from . import views
 
+# from django.views.generic.base import RedirectView
+# from django.conf import settings
 
 urlpatterns = [
     # ? --- BASIC PAGES

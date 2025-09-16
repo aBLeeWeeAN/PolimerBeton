@@ -33,11 +33,20 @@ SITE_ID = config("SITE_ID", default=1, cast=int)
 
 # ? --- EMAIL SETTINGS
 # ? ------------------
-# EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="email_address_for_dummy_guys")
-# EMAIL_HOST_PASSWORD = config(
-#     "EMAIL_HOST_PASSWORD", default="email_password_for_dummy_guys"
-# )
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = config("EMAIL_HOST", default="smtp.gmail.com")
+EMAIL_PORT = config("EMAIL_PORT", default=587, cast=int)
+EMAIL_USE_SSL = config("EMAIL_USE_SSL", default=False, cast=bool)
+EMAIL_USE_TLS = config("EMAIL_USE_TLS", default=True, cast=bool)
+
+EMAIL_HOST_USER = config("EMAIL_BOT_ADDRESS")
+EMAIL_HOST_PASSWORD = config("EMAIL_BOT_PASSWORD")
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+EMAIL_BOT_ADDRESS = EMAIL_HOST_USER
+EMAIL_RECIPIENT_ADDRESS = config("EMAIL_RECIPIENT_ADDRESS")
 
 # ? --- Database settings for development mode
 # ? ------------------------------------------
