@@ -73,7 +73,7 @@ services:
 
 networks:
     default:
-        name: nginx-proxy
+        name: polimerbeton-app-network-prod
 
 volumes:
     postgres_data:
