@@ -86,13 +86,15 @@ const injectAnalyticsScripts = (): void => {
     const scriptGoogle_gTag = document.createElement("script");
     scriptGoogle_gTag.type = "text/javascript";
     scriptGoogle_gTag.src = "https://www.googletagmanager.com/gtag/js?id=G-XSZP3WXDN6";
-    scriptGoogle_gTag.async = true;
+    scriptGoogle_gTag.async = false;
+    scriptGoogle_gTag.defer = true;
     analyticsContainer.appendChild(scriptGoogle_gTag);
 
     const scriptGoogle_main = document.createElement("script");
     scriptGoogle_main.type = "text/javascript";
     scriptGoogle_main.innerHTML = googleAnalyticsScript_main;
     scriptGoogle_main.async = false;
+    scriptGoogle_gTag.defer = true;
     analyticsContainer.appendChild(scriptGoogle_main);
 
     // Добавляем noscript для Яндекс.Метрики
