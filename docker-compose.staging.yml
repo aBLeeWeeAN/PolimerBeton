@@ -24,7 +24,9 @@ services:
             - ./env/.env.staging.db
 
     nginx-proxy:
-        build: ./web/nginx/nginx-proxy
+        build:
+            context: ./web/nginx/nginx-proxy
+            dockerfile: Dockerfile.prod
         container_name: nginx-proxy
         restart: always
         ports:

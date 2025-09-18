@@ -1,6 +1,6 @@
 #? --- Stage 1. Build the Node.js frontend
 #? ---------------------------------------
-FROM node:24.8-slim AS frontend_builder
+FROM node:24.8-alpine AS frontend_builder
 WORKDIR /usr/src/polimerbeton
 
 COPY package.json package-lock.json /usr/src/polimerbeton/
