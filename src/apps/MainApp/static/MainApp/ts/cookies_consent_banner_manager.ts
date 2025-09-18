@@ -94,7 +94,7 @@ const injectAnalyticsScripts = (): void => {
     scriptGoogle_main.type = "text/javascript";
     scriptGoogle_main.innerHTML = googleAnalyticsScript_main;
     scriptGoogle_main.async = false;
-    scriptGoogle_gTag.defer = true;
+    scriptGoogle_main.defer = true;
     analyticsContainer.appendChild(scriptGoogle_main);
 
     // Добавляем noscript для Яндекс.Метрики
