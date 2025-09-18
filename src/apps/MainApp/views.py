@@ -7,7 +7,8 @@ from django.utils.html import strip_tags
 from django.utils import timezone
 
 from .forms import FeedbackForm
-from decouple import config
+
+# from decouple import config
 
 from .models import Client, Request
 
@@ -18,6 +19,8 @@ from django.conf import settings
 
 # from django.http import HttpResponse
 # from htmlmin.decorators import minified_response
+
+from mailjet_rest import Client as MailjetClient
 
 import logging
 
@@ -141,10 +144,10 @@ def index(request):
 
             plain_message = strip_tags(html_message)  # Текстовая версия сообщения
 
-            if settings.PROVIDER_SMTP_PORTS_OPENED:
+            if settings.USE_DJANGO_SMTP_SERVER:
                 # ? Создание и отправка письма
-                from_email = f"PolimerBeton Bot <{settings.EMAIL_BOT_ADDRESS}>"
-                recipient_list = [settings.EMAIL_RECIPIENT_ADDRESS]
+                from_email = f"PolimerBeton Bot <{settings.SENDER_EMAIL}>"
+                recipient_list = [settings.RECIPIENT_EMAIL]
 
                 email = EmailMultiAlternatives(
                     subject, plain_message, from_email, recipient_list
@@ -163,6 +166,43 @@ def index(request):
                     request.session["error_h2"] = m_error_h2
 
                     return redirect("error")
+
+            if settings.USE_MAILJET_HTTP_SERVER:
+                api_key = settings.MAILJET_APIKEY_PUBLIC
+                api_key_secret = settings.MAILJET_APIKEY_PRIVATE
+
+                mailjet = MailjetClient(auth=(api_key, api_key_secret), version="v3.1")
+                data = {
+                    "Messages": [
+                        {
+                            "From": {
+                                "Email": settings.SENDER_EMAIL,
+                                "Name": f"Polimerbeton Bot <{settings.SENDER_EMAIL}>",
+                            },
+                            "To": [
+                                {
+                                    "Email": settings.RECIPIENT_EMAIL,
+                                    "Name": "Polimerbeton Bot",
+                                },
+                                # ? second recipient (if necessary)
+                                # {
+                                #     "Email": settings.RECIPIENT_EMAIL,
+                                #     "Name": "Polimerbeton Bot",
+                                # },
+                            ],
+                            "Subject": subject,
+                            "TextPart": plain_message,
+                            "HTMLPart": html_message,
+                        }
+                    ]
+                }
+
+                result = mailjet.send.create(data=data)
+
+                logger.info(
+                    f"Отправка письма через Mailjet --- STATUS_CODE = {result.status_code}"
+                )
+                logger.info(f"Отправка письма через Mailjet --- JSON = {result.json}")
 
             # Устанавливаем метку, чтобы блокировать повторные отправки
             request.session["form_token"] = None  # Удаляем токен после использования

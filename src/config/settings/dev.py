@@ -31,11 +31,23 @@ ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS", default="127.0.0.1,localhost").sp
 # ? ------------------------
 SITE_ID = config("SITE_ID", default=1, cast=int)
 
-# ? --- EMAIL SETTINGS
-# ? ------------------
-PROVIDER_SMTP_PORTS_OPENED = config(
-    "PROVIDER_SMTP_PORTS_OPENED", default=True, cast=bool
-)
+# ? --- BASIC EMAIL SERVICE DATA
+# ? ----------------------------
+SENDER_EMAIL = config("SENDER_EMAIL")
+SENDER_EMAIL_PASSWORD = config("SENDER_EMAIL_PASSWORD")
+
+RECIPIENT_EMAIL = config("RECIPIENT_EMAIL")
+
+# ? --- MAILJET HTTP SERVER SETTINGS
+# ? --------------------------------
+USE_MAILJET_HTTP_SERVER = config("USE_MAILJET_HTTP_SERVER", default=False, cast=bool)
+
+MAILJET_APIKEY_PUBLIC = config("MAILJET_APIKEY_PUBLIC")
+MAILJET_APIKEY_PRIVATE = config("MAILJET_APIKEY_PRIVATE")
+
+# ? --- DJANGO SMTP SERVER SETTINGS
+# ? -------------------------------
+USE_DJANGO_SMTP_SERVER = config("USE_DJANGO_SMTP_SERVER", default=True, cast=bool)
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
@@ -44,13 +56,10 @@ EMAIL_PORT = config("EMAIL_PORT", default=587, cast=int)
 EMAIL_USE_SSL = config("EMAIL_USE_SSL", default=False, cast=bool)
 EMAIL_USE_TLS = config("EMAIL_USE_TLS", default=True, cast=bool)
 
-EMAIL_HOST_USER = config("EMAIL_BOT_ADDRESS")
-EMAIL_HOST_PASSWORD = config("EMAIL_BOT_PASSWORD")
+EMAIL_HOST_USER = SENDER_EMAIL
+EMAIL_HOST_PASSWORD = SENDER_EMAIL_PASSWORD
 
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-EMAIL_BOT_ADDRESS = EMAIL_HOST_USER
-EMAIL_RECIPIENT_ADDRESS = config("EMAIL_RECIPIENT_ADDRESS")
+DEFAULT_FROM_EMAIL = SENDER_EMAIL
 
 # ? --- Database settings for development mode
 # ? ------------------------------------------
