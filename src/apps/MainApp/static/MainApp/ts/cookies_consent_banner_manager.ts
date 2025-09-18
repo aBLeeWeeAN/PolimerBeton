@@ -23,42 +23,48 @@ cookieBox?.classList.add("no-transition");
 
 // Яндекс.Метрика в виде строки
 const yandexMetrikaScript = `
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();
-    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    (function (m, e, t, r, i, k, a) {
+        m[i] =
+            m[i] ||
+            function () {
+                (m[i].a = m[i].a || []).push(arguments);
+            };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+            if (document.scripts[j].src === r) {
+                return;
+            }
+        }
+        (k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]), (k.async = 1), (k.src = r), a.parentNode.insertBefore (k, a);
+    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-    ym(98233807, "init", {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true
-    });
+    ym(98233807, "init", { webvisor: true, clickmap: true, accurateTrackBounce: true, trackLinks: true });
 `;
 
 const yandexMetrikaNoscript = `
     <div><img src="https://mc.yandex.ru/watch/98233807" style="position:absolute; left:-9999px;" alt="" /></div>
 `;
 
+// <!-- Google tag (gtag.js) -->
+// <script async src="https://www.googletagmanager.com/gtag/js?id=G-XSZP3WXDN6"></script>
+// <script>
+//   window.dataLayer = window.dataLayer || [];
+//   function gtag(){dataLayer.push(arguments);}
+//   gtag('js', new Date());
+
+//   gtag('config', 'G-XSZP3WXDN6');
+// </script>
+
 // Google Analytics в виде строки
-const googleAnalyticsScript = `
-    (function() {
-        var script = document.createElement('script');
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XSZP3WXDN6';
-        script.async = true;
-        document.head.appendChild(script);
-        
-        script.onload = function() {
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+const googleAnalyticsScript_main = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
 
-            gtag('config', 'G-XSZP3WXDN6');
-        };
-    })();
+    gtag("js", new Date());
+    gtag("config", "G-XSZP3WXDN6");
 `;
-
 /*============================ END OF THIRD PARTY COOKIES SCRIPTS ============================*/
 
 /**========================================================================
@@ -77,10 +83,17 @@ const injectAnalyticsScripts = (): void => {
     analyticsContainer.appendChild(scriptYandex);
 
     // Добавляем Google Analytics
-    const scriptGoogle = document.createElement("script");
-    scriptGoogle.type = "text/javascript";
-    scriptGoogle.innerHTML = googleAnalyticsScript;
-    analyticsContainer.appendChild(scriptGoogle);
+    const scriptGoogle_gTag = document.createElement("script");
+    scriptGoogle_gTag.type = "text/javascript";
+    scriptGoogle_gTag.src = "https://www.googletagmanager.com/gtag/js?id=G-XSZP3WXDN6";
+    scriptGoogle_gTag.async = true;
+    analyticsContainer.appendChild(scriptGoogle_gTag);
+
+    const scriptGoogle_main = document.createElement("script");
+    scriptGoogle_main.type = "text/javascript";
+    scriptGoogle_main.innerHTML = googleAnalyticsScript_main;
+    scriptGoogle_main.async = false;
+    analyticsContainer.appendChild(scriptGoogle_main);
 
     // Добавляем noscript для Яндекс.Метрики
     const noscript = document.createElement("noscript");
