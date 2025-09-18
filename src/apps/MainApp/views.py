@@ -177,13 +177,10 @@ def index(request):
                         {
                             "From": {
                                 "Email": settings.SENDER_EMAIL,
-                                "Name": f"Polimerbeton Bot <{settings.SENDER_EMAIL}>",
+                                "Name": f"Polimerbeton Bot",
                             },
                             "To": [
-                                {
-                                    "Email": settings.RECIPIENT_EMAIL,
-                                    "Name": "Polimerbeton Bot",
-                                },
+                                {"Email": settings.RECIPIENT_EMAIL},
                                 # ? second recipient (if necessary)
                                 # {
                                 #     "Email": settings.RECIPIENT_EMAIL,
@@ -198,11 +195,23 @@ def index(request):
                 }
 
                 result = mailjet.send.create(data=data)
+                status_code = result.status_code
+                json_resp = result.json
 
-                logger.info(
-                    f"Отправка письма через Mailjet --- STATUS_CODE = {result.status_code}"
-                )
-                logger.info(f"Отправка письма через Mailjet --- JSON = {result.json}")
+                if status_code in (200, 201):
+                    logger.info(f"Удачная отправка Mailjet: {json_resp}")
+                else:
+                    logger.error(
+                        f"Ошибка отправки Mailjet ({status_code}): {json_resp}"
+                    )
+
+                    m_error_h1 = f"Ошибка {status_code} при отправке данных!"
+                    m_error_h2 = f'К сожалению при отправе формы произошла ошибка! Но не беда! Вы всё ещё можете написать нам напрямую на нашу почту "Polimerbeton-vrn@yandex.ru" или связаться с нами по телефону "8 920 226 16 66".'
+
+                    request.session["error_h1"] = m_error_h1
+                    request.session["error_h2"] = m_error_h2
+
+                    return redirect("error")
 
             # Устанавливаем метку, чтобы блокировать повторные отправки
             request.session["form_token"] = None  # Удаляем токен после использования
