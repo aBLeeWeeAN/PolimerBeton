@@ -102,7 +102,7 @@ ENV/
 
 .env*
 
-!env/
+env/ 
 env.bak/ 
 .env/
 .env.bak/ 
@@ -181,13 +181,16 @@ node_modules/
 *.dev*
 *.prod*
 
-!Dockerfile.prod
-!entrypoint.prod.sh
-!docker-compose.prod.yml
-!docker-compose.prod.selinux.yml
-
-!*.template
+!etrypoint.prod.sh
+!entrypoint.sh
 
 #? Ignore all generated deploy folders
 certs/
 certbot/
+
+#? Ignore polimerbeton project files folder
+project/
+
+#? Ignore all .git folders and files
+*.git*
+.git/

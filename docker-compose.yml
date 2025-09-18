@@ -1,0 +1,31 @@
+services:
+    web:
+        build: ./src
+        image: polimerbeton-web:latest
+        container_name: polimerbeton-web
+        command: python manage.py runserver 0.0.0.0:8000
+        volumes:
+            - ./src/:/www/polimerbeton/src/
+        ports:
+            - 8000:8000
+        env_file:
+            - ./env/.env.dev
+        depends_on:
+            - db
+
+    db:
+        image: postgres:17.6
+        container_name: polimerbeton-db
+        volumes:
+            - postgres_data:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=dummy_guy
+            - POSTGRES_PASSWORD=dummy_guy_password
+            - POSTGRES_DB=polimerbeton_db
+
+networks:
+    default:
+        name: polimerbeton-app-network-dev
+
+volumes:
+    postgres_data:

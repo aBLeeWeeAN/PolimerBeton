@@ -1,0 +1,35 @@
+{
+    "name": "polimerbeton",
+    "version": "2.0.0",
+    "description": "TODO: napisat opisanye",
+    "private": true,
+    "type": "module",
+    "homepage": "https://github.com/aBLeeWeeAN/PolimerBeton#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/aBLeeWeeAN/PolimerBeton.git"
+    },
+    "author": {
+        "name": "Vladimir Nikulin",
+        "email": "mail.jorey@gmail.com",
+        "url": "https://github.com/aBLeeWeeAN"
+    },
+    "license": "MIT",
+    "scripts": {
+        "development:runserver": "python manage.py runserver",
+        "development:livereload": "python manage.py livereload",
+        "production:build": "python manage.py migrate --noinput && python manage.py collectstatic --noinput --clear && python manage.py compress",
+        "production:start": "gunicorn config.wsgi:application --bind 0.0.0.0:8080 --workers 3"
+    },
+    "dependencies": {
+        "bootstrap": "^5.3.8",
+        "esbuild": "^0.25.9",
+        "jquery": "^3.7.1",
+        "ts-input-mask": "^2.2.0",
+        "typescript": "^5.9.2"
+    },
+    "devDependencies": {
+        "@types/jquery": "^3.5.33",
+        "@types/node": "^24.5.2"
+    }
+}

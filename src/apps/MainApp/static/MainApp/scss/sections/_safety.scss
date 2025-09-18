@@ -1,0 +1,335 @@
+/**========================================================================
+ **                            SAFETY
+ *========================================================================**/
+
+#Safety {
+    position: relative;
+
+    // .content {
+    //     margin-top: 5rem;
+    // }
+
+    .container-for-document-image {
+        // width: 40%;
+
+        // display: flex;
+        // flex-direction: column;
+
+        .image-with-gradient-border {
+            margin-bottom: 1.5rem;
+
+            &#safety-doc-1,
+            &#safety-doc-5 {
+                will-change: background-position;
+
+                /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff9800+0,673ab7+100;orange_to_purple */
+                // background: rgb(255, 152, 0);
+                background: linear-gradient(135deg, var(--secondary-color--tone-500) 0%, var(--primary-color--tone-500) 100%);
+
+                background-size: 400% 400%;
+
+                // img {
+                //     visibility: hidden;
+                // }
+
+                animation: gradient-animation-ex-3 10s ease-in-out infinite;
+
+                @media (prefers-reduced-motion: reduce) {
+                    animation: none !important;
+                }
+
+                @keyframes gradient-animation-ex-3 {
+                    0% {
+                        background-position: 0% 0%;
+                    }
+                    50% {
+                        background-position: 100% 100%;
+                    }
+
+                    100% {
+                        background-position: 0% 0%;
+                    }
+                }
+            }
+
+            &#safety-doc-2,
+            &#safety-doc-6 {
+                will-change: background-position;
+
+                /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#673ab7+0,ff9800+100 */
+                // background: rgb(103, 58, 183);
+                background: linear-gradient(45deg, var(--primary-color--tone-500) 0%, var(--secondary-color--tone-500) 100%);
+
+                background-size: 400% 400%;
+
+                // img {
+                //     visibility: hidden;
+                // }
+
+                animation: gradient-animation-ex-4 10s ease-in-out infinite;
+
+                @media (prefers-reduced-motion: reduce) {
+                    animation: none !important;
+                }
+
+                @keyframes gradient-animation-ex-4 {
+                    0% {
+                        background-position: 100% 0%;
+                    }
+                    50% {
+                        background-position: 0% 100%;
+                    }
+
+                    100% {
+                        background-position: 100% 0%;
+                    }
+                }
+            }
+
+            &#safety-doc-3 {
+                will-change: background-position;
+
+                /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff9800+0,673ab7+100;orange_to_purple */
+                // background: rgb(255, 152, 0);
+                background: linear-gradient(45deg, var(--secondary-color--tone-500) 0%, var(--primary-color--tone-500) 100%);
+
+                background-size: 400% 400%;
+
+                // img {
+                //     visibility: hidden;
+                // }
+
+                animation: gradient-animation-ex-1 10s ease-in-out infinite;
+
+                @media (prefers-reduced-motion: reduce) {
+                    animation: none !important;
+                }
+
+                @keyframes gradient-animation-ex-1 {
+                    0% {
+                        background-position: 0% 100%;
+                    }
+                    50% {
+                        background-position: 100% 0%;
+                    }
+
+                    100% {
+                        background-position: 0% 100%;
+                    }
+                }
+            }
+
+            &#safety-doc-4 {
+                will-change: background-position;
+
+                /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#673ab7+0,ff9800+100;purple_to_orange */
+                // background: rgb(103, 58, 183);
+                background: linear-gradient(135deg, var(--primary-color--tone-500) 0%, var(--secondary-color--tone-500) 100%);
+
+                background-size: 400% 400%;
+
+                // img {
+                //     visibility: hidden;
+                // }
+
+                animation: gradient-animation-ex-2 10s ease-in-out infinite;
+
+                @media (prefers-reduced-motion: reduce) {
+                    animation: none !important;
+                }
+
+                @keyframes gradient-animation-ex-2 {
+                    0% {
+                        background-position: 100% 100%;
+                    }
+                    50% {
+                        background-position: 0% 0%;
+                    }
+
+                    100% {
+                        background-position: 100% 100%;
+                    }
+                }
+            }
+
+            // @include media-breakpoint-down(xxl) {
+            //     & {
+            //         margin-bottom: 1.5rem;
+            //     }
+            // }
+
+            // @include media-breakpoint-down(xl) {
+            //     & {
+            //         margin-bottom: 1.5rem;
+            //     }
+            // }
+
+            @include media-breakpoint-up(xxl) {
+                &#safety-doc-4,
+                &#safety-doc-5,
+                &#safety-doc-6 {
+                    margin: 0;
+                }
+            }
+
+            @include media-breakpoint-up(sm) {
+                &#safety-doc-5,
+                &#safety-doc-6 {
+                    margin: 0;
+                }
+            }
+
+            // @include media-breakpoint-down(md) {
+            //     // margin-bottom: 1.5rem;
+
+            //     &#safety-doc-6 {
+            //         margin: 0;
+            //     }
+            // }
+
+            @include media-breakpoint-down(sm) {
+                margin-bottom: 1rem;
+
+                &#safety-doc-6 {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    #bc-decorative-circle {
+        will-change: transform;
+
+        z-index: -60;
+        // z-index: 3000;
+
+        position: absolute;
+
+        width: 178rem;
+        height: auto;
+
+        aspect-ratio: 1 / 1;
+
+        border-radius: 50%;
+
+        /* Линейный градиент с тремя цветами и углом 45 градусов */
+        // background-image: linear-gradient(147deg, #D1C4E900 0%, #D1C4E980 50%, #FFE0B2FF 100%);
+
+        // background-image: url("/images/description_bc_circle.png");
+        // background-repeat: none;
+        // background-size: cover;
+
+        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d1c4e9+0,d1c4e9+30,ffe0b2+100 */
+        // background: rgb(209, 196, 233);
+        background: linear-gradient(
+            135deg,
+            var(--bc-circle-gradient-color-1) 0%,
+            var(--bc-circle-gradient-color-1) 30%,
+            var(--bc-circle-gradient-color-2) 100%
+        );
+
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-71%, -6.5%);
+
+        opacity: 0.25;
+
+        @keyframes bc-3-rotate-scale {
+            0% {
+                transform: translate(-71%, -6.5%) rotate(0deg) scale(1);
+            }
+            50% {
+                transform: translate(-71%, -6.5%) rotate(180deg) scale(1.5);
+            }
+            100% {
+                transform: translate(-71%, -6.5%) rotate(360deg) scale(1);
+            }
+        }
+
+        animation: bc-3-rotate-scale 180s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
+
+        @include media-breakpoint-down(xxl) {
+            width: 260rem;
+
+            transform: translate(-75.2%, -18%);
+
+            @keyframes bc-3-rotate-scale {
+                0% {
+                    transform: translate(-75.2%, -18%) rotate(0deg) scale(1);
+                }
+                50% {
+                    transform: translate(-75.2%, -18%) rotate(180deg) scale(1.5);
+                }
+                100% {
+                    transform: translate(-75.2%, -18%) rotate(360deg) scale(1);
+                }
+            }
+        }
+
+        @include media-breakpoint-down(xl) {
+            width: 235rem;
+
+            transform: translate(-76.6%, -16%);
+
+            @keyframes bc-3-rotate-scale {
+                0% {
+                    transform: translate(-76.6%, -16%) rotate(0deg) scale(1);
+                }
+                50% {
+                    transform: translate(-76.6%, -16%) rotate(180deg) scale(1.5);
+                }
+                100% {
+                    transform: translate(-76.6%, -16%) rotate(360deg) scale(1);
+                }
+            }
+        }
+
+        @include media-breakpoint-down(lg) {
+            width: 217.8rem;
+
+            transform: translate(-76.6%, -15%);
+
+            @keyframes bc-3-rotate-scale {
+                0% {
+                    transform: translate(-76.6%, -15%) rotate(0deg) scale(1);
+                }
+                50% {
+                    transform: translate(-76.6%, -15%) rotate(180deg) scale(1.5);
+                }
+                100% {
+                    transform: translate(-76.6%, -15%) rotate(360deg) scale(1);
+                }
+            }
+        }
+
+        @include media-breakpoint-down(md) {
+            width: 182.2rem;
+
+            transform: translate(-76.6%, -13%);
+
+            @keyframes bc-3-rotate-scale {
+                0% {
+                    transform: translate(-76.6%, -13%) rotate(0deg) scale(1);
+                }
+                50% {
+                    transform: translate(-76.6%, -13%) rotate(180deg) scale(1.5);
+                }
+                100% {
+                    transform: translate(-76.6%, -13%) rotate(360deg) scale(1);
+                }
+            }
+        }
+
+        @include media-breakpoint-down(sm) {
+            will-change: none;
+
+            display: none;
+            animation: none;
+        }
+    }
+}

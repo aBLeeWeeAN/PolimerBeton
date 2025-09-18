@@ -1,0 +1,255 @@
+/**========================================================================
+ **                            DESCRIPTION
+ *========================================================================**/
+
+#Description {
+    position: relative;
+    // overflow: hidden;
+
+    #bc-decorative-circle {
+        // @include transition-all(background);
+        will-change: transform;
+
+        z-index: -40;
+
+        position: absolute;
+
+        width: 120rem;
+        height: auto;
+
+        aspect-ratio: 1 / 1;
+
+        border-radius: 50%;
+
+        /* Линейный градиент с тремя цветами и углом 45 градусов */
+        // background-image: linear-gradient(147deg, #D1C4E900 0%, #D1C4E980 50%, #FFE0B2FF 100%);
+
+        // background-image: url("/images/description_bc_circle.png");
+        // background-repeat: none;
+        // background-size: cover;
+
+        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d1c4e9+0,ffe0b2+100 */
+        // background: rgb(209, 196, 233);
+        background: linear-gradient(135deg, var(--bc-circle-gradient-color-1) 0%, var(--bc-circle-gradient-color-2) 100%);
+
+        top: 19.125rem;
+        left: 50%;
+
+        transform: translate(-77%, -10.1%);
+
+        opacity: 0.25;
+
+        @keyframes bc-1-rotate-scale {
+            0% {
+                transform: translate(-77%, -10.1%) rotate(0deg) scale(1);
+            }
+            50% {
+                transform: translate(-77%, -10.1%) rotate(180deg) scale(1.5);
+            }
+            100% {
+                transform: translate(-77%, -10.1%) rotate(360deg) scale(1);
+            }
+        }
+
+        animation: bc-1-rotate-scale 180s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
+
+        @include media-breakpoint-down(xl) {
+            width: 135rem;
+
+            transform: translate(-73.8%, -10.1%);
+
+            @keyframes bc-1-rotate-scale {
+                0% {
+                    transform: translate(-73.8%, -10.1%) rotate(0deg) scale(1);
+                }
+                50% {
+                    transform: translate(-73.8%, -10.1%) rotate(180deg) scale(1.5);
+                }
+                100% {
+                    transform: translate(-73.8%, -10.1%) rotate(360deg) scale(1);
+                }
+            }
+        }
+
+        @include media-breakpoint-down(lg) {
+            width: 134rem;
+
+            transform: translate(-73.4%, -10.1%);
+
+            @keyframes bc-1-rotate-scale {
+                0% {
+                    transform: translate(-73.4%, -10.1%) rotate(0deg) scale(1);
+                }
+                50% {
+                    transform: translate(-73.4%, -10.1%) rotate(180deg) scale(1.5);
+                }
+                100% {
+                    transform: translate(-73.4%, -10.1%) rotate(360deg) scale(1);
+                }
+            }
+        }
+
+        @include media-breakpoint-down(md) {
+            width: 142.5rem;
+
+            transform: translate(-73.4%, -9.8%);
+
+            @keyframes bc-1-rotate-scale {
+                0% {
+                    transform: translate(-73.4%, -9.8%) rotate(0deg) scale(1);
+                }
+                50% {
+                    transform: translate(-73.4%, -9.8%) rotate(180deg) scale(1.5);
+                }
+                100% {
+                    transform: translate(-73.4%, -9.8%) rotate(360deg) scale(1);
+                }
+            }
+        }
+
+        @include media-breakpoint-down(sm) {
+            display: none;
+            animation: none;
+        }
+    }
+
+    p {
+        @include transition-all(color);
+        will-change: color;
+
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+
+        font-size: var(--my-text-paragraph-font-size);
+        letter-spacing: var(--my-text-paragraph-letter-spacing);
+
+        line-height: var(--my-text-paragraph-line-height);
+
+        text-align: justify;
+        text-indent: var(--my-text-paragraph-text-indent);
+
+        color: var(--text-color-87);
+
+        hyphens: none;
+
+        &:not(:first-child) {
+            margin-top: var(--my-text-paragraph-margin-top);
+        }
+
+        @include media-breakpoint-down(sm) {
+            // font-size: 13px;
+
+            // word-wrap: break-word;
+            // overflow-wrap: break-word;
+
+            // text-indent: var(--my-text-paragraph-text-indent);
+            text-indent: 0;
+            text-align: justify;
+
+            // // text-align: left;
+            // text-indent: 2.25em;
+            // letter-spacing: 0em;
+
+            // &:not(:first-child) {
+            //     margin-top: 2.5rem;
+            // }
+        }
+    }
+
+    .image-container {
+        margin-top: var(--my-section-child-non-first-margin-top);
+
+        // @include media-breakpoint-down(lg) {
+        //     margin-top: 3.5rem;
+        // }
+
+        // @include media-breakpoint-down(sm) {
+        //     margin-top: 2rem;
+        // }
+    }
+
+    @keyframes description_gravity_move_1 {
+        0% {
+            transform: translateY(-0.5rem);
+        }
+        50% {
+            transform: translateY(0.5rem);
+        }
+        100% {
+            transform: translateY(-0.5rem);
+        }
+    }
+
+    @keyframes description_gravity_move_2 {
+        0% {
+            transform: translateY(0.5rem);
+        }
+        50% {
+            transform: translateY(-0.5rem);
+        }
+        100% {
+            transform: translateY(0.5rem);
+        }
+    }
+
+    #ball-green {
+        will-change: transform;
+
+        animation-delay: 0;
+        animation: description_gravity_move_2 8s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
+    }
+
+    #ball-yellow {
+        will-change: transform;
+
+        animation-delay: 0;
+        animation: description_gravity_move_2 10s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
+    }
+
+    #ball-white {
+        will-change: transform;
+
+        animation-delay: 0;
+        animation: description_gravity_move_1 8s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
+    }
+
+    #ball-grey {
+        will-change: transform;
+
+        animation-delay: 0;
+        animation: description_gravity_move_2 6s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
+    }
+
+    #ball-red {
+        will-change: transform;
+
+        animation-delay: 0;
+        animation: description_gravity_move_1 10s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
+    }
+}

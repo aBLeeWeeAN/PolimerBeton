@@ -1,0 +1,319 @@
+/**========================================================================
+ **                            EXAMPLES
+ *========================================================================**/
+
+#Examples {
+    position: relative;
+
+    // margin-top: 10rem;
+
+    #examples-second-part {
+        margin-top: 0;
+
+        @include media-breakpoint-down(xxl) {
+            margin-top: var(--my-section-child-non-first-margin-top);
+        }
+    }
+
+    .container-for-image-and-caption {
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+
+        .image-caption-before {
+            @extend .caption;
+
+            // @include media-breakpoint-down(lg) {
+            //     margin: 1.5rem 0 3rem 0;
+            // }
+
+            // @include media-breakpoint-down(sm) {
+            //     margin-bottom: var(--my-image-caption-margin-bottom);
+            // }
+        }
+
+        .image-caption-after {
+            @extend .caption;
+
+            // @include media-breakpoint-down(lg) {
+            //     margin: 1.5rem 0 3.5rem 0;
+            // }
+
+            // @include media-breakpoint-down(sm) {
+            //     margin-bottom: var(--my-image-caption-margin-bottom);
+            //     // margin: .9rem 0 var(--my-text-header-title-margin-bottom) 0;
+            // }
+        }
+
+        .last {
+            @extend .image-caption-after;
+
+            @include media-breakpoint-down(sm) {
+                margin: var(--my-text-caption-margin-top) 0 0 0;
+            }
+        }
+
+        #example-1 {
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#4caf50+0,ffeb3b+50,f44336+100 */
+            // background: rgb(76, 175, 80);
+            background: linear-gradient(45deg, var(--accent-color-green) 0%, var(--accent-color-yellow) 50%, var(--accent-color-red) 100%);
+
+            background-size: 400% 400%;
+
+            // img {
+            //     visibility: hidden;
+            // }
+
+            will-change: background-position;
+            animation: gradient-animation-ex-1 10s ease-in-out infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none !important;
+            }
+
+            @keyframes gradient-animation-ex-1 {
+                0% {
+                    background-position: 0% 100%;
+                }
+                50% {
+                    background-position: 100% 0%;
+                }
+
+                100% {
+                    background-position: 0% 100%;
+                }
+            }
+        }
+
+        #example-2 {
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f44336+0,ffeb3b+50,4caf50+100 */
+            // background: rgb(244, 67, 54);
+            background: linear-gradient(135deg, var(--accent-color-red) 0%, var(--accent-color-yellow) 50%, var(--accent-color-green) 100%);
+
+            background-size: 400% 400%;
+
+            // img {
+            //     visibility: hidden;
+            // }
+
+            will-change: background-position;
+            animation: gradient-animation-ex-2 10s ease-in-out infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none !important;
+            }
+
+            @keyframes gradient-animation-ex-2 {
+                0% {
+                    background-position: 100% 100%;
+                }
+                50% {
+                    background-position: 0% 0%;
+                }
+
+                100% {
+                    background-position: 100% 100%;
+                }
+            }
+        }
+
+        #example-3 {
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#4caf50+0,ffeb3b+50,f44336+100 */
+            // background: rgb(76, 175, 80);
+            background: linear-gradient(135deg, var(--accent-color-green) 0%, var(--accent-color-yellow) 50%, var(--accent-color-red) 100%);
+
+            background-size: 400% 400%;
+
+            // img {
+            //     visibility: hidden;
+            // }
+
+            will-change: background-position;
+            animation: gradient-animation-ex-3 10s ease-in-out infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none !important;
+            }
+
+            @keyframes gradient-animation-ex-3 {
+                0% {
+                    background-position: 0% 0%;
+                }
+                50% {
+                    background-position: 100% 100%;
+                }
+
+                100% {
+                    background-position: 0% 0%;
+                }
+            }
+        }
+
+        #example-4 {
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f44336+0,ffeb3b+50,4caf50+100 */
+            // background: rgb(244, 67, 54);
+            background: linear-gradient(45deg, var(--accent-color-red) 0%, var(--accent-color-yellow) 50%, var(--accent-color-green) 100%);
+
+            background-size: 400% 400%;
+
+            // img {
+            //     visibility: hidden;
+            // }
+
+            will-change: background-position;
+            animation: gradient-animation-ex-4 10s ease-in-out infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none !important;
+            }
+
+            @keyframes gradient-animation-ex-4 {
+                0% {
+                    background-position: 100% 0%;
+                }
+                50% {
+                    background-position: 0% 100%;
+                }
+
+                100% {
+                    background-position: 100% 0%;
+                }
+            }
+        }
+    }
+
+    #bc-decorative-circle {
+        will-change: transform;
+
+        z-index: -50;
+
+        position: absolute;
+
+        width: 155rem;
+        height: auto;
+
+        aspect-ratio: 1 / 1;
+
+        border-radius: 50%;
+
+        /* Линейный градиент с тремя цветами и углом 45 градусов */
+        // background-image: linear-gradient(147deg, #D1C4E900 0%, #D1C4E980 50%, #FFE0B2FF 100%);
+
+        // background-image: url("/images/description_bc_circle.png");
+        // background-repeat: none;
+        // background-size: cover;
+
+        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffe0b2+0,d1c4e9+70,d1c4e9+100 */
+        // background: rgb(255, 224, 178);
+        background: linear-gradient(
+            135deg,
+            var(--bc-circle-gradient-color-2) 0%,
+            var(--bc-circle-gradient-color-1) 70%,
+            var(--bc-circle-gradient-color-1) 100%
+        );
+        // background: red;
+
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-34%, 14.1%);
+
+        opacity: 0.25;
+
+        @keyframes bc-2-rotate-scale {
+            0% {
+                transform: translate(-34%, 14.1%) rotate(0deg) scale(1);
+            }
+            50% {
+                transform: translate(-34%, 14.1%) rotate(-180deg) scale(0.8);
+            }
+            100% {
+                transform: translate(-34%, 14.1%) rotate(-360deg) scale(1);
+            }
+        }
+
+        animation: bc-2-rotate-scale 180s ease-in-out infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none !important;
+        }
+
+        @include media-breakpoint-down(xxl) {
+            // animation: none;
+
+            transform: translate(-39%, 33.5%);
+
+            @keyframes bc-2-rotate-scale {
+                0% {
+                    transform: translate(-39%, 33.5%) rotate(0deg) scale(1);
+                }
+                50% {
+                    transform: translate(-39%, 33.5%) rotate(-180deg) scale(0.8);
+                }
+                100% {
+                    transform: translate(-39%, 33.5%) rotate(-360deg) scale(1);
+                }
+            }
+        }
+
+        @include media-breakpoint-down(xl) {
+            width: 135rem;
+
+            transform: translate(-39%, 35.1%);
+
+            @keyframes bc-2-rotate-scale {
+                0% {
+                    transform: translate(-39%, 35.1%) rotate(0deg) scale(1);
+                }
+                50% {
+                    transform: translate(-39%, 35.1%) rotate(-180deg) scale(0.8);
+                }
+                100% {
+                    transform: translate(-39%, 35.1%) rotate(-360deg) scale(1);
+                }
+            }
+        }
+
+        @include media-breakpoint-down(lg) {
+            width: 124rem;
+
+            transform: translate(-39%, 35.6%);
+
+            @keyframes bc-2-rotate-scale {
+                0% {
+                    transform: translate(-39%, 35.6%) rotate(0deg) scale(1);
+                }
+                50% {
+                    transform: translate(-39%, 35.6%) rotate(-180deg) scale(0.8);
+                }
+                100% {
+                    transform: translate(-39%, 35.6%) rotate(-360deg) scale(1);
+                }
+            }
+        }
+
+        @include media-breakpoint-down(md) {
+            width: 115rem;
+
+            transform: translate(-39%, 34.6%);
+
+            @keyframes bc-2-rotate-scale {
+                0% {
+                    transform: translate(-39%, 34.6%) rotate(0deg) scale(1);
+                }
+                50% {
+                    transform: translate(-39%, 34.6%) rotate(-180deg) scale(0.8);
+                }
+                100% {
+                    transform: translate(-39%, 34.6%) rotate(-360deg) scale(1);
+                }
+            }
+        }
+
+        @include media-breakpoint-down(sm) {
+            display: none;
+            animation: none;
+        }
+    }
+}
