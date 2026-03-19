@@ -526,6 +526,10 @@ Email: [aleethey@gmail.com](mailto:aleethey@gmail.com)
 - [GitHub Actions](https://github.com/features/actions)
 - [Mailjet](https://www.mailjet.com/)
 - [Chocolatey](https://chocolatey.org/)
+- [FFmpeg](https://www.ffmpeg.org/)
+- [gifsicle](https://github.com/kohler/gifsicle)
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools)
+- [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview)
 
 Without these tools, the development of this project would have been **impossible**.
 
