@@ -161,7 +161,9 @@ footer {
 
     p,
     li {
-        transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        transition:
+            color 0.3s ease-in-out,
+            transform 0.3s ease-in-out;
         will-change: color, transform;
 
         transform-origin: center left;
@@ -447,39 +449,82 @@ footer {
     .copyright {
         padding: 1.75rem 0;
 
-        p {
-            transform-origin: center right;
+        @include transition-all(color);
+        will-change: color;
 
-            @include media-breakpoint-down(md) {
-                transform-origin: center center;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+
+        // font-size: 1rem;
+        font-size: var(--my-text-small-paragraph-font-size);
+        letter-spacing: 0.14em;
+
+        color: var(--text-color-87);
+
+        // small {
+        //     @include transition-all(color);
+        //     will-change: color;
+
+        //     font-family: "Montserrat", sans-serif;
+        //     font-optical-sizing: auto;
+        //     font-weight: 300;
+        //     font-style: normal;
+
+        //     // font-size: 1rem;
+        //     font-size: var(--my-text-small-paragraph-font-size);
+        //     letter-spacing: 0.14em;
+
+        //     color: var(--text-color-87);
+
+        //     // @include media-breakpoint-down(lg) {
+        //     //     font-size: 1.5rem;
+        //     // }
+
+        //     // @include media-breakpoint-down(sm) {
+        //     //     font-size: .8rem;
+        //     // }
+        // }
+
+        a {
+            display: inline-block;
+
+            text-decoration: none;
+            color: inherit;
+
+            will-change: transform;
+            transform-origin: center center;
+
+            @include transition-all(color, transform);
+
+            // @include media-breakpoint-down(md) {
+            //     transform-origin: center center;
+            // }
+
+            &:hover,
+            &:active,
+            &:focus {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            &:hover {
+                transform: scale(1.025);
+                color: var(--text-color-100);
+
+                @include media-breakpoint-down(sm) {
+                    transform: none;
+                }
+            }
+
+            &:active {
+                transform: scale(0.975);
+                color: var(--primary-color);
             }
         }
 
-        small {
-            @include transition-all(color);
-            will-change: color;
-
-            font-family: "Montserrat", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 300;
-            font-style: normal;
-
-            // font-size: 1rem;
-            font-size: var(--my-text-small-paragraph-font-size);
-            letter-spacing: 0.14em;
-
-            color: var(--text-color-87);
-
-            // @include media-breakpoint-down(lg) {
-            //     font-size: 1.5rem;
-            // }
-
-            // @include media-breakpoint-down(sm) {
-            //     font-size: .8rem;
-            // }
-        }
-
-        #copyright-info {
+        &__main-info {
             text-align: left;
 
             // span {
@@ -489,11 +534,11 @@ footer {
 
             @include media-breakpoint-down(md) {
                 text-align: center;
-                line-height: 1em;
+                line-height: 1.5em;
             }
         }
 
-        #copyright-email {
+        &__website-developer {
             margin: 0;
 
             text-align: right;
