@@ -1,0 +1,28 @@
+@use '../../abstracts/placeholders' as *;
+@use '../../abstracts/z_index' as *;
+
+@use '../../vendors/bootstrap' as bs;
+
+.my-description {
+    z-index: z('my_description');
+    position: relative;
+
+    &__content {
+        // @extend %text__title__row-gap;
+
+        display: flex;
+        flex-direction: column;
+
+        // row-gap: 60px;
+
+        // @include bs.media-breakpoint-down(sm) {
+        //     row-gap: 24px;
+        // }
+
+        // font-size: clamp(20px, 0.0185 * 100vw + 14.0741px, 40px);
+        // row-gap: calc(2 * var(--typography__global__line-height));
+        // row-gap: 1em;
+
+        row-gap: var(--typography__global__title__margin-bottom);
+    }
+}

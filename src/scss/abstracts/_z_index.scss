@@ -1,0 +1,38 @@
+/* stylelint-disable plugin/no-unsupported-browser-features */
+@use 'sass:map';
+
+$z-indexes: (
+    'MAX_TOP': 10000,
+    'cookie_consent': 9000,
+    'header': 2000,
+    'higher_3x': 300,
+    'higher_2x': 200,
+    'higher': 100,
+    'my_usage': 30,
+    'my_advantages': 30,
+    'my_pricing': 30,
+    'my_feedback_form': 30,
+    'my_contact': 30,
+    'my_description': 20,
+    'my_examples': 20,
+    'my_legal': 20,
+    'my_hero': 10,
+    'main': 2,
+    'footer': 1,
+    'default': 0,
+    'lower': -100,
+    'lower_2x': -200,
+    'lower_3x': -300,
+    'decoration': -8000,
+    'background': -9000,
+    'MAX_BOTTOM': -10000,
+);
+
+@function z($layer) {
+    @if map.has-key($z-indexes, $layer) {
+        @return map.get($z-indexes, $layer);
+    } @else {
+        @warn "Неизвестный слой z-index: #{$layer}";
+        @return null;
+    }
+}

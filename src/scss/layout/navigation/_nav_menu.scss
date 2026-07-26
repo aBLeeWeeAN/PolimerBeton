@@ -1,0 +1,168 @@
+@use '../../abstracts/mixins' as mixin;
+@use '../../abstracts/typography' as *;
+
+@use '../../vendors/bootstrap' as bs;
+
+.my-nav-menu {
+    @extend %list--navigation-menu;
+
+    width: 100%;
+    height: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    align-items: center;
+    justify-content: center;
+
+    // row-gap: 1.875em;
+
+    // --my-nav-menu__row-gap: #{mixin.fluid(28px, 32px)}; // шкала (от высоты строки) 14*2 ... 16*2
+    // --my-nav-menu__row-gap: 2em; // шкала (от высоты строки) 14*2 ... 16*2
+    row-gap: var(--typography__global__line-height);
+
+    &__wrapper {
+        @include bs.media-breakpoint-down(md) {
+            overflow: hidden;
+            overflow-y: auto;
+        }
+    }
+
+    &__item {
+        position: relative;
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        height: 100%;
+    }
+
+    &__link {
+        will-change: color, transform;
+        display: inline-block;
+
+        color: inherit;
+        text-decoration: inherit;
+
+        transform-origin: center center;
+        transition:
+            color 0.3s ease-in-out,
+            transform 0.3s ease-in-out;
+
+        &:focus {
+            color: var(--color__global__text--focus);
+        }
+
+        @include mixin.hover {
+            color: var(--color__global__text--hover);
+            transform: scaleX(1.1);
+        }
+
+        @include mixin.active {
+            color: var(--color__global__text--active);
+            transform: scale(0.975);
+        }
+
+        &:disabled,
+        &[disabled] {
+            color: var(--color__global__text--disabled);
+        }
+    }
+
+    &--header {
+        .my-nav-menu__item {
+            &::before,
+            &::after {
+                @include mixin.transition-all(color);
+
+                will-change: color;
+                content: '•';
+
+                z-index: z('decoration');
+                position: absolute;
+
+                display: none;
+                line-height: 0;
+
+                font-size: inherit;
+                color: inherit;
+
+                pointer-events: none;
+
+                transform: translate(-50%, -50%);
+            }
+
+            &:nth-child(2n) {
+                &::before {
+                    display: block;
+
+                    top: calc(0% - (var(--typography__global__line-height) / 2));
+                    left: 50%;
+                }
+
+                &::after {
+                    display: block;
+
+                    top: calc(100% + (var(--typography__global__line-height) / 2));
+                    left: 50%;
+                }
+            }
+
+            @include bs.media-breakpoint-up(md) {
+                align-items: stretch;
+                justify-content: center;
+
+                &:not(:nth-child(3n + 2)) {
+                    &::before,
+                    &::after {
+                        display: none;
+                    }
+                }
+
+                &:nth-child(3n + 2) {
+                    &::before {
+                        display: block;
+
+                        top: 50%;
+                        left: 0;
+                    }
+
+                    &::after {
+                        display: block;
+
+                        top: 50%;
+                        left: 100%;
+                    }
+                }
+            }
+        }
+
+        .my-nav-menu__link {
+            @extend %list--navigation-menu__text--in-header;
+        }
+    }
+
+    &--footer {
+        display: block;
+
+        .my-nav-menu__item {
+            @extend %list--navigation-menu__text--in-footer;
+            display: block;
+        }
+
+        .my-nav-menu__link {
+            transform-origin: left center;
+
+            @include bs.media-breakpoint-down(md) {
+                transform-origin: center center;
+            }
+        }
+    }
+
+    @include bs.media-breakpoint-down(md) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(9, auto);
+    }
+}

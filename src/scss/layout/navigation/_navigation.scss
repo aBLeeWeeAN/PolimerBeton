@@ -1,0 +1,25 @@
+@use '../abstracts/mixins' as mixin;
+// @use '../vendors/bootstrap' as bs;
+
+.my-navigation {
+    display: flex;
+    flex-wrap: nowrap;
+
+    align-items: center;
+    justify-content: space-between;
+
+    // column-gap: 16px;
+    // column-gap: mixin.fluid(14px, 16px); // шкала (от высоты строки) 14*1 ... 16*1
+    column-gap: calc(var(--typography__global__line-height) / 2);
+
+    margin: 0;
+    padding: 0;
+
+    &__my-logo {
+        flex: 0 0 auto;
+    }
+
+    &__my-nav-control {
+        flex: 0 0 auto;
+    }
+}

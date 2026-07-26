@@ -1,0 +1,108 @@
+@use '../abstracts/mixins' as mixin;
+@use '../vendors/bootstrap' as bs;
+
+// todo: починить анимацию
+.my-hamburger-button {
+    height: auto;
+
+    // width: 36px;
+    width: mixin.fluid-with-range(32px, 36px, md, xxl);
+
+    color: var(--color__global__text--primary);
+
+    border: 0;
+    outline: none;
+    box-shadow: none;
+
+    &:focus {
+        color: var(--color__global__text--primary--focus);
+    }
+
+    @include mixin.hover {
+        color: var(--color__global__text--primary--hover);
+    }
+
+    @include mixin.active {
+        color: var(--color__global__text--primary--active);
+    }
+
+    &:disabled,
+    &[disabled] {
+        color: var(--color__global__text--primary--disabled);
+        cursor: not-allowed;
+    }
+
+    /* hamburger icon */
+    &__svg {
+        @include mixin.transition-all(fill);
+        will-change: fill;
+
+        aspect-ratio: 1 / 1;
+        width: 100%;
+
+        fill: currentcolor;
+    }
+
+    &__top-line {
+        will-change: transform;
+        transition: transform 0.1s ease-in 0.1s;
+
+        transform-origin: center center;
+    }
+
+    &[aria-expanded='true'] &__top-line {
+        transition: transform 0.1s ease-in;
+        transform: translateY(23px);
+    }
+
+    &__middle-line {
+        opacity: 1;
+
+        will-change: opacity;
+        transition: opacity 0s 0.1s;
+    }
+
+    &[aria-expanded='true'] &__middle-line {
+        opacity: 0;
+    }
+
+    &__bottom-line {
+        will-change: transform;
+        transition: transform 0.1s ease-in 0.1s;
+
+        transform-origin: center center;
+    }
+
+    &[aria-expanded='true'] &__bottom-line {
+        transition: transform 0.1s ease-in;
+        transform: translateY(-23px);
+    }
+
+    &__top-line-wrapper {
+        will-change: transform;
+        transition: transform 0.1s ease-in;
+
+        transform-origin: center center;
+    }
+
+    &[aria-expanded='true'] &__top-line-wrapper {
+        transition: transform 0.1s ease-in 0.1s;
+        transform: rotate(45deg);
+    }
+
+    &__bottom-line-wrapper {
+        will-change: transform;
+        transition: transform 0.1s ease-in;
+
+        transform-origin: center center;
+    }
+
+    &[aria-expanded='true'] &__bottom-line-wrapper {
+        transition: transform 0.1s ease-in 0.1s;
+        transform: rotate(-45deg);
+    }
+
+    @include bs.media-breakpoint-down(md) {
+        width: mixin.fluid-with-range(26px, 30px, xs, md);
+    }
+}

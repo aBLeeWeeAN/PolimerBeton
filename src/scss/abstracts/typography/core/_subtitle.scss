@@ -1,0 +1,204 @@
+/* stylelint-disable scss/percent-placeholder-pattern */
+/* stylelint-disable custom-property-empty-line-before */
+/* stylelint-disable scss/dollar-variable-pattern */
+@use '../../mixins' as mixin;
+@use '../../../vendors/bootstrap' as bs;
+
+@use '../base' as *;
+
+// * --- SUBTITLE
+// * ------------
+%text__subtitle {
+    @extend %text__base;
+
+    font-variant-numeric: lining-nums;
+    font-weight: 400;
+    font-size: var(--typography__global__subtitle__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__subtitle__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__subtitle__letter-spacing));
+
+    text-align: center;
+    text-wrap-style: balance;
+
+    margin-bottom: var(--typography__global__subtitle__margin-bottom);
+    max-width: 28em;
+}
+
+%text__subtitle__strong {
+    @extend %text__base;
+
+    font-variant-numeric: lining-nums;
+    font-weight: 500;
+    font-size: var(--typography__global__subtitle__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__subtitle__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__subtitle__letter-spacing));
+
+    text-align: center;
+    text-wrap-style: balance;
+
+    margin-bottom: 0;
+    max-width: unset;
+}
+
+%text__subtitle--examples {
+    @extend %text__base;
+
+    font-variant-numeric: lining-nums;
+    font-weight: 400;
+    font-size: var(--typography__global__subtitle__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__subtitle__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__subtitle__letter-spacing));
+
+    text-align: center;
+    text-wrap-style: balance;
+
+    margin-bottom: var(--typography__global__subtitle__margin-bottom);
+    max-width: 25em;
+}
+
+%text__subtitle--advantage {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__subtitle__font-size); // шкала 14*1.2^1 ... 20*1.333^1
+
+    color: var(--color__global__text);
+
+    line-height: 1.75em;
+
+    letter-spacing: var(--typography__global__subtitle__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__subtitle__letter-spacing));
+
+    text-align: center;
+    text-transform: uppercase;
+
+    margin-bottom: var(--typography__global__subtitle__margin-bottom);
+    max-width: unset;
+}
+
+%text__subtitle--advantage__before {
+    @extend %text__base;
+
+    font-variant-numeric: proportional-nums;
+
+    font-weight: 100;
+    font-size: 8em;
+
+    color: inherit;
+
+    line-height: 0.7em;
+
+    letter-spacing: 0;
+    margin-right: 0;
+
+    text-transform: uppercase;
+    text-align: left;
+
+    margin-bottom: 0;
+    max-width: unset;
+
+    @supports (text-box: trim-both cap alphabetic) {
+        text-box-trim: trim-both;
+        text-box-edge: cap alphabetic;
+    }
+
+    @include bs.media-breakpoint-down(lg) {
+        font-variant-numeric: tabular-nums;
+
+        font-weight: 600;
+        font-size: 22em;
+
+        text-align: center;
+
+        opacity: 0.16;
+    }
+
+    @include bs.media-breakpoint-down(sm) {
+        font-size: 23em;
+    }
+
+    @include bs.media-breakpoint-down(xs) {
+        font-size: 21em;
+    }
+}
+
+%text__subtitle--privacy {
+    @extend %text__base;
+
+    font-variant-numeric: lining-nums;
+    font-weight: 600;
+    font-size: var(--typography__global__subtitle__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__subtitle__letter-spacing);
+    margin-right: 0;
+
+    text-align: left;
+    text-wrap-style: pretty;
+    hyphens: none;
+
+    :not(:first-child) > & {
+        margin-top: var(--typography__global__title__margin-bottom);
+    }
+
+    margin-bottom: var(--typography__global__subtitle__margin-bottom);
+    max-width: unset;
+}
+
+%text__subtitle--privacy-small {
+    @extend %text__base;
+
+    font-variant-numeric: lining-nums;
+    font-weight: 600;
+    font-size: var(--typography__global__base__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__base__letter-spacing);
+    margin-right: 0;
+
+    text-align: left;
+    text-wrap-style: pretty;
+    hyphens: none;
+
+    :not(:first-child) > & {
+        margin-top: var(--typography__global__subtitle__margin-bottom);
+    }
+
+    margin-bottom: var(--typography__global__base__margin-bottom);
+    max-width: unset;
+}
+
+%text__subtitle--table-of-contents {
+    @extend %text__base;
+
+    font-variant-numeric: lining-nums;
+    font-weight: 600;
+    font-size: var(--typography__global__subtitle__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__subtitle__letter-spacing);
+    margin-right: 0;
+
+    text-align: left;
+    text-wrap-style: pretty;
+    hyphens: none;
+
+    :not(:first-child) > & {
+        margin-top: 0;
+    }
+
+    margin-bottom: 0;
+    max-width: unset;
+}

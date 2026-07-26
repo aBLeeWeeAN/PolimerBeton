@@ -1,0 +1,75 @@
+@use '../abstracts/mixins' as mixin;
+@use '../abstracts/typography' as *;
+
+@use '../vendors/bootstrap' as bs;
+
+.usage-list {
+    @extend %list--ordered;
+
+    @supports not selector(::marker) {
+        counter-reset: usage-list-counter;
+    }
+
+    &__item {
+        @extend %list--ordered__text;
+        @include mixin.transition-all(background-color, color, transform);
+
+        will-change: background-color, color, transform, box-shadow;
+        position: relative;
+
+        background-color: var(--color__examples__numeric-list-background);
+        box-shadow: 0.1em 0.15em 0.4em 0 var(--color__global__shadow);
+        backdrop-filter: blur(10px);
+
+        padding: 0.8em 1.3em;
+
+        border: 0;
+        border-radius: 1.2em;
+
+        list-style: inherit;
+        cursor: pointer;
+
+        @include mixin.hover {
+            transform: scale(1.025);
+        }
+
+        @include mixin.active {
+            transform: scale(0.975);
+        }
+
+        @supports selector(::marker) {
+            // list-style: inside decimal;
+            list-style: inherit;
+
+            &::marker {
+                @extend %list--ordered__text-marker;
+
+                // font-weight: 200;
+                // font-size: 1.5em;
+
+                // font-variant-numeric: tabular-nums;
+                // text-wrap-style: inherit;
+            }
+        }
+
+        @supports not selector(::marker) {
+            list-style: none;
+            counter-increment: usage-list-counter;
+
+            &::before {
+                @extend %list--ordered__text-marker;
+
+                content: counter(usage-list-counter) '.\00a0';
+            }
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            background-color: transparent;
+            backdrop-filter: none;
+            box-shadow: none;
+
+            border: 0;
+            padding: 0;
+        }
+    }
+}

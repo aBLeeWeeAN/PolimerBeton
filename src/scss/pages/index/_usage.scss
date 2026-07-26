@@ -1,0 +1,24 @@
+@use '../../abstracts/mixins' as mixin;
+@use '../../abstracts/z_index' as *;
+
+@use '../../vendors/bootstrap' as bs;
+
+.my-usage {
+    z-index: z('my_usage');
+    position: relative;
+
+    &__content {
+        position: relative;
+    }
+
+    // &__decorations {
+    //     z-index: z('default');
+    //     position: absolute;
+    //     inset: 0;
+    // }
+
+    // &__text {
+    //     z-index: z('higher');
+    //     position: relative;
+    // }
+}

@@ -1,0 +1,29 @@
+/* stylelint-disable scss/percent-placeholder-pattern */
+/* stylelint-disable custom-property-empty-line-before */
+/* stylelint-disable scss/dollar-variable-pattern */
+@use '../../mixins' as mixin;
+@use '../../../vendors/bootstrap' as bs;
+
+@use '../base' as *;
+
+// * --- STRONG
+// * ----------
+%text__strong {
+    @extend %text__base;
+
+    font-weight: 500;
+    font-size: var(--typography__global__strong__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__strong__letter-spacing);
+    // margin-right: calc(-1 * var(--typography__global__strong__letter-spacing));
+    // text-indent: 3.2em;
+
+    text-align: justify;
+    hyphens: none;
+
+    &:not(:last-child) {
+        margin-bottom: var(--typography__global__strong__margin-bottom);
+    }
+}

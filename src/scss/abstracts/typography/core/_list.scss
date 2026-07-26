@@ -1,0 +1,61 @@
+/* stylelint-disable scss/percent-placeholder-pattern */
+/* stylelint-disable custom-property-empty-line-before */
+/* stylelint-disable scss/dollar-variable-pattern */
+@use '../../mixins' as mixin;
+@use '../../../vendors/bootstrap' as bs;
+
+@use '../base' as *;
+
+// * --- UNORDERED LIST
+// * ------------------
+%list {
+    list-style-type: disc;
+    list-style-position: inside;
+
+    margin-bottom: 0;
+}
+
+// * --- ORDERED LIST
+// * ----------------
+%list--ordered {
+    @extend %list;
+
+    list-style-type: decimal;
+}
+
+%list--ordered__text {
+    @extend %text__base;
+
+    font-size: var(--typography__global__base__font-size);
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__base__letter-spacing);
+    // margin-right: calc(-1 * var(--typography__global__base__letter-spacing));
+    // text-indent: 0;
+
+    text-align: left;
+    hyphens: auto;
+
+    list-style: inherit;
+
+    &:not(:last-child) {
+        margin-bottom: var(--typography__global__base__margin-bottom);
+    }
+}
+
+%list--ordered__text-marker {
+    @extend %text__base;
+
+    font-variant-numeric: tabular-nums;
+
+    font-weight: 200;
+    font-size: 1.5em;
+
+    color: var(--color__global__text);
+
+    letter-spacing: 0.09em;
+    // text-indent: 0;
+
+    text-align: left;
+    hyphens: auto;
+}

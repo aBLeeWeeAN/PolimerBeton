@@ -1,0 +1,266 @@
+@use '../abstracts/mixins' as mixin;
+@use '../abstracts/typography' as *;
+
+@use '../vendors/bootstrap' as bs;
+
+.my-subtitle {
+    @extend %text__subtitle;
+    @include mixin.transition-all(color);
+
+    will-change: color;
+
+    &__important-text {
+        @extend %text__subtitle__strong;
+    }
+
+    &--examples {
+        @extend %text__subtitle--examples;
+    }
+
+    &--advantage {
+        @extend %text__subtitle--advantage;
+
+        will-change: color;
+        view-timeline-name: --my-advantage;
+
+        display: flex;
+        flex-flow: row nowrap;
+
+        align-items: center;
+        justify-content: flex-start;
+
+        column-gap: 0.75em;
+        max-width: 18em;
+
+        .my-advantages__advantage:nth-child(1) &,
+        .my-advantages__advantage:nth-child(2) & {
+            max-width: 14.25em;
+        }
+
+        .my-advantages__advantage:nth-child(1) & {
+            column-gap: 0;
+        }
+
+        .my-advantages__advantage:nth-child(4) & {
+            max-width: 14.75em;
+            column-gap: 1.25em;
+        }
+
+        &::before {
+            @extend %text__subtitle--advantage__before;
+
+            content: counter(advantage-counter) + ' ';
+            display: inline-block;
+            pointer-events: none;
+
+            @include bs.media-breakpoint-down(lg) {
+                will-change: transform;
+
+                z-index: z('background');
+                // z-index: z('higher');
+                position: absolute;
+
+                animation: my-parallax-move__advantage-number linear both;
+
+                animation-timeline: --my-advantage;
+                animation-range: cover -50% cover 150%;
+
+                // ! debug
+                // top: 50%;
+                // left: 50%;
+
+                // transform: translate(-50%, -50%);
+
+                // ! new
+                left: -7%;
+                right: unset;
+
+                .my-advantages__advantage:nth-child(even) & {
+                    left: unset;
+                    right: -7%;
+                }
+
+                // ! old
+                --slide-start: calc(-50% + 150%);
+                --slide-end: calc(-50%);
+
+                transform: translateY(var(--slide-start));
+
+                .my-advantages__advantage:nth-child(1) & {
+                    --slide-start: calc(-50% + 150%);
+                    --slide-end: calc(-45%);
+                }
+
+                .my-advantages__advantage:nth-child(2) & {
+                    --slide-start: calc(-50% + 135%);
+                    --slide-end: calc(-50%);
+                }
+
+                .my-advantages__advantage:nth-child(3) & {
+                    --slide-start: calc(-50% + 135%);
+                    --slide-end: calc(-45%);
+                }
+
+                .my-advantages__advantage:nth-child(4) & {
+                    --slide-start: calc(-50% + 150%);
+                    --slide-end: calc(-30%);
+                }
+
+                .my-advantages__advantage:nth-child(5) & {
+                    --slide-start: calc(-50% + 150%);
+                    --slide-end: calc(-40%);
+                }
+
+                .my-advantages__advantage:nth-child(6) & {
+                    --slide-start: calc(-50% + 135%);
+                    --slide-end: calc(-40%);
+                }
+            }
+
+            @include bs.media-breakpoint-down(md) {
+                left: -15%;
+                right: unset;
+
+                .my-advantages__advantage:nth-child(even) & {
+                    left: unset;
+                    right: -15%;
+                }
+
+                .my-advantages__advantage:nth-child(1) & {
+                    --slide-start: calc(-50% + 115%);
+                    --slide-end: calc(-40%);
+                }
+
+                .my-advantages__advantage:nth-child(2) & {
+                    --slide-start: calc(-50% + 115%);
+                    --slide-end: calc(-40%);
+                }
+
+                .my-advantages__advantage:nth-child(3) & {
+                    --slide-start: calc(-50% + 135%);
+                    --slide-end: calc(-40%);
+                }
+
+                .my-advantages__advantage:nth-child(4) & {
+                    --slide-start: calc(-50% + 150%);
+                    --slide-end: calc(-17.5%);
+                }
+
+                .my-advantages__advantage:nth-child(5) & {
+                    --slide-start: calc(-50% + 150%);
+                    --slide-end: calc(-40%);
+                }
+
+                .my-advantages__advantage:nth-child(6) & {
+                    --slide-start: calc(-50% + 135%);
+                    --slide-end: calc(-40%);
+                }
+            }
+
+            @include bs.media-breakpoint-down(sm) {
+                left: -20%;
+                right: unset;
+
+                .my-advantages__advantage:nth-child(even) & {
+                    left: unset;
+                    right: -20%;
+                }
+
+                .my-advantages__advantage:nth-child(1) & {
+                    --slide-start: calc(-50% + 100%);
+                    --slide-end: calc(-12.5%);
+                }
+
+                .my-advantages__advantage:nth-child(2) & {
+                    --slide-start: calc(-50% + 100%);
+                    --slide-end: calc(-15%);
+                }
+
+                .my-advantages__advantage:nth-child(3) & {
+                    --slide-start: calc(-50% + 110%);
+                    --slide-end: calc(-12.5%);
+                }
+
+                .my-advantages__advantage:nth-child(4) & {
+                    --slide-start: calc(-50% + 140%);
+                    --slide-end: calc(-10%);
+                }
+
+                .my-advantages__advantage:nth-child(5) & {
+                    --slide-start: calc(-50% + 135%);
+                    --slide-end: calc(-25%);
+                }
+
+                .my-advantages__advantage:nth-child(6) & {
+                    --slide-start: calc(-50% + 115%);
+                    --slide-end: calc(-25%);
+                }
+            }
+
+            @include bs.media-breakpoint-down(xs) {
+                // font-size: 21em;
+
+                left: -30%;
+                right: unset;
+
+                .my-advantages__advantage:nth-child(even) & {
+                    left: unset;
+                    right: -30%;
+                }
+
+                .my-advantages__advantage:nth-child(1) & {
+                    --slide-start: calc(-50% + 100%);
+                    --slide-end: calc(-7.5%);
+                }
+
+                .my-advantages__advantage:nth-child(2) & {
+                    --slide-start: calc(-50% + 100%);
+                    --slide-end: calc(-5%);
+                }
+
+                .my-advantages__advantage:nth-child(3) & {
+                    --slide-start: calc(-50% + 110%);
+                    --slide-end: calc(-12.5%);
+                }
+
+                .my-advantages__advantage:nth-child(4) & {
+                    --slide-start: calc(-50% + 140%);
+                    --slide-end: calc(-2.5%);
+                }
+
+                .my-advantages__advantage:nth-child(5) & {
+                    --slide-start: calc(-50% + 135%);
+                    --slide-end: calc(-20%);
+                }
+
+                .my-advantages__advantage:nth-child(6) & {
+                    --slide-start: calc(-50% + 115%);
+                    --slide-end: calc(-5%);
+                }
+            }
+        }
+
+        @include bs.media-breakpoint-down(lg) {
+            max-width: 13em;
+            column-gap: 0;
+
+            .my-advantages__advantage:nth-child(1) &,
+            .my-advantages__advantage:nth-child(2) &,
+            .my-advantages__advantage:nth-child(4) & {
+                max-width: 9em;
+            }
+        }
+    }
+
+    &--privacy {
+        @extend %text__subtitle--privacy;
+    }
+
+    &--privacy-small {
+        @extend %text__subtitle--privacy-small;
+    }
+
+    &--table-of-contents {
+        @extend %text__subtitle--table-of-contents;
+    }
+}

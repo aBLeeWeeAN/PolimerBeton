@@ -1,0 +1,30 @@
+// * source: https://dev.to/technoph1le/a-modern-sass-folder-structure-330f
+
+// ? --- 1. ABSTRACT
+@use 'abstracts';
+
+// ? --- 2. VENDORS
+@use 'vendors';
+
+// ? --- 3. BASE
+@use 'base';
+
+// ? --- 4. LAYOUT (PAGE GENERIC STYLES)
+@use 'layout';
+
+// ? --- 5. PAGE SPECIFIC STYLES
+// @use 'pages/common';
+
+// @use 'pages/404';
+
+@use 'pages/form-fail';
+@use 'pages/form-success';
+
+@use 'pages/index';
+@use 'pages/privacy';
+
+// ? --- 6. COMPONENTS (SPECIFIC STYLES)
+@use 'components';
+
+// ? --- 7. UTILITIES STYLES
+@use 'utils';

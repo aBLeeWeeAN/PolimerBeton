@@ -1,0 +1,578 @@
+{% extends "base/base.njk" %}
+
+{% set my_balls = ["green", "yellow", "white", "grey", "red"] %}
+
+{% block content %}
+    <div class="my-background-bubbles" aria-hidden="true">
+        <div aria-hidden="true" class="my-bubble my-bubble--description"></div>
+        <div aria-hidden="true" class="my-bubble my-bubble--examples"></div>
+        <div aria-hidden="true" class="my-bubble my-bubble--legal"></div>
+    </div>
+
+    <section id="hero" class="my-hero">
+        <div class="my-hero__bg-wrapper">
+            <img
+                fetchpriority="high"
+                data-my-picture-class="my-hero__bg-picture"
+                class="my-hero__bg-img"
+                src="@images/hero/background.jpg"
+                alt="" />
+        </div>
+
+        <div class="container my-wrapper my-hero__content">
+            <div class="row justify-content-center">
+                <h1 class="my-title my-title--hero">
+                    <span class="my-title__main-text">{{ index.hero.page_title[0] }}</span>
+                    <span class="my-title__subtext">{{ index.hero.page_title[1] }}</span>
+                </h1>
+            </div>
+
+            <!-- ! new | 3D --->
+            <div class="row justify-content-center justify-content-md-around my-balls-group my-balls-group--hero-section">
+                {% for ball in my_balls %}
+                    <div class="col-3 col-lg-2 my-balls-group__3d-wrapper">
+                        <model-viewer
+                            class="my-balls-group__3d-model my-balls-group__3d-model--ball-{{ ball }}"
+                            src="@misc/3d_ball__{{ ball }}__compressed.glb"
+                            poster="@images/balls/{{ ball }}.png"
+                            auto-rotate
+                            camera-controls
+                            camera-orbit="0deg 75deg 105%"
+                            camera-target="0m 0m 0m"
+                            disable-pan
+                            disable-zoom
+                            rotation-per-second="25deg"
+                            interaction-prompt="none"
+                            touch-action="pan-y"
+                            background-color="transparent"
+                            environment-image="null"
+                            exposure="1.3"
+                            alt="{{ index.hero.balls__img_alts[ball] }}"></model-viewer>
+
+                        <!--       data-rotate-model shadow-intensity="0.8" shadow-softness="0.6" -->
+                    </div>
+
+                    {# {% if loop.index0 == 2 %}
+                        <div class="w-100 d-md-none"></div>
+                    {% endif %} #}
+                {% endfor %}
+            </div>
+
+            <!-- ! old --->
+            {# <div class="row align-items-center justify-content-center justify-content-xl-around my-balls-group">
+                {% for ball in my_balls %}
+                    <img
+                        id="ball-{{ ball }}"
+                        data-my-picture-class="col-3 col-lg-2 col-xl-2 my-balls-group__picture"
+                        class="my-balls-group__img"
+                        src="@images/balls/{{ ball }}.png"
+                        alt="{{ index.hero.balls__img_alts[ball] }}" />
+
+                    {% if loop.index0 == 2 %}
+                        <div class="w-100 d-xl-none"></div>
+                    {% endif %}
+                {% endfor %}
+            </div> #}
+
+            {# <p class="row align-items-center justify-content-center my-paragraph my-paragraph--hero-slogan">
+                {{ index.hero.slogan[0] }}
+                <br class="d-lg-block d-xl-none" />
+                {{ index.hero.slogan[1] }}
+            </p> #}
+            <p class="my-paragraph my-paragraph--hero-slogan">{{ index.hero.slogan }}</p>
+        </div>
+    </section>
+
+    <section id="description" class="my-description">
+        <div class="container my-wrapper my-description__content">
+            <div class="row d-flex flex-column align-items-center">
+                <h2 class="my-title">{{ index.description.title }}</h2>
+
+                {% for paragraph in index.description.paragraphs %}
+                    <p class="my-paragraph">{{ paragraph | safe }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="row justify-content-center my-balls-group my-balls-group--small">
+                {% for ball in my_balls %}
+                    <img
+                        data-my-picture-class="col-auto my-balls-group__picture my-balls-group__picture--{{ ball }}"
+                        class="my-balls-group__img"
+                        src="@images/balls/{{ ball }}.png"
+                        alt="" />
+
+                    {% if loop.index0 == 2 %}
+                        <div class="w-100"></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="usage" class="my-usage">
+        <div class="container my-wrapper my-usage__content">
+            <div class="my-balls-group my-balls-group--decorative" data-variant="usage">
+                {%
+                    set usage__balls__grid_classes = [
+                        "d-lg-inline-block",
+                        "d-lg-inline-block",
+                        "d-lg-inline-block",
+                        "d-xl-inline-block",
+                        "d-xl-inline-block"
+                    ]
+                %}
+
+                {% for ball in my_balls %}
+                    <img
+                        data-my-picture-class="d-none {{ usage__balls__grid_classes[loop.index0] }} my-balls-group__picture my-balls-group__picture--{{ ball }}"
+                        class="my-balls-group__img"
+                        src="@images/balls/{{ ball }}.png"
+                        alt="" />
+                {% endfor %}
+            </div>
+
+            <div class="row d-flex flex-column align-items-center">
+                <h2 class="my-title">{{ index.usage.title }}</h2>
+
+                {% if index.usage.list_items and index.usage.list_items | length > 0 %}
+                    <ol class="usage-list">
+                        {%
+                            set usage__grid_classes = [
+                                "col-xl-10 col-lg-11",
+                                "col-xl-9 col-lg-10",
+                                "col-xl-9 col-lg-10",
+                                "col-xl-9 col-lg-10",
+                                "col-xl-9 col-lg-10",
+                                "col-xl-9 col-lg-10",
+                                "col-xl-9 col-lg-11",
+                                "col-xl-11",
+                                "col-xl-11",
+                                "col-xl-12",
+                                "col-xl-12"
+                            ]
+                        %}
+                        {% for item in index.usage.list_items %}
+                            <li class="{{ usage__grid_classes[loop.index0] }} usage-list__item">{{ item }}</li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <section id="examples" class="my-examples">
+        <div class="container my-wrapper my-examples__content">
+            {# <h2 class="my-examples__title my-title">
+                {{ index.examples.title[0] }}
+                <br />
+                {{ index.examples.title[1] }}
+            </h2> #}
+            <div class="my-examples__title">
+                <h2 class="my-title">{{ index.examples.title }}</h2>
+            </div>
+
+            <div class="my-examples__subtitle" id="My-Example-Subtitle__Pillar">
+                <p class="my-subtitle my-subtitle--examples">{{ index.examples.imgs.pillar.label }}</p>
+            </div>
+
+            <div class="my-examples__subtitle" id="My-Example-Subtitle__Road">
+                <p class="my-subtitle my-subtitle--examples">{{ index.examples.imgs.road.label }}</p>
+            </div>
+
+            {% set examples__images = ["pillar_before", "pillar_after", "road_before", "road_after"] %}
+
+            {% set examples__types__order = ["pillar", "road"] %}
+            {% set examples__states__order = ["before", "after"] %}
+
+            {% set states_count = examples__states__order | length %}
+
+            {% for current_type in examples__types__order %}
+                {% set outerLoop = loop %}
+
+                <div class="my-examples__img-group" id="My-Example-Img-Group__{{ current_type | title }}">
+                    {% for current_state in examples__states__order %}
+                        {# {% set current_type = examples__types__order[loop.index0] %} #}
+                        {# {% set current_state = examples__states__order[loop.index0] %} #}
+                        {% set current_index = (outerLoop.index0 * states_count) + loop.index0 %}
+                        {% set current_img = examples__images[current_index] %}
+
+                        <div class="my-examples__img my-gradient-image">
+                            <div class="my-gradient-image__link-wrapper js-tilt-wrapper">
+                                <a
+                                    id="My-Example-Img__{{ current_type | title }}-{{ current_state | title }}"
+                                    class="my-gradient-image__link js-tilt"
+                                    href="@images/examples/{{ current_img }}.jpg"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    <img
+                                        class="my-gradient-image__img"
+                                        src="@images/examples/{{ current_img }}.jpg"
+                                        alt="{{ index.examples.imgs[current_type].alts[current_state] }}" />
+                                </a>
+                            </div>
+                            <span class="my-gradient-image__caption" aria-hidden="true">{{ index.common[current_state] }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="advantages" class="my-advantages">
+        <div class="container my-wrapper my-advantages__content">
+            <div class="row justify-content-center">
+                <h2 class="my-title">{{ index.advantages.title }}</h2>
+            </div>
+
+            <ol class="row my-advantages__advantages-container">
+                {% if index.advantages.items and index.advantages.items | length > 0 %}
+                    {% for item in index.advantages.items %}
+                        {% set ball_index = loop.index0 % my_balls | length %}
+                        {% set current_ball = my_balls[ball_index] %}
+
+                        <li class="col-12 my-advantages__advantage" id="My-Advantage-{{ loop.index }}">
+                            <div class="my-advantages__text">
+                                <!-- <h3 class="my-title my-title--advantage">{{ item.brief_text | nl2br }}</h3> -->
+                                <h3 class="my-subtitle my-subtitle--advantage">{{ item.brief_text }}</h3>
+                                <p class="my-paragraph my-paragraph--advantage">{{ item.extended_text }}</p>
+                            </div>
+
+                            <img
+                                data-my-picture-class="d-none d-lg-block my-advantages__picture"
+                                class="my-advantages__img"
+                                src="@images/balls/{{ current_ball }}.png"
+                                alt="" />
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            </ol>
+        </div>
+    </section>
+
+    <section id="legal" class="my-legal">
+        <div class="container my-wrapper my-legal__content">
+            <div class="my-legal__title">
+                <h2 class="my-title">{{ index.legal.title }}</h2>
+            </div>
+
+            <div class="my-legal__subtitle">
+                <p class="my-subtitle">{{ index.legal.subtitle | nl2br }}</p>
+            </div>
+
+            <div class="my-legal__grid">
+                {% if index.legal.imgs_alts and index.legal.imgs_alts | length > 0 %}
+                    {% for img_alt in index.legal.imgs_alts %}
+                        <div class="my-legal__img my-gradient-image__wrapper js-tilt-wrapper">
+                            <a
+                                id="My-Legal-Doc__{{ loop.index }}"
+                                class="my-gradient-image js-tilt"
+                                href="@images/legal/doc_{{ loop.index }}.jpg"
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                <img class="my-gradient-image__img" src="@images/legal/doc_{{ loop.index }}.jpg" alt="{{ img_alt }}" />
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="my-pricing">
+        <div class="container my-wrapper my-pricing__content">
+            <div class="row justify-content-center">
+                <h2 class="my-title">{{ index.pricing.title }}</h2>
+            </div>
+
+            <div class="row justify-content-center">
+                {# <p class="col my-subtitle">
+                    {{ index.pricing.subtitle[0] }}
+                    <br class="d-none d-md-none d-xl-block" />
+                    {{ index.pricing.subtitle[1] }}
+                    <br class="d-block d-xl-none" />
+                    <strong>{{ index.pricing.subtitle[2] }}</strong>
+                    {{ index.pricing.subtitle[3] }}
+                </p> #}
+                <p class="my-subtitle">
+                    {{ index.pricing.subtitle[0] }}
+                    <strong class="my-subtitle__important-text">{{ index.pricing.subtitle[1] }}</strong>
+                    {{ index.pricing.subtitle[2] }}
+                </p>
+            </div>
+
+            <div class="row justify-content-stretch">{% include "components/price_badge.njk" %}</div>
+        </div>
+    </section>
+
+    <!-- TODO: был баг что не менялся цвет input при переключении light/dark темы, когда input:focus --->
+    <section id="feedback-form" class="my-feedback-form">
+        <div class="container my-wrapper my-feedback-form__content">
+            <div class="row justify-content-center">
+                <h2 class="my-title">{{ index.feedback_form.title }}</h2>
+            </div>
+
+            <div class="row justify-content-center">
+                {# <p class="col my-subtitle">
+                    {{ index.feedback_form.subtitle[0] }}
+                    <br class="d-none d-sm-block" />
+                    {{ index.feedback_form.subtitle[1] }}
+                </p> #}
+
+                <p class="my-subtitle">{{ index.feedback_form.subtitle }}</p>
+            </div>
+
+            <div class="row d-flex flex-nowrap align-items-center justify-content-between">
+                <div class="col-6 d-none d-md-block my-balls-group my-balls-group--decorative" data-variant="feedback-form">
+                    {% for ball in my_balls %}
+                        <img
+                            data-my-picture-class="my-balls-group__picture my-balls-group__picture--{{ ball }}"
+                            class="my-balls-group__img"
+                            src="@images/balls/{{ ball }}.png"
+                            alt="" />
+                    {% endfor %}
+                </div>
+
+                <!-- ! uncomment for test form error styles --->
+                {# {%
+                    set form = {
+                        client_name: {
+                            errors: ["Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos."]
+                        },
+                        client_phone: {
+                            errors: ["Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos."]
+                        },
+                        privacy_policy: {
+                            id_for_label: "privacy_policy",
+                            errors: ["Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos."]
+                        }
+                    }
+                %} #}
+
+                <form
+                    id="my-custom-feedback-form"
+                    class="col-12 col-md-6 my-custom-feedback-form"
+                    method="post"
+                    action="@page/index.html"
+                    onsubmit="this.querySelector('button[type=submit]').disabled = true;">
+                    {% if is_django_build %}
+                        {% raw %}
+                            {% csrf_token %}
+
+                            <input type="hidden" name="form_token" value="{{ form_token }}" />
+                        {% endraw %}
+                    {% endif %}
+
+                    <fieldset class="my-custom-feedback-form__content">
+                        <div class="my-custom-feedback-form__field-wrapper">
+                            {% if form.client_name.errors | length %}
+                                <div class="my-custom-feedback-form__error-wrapper">
+                                    <svg class="my-custom-feedback-form__error-svg" width="16" height="16" aria-hidden="true">
+                                        <use href="@icons/form/error.svg"></use>
+                                    </svg>
+                                    <p id="error-msg__client-name" class="my-custom-feedback-form__error-text">
+                                        {{ form.client_name.errors[0] }}
+                                    </p>
+                                </div>
+                            {% endif %}
+
+                            <div
+                                class="my-custom-feedback-form__text-field {% if form.client_name.errors | length %}my-custom-feedback-form__text-field--error{% endif %}">
+                                {% if is_django_build %}
+                                    {% raw %}
+                                        {{ form.client_name | add_class: "my-custom-feedback-form__input-element" }}
+                                    {% endraw %}
+                                {% else %}
+                                    <input
+                                        type="text"
+                                        id="client_name"
+                                        class="my-custom-feedback-form__input-element"
+                                        name="client_name"
+                                        placeholder="Имя"
+                                        aria-label="Имя"
+                                        {% if form.client_name.errors | length %}
+                                            aria-invalid="true" aria-describedby="error-msg__client-name"
+                                        {% endif %}
+                                        required />
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="my-custom-feedback-form__field-wrapper">
+                            {% if form.client_phone.errors | length %}
+                                <div class="my-custom-feedback-form__error-wrapper">
+                                    <svg class="my-custom-feedback-form__error-svg" width="16" height="16" aria-hidden="true">
+                                        <use href="@icons/form/error.svg"></use>
+                                    </svg>
+                                    <p id="error-msg__client-phone" class="my-custom-feedback-form__error-text">
+                                        {{ form.client_phone.errors[0] }}
+                                    </p>
+                                </div>
+                            {% endif %}
+
+                            <div
+                                class="my-custom-feedback-form__text-field {% if form.client_phone.errors | length %}my-custom-feedback-form__text-field--error{% endif %}">
+                                {% if is_django_build %}
+                                    {% raw %}
+                                        {{ form.client_phone | add_class: "my-custom-feedback-form__input-element" }}
+                                    {% endraw %}
+                                {% else %}
+                                    <input
+                                        type="tel"
+                                        id="client_phone"
+                                        class="my-custom-feedback-form__input-element"
+                                        name="client_phone"
+                                        placeholder="+7 (___) ___-__-__"
+                                        aria-label="Номер телефона"
+                                        {% if form.client_phone.errors | length %}
+                                            aria-invalid="true" aria-describedby="error-msg__client-phone"
+                                        {% endif %}
+                                        required />
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="my-custom-feedback-form__field-wrapper">
+                            {% if form.privacy_policy.errors | length %}
+                                <div class="my-custom-feedback-form__error-wrapper">
+                                    <svg class="my-custom-feedback-form__error-svg" width="16" height="16" aria-hidden="true">
+                                        <use href="@icons/form/error.svg"></use>
+                                    </svg>
+                                    <p id="error-msg__privacy-policy" class="my-custom-feedback-form__error-text">
+                                        {{ form.privacy_policy.errors[0] }}
+                                    </p>
+                                </div>
+                            {% endif %}
+
+                            <div
+                                class="my-custom-feedback-form__checkbox-field {% if form.privacy_policy.errors | length %}my-custom-feedback-form__checkbox-field--error{% endif %}">
+                                <div class="my-custom-feedback-form__checkbox-input-wrapper">
+                                    {% if is_django_build %}
+                                        {% raw %}
+                                            {{ form.privacy_policy | add_class: "my-custom-feedback-form__input-element" }}
+                                        {% endraw %}
+                                    {% else %}
+                                        <input
+                                            type="checkbox"
+                                            id="privacy_policy"
+                                            class="my-custom-feedback-form__input-element"
+                                            name="privacy_policy"
+                                            aria-label="Согласие с политикой конфиденциальности"
+                                            {% if form.privacy_policy.errors | length %}
+                                                aria-invalid="true" aria-describedby="error-msg__privacy-policy"
+                                            {% endif %}
+                                            required />
+                                    {% endif %}
+
+                                    <svg class="my-custom-feedback-form__checkbox-svg" width="16" height="16" aria-hidden="true">
+                                        <use href="@icons/form/check.svg"></use>
+                                    </svg>
+
+                                    <!-- <div class="my-custom-feedback-form__checkbox-bg" aria-hidden="true"></div> -->
+                                </div>
+
+                                {% set CHECKBOX_LABEL__FOR_ATTRIBUTE = "" %}
+                                {% if is_django_build %}
+                                    {% set CHECKBOX_LABEL__FOR_ATTRIBUTE = "{% raw %}{{ form.privacy_policy.id_for_label }}{% endraw %}" %}
+                                {% else %}
+                                    {% set CHECKBOX_LABEL__FOR_ATTRIBUTE = "privacy_policy" %}
+                                {% endif %}
+
+                                <label class="my-custom-feedback-form__checkbox-label" for="{{ CHECKBOX_LABEL__FOR_ATTRIBUTE }}">
+                                    {# <small>
+                                        {{ index.feedback_form.checkbox.main_text[0] }}
+                                        <br class="d-block d-xl-none" />
+                                        <a
+                                            class="my-custom-feedback-form__checkbox-link"
+                                            aria-label="{{ index.feedback_form.checkbox.aria }}"
+                                            href="@page/privacy.html"
+                                            target="_self">
+                                            {{ index.feedback_form.checkbox.main_text[1] }}
+                                        </a>
+                                    </small> #}
+
+                                    <small>
+                                        {{ index.feedback_form.checkbox.main_text[0] }}
+                                        <a
+                                            class="my-custom-feedback-form__checkbox-link"
+                                            aria-label="{{ index.feedback_form.checkbox.aria }}"
+                                            href="@page/privacy.html"
+                                            target="_self">
+                                            {{ index.feedback_form.checkbox.main_text[1] }}
+                                        </a>
+                                    </small>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button
+                            id="my-custom-feedback-form-submit-button"
+                            class="my-custom-feedback-form__submit-button"
+                            type="submit"
+                            name="my-custom-feedback-form-submit-button">
+                            {{ index.feedback_form.submit_button }}
+                        </button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="my-contact">
+        <div class="container my-wrapper my-contact__content">
+            <div class="row justify-content-center">
+                <h2 class="my-title">{{ index.contact.title }}</h2>
+            </div>
+
+            {# <p class="col-12 my-subtitle">
+                {{ index.contact.subtitle[0] }}
+                <br class="d-block d-sm-none" />
+                {{ index.contact.subtitle[1] }}
+                <br class="d-none d-md-block" />
+                {{ index.contact.subtitle[2] }}
+            </p> #}
+
+            {# <div class="row justify-content-center">
+                <p class="my-subtitle">{{ index.contact.subtitle }}</p>
+            </div> #}
+
+            <!-- TODO: прогнать SEO, может быть убрать strong --->
+            <div class="col-12 my-contact__contact-group">
+                <dl class="my-contact-list">
+                    <dt class="my-contact-list__header">{{ index.contact.contact_info.phone_and_email.label }}</dt>
+                    <dd class="my-contact-list__item">
+                        <a class="my-contact-list__link" href="{{ index.contact.contact_info.phone_and_email.phone.href }}">
+                            {{ index.contact.contact_info.phone_and_email.phone.main_text }}
+                        </a>
+                    </dd>
+                    <dd class="my-contact-list__item">
+                        <a class="my-contact-list__link" href="{{ index.contact.contact_info.phone_and_email.email.href }}">
+                            {{ index.contact.contact_info.phone_and_email.email.main_text }}
+                        </a>
+                    </dd>
+                </dl>
+
+                <dl class="my-contact-list">
+                    <dt class="my-contact-list__header">{{ index.contact.contact_info.messengers.label }}</dt>
+                    <dd class="my-contact-list__item">
+                        <a
+                            class="my-contact-list__link"
+                            href="{{ index.contact.contact_info.messengers.telegram.href }}"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            {{ index.contact.contact_info.messengers.telegram.main_text }}
+                        </a>
+                    </dd>
+                    <dd class="my-contact-list__item">
+                        <a
+                            class="my-contact-list__link"
+                            href="{{ index.contact.contact_info.messengers.whats_app.href }}"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            {{ index.contact.contact_info.messengers.whats_app.main_text }}
+                        </a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </section>
+{% endblock %}

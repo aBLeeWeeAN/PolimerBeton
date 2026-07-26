@@ -1,0 +1,255 @@
+/* stylelint-disable keyframes-name-pattern */
+/* stylelint-disable custom-property-empty-line-before */
+@use '../vendors/bootstrap' as bs;
+
+// * --- BUBBLE INFLATION EFFECT
+// * ---------------------------
+@keyframes anim__bubble__outer-el__scale-effect {
+    from {
+        transform: translate(var(--bubble__pos-x), var(--bubble__pos-y)) scale(1);
+    }
+
+    to {
+        transform: translate(var(--bubble__pos-x), var(--bubble__pos-y))
+            scale(var(--bubble__scale-factor));
+    }
+}
+
+@keyframes anim__bubble__inner-el__rotation-effect {
+    0% {
+        transform: rotate(calc(var(--bubble__clockwise-rotation) * 0deg));
+    }
+
+    50% {
+        transform: rotate(calc(var(--bubble__clockwise-rotation) * 180deg));
+    }
+
+    100% {
+        transform: rotate(calc(var(--bubble__clockwise-rotation) * 360deg));
+    }
+}
+
+.my-bubble {
+    will-change: transform;
+
+    --bubble__pos-x: -50%;
+    --bubble__pos-y: 0;
+
+    --bubble__clockwise-rotation: 1;
+    --bubble__scale-factor: 3;
+
+    --bubble__animation-time: 10s;
+
+    position: absolute;
+
+    top: 500px;
+    left: 50%;
+
+    transform-origin: center center;
+    transform: translate(var(--bubble__pos-x), var(--bubble__pos-y));
+
+    aspect-ratio: 1 / 1;
+    width: 500px; // * default
+
+    background: transparent;
+    pointer-events: none;
+
+    animation: anim__bubble__outer-el__scale-effect var(--bubble__animation-time) ease-in-out
+        alternate infinite;
+
+    &::before {
+        will-change: transform;
+        content: '';
+
+        position: absolute;
+        inset: 0;
+
+        background: linear-gradient(90deg, red, blue); // * default
+        pointer-events: none;
+
+        border: 0;
+        border-radius: 50%;
+
+        animation: anim__bubble__inner-el__rotation-effect var(--bubble__animation-time) linear
+            infinite;
+    }
+
+    &--description {
+        --bubble__pos-x: -77%;
+        --bubble__pos-y: 0;
+
+        --bubble__clockwise-rotation: 1;
+        --bubble__scale-factor: 1.5;
+
+        --bubble__animation-time: 180s;
+
+        top: 1%;
+        transform: translate(var(--bubble__pos-x), var(--bubble__pos-y));
+
+        width: 1920px;
+
+        &::before {
+            background: linear-gradient(
+                135deg,
+                var(--color__decorative-element__background--gradient-step-1) 0%,
+                var(--color__decorative-element__background--gradient-step-2) 100%
+            );
+        }
+
+        @include bs.media-breakpoint-down(xl) {
+            --bubble__pos-x: -73.8%;
+
+            top: 2%;
+            width: 2160px;
+        }
+
+        @include bs.media-breakpoint-down(lg) {
+            --bubble__pos-x: -73.4%;
+
+            top: 1.7%;
+            width: 2144px;
+        }
+
+        @include bs.media-breakpoint-down(md) {
+            --bubble__pos-x: -73.4%;
+
+            width: 2280px;
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            --bubble__pos-x: -73.4%;
+
+            top: 1.1%;
+            width: 1600px;
+
+            // width: 0;
+
+            // display: none;
+            // animation: none;
+        }
+    }
+
+    &--examples {
+        --bubble__pos-x: -34%;
+        --bubble__pos-y: 0;
+
+        --bubble__clockwise-rotation: -1;
+        --bubble__scale-factor: 0.8;
+
+        --bubble__animation-time: 180s;
+
+        top: 30%;
+        transform: translate(var(--bubble__pos-x), var(--bubble__pos-y));
+
+        width: 2480px;
+
+        &::before {
+            background: linear-gradient(
+                135deg,
+                var(--color__decorative-element__background--gradient-step-2) 0%,
+                var(--color__decorative-element__background--gradient-step-1) 70%,
+                var(--color__decorative-element__background--gradient-step-1) 100%
+            );
+        }
+
+        @include bs.media-breakpoint-down(xxl) {
+            --bubble__pos-x: -39%;
+
+            top: 28%;
+        }
+
+        @include bs.media-breakpoint-down(xl) {
+            --bubble__pos-x: -39%;
+
+            width: 2160px;
+        }
+
+        @include bs.media-breakpoint-down(lg) {
+            --bubble__pos-x: -39%;
+
+            top: 31%;
+            width: 1984px;
+        }
+
+        @include bs.media-breakpoint-down(md) {
+            --bubble__pos-x: -39%;
+
+            width: 1840px;
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            --bubble__pos-x: -39%;
+
+            top: 25%;
+            width: 1700px;
+
+            // width: 0;
+
+            // display: none;
+            // animation: none;
+        }
+    }
+
+    &--legal {
+        --bubble__pos-x: -71%;
+        --bubble__pos-y: 0;
+
+        --bubble__clockwise-rotation: -1;
+        --bubble__scale-factor: 1.7;
+
+        --bubble__animation-time: 180s;
+
+        top: 70%;
+        transform: translate(var(--bubble__pos-x), var(--bubble__pos-y));
+
+        width: 2848px;
+
+        &::before {
+            background: linear-gradient(
+                135deg,
+                var(--color__decorative-element__background--gradient-step-1) 0%,
+                var(--color__decorative-element__background--gradient-step-1) 30%,
+                var(--color__decorative-element__background--gradient-step-2) 100%
+            );
+        }
+
+        @include bs.media-breakpoint-down(xxl) {
+            --bubble__pos-x: -75.2%;
+
+            top: 60%;
+            width: 4160px;
+        }
+
+        @include bs.media-breakpoint-down(xl) {
+            --bubble__pos-x: -76.6%;
+
+            width: 3760px;
+        }
+
+        @include bs.media-breakpoint-down(lg) {
+            --bubble__pos-x: -76.6%;
+
+            top: 53%;
+            width: 4200px;
+        }
+
+        @include bs.media-breakpoint-down(md) {
+            --bubble__pos-x: -76.6%;
+
+            top: 62%;
+            width: 2916px;
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            --bubble__pos-x: -76.6%;
+
+            top: 64%;
+            width: 2600px;
+
+            // width: 0;
+
+            // display: none;
+            // animation: none;
+        }
+    }
+}

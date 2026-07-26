@@ -1,0 +1,142 @@
+@use '../abstracts/mixins' as mixin;
+@use '../abstracts/typography' as *;
+
+@use '../vendors/bootstrap' as bs;
+
+.my-list {
+    // @include mixin.transition-all(color);
+    will-change: color;
+
+    list-style-type: none;
+    list-style-position: inside;
+
+    // padding-left: 0;
+    // margin-bottom: 0;
+
+    &__item {
+        list-style: inherit;
+    }
+
+    &__sub-list {
+        list-style-type: none;
+        list-style-position: outside;
+        counter-reset: my-list__sub-list-counter;
+
+        padding-left: calc(1 * var(--typography__global__line-height));
+
+        & > .my-list__item {
+            counter-increment: my-list__sub-list-counter;
+
+            &:not(:has(h1, h2, h3, h4, h5, h6, p)),
+            & > :first-child:where(h1, h2, h3, h4, h5, h6, p) {
+                display: grid;
+                grid-template-columns: 3.3em 1fr;
+            }
+
+            &:not(:has(h1, h2, h3, h4, h5, h6, p))::before,
+            & > :first-child:where(h1, h2, h3, h4, h5, h6, p)::before {
+                content: counter(my-list-counter) '.' counter(my-list__sub-list-counter) '.\00a0';
+
+                font-variant-numeric: tabular-nums;
+            }
+        }
+
+        &--with-nested-list {
+            & > .my-list__item {
+                &:not(:has(h1, h2, h3, h4, h5, h6, p)),
+                & > :first-child:where(h1, h2, h3, h4, h5, h6, p) {
+                    display: grid;
+                    grid-template-columns: max-content 1fr;
+                }
+            }
+        }
+    }
+
+    &__sub-sub-list {
+        list-style-type: none;
+        list-style-position: outside;
+        counter-reset: my-list__sub-sub-list-counter;
+
+        padding-left: calc(1 * var(--typography__global__line-height));
+
+        & > .my-list__item {
+            counter-increment: my-list__sub-sub-list-counter;
+
+            &:not(:has(h1, h2, h3, h4, h5, h6, p)),
+            & > :first-child:where(h1, h2, h3, h4, h5, h6, p) {
+                display: grid;
+                grid-template-columns: 3.6em 1fr;
+            }
+
+            &:not(:has(h1, h2, h3, h4, h5, h6, p))::before,
+            & > :first-child:where(h1, h2, h3, h4, h5, h6, p)::before {
+                content: counter(my-list-counter) '.' counter(my-list__sub-list-counter) '.'
+                    counter(my-list__sub-sub-list-counter) '.\00a0';
+
+                font-variant-numeric: tabular-nums;
+            }
+        }
+    }
+
+    &--numeric {
+        counter-reset: my-list-counter;
+
+        & > .my-list__item {
+            counter-increment: my-list-counter;
+
+            &:not(:has(h1, h2, h3, h4, h5, h6, p)),
+            & > :first-child:where(h1, h2, h3, h4, h5, h6, p) {
+                display: grid;
+                grid-template-columns: max-content 1fr;
+            }
+
+            &:not(:has(h1, h2, h3, h4, h5, h6, p))::before,
+            & > :first-child:where(h1, h2, h3, h4, h5, h6, p)::before {
+                content: counter(my-list-counter) '.\00a0';
+                font-variant-numeric: tabular-nums;
+            }
+        }
+    }
+
+    &--dashed {
+        list-style-position: outside;
+
+        & > .my-list__item {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+
+            &::before {
+                content: '—\00a0';
+                font-variant-numeric: tabular-nums;
+            }
+        }
+    }
+
+    &--bullet {
+        list-style-position: outside;
+
+        & > .my-list__item {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+
+            &::before {
+                content: '•\00a0';
+                font-variant-numeric: tabular-nums;
+            }
+        }
+    }
+
+    &--in-table {
+        list-style-position: outside;
+
+        & > .my-list__item {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+
+            &::before {
+                content: '•\00a0';
+                font-variant-numeric: tabular-nums;
+            }
+        }
+    }
+}

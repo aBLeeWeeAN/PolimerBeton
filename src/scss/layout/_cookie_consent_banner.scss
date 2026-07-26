@@ -1,0 +1,284 @@
+@use '../abstracts/mixins' as mixin;
+@use '../abstracts/z_index' as *;
+
+@use '../vendors/bootstrap' as bs;
+
+.my-cookie-consent-banner {
+    will-change: transform, background-color, box-shadow;
+
+    // overflow: hidden;
+    z-index: z('cookie_consent');
+    position: fixed;
+
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 16px;
+
+    // padding: 25px 30px;
+    padding: 20px 25px;
+
+    max-width: 800px;
+
+    background-color: var(--color__cookie-consent-banner__background);
+    backdrop-filter: blur(24px);
+
+    // border-radius: 0.5rem;
+    border-radius: 24px;
+
+    // todo: настроить тень
+    box-shadow: 4px 6px 16px 0 var(--color__global__shadow);
+
+    right: 32px;
+    bottom: 32px;
+
+    transform: translateX(calc(100% + 50px));
+    transition: transform 300ms ease-out;
+
+    &__header-container {
+        display: flex;
+        flex-flow: row nowrap;
+
+        column-gap: 16px;
+
+        align-items: center;
+        justify-content: start;
+
+        @include bs.media-breakpoint-down(xxl) {
+            column-gap: 12px;
+        }
+
+        @include bs.media-breakpoint-down(md) {
+            column-gap: 10px;
+        }
+
+        // @include bs.media-breakpoint-down(sm) {
+        //     column-gap: 10px;
+        // }
+
+        @include bs.media-breakpoint-down(xs) {
+            column-gap: 8px;
+        }
+    }
+
+    &__header-svg {
+        flex: 0 0 auto;
+
+        color: var(--color__global__text--primary);
+
+        aspect-ratio: 1 / 1;
+        width: 72px;
+
+        @include bs.media-breakpoint-down(xxl) {
+            width: 48px;
+        }
+
+        @include bs.media-breakpoint-down(md) {
+            width: 42px;
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            width: 54px;
+        }
+
+        @include bs.media-breakpoint-down(xs) {
+            width: 50px;
+        }
+    }
+
+    &__header-text {
+        flex: 1 1 auto;
+
+        font-family: 'Montserrat', sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        font-size: 1.5rem;
+
+        letter-spacing: 0.06em;
+        font-variant-numeric: lining-nums;
+
+        text-transform: none;
+        text-wrap-style: pretty;
+
+        color: var(--color__global__text--primary);
+    }
+
+    &__paragraph {
+        font-family: 'Montserrat', system-ui;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 1rem;
+
+        letter-spacing: 0.06em;
+
+        text-align: left;
+        text-wrap-style: pretty;
+
+        color: var(--color__global__text);
+    }
+
+    &__link {
+        color: var(--color__global__text--primary);
+        text-decoration: none;
+
+        cursor: pointer;
+
+        &:focus {
+            color: var(--color__global__text--primary--focus);
+            text-decoration: none;
+        }
+
+        @include mixin.hover {
+            color: var(--color__global__text--primary--hover);
+            text-decoration: underline;
+        }
+
+        @include mixin.active {
+            color: var(--color__global__text--primary--active);
+            text-decoration: underline;
+        }
+
+        // &[aria-disabled='true'] {
+        //     color: var(--color__global__text--primary--disabled);
+        //     text-decoration: none;
+
+        //     cursor: not-allowed;
+        // }
+    }
+
+    &__buttons-container {
+        display: flex;
+
+        align-items: center;
+        justify-content: stretch;
+
+        column-gap: 12px;
+    }
+
+    &__button {
+        // will-change: all;
+        flex: 1 1 0;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        column-gap: 10px;
+        padding: 12px;
+
+        border: none;
+        border-radius: 12px;
+
+        .houdini-squircle-ready & {
+            border-radius: 0;
+
+            --squircle-smooth: 1;
+            --squircle-radius: 12;
+
+            /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+            mask-image: paint(squircle);
+        }
+
+        background-color: var(--color__global__primary);
+        color: var(--color__global__text--alt);
+
+        font-family: 'Montserrat', system-ui;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        font-size: 1rem;
+
+        letter-spacing: 0.035em;
+        text-align: center;
+
+        cursor: pointer;
+
+        transition: all 300ms ease;
+
+        &:focus {
+            background-color: var(--color__global__primary--focus);
+            color: var(--color__global__text--alt--focus);
+        }
+
+        @include mixin.hover {
+            background-color: var(--color__global__primary--hover);
+            color: var(--color__global__text--alt--hover);
+        }
+
+        @include mixin.active {
+            background-color: var(--color__global__primary--active);
+            color: var(--color__global__text--alt--active);
+        }
+
+        &:disabled,
+        &[disabled] {
+            background-color: var(--color__global__primary--disabled);
+            color: var(--color__global__text--alt--disabled);
+
+            cursor: not-allowed;
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            padding: 12px 0;
+            // width: calc(100% / 2 - 5px);
+        }
+
+        @include bs.media-breakpoint-down(xs) {
+            padding: 10px 0;
+            // width: calc(100% / 2 - 4px);
+        }
+    }
+
+    &.show {
+        // transform: translateX(calc(-100% - 50px));
+        transform: translateX(0);
+
+        // display: flex;
+        // right: 32px;
+
+        // @include bs.media-breakpoint-down(sm) {
+        //     right: 16px;
+        //     bottom: 16px;
+        // }
+    }
+
+    // ! replaced by Bootstrap d-none
+    // &.no-transition {
+    //     display: none;
+    //     transition: none;
+    // }
+
+    @include bs.media-breakpoint-down(xxl) {
+        max-width: 615px;
+        right: -615px;
+    }
+
+    @include bs.media-breakpoint-down(lg) {
+        padding: 20px 25px;
+
+        max-width: 555px;
+        right: -555px;
+    }
+
+    @include bs.media-breakpoint-down(md) {
+        max-width: 525px;
+        right: -525px;
+    }
+
+    @include bs.media-breakpoint-down(sm) {
+        transition: bottom 0.3s ease;
+        will-change: background-color, box-shadow, bottom;
+
+        max-width: 100%;
+
+        left: 1rem;
+        right: 1rem;
+
+        bottom: -300px;
+
+        padding: 20px 0;
+    }
+}

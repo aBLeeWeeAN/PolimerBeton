@@ -1,0 +1,25 @@
+/* stylelint-disable scss/percent-placeholder-pattern */
+/* stylelint-disable custom-property-empty-line-before */
+/* stylelint-disable scss/dollar-variable-pattern */
+@use '../../mixins' as mixin;
+@use '../../../vendors/bootstrap' as bs;
+
+@use '../base' as *;
+
+// * --- PRICE BADGE
+// * ---------------
+%text__price-badge {
+    @extend %text__base;
+
+    font-variant-numeric: lining-nums;
+    font-weight: 600;
+    font-size: var(--typography__global__price_badge__font-size);
+
+    color: var(--color__global__text--alt--solid);
+
+    letter-spacing: var(--typography__global__price_badge__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__price_badge__letter-spacing));
+
+    text-align: center;
+    text-wrap-style: balance;
+}

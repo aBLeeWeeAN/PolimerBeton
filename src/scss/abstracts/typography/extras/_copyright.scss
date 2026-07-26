@@ -1,0 +1,53 @@
+/* stylelint-disable scss/percent-placeholder-pattern */
+/* stylelint-disable custom-property-empty-line-before */
+/* stylelint-disable scss/dollar-variable-pattern */
+@use '../../mixins' as mixin;
+@use '../../../vendors/bootstrap' as bs;
+
+@use '../base' as *;
+
+// * --- COPYRIGHT
+// * -------------
+%text__copyright--owner {
+    @extend %text__base;
+
+    font-weight: 300;
+    font-size: var(--typography__global__copyright__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__copyright__letter-spacing);
+
+    text-align: left;
+    text-wrap-mode: nowrap;
+
+    @include bs.media-breakpoint-down(lg) {
+        text-wrap-mode: wrap;
+
+        margin-right: calc(-1 * var(--typography__global__copyright__letter-spacing));
+        text-align: center;
+
+        margin-bottom: var(--typography__global__copyright__margin-bottom);
+    }
+}
+
+%text__copyright--developer {
+    @extend %text__base;
+
+    font-weight: 300;
+    font-size: var(--typography__global__copyright__font-size); // шкала 14/1.2^1 ... 20/1.333^1
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__copyright__letter-spacing);
+
+    text-align: right;
+    text-wrap-mode: nowrap;
+
+    @include bs.media-breakpoint-down(lg) {
+        text-wrap-mode: wrap;
+
+        margin-right: calc(-1 * var(--typography__global__copyright__letter-spacing));
+        text-align: center;
+    }
+}

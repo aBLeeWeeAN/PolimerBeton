@@ -1,0 +1,25 @@
+// ! --- OVERRIDE BOOTSTRAP FILES HERE
+// ! ---------------------------------
+
+// * disable offcanvas-backdrop
+.offcanvas-backdrop {
+    display: none;
+}
+
+// * override bootstrap styles
+small {
+    font-size: inherit;
+}
+
+hr {
+    border-top: 1px solid #000;
+    opacity: 1;
+    margin: 0;
+}
+
+ol,
+ul,
+dl {
+    padding-left: 0;
+    margin-bottom: 0;
+}

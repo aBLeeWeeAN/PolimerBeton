@@ -1,0 +1,61 @@
+@use '../abstracts/mixins' as mixin;
+@use '../abstracts/typography' as *;
+
+@use '../vendors/bootstrap' as bs;
+
+@keyframes hero-phrase-gradient-animation {
+    to {
+        background-position: var(--bg-size) 0;
+    }
+}
+
+.my-paragraph {
+    @extend %text__paragraph;
+    @include mixin.transition-all(color);
+
+    will-change: color;
+
+    &--hero-slogan {
+        @extend %text__paragraph--hero-slogan;
+
+        --bg-size: 200%;
+        will-change: background-position;
+
+        background: linear-gradient(
+                90deg,
+                var(--color__hero__slogan-text--gradient-step-1) 0%,
+                var(--color__hero__slogan-text--gradient-step-2) 25%,
+                var(--color__hero__slogan-text--gradient-step-3) 50%,
+                var(--color__hero__slogan-text--gradient-step-2) 75%,
+                var(--color__hero__slogan-text--gradient-step-1) 100%
+            )
+            0 0 / var(--bg-size) 100%;
+
+        background-clip: text;
+
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+
+        animation: hero-phrase-gradient-animation 10s linear infinite;
+    }
+
+    &--advantage {
+        @extend %text__paragraph--advantage;
+    }
+
+    &--privacy {
+        @extend %text__paragraph--privacy;
+    }
+
+    &--in-list {
+        @extend %text__paragraph--in-list;
+    }
+
+    &--in-table {
+        @extend %text__paragraph--in-table;
+    }
+
+    &--strong {
+        @extend %text__paragraph--strong;
+    }
+}

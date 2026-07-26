@@ -1,0 +1,286 @@
+/* stylelint-disable keyframes-name-pattern */
+@use '../abstracts/mixins' as mixin;
+@use '../abstracts/typography' as *;
+@use '../abstracts/z_index' as *;
+
+@use '../vendors/bootstrap' as bs;
+
+@keyframes footer__fade-in-out__effect {
+    from {
+        opacity: 0.8;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes move-animation__footer__decorative-square--left {
+    0% {
+        transform: translate(-48.1%, -30%) rotate(-17deg);
+    }
+
+    50% {
+        transform: translate(-53.1%, -40%) rotate(-27deg);
+    }
+
+    100% {
+        transform: translate(-48.1%, -30%) rotate(-17deg);
+    }
+}
+
+@keyframes move-animation__footer__decorative-square--right {
+    0% {
+        transform: translate(-48.2%, -50%) rotate(40deg);
+    }
+
+    50% {
+        transform: translate(-50%, -30%) rotate(47deg);
+    }
+
+    100% {
+        transform: translate(-48.2%, -50%) rotate(40deg);
+    }
+}
+
+.my-footer {
+    will-change: box-shadow;
+
+    overflow: hidden;
+    z-index: z('footer');
+    position: sticky;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    // box-shadow: 0 -4px 10px var(--color__global__shadow);
+    background: linear-gradient(
+        -17deg,
+        var(--color__footer__background--gradient-step-1) 0%,
+        var(--color__footer__background--gradient-step-2) 100%
+    );
+
+    &::after {
+        content: '';
+
+        position: absolute;
+        inset: 0;
+
+        background-color: var(--color__global__fade);
+        opacity: 0;
+
+        animation: footer__fade-in-out__effect linear both;
+
+        animation-timeline: scroll(root);
+        animation-range: calc(100% - 664px) 100%;
+
+        pointer-events: none;
+    }
+
+    &__decorative-square {
+        @include mixin.transition-all(background-color);
+        will-change: background-color, transform;
+
+        z-index: z('background');
+        position: absolute;
+
+        background-color: red;
+
+        aspect-ratio: 1 / 1;
+        width: 100px;
+
+        top: 50%;
+        left: 50%;
+
+        pointer-events: none;
+
+        &--left {
+            width: 20000px;
+            height: 180%;
+
+            background-color: var(--color__decorative-element__background);
+
+            transform: translate(-48.2%, -50%) rotate(40deg);
+            animation: move-animation__footer__decorative-square--right 90s ease-in-out infinite;
+        }
+
+        &--right {
+            width: 20000px;
+            height: 120%;
+
+            background-color: var(--color__decorative-element__background);
+
+            transform: translate(-48.1%, -30%) rotate(-17deg);
+            animation: move-animation__footer__decorative-square--left 90s ease-in-out infinite;
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            display: none;
+            animation: none;
+
+            width: 100vw;
+            height: 40%;
+        }
+    }
+
+    &__information-container {
+        display: flex;
+        flex-wrap: nowrap;
+
+        align-items: stretch;
+        justify-content: space-between;
+
+        // padding: clamp(48px, 0.0481 * 100vw + 32.5926px, 100px) 0;
+        padding: calc(3 * var(--typography__global__line-height)) 0;
+
+        @include bs.media-breakpoint-down(md) {
+            flex-direction: column;
+            // row-gap: clamp(40px, 0.0179 * 100vw + 34.2857px, 48px);
+            // row-gap: mixin.fluid(42px, 48px); // шкала (от высоты строки) 14*3 ... 16*3
+            // row-gap: 3em;
+            row-gap: calc(1.5 * var(--typography__global__line-height));
+        }
+    }
+
+    &__sitemap-container {
+        display: flex;
+        flex-direction: column;
+
+        align-items: flex-start;
+        justify-content: space-between;
+
+        @include bs.media-breakpoint-down(md) {
+            align-items: center;
+        }
+    }
+
+    &__copyright-container {
+        display: flex;
+        flex-flow: row nowrap;
+
+        align-items: center;
+        justify-content: space-between;
+
+        // padding: 28px 0;
+        // padding: 1.75em 0;
+        padding: calc(1 * var(--typography__global__line-height)) 0;
+
+        // font-family: 'Montserrat', sans-serif;
+        // font-optical-sizing: auto;
+        // font-style: normal;
+        // font-weight: 300;
+
+        // font-size: clamp(14px, 0.0032 * 100vw + 11.5696px, 16px);
+
+        // letter-spacing: 0.11em;
+        // line-height: 1.5em;
+
+        // color: var(--color__global__text);
+
+        // text-wrap-mode: nowrap;
+        // text-wrap-style: pretty;
+
+        @include bs.media-breakpoint-down(lg) {
+            flex-direction: column;
+            justify-content: center;
+
+            // text-wrap-mode: wrap;
+            // text-wrap-style: pretty;
+
+            // row-gap: 1em;
+            // row-gap: mixin.fluid(14px, 16px); // шкала (от высоты строки) 14*1 ... 16*1
+            // row-gap: 1em;
+            // row-gap: var(--typography__global__line-height);
+        }
+
+        // @include bs.media-breakpoint-down(sm) {
+        //     letter-spacing: 0.08em;
+        // }
+    }
+
+    &__copyright-owner-text {
+        @extend %text__copyright--owner;
+        @include mixin.transition-all(color);
+
+        will-change: color;
+
+        flex: 0 0 auto;
+        // text-align: left;
+
+        // @include bs.media-breakpoint-down(lg) {
+        //     text-align: center;
+        //     margin-left: 0.11em; // * компенсация letter-spacing
+        // }
+        // @include bs.media-breakpoint-down(sm) {
+        //     margin-left: 0.08em; // }
+    }
+
+    &__copyright-developer-text {
+        @extend %text__copyright--developer;
+        @include mixin.transition-all(color);
+
+        will-change: color;
+
+        flex: 0 0 auto;
+        // text-align: right;
+
+        // @include bs.media-breakpoint-down(md) {
+        //     text-align: center;
+        //     margin-left: 0.11em; // * компенсация letter-spacing
+        // }
+
+        // @include bs.media-breakpoint-down(sm) {
+        //     margin-left: 0.08em;
+        // }
+    }
+
+    // todo: перенастроить размеры высоты
+    @media (max-height: 640px) {
+        position: relative;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    @include bs.media-breakpoint-down(xl) {
+        @media (max-height: 620px) {
+            position: relative;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    @include bs.media-breakpoint-down(lg) {
+        @media (max-height: 600px) {
+            position: relative;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    @include bs.media-breakpoint-down(md) {
+        @media (max-height: 610px) {
+            position: relative;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    @include bs.media-breakpoint-down(sm) {
+        @media (max-height: 800px) {
+            position: relative;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+}

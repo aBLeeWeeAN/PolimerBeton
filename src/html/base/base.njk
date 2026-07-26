@@ -1,0 +1,46 @@
+<!-- Built with love by aLeeTheY | https://github.com/aLeeTheY -->
+
+<!--? Django load livereload tags --->
+{% if is_django_build %}
+    {% raw %}
+        {% load livereload_tags %}
+    {% endraw %}
+{% endif %}
+
+<!--? Django load static & compress --->
+{% if is_django_build %}
+    {% raw %}
+        {% load static %}
+        {% load compress %}
+    {% endraw %}
+{% endif %}
+
+<!doctype html>
+<html class="no-js" lang="ru">
+    {% include "service/head.njk" %}
+    <body>
+        <!-- Preload scripts --->
+        {% include "service/scripts__preload.njk" %}
+
+        <!-- Page content START --->
+        {% include "common/header.njk" %}
+        <main>{% block content %}{% endblock %}</main>
+        {% include "common/footer.njk" %}
+        <!-- Page content END --->
+
+        <!-- Postload scripts --->
+        {% include "service/scripts__postload.njk" %}
+
+        <!-- Cookie consent --->
+        {% include "components/cookie_consent.njk" %}
+
+        <!-- Lazy load images --->
+        {% include "service/scripts__lazy_load_images.njk" %}
+
+        {% if is_django_build %}
+            {% raw %}
+                {% livereload_script %}
+            {% endraw %}
+        {% endif %}
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<div class="d-none" id="Lazy-Load-Images" aria-hidden="true">
+    {# {% compress js %} #}
+    {# <script async>
+        // Объявляем глобальные переменные с URL
+        window.heroImages = {
+            xs: "{% static 'MainApp/images/hero/hero_bc_xs.webp' %}",
+            sm: "{% static 'MainApp/images/hero/hero_bc_sm.webp' %}",
+            md: "{% static 'MainApp/images/hero/hero_bc_md.webp' %}",
+            lg: "{% static 'MainApp/images/hero/hero_bc_lg.webp' %}",
+            xl: "{% static 'MainApp/images/hero/hero_bc_xl.webp' %}",
+            xxl: "{% static 'MainApp/images/hero/hero_bc_xxl.webp' %}",
+        }
+    </script> #}
+    {# {% endcompress %} #}
+    {# {% compress js file hero_image_loader %} #}
+    {# <script type="text/typescript" src="@ts/hero_image_loader.ts" defer></script> #}
+    {# {% endcompress %} #}
+
+    {# <script type="text/typescript" type="module" src="@ts/lazy_load_images.ts.ts" async></script> #}
+</div>

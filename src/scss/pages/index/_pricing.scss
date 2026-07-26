@@ -1,0 +1,12 @@
+// @use '../../abstracts/mixins' as mixin;
+@use '../../abstracts/z_index' as *;
+// @use '../../vendors/bootstrap' as bs;
+
+.my-pricing {
+    z-index: z('my_pricing');
+    position: relative;
+
+    // &__content {
+    //     // empty
+    // }
+}

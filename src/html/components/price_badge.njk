@@ -1,0 +1,22 @@
+{% set my_price_badge__balls = my_balls | default(["green", "yellow", "white", "grey", "red"]) %}
+
+<div class="my-price-badge">
+    <div class="my-price-badge__price-container">
+        <div class="my-price-badge__price-svg-wrapper">
+            <svg id="My-Sale-Svg-Icon" class="my-price-badge__price-svg" width="328" height="328" aria-hidden="true">
+                <use href="@icons/pricing/promo.svg"></use>
+            </svg>
+        </div>
+        <span class="my-price-badge__price-text">{{ index.pricing.current_price | nl2br }}</span>
+    </div>
+
+    {% for ball in my_price_badge__balls %}
+        <div class="my-price-badge__ball-wrapper my-price-badge__ball-wrapper--ball-{{ ball }}">
+            <img
+                data-my-picture-class="my-price-badge__ball-picture"
+                class="my-price-badge__ball-img my-price-badge__ball-img--ball-{{ ball }}"
+                src="@images/balls/{{ ball }}.png"
+                alt="" />
+        </div>
+    {% endfor %}
+</div>

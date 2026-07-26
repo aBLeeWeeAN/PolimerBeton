@@ -1,0 +1,109 @@
+/* stylelint-disable scss/percent-placeholder-pattern */
+/* stylelint-disable custom-property-empty-line-before */
+/* stylelint-disable scss/dollar-variable-pattern */
+@use '../../mixins' as mixin;
+@use '../../../vendors/bootstrap' as bs;
+
+@use '../base' as *;
+
+// * --- LOGO
+// * --------
+%text__logo--header {
+    @extend %text__base;
+
+    font-size: mixin.fluid(11px, 26px);
+    color: var(--color__global__primary);
+
+    text-decoration: none;
+}
+
+%text__logo__company-name--header {
+    @extend %text__base;
+
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+
+    font-size: 1em;
+    color: inherit;
+
+    // ! 26/1.333^17
+    // letter-spacing: 0.22em;
+    letter-spacing: 0.2em;
+
+    line-height: mixin.fluid(1.425 * 11px, 1.35 * 26px);
+    // line-height: 1.35em;
+
+    text-align: left;
+}
+
+%text__logo__motto--header {
+    @extend %text__base;
+
+    font-family: 'Pattaya', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+
+    font-size: 0.8em;
+    color: inherit;
+
+    // ! 20.8/1.333^15
+    // letter-spacing: 0.35em;
+    letter-spacing: 0.28em;
+    transform: translateX(calc(0.28em / 2));
+
+    line-height: mixin.fluid(1.425 * 0.8 * 11px, 1.35 * 0.8 * 26px);
+    // line-height: 1.35em;
+
+    text-align: left;
+}
+
+%text__logo--footer {
+    @extend %text__base;
+
+    font-size: mixin.fluid(16px, 36px);
+    color: var(--color__global__text);
+
+    text-decoration: none;
+}
+
+%text__logo__company-name--footer {
+    @extend %text__base;
+
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+
+    font-size: 1em;
+    color: inherit;
+
+    // ! 26/1.333^17
+    // letter-spacing: 0.22em;
+    letter-spacing: 0.2em;
+
+    line-height: mixin.fluid(1.425 * 16px, 1.35 * 36px);
+    // line-height: 1.35em;
+
+    text-align: left;
+}
+
+%text__logo__motto--footer {
+    @extend %text__base;
+
+    font-family: 'Pattaya', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+
+    font-size: 0.8em;
+    color: inherit;
+
+    // ! 20.8/1.333^15
+    // letter-spacing: 0.35em;
+    letter-spacing: 0.28em;
+    transform: translateX(calc(0.28em / 2));
+
+    line-height: mixin.fluid(1.425 * 0.8 * 16px, 1.35 * 0.8 * 36px);
+    // line-height: 1.35em;
+
+    text-align: left;
+}

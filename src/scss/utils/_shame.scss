@@ -1,0 +1,39 @@
+// .my-form__input-element:autofill,
+// .my-form__input-element:-webkit-autofill {
+//     font-size: 16px !important;
+
+//     background-color: #fff !important;
+//     color: #000 !important;
+// }
+
+// .my-form__input-element:autofill:focus,
+// .my-form__input-element:-webkit-autofill:focus {
+//     font-size: 16px !important;
+
+//     background-color: #fff !important;
+//     color: #000 !important;
+
+//     -webkit-box-shadow: 0 0 0 50px white inset;
+//     -webkit-text-fill-color: #333;
+// }
+
+.my-form__input-element:-webkit-autofill,
+.my-form__input-element:-webkit-autofill:hover,
+.my-form__input-element:-webkit-autofill:focus {
+    will-change: background-color;
+    transition: background-color 9999s ease-in-out 0s !important;
+
+    box-shadow: 0 0 0 1000px var(--color__feedback-form__field-autofill-background) inset !important;
+    -webkit-text-fill-color: var(--color__feedback-form__field-autofill-text) !important;
+
+    // caret-color: #333;
+
+    // border-radius: 6px;
+    // font-weight: 800;
+
+    // [data-theme='dark'] & {
+    //     box-shadow: 0 0 0 1000px #e64a1914 inset !important;
+    //     -webkit-text-fill-color: #ffccbc !important;
+    //     // -webkit-text-fill-color: #ffab91 !important;
+    // }
+}

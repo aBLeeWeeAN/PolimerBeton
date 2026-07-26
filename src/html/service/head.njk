@@ -1,0 +1,90 @@
+<!-- ! DO NOT REMOVE THIS NUNJUCKS IMPORTS | PART OF GULP BUILD !!! --->
+{% from "utils/macro__hreflang_tags.njk" import hreflang_tags %}
+{% from "utils/macro__inline_script.njk" import inline_script %}
+
+<!-- TODO: dodelat' head dlya raznyh stranic' --->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- * BLOCK PHONE NUMBER, DATE, ADDRESS & EMAIL AS LINK DETECTION --->
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+
+    <!-- ! DO NOT REMOVE THIS NUNJUCKS BLOCK !!! | PAGE LOCALE TAGS --->
+    {% if allLocales and defaultLocale and siteUrl %}
+        {{
+            hreflang_tags(
+                all_locales = allLocales,
+                default_locale = defaultLocale,
+                site_url = siteUrl
+            )
+        }}
+    {% endif %}
+
+    <!-- * Page title --->
+    <title>{{ common.head.title }}</title>
+
+    <!-- * Page description & keywords --->
+    <meta name="description" content="{{ common.head.description }}" />
+    <meta name="keywords" content="{{ common.head.keywords }}" />
+
+    <!-- * Authors --->
+    <link rel="author" href="@meta/humans.txt" />
+
+    <!-- * Page favicon --->
+    <link rel="icon" type="image/png" href="@meta/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="@meta/favicon.svg" />
+    <link rel="shortcut icon" href="@meta/favicon.ico" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="@meta/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="PB VRN" />
+
+    <link rel="manifest" href="@meta/site.webmanifest" />
+
+    <!-- * Open Graph --->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="{{ page_locale }}" />
+
+    <meta property="og:url" content="{{ page_url }}" />
+    <meta property="og:title" content="{{ common.head.title }}" />
+    <meta property="og:description" content="{{ common.head.description }}" />
+
+    <meta property="og:image" content="{{ opengraph_image_url }}" />
+    <meta property="og:image:alt" content="{{ common.head.open_graph_image.alt }}" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- * Canonical --->
+    <link rel="canonical" href="{{ page_url }}" />
+
+    <!-- * If JS supports -> enable JS classes - -->
+    <script type="module">
+        document.documentElement.classList.remove('no-js')
+        document.documentElement.classList.add('js')
+    </script>
+
+    <!-- * 0. Inject inline avif/webp script polyfill --->
+    <!-- ! STRONGLY RECOMMENDED PLACE IT BEFORE ANY CSS FILES --->
+    {{ inline_script('node_modules/gulp-web-images-css/plugin.js') }}
+
+    <!-- * 1. Inject inline critical-css --->
+    <!-- ! DO NOT REMOVE THIS COMMENT !!! | CRITICAL CSS PLACEHOLDER --->
+
+    <!-- * 2. Import vendors CSS --->
+    <!-- <link rel="preload" href="https://unpkg.com/aos@next/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'" /> -->
+    <!-- Basic Icons -->
+    <!-- <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet" /> -->
+    <!-- Filled Icons -->
+    <!-- <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet" /> -->
+    <!-- Brand Icons -->
+    <!-- <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet" /> -->
+
+    <!-- ! DO NOT REMOVE THIS COMMENT !!! | INLINE CSS START | DISABLED BY DEFAULT --->
+    <!-- * 3. Import my CSS --->
+    <link rel="preload" href="@scss/main.scss" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <!-- * 3.1. Fallback (if JS disable) --->
+    <noscript>
+        <link rel="stylesheet" href="@scss/main.scss" />
+    </noscript>
+    <!-- ! DO NOT REMOVE THIS COMMENT !!! | INLINE CSS END --->
+</head>

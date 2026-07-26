@@ -1,0 +1,188 @@
+@use '../abstracts/mixins' as mixin;
+// @use '../abstracts/placeholders' as *;
+
+@use '../vendors/bootstrap' as bs;
+
+.my-navigation-button {
+    @include mixin.transition-all(background-color, color);
+
+    will-change: background-color, color;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    aspect-ratio: 1 / 1;
+    // width: 48px;
+    width: mixin.fluid-with-range(40px, 48px, md, xxl);
+
+    // border-radius: 16px;
+    // border-radius: 33.333%;
+    border-radius: 37%;
+
+    .houdini-squircle-ready & {
+        border-radius: 0;
+
+        --squircle-smooth: 1;
+        // --squircle-radius: 33.333%;
+        --squircle-radius: 37%;
+
+        /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+        mask-image: paint(squircle);
+        // -webkit-mask-image: paint(squircle);
+    }
+
+    background-color: var(--color__global__primary);
+    color: var(--color__global__text--alt); // icon color
+
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+
+    &:focus,
+    &:has(.my-navigation-button__link:focus) {
+        background-color: var(--color__global__primary--focus);
+        color: var(--color__global__text--alt--focus);
+    }
+
+    @include mixin.hover-has('.my-navigation-button__link') {
+        background-color: var(--color__global__primary--hover);
+        color: var(--color__global__text--alt--hover);
+
+        .my-navigation-button__svg {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+    }
+
+    @include mixin.active-has('.my-navigation-button__link') {
+        background-color: var(--color__global__primary--active);
+        color: var(--color__global__text--alt--active);
+
+        .my-navigation-button__svg {
+            transform: translate(-50%, -50%) scale(0.975);
+        }
+    }
+
+    &:disabled,
+    &[disabled],
+    &:has(.my-navigation-button__link:disabled),
+    &:has(.my-navigation-button__link[disabled]) {
+        background-color: var(--color__global__primary--disabled);
+        color: var(--color__global__text--alt--disabled);
+
+        cursor: not-allowed;
+    }
+
+    &__link {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        height: 100%;
+
+        color: inherit;
+    }
+
+    &__svg {
+        @include mixin.transition-all(display, opacity);
+        transition: transform 0.3s ease-in-out;
+
+        will-change: display, opacity, transform;
+
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+        transform-origin: center center;
+
+        aspect-ratio: 1 / 1;
+        width: 24px;
+
+        @include bs.media-breakpoint-down(xl) {
+            width: 20px;
+        }
+
+        @include bs.media-breakpoint-down(md) {
+            width: 24px;
+        }
+    }
+
+    &--mobile {
+        @include mixin.transition-all(background-color, color, width, height);
+        will-change: background-color, color, width, height;
+
+        border-radius: 50%;
+
+        .houdini-squircle-ready & {
+            border-radius: 50%;
+            mask-image: none;
+        }
+
+        border: none;
+        outline: none;
+
+        background-color: transparent;
+        color: var(--color__global__text); // icon color
+
+        cursor: pointer;
+
+        &:focus,
+        &:has(.my-navigation-button__link:focus) {
+            background-color: transparent;
+            color: var(--color__global__text--focus);
+        }
+
+        @include mixin.hover-has('.my-navigation-button__link') {
+            background-color: transparent;
+            color: var(--color__global__text--hover);
+
+            .my-navigation-button__svg {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        @include mixin.active-has('.my-navigation-button__link') {
+            background-color: transparent;
+            color: var(--color__global__text--active);
+
+            .my-navigation-button__svg {
+                transform: translate(-50%, -50%) scale(0.95);
+            }
+        }
+
+        &:disabled,
+        &[disabled],
+        &:has(.my-navigation-button__link:disabled),
+        &:has(.my-navigation-button__link[disabled]) {
+            background-color: transparent;
+            color: var(--color__global__text--disabled);
+
+            cursor: not-allowed;
+        }
+    }
+
+    // @include bs.media-breakpoint-down(xl) {
+    //     width: 40px;
+
+    //     // border-radius: 10px;
+    //     border-radius: 40%;
+    // }
+
+    @include bs.media-breakpoint-down(md) {
+        // width: 32px;
+        // width: 30px;
+
+        width: mixin.fluid-with-range(26px, 30px, xs, md);
+    }
+
+    // @include bs.media-breakpoint-down(xs) {
+    //     // width: 28px;
+    //     width: 26px;
+    // }
+}

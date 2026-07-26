@@ -1,0 +1,58 @@
+@use '../abstracts/mixins' as mixin;
+@use '../abstracts/typography' as *;
+
+@use '../vendors/bootstrap' as bs;
+
+.my-link {
+    @extend %text__link;
+    @include mixin.transition-all(color, transform);
+
+    will-change: color, transform;
+    display: inline-block;
+
+    // color: var(--color__global__text);
+    // text-decoration: none;
+
+    transform-origin: center center;
+
+    &:focus {
+        color: var(--color__global__text--focus);
+        text-decoration: none;
+    }
+
+    @include mixin.hover {
+        color: var(--color__global__text--hover);
+        text-decoration: none;
+
+        transform: scale(1.025);
+    }
+
+    @include mixin.active {
+        color: var(--color__global__text--active);
+        text-decoration: none;
+
+        transform: scale(0.975);
+    }
+
+    &--small {
+        @extend %text__link--small;
+    }
+
+    &--copyright {
+        @extend %text__link--copyright;
+    }
+
+    &--table-of-contents {
+        @extend %text__link--table-of-contents;
+    }
+
+    &--disable-transform {
+        @include mixin.hover {
+            transform: none;
+        }
+
+        @include mixin.active {
+            transform: none;
+        }
+    }
+}

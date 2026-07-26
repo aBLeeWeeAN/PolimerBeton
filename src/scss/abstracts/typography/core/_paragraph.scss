@@ -1,0 +1,198 @@
+/* stylelint-disable scss/percent-placeholder-pattern */
+/* stylelint-disable custom-property-empty-line-before */
+/* stylelint-disable scss/dollar-variable-pattern */
+@use '../../mixins' as mixin;
+@use '../../../vendors/bootstrap' as bs;
+
+@use '../base' as *;
+
+// * --- PARAGRAPH
+// * -------------
+%text__paragraph {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__base__font-size);
+
+    color: var(--color__global__text);
+
+    // todo: протестить толк от margin right
+    letter-spacing: var(--typography__global__base__letter-spacing);
+    // margin-right: calc(-1 * var(--typography__global__base__letter-spacing));
+    // margin-right: 0;
+    text-indent: 4.5em;
+
+    text-align: justify;
+    hyphens: none;
+
+    &:not(:last-child) {
+        margin-bottom: var(--typography__global__base__margin-bottom);
+    }
+
+    @include bs.media-breakpoint-down(lg) {
+        text-indent: 3.5em;
+
+        text-wrap-style: auto;
+        hyphens: auto;
+    }
+
+    @include bs.media-breakpoint-down(sm) {
+        // text-align: justify;
+        text-indent: 0;
+    }
+}
+
+%text__paragraph--hero-slogan {
+    @extend %text__base;
+
+    font-family: 'Pattaya', sans-serif;
+    font-optical-sizing: none;
+    font-style: normal;
+
+    font-weight: 400;
+    font-size: var(--typography__global__hero__slogan__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__hero__slogan__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__hero__slogan__letter-spacing));
+    text-indent: 0;
+
+    text-align: center;
+    text-wrap-style: balance;
+
+    text-transform: lowercase;
+    hyphens: none;
+
+    &:not(:last-child) {
+        margin-bottom: 0;
+    }
+}
+
+%text__paragraph--advantage {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__base__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__base__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__base__letter-spacing));
+    text-indent: 0;
+
+    text-align: center;
+    hyphens: none;
+
+    &:not(:last-child) {
+        margin-bottom: 0;
+    }
+
+    max-width: 28em;
+
+    @include bs.media-breakpoint-down(lg) {
+        max-width: 32em;
+    }
+
+    @include bs.media-breakpoint-down(sm) {
+        max-width: 28em;
+    }
+
+    @include bs.media-breakpoint-down(xs) {
+        max-width: 100%;
+    }
+}
+
+%text__paragraph--privacy {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__base__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__base__letter-spacing);
+    // margin-right: 0;
+    text-indent: 0;
+
+    // text-align: left;
+    // hyphens: none;
+
+    text-align: left;
+    text-wrap-style: pretty;
+    hyphens: none;
+
+    &:not(:last-child) {
+        margin-bottom: var(--typography__global__base__margin-bottom);
+    }
+}
+
+%text__paragraph--in-list {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__base__font-size);
+
+    color: var(--color__global__text);
+
+    // todo: протестить толк от margin right
+    letter-spacing: var(--typography__global__base__letter-spacing);
+    text-indent: 0;
+
+    // text-align: justify;
+    // hyphens: none;
+
+    text-align: left;
+    text-wrap-style: pretty;
+    hyphens: none;
+
+    &:not(:last-child) {
+        margin-bottom: var(--typography__global__base__margin-bottom);
+    }
+}
+
+%text__paragraph--in-table {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__base__font-size);
+
+    color: var(--color__global__text);
+
+    // todo: протестить толк от margin right
+    letter-spacing: var(--typography__global__base__letter-spacing);
+    text-indent: 0;
+
+    // text-align: justify;
+    // hyphens: none;
+
+    text-align: left;
+    text-wrap-style: pretty;
+    hyphens: none;
+
+    &:not(:last-child) {
+        margin-bottom: 0;
+    }
+}
+
+%text__paragraph--strong {
+    @extend %text__base;
+
+    font-weight: 500;
+    font-size: var(--typography__global__base__font-size);
+
+    color: var(--color__global__text);
+
+    // todo: протестить толк от margin right
+    letter-spacing: var(--typography__global__base__letter-spacing);
+    // margin-right: calc(-1 * var(--typography__global__base__letter-spacing));
+    // margin-right: 0;
+    text-indent: 0;
+
+    text-align: left;
+    hyphens: none;
+
+    &:not(:last-child) {
+        margin-bottom: var(--typography__global__base__margin-bottom);
+    }
+}

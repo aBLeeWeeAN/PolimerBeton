@@ -1,0 +1,8 @@
+{
+    "domain": "http://localhost:3000",
+    "siteFolder": "/",
+    "domainProduction": "https://polimerbeton-vrn.ru/",
+    "siteFolderProduction": "/",
+    "domainGitHubPages": "https://aleethey.github.io/",
+    "siteFolderGitHubPages": "/PolimerBeton/"
+}

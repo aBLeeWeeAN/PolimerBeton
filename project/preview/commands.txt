@@ -1,8 +1,0 @@
-0. Make two [or more] Gifs with same height.
-1. Make combined Gif:
-
-ffmpeg -i desktop.gif -i mobile.gif -filter_complex "[0]pad=iw+12:ih:0:0:color=0x00000000[left];[left][1]hstack,fps=20,split[x][z];[x]palettegen=stats_mode=diff[p];[z][p]paletteuse=dither=bayer:bayer_scale=3" combined.gif
-
-2. Optimize Gif size:
-
-gifsicle -O3 combined.gif -o combined_optimized.gif

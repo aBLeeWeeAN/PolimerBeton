@@ -1,0 +1,91 @@
+/* stylelint-disable selector-id-pattern */
+@use '../../abstracts/z_index' as *;
+@use '../../vendors/bootstrap' as bs;
+
+.my-legal {
+    z-index: z('my_legal');
+    position: relative;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: flex-start;
+
+        // @include bs.media-breakpoint-down(sm) {
+        //     padding: 0;
+        // }
+    }
+
+    &__title,
+    &__subtitle {
+        // @include bs.media-breakpoint-down(sm) {
+        //     padding: 0 var(--typography__global__line-height);
+        // }
+    }
+
+    #My-Legal-Doc__1 {
+        grid-area: my-img__doc-1;
+    }
+
+    #My-Legal-Doc__2 {
+        grid-area: my-img__doc-2;
+    }
+
+    #My-Legal-Doc__3 {
+        grid-area: my-img__doc-3;
+    }
+
+    #My-Legal-Doc__4 {
+        grid-area: my-img__doc-4;
+    }
+
+    #My-Legal-Doc__5 {
+        grid-area: my-img__doc-5;
+    }
+
+    #My-Legal-Doc__6 {
+        grid-area: my-img__doc-6;
+    }
+
+    &__grid {
+        display: grid;
+        align-items: center;
+
+        // gap: 16px;
+        // gap: clamp(14px, 0.73vw + 9.8058px, 20px);
+        // gap: 1em;
+        gap: calc(var(--typography__global__line-height) / 2);
+
+        // * default
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+            'my-img__doc-1 my-img__doc-2 my-img__doc-3'
+            'my-img__doc-4 my-img__doc-5 my-img__doc-6';
+
+        @include bs.media-breakpoint-down(xl) {
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas:
+                'my-img__doc-1 my-img__doc-2'
+                'my-img__doc-3 my-img__doc-4'
+                'my-img__doc-5 my-img__doc-6';
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-areas: 'my-img__doc-1 my-img__doc-2 my-img__doc-3 my-img__doc-4 my-img__doc-5 my-img__doc-6';
+
+            width: 100vw;
+            // min-width: 0;
+
+            margin: 0 calc(-1 * var(--layout__wrapper__padding--horizontal));
+            padding: 0 var(--layout__wrapper__padding--horizontal);
+
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+
+            scrollbar-width: none;
+        }
+    }
+}

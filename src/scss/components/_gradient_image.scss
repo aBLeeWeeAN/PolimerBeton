@@ -1,0 +1,180 @@
+/* stylelint-disable selector-id-pattern */
+/* stylelint-disable keyframes-name-pattern */
+/* stylelint-disable custom-property-empty-line-before */
+
+@use '../abstracts/mixins' as mixin;
+@use '../abstracts/typography' as *;
+@use '../abstracts/z_index' as *;
+
+@use '../vendors/bootstrap' as bs;
+
+@property --gradient-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes my-border-spin {
+    to {
+        // умножаем 360 градусов на направление (1 или -1)
+        --gradient-angle: calc(360deg * var(--spin-dir, 1));
+    }
+}
+
+.my-gradient-image {
+    z-index: z('default');
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    --my-scale: 1;
+
+    // ! fallback | if vanilla tilt dont work (js not support) | hover only non-touch screens
+    .no-js & {
+        @include mixin.hover {
+            --my-scale: 1.025;
+        }
+    }
+
+    // ! work always | JS and non-JS | touch + non-touch screens
+    .js &,
+    .no-js & {
+        @include mixin.active {
+            --my-scale: 0.975;
+        }
+    }
+
+    &__link-wrapper {
+        z-index: z('default');
+        position: relative;
+
+        display: block;
+    }
+
+    &__link {
+        display: block;
+    }
+
+    &__img {
+        will-change: transform, box-shadow;
+
+        aspect-ratio: initial;
+        width: 100%;
+
+        min-width: 150px;
+
+        object-fit: cover;
+
+        border: 0.2em solid transparent;
+        border-radius: 1.2em;
+
+        box-shadow: 0 15px 35px var(--color__global__shadow);
+
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+
+        // background-image:
+        //     linear-gradient(white, white),
+        //     conic-gradient(from var(--gradient-angle), cyan, lime, magenta, cyan);
+
+        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#4caf50+0,ffeb3b+50,f44336+100 */
+        background-image:
+            linear-gradient(white, white),
+            conic-gradient(
+                from calc(var(--start-angle, 0deg) + var(--gradient-angle)),
+                var(--color__card-img__background--gradient-step-1) 0%,
+                var(--color__card-img__background--gradient-step-2) 25%,
+                var(--color__card-img__background--gradient-step-3) 50%,
+                var(--color__card-img__background--gradient-step-2) 75%,
+                var(--color__card-img__background--gradient-step-1) 100%
+            );
+
+        transform: scale(var(--my-scale));
+        transition:
+            transform 300ms ease-in-out,
+            box-shadow 300ms ease-in-out;
+
+        animation: my-border-spin 2s linear infinite;
+
+        @include mixin.hover {
+            transform: scale(1.025);
+            box-shadow: 0 20px 50px var(--color__global__shadow);
+        }
+
+        @include mixin.active {
+            transform: scale(0.975);
+            box-shadow: 0 5px 25px var(--color__global__shadow);
+        }
+
+        #My-Example-Img__Pillar-Before &,
+        #My-Example-Img__Road-Before & {
+            --start-angle: 0deg;
+            --spin-dir: -1; // Против часовой
+        }
+
+        #My-Example-Img__Pillar-After &,
+        #My-Example-Img__Road-After & {
+            --start-angle: 0deg;
+            --spin-dir: 1; // По часовой
+
+            // --gradient-color-2: var(--color__card-img__background--gradient-step-3);
+            // --gradient-color-3: var(--color__card-img__background--gradient-step-2);
+        }
+
+        @include bs.media-breakpoint-between(sm, xxl) {
+            #My-Example-Img__Road-Before & {
+                --start-angle: -180deg;
+                --spin-dir: 1;
+
+                // --gradient-color-2: var(--color__card-img__background--gradient-step-3);
+                // --gradient-color-3: var(--color__card-img__background--gradient-step-2);
+            }
+
+            #My-Example-Img__Road-After & {
+                --start-angle: 180deg;
+                --spin-dir: -1;
+
+                // --gradient-color-2: var(--color__card-img__background--gradient-step-2);
+                // --gradient-color-3: var(--color__card-img__background--gradient-step-3);
+            }
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            // Твоя новая схема вращения по стрелочкам с мобильного скриншота:
+
+            #My-Example-Img__Pillar-Before & {
+                --start-angle: 0deg;
+                --spin-dir: 1;
+            }
+
+            #My-Example-Img__Pillar-After & {
+                --start-angle: 180deg;
+                --spin-dir: -1;
+            }
+
+            #My-Example-Img__Road-Before & {
+                --start-angle: 0deg;
+                --spin-dir: 1;
+
+                // --gradient-color-2: var(--color__card-img__background--gradient-step-2);
+                // --gradient-color-3: var(--color__card-img__background--gradient-step-3);
+            }
+
+            #My-Example-Img__Road-After & {
+                --start-angle: -180deg;
+                --spin-dir: -1;
+
+                // --gradient-color-2: var(--color__card-img__background--gradient-step-3);
+                // --gradient-color-3: var(--color__card-img__background--gradient-step-2);
+            }
+        }
+    }
+
+    &__caption {
+        @extend %text__img-caption;
+    }
+}

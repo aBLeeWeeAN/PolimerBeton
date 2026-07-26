@@ -1,0 +1,85 @@
+/* stylelint-disable scss/percent-placeholder-pattern */
+/* stylelint-disable custom-property-empty-line-before */
+/* stylelint-disable scss/dollar-variable-pattern */
+@use '../../mixins' as mixin;
+@use '../../../vendors/bootstrap' as bs;
+
+@use '../base' as *;
+
+// * --- FORM
+// * --------
+%text__form__input {
+    @extend %text__base;
+
+    font-weight: 600;
+    font-size: var(--typography__global__base__form__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__base__form__letter-spacing);
+    text-align: left;
+}
+
+%text__form__checkbox-label {
+    @extend %text__base;
+
+    font-weight: 600;
+    font-size: var(--typography__global__small__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__small__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__small__letter-spacing));
+
+    text-align: center;
+    margin-left: var(--typography__global__small__margin-bottom);
+}
+
+%text__form__checkbox-label__link {
+    @extend %text__base;
+
+    font-weight: 600;
+    font-size: var(--typography__global__small__font-size);
+
+    color: var(--color__global__text--primary);
+
+    letter-spacing: var(--typography__global__small__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__small__letter-spacing));
+
+    text-align: center;
+    text-decoration: none;
+}
+
+%text__form__submit-button {
+    @extend %text__base;
+
+    font-weight: 600;
+    font-size: var(--typography__global__base__form__font-size);
+
+    color: var(--color__global__text--alt);
+
+    letter-spacing: var(--typography__global__base__form__letter-spacing);
+    // margin-right: calc(-1 * var(--typography__global__base__form__letter-spacing));
+
+    text-align: center;
+}
+
+%text__form__error-message {
+    @extend %text__base;
+
+    font-weight: 500;
+    font-size: var(--typography__global__base__form__font-size);
+
+    color: var(--color__global__text--error);
+
+    letter-spacing: var(--typography__global__base__form__letter-spacing);
+    // margin-right: calc(-1 * var(--typography__global__base__form__letter-spacing));
+    // text-indent: 0;
+
+    text-align: justify;
+    hyphens: none;
+
+    &:not(:last-child) {
+        margin-bottom: var(--typography__global__base__form__margin-bottom);
+    }
+}

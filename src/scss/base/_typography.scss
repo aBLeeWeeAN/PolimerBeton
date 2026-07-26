@@ -1,0 +1,116 @@
+@use '../abstracts/placeholders' as *;
+
+// ! --- Тяжелый подход -> Используется типографика из abstracts/
+// ! ------------------------------------------------------------
+// body {
+//     @extend %text__base;
+// }
+
+// p {
+//     @extend %text__paragraph;
+// }
+
+// a {
+//     @extend %text__link;
+// }
+
+// strong {
+//     @extend %text__strong;
+// }
+
+// small {
+//     @extend %text__small;
+// }
+
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//     @extend %text__base;
+// }
+
+// h1 {
+//     // browser default font-size
+// }
+
+// h2 {
+//     // browser default font-size
+// }
+
+// h3 {
+//     // browser default font-size
+// }
+
+// h4 {
+//     // browser default font-size
+// }
+
+// h5 {
+//     // browser default font-size
+// }
+
+// h6 {
+//     // browser default font-size
+// }
+
+// * --- PARAGRAPH
+// * -------------
+// p {
+//     @extend %text__paragraph;
+// }
+
+// span {
+//     @extend %text__paragraph-base;
+// }
+
+// * --- LINK
+// * --------
+// a {
+//     @extend %text__link;
+// }
+
+// * --- STRONG TEXT
+// * ---------------
+// strong {
+//     @extend %text__strong;
+// }
+
+// * --- SMALL TEXT
+// * --------------
+// small {
+//     @extend %text__small;
+// }
+
+// * --- LIST ELEMENT
+// * ----------------
+// li {
+//     @extend %text__list;
+// }
+
+// dt {
+//     // empty
+// }
+
+// dd {
+//     // empty
+// }
+
+// * --- FORM ELEMENTS
+// * -----------------
+// label {
+//     @extend %text__label;
+// }
+
+// input {
+//     @extend %text__input;
+// }
+
+// textarea {
+//     @extend %text__textarea;
+// }
+
+// button {
+//     @extend %text__button;
+// }

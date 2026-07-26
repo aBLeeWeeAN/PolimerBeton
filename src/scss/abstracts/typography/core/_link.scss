@@ -1,0 +1,90 @@
+/* stylelint-disable scss/percent-placeholder-pattern */
+/* stylelint-disable custom-property-empty-line-before */
+/* stylelint-disable scss/dollar-variable-pattern */
+@use '../../mixins' as mixin;
+@use '../../../vendors/bootstrap' as bs;
+
+@use '../base' as *;
+
+// * --- LINKS
+// * ---------
+%text__link {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__base__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__base__letter-spacing);
+    // margin-right: calc(-1 * var(--typography__global__base__letter-spacing));
+    // text-indent: 0;
+
+    text-decoration: none;
+    text-align: justify;
+    hyphens: none;
+
+    &:not(:last-child) {
+        margin-bottom: var(--typography__global__base__margin-bottom);
+    }
+}
+
+%text__link--small {
+    @extend %text__base;
+
+    font-weight: 300;
+    font-size: var(--typography__global__small__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__small__letter-spacing);
+    // margin-right: calc(-1 * var(--typography__global__small__letter-spacing));
+    // text-indent: 0;
+
+    text-decoration: none;
+    text-align: justify;
+    hyphens: none;
+
+    &:not(:last-child) {
+        margin-bottom: var(--typography__global__small__margin-bottom);
+    }
+}
+
+%text__link--copyright {
+    @extend %text__base;
+
+    font-weight: 300;
+    font-size: var(--typography__global__copyright__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__copyright__letter-spacing);
+    // margin-right: calc(-1 * var(--typography__global__small__letter-spacing));
+    // text-indent: 0;
+
+    text-decoration: none;
+    text-align: right;
+    hyphens: none;
+
+    &:not(:last-child) {
+        margin-bottom: var(--typography__global__copyright__margin-bottom);
+    }
+}
+
+%text__link--table-of-contents {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__base__font-size);
+
+    color: var(--color__global__text);
+    letter-spacing: var(--typography__global__base__letter-spacing);
+
+    text-decoration: none;
+    text-align: left;
+    hyphens: none;
+
+    &:not(:last-child) {
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,141 @@
+/* stylelint-disable scss/percent-placeholder-pattern */
+/* stylelint-disable custom-property-empty-line-before */
+/* stylelint-disable scss/dollar-variable-pattern */
+@use '../../mixins' as mixin;
+@use '../../../vendors/bootstrap' as bs;
+
+@use '../base' as *;
+
+// * --- TITLE
+// * ---------
+%text__title {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__title__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__title__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__title__letter-spacing));
+
+    text-align: center;
+    text-transform: uppercase;
+
+    margin-bottom: var(--typography__global__title__margin-bottom);
+    max-width: 15em;
+}
+
+%text__title--hero {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__hero__main-text__font-size);
+
+    color: var(--color__global__text--solid);
+
+    letter-spacing: 0;
+    margin-right: 0;
+
+    text-align: center;
+    text-wrap-mode: nowrap;
+    text-transform: uppercase;
+
+    margin-bottom: 0;
+    max-width: unset;
+}
+
+%text__title--hero__main-text {
+    @extend %text__base;
+
+    font-weight: inherit;
+    font-size: inherit;
+
+    color: inherit;
+
+    letter-spacing: var(--typography__global__hero__main-text__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__hero__main-text__letter-spacing));
+
+    text-align: inherit;
+    text-wrap-mode: inherit;
+    text-transform: inherit;
+
+    margin-bottom: 0;
+    max-width: unset;
+}
+
+%text__title--hero__subtext {
+    @extend %text__base;
+
+    font-weight: inherit;
+    font-size: var(--typography__global__hero__subtext__font-size);
+
+    color: var(--color__global__text--solid);
+
+    letter-spacing: var(--typography__global__hero__subtext__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__hero__subtext__letter-spacing));
+
+    text-align: inherit;
+    text-wrap-style: balance;
+    text-transform: inherit;
+
+    margin-bottom: 0;
+    max-width: unset;
+}
+
+%text__title--privacy {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__title__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__title__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__title__letter-spacing));
+
+    text-align: center;
+    text-transform: uppercase;
+    text-wrap-style: balance;
+
+    margin-bottom: var(--typography__global__title__margin-bottom);
+    max-width: 28em;
+}
+
+%text__title--cookie-policy {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__title__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__title__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__title__letter-spacing));
+
+    text-align: center;
+    text-transform: uppercase;
+    text-wrap-style: balance;
+
+    margin-bottom: var(--typography__global__title__margin-bottom);
+    max-width: 22em;
+}
+
+%text__title--footer {
+    @extend %text__base;
+
+    font-weight: 500;
+    font-size: var(--typography__global__base__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__base__letter-spacing);
+    margin-right: 0;
+
+    text-align: left;
+    text-transform: none;
+    text-wrap-mode: nowrap;
+
+    margin-bottom: var(--typography__global__base__margin-bottom);
+    max-width: unset;
+}

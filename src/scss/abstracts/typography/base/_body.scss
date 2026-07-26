@@ -1,0 +1,23 @@
+/* stylelint-disable scss/percent-placeholder-pattern */
+/* stylelint-disable custom-property-empty-line-before */
+/* stylelint-disable scss/dollar-variable-pattern */
+@use '../../mixins' as mixin;
+@use '../../../vendors/bootstrap' as bs;
+
+@use './base' as *;
+
+// * --- BODY
+// * --------
+%text__body {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__base__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__base__letter-spacing);
+
+    text-align: left;
+    hyphens: none;
+}

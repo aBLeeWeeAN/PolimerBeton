@@ -1,0 +1,612 @@
+/* stylelint-disable custom-property-empty-line-before */
+@use '../abstracts/mixins' as mixin;
+@use '../abstracts/typography' as *;
+@use '../abstracts/z_index' as *;
+
+@use '../vendors/bootstrap' as bs;
+
+.my-custom-feedback-form {
+    --my-feedback-form__field__outer-padding: 3px;
+    --my-feedback-form__field__squircle-smooth: 0.6;
+    --my-feedback-form__field__radius-value: #{mixin.fluid(1.2 * 14px, 1.2 * 20px)};
+
+    --my-feedback-form__field__outer-element__radius: var(--my-feedback-form__field__radius-value);
+    --my-feedback-form__field__outer-element__radius--squircle: var(
+        --my-feedback-form__field__radius-value
+    );
+
+    --my-feedback-form__inner-element__radius: calc(
+        var(--my-feedback-form__field__outer-element__radius) - var(
+                --my-feedback-form__field__outer-padding
+            )
+    );
+    --my-feedback-form__inner-element__radius--squircle: var(
+        --my-feedback-form__field__outer-element__radius--squircle
+    );
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: stretch;
+
+        // row-gap: 24px;
+        // row-gap: 1.2em;
+        // row-gap: 1.333em;
+        row-gap: var(--typography__global__base__form__margin-bottom);
+
+        // font-size: inherit;
+    }
+
+    &__field-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        // row-gap: 8px;
+        // row-gap: 0.4em;
+        // row-gap: 0.444em;
+        // row-gap: 0.555em;
+
+        // font-size: inherit;
+    }
+
+    &__text-field {
+        @include mixin.transition-all(background-color);
+        will-change: background-color;
+
+        display: flex;
+        flex-direction: row;
+
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        height: 100%;
+
+        padding: var(--my-feedback-form__field__outer-padding);
+        background-color: var(--color__global__primary);
+
+        border: none;
+        border-radius: var(--my-feedback-form__field__outer-element__radius);
+
+        .houdini-squircle-ready & {
+            border-radius: 0;
+
+            --squircle-smooth: var(--my-feedback-form__field__squircle-smooth);
+            --squircle-radius: var(--my-feedback-form__field__outer-element__radius--squircle);
+
+            /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+            mask-image: paint(squircle);
+        }
+
+        &:focus {
+            background-color: var(--color__global__primary--focus);
+        }
+
+        @include mixin.hover {
+            background-color: var(--color__global__primary--hover);
+        }
+
+        @include mixin.active {
+            background-color: var(--color__global__primary--active);
+        }
+
+        &:has(:disabled),
+        &:has([disabled]) {
+            background-color: var(--color__global__primary--disabled);
+            cursor: not-allowed;
+        }
+
+        // &--error {
+        //     background-color: var(--color__global__error);
+
+        //     &:focus {
+        //         background-color: var(--color__global__error--focus);
+        //     }
+
+        //     &:hover {
+        //         background-color: var(--color__global__error--hover);
+        //     }
+
+        //     &:active {
+        //         background-color: var(--color__global__error--active);
+        //     }
+
+        //     &:has(:disabled),
+        //     &:has([disabled]) {
+        //         background-color: var(--color__global__error--disabled);
+        //         cursor: not-allowed;
+        //     }
+
+        // }
+
+        // @include bs.media-breakpoint-down(xxl) {
+        //     padding: 0.222rem;
+        // }
+
+        // @include bs.media-breakpoint-down(lg) {
+        //     padding: 0.1875rem;
+
+        //     border-radius: 1.05rem;
+
+        //     --squircle-smooth: 0.78;
+        //     --squircle-radius: 0.625rem;
+
+        //     mask-image: paint(squircle);
+        // }
+
+        // @include bs.media-breakpoint-down(md) {
+        //     padding: 0.2rem;
+
+        //     border-radius: 0.95rem;
+
+        //     --squircle-smooth: 0.78;
+        //     --squircle-radius: 0.37rem;
+
+        //     mask-image: paint(squircle);
+        // }
+
+        // @include bs.media-breakpoint-down(sm) {
+        //     padding: 0.16rem;
+
+        //     border-radius: 1.15rem;
+        //     // border-radius: 0;
+
+        //     --squircle-smooth: 0;
+        //     --squircle-radius: 0;
+
+        //     mask-image: none;
+        // }
+    }
+
+    &__checkbox-field {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        // column-gap: 16px;
+        // column-gap: 0.875em;
+
+        // font-size: inherit;
+        // font-size: clamp(12px, 0.0037 * 100vw + 10.8148px, 16px);
+
+        // @include bs.media-breakpoint-down(xs) {
+        //     column-gap: 0.583em;
+        // }
+    }
+
+    &__checkbox-input-wrapper {
+        flex: 0 0 auto;
+        position: relative;
+
+        aspect-ratio: 1 / 1;
+
+        // height: 40px;
+        height: clamp(36px, 0.0037 * 100vw + 34.8148px, 40px);
+
+        // font-size: inherit;
+        // height: 2.25em;
+
+        background-color: var(--color__feedback-form__field-background);
+
+        border: 3px solid var(--color__global__primary);
+        border-radius: 50%;
+
+        &:has([type='checkbox']:checked) {
+            background-color: var(--color__global__primary);
+        }
+
+        &:has([type='checkbox']:disabled),
+        &:has([type='checkbox'][disabled]) {
+            background-color: var(--color__feedback-form__field-background--disabled);
+            border-color: var(--color__global__primary--disabled);
+        }
+    }
+
+    &__checkbox-svg {
+        will-change: transform, opacity;
+
+        z-index: z('default');
+        position: absolute;
+
+        aspect-ratio: 1 / 1;
+        width: 87%;
+
+        color: var(--color__global__text--alt--solid);
+
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -45%) scale(0.2) rotate(-30deg);
+        opacity: 0;
+
+        transition:
+            transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1),
+            opacity 300ms ease-in-out;
+
+        .my-custom-feedback-form__checkbox-field:has([type='checkbox']:checked) & {
+            transform: translate(-50%, -45%) scale(1) rotate(0deg);
+            opacity: 1;
+        }
+
+        // .my-custom-feedback-form__checkbox-field:has(:disabled) &,
+        // .my-custom-feedback-form__checkbox-field:has([disabled]) & {
+        //     pointer-events: none;
+        // }
+    }
+
+    // &__checkbox-bg {
+    //     will-change: background-color;
+
+    //     z-index: z('background');
+    //     position: absolute;
+    //     inset: -1px;
+
+    //     background-color: var(--color__feedback-form__field-background);
+
+    //     border: 0;
+    //     border-radius: 50%;
+
+    //     transition: background-color 100ms ease-in-out;
+    // }
+
+    &__checkbox-label {
+        @extend %text__form__checkbox-label;
+
+        flex: 0 1 0;
+        min-width: 36.4em;
+
+        // font-family: 'Montserrat', sans-serif;
+        // font-optical-sizing: auto;
+        // font-style: normal;
+        // font-weight: 600;
+        // font-size: inherit;
+
+        // letter-spacing: 0.035em;
+        // text-indent: 0.035em;
+
+        // text-align: center;
+        // text-wrap-mode: wrap;
+        // text-wrap-style: pretty;
+
+        // color: var(--color__global__text);
+
+        cursor: pointer;
+
+        .my-custom-feedback-form__checkbox-field:has(:disabled) &,
+        .my-custom-feedback-form__checkbox-field:has([disabled]) & {
+            color: var(--color__global__text--disabled);
+            cursor: not-allowed;
+        }
+
+        @include bs.media-breakpoint-down(xxl) {
+            // max-width: 360px;
+            min-width: 20em;
+        }
+
+        @include bs.media-breakpoint-down(xl) {
+            // max-width: 300px;
+            // min-width: 36.4em;
+        }
+
+        @include bs.media-breakpoint-down(lg) {
+            // max-width: 280px;
+            // min-width: 36.4em;
+        }
+
+        @include bs.media-breakpoint-down(md) {
+            // max-width: 100%;
+            min-width: 36.4em;
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            // flex: 1 1 0;
+
+            // max-width: 40em;
+            min-width: 20em;
+        }
+
+        @include bs.media-breakpoint-down(xs) {
+            flex: 1 1 0;
+
+            max-width: 20em;
+            min-width: 0;
+            // min-width: 17em;
+            // min-width: 15em;
+        }
+    }
+
+    &__checkbox-link {
+        @extend %text__form__checkbox-label__link;
+
+        // color: var(--color__global__text--primary);
+        // text-decoration: none;
+
+        &:focus {
+            color: var(--color__global__text--primary--focus);
+            // text-decoration: none;
+        }
+
+        @include mixin.hover {
+            color: var(--color__global__text--primary--hover);
+            text-decoration: underline;
+        }
+
+        @include mixin.active {
+            color: var(--color__global__text--primary--active);
+            text-decoration: underline;
+        }
+
+        .my-custom-feedback-form__checkbox-field:has(:disabled) &,
+        .my-custom-feedback-form__checkbox-field:has([disabled]) & {
+            color: var(--color__global__text--primary--disabled);
+            // text-decoration: none;
+
+            // ! dont work with pointer-events: none
+            // cursor: not-allowed;
+
+            pointer-events: none;
+        }
+    }
+
+    &__input-element {
+        @extend %text__form__input;
+        @include mixin.transition-all(background-color);
+
+        will-change: background-color;
+
+        text-box: normal;
+
+        caret-color: var(--color__global__text--primary--solid);
+        caret-animation: auto;
+        caret-shape: bar;
+
+        &[type='text'],
+        &[type='tel'] {
+            flex-grow: 1;
+            display: flex;
+
+            align-items: baseline;
+            justify-content: flex-start;
+
+            width: 100%;
+
+            // height: 3.555em;
+            // padding: 0 1.25em;
+            padding: 1.025em 1.25em;
+
+            border: none;
+            border-radius: var(--my-feedback-form__inner-element__radius);
+
+            .houdini-squircle-ready & {
+                border-radius: 0;
+
+                --squircle-smooth: var(--my-feedback-form__field__squircle-smooth);
+                --squircle-radius: var(--my-feedback-form__inner-element__radius--squircle);
+
+                /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+                mask-image: paint(squircle);
+                // -webkit-mask-image: paint(squircle);
+            }
+
+            background-color: var(--color__feedback-form__field-background);
+            // color: var(--color__global__text);
+
+            // font-family: 'Montserrat', sans-serif;
+            // font-optical-sizing: auto;
+            // font-style: normal;
+            // font-weight: 600;
+            // font-size: inherit;
+
+            // prettier-ignore
+            // font-size: 16PX;
+
+            // line-height: 1.5em;
+
+            // letter-spacing: 0.14em;
+            // letter-spacing: 0.1em;
+
+            &::placeholder {
+                color: var(--color__global__text--hint);
+            }
+
+            &:disabled,
+            &[disabled] {
+                background-color: var(--color__feedback-form__field-background--disabled);
+                color: var(--color__global__text--disabled);
+
+                cursor: not-allowed;
+
+                &::placeholder {
+                    color: var(--color__global__text--disabled);
+                }
+            }
+
+            // @include bs.media-breakpoint-down(lg) {
+            //     padding: 0.625rem 0.875rem;
+
+            //     // border-radius: 0.625rem;
+            //     border-radius: 0.85rem;
+
+            //     --squircle-smooth: 0.78;
+            //     --squircle-radius: 0.625rem;
+
+            //     mask-image: paint(squircle);
+            //     mask-image: none;
+            // }
+
+            // @include bs.media-breakpoint-down(md) {
+            //     padding: 0.525rem 0.575rem;
+
+            //     // border-radius: 0.15rem;
+            //     border-radius: 0.75rem;
+
+            //     --squircle-smooth: 0.78;
+            //     --squircle-radius: 0.15rem;
+
+            //     mask-image: paint(squircle);
+            // }
+
+            // @include bs.media-breakpoint-down(sm) {
+            //     font-size: 1rem;
+
+            //     padding: 0.9rem 1rem;
+
+            //     border-radius: 1.025rem;
+            //     // border-radius: 0;
+
+            //     --squircle-smooth: 0;
+            //     --squircle-radius: 0;
+
+            //     mask-image: none;
+            // }
+        }
+
+        &[type='checkbox'] {
+            will-change: background-color, border-color;
+
+            z-index: z('higher');
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            background-color: transparent;
+
+            appearance: none;
+            cursor: pointer;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+            @include mixin.transition-all(background-color, border-color);
+
+            &:disabled,
+            &[disabled] {
+                cursor: not-allowed;
+            }
+        }
+
+        // &[type='checkbox']:checked ~ .my-custom-feedback-form__checkbox-svg {
+        //     opacity: 1;
+        //     transform: translate(-50%, -45%) scale(1) rotate(0deg);
+        // }
+
+        // &[type='checkbox']:checked ~ .my-custom-feedback-form__checkbox-bg {
+        //     background-color: var(--color__global__primary);
+        // }
+    }
+
+    &__submit-button {
+        @extend %text__form__submit-button;
+        @include mixin.transition-all(background-color, color, transform);
+
+        will-change: background-color, color, transform;
+
+        width: 100%;
+
+        // height: 70px;
+        // height: 3.5em;
+
+        // height: 3.888em;
+        padding: 1.025em 0;
+
+        // padding: 0 18px;
+        // padding: 1em;
+
+        border: none;
+        border-radius: var(--my-feedback-form__field__outer-element__radius);
+
+        // border-radius: 96px;
+        // corner-shape: squircle;
+
+        .houdini-squircle-ready & {
+            border-radius: 0;
+
+            --squircle-smooth: var(--my-feedback-form__field__squircle-smooth);
+            --squircle-radius: var(--my-feedback-form__field__outer-element__radius--squircle);
+
+            /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+            mask-image: paint(squircle);
+        }
+
+        background-color: var(--color__global__primary);
+
+        // margin-top: 1.333em;
+        margin-top: var(--typography__global__base__form__margin-bottom);
+
+        &:focus {
+            background-color: var(--color__global__primary--focus);
+            color: var(--color__global__text--alt--focus);
+        }
+
+        @include mixin.hover {
+            background-color: var(--color__global__primary--hover);
+            color: var(--color__global__text--alt--hover);
+
+            transform: scale(1.025);
+        }
+
+        @include mixin.active {
+            background-color: var(--color__global__primary--active);
+            color: var(--color__global__text--alt--active);
+
+            transform: scale(0.975);
+        }
+
+        &:disabled,
+        &[disabled] {
+            background-color: var(--color__global__primary--disabled);
+            color: var(--color__global__text--alt--disabled);
+
+            transform: none;
+            cursor: not-allowed;
+        }
+
+        // @include bs.media-breakpoint-down(xs) {
+        //     margin-top: 1em;
+        // }
+    }
+
+    &__error-wrapper {
+        @extend %text__form__error-message;
+
+        display: flex;
+        flex-wrap: nowrap;
+
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        column-gap: 10px;
+        padding: 0 18px;
+
+        width: 100%;
+        height: auto;
+
+        // color: var(--color__global__text--error);
+
+        .my-form__field-wrapper:has(:disabled) &,
+        .my-form__field-wrapper:has([disabled]) & {
+            color: var(--color__global__text--error--disabled);
+        }
+    }
+
+    &__error-svg {
+        flex: 0 0 auto;
+
+        aspect-ratio: 1 / 1;
+
+        // width: 28px;
+        width: 1.75em;
+    }
+
+    &__error-text {
+        flex: 1 1 0;
+    }
+}

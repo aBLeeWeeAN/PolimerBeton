@@ -1,0 +1,19 @@
+@use '../vendors/bootstrap' as bs;
+
+.my-wrapper {
+    // min-width: 304px;
+
+    width: 100%;
+    height: auto;
+
+    // z-index: 100;
+
+    @include bs.media-breakpoint-down(sm) {
+        // padding: 0 16px;
+        // padding: 0 1.6em;
+        padding: 0 var(--layout__wrapper__padding--horizontal);
+    }
+
+    // visibility: hidden;
+    // pointer-events: none;
+}

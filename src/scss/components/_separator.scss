@@ -1,0 +1,46 @@
+@use '../abstracts/mixins' as mixin;
+@use '../vendors/bootstrap' as bs;
+
+.my-separator {
+    @include mixin.transition-all(background-color);
+
+    will-change: background-color;
+    display: block;
+
+    height: 1px;
+    width: 100%;
+
+    border-top: 1px solid var(--color__global__text);
+    border-radius: 0;
+
+    opacity: 0.38;
+    pointer-events: none;
+
+    &--vertical {
+        height: 40px;
+        width: 0;
+
+        border-top: none;
+        border-left: 1px solid var(--color__global__text);
+
+        margin: 0 20px;
+
+        @include bs.media-breakpoint-down(xl) {
+            margin: 0 14px;
+        }
+    }
+
+    &--vertical-small {
+        height: 32px;
+        width: 0;
+
+        border-top: none;
+        border-left: 1px solid var(--color__global__text);
+
+        margin: 0 12px;
+
+        @include bs.media-breakpoint-down(lg) {
+            margin: 0 10px;
+        }
+    }
+}

@@ -1,0 +1,108 @@
+@use '../../abstracts/z_index' as *;
+@use '../../vendors/bootstrap' as bs;
+
+@keyframes parallax-move {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(800px);
+    }
+}
+
+.my-hero {
+    overflow: clip;
+    z-index: z('my_hero');
+
+    position: relative;
+    display: flex;
+
+    min-height: 100vh;
+
+    @supports (min-height: 100dvh) {
+        min-height: 100dvh;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+
+        row-gap: 120px;
+
+        justify-content: center;
+
+        @include bs.media-breakpoint-down(sm) {
+            row-gap: 60px;
+        }
+    }
+
+    view-timeline-name: --hero-section;
+
+    &__bg-wrapper {
+        will-change: transform;
+
+        z-index: z('background');
+        position: absolute;
+
+        inset: -50px;
+        top: -800px;
+
+        pointer-events: none;
+        animation: parallax-move linear;
+
+        // animation-timeline: scroll(root block);
+        animation-timeline: --hero-section;
+
+        &::after {
+            content: '';
+
+            will-change: opacity, background-color, box-shadow;
+
+            z-index: z('background');
+            position: absolute;
+            inset: 0;
+
+            opacity: 0.2;
+            mix-blend-mode: multiply;
+
+            background-color: var(--color__hero__background-image-overlay);
+            background-color: #616161;
+
+            transition:
+                background-color 0.5s ease-out,
+                opacity 0.5s ease-out;
+
+            // * work
+            [data-bs-theme='dark'] & {
+                opacity: 0.8;
+                mix-blend-mode: multiply;
+            }
+
+            pointer-events: none;
+
+            // ! don't work
+            // @include bs.color-mode(dark) {
+            //     opacity: 1;
+            // }
+        }
+    }
+
+    &__bg-picture {
+        z-index: z('background');
+        position: absolute;
+        inset: 0;
+    }
+
+    &__bg-img {
+        // will-change: filter;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: 50% 25%;
+
+        filter: blur(20px);
+    }
+}

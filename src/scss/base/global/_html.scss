@@ -1,0 +1,41 @@
+@use '../../abstracts/typography' as *;
+@use '../../vendors/bootstrap' as bs;
+
+html {
+    @extend %text__base;
+
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+
+    scrollbar-color: var(--color__page__scrollbar-background) var(--color__page__background);
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+
+    margin: 0 auto;
+
+    width: 100%;
+    height: auto;
+
+    // min-width: 320px;
+    min-height: 100vh;
+
+    // * get user browser font-size | default - 16px
+    font-size: 100%;
+
+    // // prettier-ignore
+    // font-size: 16PX;
+
+    // ! гавно подход | непрозрачен | сложно делать адаптив
+    // font-size: 125%; // * default | page base font - 20px
+
+    // @include bs.media-breakpoint-down(xl) {
+    //     font-size: 112.5%; // * page base font - 18px
+    // }
+
+    // @include bs.media-breakpoint-down(md) {
+    //     font-size: 100%; // * page base font - 16px
+    // }
+
+    // * allows smooth transitions to/from intrinsic sizing keywords like 'auto'
+    interpolate-size: allow-keywords;
+}

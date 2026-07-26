@@ -1,0 +1,110 @@
+<footer id="footer" class="my-footer">
+    <div class="my-footer__decorative-square my-footer__decorative-square--left" aria-hidden="true"></div>
+    <div class="my-footer__decorative-square my-footer__decorative-square--right" aria-hidden="true"></div>
+
+    <div class="container my-wrapper my-footer__content">
+        <!-- row  -->
+        <div class="my-footer__information-container">
+            <!-- col-12 col-sm-7 col-xl-6 -->
+            <div class="my-footer__sitemap-container">
+                <a class="my-logo my-logo--footer" href="/" aria-label="polimerbeton-vrn.ru — на главную">
+                    <svg class="my-logo__svg" width="134" height="134" aria-hidden="true">
+                        <use href="@icons/logo/logo.svg"></use>
+                    </svg>
+                    <div class="my-logo__company-name-and-motto-container">
+                        <span class="my-logo__company-name">ПОЛИМЕРБЕТОН</span>
+                        <span class="my-logo__motto">быстро и надёжно!</span>
+                    </div>
+                </a>
+
+                <div class="d-none d-md-block">
+                    <h2 class="my-title my-title--footer">polimerbeton-vrn.ru</h2>
+
+                    <ul class="my-nav-menu my-nav-menu--footer" aria-label="Меню ссылок на другие страницы сайта" role="list">
+                        <li class="my-nav-menu__item">
+                            <a class="my-nav-menu__link" href="@page/privacy.html" target="_self">Политика конфиденциальности</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- col-12 col-sm-4 col-xxl-3  -->
+            <nav class="d-flex d-md-block flex-column align-items-center" aria-label="Меню разделов страницы в подвале">
+                <h2 class="my-title my-title--footer">Навигация</h2>
+
+                <ul class="my-nav-menu my-nav-menu--footer" role="list">
+                    <li class="my-nav-menu__item">
+                        <a class="my-nav-menu__link" href="#hero">Главная</a>
+                    </li>
+                    <li class="my-nav-menu__item">
+                        <a class="my-nav-menu__link" href="#description">Описание</a>
+                    </li>
+                    <li class="my-nav-menu__item">
+                        <a class="my-nav-menu__link" href="#usage">Применение</a>
+                    </li>
+                    <li class="my-nav-menu__item">
+                        <a class="my-nav-menu__link" href="#examples">Примеры использования</a>
+                    </li>
+                    <li class="my-nav-menu__item">
+                        <a class="my-nav-menu__link" href="#advantages">Преимущества</a>
+                    </li>
+                    <li class="my-nav-menu__item">
+                        <a class="my-nav-menu__link" href="#legal">Сертификация</a>
+                    </li>
+                    <li class="my-nav-menu__item">
+                        <a class="my-nav-menu__link" href="#pricing">Цены</a>
+                    </li>
+                    <li class="my-nav-menu__item">
+                        <a class="my-nav-menu__link" href="#feedback-form">Оставить заявку</a>
+                    </li>
+                    <li class="my-nav-menu__item">
+                        <a class="my-nav-menu__link" href="#contact">Наши контакты</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- col-12 -->
+            <div class="d-flex d-md-none flex-column align-items-center my-footer__sitemap-container">
+                <h2 class="my-title my-title--footer">polimerbeton-vrn.ru</h2>
+
+                <ul class="my-nav-menu my-nav-menu--footer" aria-label="Меню ссылок на другие страницы сайта" role="list">
+                    <li class="my-nav-menu__item">
+                        <a class="my-nav-menu__link" href="@page/privacy.html" target="_self">Политика конфиденциальности</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="col-12 my-separator" aria-hidden="true" />
+
+        <div class="my-footer__copyright-container">
+            <small class="my-footer__copyright-owner-text">
+                <span>&copy;</span>
+                <span class="d-none d-sm-inline">Copyright</span>
+
+                {% if IS_DJANGO_BUILD %}
+                    2024-{% raw %}{% now "Y" %}{% endraw %}
+                {% else %}
+                    <span>
+                        <script>
+                            document.currentScript.parentElement.textContent = `2024-${new Date().getFullYear()}`
+                        </script>
+                    </span>
+                {% endif %}
+                <span>Сергей Никулин.</span>
+
+                <br class="d-block d-sm-none" />
+
+                <span class="d-none d-sm-inline">&#x20;</span>
+                <span>Все права защищены.</span>
+            </small>
+
+            <small class="my-footer__copyright-developer-text">
+                <span>Built with love by</span>
+                <a class="my-link my-link--copyright" href="https://github.com/aLeeTheY" target="_blank" rel="noopener noreferrer">
+                    aLeeTheY
+                </a>
+            </small>
+        </div>
+    </div>
+</footer>

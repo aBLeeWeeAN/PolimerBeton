@@ -1,0 +1,10 @@
+{
+    '*.{js,mjs,cjs,ts,mts,cts}':
+        [
+            'eslint --no-error-on-unmatched-pattern --no-warn-ignored --max-warnings=0 --fix',
+            'prettier --write',
+        ],
+    '*.scss': ['stylelint --allow-empty-input --max-warnings=0 --fix', 'prettier --write'],
+    '*.md': ['prettier --write', 'npx tsx cli/transform-md.ts encode'],
+    '!(*.{js,mjs,cjs,ts,mts,cts}|*.scss|*.md)': 'prettier --ignore-unknown --write',
+}

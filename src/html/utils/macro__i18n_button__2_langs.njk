@@ -1,0 +1,14 @@
+{% macro i18n_button__2_langs(current_locale, default_locale, alternate_locale, site_url, class, button_text) %}
+    {# Убираем слэш в конце, чтобы избежать дубликатов типа // #}
+    {% set clean_site_url = site_url | trim('/') %}
+
+    {%- if current_locale == default_locale -%}
+        {# Дэфолтный вариант, корень домена #}
+        {% set final_url = clean_site_url + '/' + (alternate_locale | lower) + '/' %}
+    {%- else -%}
+        {# Если встретили какой-либо язык, прибавить его в site_url #}
+        {% set final_url = clean_site_url + '/' %}
+    {%- endif -%}
+
+    <a href="{{ final_url }}" class="{{ class }}">{{ button_text }}</a>
+{% endmacro %}

@@ -1,0 +1,6 @@
+// TODO: кастыль, заменить placeholder'ом
+@use '../form-success' as *;
+
+#Error {
+    @extend #Success;
+}

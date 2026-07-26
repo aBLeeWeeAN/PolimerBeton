@@ -1,0 +1,76 @@
+/* stylelint-disable scss/percent-placeholder-pattern */
+/* stylelint-disable custom-property-empty-line-before */
+/* stylelint-disable scss/dollar-variable-pattern */
+@use '../../mixins' as mixin;
+@use '../../../vendors/bootstrap' as bs;
+
+@use '../base' as *;
+
+// * --- NAVIGATION (MENU) UNORDERED LIST
+// * ------------------------------------
+%list--navigation-menu {
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+%list--navigation-menu__text--in-header {
+    @extend %text__base;
+
+    display: inline-flex;
+    align-items: center;
+
+    font-weight: 500;
+    font-size: var(--typography__global__small__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__small__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__small__letter-spacing));
+
+    text-align: center;
+    text-decoration: none;
+
+    @include bs.media-breakpoint-down(md) {
+        font-size: var(--typography__global__base__font-size);
+
+        letter-spacing: var(--typography__global__base__letter-spacing);
+        margin-right: calc(-1 * var(--typography__global__base__letter-spacing));
+    }
+}
+
+%list--navigation-menu__text--in-footer {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__small__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__small__letter-spacing);
+
+    text-align: left;
+    text-decoration: none;
+    text-wrap-mode: nowrap;
+
+    &:not(:last-child) {
+        margin-bottom: var(--typography__global__small__margin-bottom);
+    }
+
+    @include bs.media-breakpoint-down(md) {
+        // margin-right: calc(-1 * var(--typography__global__small__letter-spacing));
+        text-align: center;
+    }
+
+    @include bs.media-breakpoint-down(md) {
+        font-size: var(--typography__global__base__font-size);
+
+        letter-spacing: var(--typography__global__base__letter-spacing);
+        margin-right: calc(-1 * var(--typography__global__base__letter-spacing));
+    }
+
+    @include bs.media-breakpoint-down(xs) {
+        text-wrap-mode: wrap;
+    }
+}

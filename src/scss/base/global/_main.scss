@@ -1,0 +1,11 @@
+@use '../../abstracts/z_index' as *;
+
+main {
+    z-index: z('main');
+    position: relative;
+
+    background-color: var(--color__page__background);
+
+    overflow-x: clip;
+    // margin-bottom: 664px; // footer height
+}

@@ -1,0 +1,16 @@
+{
+    "html.validate.scripts": false,
+    "html.suggest.html5": true,
+    "files.associations": {
+        "*.nj": "html",
+        "*.njk": "html",
+        "*.nunjucks": "html",
+        "*.html": "html"
+    },
+    "emmet.includeLanguages": {
+        "nj": "html",
+        "njk": "html",
+        "nunjucks": "html",
+        "html": "html"
+    }
+}

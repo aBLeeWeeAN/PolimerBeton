@@ -1,0 +1,170 @@
+/* stylelint-disable scss/percent-placeholder-pattern */
+/* stylelint-disable custom-property-empty-line-before */
+/* stylelint-disable scss/dollar-variable-pattern */
+@use '../../mixins' as mixin;
+@use '../../../vendors/bootstrap' as bs;
+
+// ! --- IMPORTANT
+// ! -------------
+// * --- ОСНОВНЫЕ GAP | GUTTER | SPACING | LINE HEIGHT
+// * -------------------------------------------------
+
+// * line height = 1.6em
+// * 425px: (14px * 1.6) = 28px
+// * 1400px: (20px * 1.6) = 32px
+
+// * spacing (vertical / horizontal gaps) = line height / 2
+// * 425px: (28px / 2) = 14px
+// * 1400px: (32px / 2) = 16px
+
+// * --- ОСНОВНЫЕ ШКАЛЫ ТИПОГРАФИКИ
+// * ------------------------------
+
+// * 425px: коэффициент 1.2
+// * 1400px: коэффициент 1.333
+
+// ! --- TYPOGRAPHY VARIABLES
+// ! ------------------------
+:root {
+    // * --- TITLE
+    // * ---------
+    // ! шкала 14*1.2^2 ... 20*1.333^2
+    --typography__global__title__font-size: #{mixin.fluid(20px, 36px)};
+    --typography__global__title__margin-bottom: calc(
+        1 * var(--typography__global__title__font-size)
+    ); // ? задано не в em, т.к. нужны именно пиксели без связи с font-size
+
+    // --typography__global__title__letter-spacing: 0.18em;
+    --typography__global__title__letter-spacing: #{mixin.fluid(0.08 * 20px, 0.15 * 36px)};
+
+    // * --- SUB TITLE
+    // * -------------
+    // ! шкала 14*1.2^1 ... 20*1.333^1
+    --typography__global__subtitle__font-size: #{mixin.fluid(16px, 26px)};
+    --typography__global__subtitle__margin-bottom: calc(
+        1 * var(--typography__global__subtitle__font-size)
+    ); // ? задано не в em, т.к. нужны именно пиксели без связи с font-size
+    --typography__global__subtitle__letter-spacing: #{mixin.fluid(0.07 * 16px, 0.11 * 26px)};
+
+    // * --- SUB SUB TITLE
+    // * -----------------
+    // ! шкала 14*1.2^0 ... 20*1.333^0
+    --typography__global__subsubtitle__font-size: #{mixin.fluid(14px, 20px)};
+    --typography__global__subsubtitle__margin-bottom: calc(
+        1 * var(--typography__global__subsubtitle__font-size)
+    ); // ? задано не в em, т.к. нужны именно пиксели без связи с font-size
+    --typography__global__subsubtitle__letter-spacing: #{mixin.fluid(0.06 * 14px, 0.08 * 20px)};
+
+    // * --- STRONG
+    // * ----------
+    // ! шкала 14/1.2^0 ... 20/1.333^0 | base font size
+    --typography__global__strong__font-size: #{mixin.fluid(14px, 20px)};
+    --typography__global__strong__margin-bottom: calc(
+        0.8 * var(--typography__global__strong__font-size)
+    ); // ? задано не в em, т.к. нужны именно пиксели без связи с font-size
+    --typography__global__strong__letter-spacing: #{mixin.fluid(0.06 * 14px, 0.08 * 20px)};
+
+    // * --- BASE
+    // * --------
+    // ! шкала 14/1.2^0 ... 20/1.333^0 | base font size
+    --typography__global__base__font-size: #{mixin.fluid(14px, 20px)};
+    --typography__global__base__margin-bottom: calc(
+        0.8 * var(--typography__global__base__font-size)
+    ); // ? задано не в em, т.к. нужны именно пиксели без связи с font-size
+
+    // ! шкала 14/1.2^30 ... 20/1.333^19
+    --typography__global__base__letter-spacing: #{mixin.fluid(0.06 * 14px, 0.08 * 20px)};
+
+    // * --- BASE TO SMALL | FLUID
+    // * -------------------------
+    // ! шкала 14/1.2^1 ... 20/1.333^1
+    --typography__global__base_to_small__font-size: #{mixin.fluid(11px, 20px)};
+    --typography__global__base_to_small__margin-bottom: calc(
+        0.8 * var(--typography__global__base_to_small__font-size)
+    ); // ? задано не в em, т.к. нужны именно пиксели без связи с font-size
+
+    // ! шкала 11/1.2^34 ... 20/1.333^19
+    --typography__global__base_to_small__letter-spacing: #{mixin.fluid(0.02 * 11px, 0.08 * 20px)};
+
+    // * --- SMALL
+    // * ---------
+    // ! шкала 14/1.2^1 ... 20/1.333^1
+    --typography__global__small__font-size: #{mixin.fluid(11px, 15px)};
+    --typography__global__small__margin-bottom: calc(
+        0.8 * var(--typography__global__small__font-size)
+    ); // ? задано не в em, т.к. нужны именно пиксели без связи с font-size
+
+    // ! шкала 11/1.2^34 ... 15/1.333^20
+    --typography__global__small__letter-spacing: #{mixin.fluid(0.02 * 11px, 0.05 * 15px)};
+
+    // * --- FORM
+    // * --------
+    // ! шкала 14*0.87 ... 20*0.87 | 87% of base
+    --typography__global__base__form__font-size: #{mixin.fluid(12px, 17px)};
+    --typography__global__base__form__margin-bottom: calc(
+        0.8 * var(--typography__global__small__font-size)
+    ); // ? задано не в em, т.к. нужны именно пиксели без связи с font-size
+    --typography__global__base__form__letter-spacing: #{mixin.fluid(0.05 * 12px, 0.07 * 17px)};
+
+    // * --- HERO
+    // * --------
+    // ! шкала 14*1.2^3 ... 20*1.333^5
+    --typography__global__hero__main-text__font-size: #{mixin.fluid(24px, 84px)};
+
+    // ! шкала 24/1.2^26 ... 84/1.333^20
+    --typography__global__hero__main-text__letter-spacing: #{mixin.fluid(0.21 * 24px, 0.27 * 84px)};
+
+    // ! шкала 14*1.2^0 ... 20*1.333^1
+    --typography__global__hero__subtext__font-size: #{mixin.fluid(14px, 26px)};
+
+    // ! шкала 14/1.2^22 ... 26/1.333^14
+    --typography__global__hero__subtext__letter-spacing: #{mixin.fluid(0.25 * 14px, 0.46 * 26px)};
+
+    // ! шкала 14*1.2^2 ... 20*1.333^2 | title font size
+    --typography__global__hero__slogan__font-size: var(--typography__global__title__font-size);
+
+    // ! шкала 20/1.2^26 ... 36/1.333^18
+    --typography__global__hero__slogan__letter-spacing: #{mixin.fluid(0.17 * 20px, 0.2 * 36px)};
+
+    // * --- PRICE BADGE
+    // * ---------------
+    // ! шкала 14/1.2^1 ... 20/1.333^1
+    --typography__global__price_badge__font-size: var(
+        --typography__global__base_to_small__font-size
+    );
+
+    // ! шкала 11/1.2^25 ... 20/1.333^16
+    --typography__global__price_badge__letter-spacing: #{mixin.fluid(0.12 * 11px, 0.2 * 20px)};
+
+    // * --- COPYRIGHT
+    // * -------------
+    // ! шкала 14/1.2^1 ... 20/1.333^1
+    --typography__global__copyright__font-size: var(--typography__global__small__font-size);
+    --typography__global__copyright__margin-bottom: var(--typography__global__small__margin-bottom);
+
+    // ! шкала 11/1.2^26 ... 15/1.333^17
+    --typography__global__copyright__letter-spacing: #{mixin.fluid(0.1 * 11px, 0.11 * 15px)};
+
+    // * --- OTHER
+    // * ---------
+    --typography__global__line-height: 1.6em;
+    // --typography__global__line-height: calc(1.6 * var(--typography__global__base__font-size));
+}
+
+// * --- BASE
+// * --------
+%text__base {
+    font-family: 'Montserrat', sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    // font-variant-numeric: tabular-nums;
+
+    // line-height: 1.5em;
+    line-height: var(--typography__global__line-height);
+
+    text-wrap-mode: wrap;
+    text-wrap-style: pretty;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

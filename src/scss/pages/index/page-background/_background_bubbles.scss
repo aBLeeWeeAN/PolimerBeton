@@ -1,0 +1,24 @@
+@use '../abstracts/z_index' as *;
+@use '../vendors/bootstrap' as bs;
+
+.my-background-bubbles {
+    z-index: z('decoration');
+
+    position: absolute;
+    inset: 0;
+
+    // width: 100%;
+    // height: 100%;
+
+    margin-top: 100vh;
+    @supports (margin-top: 100dvh) {
+        margin-top: 100dvh;
+    }
+
+    overflow: hidden;
+    pointer-events: none;
+
+    @include bs.media-breakpoint-down(sm) {
+        display: none;
+    }
+}

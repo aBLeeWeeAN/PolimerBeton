@@ -1,0 +1,9 @@
+@use '../../abstracts/mixins' as mixin;
+@use '../../vendors/bootstrap' as bs;
+
+// TODO: кастыль, заменить placeholder'ом
+@use '../../components' as *;
+
+.my-privacy {
+    // empty
+}

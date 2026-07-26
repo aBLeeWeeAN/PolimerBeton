@@ -1,0 +1,115 @@
+@use '../abstracts/mixins' as mixin;
+@use '../abstracts/z_index' as *;
+
+@use '../vendors/bootstrap' as bs;
+
+.my-header {
+    z-index: z('header');
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: auto;
+
+    &__fixed-part {
+        will-change: background-color, transform, box-shadow;
+
+        z-index: z('higher');
+        position: fixed;
+
+        display: flex;
+        align-items: center;
+        justify-content: stretch;
+
+        top: 0;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+        height: var(--layout__header__navigation-bar-height);
+
+        background-color: var(--color__header__navigation-bar-background);
+        box-shadow: 0 8px 10px var(--color__global__shadow);
+
+        @include mixin.transition-all(background-color, transform, box-shadow);
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+
+        &--hidden {
+            box-shadow: none;
+            transform: translateY(-100%);
+        }
+    }
+
+    &__hidden-part {
+        will-change: background-color, transform, box-shadow, opacity;
+
+        position: fixed;
+        z-index: z('lower');
+
+        top: 0;
+        left: 0;
+        right: 0;
+
+        padding-top: var(--layout__header__navigation-bar-height);
+
+        box-shadow: 0 8px 10px var(--color__global__shadow);
+
+        background-color: var(--color__header__navigation-menu-background);
+        backdrop-filter: blur(18px);
+
+        @include mixin.transition-all(background-color);
+        transition:
+            transform 350ms cubic-bezier(0.165, 0.84, 0.44, 1),
+            box-shadow 0s ease;
+        transition-duration: 350ms;
+
+        // @include bs.media-breakpoint-down(xl) {
+        //     padding-top: 80px;
+        // }
+
+        @include bs.media-breakpoint-down(md) {
+            --#{bs.$prefix}offcanvas-height: 100vh;
+            // --#{bs.$prefix}offcanvas-transition: #{transform 100ms ease-in-out};
+
+            max-height: 100vh;
+            // padding-top: 60px;
+
+            transition-duration: 700ms;
+        }
+
+        .my-offcanvas-body {
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: flex-start;
+
+            height: 100%;
+            // padding: 32px 0;
+            padding: var(--typography__global__line-height) 0;
+
+            // // prettier-ignore
+            // padding: var(--typography__global__line-height) 0 calc(var(--typography__global__line-height) + var(--layout__header__navigation-bar__control-group__height));
+
+            @include bs.media-breakpoint-down(md) {
+                // padding: 60px 0 calc(60px + 80px);
+
+                // prettier-ignore
+                padding: calc(2 * var(--typography__global__line-height)) 0 calc(2 * var(--typography__global__line-height) + var(--layout__header__navigation-bar__control-group__height));
+            }
+
+            // @include bs.media-breakpoint-down(sm) {
+            //     padding: 48px 0 calc(48px + 60px);
+            // }
+
+            // @include bs.media-breakpoint-down(xs) {
+            //     padding: 40px 0 calc(40px + 60px);
+            // }
+        }
+    }
+}

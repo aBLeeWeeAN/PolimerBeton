@@ -1,0 +1,6 @@
+# all robots can index all website
+User-agent: *
+Disallow:
+
+# website sitemap
+Sitemap: @meta__site-url/sitemap.xml

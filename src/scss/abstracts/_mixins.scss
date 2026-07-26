@@ -1,0 +1,190 @@
+/* stylelint-disable scss/dollar-variable-pattern */
+@use 'sass:math';
+@use 'sass:map';
+
+@use './variables' as var;
+@use '../vendors/bootstrap' as bs;
+
+@mixin hover {
+    @media (hover: hover) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+@mixin hover-has($selectors) {
+    @media (hover: hover) {
+        // 1. Создаём список селекторов
+        $selector-list: '&:hover';
+
+        // 2. Дополняем список селекторов
+        @each $selector in $selectors {
+            $selector-list: '#{$selector-list}, &:has(#{$selector}:hover)';
+        }
+
+        // 3. Итоговый набор селекторов и их стили
+        #{$selector-list} {
+            @content;
+        }
+    }
+}
+
+@mixin active {
+    @media (hover: hover) or (hover: none) {
+        &:active {
+            @content;
+        }
+    }
+}
+
+@mixin active-has($selectors) {
+    @media (hover: hover) or (hover: none) {
+        // 1. Создаём список селекторов
+        $selector-list: '&:active';
+
+        // 2. Дополняем список селекторов
+        @each $selector in $selectors {
+            $selector-list: '#{$selector-list}, &:has(#{$selector}:active)';
+        }
+
+        // 3. Итоговый набор селекторов и их стили
+        #{$selector-list} {
+            @content;
+        }
+    }
+}
+
+// Глобальные переменные брейкпоинтов
+$min-vw: 425px;
+$max-vw: 1400px;
+
+@function fluid($min-size, $max-size) {
+    // 0. Очищаем брейкпоинты и размеры от единиц (px), чтобы не было конфликтов
+    $min-vw_num: math.div($min-vw, $min-vw * 0 + 1);
+    $max-vw_num: math.div($max-vw, $max-vw * 0 + 1);
+    $min-size_num: math.div($min-size, $min-size * 0 + 1);
+    $max-size_num: math.div($max-size, $max-size * 0 + 1);
+
+    // 1. Вычисляем наклон линии (slope)
+    $slope: math.div($max-size_num - $min-size_num, $max-vw_num - $min-vw_num);
+
+    // 2. Вычисляем точку пересечения с осью Y
+    $y-axis-intersection: -1 * $min-vw_num * $slope + $min-size_num;
+
+    // 3. Переводим наклон в vw
+    $slope-vw: $slope * 100;
+
+    // Жестко собираем строку calc, контролируя, чтобы там были именно px и vw
+    $fluid-value: calc(#{$y-axis-intersection}px + #{$slope-vw}vw);
+
+    // ! --- УМНАЯ ПРОВЕРКА ДЛЯ CLAMP ---
+    // ! По умолчанию считаем, что min-size меньше max-size
+    $clamp-min: $min-size;
+    $clamp-max: $max-size;
+
+    // ! Если переданные значения идут на уменьшение (как в твоем трекинге)
+    // ! меняем их местами только для обертки clamp(), чтобы не ломать CSS
+    @if $min-size_num > $max-size_num {
+        $clamp-min: $max-size;
+        $clamp-max: $min-size;
+    }
+
+    @return clamp(#{$clamp-min}, #{$fluid-value}, #{$clamp-max});
+}
+
+@function fluid-with-range($min-size, $max-size, $breakpoint-start, $breakpoint-end) {
+    // -1. Вытаскиваем значения из брейкпоинтов
+    $range-start: map.get(bs.$grid-breakpoints, $breakpoint-start);
+    $range-end: map.get(bs.$grid-breakpoints, $breakpoint-end);
+
+    // 0. Очищаем брейкпоинты и размеры от единиц (px), чтобы не было конфликтов
+    $range-start_num: math.div($range-start, $range-start * 0 + 1);
+    $range-end_num: math.div($range-end, $range-end * 0 + 1);
+    $min-size_num: math.div($min-size, $min-size * 0 + 1);
+    $max-size_num: math.div($max-size, $max-size * 0 + 1);
+
+    // 1. Вычисляем наклон линии (slope)
+    $slope: math.div($max-size_num - $min-size_num, $range-end_num - $range-start_num);
+
+    // 2. Вычисляем точку пересечения с осью Y
+    $y-axis-intersection: -1 * $range-start_num * $slope + $min-size_num;
+
+    // 3. Переводим наклон в vw
+    $slope-vw: $slope * 100;
+
+    // Жестко собираем строку calc, контролируя, чтобы там были именно px и vw
+    $fluid-value: calc(#{$y-axis-intersection}px + #{$slope-vw}vw);
+
+    // ! --- УМНАЯ ПРОВЕРКА ДЛЯ CLAMP ---
+    // ! По умолчанию считаем, что min-size меньше max-size
+    $clamp-min: $min-size;
+    $clamp-max: $max-size;
+
+    // ! Если переданные значения идут на уменьшение (как в твоем трекинге)
+    // ! меняем их местами только для обертки clamp(), чтобы не ломать CSS
+    @if $min-size_num > $max-size_num {
+        $clamp-min: $max-size;
+        $clamp-max: $min-size;
+    }
+
+    @return clamp(#{$clamp-min}, #{$fluid-value}, #{$clamp-max});
+}
+
+// * --- функция для расчета значения отступа
+// * ----------------------------------------
+@function my-orbit-animation-calculate-margin(
+    $ball-container-height,
+    $current-price-container-height
+) {
+    // @return ($ball-container-height * 2.0 - $current-price-container-height) / 2.0;
+    @return calc(($ball-container-height * 2 - $current-price-container-height) / 2);
+}
+
+// * --- миксин для применения стилей
+// * --------------------------------
+@mixin prices-block-apply-styles(
+    $current-price-block-size,
+    $ball-size,
+    $orbit-radius,
+    $current-price-text-font-size
+) {
+    $current-price-block-margin: my-orbit-animation-calculate-margin(
+        $orbit-radius,
+        $current-price-block-size
+    );
+
+    .current-price-animation-container {
+        .current-price {
+            width: $current-price-block-size;
+            height: $current-price-block-size;
+
+            margin: $current-price-block-margin 0;
+
+            .current-price-text {
+                font-size: $current-price-text-font-size;
+            }
+        }
+
+        .concrete-image-orbit-animation-wrapper {
+            width: $ball-size;
+            height: $orbit-radius;
+        }
+    }
+}
+
+// * --- миксин для плавных переходов
+// * --------------------------------
+@mixin transition-all($properties...) {
+    $transition-properties: ();
+
+    @each $property in $properties {
+        $transition-properties: append(
+            $transition-properties,
+            $property + ' ' + var.$transition-duration + ' ' + var.$transition-easing,
+            comma
+        );
+    }
+
+    transition: #{$transition-properties};
+}
