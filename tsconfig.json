@@ -3,13 +3,8 @@
     "compilerOptions": {
         "types": ["node"],
 
-        "rootDir": "./src/ts", // исходники TS
-        "outDir": "./public/js", // куда компилируем JS
-
-        // "baseUrl": ".", // deprecated
-        "paths": {
-            "modules/*": ["./src/ts/modules/*"]
-        },
+        // "rootDir": "./src/ts", // исходники TS
+        // "outDir": "./dist/js", // куда компилируем JS
 
         "target": "es2018", // таргет - es2018
         "module": "esnext", // современный модульный синтаксис
@@ -27,8 +22,13 @@
 
         "sourceMap": true, // генерировать sourcemap
         "removeComments": true, // удалять комментарии из JS
-        "incremental": true // ускоренная компиляция
+        "incremental": true, // ускоренная компиляция
+
+        // "baseUrl": ".", // deprecated
+        "paths": {
+            "modules/*": ["./src/ts/modules/*"]
+        }
     },
-    "include": ["src/ts/**/*.ts"], // какие файлы компилировать
+    "include": ["src/ts/**/*.ts", "tests/**/*.ts", "playwright.config.ts"], // какие файлы компилировать
     "exclude": ["node_modules"] // что игнорировать
 }
