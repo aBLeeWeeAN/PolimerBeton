@@ -166,18 +166,18 @@
 
         @include bs.media-breakpoint-down(md) {
             // column-gap: 48px;
-            column-gap: calc(1.5 * var(--typography__global__line-height));
+            column-gap: calc(1.5 * var(--layout__global__spacing));
         }
 
         @include bs.media-breakpoint-down(sm) {
             // column-gap: clamp(16px, 0.0938 * 100vw - 14px, 40px);
-            column-gap: calc(1 * var(--typography__global__line-height));
+            column-gap: calc(1 * var(--layout__global__spacing));
         }
     }
 
     &--small {
         // column-gap: 48px;
-        column-gap: calc(1.5 * var(--typography__global__line-height));
+        column-gap: calc(1.5 * var(--layout__global__spacing));
 
         .my-balls-group__picture {
             &--green {
@@ -211,7 +211,7 @@
 
         @include bs.media-breakpoint-down(sm) {
             display: none;
-            // column-gap: calc(1 * var(--typography__global__line-height));
+            // column-gap: calc(1 * var(--layout__global__spacing));
         }
     }
 

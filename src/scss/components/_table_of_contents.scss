@@ -3,6 +3,7 @@
 
 @use '../vendors/bootstrap' as bs;
 
+// todo: сделать фоллбэк через max-height для firefox и safari
 .my-table-of-contents {
     margin-bottom: var(--typography__global__title__margin-bottom);
 
@@ -103,7 +104,7 @@
     // * --- LIST
     // * --------
     &__list {
-        padding-left: calc(1 * var(--typography__global__line-height));
+        padding-left: calc(1 * var(--layout__global__spacing));
         margin-bottom: 0;
 
         details.my-table-of-contents__details > & {

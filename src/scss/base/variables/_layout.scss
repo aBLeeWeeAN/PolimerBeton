@@ -5,7 +5,7 @@
 // * --- CSS VARIABLES
 // * -----------------
 :root {
-    --layout__wrapper__padding--horizontal: var(--typography__global__line-height);
+    --layout__wrapper__padding--horizontal: var(--layout__global__spacing);
 
     // --layout__header__navigation-bar-height: #{mixin.fluid(60px, 100px)};
     --layout__header__navigation-bar-height: #{mixin.fluid(56px, 96px)};

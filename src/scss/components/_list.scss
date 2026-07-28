@@ -22,7 +22,7 @@
         list-style-position: outside;
         counter-reset: my-list__sub-list-counter;
 
-        padding-left: calc(1 * var(--typography__global__line-height));
+        padding-left: calc(1 * var(--layout__global__spacing));
 
         & > .my-list__item {
             counter-increment: my-list__sub-list-counter;
@@ -57,7 +57,7 @@
         list-style-position: outside;
         counter-reset: my-list__sub-sub-list-counter;
 
-        padding-left: calc(1 * var(--typography__global__line-height));
+        padding-left: calc(1 * var(--layout__global__spacing));
 
         & > .my-list__item {
             counter-increment: my-list__sub-sub-list-counter;

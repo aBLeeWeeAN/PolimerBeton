@@ -31,6 +31,8 @@
     align-items: center;
     justify-content: flex-start;
 
+    backdrop-filter: blur(5px);
+
     --my-scale: 1;
 
     // ! fallback | if vanilla tilt dont work (js not support) | hover only non-touch screens

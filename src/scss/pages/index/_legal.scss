@@ -21,7 +21,7 @@
     &__title,
     &__subtitle {
         // @include bs.media-breakpoint-down(sm) {
-        //     padding: 0 var(--typography__global__line-height);
+        //     padding: 0 var(--layout__global__spacing);
         // }
     }
 
@@ -56,7 +56,7 @@
         // gap: 16px;
         // gap: clamp(14px, 0.73vw + 9.8058px, 20px);
         // gap: 1em;
-        gap: calc(var(--typography__global__line-height) / 2);
+        gap: calc(var(--layout__global__spacing) / 2);
 
         // * default
         grid-template-columns: repeat(3, 1fr);

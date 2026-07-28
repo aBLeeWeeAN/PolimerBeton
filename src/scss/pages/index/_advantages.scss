@@ -40,7 +40,7 @@
 
         @include bs.media-breakpoint-down(lg) {
             // row-gap: 180px;
-            row-gap: calc(6 * var(--typography__global__line-height));
+            row-gap: calc(6 * var(--layout__global__spacing));
         }
 
         // @include bs.media-breakpoint-down(md) {
@@ -49,12 +49,12 @@
 
         @include bs.media-breakpoint-down(sm) {
             // row-gap: 80px;
-            row-gap: calc(3 * var(--typography__global__line-height));
+            row-gap: calc(3 * var(--layout__global__spacing));
         }
 
         @include bs.media-breakpoint-down(xs) {
             // row-gap: 30px;
-            row-gap: calc(1.5 * var(--typography__global__line-height));
+            row-gap: calc(1.5 * var(--layout__global__spacing));
         }
     }
 

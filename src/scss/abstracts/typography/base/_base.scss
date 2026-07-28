@@ -145,10 +145,10 @@
     // ! шкала 11/1.2^26 ... 15/1.333^17
     --typography__global__copyright__letter-spacing: #{mixin.fluid(0.1 * 11px, 0.11 * 15px)};
 
-    // * --- OTHER
-    // * ---------
+    // * --- LINE HEIGHT & SPACING
+    // * -------------------------
     --typography__global__line-height: 1.6em;
-    // --typography__global__line-height: calc(1.6 * var(--typography__global__base__font-size));
+    --layout__global__spacing: calc(1.6 * var(--typography__global__base__font-size));
 }
 
 // * --- BASE

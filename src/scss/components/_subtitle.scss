@@ -1,5 +1,6 @@
 @use '../abstracts/mixins' as mixin;
 @use '../abstracts/typography' as *;
+@use '../abstracts/z_index' as *;
 
 @use '../vendors/bootstrap' as bs;
 

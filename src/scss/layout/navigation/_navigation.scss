@@ -10,7 +10,7 @@
 
     // column-gap: 16px;
     // column-gap: mixin.fluid(14px, 16px); // шкала (от высоты строки) 14*1 ... 16*1
-    column-gap: calc(var(--typography__global__line-height) / 2);
+    column-gap: calc(var(--layout__global__spacing) / 2);
 
     margin: 0;
     padding: 0;

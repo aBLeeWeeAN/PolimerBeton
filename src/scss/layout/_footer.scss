@@ -132,14 +132,14 @@
         justify-content: space-between;
 
         // padding: clamp(48px, 0.0481 * 100vw + 32.5926px, 100px) 0;
-        padding: calc(3 * var(--typography__global__line-height)) 0;
+        padding: calc(3 * var(--layout__global__spacing)) 0;
 
         @include bs.media-breakpoint-down(md) {
             flex-direction: column;
             // row-gap: clamp(40px, 0.0179 * 100vw + 34.2857px, 48px);
             // row-gap: mixin.fluid(42px, 48px); // шкала (от высоты строки) 14*3 ... 16*3
             // row-gap: 3em;
-            row-gap: calc(1.5 * var(--typography__global__line-height));
+            row-gap: calc(1.5 * var(--layout__global__spacing));
         }
     }
 
@@ -164,7 +164,7 @@
 
         // padding: 28px 0;
         // padding: 1.75em 0;
-        padding: calc(1 * var(--typography__global__line-height)) 0;
+        padding: calc(1 * var(--layout__global__spacing)) 0;
 
         // font-family: 'Montserrat', sans-serif;
         // font-optical-sizing: auto;
@@ -191,7 +191,7 @@
             // row-gap: 1em;
             // row-gap: mixin.fluid(14px, 16px); // шкала (от высоты строки) 14*1 ... 16*1
             // row-gap: 1em;
-            // row-gap: var(--typography__global__line-height);
+            // row-gap: var(--layout__global__spacing);
         }
 
         // @include bs.media-breakpoint-down(sm) {

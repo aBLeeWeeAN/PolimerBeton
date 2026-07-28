@@ -34,7 +34,9 @@
         // row-gap: 24px;
         // row-gap: 1.2em;
         // row-gap: 1.333em;
-        row-gap: var(--typography__global__base__form__margin-bottom);
+
+        // row-gap: var(--typography__global__base__form__margin-bottom);
+        row-gap: calc(0.5 * var(--layout__global__spacing));
 
         // font-size: inherit;
     }

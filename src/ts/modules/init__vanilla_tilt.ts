@@ -43,7 +43,7 @@ export function initVanillaTilt() {
         // * if it should have a "glare" effect
         'glare': false,
         // * the maximum "glare" opacity (1 = 100%, 0.5 = 50%)
-        'max-glare': 1,
+        'max-glare': 0,
         // * false = VanillaTilt creates the glare elements for you, otherwise
         // * you need to add .js-tilt-glare>.js-tilt-glare-inner by yourself
         'glare-prerender': false,

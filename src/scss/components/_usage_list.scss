@@ -1,32 +1,43 @@
 @use '../abstracts/mixins' as mixin;
 @use '../abstracts/typography' as *;
+@use '../abstracts/z_index' as *;
 
 @use '../vendors/bootstrap' as bs;
 
 .usage-list {
-    @extend %list--ordered;
-
-    @supports not selector(::marker) {
-        counter-reset: usage-list-counter;
-    }
+    list-style: none;
+    counter-reset: usage-list-counter;
 
     &__item {
-        @extend %list--ordered__text;
+        @extend %text__paragraph--usage;
         @include mixin.transition-all(background-color, color, transform);
 
         will-change: background-color, color, transform, box-shadow;
+        counter-increment: usage-list-counter;
+
         position: relative;
+        list-style: inherit;
 
         background-color: var(--color__examples__numeric-list-background);
+
         box-shadow: 0.1em 0.15em 0.4em 0 var(--color__global__shadow);
+        // box-shadow: 0 0 0.4em 0 var(--color__global__shadow);
+
         backdrop-filter: blur(10px);
 
-        padding: 0.8em 1.3em;
+        // * from form input
+        // padding: 1.025em 1.25em;
+        // padding: 17.425px 21.25px;
 
+        // padding: 0.87125em 1.0625em;
+
+        padding: 0.666em 1.333em;
+
+        // border: 2px solid rgba(255, 255, 255, 10%);
         border: 0;
         border-radius: 1.2em;
 
-        list-style: inherit;
+        // pointer-events: none;
         cursor: pointer;
 
         @include mixin.hover {
@@ -37,39 +48,14 @@
             transform: scale(0.975);
         }
 
-        @supports selector(::marker) {
-            // list-style: inside decimal;
-            list-style: inherit;
+        &::before {
+            @extend %text__paragraph--usage__before;
+            content: counter(usage-list-counter) '.';
 
-            &::marker {
-                @extend %list--ordered__text-marker;
+            display: inline-block;
+            margin-right: calc(0.5 * var(--layout__global__spacing));
 
-                // font-weight: 200;
-                // font-size: 1.5em;
-
-                // font-variant-numeric: tabular-nums;
-                // text-wrap-style: inherit;
-            }
-        }
-
-        @supports not selector(::marker) {
-            list-style: none;
-            counter-increment: usage-list-counter;
-
-            &::before {
-                @extend %list--ordered__text-marker;
-
-                content: counter(usage-list-counter) '.\00a0';
-            }
-        }
-
-        @include bs.media-breakpoint-down(sm) {
-            background-color: transparent;
-            backdrop-filter: none;
-            box-shadow: none;
-
-            border: 0;
-            padding: 0;
+            transform: translateY(2px);
         }
     }
 }

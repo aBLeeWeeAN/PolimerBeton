@@ -32,7 +32,9 @@
     margin-right: calc(-1 * var(--typography__global__small__letter-spacing));
 
     text-align: center;
-    margin-left: var(--typography__global__small__margin-bottom);
+
+    // margin-left: var(--typography__global__small__margin-bottom);
+    margin-left: calc(0.25 * var(--layout__global__spacing));
 }
 
 %text__form__checkbox-label__link {

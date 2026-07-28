@@ -2,20 +2,20 @@
 
 section {
     // * base section
-    padding-top: calc(3 * var(--typography__global__line-height));
+    padding-top: calc(3 * var(--layout__global__spacing));
 
     &:first-of-type {
         // * default section | first section on page
 
         // prettier-ignore
-        padding-top: calc((3 * var(--typography__global__line-height)) + var(--layout__header__navigation-bar-height));
+        padding-top: calc((3 * var(--layout__global__spacing)) + var(--layout__header__navigation-bar-height));
 
         box-shadow: 0 -8px 10px var(--color__global__shadow);
     }
 
     &:last-of-type {
         // * default section | last section on page
-        padding-bottom: calc(3 * var(--typography__global__line-height));
+        padding-bottom: calc(3 * var(--layout__global__spacing));
         box-shadow: 0 8px 10px var(--color__global__shadow);
     }
 
@@ -23,6 +23,6 @@ section {
         // * hero section
         // * top and bottom padding
 
-        padding-bottom: calc(3 * var(--typography__global__line-height));
+        padding-bottom: calc(3 * var(--layout__global__spacing));
     }
 }
