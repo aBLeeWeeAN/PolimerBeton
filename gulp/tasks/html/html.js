@@ -97,7 +97,7 @@ function createHtmlStream({
                         './src/html/common/',
                         './src/html/components/',
                         './src/html/service/',
-                        './src/html/utils/',
+                        './src/html/macros/',
                     ],
                     data: {
                         siteUrl,
