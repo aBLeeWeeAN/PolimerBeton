@@ -264,4 +264,8 @@
     &--table-of-contents {
         @extend %text__subtitle--table-of-contents;
     }
+
+    &--server-response {
+        @extend %text__subtitle--server-response;
+    }
 }

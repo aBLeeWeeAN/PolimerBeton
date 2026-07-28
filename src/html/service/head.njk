@@ -63,6 +63,16 @@
         document.documentElement.classList.add('js')
     </script>
 
+    <!-- * Set current page name to body -->
+    <script type="module">
+        const pageName =
+            window.location.pathname
+                .split('/')
+                .pop()
+                .replace(/\.[^/.]+$/, '') || 'home'
+        document.documentElement.classList.add(`page-${pageName}`)
+    </script>
+
     <!-- * 0. Inject inline avif/webp script polyfill --->
     <!-- ! STRONGLY RECOMMENDED PLACE IT BEFORE ANY CSS FILES --->
     {{ inline_script('node_modules/gulp-web-images-css/plugin.js') }}

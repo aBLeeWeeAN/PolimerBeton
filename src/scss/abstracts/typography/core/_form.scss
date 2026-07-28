@@ -52,19 +52,9 @@
     text-decoration: none;
 }
 
-%text__form__submit-button {
-    @extend %text__base;
-
-    font-weight: 600;
-    font-size: var(--typography__global__base__form__font-size);
-
-    color: var(--color__global__text--alt);
-
-    letter-spacing: var(--typography__global__base__form__letter-spacing);
-    // margin-right: calc(-1 * var(--typography__global__base__form__letter-spacing));
-
-    text-align: center;
-}
+// %text__form__submit-button {
+//     @extend %text__button;
+// }
 
 %text__form__error-message {
     @extend %text__base;

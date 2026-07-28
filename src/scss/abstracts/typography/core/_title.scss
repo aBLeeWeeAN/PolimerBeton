@@ -139,3 +139,70 @@
     margin-bottom: var(--typography__global__base__margin-bottom);
     max-width: unset;
 }
+
+%text__title--server-response {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__title__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__title__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__title__letter-spacing));
+
+    text-align: center;
+    text-transform: uppercase;
+
+    margin-bottom: var(--typography__global__title__margin-bottom);
+    max-width: 20em;
+
+    text-wrap-style: balance;
+}
+
+%text__title--server-response__before {
+    @extend %text__base;
+
+    font-variant-numeric: tabular-nums;
+
+    font-weight: 600;
+    font-size: 10em;
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__title__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__title__letter-spacing));
+
+    line-height: 0.75em;
+
+    text-align: center;
+    text-transform: uppercase;
+
+    margin-bottom: 0;
+    max-width: 20em;
+
+    text-wrap-mode: nowrap;
+    // opacity: 0.05;
+    opacity: 0.09;
+    // opacity: 1;
+
+    // color: #ef9a9a;
+    // color: #a5d6a7;
+    // color: #81c784;
+
+    // todo: for night mode
+    // opacity: 0.11;
+
+    @supports (text-box: trim-both cap alphabetic) {
+        text-box-trim: trim-both;
+        text-box-edge: cap alphabetic;
+    }
+
+    @include bs.media-breakpoint-down(sm) {
+        font-size: 8em;
+    }
+
+    @include bs.media-breakpoint-down(xs) {
+        font-size: 6em;
+    }
+}

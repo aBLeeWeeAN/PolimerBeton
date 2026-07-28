@@ -7,8 +7,8 @@
 
 .my-custom-feedback-form {
     --my-feedback-form__field__outer-padding: 3px;
-    --my-feedback-form__field__squircle-smooth: 0.6;
-    --my-feedback-form__field__radius-value: #{mixin.fluid(1.2 * 14px, 1.2 * 20px)};
+    --my-feedback-form__field__squircle-smooth: var(--layout__button__squircle-smooth);
+    --my-feedback-form__field__radius-value: var(--layout__button__radius-value);
 
     --my-feedback-form__field__outer-element__radius: var(--my-feedback-form__field__radius-value);
     --my-feedback-form__field__outer-element__radius--squircle: var(
@@ -506,70 +506,8 @@
     }
 
     &__submit-button {
-        @extend %text__form__submit-button;
-        @include mixin.transition-all(background-color, color, transform);
-
-        will-change: background-color, color, transform;
-
-        width: 100%;
-
-        // height: 70px;
-        // height: 3.5em;
-
-        // height: 3.888em;
-        padding: 1.025em 0;
-
-        // padding: 0 18px;
-        // padding: 1em;
-
-        border: none;
-        border-radius: var(--my-feedback-form__field__outer-element__radius);
-
-        // border-radius: 96px;
-        // corner-shape: squircle;
-
-        .houdini-squircle-ready & {
-            border-radius: 0;
-
-            --squircle-smooth: var(--my-feedback-form__field__squircle-smooth);
-            --squircle-radius: var(--my-feedback-form__field__outer-element__radius--squircle);
-
-            /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-            mask-image: paint(squircle);
-        }
-
-        background-color: var(--color__global__primary);
-
         // margin-top: 1.333em;
         margin-top: var(--typography__global__base__form__margin-bottom);
-
-        &:focus {
-            background-color: var(--color__global__primary--focus);
-            color: var(--color__global__text--alt--focus);
-        }
-
-        @include mixin.hover {
-            background-color: var(--color__global__primary--hover);
-            color: var(--color__global__text--alt--hover);
-
-            transform: scale(1.025);
-        }
-
-        @include mixin.active {
-            background-color: var(--color__global__primary--active);
-            color: var(--color__global__text--alt--active);
-
-            transform: scale(0.975);
-        }
-
-        &:disabled,
-        &[disabled] {
-            background-color: var(--color__global__primary--disabled);
-            color: var(--color__global__text--alt--disabled);
-
-            transform: none;
-            cursor: not-allowed;
-        }
 
         // @include bs.media-breakpoint-down(xs) {
         //     margin-top: 1em;

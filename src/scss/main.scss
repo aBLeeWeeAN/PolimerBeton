@@ -13,12 +13,7 @@
 @use 'layout';
 
 // ? --- 5. PAGE SPECIFIC STYLES
-// @use 'pages/common';
-
-// @use 'pages/404';
-
-@use 'pages/form-fail';
-@use 'pages/form-success';
+@use 'pages/service';
 
 @use 'pages/index';
 @use 'pages/privacy';

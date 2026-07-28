@@ -1,0 +1,71 @@
+/* stylelint-disable custom-property-empty-line-before */
+@use '../abstracts/mixins' as mixin;
+@use '../abstracts/typography' as *;
+@use '../abstracts/z_index' as *;
+
+@use '../vendors/bootstrap' as bs;
+
+.my-default-button {
+    @extend %text__button;
+    @include mixin.transition-all(background-color, color, transform);
+
+    will-change: background-color, color, transform;
+
+    width: 100%;
+
+    // height: 70px;
+    // height: 3.5em;
+
+    // height: 3.888em;
+    padding: 1.025em 0;
+
+    // padding: 0 18px;
+    // padding: 1em;
+
+    border: none;
+    border-radius: var(--layout__button__radius-value);
+
+    .houdini-squircle-ready & {
+        border-radius: 0;
+
+        --squircle-smooth: var(--layout__button__squircle-smooth);
+        --squircle-radius: var(--layout__button__radius-value);
+
+        /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+        mask-image: paint(squircle);
+    }
+
+    background-color: var(--color__global__primary);
+
+    &:focus {
+        background-color: var(--color__global__primary--focus);
+        color: var(--color__global__text--alt--focus);
+    }
+
+    @include mixin.hover {
+        background-color: var(--color__global__primary--hover);
+        color: var(--color__global__text--alt--hover);
+
+        transform: scale(1.025);
+    }
+
+    @include mixin.active {
+        background-color: var(--color__global__primary--active);
+        color: var(--color__global__text--alt--active);
+
+        transform: scale(0.975);
+    }
+
+    &:disabled,
+    &[disabled] {
+        background-color: var(--color__global__primary--disabled);
+        color: var(--color__global__text--alt--disabled);
+
+        transform: none;
+        cursor: not-allowed;
+    }
+
+    &__link {
+        @extend %text__button__link;
+    }
+}

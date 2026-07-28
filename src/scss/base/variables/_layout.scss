@@ -6,19 +6,12 @@
 // * -----------------
 :root {
     --layout__wrapper__padding--horizontal: var(--layout__global__spacing);
-
-    // --layout__header__navigation-bar-height: #{mixin.fluid(60px, 100px)};
     --layout__header__navigation-bar-height: #{mixin.fluid(56px, 96px)};
 
-    @include bs.media-breakpoint-down(md) {
-        // --layout__header__navigation-bar__control-group__height: #{mixin.fluid-with-range(
-        //         60px,
-        //         80px,
-        //         xs,
-        //         md
-        //     )};
+    --layout__button__squircle-smooth: 0.6;
+    --layout__button__radius-value: #{mixin.fluid(1.2 * 14px, 1.333 * 20px)};
 
-        // --layout__header__navigation-bar__control-group__height: #{mixin.fluid(60px, 100px)};
+    @include bs.media-breakpoint-down(md) {
         --layout__header__navigation-bar__control-group__height: #{mixin.fluid(72px, 96px)};
     }
 }

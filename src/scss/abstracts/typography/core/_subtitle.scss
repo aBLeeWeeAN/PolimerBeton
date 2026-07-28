@@ -202,3 +202,22 @@
     margin-bottom: 0;
     max-width: unset;
 }
+
+%text__subtitle--server-response {
+    @extend %text__base;
+
+    font-variant-numeric: lining-nums;
+    font-weight: 400;
+    font-size: var(--typography__global__subtitle__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__subtitle__letter-spacing);
+    margin-right: calc(-1 * var(--typography__global__subtitle__letter-spacing));
+
+    text-align: center;
+    text-wrap-style: balance;
+
+    margin-bottom: var(--typography__global__subtitle__margin-bottom);
+    max-width: 40em;
+}

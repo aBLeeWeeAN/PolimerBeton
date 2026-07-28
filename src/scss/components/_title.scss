@@ -3,7 +3,7 @@
 @use '../abstracts/typography' as *;
 @use '../abstracts/z_index' as *;
 
-// @use '../vendors/bootstrap' as bs;
+@use '../vendors/bootstrap' as bs;
 
 @keyframes my-parallax-move__advantage-number {
     from {
@@ -48,5 +48,57 @@
 
     &--footer {
         @extend %text__title--footer;
+    }
+
+    &--server-response {
+        @extend %text__title--server-response;
+        position: relative;
+
+        &::before {
+            @extend %text__title--server-response__before;
+            content: 'TEXT';
+
+            container-type: inline-size;
+
+            z-index: z('decoration');
+            position: absolute;
+
+            bottom: 0;
+            // bottom: calc(-1 * var(--typography__global__title__margin-bottom));
+
+            left: 50%;
+            transform: translate(-50%, 0);
+
+            pointer-events: none;
+
+            width: 100vw;
+            font-size: clamp(84px, 18cqw, 350px);
+
+            @include bs.media-breakpoint-down(md) {
+                bottom: unset;
+                top: calc(-1 * var(--typography__global__title__margin-bottom));
+
+                transform: translate(-50%, -100%);
+            }
+        }
+
+        &[data-variant='success']::before {
+            content: 'SUCCESS';
+            // font-size: clamp(40px, 15cqw, 350px);
+
+            @include bs.media-breakpoint-down(md) {
+                content: 'DONE';
+            }
+        }
+
+        &[data-variant='fail']::before {
+            content: 'FAIL';
+            // font-size: clamp(100px, 25cqw, 350px);
+        }
+
+        &[data-variant='404']::before {
+            content: '404';
+            // font-size: clamp(100px, 25cqw, 350px);
+        }
     }
 }
