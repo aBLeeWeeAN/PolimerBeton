@@ -27,58 +27,27 @@
                 </h1>
             </div>
 
-            <!-- ! new | 3D --->
-            <div class="row justify-content-center justify-content-md-around my-balls-group my-balls-group--hero-section">
+            <div class="row my-balls-group my-balls-group--hero-section">
                 {% for ball in my_balls %}
-                    <div class="col-3 col-lg-2 my-balls-group__3d-wrapper">
-                        <model-viewer
-                            class="my-balls-group__3d-model my-balls-group__3d-model--ball-{{ ball }}"
-                            src="@misc/3d_ball__{{ ball }}__compressed.glb"
-                            poster="@images/balls/{{ ball }}.png"
-                            auto-rotate
-                            camera-controls
-                            camera-orbit="0deg 75deg 105%"
-                            camera-target="0m 0m 0m"
-                            disable-pan
-                            disable-zoom
-                            rotation-per-second="25deg"
-                            interaction-prompt="none"
-                            touch-action="pan-y"
-                            background-color="transparent"
-                            environment-image="null"
-                            exposure="1.3"
-                            alt="{{ index.hero.balls__img_alts[ball] }}"></model-viewer>
+                    <div class="my-balls-group__ball-wrapper my-balls-group__ball-wrapper--{{ ball }}">
+                        <img
+                            data-my-picture-class="my-balls-group__picture"
+                            class="my-balls-group__img"
+                            src="@images/balls/{{ ball }}.png"
+                            alt="" />
 
-                        <!--       data-rotate-model shadow-intensity="0.8" shadow-softness="0.6" -->
+                        <div
+                            id="ball-container-{{ ball }}"
+                            class="my-balls-group__3d-model my-balls-group__3d-model--{{ ball }}"
+                            data-model-src="@misc/3d_ball__base.glb"></div>
                     </div>
 
-                    {# {% if loop.index0 == 2 %}
+                    {% if loop.index0 == 2 %}
                         <div class="w-100 d-md-none"></div>
-                    {% endif %} #}
+                    {% endif %}
                 {% endfor %}
             </div>
 
-            <!-- ! old --->
-            {# <div class="row align-items-center justify-content-center justify-content-xl-around my-balls-group">
-                {% for ball in my_balls %}
-                    <img
-                        id="ball-{{ ball }}"
-                        data-my-picture-class="col-3 col-lg-2 col-xl-2 my-balls-group__picture"
-                        class="my-balls-group__img"
-                        src="@images/balls/{{ ball }}.png"
-                        alt="{{ index.hero.balls__img_alts[ball] }}" />
-
-                    {% if loop.index0 == 2 %}
-                        <div class="w-100 d-xl-none"></div>
-                    {% endif %}
-                {% endfor %}
-            </div> #}
-
-            {# <p class="row align-items-center justify-content-center my-paragraph my-paragraph--hero-slogan">
-                {{ index.hero.slogan[0] }}
-                <br class="d-lg-block d-xl-none" />
-                {{ index.hero.slogan[1] }}
-            </p> #}
             <p class="my-paragraph my-paragraph--hero-slogan">{{ index.hero.slogan }}</p>
         </div>
     </section>
@@ -93,13 +62,20 @@
                 {% endfor %}
             </div>
 
-            <div class="row justify-content-center my-balls-group my-balls-group--small">
+            <div class="row my-balls-group my-balls-group--description">
                 {% for ball in my_balls %}
-                    <img
-                        data-my-picture-class="col-auto my-balls-group__picture my-balls-group__picture--{{ ball }}"
-                        class="my-balls-group__img"
-                        src="@images/balls/{{ ball }}.png"
-                        alt="" />
+                    <div class="my-balls-group__ball-wrapper my-balls-group__ball-wrapper--{{ ball }}">
+                        <img
+                            data-my-picture-class="my-balls-group__picture"
+                            class="my-balls-group__img"
+                            src="@images/balls/{{ ball }}.png"
+                            alt="" />
+
+                        {# <div
+                            id="ball-container-{{ ball }}"
+                            class="my-balls-group__3d-model my-balls-group__3d-model--{{ ball }}"
+                            data-model-src="@misc/3d_ball__base.glb"></div> #}
+                    </div>
 
                     {% if loop.index0 == 2 %}
                         <div class="w-100"></div>
@@ -123,11 +99,19 @@
                 %}
 
                 {% for ball in my_balls %}
-                    <img
-                        data-my-picture-class="d-none {{ usage__balls__grid_classes[loop.index0] }} my-balls-group__picture my-balls-group__picture--{{ ball }}"
-                        class="my-balls-group__img"
-                        src="@images/balls/{{ ball }}.png"
-                        alt="" />
+                    <div
+                        class="d-none {{ usage__balls__grid_classes[loop.index0] }} my-balls-group__ball-wrapper my-balls-group__ball-wrapper--{{ ball }}">
+                        <img
+                            data-my-picture-class="my-balls-group__picture"
+                            class="my-balls-group__img"
+                            src="@images/balls/{{ ball }}.png"
+                            alt="" />
+
+                        {# <div
+                            id="ball-container-{{ ball }}"
+                            class="my-balls-group__3d-model my-balls-group__3d-model--{{ ball }}"
+                            data-model-src="@misc/3d_ball__base.glb"></div> #}
+                    </div>
                 {% endfor %}
             </div>
 
@@ -293,7 +277,7 @@
                     <strong>{{ index.pricing.subtitle[2] }}</strong>
                     {{ index.pricing.subtitle[3] }}
                 </p> #}
-                <p class="my-subtitle">
+                <p class="my-subtitle my-subtitle--pricing">
                     {{ index.pricing.subtitle[0] }}
                     <strong class="my-subtitle__important-text">{{ index.pricing.subtitle[1] }}</strong>
                     {{ index.pricing.subtitle[2] }}
@@ -324,11 +308,24 @@
             <div class="row d-flex flex-nowrap align-items-center justify-content-between">
                 <div class="col-6 d-none d-md-block my-balls-group my-balls-group--decorative" data-variant="feedback-form">
                     {% for ball in my_balls %}
-                        <img
+                        <!-- <img
                             data-my-picture-class="my-balls-group__picture my-balls-group__picture--{{ ball }}"
                             class="my-balls-group__img"
                             src="@images/balls/{{ ball }}.png"
-                            alt="" />
+                            alt="" /> -->
+
+                        <div class="my-balls-group__ball-wrapper my-balls-group__ball-wrapper--{{ ball }}">
+                            <img
+                                data-my-picture-class="my-balls-group__picture"
+                                class="my-balls-group__img"
+                                src="@images/balls/{{ ball }}.png"
+                                alt="" />
+
+                            {# <div
+                                id="ball-container-{{ ball }}"
+                                class="my-balls-group__3d-model my-balls-group__3d-model--{{ ball }}"
+                                data-model-src="@misc/3d_ball__base.glb"></div> #}
+                        </div>
                     {% endfor %}
                 </div>
 

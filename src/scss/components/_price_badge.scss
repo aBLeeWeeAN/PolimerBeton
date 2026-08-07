@@ -58,27 +58,27 @@
 }
 
 .my-price-badge {
-    --ball__size: 300px;
-
-    // --ball__distance-from-center: 200px;
-    --ball__distance-from-center: calc(0.666 * var(--ball__size));
-
+    --ball__size: #{mixin.fluid(84px, 225px)};
+    --ball__distance-from-center: calc(0.888 * var(--ball__size));
     --ball__angle-between-balls: 72deg;
 
     // * for gravity effect
-    --ball__distance-from-center__min-delta: 0.15 * var(--ball__size);
-    --ball__distance-from-center__max-delta: 0.1 * var(--ball__size);
+    --ball__distance-from-center__min-delta: calc(0.2 * var(--ball__size));
+    --ball__distance-from-center__max-delta: calc(0.133 * var(--ball__size));
 
     --animation-duration: 7s;
 
     position: relative;
-
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     height: calc(2 * (var(--ball__size) + var(--ball__distance-from-center)));
     width: 100%;
+
+    // ! компенсация scale анимации (расстояния от центра до шаров)
+    margin: var(--ball__distance-from-center__max-delta) 0;
 
     &__price-container {
         z-index: z('higher');
@@ -266,19 +266,7 @@
         }
     }
 
-    @include bs.media-breakpoint-down(xl) {
-        --ball__size: 260px;
-    }
-
-    @include bs.media-breakpoint-down(lg) {
-        --ball__size: 220px;
-    }
-
-    @include bs.media-breakpoint-down(md) {
-        --ball__size: 168px;
-    }
-
-    @include bs.media-breakpoint-down(sm) {
-        --ball__size: clamp(86px, 0.2266 * 100vw + 13.5px, 144px);
+    @include bs.media-breakpoint-down(xs) {
+        --ball__size: 22.5vw;
     }
 }

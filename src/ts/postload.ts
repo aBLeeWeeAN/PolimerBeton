@@ -1,6 +1,6 @@
 // * --- VENDORS SCRIPTS
 // * -------------------
-import '@google/model-viewer'
+// import '@google/model-viewer'
 import 'bootstrap'
 
 // * --- MY SCRIPTS
@@ -16,7 +16,10 @@ import { initMenuButtonState } from 'modules/change_menu_button_state'
 import { initFeedbackFormMask } from 'modules/inputmask_feedback_form'
 import { initCookieConsentBanner } from 'modules/cookies_consent_banner_manager'
 import { initSubmitButtonBlock } from 'modules/block_submit_button_after_form_data_is_successfully_submitted'
+
 // import { initHeroParallax } from 'modules/hero_image_parallax'
+// import { init3DBalls } from 'modules/init__3d_balls'
+import { init3DBalls } from 'modules/ball-viewer'
 
 // import { init3dBallsRotation } from 'modules/init_3d_balls_rotation'
 
@@ -38,17 +41,19 @@ document.addEventListener('DOMContentLoaded', () => {
     initSubmitButtonBlock()
 
     // initHeroParallax()
+    init3DBalls()
+
     initVanillaTilt()
 
-    // ! если юзер отключил анимации -> отключить авто вращение 3D моделей
-    // todo: можно сделать через listener, а не как init-вариант
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion) {
-        document.querySelectorAll('model-viewer').forEach((mv) => {
-            mv.removeAttribute('auto-rotate')
-            mv.setAttribute('interaction-prompt', 'none')
-        })
-    }
+    // // ! если юзер отключил анимации -> отключить авто вращение 3D моделей
+    // // todo: можно сделать через listener, а не как init-вариант
+    // const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    // if (prefersReducedMotion) {
+    //     document.querySelectorAll('model-viewer').forEach((mv) => {
+    //         mv.removeAttribute('auto-rotate')
+    //         mv.setAttribute('interaction-prompt', 'none')
+    //     })
+    // }
 
     // ! вызываем последним !!!
     initCookieConsentBanner()

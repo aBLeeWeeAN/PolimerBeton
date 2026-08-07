@@ -65,14 +65,22 @@
         align-items: center;
         justify-content: space-between;
 
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+
         counter-increment: advantage-counter;
 
         &:nth-child(odd) {
             flex-direction: row-reverse;
         }
 
+        // @include bs.media-breakpoint-down(xl) {
+        //     padding: 56px 0;
+        // }
+
         @include bs.media-breakpoint-down(lg) {
             position: relative; // ! ловит номер advantage на малых экранах
+            padding: 0;
         }
 
         @include bs.media-breakpoint-down(md) {
@@ -95,6 +103,8 @@
         display: flex;
         flex-direction: column;
 
+        // max-width: 50%;
+
         align-items: center;
         justify-content: center;
 
@@ -111,13 +121,16 @@
         }
     }
 
-    --advantage__picture__max-height: 536px;
+    --advantage__picture__max-height: 400px;
 
     &__picture {
         will-change: transform;
 
-        flex-grow: 0;
+        flex-grow: 1;
         flex-shrink: 0;
+
+        display: flex;
+        justify-items: center;
 
         aspect-ratio: 1 / 1;
         max-height: var(--advantage__picture__max-height);
@@ -130,12 +143,12 @@
     }
 
     &__img {
-        width: 100%;
         height: 100%;
+        width: auto;
     }
 
     @include bs.media-breakpoint-down(xl) {
-        --advantage__picture__max-height: 440px;
+        --advantage__picture__max-height: 330px;
     }
 
     @include bs.media-breakpoint-down(lg) {

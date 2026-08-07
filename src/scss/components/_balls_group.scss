@@ -36,33 +36,31 @@
     position: relative;
     display: flex;
 
-    // width: 100%;
-    // height: auto;
+    align-items: center;
+    justify-content: space-around;
+
+    &__picture,
+    &__3d-model {
+        position: absolute;
+        inset: 0;
+
+        // animation: none;
+    }
 
     &__picture {
-        will-change: transform;
-
+        z-index: z('higher');
         display: flex;
 
         align-items: center;
         justify-content: center;
+    }
 
-        width: 100%;
-        max-width: 168px;
+    &__3d-model {
+        z-index: z('higher_2x');
+        display: none;
 
-        @include bs.media-breakpoint-down(xl) {
-            max-width: 140px;
-        }
-
-        @include bs.media-breakpoint-down(lg) {
-            max-width: 120px;
-        }
-
-        @include bs.media-breakpoint-down(sm) {
-            max-width: clamp(72px, 0.1875 * 100vw + 12px, 120px);
-        }
-
-        animation: none;
+        // touch-action: none;
+        // user-select: none;
     }
 
     &__img {
@@ -70,116 +68,130 @@
         width: 100%;
     }
 
-    &__3d-wrapper {
-        flex-grow: 0;
-        flex-shrink: 1;
+    &__ball-wrapper {
+        will-change: filter, transform;
+        transform: translateZ(0);
 
         position: relative;
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
         aspect-ratio: 1 / 1;
 
         width: 100%;
-        max-width: 168px;
+        // max-width: 168px;
+        max-width: 192px;
+
+        border: 0;
+        border-radius: 50%;
+
+        padding: 2px;
+        padding-right: 3px;
+
+        // box-shadow: 2px 3px 10px #000;
+        filter: drop-shadow(3px 2px 2px #000);
+
+        &[data-variant='3d'] {
+            // animation: none !important;
+
+            .my-balls-group__picture {
+                display: none;
+            }
+
+            .my-balls-group__3d-model {
+                display: flex;
+
+                align-items: center;
+                justify-content: center;
+            }
+        }
 
         @include bs.media-breakpoint-down(xl) {
-            max-width: 140px;
+            max-width: 168px;
         }
 
         @include bs.media-breakpoint-down(lg) {
             max-width: 120px;
         }
 
-        // @include bs.media-breakpoint-down(lg) {
-        //     max-width: 120px;
-        // }
-
-        // margin: 0 auto;
-
         @include bs.media-breakpoint-down(sm) {
             max-width: clamp(72px, 0.1875 * 100vw + 12px, 120px);
-        }
-    }
 
-    &__3d-model {
-        display: block;
-
-        width: 100%;
-        height: 100%;
-
-        // filter: drop-shadow(0px 15px 25px rgba(0, 0, 0, 0.65));
-        filter: drop-shadow(2px 0.5px 2px #000);
-
-        // ! google specific vars
-        /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-        --progress-bar-color: none;
-        /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-        --progress-bar-height: 0px;
-
-        &--ball-green {
-            will-change: transform;
-            animation: hero-gravity-move-1 10s ease-in-out infinite;
-        }
-
-        &--ball-yellow {
-            will-change: transform;
-            animation: hero-gravity-move-2 10s ease-in-out infinite;
-
-            @include bs.media-breakpoint-down(xl) {
-                animation-delay: -2s;
-            }
-        }
-
-        &--ball-white {
-            will-change: transform;
-            animation: hero-gravity-move-1 10s ease-in-out infinite;
-
-            @include bs.media-breakpoint-down(xl) {
-                animation-delay: -4s;
-            }
-        }
-
-        &--ball-grey {
-            will-change: transform;
-            animation: hero-gravity-move-2 10s ease-in-out infinite;
-
-            @include bs.media-breakpoint-down(xl) {
-                animation-delay: -6s;
-            }
-        }
-
-        &--ball-red {
-            will-change: transform;
-            animation: hero-gravity-move-1 10s ease-in-out infinite;
-
-            @include bs.media-breakpoint-down(xl) {
-                animation-delay: -8s;
-            }
+            pointer-events: none;
+            user-select: none;
         }
     }
 
     &--hero-section {
-        column-gap: 0;
+        gap: 0;
+
+        .my-balls-group__ball-wrapper {
+            &--green {
+                animation: hero-gravity-move-1 10s ease-in-out infinite;
+            }
+
+            &--yellow {
+                animation: hero-gravity-move-2 10s ease-in-out infinite;
+            }
+
+            &--white {
+                animation: hero-gravity-move-1 10s ease-in-out infinite;
+            }
+
+            &--grey {
+                animation: hero-gravity-move-2 10s ease-in-out infinite;
+            }
+
+            &--red {
+                animation: hero-gravity-move-1 10s ease-in-out infinite;
+            }
+        }
 
         @include bs.media-breakpoint-down(md) {
             // column-gap: 48px;
-            column-gap: calc(1.5 * var(--layout__global__spacing));
+            gap: calc(0.5 * var(--layout__global__spacing))
+                calc(1.5 * var(--layout__global__spacing));
+
+            .my-balls-group__ball-wrapper {
+                &--green {
+                    animation: hero-gravity-move-1 10s ease-in-out infinite;
+                }
+
+                &--yellow {
+                    animation: hero-gravity-move-1 10s ease-in-out infinite;
+                    animation-delay: -2s;
+                }
+
+                &--white {
+                    animation: hero-gravity-move-1 10s ease-in-out infinite;
+                    animation-delay: -4s;
+                }
+
+                &--grey {
+                    animation: hero-gravity-move-2 10s ease-in-out infinite;
+                    animation-delay: -6s;
+                }
+
+                &--red {
+                    animation: hero-gravity-move-2 10s ease-in-out infinite;
+                    animation-delay: -8s;
+                }
+            }
         }
 
         @include bs.media-breakpoint-down(sm) {
             // column-gap: clamp(16px, 0.0938 * 100vw - 14px, 40px);
-            column-gap: calc(1 * var(--layout__global__spacing));
+            gap: calc(0.25 * var(--layout__global__spacing))
+                calc(1 * var(--layout__global__spacing));
         }
     }
 
-    &--small {
+    &--description {
+        justify-content: center;
+
         // column-gap: 48px;
         column-gap: calc(1.5 * var(--layout__global__spacing));
 
-        .my-balls-group__picture {
+        .my-balls-group__ball-wrapper {
+            max-width: 144px;
+
             &--green {
                 animation: hero-gravity-move-1 10s ease-in-out infinite;
             }
@@ -226,7 +238,7 @@
             position: absolute;
             inset: 0;
 
-            .my-balls-group__picture {
+            .my-balls-group__ball-wrapper {
                 will-change: transform;
                 position: absolute;
 
@@ -241,7 +253,9 @@
                 &--green {
                     z-index: z('higher');
 
-                    max-width: 540px;
+                    // max-width: 540px;
+                    max-width: 405px;
+
                     transform: translate(55%, -120%);
 
                     @keyframes usage-gravity-ball-green {
@@ -287,7 +301,9 @@
                 &--yellow {
                     z-index: z('higher');
 
-                    max-width: 352px;
+                    // max-width: 352px;
+                    max-width: 264px;
+
                     transform: translate(65%, -33%);
 
                     @keyframes usage-gravity-ball-yellow {
@@ -352,7 +368,9 @@
                 &--white {
                     // z-index: z('lower');
 
-                    max-width: 168px;
+                    // max-width: 168px;
+                    max-width: 126px;
+
                     transform: translate(155%, -143.5%);
 
                     @keyframes usage-gravity-ball-white {
@@ -391,7 +409,9 @@
                     }
 
                     @include bs.media-breakpoint-down(xl) {
-                        width: 176px;
+                        // width: 176px;
+                        width: 132px;
+
                         transform: translate(155%, -146%);
 
                         @keyframes usage-gravity-ball-white {
@@ -418,7 +438,9 @@
                 &--grey {
                     // z-index: z('lower');
 
-                    max-width: 520px;
+                    // max-width: 520px;
+                    max-width: 390px;
+
                     transform: translate(90%, 10%);
 
                     @keyframes usage-gravity-ball-grey {
@@ -442,7 +464,9 @@
                 &--red {
                     z-index: z('higher');
 
-                    max-width: 288px;
+                    // max-width: 288px;
+                    max-width: 216px;
+
                     transform: translate(180%, -62.5%);
 
                     @keyframes usage-gravity-ball-red {
@@ -477,7 +501,7 @@
             aspect-ratio: 1 / 1;
             height: auto;
 
-            .my-balls-group__picture {
+            .my-balls-group__ball-wrapper {
                 will-change: transform;
 
                 // z-index: z('lower');
@@ -490,7 +514,8 @@
                 &--green {
                     z-index: z('higher');
 
-                    max-width: 76.22%;
+                    // max-width: 76.22%;
+                    max-width: 57.41%;
 
                     top: 0;
                     left: 0;
@@ -517,7 +542,8 @@
                 &--yellow {
                     // z-index: z('background');
 
-                    max-width: 45.73%;
+                    // max-width: 45.73%;
+                    max-width: 34.3%;
 
                     top: 28.05%;
                     left: 54.88%;
@@ -544,7 +570,8 @@
                 &--white {
                     z-index: z('higher_2x');
 
-                    max-width: 33.54%;
+                    // max-width: 33.54%;
+                    max-width: 25.16%;
 
                     top: 2.44%;
                     left: 51.83%;
@@ -571,7 +598,8 @@
                 &--grey {
                     z-index: z('higher_2x');
 
-                    max-width: 54.27%;
+                    // max-width: 54.27%;
+                    max-width: 40.7%;
 
                     top: 46.34%;
                     left: 0;
@@ -598,7 +626,8 @@
                 &--red {
                     z-index: z('higher_2x');
 
-                    max-width: 34.76%;
+                    // max-width: 34.76%;
+                    max-width: 26.07%;
 
                     top: 63.41%;
                     left: 48.78%;
@@ -623,5 +652,9 @@
                 }
             }
         }
+    }
+
+    @include bs.media-breakpoint-down(md) {
+        justify-content: center;
     }
 }

@@ -49,3 +49,6 @@
 *.7z        binary
 *.gz        binary
 *.tgz       binary
+
+# 3D
+*.glb       binary
