@@ -5,13 +5,10 @@
 
 .my-link {
     @extend %text__link;
-    @include mixin.transition-all(color, transform);
+    @include mixin.transition-for;
+    will-change: transform;
 
-    will-change: color, transform;
     display: inline-block;
-
-    // color: var(--color__global__text);
-    // text-decoration: none;
 
     transform-origin: center center;
 

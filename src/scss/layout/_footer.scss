@@ -5,7 +5,7 @@
 
 @use '../vendors/bootstrap' as bs;
 
-@keyframes footer__fade-in-out__effect {
+@keyframes footer__fade-in-out-effect {
     from {
         opacity: 0.8;
     }
@@ -15,7 +15,7 @@
     }
 }
 
-@keyframes move-animation__footer__decorative-square--left {
+@keyframes footer__left-decorative-square__move-effect {
     0% {
         transform: translate(-48.1%, -30%) rotate(-17deg);
     }
@@ -29,7 +29,7 @@
     }
 }
 
-@keyframes move-animation__footer__decorative-square--right {
+@keyframes footer__right-decorative-square__move-effect {
     0% {
         transform: translate(-48.2%, -50%) rotate(40deg);
     }
@@ -44,17 +44,16 @@
 }
 
 .my-footer {
+    z-index: z('footer');
     will-change: box-shadow;
 
     overflow: hidden;
-    z-index: z('footer');
     position: sticky;
 
     left: 0;
     right: 0;
     bottom: 0;
 
-    // box-shadow: 0 -4px 10px var(--color__global__shadow);
     background: linear-gradient(
         -17deg,
         var(--color__footer__background--gradient-step-1) 0%,
@@ -70,7 +69,7 @@
         background-color: var(--color__global__fade);
         opacity: 0;
 
-        animation: footer__fade-in-out__effect linear both;
+        animation: footer__fade-in-out-effect linear both;
 
         animation-timeline: scroll(root);
         animation-range: calc(100% - 664px) 100%;
@@ -79,8 +78,7 @@
     }
 
     &__decorative-square {
-        @include mixin.transition-all(background-color);
-        will-change: background-color, transform;
+        will-change: transform;
 
         z-index: z('background');
         position: absolute;
@@ -102,7 +100,7 @@
             background-color: var(--color__decorative-element__background);
 
             transform: translate(-48.2%, -50%) rotate(40deg);
-            animation: move-animation__footer__decorative-square--right 90s ease-in-out infinite;
+            animation: footer__right-decorative-square__move-effect 90s ease-in-out infinite;
         }
 
         &--right {
@@ -112,12 +110,14 @@
             background-color: var(--color__decorative-element__background);
 
             transform: translate(-48.1%, -30%) rotate(-17deg);
-            animation: move-animation__footer__decorative-square--left 90s ease-in-out infinite;
+            animation: footer__left-decorative-square__move-effect 90s ease-in-out infinite;
         }
 
         @include bs.media-breakpoint-down(sm) {
-            display: none;
+            will-change: none;
             animation: none;
+
+            display: none;
 
             width: 100vw;
             height: 40%;
@@ -131,14 +131,10 @@
         align-items: stretch;
         justify-content: space-between;
 
-        // padding: clamp(48px, 0.0481 * 100vw + 32.5926px, 100px) 0;
         padding: calc(3 * var(--layout__global__spacing)) 0;
 
         @include bs.media-breakpoint-down(md) {
             flex-direction: column;
-            // row-gap: clamp(40px, 0.0179 * 100vw + 34.2857px, 48px);
-            // row-gap: mixin.fluid(42px, 48px); // шкала (от высоты строки) 14*3 ... 16*3
-            // row-gap: 3em;
             row-gap: calc(1.5 * var(--layout__global__spacing));
         }
     }
@@ -162,77 +158,22 @@
         align-items: center;
         justify-content: space-between;
 
-        // padding: 28px 0;
-        // padding: 1.75em 0;
         padding: calc(1 * var(--layout__global__spacing)) 0;
-
-        // font-family: 'Montserrat', sans-serif;
-        // font-optical-sizing: auto;
-        // font-style: normal;
-        // font-weight: 300;
-
-        // font-size: clamp(14px, 0.0032 * 100vw + 11.5696px, 16px);
-
-        // letter-spacing: 0.11em;
-        // line-height: 1.5em;
-
-        // color: var(--color__global__text);
-
-        // text-wrap-mode: nowrap;
-        // text-wrap-style: pretty;
 
         @include bs.media-breakpoint-down(lg) {
             flex-direction: column;
             justify-content: center;
-
-            // text-wrap-mode: wrap;
-            // text-wrap-style: pretty;
-
-            // row-gap: 1em;
-            // row-gap: mixin.fluid(14px, 16px); // шкала (от высоты строки) 14*1 ... 16*1
-            // row-gap: 1em;
-            // row-gap: var(--layout__global__spacing);
         }
-
-        // @include bs.media-breakpoint-down(sm) {
-        //     letter-spacing: 0.08em;
-        // }
     }
 
     &__copyright-owner-text {
         @extend %text__copyright--owner;
-        @include mixin.transition-all(color);
-
-        will-change: color;
-
         flex: 0 0 auto;
-        // text-align: left;
-
-        // @include bs.media-breakpoint-down(lg) {
-        //     text-align: center;
-        //     margin-left: 0.11em; // * компенсация letter-spacing
-        // }
-        // @include bs.media-breakpoint-down(sm) {
-        //     margin-left: 0.08em; // }
     }
 
     &__copyright-developer-text {
         @extend %text__copyright--developer;
-        @include mixin.transition-all(color);
-
-        will-change: color;
-
         flex: 0 0 auto;
-        // text-align: right;
-
-        // @include bs.media-breakpoint-down(md) {
-        //     text-align: center;
-        //     margin-left: 0.11em; // * компенсация letter-spacing
-        // }
-
-        // @include bs.media-breakpoint-down(sm) {
-        //     margin-left: 0.08em;
-        // }
     }
 
     // todo: перенастроить размеры высоты

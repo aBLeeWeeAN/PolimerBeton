@@ -1,0 +1,49 @@
+@use '../abstracts/mixins' as mixin;
+@use '../abstracts/typography' as *;
+
+@use '../vendors/bootstrap' as bs;
+
+.my-contact-list {
+    @extend %list--contact;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    &__header {
+        @extend %list--contact__text-header;
+    }
+
+    &__item {
+        @extend %list--contact__text;
+
+        will-change: color, transform;
+        display: inline-block;
+
+        transform-origin: center center;
+        transition:
+            color 0.3s ease-in-out,
+            transform 0.3s ease-in-out;
+
+        &:focus {
+            color: var(--color__global__text--focus);
+        }
+
+        @include mixin.hover {
+            color: var(--color__global__text--hover);
+            transform: scale(1.025);
+        }
+
+        @include mixin.active {
+            color: var(--color__global__text--active);
+            transform: scale(0.975);
+        }
+    }
+
+    &__link {
+        color: inherit;
+        text-decoration: inherit;
+    }
+}

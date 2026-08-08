@@ -8,6 +8,8 @@
     *,
     *::before,
     *::after {
+        will-change: none !important;
+
         animation: none !important;
         animation-delay: 0s !important;
         animation-duration: 0s !important;

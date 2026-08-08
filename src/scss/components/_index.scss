@@ -1,40 +1,22 @@
-// ? --- COMPONENTS (SPECIFIC STYLES)
-// ? --------------------------------
+// ? --- GLOBAL COMPONENTS
+// ? ---------------------
 
-@forward 'balls_group';
-@forward 'bubble';
+// * --- FOLDERS
+// * -----------
+@forward 'decorations';
 
-@forward 'button_default';
-@forward 'button_hamburger';
-@forward 'button_navigation';
-@forward 'contact_list';
-// @forward 'cookie_consent_banner';
+@forward 'typography';
+@forward 'buttons';
+@forward 'lists';
 
-// @forward 'error_message';
+@forward 'navigation';
 
-@forward 'custom_feedback_form';
-
-// @forward 'caption';
-// @forward 'feedback_form';
-// @forward 'heading';
-
-@forward 'link';
+// * --- FILES
+// * ---------
 @forward 'logo';
+
+@forward 'table';
 @forward 'gradient_image';
 
-@forward 'usage_list';
-
-@forward 'title';
-@forward 'subtitle';
-
-@forward 'list';
-@forward 'paragraph';
-
 @forward 'price_badge';
-@forward 'table';
-@forward 'table_of_contents';
-
-// @forward 'nav_control';
-// @forward 'nav_menu';
-@forward 'separator';
-// @forward 'subheading';
+@forward 'custom_feedback_form';

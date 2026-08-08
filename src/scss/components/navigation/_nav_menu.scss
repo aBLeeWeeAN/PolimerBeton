@@ -75,9 +75,6 @@
         .my-nav-menu__item {
             &::before,
             &::after {
-                @include mixin.transition-all(color);
-
-                will-change: color;
                 content: '•';
 
                 z-index: z('decoration');

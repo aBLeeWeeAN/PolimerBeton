@@ -1,5 +1,6 @@
 /* stylelint-disable scss/dollar-variable-pattern */
 @use 'sass:math';
+@use 'sass:list';
 @use 'sass:map';
 
 @use './variables' as var;
@@ -131,60 +132,21 @@ $max-vw: 1400px;
     @return clamp(#{$clamp-min}, #{$fluid-value}, #{$clamp-max});
 }
 
-// * --- функция для расчета значения отступа
-// * ----------------------------------------
-@function my-orbit-animation-calculate-margin(
-    $ball-container-height,
-    $current-price-container-height
-) {
-    // @return ($ball-container-height * 2.0 - $current-price-container-height) / 2.0;
-    @return calc(($ball-container-height * 2 - $current-price-container-height) / 2);
-}
-
-// * --- миксин для применения стилей
-// * --------------------------------
-@mixin prices-block-apply-styles(
-    $current-price-block-size,
-    $ball-size,
-    $orbit-radius,
-    $current-price-text-font-size
-) {
-    $current-price-block-margin: my-orbit-animation-calculate-margin(
-        $orbit-radius,
-        $current-price-block-size
-    );
-
-    .current-price-animation-container {
-        .current-price {
-            width: $current-price-block-size;
-            height: $current-price-block-size;
-
-            margin: $current-price-block-margin 0;
-
-            .current-price-text {
-                font-size: $current-price-text-font-size;
-            }
-        }
-
-        .concrete-image-orbit-animation-wrapper {
-            width: $ball-size;
-            height: $orbit-radius;
-        }
-    }
-}
-
-// * --- миксин для плавных переходов
-// * --------------------------------
-@mixin transition-all($properties...) {
+// * --- TRANSITION MIXIN FOR SPECIFIC PROPERTIES
+// * --------------------------------------------
+@mixin transition-for($properties...) {
+    $final-properties: if(list.length($properties) == 0, (transform, opacity), $properties);
     $transition-properties: ();
 
-    @each $property in $properties {
-        $transition-properties: append(
+    @each $property in $final-properties {
+        $transition-properties: list.append(
             $transition-properties,
-            $property + ' ' + var.$transition-duration + ' ' + var.$transition-easing,
+            #{$property}
+                #{var.$abstract__variable__transition-duration}
+                #{var.$abstract__variable__transition-timing-function},
             comma
         );
     }
 
-    transition: #{$transition-properties};
+    transition: $transition-properties;
 }

@@ -2,9 +2,6 @@
 @use '../vendors/bootstrap' as bs;
 
 .my-separator {
-    @include mixin.transition-all(background-color);
-
-    will-change: background-color;
     display: block;
 
     height: 1px;

@@ -1,7 +1,6 @@
 /* stylelint-disable selector-id-pattern */
 /* stylelint-disable keyframes-name-pattern */
 /* stylelint-disable custom-property-empty-line-before */
-
 @use '../abstracts/mixins' as mixin;
 @use '../abstracts/typography' as *;
 @use '../abstracts/z_index' as *;
@@ -14,7 +13,7 @@
     inherits: false;
 }
 
-@keyframes my-border-spin {
+@keyframes gradient-image__colored-border__spin-effect {
     to {
         // умножаем 360 градусов на направление (1 или -1)
         --gradient-angle: calc(360deg * var(--spin-dir, 1));
@@ -100,7 +99,7 @@
             transform 300ms ease-in-out,
             box-shadow 300ms ease-in-out;
 
-        animation: my-border-spin 2s linear infinite;
+        animation: gradient-image__colored-border__spin-effect 2s linear infinite;
 
         @include mixin.hover {
             transform: scale(1.025);

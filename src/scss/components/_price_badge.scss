@@ -1,11 +1,12 @@
 /* stylelint-disable custom-property-empty-line-before */
+/* stylelint-disable keyframes-name-pattern */
 @use '../abstracts/mixins' as mixin;
 @use '../abstracts/typography' as *;
 @use '../abstracts/z_index' as *;
 
 @use '../vendors/bootstrap' as bs;
 
-@keyframes wobble {
+@keyframes price-badge__price-text__wobble-effect {
     0% {
         transform: rotate(-21deg) rotate(-8deg);
     }
@@ -19,13 +20,13 @@
     }
 }
 
-@keyframes rotate-counter-clockwise {
+@keyframes price-badge__price-svg__rotate-anti-clockwise-effect {
     to {
         transform: rotate(-360deg);
     }
 }
 
-@keyframes scale-animation {
+@keyframes price-badge__price-svg__scale-effect {
     from {
         transform: scale(0.875);
     }
@@ -35,13 +36,13 @@
     }
 }
 
-@keyframes rotate-clockwise {
+@keyframes price-badge__ball__orbital-motion-effect {
     to {
         transform: translateX(-50%) rotate(calc(var(--ball__current-angle) + 360deg));
     }
 }
 
-@keyframes ball-gravity-to-center {
+@keyframes price-badge__ball__gravity-effect {
     from {
         transform: translateY(calc(1 * var(--ball__distance-from-center__min-delta)));
     }
@@ -51,7 +52,7 @@
     }
 }
 
-@keyframes rotate-counter {
+@keyframes price-badge__ball__gravitational-tidal-capture-effect {
     to {
         transform: rotate(calc(var(--ball__current-rotation-compensation-angle) - 360deg));
     }
@@ -106,8 +107,8 @@
         transform: scale(1);
 
         // * alternate | проигрывание: сначала вперед - потом назад
-        animation: scale-animation calc(0.6 * var(--animation-duration)) ease-in-out infinite
-            alternate;
+        animation: price-badge__price-svg__scale-effect calc(0.6 * var(--animation-duration))
+            ease-in-out infinite alternate;
     }
 
     &__price-svg {
@@ -122,7 +123,8 @@
         color: var(--color__pricing__price-badge-background);
 
         transform-origin: center;
-        animation: rotate-counter-clockwise var(--animation-duration) infinite linear;
+        animation: price-badge__price-svg__rotate-anti-clockwise-effect var(--animation-duration)
+            infinite linear;
     }
 
     &__price-text {
@@ -134,38 +136,13 @@
         align-items: center;
         justify-content: center;
 
-        // font-family: 'Montserrat', sans-serif;
-        // font-optical-sizing: auto;
-        // font-style: normal;
-        // font-weight: 600;
-
-        // // font-size: clamp(14px, 0.0056 * 100vw + 12.2222px, 20px);
-        // font-size: clamp(10px, 0.0093 * 100vw + 7.037px, 20px);
-
-        // letter-spacing: 0.2em;
-        // text-align: center;
-
-        // color: var(--color__global__text--alt--solid);
-
-        // text-transform: none;
-        // font-variant-numeric: lining-nums;
-
-        // text-wrap-mode: wrap;
-        // text-wrap-style: balance;
-
         aspect-ratio: 1 / 1;
-
-        // max-width: 100px;
         max-width: 4em;
 
         transform-origin: center;
         transform: rotate(-21deg);
 
-        animation: wobble var(--animation-duration) infinite;
-
-        // @include bs.media-breakpoint-down(sm) {
-        //     font-size: clamp(12px, 0.0037 * 100vw + 10.8148px, 16px);
-        // }
+        animation: price-badge__price-text__wobble-effect var(--animation-duration) infinite;
     }
 
     &__ball-wrapper {
@@ -192,7 +169,8 @@
         // * ball distance from center
         height: calc(var(--ball__distance-from-center) + var(--ball__size));
 
-        animation: rotate-clockwise var(--animation-duration) infinite linear;
+        animation: price-badge__ball__orbital-motion-effect var(--animation-duration) infinite
+            linear;
 
         &--ball-green {
             --ball__current-angle: calc(0 * var(--ball__angle-between-balls));
@@ -219,7 +197,7 @@
         will-change: transform;
 
         transform-origin: center;
-        animation: ball-gravity-to-center calc(0.15 * var(--animation-duration)) infinite
+        animation: price-badge__ball__gravity-effect calc(0.15 * var(--animation-duration)) infinite
             ease-in-out alternate;
     }
 
@@ -233,7 +211,8 @@
         transform-origin: center;
         transform: rotate(var(--ball__current-rotation-compensation-angle, 0deg));
 
-        animation: rotate-counter var(--animation-duration) infinite linear;
+        animation: price-badge__ball__gravitational-tidal-capture-effect var(--animation-duration)
+            infinite linear;
 
         &--ball-green {
             --ball__current-rotation-compensation-angle: calc(

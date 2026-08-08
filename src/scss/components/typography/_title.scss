@@ -1,25 +1,11 @@
-/* stylelint-disable keyframes-name-pattern */
 @use '../abstracts/mixins' as mixin;
 @use '../abstracts/typography' as *;
 @use '../abstracts/z_index' as *;
 
 @use '../vendors/bootstrap' as bs;
 
-@keyframes my-parallax-move__advantage-number {
-    from {
-        transform: translateY(var(--slide-start));
-    }
-
-    to {
-        transform: translateY(var(--slide-end));
-    }
-}
-
 .my-title {
     @extend %text__title;
-    @include mixin.transition-all(color);
-
-    will-change: color;
 
     &--hero {
         @extend %text__title--hero;

@@ -2,7 +2,7 @@
 @use '../abstracts/mixins' as mixin;
 @use '../vendors/bootstrap' as bs;
 
-@keyframes keyframe__hamburger__middle-line-shake {
+@keyframes button-hamburger__middle-line__shake-effect {
     0% {
         transform: rotate(0deg);
     }
@@ -110,7 +110,7 @@
     &[aria-expanded='true'] &__middle-line {
         opacity: 0;
 
-        animation: keyframe__hamburger__middle-line-shake 300ms linear;
+        animation: button-hamburger__middle-line__shake-effect 300ms linear;
         animation-delay: 0ms;
 
         transition: opacity 0s;

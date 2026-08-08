@@ -3,20 +3,6 @@
 
 @use '../../vendors/bootstrap' as bs;
 
-@keyframes advantages-gravity-move {
-    0% {
-        transform: translateY(-2rem);
-    }
-
-    50% {
-        transform: translateY(3rem);
-    }
-
-    100% {
-        transform: translateY(-2rem);
-    }
-}
-
 .my-advantages {
     z-index: z('my_advantages');
     position: relative;
@@ -135,7 +121,11 @@
         aspect-ratio: 1 / 1;
         max-height: var(--advantage__picture__max-height);
 
-        animation: advantages-gravity-move 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        --commons__gravity-effect__start-pos: translateY(-2rem);
+        --commons__gravity-effect__middle-pos: translateY(3rem);
+        --commons__gravity-effect__end-pos: translateY(-2rem);
+
+        animation: commons__gravity-effect 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 
         :nth-child(even) > & {
             animation-delay: -5s;

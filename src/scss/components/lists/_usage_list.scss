@@ -10,9 +10,9 @@
 
     &__item {
         @extend %text__paragraph--usage;
-        @include mixin.transition-all(background-color, color, transform);
+        @include mixin.transition-for(transform);
+        will-change: transform;
 
-        will-change: background-color, color, transform, box-shadow;
         counter-increment: usage-list-counter;
 
         position: relative;

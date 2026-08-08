@@ -4,9 +4,6 @@
 @use '../vendors/bootstrap' as bs;
 
 .my-navigation-button {
-    @include mixin.transition-all(background-color, color);
-
-    will-change: background-color, color;
     position: relative;
 
     display: flex;
@@ -88,10 +85,8 @@
     }
 
     &__svg {
-        @include mixin.transition-all(display, opacity);
-        transition: transform 0.3s ease-in-out;
-
-        will-change: display, opacity, transform;
+        @include mixin.transition-for;
+        will-change: transform, opacity;
 
         position: absolute;
 
@@ -100,6 +95,8 @@
 
         transform: translate(-50%, -50%);
         transform-origin: center center;
+
+        // transition: transform 0.3s ease-in-out;
 
         aspect-ratio: 1 / 1;
         width: 24px;
@@ -114,8 +111,7 @@
     }
 
     &--mobile {
-        @include mixin.transition-all(background-color, color, width, height);
-        will-change: background-color, color, width, height;
+        @include mixin.transition-for(width, height);
 
         border-radius: 50%;
 

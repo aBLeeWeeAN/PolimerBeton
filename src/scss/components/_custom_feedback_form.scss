@@ -57,9 +57,6 @@
     }
 
     &__text-field {
-        @include mixin.transition-all(background-color);
-        will-change: background-color;
-
         display: flex;
         flex-direction: row;
 
@@ -358,9 +355,6 @@
 
     &__input-element {
         @extend %text__form__input;
-        @include mixin.transition-all(background-color);
-
-        will-change: background-color;
 
         text-box: normal;
 
@@ -470,8 +464,6 @@
         }
 
         &[type='checkbox'] {
-            will-change: background-color, border-color;
-
             z-index: z('higher');
             position: absolute;
 
@@ -487,7 +479,6 @@
             left: 50%;
 
             transform: translate(-50%, -50%);
-            @include mixin.transition-all(background-color, border-color);
 
             &:disabled,
             &[disabled] {

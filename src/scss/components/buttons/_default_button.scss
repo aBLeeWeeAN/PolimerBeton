@@ -7,9 +7,8 @@
 
 .my-default-button {
     @extend %text__button;
-    @include mixin.transition-all(background-color, color, transform);
-
-    will-change: background-color, color, transform;
+    @include mixin.transition-for;
+    will-change: transform;
 
     width: 100%;
 

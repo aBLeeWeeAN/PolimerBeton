@@ -1,9 +1,10 @@
+/* stylelint-disable keyframes-name-pattern */
 @use '../abstracts/mixins' as mixin;
 @use '../abstracts/typography' as *;
 
 @use '../vendors/bootstrap' as bs;
 
-@keyframes hero-phrase-gradient-animation {
+@keyframes paragraph__background__running-gradient-effect {
     to {
         background-position: var(--bg-size) 0;
     }
@@ -11,9 +12,6 @@
 
 .my-paragraph {
     @extend %text__paragraph;
-    @include mixin.transition-all(color);
-
-    will-change: color;
 
     &--hero-slogan {
         @extend %text__paragraph--hero-slogan;
@@ -36,7 +34,7 @@
         color: transparent;
         -webkit-text-fill-color: transparent;
 
-        animation: hero-phrase-gradient-animation 10s linear infinite;
+        animation: paragraph__background__running-gradient-effect 10s linear infinite;
     }
 
     &--advantage {

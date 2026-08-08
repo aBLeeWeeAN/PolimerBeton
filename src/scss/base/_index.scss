@@ -2,8 +2,9 @@
 @forward 'reset';
 // @forward 'normalize';
 
-// * --- 2. CSS VARIABLES
+// * --- 2. CSS VARIABLES & KEYFRAMES
 @forward 'variables';
+@forward 'keyframes';
 
 // * --- 3. FONTS & TYPOGRAPHY
 @forward 'fonts';

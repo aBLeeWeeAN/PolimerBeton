@@ -1,8 +1,12 @@
 // * --- PAGE SPECIFIC STYLES --- index.html
 // * ---------------------------------------
 
-@forward 'page-background';
+// * --- PAGE SPECIFIC COMPONENTS
+// * ----------------------------
+@forward 'components';
 
+// * --- PAGE SECTIONS STYLES
+// * ------------------------
 @forward 'hero';
 @forward 'description';
 @forward 'usage';

@@ -1,7 +1,8 @@
+/* stylelint-disable keyframes-name-pattern */
 @use '../../abstracts/z_index' as *;
 @use '../../vendors/bootstrap' as bs;
 
-@keyframes parallax-move {
+@keyframes hero__background-image__parallax-move-effect {
     from {
         transform: translateY(0);
     }
@@ -49,7 +50,7 @@
         top: -800px;
 
         pointer-events: none;
-        animation: parallax-move linear;
+        animation: hero__background-image__parallax-move-effect linear;
 
         // animation-timeline: scroll(root block);
         animation-timeline: --hero-section;

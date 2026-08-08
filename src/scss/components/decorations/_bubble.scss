@@ -4,7 +4,7 @@
 
 // * --- BUBBLE INFLATION EFFECT
 // * ---------------------------
-@keyframes anim__bubble__outer-el__scale-effect {
+@keyframes bubble__outer-el__scale-effect {
     from {
         transform: translate(var(--bubble__pos-x), var(--bubble__pos-y)) scale(1);
     }
@@ -15,7 +15,7 @@
     }
 }
 
-@keyframes anim__bubble__inner-el__rotation-effect {
+@keyframes bubble__inner-el__rotation-effect {
     0% {
         transform: rotate(calc(var(--bubble__clockwise-rotation) * 0deg));
     }
@@ -54,12 +54,12 @@
     background: transparent;
     pointer-events: none;
 
-    animation: anim__bubble__outer-el__scale-effect var(--bubble__animation-time) ease-in-out
-        alternate infinite;
+    animation: bubble__outer-el__scale-effect var(--bubble__animation-time) ease-in-out alternate
+        infinite;
 
     &::before {
-        will-change: transform;
         content: '';
+        will-change: transform;
 
         position: absolute;
         inset: 0;
@@ -70,8 +70,7 @@
         border: 0;
         border-radius: 50%;
 
-        animation: anim__bubble__inner-el__rotation-effect var(--bubble__animation-time) linear
-            infinite;
+        animation: bubble__inner-el__rotation-effect var(--bubble__animation-time) linear infinite;
     }
 
     &--description {
@@ -121,11 +120,6 @@
 
             top: 1.1%;
             width: 1600px;
-
-            // width: 0;
-
-            // display: none;
-            // animation: none;
         }
     }
 
@@ -182,11 +176,6 @@
 
             top: 25%;
             width: 1700px;
-
-            // width: 0;
-
-            // display: none;
-            // animation: none;
         }
     }
 
@@ -245,11 +234,6 @@
 
             top: 64%;
             width: 2600px;
-
-            // width: 0;
-
-            // display: none;
-            // animation: none;
         }
     }
 }

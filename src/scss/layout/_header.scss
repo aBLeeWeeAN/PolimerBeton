@@ -15,8 +15,8 @@
     height: auto;
 
     &__fixed-part {
-        @include mixin.transition-all(background-color, transform, box-shadow);
-        will-change: background-color, transform, box-shadow;
+        @include mixin.transition-for;
+        will-change: transform;
 
         z-index: z('higher');
         position: fixed;
@@ -35,9 +35,9 @@
         background-color: var(--color__header__navigation-bar-background);
         box-shadow: 0 8px 10px var(--color__global__shadow);
 
-        transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease;
+        // transition:
+        //     transform 0.3s ease,
+        //     box-shadow 0.3s ease;
 
         &--hidden {
             box-shadow: none;
@@ -46,8 +46,8 @@
     }
 
     &__hidden-part {
-        @include mixin.transition-all(background-color);
-        will-change: background-color, transform, box-shadow, opacity;
+        @include mixin.transition-for;
+        will-change: transform, opacity;
 
         position: fixed;
         z-index: z('lower');
@@ -63,17 +63,6 @@
         background-color: var(--color__header__navigation-menu-background);
         backdrop-filter: blur(18px);
 
-        // transition:
-        //     transform 700ms cubic-bezier(0.165, 0.84, 0.44, 1),
-        //     box-shadow 0s ease;
-
-        // ! old
-        // transition-duration: 350ms;
-
-        // @include bs.media-breakpoint-down(xl) {
-        //     padding-top: 80px;
-        // }
-
         &.showing {
             transition:
                 transform 1000ms cubic-bezier(0.165, 0.84, 0.44, 1),
@@ -88,13 +77,7 @@
 
         @include bs.media-breakpoint-down(md) {
             --#{bs.$prefix}offcanvas-height: 100vh;
-            // --#{bs.$prefix}offcanvas-transition: #{transform 100ms ease-in-out};
-
             max-height: 100vh;
-            // padding-top: 60px;
-
-            // ! old
-            // transition-duration: 700ms;
         }
 
         .my-offcanvas-body {
@@ -105,26 +88,12 @@
             justify-content: flex-start;
 
             height: 100%;
-            // padding: 32px 0;
             padding: var(--layout__global__spacing) 0;
 
-            // // prettier-ignore
-            // padding: var(--layout__global__spacing) 0 calc(var(--layout__global__spacing) + var(--layout__header__navigation-bar__control-group__height));
-
             @include bs.media-breakpoint-down(md) {
-                // padding: 60px 0 calc(60px + 80px);
-
                 // prettier-ignore
                 padding: calc(2 * var(--layout__global__spacing)) 0 calc(2 * var(--layout__global__spacing) + var(--layout__header__navigation-bar__control-group__height));
             }
-
-            // @include bs.media-breakpoint-down(sm) {
-            //     padding: 48px 0 calc(48px + 60px);
-            // }
-
-            // @include bs.media-breakpoint-down(xs) {
-            //     padding: 40px 0 calc(40px + 60px);
-            // }
         }
     }
 }

@@ -1,14 +1,22 @@
+/* stylelint-disable keyframes-name-pattern */
 @use '../abstracts/mixins' as mixin;
 @use '../abstracts/typography' as *;
 @use '../abstracts/z_index' as *;
 
 @use '../vendors/bootstrap' as bs;
 
+@keyframes subtitle__advantage-number__parallax-move-effect {
+    from {
+        transform: translateY(var(--slide-start));
+    }
+
+    to {
+        transform: translateY(var(--slide-end));
+    }
+}
+
 .my-subtitle {
     @extend %text__subtitle;
-    @include mixin.transition-all(color);
-
-    will-change: color;
 
     &__important-text {
         @extend %text__subtitle__strong;
@@ -61,7 +69,7 @@
                 // z-index: z('higher');
                 position: absolute;
 
-                animation: my-parallax-move__advantage-number linear both;
+                animation: subtitle__advantage-number__parallax-move-effect linear both;
 
                 animation-timeline: --my-advantage;
                 animation-range: cover -50% cover 150%;

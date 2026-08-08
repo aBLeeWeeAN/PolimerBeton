@@ -1,5 +1,6 @@
+/* stylelint-disable scss/dollar-variable-pattern */
+
 // * --- SASS VARIABLES
 // * ------------------
-
-$transition-duration: 0.3s;
-$transition-easing: ease;
+$abstract__variable__transition-duration: 300ms;
+$abstract__variable__transition-timing-function: ease-out;

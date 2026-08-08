@@ -1,0 +1,15 @@
+/* stylelint-disable keyframes-name-pattern */
+
+@keyframes commons__gravity-effect {
+    0% {
+        transform: var(--commons__gravity-effect__start-pos);
+    }
+
+    50% {
+        transform: var(--commons__gravity-effect__middle-pos);
+    }
+
+    100% {
+        transform: var(--commons__gravity-effect__end-pos);
+    }
+}

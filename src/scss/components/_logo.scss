@@ -6,9 +6,8 @@
 // TODO: убрать белый цвет focus
 .my-logo {
     @extend %text__logo--header;
-    @include mixin.transition-all(color, transform);
-
-    will-change: color, transform;
+    @include mixin.transition-for(transform);
+    will-change: transform;
 
     display: flex;
     align-items: center;
@@ -31,9 +30,9 @@
     }
 
     &__svg {
-        @include mixin.transition-all(transform);
-
+        @include mixin.transition-for(transform);
         will-change: transform;
+
         flex: 0 0 auto;
 
         aspect-ratio: 1 / 1;
