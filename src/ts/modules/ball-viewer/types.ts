@@ -4,11 +4,11 @@ export interface BallVariantConfig {
 }
 
 export const BALL_VARIANTS: Record<string, BallVariantConfig> = {
-    green: { color: '#035332', offset: [8.47, 3.23] },
-    yellow: { color: '#905F03', offset: [31.2, 41.3] },
-    white: { color: '#878787', offset: [2.84, -0.42] },
-    grey: { color: '#414141', offset: [-50.1, -14.2] },
-    red: { color: '#81302C', offset: [-1.23, -2.01] },
+    green: { color: '#035332', offset: [-2.4, -16.92] },
+    yellow: { color: '#905F03', offset: [-3.1, 2.58] },
+    white: { color: '#878787', offset: [-24.2, -0.42] },
+    grey: { color: '#414141', offset: [0, -0.62] },
+    red: { color: '#81302C', offset: [-7.0, -29.42] },
 }
 
 export function getVariantFromElement(el: HTMLElement): BallVariantConfig {

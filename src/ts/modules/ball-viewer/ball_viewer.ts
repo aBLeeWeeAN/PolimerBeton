@@ -210,7 +210,7 @@ class BallViewer {
                             clonedMat.normalMap.wrapS = THREE.RepeatWrapping
                             clonedMat.normalMap.wrapT = THREE.RepeatWrapping
 
-                            clonedMat.normalMap.repeat.set(1.5, 1.5)
+                            clonedMat.normalMap.repeat.set(1.618, 1.618)
                             clonedMat.normalMap.offset.set(variant.offset[0], variant.offset[1])
                             clonedMat.normalScale.set(2, -2) // Инверсия/усиление нормалей
 
