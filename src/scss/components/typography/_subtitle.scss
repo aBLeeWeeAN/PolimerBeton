@@ -1,9 +1,9 @@
 /* stylelint-disable keyframes-name-pattern */
-@use '../abstracts/mixins' as mixin;
-@use '../abstracts/typography' as *;
-@use '../abstracts/z_index' as *;
+@use '../../abstracts/mixins' as mixin;
+@use '../../abstracts/typography' as *;
+@use '../../abstracts/z_index' as *;
 
-@use '../vendors/bootstrap' as bs;
+@use '../../vendors/bootstrap' as bs;
 
 @keyframes subtitle__advantage-number__parallax-move-effect {
     from {
@@ -29,7 +29,6 @@
     &--advantage {
         @extend %text__subtitle--advantage;
 
-        will-change: color;
         view-timeline-name: --my-advantage;
 
         display: flex;

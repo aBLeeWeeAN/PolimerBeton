@@ -1,6 +1,7 @@
 /* stylelint-disable keyframes-name-pattern */
 /* stylelint-disable custom-property-empty-line-before */
-@use '../vendors/bootstrap' as bs;
+@use '../../abstracts/mixins' as mixin;
+@use '../../vendors/bootstrap' as bs;
 
 // * --- BUBBLE INFLATION EFFECT
 // * ---------------------------
@@ -58,8 +59,12 @@
         infinite;
 
     &::before {
-        content: '';
+        // ? linear-gradient анимируется через @property
+        // @include mixin.transition-for(background);
+
         will-change: transform;
+
+        content: '';
 
         position: absolute;
         inset: 0;

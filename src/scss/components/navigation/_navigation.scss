@@ -1,5 +1,4 @@
-@use '../abstracts/mixins' as mixin;
-// @use '../vendors/bootstrap' as bs;
+@use '../../abstracts/mixins' as mixin;
 
 .my-navigation {
     display: flex;
@@ -8,8 +7,6 @@
     align-items: center;
     justify-content: space-between;
 
-    // column-gap: 16px;
-    // column-gap: mixin.fluid(14px, 16px); // шкала (от высоты строки) 14*1 ... 16*1
     column-gap: calc(var(--layout__global__spacing) / 2);
 
     margin: 0;

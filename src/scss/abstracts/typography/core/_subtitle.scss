@@ -81,8 +81,16 @@
     text-align: center;
     text-transform: uppercase;
 
-    margin-bottom: var(--typography__global__subtitle__margin-bottom);
+    margin-bottom: calc(2 * var(--typography__global__subtitle__margin-bottom));
     max-width: unset;
+
+    @include bs.media-breakpoint-down(xl) {
+        margin-bottom: calc(1.75 * var(--typography__global__subtitle__margin-bottom));
+    }
+
+    @include bs.media-breakpoint-down(lg) {
+        margin-bottom: var(--typography__global__subtitle__margin-bottom);
+    }
 }
 
 %text__subtitle--advantage__before {
@@ -220,4 +228,25 @@
 
     margin-bottom: var(--typography__global__subtitle__margin-bottom);
     max-width: 40em;
+}
+
+%text__subtitle--cookie-consent-banner {
+    @extend %text__base;
+
+    font-variant-numeric: lining-nums;
+    font-weight: 600;
+    font-size: var(--typography__global__subtitle__font-size);
+
+    color: var(--color__global__text--primary);
+
+    letter-spacing: var(--typography__global__subtitle__letter-spacing);
+    margin-right: 0;
+
+    text-align: left;
+    text-wrap-style: pretty;
+
+    // text-transform: none;
+
+    margin-bottom: var(--typography__global__subtitle__margin-bottom);
+    max-width: unset;
 }

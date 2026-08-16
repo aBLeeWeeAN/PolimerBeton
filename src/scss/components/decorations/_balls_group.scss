@@ -1,8 +1,8 @@
 /* stylelint-disable keyframes-name-pattern */
-@use '../abstracts/mixins' as mixin;
-@use '../abstracts/z_index' as *;
+@use '../../abstracts/mixins' as mixin;
+@use '../../abstracts/z_index' as *;
 
-@use '../vendors/bootstrap' as bs;
+@use '../../vendors/bootstrap' as bs;
 
 .my-balls-group {
     position: relative;
@@ -28,9 +28,6 @@
     &__3d-model {
         z-index: z('higher_2x');
         display: none;
-
-        // touch-action: none;
-        // user-select: none;
     }
 
     &__img {
@@ -39,7 +36,8 @@
     }
 
     &__ball-wrapper {
-        will-change: filter, transform;
+        @include mixin.transition-for(filter);
+        will-change: transform;
 
         position: relative;
         aspect-ratio: 1 / 1;
@@ -53,8 +51,7 @@
         padding: 2px;
         padding-right: 3px;
 
-        // box-shadow: 2px 3px 10px #000;
-        filter: drop-shadow(3px 2px 2px #000);
+        filter: drop-shadow(3px 2px 2px var(--color__global__shadow));
 
         &[data-variant='3d'] {
             .my-balls-group__picture {
@@ -251,7 +248,6 @@
             inset: 0;
 
             .my-balls-group__ball-wrapper {
-                will-change: transform;
                 position: absolute;
 
                 top: 50%;
@@ -351,7 +347,7 @@
                 }
 
                 @include bs.media-breakpoint-down(sm) {
-                    will-change: none;
+                    will-change: auto;
                     animation: none;
                 }
             }
@@ -365,7 +361,6 @@
             height: auto;
 
             .my-balls-group__ball-wrapper {
-                will-change: transform;
                 position: absolute;
 
                 left: 0;
@@ -444,7 +439,7 @@
                 }
 
                 @include bs.media-breakpoint-down(sm) {
-                    will-change: none;
+                    will-change: auto;
                     animation: none;
                 }
             }

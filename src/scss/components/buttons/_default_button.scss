@@ -1,13 +1,13 @@
 /* stylelint-disable custom-property-empty-line-before */
-@use '../abstracts/mixins' as mixin;
-@use '../abstracts/typography' as *;
-@use '../abstracts/z_index' as *;
+@use '../../abstracts/mixins' as mixin;
+@use '../../abstracts/typography' as *;
+@use '../../abstracts/z_index' as *;
 
-@use '../vendors/bootstrap' as bs;
+@use '../../vendors/bootstrap' as bs;
 
 .my-default-button {
     @extend %text__button;
-    @include mixin.transition-for;
+    @include mixin.transition-for(color, transform, background-color);
     will-change: transform;
 
     width: 100%;
@@ -66,5 +66,12 @@
 
     &__link {
         @extend %text__button__link;
+    }
+
+    &--cookie-consent-banner {
+        .houdini-squircle-ready & {
+            border-radius: calc(0.5 * var(--layout__button__radius-value));
+            mask-image: none;
+        }
     }
 }

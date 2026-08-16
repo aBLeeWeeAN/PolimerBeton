@@ -15,10 +15,6 @@
     align-items: center;
     justify-content: center;
 
-    // row-gap: 1.875em;
-
-    // --my-nav-menu__row-gap: #{mixin.fluid(28px, 32px)}; // шкала (от высоты строки) 14*2 ... 16*2
-    // --my-nav-menu__row-gap: 2em; // шкала (от высоты строки) 14*2 ... 16*2
     row-gap: var(--layout__global__spacing);
 
     &__wrapper {
@@ -37,19 +33,23 @@
 
         width: 100%;
         height: 100%;
+
+        color: inherit;
     }
 
     &__link {
-        will-change: color, transform;
+        @include mixin.transition-for(color, transform);
+        will-change: transform;
+
         display: inline-block;
 
         color: inherit;
         text-decoration: inherit;
 
         transform-origin: center center;
-        transition:
-            color 0.3s ease-in-out,
-            transform 0.3s ease-in-out;
+        // transition:
+        //     color 0.3s ease-in-out,
+        //     transform 0.3s ease-in-out;
 
         &:focus {
             color: var(--color__global__text--focus);
@@ -75,6 +75,7 @@
         .my-nav-menu__item {
             &::before,
             &::after {
+                @include mixin.transition-for(color);
                 content: '•';
 
                 z-index: z('decoration');
@@ -87,6 +88,7 @@
                 color: inherit;
 
                 pointer-events: none;
+                user-select: none;
 
                 transform: translate(-50%, -50%);
             }
@@ -138,6 +140,7 @@
 
         .my-nav-menu__link {
             @extend %list--navigation-menu__text--in-header;
+            @include mixin.transition-for(color, transform);
         }
     }
 
@@ -145,15 +148,27 @@
         display: block;
 
         .my-nav-menu__item {
-            @extend %list--navigation-menu__text--in-footer;
-            display: block;
+            justify-content: flex-start;
+
+            &:not(:last-child) {
+                margin-bottom: var(--typography__global__small__margin-bottom);
+            }
         }
 
         .my-nav-menu__link {
+            @extend %list--navigation-menu__text--in-footer;
+            @include mixin.transition-for(color, transform);
+
             transform-origin: left center;
 
             @include bs.media-breakpoint-down(md) {
                 transform-origin: center center;
+            }
+        }
+
+        @include bs.media-breakpoint-down(md) {
+            .my-nav-menu__item {
+                justify-content: center;
             }
         }
     }

@@ -1,7 +1,7 @@
-@use '../abstracts/mixins' as mixin;
-@use '../abstracts/z_index' as *;
+@use '../../abstracts/mixins' as mixin;
+@use '../../abstracts/z_index' as *;
 
-@use '../vendors/bootstrap' as bs;
+@use '../../vendors/bootstrap' as bs;
 
 .my-nav-control {
     display: flex;
@@ -14,18 +14,9 @@
 
     &__cs-group {
         align-items: center;
-        // height: var(--layout__header__navigation-bar__control-group__height);
 
         &--mobile {
-            // --my-nav-control__height: 79px;
-            // --my-nav-control__height: #{mixin.fluid-with-range(59px, 79px, xs, md)};
-
-            // height: 79px;
             height: calc(var(--layout__header__navigation-bar__control-group__height) - 1px);
-
-            // @include bs.media-breakpoint-down(sm) {
-            //     height: 59px;
-            // }
         }
     }
 
@@ -47,7 +38,6 @@
         z-index: z('higher');
         position: absolute;
 
-        // height: 80px;
         height: var(--layout__header__navigation-bar__control-group__height);
 
         left: 0;
@@ -56,9 +46,5 @@
 
         display: flex;
         flex-direction: column;
-
-        // @include bs.media-breakpoint-down(sm) {
-        //     height: 60px;
-        // }
     }
 }

@@ -1,9 +1,8 @@
-@use '../abstracts/mixins' as mixin;
-// @use '../abstracts/placeholders' as *;
-
-@use '../vendors/bootstrap' as bs;
+@use '../../abstracts/mixins' as mixin;
+@use '../../vendors/bootstrap' as bs;
 
 .my-navigation-button {
+    @include mixin.transition-for(background-color, color);
     position: relative;
 
     display: flex;
@@ -86,7 +85,7 @@
 
     &__svg {
         @include mixin.transition-for;
-        will-change: transform, opacity;
+        will-change: transform;
 
         position: absolute;
 
@@ -111,8 +110,6 @@
     }
 
     &--mobile {
-        @include mixin.transition-for(width, height);
-
         border-radius: 50%;
 
         .houdini-squircle-ready & {
@@ -163,22 +160,7 @@
         }
     }
 
-    // @include bs.media-breakpoint-down(xl) {
-    //     width: 40px;
-
-    //     // border-radius: 10px;
-    //     border-radius: 40%;
-    // }
-
     @include bs.media-breakpoint-down(md) {
-        // width: 32px;
-        // width: 30px;
-
         width: mixin.fluid-with-range(26px, 30px, xs, md);
     }
-
-    // @include bs.media-breakpoint-down(xs) {
-    //     // width: 28px;
-    //     width: 26px;
-    // }
 }

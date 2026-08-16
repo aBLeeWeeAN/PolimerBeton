@@ -16,7 +16,6 @@
 
     color: var(--color__global__text);
 
-    // todo: протестить толк от margin right
     letter-spacing: var(--typography__global__base__letter-spacing);
     // margin-right: calc(-1 * var(--typography__global__base__letter-spacing));
     // margin-right: 0;
@@ -77,7 +76,6 @@
 
     color: var(--color__global__text);
 
-    // todo: протестить толк от margin right
     letter-spacing: var(--typography__global__base__letter-spacing);
     text-indent: 0;
 
@@ -177,7 +175,6 @@
 
     color: var(--color__global__text);
 
-    // todo: протестить толк от margin right
     letter-spacing: var(--typography__global__base__letter-spacing);
     text-indent: 0;
 
@@ -201,7 +198,6 @@
 
     color: var(--color__global__text);
 
-    // todo: протестить толк от margin right
     letter-spacing: var(--typography__global__base__letter-spacing);
     text-indent: 0;
 
@@ -225,10 +221,28 @@
 
     color: var(--color__global__text);
 
-    // todo: протестить толк от margin right
     letter-spacing: var(--typography__global__base__letter-spacing);
     // margin-right: calc(-1 * var(--typography__global__base__letter-spacing));
     // margin-right: 0;
+    text-indent: 0;
+
+    text-align: left;
+    hyphens: none;
+
+    &:not(:last-child) {
+        margin-bottom: var(--typography__global__base__margin-bottom);
+    }
+}
+
+%text__paragraph--cookie-consent-banner {
+    @extend %text__base;
+
+    font-weight: 400;
+    font-size: var(--typography__global__base__font-size);
+
+    color: var(--color__global__text);
+
+    letter-spacing: var(--typography__global__base__letter-spacing);
     text-indent: 0;
 
     text-align: left;

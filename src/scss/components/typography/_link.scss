@@ -1,15 +1,14 @@
-@use '../abstracts/mixins' as mixin;
-@use '../abstracts/typography' as *;
+@use '../../abstracts/mixins' as mixin;
+@use '../../abstracts/typography' as *;
 
-@use '../vendors/bootstrap' as bs;
+@use '../../vendors/bootstrap' as bs;
 
 .my-link {
     @extend %text__link;
-    @include mixin.transition-for;
+    @include mixin.transition-for(color, transform);
     will-change: transform;
 
     display: inline-block;
-
     transform-origin: center center;
 
     &:focus {

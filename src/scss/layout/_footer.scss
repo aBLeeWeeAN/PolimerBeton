@@ -45,7 +45,6 @@
 
 .my-footer {
     z-index: z('footer');
-    will-change: box-shadow;
 
     overflow: hidden;
     position: sticky;
@@ -61,6 +60,9 @@
     );
 
     &::after {
+        @include mixin.transition-for(background-color);
+        will-change: opacity;
+
         content: '';
 
         position: absolute;
@@ -78,6 +80,7 @@
     }
 
     &__decorative-square {
+        @include mixin.transition-for(background-color);
         will-change: transform;
 
         z-index: z('background');
@@ -114,7 +117,7 @@
         }
 
         @include bs.media-breakpoint-down(sm) {
-            will-change: none;
+            will-change: auto;
             animation: none;
 
             display: none;

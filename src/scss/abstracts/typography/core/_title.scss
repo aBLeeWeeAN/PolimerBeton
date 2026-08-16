@@ -166,29 +166,23 @@
     font-variant-numeric: tabular-nums;
 
     font-weight: 600;
-    font-size: 10em;
+    font-size: clamp(72px, 0.2095 * 100vw - 17.0182px, 360px);
 
     color: var(--color__global__text);
 
     letter-spacing: var(--typography__global__title__letter-spacing);
     margin-right: calc(-1 * var(--typography__global__title__letter-spacing));
 
-    line-height: 0.75em;
+    line-height: 0.725em;
 
     text-align: center;
     text-transform: uppercase;
 
     margin-bottom: 0;
-    max-width: 20em;
+    max-width: unset;
 
     text-wrap-mode: nowrap;
-    // opacity: 0.05;
     opacity: 0.09;
-    // opacity: 1;
-
-    // color: #ef9a9a;
-    // color: #a5d6a7;
-    // color: #81c784;
 
     // todo: for night mode
     // opacity: 0.11;
@@ -196,13 +190,5 @@
     @supports (text-box: trim-both cap alphabetic) {
         text-box-trim: trim-both;
         text-box-edge: cap alphabetic;
-    }
-
-    @include bs.media-breakpoint-down(sm) {
-        font-size: 8em;
-    }
-
-    @include bs.media-breakpoint-down(xs) {
-        font-size: 6em;
     }
 }

@@ -1,25 +1,25 @@
 <!-- ! d-none by default --->
-<aside
-    id="my-cookie-consent-banner"
-    class="d-none my-cookie-consent-banner"
-    aria-label="Баннер согласия на использование файлов Cookie"
-    role="region">
-    <div class="my-cookie-consent-banner__header-container">
-        <svg class="my-cookie-consent-banner__header-svg" width="16" height="16" aria-hidden="true">
-            <use href="@icons/other/cookie.svg"></use>
-        </svg>
-        <strong class="my-cookie-consent-banner__header-text">Мы используем файлы Cookie</strong>
+<aside id="my-cookie-consent-banner" class="d-none my-cookie-consent-banner" aria-labelledby="cookie-consent-banner-title" role="region">
+    <div class="my-cookie-consent-banner__text-container">
+        <h2 id="cookie-consent-banner-title" class="my-cookie-consent-banner__title">
+            <svg class="my-cookie-consent-banner__title-svg" width="16" height="16" aria-hidden="true">
+                <use href="@icons/other/cookie.svg"></use>
+            </svg>
+            Мы используем файлы Cookie
+        </h2>
+
+        <p class="my-cookie-consent-banner__paragraph">
+            Мы используем аналитические Cookie от Google и Яндекс. Это помогает нам сделать наш сайт более удобным для Вас.
+            <br />
+            <a class="my-cookie-consent-banner__link" href="@page/privacy.html#Cookie" target="_self">Узнать больше об этом...</a>
+        </p>
     </div>
 
-    <p class="my-cookie-consent-banner__paragraph">
-        Мы используем аналитические Cookie от Google и Яндекс. Это помогает нам сделать наш сайт более удобным для Вас.
-        <br />
-        <a class="my-cookie-consent-banner__link" href="@page/privacy.html#Cookie" target="_self">Узнать больше об этом...</a>
-    </p>
-
     <div class="my-cookie-consent-banner__buttons-container">
-        <button id="cookie-decline-btn" class="my-cookie-consent-banner__button" type="button">Нет, спасибо</button>
-        <button id="cookie-accept-btn" class="my-cookie-consent-banner__button" type="button">Хорошо</button>
+        <button id="cookie-decline-btn" class="my-default-button my-default-button--cookie-consent-banner" type="button">
+            Нет, спасибо
+        </button>
+        <button id="cookie-accept-btn" class="my-default-button my-default-button--cookie-consent-banner" type="button">Хорошо</button>
     </div>
 </aside>
 

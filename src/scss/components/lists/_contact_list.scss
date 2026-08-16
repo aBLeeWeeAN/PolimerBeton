@@ -1,7 +1,7 @@
-@use '../abstracts/mixins' as mixin;
-@use '../abstracts/typography' as *;
+@use '../../abstracts/mixins' as mixin;
+@use '../../abstracts/typography' as *;
 
-@use '../vendors/bootstrap' as bs;
+@use '../../vendors/bootstrap' as bs;
 
 .my-contact-list {
     @extend %list--contact;
@@ -18,14 +18,15 @@
 
     &__item {
         @extend %list--contact__text;
+        @include mixin.transition-for(color, transform);
+        will-change: transform;
 
-        will-change: color, transform;
         display: inline-block;
 
         transform-origin: center center;
-        transition:
-            color 0.3s ease-in-out,
-            transform 0.3s ease-in-out;
+        // transition:
+        //     color 0.3s ease-in-out,
+        //     transform 0.3s ease-in-out;
 
         &:focus {
             color: var(--color__global__text--focus);

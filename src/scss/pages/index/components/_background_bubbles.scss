@@ -1,5 +1,5 @@
-@use '../abstracts/z_index' as *;
-@use '../vendors/bootstrap' as bs;
+@use '../../../abstracts/z_index' as *;
+@use '../../../vendors/bootstrap' as bs;
 
 .my-background-bubbles {
     z-index: z('decoration');

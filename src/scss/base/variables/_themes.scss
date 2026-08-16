@@ -1,12 +1,100 @@
 /* stylelint-disable custom-property-empty-line-before */
 @use 'sass:color';
-@use '../vendors/bootstrap' as bs;
+
+@use '../../abstracts/mixins' as mixin;
+@use '../../vendors/bootstrap' as bs;
+
+@property --color__hero__slogan-text--gradient-step-1 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: transparent;
+}
+
+@property --color__hero__slogan-text--gradient-step-2 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: transparent;
+}
+
+@property --color__hero__slogan-text--gradient-step-3 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: transparent;
+}
+
+// todo
+@property --color__footer__background--gradient-step-1 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: transparent;
+}
+
+@property --color__footer__background--gradient-step-2 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: transparent;
+}
+
+@property --color__card-img__background--gradient-step-1 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: transparent;
+}
+
+@property --color__card-img__background--gradient-step-2 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: transparent;
+}
+
+@property --color__card-img__background--gradient-step-3 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: transparent;
+}
+
+@property --color__decorative-element__background--gradient-step-1 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: transparent;
+}
+
+@property --color__decorative-element__background--gradient-step-2 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: transparent;
+}
+
+// @property --color__page__background {
+//     syntax: '<color>';
+//     inherits: true;
+//     initial-value: transparent;
+// }
+
+// @property --color__page__scrollbar-background {
+//     syntax: '<color>';
+//     inherits: true;
+//     initial-value: transparent;
+// }
 
 // * --- PAGE COLORS (+ DARK THEME)
 // * ------------------------------
 :root {
     // ! --- LIGHT THEME (DEFAULT)
     // ! -------------------------
+    @include mixin.transition-for(
+        --color__hero__slogan-text--gradient-step-1,
+        --color__hero__slogan-text--gradient-step-2,
+        --color__hero__slogan-text--gradient-step-3,
+        --color__footer__background--gradient-step-1,
+        --color__footer__background--gradient-step-2,
+        --color__card-img__background--gradient-step-1,
+        --color__card-img__background--gradient-step-2,
+        --color__card-img__background--gradient-step-3,
+        --color__decorative-element__background--gradient-step-1,
+        --color__decorative-element__background--gradient-step-2,
+        scrollbar-color
+    );
 
     // * --- GLOBAL (COMMON) COLORS
     // * --------------------------

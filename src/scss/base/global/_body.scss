@@ -3,14 +3,7 @@
 
 body {
     @extend %text__body;
-    // @include mixin.transition-all(background-color, color, fill);
-    // will-change: background-color, color, fill;
-
-    // overflow-x: hidden;
-    // overflow-anchor: none;
-
-    // margin: 0 auto;
-    // padding: 0 !important;
+    @include mixin.transition-for(background-color);
 
     background-color: var(--color__page__background);
 }

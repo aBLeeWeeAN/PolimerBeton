@@ -15,7 +15,10 @@
     height: auto;
 
     &__fixed-part {
-        @include mixin.transition-for;
+        @include mixin.transition-for(transform, background-color, box-shadow);
+
+        // ? transform появляются всегда при прокрутке вниз,
+        // ? и убираются при прокрутке вверх
         will-change: transform;
 
         z-index: z('higher');
@@ -36,8 +39,9 @@
         box-shadow: 0 8px 10px var(--color__global__shadow);
 
         // transition:
-        //     transform 0.3s ease,
-        //     box-shadow 0.3s ease;
+        //     transform 300ms ease-out,
+        //     box-shadow 300ms ease-out,
+        //     background-color 300ms ease-in-out;
 
         &--hidden {
             box-shadow: none;
@@ -46,8 +50,8 @@
     }
 
     &__hidden-part {
-        @include mixin.transition-for;
-        will-change: transform, opacity;
+        @include mixin.transition-for(background-color, box-shadow);
+        will-change: transform;
 
         position: fixed;
         z-index: z('lower');
@@ -59,20 +63,22 @@
         padding-top: var(--layout__header__navigation-bar-height);
 
         box-shadow: 0 8px 10px var(--color__global__shadow);
-
         background-color: var(--color__header__navigation-menu-background);
+
         backdrop-filter: blur(18px);
 
         &.showing {
             transition:
                 transform 1000ms cubic-bezier(0.165, 0.84, 0.44, 1),
-                box-shadow 0s ease-out;
+                background-color 300ms ease-in-out,
+                box-shadow 300ms ease-in-out;
         }
 
         &.show.hiding {
             transition:
                 transform 700ms cubic-bezier(0.165, 0.84, 0.44, 1),
-                box-shadow 0s ease-out;
+                background-color 300ms ease-in-out,
+                box-shadow 300ms ease-in-out;
         }
 
         @include bs.media-breakpoint-down(md) {

@@ -31,11 +31,12 @@
 
     &__item-header,
     &__item {
+        @include mixin.transition-for(border-color);
+        border: solid 1px var(--color__global__text--solid);
+
         vertical-align: middle;
 
         // padding: 24px 32px;
         padding: calc(0.5 * var(--layout__global__spacing)) calc(1 * var(--layout__global__spacing));
-
-        border: solid 1px var(--color__global__text--solid);
     }
 }

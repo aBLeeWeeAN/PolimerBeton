@@ -104,7 +104,7 @@
         height: 100%;
 
         transform-origin: center;
-        transform: scale(1);
+        // transform: scale(1);
 
         // * alternate | проигрывание: сначала вперед - потом назад
         animation: price-badge__price-svg__scale-effect calc(0.6 * var(--animation-duration))
@@ -112,6 +112,7 @@
     }
 
     &__price-svg {
+        @include mixin.transition-for(color);
         will-change: transform;
 
         position: absolute;
@@ -129,8 +130,8 @@
 
     &__price-text {
         @extend %text__price-badge;
-
         will-change: transform;
+
         display: inline-flex;
 
         align-items: center;

@@ -1,7 +1,9 @@
-@use '../abstracts/mixins' as mixin;
-@use '../vendors/bootstrap' as bs;
+@use '../../abstracts/mixins' as mixin;
+@use '../../vendors/bootstrap' as bs;
 
 .my-separator {
+    @include mixin.transition-for(border-color);
+
     display: block;
 
     height: 1px;

@@ -154,6 +154,9 @@
 // * --- BASE
 // * --------
 %text__base {
+    @include mixin.transition-for(color);
+    // color: magenta; // ? debug color | user shouldn't see this color by default
+
     font-family: 'Montserrat', sans-serif;
     font-optical-sizing: auto;
     font-style: normal;

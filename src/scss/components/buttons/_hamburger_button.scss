@@ -1,6 +1,6 @@
 /* stylelint-disable keyframes-name-pattern */
-@use '../abstracts/mixins' as mixin;
-@use '../vendors/bootstrap' as bs;
+@use '../../abstracts/mixins' as mixin;
+@use '../../vendors/bootstrap' as bs;
 
 @keyframes button-hamburger__middle-line__shake-effect {
     0% {
@@ -24,11 +24,10 @@
     }
 }
 
-// todo: починить анимацию
 .my-hamburger-button {
-    height: auto;
+    @include mixin.transition-for(color);
 
-    // width: 36px;
+    height: auto;
     width: mixin.fluid-with-range(32px, 36px, md, xxl);
 
     color: var(--color__global__text--primary);

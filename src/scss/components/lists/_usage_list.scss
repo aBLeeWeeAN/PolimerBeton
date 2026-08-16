@@ -1,8 +1,8 @@
-@use '../abstracts/mixins' as mixin;
-@use '../abstracts/typography' as *;
-@use '../abstracts/z_index' as *;
+@use '../../abstracts/mixins' as mixin;
+@use '../../abstracts/typography' as *;
+@use '../../abstracts/z_index' as *;
 
-@use '../vendors/bootstrap' as bs;
+@use '../../vendors/bootstrap' as bs;
 
 .usage-list {
     list-style: none;
@@ -10,7 +10,7 @@
 
     &__item {
         @extend %text__paragraph--usage;
-        @include mixin.transition-for(transform);
+        @include mixin.transition-for(color, transform, background-color, box-shadow);
         will-change: transform;
 
         counter-increment: usage-list-counter;
@@ -19,9 +19,7 @@
         list-style: inherit;
 
         background-color: var(--color__examples__numeric-list-background);
-
         box-shadow: 0.1em 0.15em 0.4em 0 var(--color__global__shadow);
-        // box-shadow: 0 0 0.4em 0 var(--color__global__shadow);
 
         backdrop-filter: blur(10px);
 

@@ -61,6 +61,7 @@
     }
 
     &__img {
+        @include mixin.transition-for(transform, box-shadow);
         will-change: transform, box-shadow;
 
         aspect-ratio: initial;
@@ -95,9 +96,9 @@
             );
 
         transform: scale(var(--my-scale));
-        transition:
-            transform 300ms ease-in-out,
-            box-shadow 300ms ease-in-out;
+        // transition:
+        //     transform 300ms ease-in-out,
+        //     box-shadow 300ms ease-in-out;
 
         animation: gradient-image__colored-border__spin-effect 2s linear infinite;
 

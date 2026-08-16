@@ -57,6 +57,8 @@
     }
 
     &__text-field {
+        @include mixin.transition-for(background-color);
+
         display: flex;
         flex-direction: row;
 
@@ -180,6 +182,8 @@
     }
 
     &__checkbox-input-wrapper {
+        @include mixin.transition-for(background-color, border-color);
+
         flex: 0 0 auto;
         position: relative;
 
@@ -197,6 +201,7 @@
         border-radius: 50%;
 
         &:has([type='checkbox']:checked) {
+            // transition: background-color 150ms ease-out;
             background-color: var(--color__global__primary);
         }
 
@@ -208,7 +213,7 @@
     }
 
     &__checkbox-svg {
-        will-change: transform, opacity;
+        // will-change: transform, opacity;
 
         z-index: z('default');
         position: absolute;
@@ -225,8 +230,9 @@
         opacity: 0;
 
         transition:
-            transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1),
-            opacity 300ms ease-in-out;
+            transform 300ms cubic-bezier(0, -1.5, 0.33, 2.15),
+            // opacity 100ms linear,
+            color 300ms ease-in-out;
 
         .my-custom-feedback-form__checkbox-field:has([type='checkbox']:checked) & {
             transform: translate(-50%, -45%) scale(1) rotate(0deg);
@@ -260,21 +266,6 @@
         flex: 0 1 0;
         min-width: 36.4em;
 
-        // font-family: 'Montserrat', sans-serif;
-        // font-optical-sizing: auto;
-        // font-style: normal;
-        // font-weight: 600;
-        // font-size: inherit;
-
-        // letter-spacing: 0.035em;
-        // text-indent: 0.035em;
-
-        // text-align: center;
-        // text-wrap-mode: wrap;
-        // text-wrap-style: pretty;
-
-        // color: var(--color__global__text);
-
         cursor: pointer;
 
         .my-custom-feedback-form__checkbox-field:has(:disabled) &,
@@ -284,29 +275,14 @@
         }
 
         @include bs.media-breakpoint-down(xxl) {
-            // max-width: 360px;
             min-width: 20em;
         }
 
-        @include bs.media-breakpoint-down(xl) {
-            // max-width: 300px;
-            // min-width: 36.4em;
-        }
-
-        @include bs.media-breakpoint-down(lg) {
-            // max-width: 280px;
-            // min-width: 36.4em;
-        }
-
         @include bs.media-breakpoint-down(md) {
-            // max-width: 100%;
             min-width: 36.4em;
         }
 
         @include bs.media-breakpoint-down(sm) {
-            // flex: 1 1 0;
-
-            // max-width: 40em;
             min-width: 20em;
         }
 
@@ -315,8 +291,6 @@
 
             max-width: 20em;
             min-width: 0;
-            // min-width: 17em;
-            // min-width: 15em;
         }
     }
 
@@ -355,6 +329,7 @@
 
     &__input-element {
         @extend %text__form__input;
+        // @include mixin.transition-for(caret-color);
 
         text-box: normal;
 
@@ -364,6 +339,8 @@
 
         &[type='text'],
         &[type='tel'] {
+            @include mixin.transition-for(color, background-color);
+
             flex-grow: 1;
             display: flex;
 
@@ -408,6 +385,7 @@
             // letter-spacing: 0.1em;
 
             &::placeholder {
+                @include mixin.transition-for(color);
                 color: var(--color__global__text--hint);
             }
 

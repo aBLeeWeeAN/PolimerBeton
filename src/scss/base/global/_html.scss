@@ -1,8 +1,12 @@
 @use '../../abstracts/typography' as *;
+@use '../../abstracts/mixins' as mixin;
+
 @use '../../vendors/bootstrap' as bs;
 
 html {
     @extend %text__base;
+    // ? задавать в _themes.scss | :root element
+    // @include mixin.transition-for(scrollbar-color);
 
     overflow-x: hidden;
     scroll-behavior: smooth;

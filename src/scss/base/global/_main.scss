@@ -1,6 +1,9 @@
 @use '../../abstracts/z_index' as *;
+@use '../../abstracts/mixins' as mixin;
 
 main {
+    @include mixin.transition-for(background-color);
+
     z-index: z('main');
     position: relative;
 

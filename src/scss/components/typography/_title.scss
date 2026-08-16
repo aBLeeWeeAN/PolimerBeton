@@ -1,8 +1,8 @@
-@use '../abstracts/mixins' as mixin;
-@use '../abstracts/typography' as *;
-@use '../abstracts/z_index' as *;
+@use '../../abstracts/mixins' as mixin;
+@use '../../abstracts/typography' as *;
+@use '../../abstracts/z_index' as *;
 
-@use '../vendors/bootstrap' as bs;
+@use '../../vendors/bootstrap' as bs;
 
 .my-title {
     @extend %text__title;
@@ -42,9 +42,7 @@
 
         &::before {
             @extend %text__title--server-response__before;
-            content: 'TEXT';
-
-            container-type: inline-size;
+            content: 'DEBUG';
 
             z-index: z('decoration');
             position: absolute;
@@ -56,9 +54,9 @@
             transform: translate(-50%, 0);
 
             pointer-events: none;
+            user-select: none;
 
-            width: 100vw;
-            font-size: clamp(84px, 18cqw, 350px);
+            width: auto;
 
             @include bs.media-breakpoint-down(md) {
                 bottom: unset;
@@ -70,7 +68,6 @@
 
         &[data-variant='success']::before {
             content: 'SUCCESS';
-            // font-size: clamp(40px, 15cqw, 350px);
 
             @include bs.media-breakpoint-down(md) {
                 content: 'DONE';
@@ -79,12 +76,10 @@
 
         &[data-variant='fail']::before {
             content: 'FAIL';
-            // font-size: clamp(100px, 25cqw, 350px);
         }
 
         &[data-variant='404']::before {
             content: '404';
-            // font-size: clamp(100px, 25cqw, 350px);
         }
     }
 }

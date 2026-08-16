@@ -1,17 +1,6 @@
-@use '../abstracts/mixins' as mixin;
-@use '../abstracts/typography' as *;
-
-@use '../vendors/bootstrap' as bs;
-
 .my-list {
-    // @include mixin.transition-all(color);
-    will-change: color;
-
     list-style-type: none;
     list-style-position: inside;
-
-    // padding-left: 0;
-    // margin-bottom: 0;
 
     &__item {
         list-style: inherit;

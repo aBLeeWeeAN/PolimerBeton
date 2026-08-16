@@ -1,5 +1,7 @@
 /* stylelint-disable keyframes-name-pattern */
 @use '../../abstracts/z_index' as *;
+@use '../../abstracts/mixins' as mixin;
+
 @use '../../vendors/bootstrap' as bs;
 
 @keyframes hero__background-image__parallax-move-effect {
@@ -50,15 +52,18 @@
         top: -800px;
 
         pointer-events: none;
+        user-select: none;
+
         animation: hero__background-image__parallax-move-effect linear;
 
         // animation-timeline: scroll(root block);
         animation-timeline: --hero-section;
 
         &::after {
-            content: '';
+            @include mixin.transition-for(opacity, background-color, box-shadow);
+            // will-change: opacity, background-color, box-shadow;
 
-            will-change: opacity, background-color, box-shadow;
+            content: '';
 
             z-index: z('background');
             position: absolute;
@@ -68,11 +73,11 @@
             mix-blend-mode: multiply;
 
             background-color: var(--color__hero__background-image-overlay);
-            background-color: #616161;
+            // background-color: #616161;
 
-            transition:
-                background-color 0.5s ease-out,
-                opacity 0.5s ease-out;
+            // transition:
+            //     background-color 0.5s ease-out,
+            //     opacity 0.5s ease-out;
 
             // * work
             [data-bs-theme='dark'] & {
@@ -81,6 +86,7 @@
             }
 
             pointer-events: none;
+            user-select: none;
 
             // ! don't work
             // @include bs.color-mode(dark) {

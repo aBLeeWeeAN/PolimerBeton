@@ -1,8 +1,8 @@
 /* stylelint-disable keyframes-name-pattern */
-@use '../abstracts/mixins' as mixin;
-@use '../abstracts/typography' as *;
+@use '../../abstracts/mixins' as mixin;
+@use '../../abstracts/typography' as *;
 
-@use '../vendors/bootstrap' as bs;
+@use '../../vendors/bootstrap' as bs;
 
 @keyframes paragraph__background__running-gradient-effect {
     to {
@@ -15,9 +15,9 @@
 
     &--hero-slogan {
         @extend %text__paragraph--hero-slogan;
+        will-change: background-position;
 
         --bg-size: 200%;
-        will-change: background-position;
 
         background: linear-gradient(
                 90deg,
