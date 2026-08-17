@@ -45,6 +45,8 @@
     }
 
     &__advantage {
+        container-type: inline-size;
+
         display: flex;
         flex-direction: row;
 
@@ -89,7 +91,7 @@
         display: flex;
         flex-direction: column;
 
-        // max-width: 50%;
+        min-width: 0;
 
         align-items: center;
         justify-content: center;
@@ -109,17 +111,22 @@
 
     --advantage__picture__max-height: 400px;
 
-    &__picture {
-        will-change: transform;
-
-        flex-grow: 1;
-        flex-shrink: 0;
+    &__picture-wrapper {
+        // prettier-ignore
+        flex: 0 0 calc(var(--advantage__picture__max-height) + 2 * (var(--advantage__picture__max-height) / 6));
 
         display: flex;
-        justify-items: center;
+        place-items: center center;
+
+        padding: 0 calc(var(--advantage__picture__max-height) / 6);
+    }
+
+    &__picture {
+        will-change: transform;
+        container-type: inline-size;
 
         aspect-ratio: 1 / 1;
-        max-height: var(--advantage__picture__max-height);
+        width: 100%;
 
         --commons__gravity-effect__start-pos: translateY(-2rem);
         --commons__gravity-effect__middle-pos: translateY(3rem);
@@ -127,14 +134,20 @@
 
         animation: commons__gravity-effect 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 
-        :nth-child(even) > & {
+        li:nth-child(even) > div > & {
             animation-delay: -5s;
         }
     }
 
     &__img {
-        height: 100%;
-        width: auto;
+        @include mixin.transition-for(filter);
+
+        border: 0;
+        border-radius: 50%;
+        filter: drop-shadow(1.75cqw 1.75cqw 1.15cqw var(--color__balls_group__shadow));
+
+        aspect-ratio: 1 / 1;
+        width: 100%;
     }
 
     @include bs.media-breakpoint-down(xl) {

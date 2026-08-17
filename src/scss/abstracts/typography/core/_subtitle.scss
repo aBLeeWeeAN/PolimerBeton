@@ -81,16 +81,18 @@
     text-align: center;
     text-transform: uppercase;
 
-    margin-bottom: calc(2 * var(--typography__global__subtitle__margin-bottom));
+    margin-bottom: var(--typography__global__subtitle__margin-bottom);
+    // margin-bottom: calc(2 * var(--typography__global__subtitle__margin-bottom));
+
     max-width: unset;
 
-    @include bs.media-breakpoint-down(xl) {
-        margin-bottom: calc(1.75 * var(--typography__global__subtitle__margin-bottom));
-    }
+    // @include bs.media-breakpoint-down(xl) {
+    //     margin-bottom: calc(1.75 * var(--typography__global__subtitle__margin-bottom));
+    // }
 
-    @include bs.media-breakpoint-down(lg) {
-        margin-bottom: var(--typography__global__subtitle__margin-bottom);
-    }
+    // @include bs.media-breakpoint-down(lg) {
+    //     margin-bottom: var(--typography__global__subtitle__margin-bottom);
+    // }
 }
 
 %text__subtitle--advantage__before {

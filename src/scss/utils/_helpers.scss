@@ -1,3 +1,18 @@
+@use '../abstracts/z_index' as *;
+
 .my-disabled {
     display: none;
+}
+
+.shadow-group {
+    z-index: z('shadow_group');
+    position: relative;
+
+    /* x-offset | y-offset | blur | spread | color */
+    box-shadow:
+        0 -10px 24px var(--color__global__shadow),
+        0 10px 24px var(--color__global__shadow);
+
+    margin: 0 -25px;
+    padding: 0 25px;
 }

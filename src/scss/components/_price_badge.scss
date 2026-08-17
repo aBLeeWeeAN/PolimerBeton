@@ -152,6 +152,8 @@
         z-index: z('default');
         position: absolute;
 
+        container-type: inline-size;
+
         display: flex;
         flex-direction: column;
 
@@ -203,11 +205,16 @@
     }
 
     &__ball-img {
+        @include mixin.transition-for(filter);
         will-change: transform;
 
         aspect-ratio: 1 / 1;
         width: 100%;
         height: auto;
+
+        border: 0;
+        border-radius: 50%;
+        filter: drop-shadow(1.75cqw 1.75cqw 1.15cqw var(--color__balls_group__shadow));
 
         transform-origin: center;
         transform: rotate(var(--ball__current-rotation-compensation-angle, 0deg));

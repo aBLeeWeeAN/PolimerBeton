@@ -12,19 +12,11 @@
         grid-area: my-title;
     }
 
-    // &__title,
-    // &__subtitle {
-    //     @include bs.media-breakpoint-down(sm) {
-    //         padding: 0 var(--layout__global__spacing);
-    //     }
-    // }
-
     #My-Example-Subtitle__Pillar {
         grid-area: my-subtitle__pillar;
     }
 
     #My-Example-Subtitle__Road {
-        // @extend %text__title__margin-top;
         grid-area: my-subtitle__road;
 
         @include bs.media-breakpoint-down(xxl) {
@@ -40,16 +32,10 @@
         column-gap: inherit;
 
         @include bs.media-breakpoint-down(sm) {
-            // min-width: 0;
-            // width: 100%;
             width: 100vw;
 
-            // padding: 0 16px;
-            // padding: 0 1.6em;
-            // padding: 0 var(--layout__global__spacing);
-
-            margin: 0 calc(-1 * var(--layout__wrapper__padding--horizontal));
-            padding: 0 var(--layout__wrapper__padding--horizontal);
+            margin: -15px calc(-1 * var(--layout__wrapper__padding--horizontal));
+            padding: 15px var(--layout__wrapper__padding--horizontal);
 
             overflow-x: scroll;
             -webkit-overflow-scrolling: touch;
@@ -66,34 +52,10 @@
         grid-area: my-img-group__road;
     }
 
-    // #My-Example-Img__Pillar-Before {
-    //     grid-area: my-img__pillar-before;
-    // }
-
-    // #My-Example-Img__Pillar-After {
-    //     grid-area: my-img__pillar-after;
-    // }
-
-    // #My-Example-Img__Road-Before {
-    //     grid-area: my-img__road-before;
-    // }
-
-    // #My-Example-Img__Road-After {
-    //     grid-area: my-img__road-after;
-    // }
-
     &__content {
-        // position: relative;
-
         display: grid;
         place-items: center center;
 
-        // row-gap: 1.5rem;
-        // column-gap: 1.5rem;
-
-        // column-gap: 16px;
-        // column-gap: clamp(14px, 0.0073 * 100vw + 9.8058px, 20px);
-        // column-gap: 1em;
         column-gap: calc(var(--layout__global__spacing) / 2);
 
         // * default
@@ -103,7 +65,7 @@
             'my-subtitle__pillar my-subtitle__pillar my-subtitle__road my-subtitle__road'
             'my-img-group__pillar my-img-group__pillar my-img-group__road my-img-group__road';
 
-        @include bs.media-breakpoint-down(xxl) {
+        @include bs.media-breakpoint-down(md) {
             grid-template-columns: 1fr 1fr;
             grid-template-areas:
                 'my-title my-title'
@@ -112,18 +74,6 @@
                 'my-subtitle__road my-subtitle__road'
                 'my-img-group__road my-img-group__road';
         }
-
-        // @include bs.media-breakpoint-down(sm) {
-        //     grid-template-columns: 1fr;
-        //     grid-template-areas:
-        //         'my-title'
-        //         'my-subtitle__pillar'
-        //         'my-img__pillar-before'
-        //         'my-img__pillar-after'
-        //         'my-subtitle__road'
-        //         'my-img__road-before'
-        //         'my-img__road-after';
-        // }
 
         @include bs.media-breakpoint-down(sm) {
             grid-template-columns: 1fr 1fr;
@@ -133,12 +83,6 @@
                 'my-img-group__pillar my-img-group__pillar'
                 'my-subtitle__road my-subtitle__road'
                 'my-img-group__road my-img-group__road';
-
-            // padding: 0;
         }
     }
-
-    // &__img {
-    //     min-width: 200px;
-    // }
 }

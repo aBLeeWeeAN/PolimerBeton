@@ -17,6 +17,7 @@ $z-indexes: (
     'my_description': 20,
     'my_examples': 20,
     'my_legal': 20,
+    'shadow_group': 20,
     'my_hero': 10,
     'main': 2,
     'footer': 1,
@@ -33,7 +34,7 @@ $z-indexes: (
     @if map.has-key($z-indexes, $layer) {
         @return map.get($z-indexes, $layer);
     } @else {
-        @warn "Неизвестный слой z-index: #{$layer}";
+        @warn "Unknown z-index layer: #{$layer}";
         @return null;
     }
 }

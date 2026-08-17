@@ -30,8 +30,6 @@
     align-items: center;
     justify-content: flex-start;
 
-    backdrop-filter: blur(5px);
-
     --my-scale: 1;
 
     // ! fallback | if vanilla tilt dont work (js not support) | hover only non-touch screens
@@ -62,7 +60,7 @@
 
     &__img {
         @include mixin.transition-for(transform, box-shadow);
-        will-change: transform, box-shadow;
+        will-change: transform;
 
         aspect-ratio: initial;
         width: 100%;
@@ -74,7 +72,7 @@
         border: 0.2em solid transparent;
         border-radius: 1.2em;
 
-        box-shadow: 0 15px 35px var(--color__global__shadow);
+        box-shadow: 5px 5px 10px 0 var(--color__global__shadow);
 
         background-origin: border-box;
         background-clip: padding-box, border-box;
@@ -96,6 +94,7 @@
             );
 
         transform: scale(var(--my-scale));
+
         // transition:
         //     transform 300ms ease-in-out,
         //     box-shadow 300ms ease-in-out;
@@ -104,12 +103,12 @@
 
         @include mixin.hover {
             transform: scale(1.025);
-            box-shadow: 0 20px 50px var(--color__global__shadow);
+            box-shadow: 7px 7px 14px 0 var(--color__global__shadow);
         }
 
         @include mixin.active {
             transform: scale(0.975);
-            box-shadow: 0 5px 25px var(--color__global__shadow);
+            box-shadow: 3px 3px 4px 0 var(--color__global__shadow);
         }
 
         #My-Example-Img__Pillar-Before &,

@@ -10,8 +10,8 @@
 
     &__item {
         @extend %text__paragraph--usage;
-        @include mixin.transition-for(color, transform, background-color, box-shadow);
-        will-change: transform;
+        @include mixin.transition-for(color, transform, background-color, backdrop-filter);
+        will-change: transform, backdrop-filter;
 
         counter-increment: usage-list-counter;
 
@@ -19,31 +19,29 @@
         list-style: inherit;
 
         background-color: var(--color__examples__numeric-list-background);
-        box-shadow: 0.1em 0.15em 0.4em 0 var(--color__global__shadow);
-
         backdrop-filter: blur(10px);
-
-        // * from form input
-        // padding: 1.025em 1.25em;
-        // padding: 17.425px 21.25px;
-
-        // padding: 0.87125em 1.0625em;
 
         padding: 0.666em 1.333em;
 
-        // border: 2px solid rgba(255, 255, 255, 10%);
         border: 0;
         border-radius: 1.2em;
 
-        // pointer-events: none;
-        cursor: pointer;
-
         @include mixin.hover {
             transform: scale(1.025);
+            backdrop-filter: blur(12px);
+
+            &::after {
+                box-shadow: 0.15em 0.15em 0.4em var(--color__global__shadow);
+            }
         }
 
         @include mixin.active {
             transform: scale(0.975);
+            backdrop-filter: blur(8px);
+
+            &::after {
+                box-shadow: 0.05em 0.05em 0.2em var(--color__global__shadow);
+            }
         }
 
         &::before {
@@ -54,6 +52,21 @@
             margin-right: calc(0.5 * var(--layout__global__spacing));
 
             transform: translateY(2px);
+        }
+
+        &::after {
+            @include mixin.transition-for(box-shadow);
+            content: '';
+
+            z-index: -1;
+            position: absolute;
+            inset: 0;
+
+            border-radius: inherit;
+            box-shadow: 0.1em 0.1em 0.3em var(--color__global__shadow);
+
+            pointer-events: none;
+            user-select: none;
         }
     }
 }

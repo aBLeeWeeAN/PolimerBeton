@@ -328,6 +328,9 @@ class BallViewer {
 
         // Захватываем указатель, чтобы события продолжали работать, даже если мышь ушла за пределы контейнера
         this.container.setPointerCapture(e.pointerId)
+
+        // Добавляем класс grabbing к объекту, который хватаем
+        this.container.classList.add('grabbing')
     }
 
     private onPointerMove = (e: PointerEvent) => {
@@ -367,6 +370,9 @@ class BallViewer {
         this.idleTimer = window.setTimeout(() => {
             this.shouldResetAxis = true
         }, 1000)
+
+        // Удаляем класс grabbing из объекта, который держали
+        this.container.classList.remove('grabbing')
     }
 
     private addEventListeners() {

@@ -113,7 +113,6 @@
     // --color__global__shadow: #{color.change(#121212, $alpha: 14%)};
     // --color__global__shadow: #{color.change(#121212, $alpha: 40%)};
     --color__global__shadow: #{color.change(#000, $alpha: 40%)};
-
     --color__global__fade: #000;
 
     // typography | base
@@ -202,11 +201,15 @@
     // * -------------------------
     --color__cookie-consent-banner__background: #{color.change(#fff, $alpha: 87%)};
 
-    // * --- COMPONENTS COLORS
-    // * ---------------------
+    // * --- CARD IMG
+    // * ------------
     --color__card-img__background--gradient-step-1: #00c853;
     --color__card-img__background--gradient-step-2: #ffd600;
     --color__card-img__background--gradient-step-3: #d50000;
+
+    // * --- BALLS GROUP
+    // * ---------------
+    --color__balls_group__shadow: #{color.change(#000, $alpha: 80%)};
 
     // * --- OTHER COLORS
     // * ----------------
@@ -357,11 +360,15 @@
                 $alpha: 87%
             )};
 
-        // * --- COMPONENTS COLORS
-        // * ---------------------
+        // * --- CARD IMG
+        // * ------------
         --color__card-img__background--gradient-step-1: #69f0ae;
         --color__card-img__background--gradient-step-2: #ffff00;
         --color__card-img__background--gradient-step-3: #ff5252;
+
+        // * --- BALLS GROUP
+        // * ---------------
+        --color__balls_group__shadow: #{color.change(#000, $alpha: 100%)};
 
         // * --- OTHER COLORS
         // * ----------------

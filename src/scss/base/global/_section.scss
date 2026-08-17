@@ -9,14 +9,11 @@ section {
 
         // prettier-ignore
         padding-top: calc((3 * var(--layout__global__spacing)) + var(--layout__header__navigation-bar-height));
-
-        box-shadow: 0 -8px 10px var(--color__global__shadow);
     }
 
     &:last-of-type {
         // * default section | last section on page
         padding-bottom: calc(3 * var(--layout__global__spacing));
-        box-shadow: 0 8px 10px var(--color__global__shadow);
     }
 
     &#hero {

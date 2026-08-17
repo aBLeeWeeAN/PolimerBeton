@@ -29,14 +29,16 @@
         justify-content: stretch;
 
         top: 0;
-        left: 0;
-        right: 0;
 
-        width: 100%;
+        left: -25px;
+        right: -25px;
+        padding: 0 25px;
+
+        width: auto;
         height: var(--layout__header__navigation-bar-height);
 
         background-color: var(--color__header__navigation-bar-background);
-        box-shadow: 0 8px 10px var(--color__global__shadow);
+        box-shadow: 0 6px 20px var(--color__global__shadow);
 
         // transition:
         //     transform 300ms ease-out,
@@ -57,13 +59,15 @@
         z-index: z('lower');
 
         top: 0;
-        left: 0;
-        right: 0;
+
+        left: -25px;
+        right: -25px;
+        padding: 0 25px;
 
         padding-top: var(--layout__header__navigation-bar-height);
 
-        box-shadow: 0 8px 10px var(--color__global__shadow);
         background-color: var(--color__header__navigation-menu-background);
+        box-shadow: 0 2px 16px var(--color__global__shadow);
 
         backdrop-filter: blur(18px);
 
