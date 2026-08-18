@@ -10,11 +10,11 @@ import { initHeroMarginTop } from 'modules/update_hero_container_margin_top'
 // import { initOffcanvasPaddingTop } from 'modules/update_offcanvas_padding_top'
 // import { initOffcanvasBodyHeight } from 'modules/update_offcanvas_body_height'
 
-import { initOffcanvasScrollState } from 'modules/change_offcanvas_scroll_state'
+import { initOffcanvasScrollState } from 'modules/manager__offcanvas_scroll_state'
 import { initMenuButtonState } from 'modules/change_menu_button_state'
 
 import { initFeedbackFormMask } from 'modules/inputmask_feedback_form'
-import { initCookieConsentBanner } from 'modules/cookies_consent_banner_manager'
+import { initCookieConsentBanner } from 'modules/manager__cookies_consent_banner'
 import { initSubmitButtonBlock } from 'modules/block_submit_button_after_form_data_is_successfully_submitted'
 
 // import { initHeroParallax } from 'modules/hero_image_parallax'

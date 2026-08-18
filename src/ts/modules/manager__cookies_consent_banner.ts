@@ -1,3 +1,4 @@
+// todo: починить скрипт куки баннера
 export function initCookieConsentBanner() {
     // * берем id элементов
     const cookieBanner = document.getElementById('my-cookie-consent-banner')
@@ -24,63 +25,63 @@ export function initCookieConsentBanner() {
 
     // * --- COOKIES SCRIPTS
     // * -------------------
-    // Яндекс.Метрика
-    const yandexMetrikaScript = `
-        (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
-            m[i].l = 1 * new Date();
-            for (var j = 0; j < document.scripts.length; j++) {
-                if (document.scripts[j].src === r) { return; }
-            }
-            (k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]), (k.async = 1), (k.src = r), a.parentNode.insertBefore(k, a);
-        })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    // // Яндекс.Метрика
+    // const yandexMetrikaScript = `
+    //     (function (m, e, t, r, i, k, a) {
+    //         m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+    //         m[i].l = 1 * new Date();
+    //         for (var j = 0; j < document.scripts.length; j++) {
+    //             if (document.scripts[j].src === r) { return; }
+    //         }
+    //         (k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]), (k.async = 1), (k.src = r), a.parentNode.insertBefore(k, a);
+    //     })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-        ym(98233807, "init", { webvisor: true, clickmap: true, accurateTrackBounce: true, trackLinks: true });
-    `
+    //     ym(98233807, "init", { webvisor: true, clickmap: true, accurateTrackBounce: true, trackLinks: true });
+    // `
 
-    const yandexMetrikaNoscript = `
-        <div><img src="https://mc.yandex.ru/watch/98233807" style="position:absolute; left:-9999px;" alt="" /></div>
-    `
+    // const yandexMetrikaNoscript = `
+    //     <div><img src="https://mc.yandex.ru/watch/98233807" style="position:absolute; left:-9999px;" alt="" /></div>
+    // `
 
-    // Google Analytics
-    const googleAnalyticsScript_main = `
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag("js", new Date());
-        gtag("config", "G-XSZP3WXDN6");
-    `
+    // // Google Analytics
+    // const googleAnalyticsScript_main = `
+    //     window.dataLayer = window.dataLayer || [];
+    //     function gtag() { dataLayer.push(arguments); }
+    //     gtag("js", new Date());
+    //     gtag("config", "G-XSZP3WXDN6");
+    // `
 
     // * --- SERVICE FUNCTIONS
     // * ---------------------
     // Функция для динамического добавления скриптов
     const injectAnalyticsScripts = (): void => {
         // Добавляем Яндекс.Метрику
-        const scriptYandex = document.createElement('script')
-        scriptYandex.type = 'text/javascript'
-        scriptYandex.innerHTML = yandexMetrikaScript
-        scriptYandex.async = true
-        container.appendChild(scriptYandex)
+        // const scriptYandex = document.createElement('script')
+        // scriptYandex.type = 'text/javascript'
+        // scriptYandex.innerHTML = yandexMetrikaScript
+        // scriptYandex.async = true
+        // container.appendChild(scriptYandex)
 
-        // Добавляем Google Analytics (основной загрузчик)
-        const scriptGoogle_gTag = document.createElement('script')
-        scriptGoogle_gTag.type = 'text/javascript'
-        scriptGoogle_gTag.src = 'https://www.googletagmanager.com/gtag/js?id=G-XSZP3WXDN6'
-        scriptGoogle_gTag.async = false
-        scriptGoogle_gTag.defer = true
-        container.appendChild(scriptGoogle_gTag)
+        // // Добавляем Google Analytics (основной загрузчик)
+        // const scriptGoogle_gTag = document.createElement('script')
+        // scriptGoogle_gTag.type = 'text/javascript'
+        // scriptGoogle_gTag.src = 'https://www.googletagmanager.com/gtag/js?id=G-XSZP3WXDN6'
+        // scriptGoogle_gTag.async = false
+        // scriptGoogle_gTag.defer = true
+        // container.appendChild(scriptGoogle_gTag)
 
-        // Добавляем конфигурацию Google Analytics
-        const scriptGoogle_main = document.createElement('script')
-        scriptGoogle_main.type = 'text/javascript'
-        scriptGoogle_main.innerHTML = googleAnalyticsScript_main
-        scriptGoogle_main.async = false
-        scriptGoogle_main.defer = true
-        container.appendChild(scriptGoogle_main)
+        // // Добавляем конфигурацию Google Analytics
+        // const scriptGoogle_main = document.createElement('script')
+        // scriptGoogle_main.type = 'text/javascript'
+        // scriptGoogle_main.innerHTML = googleAnalyticsScript_main
+        // scriptGoogle_main.async = false
+        // scriptGoogle_main.defer = true
+        // container.appendChild(scriptGoogle_main)
 
-        // Добавляем noscript для Яндекс.Метрики
-        const noscript = document.createElement('noscript')
-        noscript.innerHTML = yandexMetrikaNoscript
-        container.appendChild(noscript)
+        // // Добавляем noscript для Яндекс.Метрики
+        // const noscript = document.createElement('noscript')
+        // noscript.innerHTML = yandexMetrikaNoscript
+        // container.appendChild(noscript)
 
         // Скрываем контейнер скриптов
         container.style.display = 'none'
@@ -116,29 +117,29 @@ export function initCookieConsentBanner() {
     // * --- MAIN FUNCTION
     // * -----------------
     const executeCodes = (): void => {
-        const analyticalCookiesValue = getCookie('analytical_cookies_accepted')
+        // const analyticalCookiesValue = getCookie('analytical_cookies_accepted')
 
-        // 1. Если куки приняты — заряжаем скрипты и выходим
-        if (analyticalCookiesValue === 'true') {
-            injectAnalyticsScripts()
-            return
-        }
+        // // 1. Если куки приняты — заряжаем скрипты и выходим
+        // if (analyticalCookiesValue === 'true') {
+        //     injectAnalyticsScripts()
+        //     return
+        // }
 
-        // 2. Если куки отклонены — просто выходим (без всяких else)
-        if (analyticalCookiesValue === 'false') {
-            return
-        }
+        // // 2. Если куки отклонены — просто выходим (без всяких else)
+        // if (analyticalCookiesValue === 'false') {
+        //     return
+        // }
 
-        // 3. Код ниже выполнится ТОЛЬКО если куки еще не устанавливались (бывший блок else).
-        if (hasYandexCookies()) {
-            deleteYandexCookies()
-        }
+        // // 3. Код ниже выполнится ТОЛЬКО если куки еще не устанавливались (бывший блок else).
+        // if (hasYandexCookies()) {
+        //     deleteYandexCookies()
+        // }
 
         // Показываем баннер
         box.classList.remove('d-none') // bootstrap class d-none
 
-        // ! браузер принудительно перерисует страницу и только потом добавит .show
-        void box.offsetHeight
+        // // ! браузер принудительно перерисует страницу и только потом добавит .show
+        // void box.offsetHeight
 
         // setTimeout(() => {
         box.classList.add('show')

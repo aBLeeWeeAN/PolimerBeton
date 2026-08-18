@@ -1,10 +1,30 @@
 @use '../abstracts/z_index' as *;
 
 .my-disabled {
-    display: none;
+    display: none !important;
 }
 
-.shadow-group {
+.my-visible {
+    visibility: visible !important;
+}
+
+.my-invisible {
+    visibility: hidden !important;
+}
+
+.my-noscroll {
+    overflow: hidden !important;
+}
+
+.my-noscroll-x {
+    overflow-x: hidden !important;
+}
+
+.my-noscroll-y {
+    overflow-y: hidden !important;
+}
+
+.my-shadow-group {
     z-index: z('shadow_group');
     position: relative;
 

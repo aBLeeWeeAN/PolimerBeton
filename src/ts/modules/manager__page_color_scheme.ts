@@ -46,9 +46,9 @@ export async function initColorScheme() {
         const sunIconMobile = document.getElementById(
             'My-Sun-Svg-Icon--Mobile',
         ) as SVGSVGElement | null
-        const heroForegroundImage = document.getElementById(
-            'hero-fr-img',
-        ) as HTMLImageElement | null
+        // const heroForegroundImage = document.getElementById(
+        //     'hero-fr-img',
+        // ) as HTMLImageElement | null
 
         // Мягкая защита: если на странице вообще нет переключателей темы — тихо выходим, не ломая JS
         if (!toggleTheme && !toggleThemeMobile) {
@@ -70,15 +70,15 @@ export async function initColorScheme() {
                 sunIconMobile.style.opacity = theme === 'light' ? '1' : '0'
             }
 
-            if (heroForegroundImage) {
-                heroForegroundImage.style.opacity = theme === 'light' ? '0.3' : '0.1'
-            }
+            // if (heroForegroundImage) {
+            //     heroForegroundImage.style.opacity = theme === 'light' ? '0.3' : '0.1'
+            // }
         }
 
         // Если картинка есть, ждем её загрузки, но это больше не блокирует саму тему!
-        if (heroForegroundImage) {
-            await waitForImageLoad(heroForegroundImage)
-        }
+        // if (heroForegroundImage) {
+        //     await waitForImageLoad(heroForegroundImage)
+        // }
 
         // Синхронизируем состояние иконок под уже примененную тему
         updateVisuals(activeTheme)
@@ -133,7 +133,7 @@ export async function initColorScheme() {
                 const moonMobile = document.getElementById('My-Moon-Svg-Icon--Mobile')
                 const sun = document.getElementById('My-Sun-Svg-Icon')
                 const sunMobile = document.getElementById('My-Sun-Svg-Icon--Mobile')
-                const heroImg = document.getElementById('hero-fr-img')
+                // const heroImg = document.getElementById('hero-fr-img')
 
                 if (moon) {
                     moon.style.opacity = systemTheme === 'light' ? '0' : '1'
@@ -147,9 +147,9 @@ export async function initColorScheme() {
                 if (sunMobile) {
                     sunMobile.style.opacity = systemTheme === 'light' ? '1' : '0'
                 }
-                if (heroImg) {
-                    heroImg.style.opacity = systemTheme === 'light' ? '0.3' : '0.1'
-                }
+                // if (heroImg) {
+                //     heroImg.style.opacity = systemTheme === 'light' ? '0.3' : '0.1'
+                // }
             }
         }
     })
