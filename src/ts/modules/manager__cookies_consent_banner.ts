@@ -6,7 +6,11 @@ export function initCookieConsentBanner() {
     const cookieConsentButtons = document.querySelectorAll<HTMLButtonElement>(
         '.my-default-button--cookie-consent-banner',
     )
+    const footerCookieSettingsButtons = document.querySelectorAll<HTMLButtonElement>(
+        '.my-js-cookie-settings-btn',
+    )
 
+    // ? Проверяем только то, без чего баннер физически не работает
     if (!cookieConsentBanner || cookieConsentButtons.length === 0) {
         return
     }
@@ -34,14 +38,19 @@ export function initCookieConsentBanner() {
 
     const setConsentCookie = (value: boolean): void => {
         const maxAge = 60 * 60 * 24 * 365 // ? 1 year
-        document.cookie = `analytical_cookies_accepted=${value}; max-age=${maxAge}; path=/; SameSite=Lax; Secure`
+        const isSecure = window.location.protocol === 'https:' ? '; Secure' : ''
+
+        document.cookie = `analytical_cookies_accepted=${value}; max-age=${maxAge}; path=/; SameSite=Lax${isSecure}`
     }
 
     const purgeAnalyticsData = (): void => {
+        if (GA_ID) {
+            ;(window as unknown as Record<string, boolean>)[`ga-disable-${GA_ID}`] = true
+        }
+
         const hostname = window.location.hostname
         const mainDomain = hostname.startsWith('www.') ? hostname.slice(4) : hostname
 
-        // 1. Очистка Cookies
         document.cookie.split(';').forEach((cookie) => {
             const name = cookie.split('=')[0].trim()
             if (name.startsWith('_ym') || name.startsWith('_ga')) {
@@ -52,7 +61,6 @@ export function initCookieConsentBanner() {
             }
         })
 
-        // 2. Очистка localStorage и sessionStorage
         const clearStorage = (storage: Storage) => {
             Object.keys(storage).forEach((key) => {
                 if (key.startsWith('_ym') || key.startsWith('_ga') || key.startsWith('ym_')) {
@@ -73,8 +81,10 @@ export function initCookieConsentBanner() {
         }
         document.head.dataset.analyticsInjected = 'true'
 
-        // ? 1. Google Analytics
         if (GA_ID) {
+            // ? сброс блокировки GA
+            delete (window as unknown as Record<string, boolean>)[`ga-disable-${GA_ID}`]
+
             const scriptGaSrc = document.createElement('script')
             scriptGaSrc.async = true
             scriptGaSrc.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`
@@ -90,7 +100,6 @@ export function initCookieConsentBanner() {
             document.head.appendChild(scriptGaConfig)
         }
 
-        // ? 2. Яндекс.Метрика
         if (YANDEX_ID) {
             const scriptYandex = document.createElement('script')
             scriptYandex.type = 'text/javascript'
@@ -115,6 +124,44 @@ export function initCookieConsentBanner() {
         }, 300)
     }
 
+    const showBanner = (): void => {
+        cookieConsentBanner.classList.remove('d-none')
+        void cookieConsentBanner.offsetHeight // ? reflow
+        cookieConsentBanner.classList.add('show')
+    }
+
+    // * --- LISTENERS
+    // * -------------
+    // 1. Кнопки внутри баннера
+    cookieConsentButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            hideBanner()
+
+            const isAccepted =
+                button.id === 'cookie-accept-btn' || button.dataset.action === 'accept'
+
+            if (isAccepted) {
+                setConsentCookie(true)
+                injectAnalyticsScripts()
+            } else {
+                const wereScriptsInjected = document.head.dataset.analyticsInjected === 'true'
+
+                setConsentCookie(false)
+                purgeAnalyticsData()
+
+                // ? Перезагружаем только если скрипты уже были внедрены в текущей сессии
+                if (wereScriptsInjected) {
+                    window.location.reload()
+                }
+            }
+        })
+    })
+
+    // 2. Кнопки в футере
+    footerCookieSettingsButtons.forEach((button) => {
+        button.addEventListener('click', showBanner)
+    })
+
     // * --- START LOGIC
     // * ---------------
     const consentValue = getCookie('analytical_cookies_accepted')
@@ -129,26 +176,8 @@ export function initCookieConsentBanner() {
         return
     }
 
-    // * --- SHOW BANNER IF USER DON'T CHOICE YET
+    // * --- SHOW BANNER IF USER HASN'T CHOSEN YET
     // * ----------------------------------------
-    cookieConsentBanner.classList.remove('d-none')
-    void cookieConsentBanner.offsetHeight // ? reflow
-    cookieConsentBanner.classList.add('show')
-
-    cookieConsentButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-            hideBanner()
-
-            const isAccepted =
-                button.id === 'cookie-accept-btn' || button.dataset.action === 'accept'
-
-            if (isAccepted) {
-                setConsentCookie(true)
-                injectAnalyticsScripts()
-            } else {
-                setConsentCookie(false)
-                purgeAnalyticsData()
-            }
-        })
-    })
+    purgeAnalyticsData()
+    showBanner()
 }
