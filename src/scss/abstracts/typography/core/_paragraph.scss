@@ -66,6 +66,12 @@
     &:not(:last-child) {
         margin-bottom: 0;
     }
+
+    line-height: 1.333em;
+    @supports (text-box: trim-both cap text) {
+        text-box-trim: trim-both;
+        text-box-edge: cap text;
+    }
 }
 
 %text__paragraph--usage {

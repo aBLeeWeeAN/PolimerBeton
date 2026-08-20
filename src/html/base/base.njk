@@ -28,14 +28,11 @@
         {% include "common/footer.njk" %}
         <!-- Page content END --->
 
-        <!-- Postload scripts --->
-        {% include "service/scripts__postload.njk" %}
-
         <!-- Cookie consent --->
         {% include "components/cookie_consent.njk" %}
 
-        <!-- Lazy load images --->
-        {% include "service/scripts__lazy_load_images.njk" %}
+        <!-- Postload scripts --->
+        {% include "service/scripts__postload.njk" %}
 
         {% if is_django_build %}
             {% raw %}

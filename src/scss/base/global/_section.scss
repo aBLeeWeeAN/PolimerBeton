@@ -1,25 +1,27 @@
 @use '../../abstracts/mixins' as mixin;
 
 section {
-    // * base section
+    // * base section on every page
     padding-top: calc(3 * var(--layout__global__spacing));
 
-    &:first-of-type {
-        // * default section | first section on page
+    &:last-of-type {
+        // * last section on every page
+        padding-bottom: calc(3 * var(--layout__global__spacing));
+    }
+
+    &#hero,
+    &#privacy,
+    &#success,
+    &#fail,
+    &#page-not-found {
+        // * first sections on every pages
 
         // prettier-ignore
         padding-top: calc((3 * var(--layout__global__spacing)) + var(--layout__header__navigation-bar-height));
     }
 
-    &:last-of-type {
-        // * default section | last section on page
-        padding-bottom: calc(3 * var(--layout__global__spacing));
-    }
-
     &#hero {
-        // * hero section
-        // * top and bottom padding
-
+        // * padding bottom | only for hero section
         padding-bottom: calc(3 * var(--layout__global__spacing));
     }
 }

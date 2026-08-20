@@ -28,7 +28,7 @@
     @include mixin.transition-for(color);
 
     height: auto;
-    width: mixin.fluid-with-range(32px, 36px, md, xxl);
+    width: mixin.fluid-with-range(28px, 36px, md, xxl);
 
     color: var(--color__global__text--primary);
 
@@ -145,6 +145,6 @@
     }
 
     @include bs.media-breakpoint-down(md) {
-        width: mixin.fluid-with-range(26px, 30px, xs, md);
+        width: mixin.fluid-with-range(24px, 28px, xs, md);
     }
 }

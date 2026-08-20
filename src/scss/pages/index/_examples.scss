@@ -75,14 +75,14 @@
                 'my-img-group__road my-img-group__road';
         }
 
-        @include bs.media-breakpoint-down(sm) {
-            grid-template-columns: 1fr 1fr;
-            grid-template-areas:
-                'my-title my-title'
-                'my-subtitle__pillar my-subtitle__pillar'
-                'my-img-group__pillar my-img-group__pillar'
-                'my-subtitle__road my-subtitle__road'
-                'my-img-group__road my-img-group__road';
-        }
+        // @include bs.media-breakpoint-down(sm) {
+        //     grid-template-columns: 1fr 1fr;
+        //     grid-template-areas:
+        //         'my-title my-title'
+        //         'my-subtitle__pillar my-subtitle__pillar'
+        //         'my-img-group__pillar my-img-group__pillar'
+        //         'my-subtitle__road my-subtitle__road'
+        //         'my-img-group__road my-img-group__road';
+        // }
     }
 }

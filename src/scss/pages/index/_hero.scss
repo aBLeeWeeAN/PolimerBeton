@@ -30,14 +30,8 @@
     &__content {
         display: flex;
         flex-direction: column;
-
-        row-gap: 120px;
-
         justify-content: center;
-
-        @include bs.media-breakpoint-down(sm) {
-            row-gap: 60px;
-        }
+        row-gap: mixin.fluid(32px, 120px);
     }
 
     view-timeline-name: --hero-section;

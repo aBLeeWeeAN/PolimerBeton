@@ -63,7 +63,8 @@
         container-type: inline-size;
 
         width: 100%;
-        max-width: 192px;
+        // max-width: 192px;
+        max-width: mixin.fluid-with-range(120px, 192px, sm, xxl);
 
         // ? кастыль, обход паддинга bootstrap row
         padding: 0;
@@ -87,16 +88,20 @@
             user-select: none;
         }
 
-        @include bs.media-breakpoint-down(xl) {
-            max-width: 168px;
-        }
+        // @include bs.media-breakpoint-down(xxl) {
+        //     max-width: 168px;
+        // }
 
-        @include bs.media-breakpoint-down(lg) {
-            max-width: 120px;
-        }
+        // @include bs.media-breakpoint-down(xl) {
+        //     max-width: 144px;
+        // }
+
+        // @include bs.media-breakpoint-down(lg) {
+        //     max-width: 120px;
+        // }
 
         @include bs.media-breakpoint-down(sm) {
-            max-width: clamp(72px, 0.1875 * 100vw + 12px, 120px);
+            max-width: mixin.fluid-with-range(64px, 120px, xs, sm);
         }
     }
 
@@ -196,12 +201,11 @@
 
     &--description {
         justify-content: center;
-
-        // column-gap: 48px;
-        column-gap: calc(1.5 * var(--layout__global__spacing));
+        gap: calc(0.5 * var(--layout__global__spacing)) calc(1.5 * var(--layout__global__spacing));
 
         .my-balls-group__ball-wrapper {
-            max-width: 144px;
+            // max-width: 144px;
+            max-width: mixin.fluid-with-range(96px, 144px, md, xxl);
 
             // transform: var(--commons__gravity-effect__start-pos);
             animation: commons__gravity-effect 10s ease-in-out infinite;
@@ -243,15 +247,18 @@
 
                 animation-delay: -8s;
             }
-        }
 
-        // @include bs.media-breakpoint-down(lg) {
-        //     column-gap: 40px;
-        // }
+            // @include bs.media-breakpoint-down(xl) {
+            //     max-width: 112px;
+            // }
+
+            // @include bs.media-breakpoint-down(md) {
+            //     max-width: 96px;
+            // }
+        }
 
         @include bs.media-breakpoint-down(sm) {
             display: none;
-            // column-gap: calc(1 * var(--layout__global__spacing));
         }
     }
 

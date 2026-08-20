@@ -13,7 +13,10 @@
         display: inline-flex;
         flex-direction: column;
 
-        row-gap: 0.25em;
+        row-gap: mixin.fluid-with-range(14px, 20px, sm, xxl);
+        @supports (text-box: trim-both cap alphabetic) {
+            row-gap: mixin.fluid-with-range(28px, 48px, sm, xxl);
+        }
 
         .my-title__main-text {
             @extend %text__title--hero__main-text;

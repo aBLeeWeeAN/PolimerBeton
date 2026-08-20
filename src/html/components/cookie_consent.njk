@@ -11,18 +11,26 @@
         <p class="my-cookie-consent-banner__paragraph">
             Мы используем аналитические Cookie от Google и Яндекс. Это помогает нам сделать наш сайт более удобным для Вас.
             <br />
-            <a class="my-cookie-consent-banner__link" href="@page/privacy.html#Cookie" target="_self">Узнать больше об этом...</a>
+            <a class="my-cookie-consent-banner__link" href="@page/privacy.html#Cookie" target="_blank" rel="noopener noreferrer">
+                Узнать больше об этом...
+            </a>
         </p>
     </div>
 
     <div class="my-cookie-consent-banner__buttons-container">
-        <button id="cookie-decline-btn" class="my-default-button my-default-button--cookie-consent-banner" type="button">
+        <button
+            id="cookie-decline-btn"
+            class="my-default-button my-default-button--cookie-consent-banner"
+            data-action="decline"
+            type="button">
             Нет, спасибо
         </button>
-        <button id="cookie-accept-btn" class="my-default-button my-default-button--cookie-consent-banner" type="button">Хорошо</button>
+        <button
+            id="cookie-accept-btn"
+            class="my-default-button my-default-button--cookie-consent-banner"
+            data-action="accept"
+            type="button">
+            Хорошо
+        </button>
     </div>
 </aside>
-
-<div class="d-none" id="my-third-party-cookies-container" aria-hidden="true">
-    <!-- ! Empty, while user not agree with cookie policy --->
-</div>

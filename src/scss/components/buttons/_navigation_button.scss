@@ -10,8 +10,11 @@
     justify-content: center;
 
     aspect-ratio: 1 / 1;
-    // width: 48px;
-    width: mixin.fluid-with-range(40px, 48px, md, xxl);
+    // width: mixin.fluid-with-range(36px, 48px, md, xxl);
+    width: auto;
+    height: auto;
+
+    padding: mixin.fluid-with-range(20px, 24px, md, xxl);
 
     // border-radius: 16px;
     // border-radius: 33.333%;
@@ -84,7 +87,7 @@
     }
 
     &__svg {
-        @include mixin.transition-for;
+        @include mixin.transition-for; // ? opacity + transform
         will-change: transform;
 
         position: absolute;
@@ -95,17 +98,16 @@
         transform: translate(-50%, -50%);
         transform-origin: center center;
 
-        // transition: transform 0.3s ease-in-out;
-
         aspect-ratio: 1 / 1;
-        width: 24px;
-
-        @include bs.media-breakpoint-down(xl) {
-            width: 20px;
-        }
+        // width: 50%;
+        width: mixin.fluid-with-range(20px, 24px, md, xxl);
 
         @include bs.media-breakpoint-down(md) {
-            width: 24px;
+            // // width: 24px;
+            // width: 80%;
+            // min-width: 24px;
+
+            width: mixin.fluid-with-range(24px, 28px, xs, md);
         }
     }
 
@@ -161,6 +163,6 @@
     }
 
     @include bs.media-breakpoint-down(md) {
-        width: mixin.fluid-with-range(26px, 30px, xs, md);
+        padding: mixin.fluid-with-range(12px, 14px, xs, md);
     }
 }

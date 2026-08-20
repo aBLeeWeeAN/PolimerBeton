@@ -62,6 +62,12 @@
 
     margin-bottom: 0;
     max-width: unset;
+
+    line-height: 1em;
+    @supports (text-box: trim-both cap alphabetic) {
+        text-box-trim: trim-both;
+        text-box-edge: cap alphabetic;
+    }
 }
 
 %text__title--hero__subtext {
@@ -81,6 +87,12 @@
 
     margin-bottom: 0;
     max-width: unset;
+
+    line-height: 1.666em;
+    @supports (text-box: trim-both cap alphabetic) {
+        text-box-trim: trim-both;
+        text-box-edge: cap alphabetic;
+    }
 }
 
 %text__title--privacy {
