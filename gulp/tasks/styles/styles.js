@@ -39,12 +39,7 @@ export function styles() {
                 sourcemaps: env.buildMode.isDev || env.buildMode.isStaging,
             })
             // * подключаем plumber, чтобы gulp не падал при ошибке
-            // ! .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.STYLES))
-            .pipe(
-                env.buildMode.isDev
-                    ? plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.STYLES)
-                    : through2.obj(),
-            )
+            .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.STYLES))
             // * делаем sourcemaps в режимах dev и staging
             // .pipe(gulpIf(isDev || isStaging, sourcemaps.init()))
             // .pipe(
@@ -66,7 +61,7 @@ export function styles() {
                     // 2. Добавляем обе папки: и локальные вендоры, и npm-пакеты
                     loadPaths: [
                         path.src.node_modules,
-                        `${path.src.getStyles(env.cssMode).base}/vendors`,
+                        // `${path.src.getStyles(env.cssMode).base}/vendors`,
                     ],
                 }),
             )

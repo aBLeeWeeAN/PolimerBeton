@@ -82,7 +82,7 @@ export const path = {
         },
         videos: `${srcFolder}/assets/videos/**/*.{webm,mp4,mov,avi,mkv,flv,m4v}`,
         misc: `${srcFolder}/assets/misc/**/*.*`,
-        libs: `${srcFolder}/libs/**/*.{js,mjs,cjs,ts,mts,cts}`,
+        libs: `${srcFolder}/libs/**/*.{js,mjs,cjs,ts,mts,cts,wasm}`,
         i18n: {
             base: `${srcFolder}/i18n`,
             files: `${srcFolder}/i18n/**/*.json`,
@@ -127,7 +127,7 @@ export const path = {
         },
         videos: `${srcFolder}/assets/videos/**/*.{webm,mp4,mov,avi,mkv,flv,m4v}`,
         misc: `${srcFolder}/assets/misc/**/*.*`,
-        libs: `${srcFolder}/libs/**/*.{js,mjs,cjs,ts,mts,cts}`,
+        libs: `${srcFolder}/libs/**/*.{js,mjs,cjs,ts,mts,cts,wasm}`,
         i18n: {
             base: `${srcFolder}/i18n`,
             files: `${srcFolder}/i18n/**/*.json`,

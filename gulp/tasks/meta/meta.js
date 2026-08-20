@@ -15,11 +15,7 @@ import {
 function metaWebManifest() {
     return gulp
         .src(path.src.meta.favicon.webManifest)
-        .pipe(
-            env.buildMode.isDev
-                ? plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.META.FAVICON.WEB_MANIFEST)
-                : through2.obj(), // passthrough
-        )
+        .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.META.FAVICON.WEB_MANIFEST))
         .pipe(gulpReplace(/\/?@meta\//g, env.assetPrefix))
         .pipe(gulp.dest(path.build.meta))
         .on('end', () => {
@@ -33,11 +29,7 @@ function metaWebManifest() {
 function metaFavicon() {
     return gulp
         .src(path.src.meta.favicon.images, { encoding: false })
-        .pipe(
-            env.buildMode.isDev
-                ? plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.META.FAVICON.IMAGES)
-                : through2.obj(), // passthrough
-        )
+        .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.META.FAVICON.IMAGES))
         .pipe(gulp.dest(path.build.meta))
         .on('end', () => {
             // * update dev server
@@ -61,11 +53,7 @@ function metaText() {
 
     return gulp
         .src(path.src.meta.text)
-        .pipe(
-            env.buildMode.isDev
-                ? plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.META.TEXT)
-                : through2.obj(), // passthrough
-        )
+        .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.META.TEXT))
         .pipe(gulpReplace(/@meta__site-url/g, env.siteUrl))
         .pipe(gulpReplace(/@meta__date/g, formattedDate))
         .pipe(gulp.dest(path.build.meta))

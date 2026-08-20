@@ -71,11 +71,7 @@ function createHtmlStream({
             // * берем исходники
             .src([path.src.njk, path.src.html])
             // * подключаем plumber, чтобы gulp не падал при ошибке
-            .pipe(
-                env.buildMode.isDev
-                    ? plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.HTML)
-                    : through2.obj(), // passthrough
-            )
+            .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.HTML))
             // * собираем все partials в полноценные html
             // .pipe(
             //     fileInclude({

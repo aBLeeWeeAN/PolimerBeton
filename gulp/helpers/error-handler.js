@@ -92,22 +92,32 @@ export const notify = {
 // * ------------------------
 export const errorHandler = (title) =>
     function (err) {
-        // вывод в консоль (обычный или цветной)
+        // 1. Формируем подробный текст ошибки
+        const errorMessage = err.stack || err.message || err.toString()
+
+        // Выводим в консоль
         console.error(
-            `[ ERROR    ] ${title ?? NOTIFICATION_HANDLER_TITLES.UNKNOWN}: ${err.message}`,
+            `\x1b[31m[ ERROR     ] ${title ?? NOTIFICATION_HANDLER_TITLES.UNKNOWN}:\x1b[0m\n`,
+            errorMessage,
         )
 
-        // ! вызов toasted только с verbose !!!
+        // 2. Уведомление на рабочий стол (только если verbose)
         if (env.isVerbose) {
+            const shortMessage = err.message || (typeof err === 'string' ? err : 'Build error')
             toasted.notify({
-                title: `[ ERROR    ] ${title ?? NOTIFICATION_HANDLER_TITLES.UNKNOWN}`,
-                message: err.message ?? 'An unknown error occurred during the build.',
+                title: `[ ERROR     ] ${title ?? NOTIFICATION_HANDLER_TITLES.UNKNOWN}`,
+                message: shortMessage,
                 sound: false,
                 wait: false,
             })
         }
 
-        this.emit('end')
+        // 3. Разделение поведения Dev / Prod:
+        // В Dev/Watch режиме делаем emit('end'), чтобы Gulp НЕ падал и продолжал следить за файлами.
+        // В Prod режиме падение НЕ гасим, чтобы кодер увидел ошибку сборки.
+        if (env.buildMode.isDev) {
+            this.emit('end')
+        }
     }
 
 // * --- EXPORT GULP PLUMBER WITH ERROR HANDLER

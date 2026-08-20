@@ -47,11 +47,7 @@ export function ftp() {
 
     return gulp
         .src(`${path.build.base}/**/*.*`, {})
-        .pipe(
-            env.buildMode.isDev
-                ? plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.FTP)
-                : through2.obj(), // passthrough
-        )
+        .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.FTP))
         .pipe(ftpConnect.dest(remotePath))
 }
 

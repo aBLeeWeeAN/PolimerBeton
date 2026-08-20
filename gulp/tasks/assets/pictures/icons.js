@@ -42,11 +42,7 @@ export async function icons() {
     return (
         gulp
             .src(path.src.icons)
-            .pipe(
-                env.buildMode.isDev
-                    ? plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.ICONS)
-                    : through2.obj(), // passthrough
-            )
+            .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.ICONS))
             // ! use svgmin OR internal svgsprite transform, not both.
             // .pipe(svgmin())
             .pipe(

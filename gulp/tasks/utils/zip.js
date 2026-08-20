@@ -31,11 +31,7 @@ export async function zip() {
     // основной пайплайн
     return gulp
         .src(`${path.build.base}/**/*.*`, { encoding: false })
-        .pipe(
-            env.buildMode.isDev
-                ? plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.ZIP)
-                : through2.obj(), // passthrough
-        )
+        .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.ZIP))
         .pipe(gulpZip(`${path.projectRootFolderName}.zip`))
         .pipe(gulp.dest(`${path.zip}/`))
 }

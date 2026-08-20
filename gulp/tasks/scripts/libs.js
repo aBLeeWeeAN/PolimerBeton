@@ -14,11 +14,7 @@ import {
 export function libs() {
     return gulp
         .src(path.src.libs)
-        .pipe(
-            env.buildMode.isDev
-                ? plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.LIBS)
-                : through2.obj(), // passthrough
-        )
+        .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.LIBS))
         .pipe(gulp.dest(path.build.libs))
         .on('end', () => {
             // * update dev server

@@ -163,11 +163,7 @@ export function images() {
     return (
         gulp
             .src(path.src.images.files, { encoding: false })
-            .pipe(
-                env.buildMode.isDev
-                    ? plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.IMAGES)
-                    : through2.obj(), // passthrough
-            )
+            .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.IMAGES))
             // * генерируем адаптивные копии (они получат суффиксы -mobile, -tablet и т.д.)
             // .pipe(generateResponsiveImages())
             // * генерируем avif/webp и оптимизируем изображения

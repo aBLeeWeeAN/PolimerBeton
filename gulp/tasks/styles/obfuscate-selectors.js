@@ -23,56 +23,49 @@ export function obfuscateSelectors() {
 
     const obfuscatorJsonPath = nodePath.join(path.build.styles, 'postcss-obfuscator')
 
-    return (
-        gulp
-            .src(`${path.build.styles}/**/*.css`) // берём готовые CSS
-            // ! .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.OBFUSCATE_SELECTORS))
-            .pipe(
-                env.buildMode.isStaging || env.buildMode.isProd
-                    ? through2.obj()
-                    : plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.OBFUSCATE_SELECTORS),
-            )
-            .pipe(
-                postcss([
-                    obfuscator({
-                        enable: true,
-                        length: 5,
-                        classMethod: 'random',
-                        classPrefix: '',
-                        classSuffix: '',
-                        classIgnore: [
-                            // * ignored classes
-                            'card--project:last-child',
-                            'card--project:nth-last-child',
-                        ],
-                        ids: false,
-                        idMethod: 'random',
-                        idPrefix: '',
-                        idSuffix: '',
-                        idIgnore: [
-                            // * ignored IDs
-                            // 'header',
-                            // 'header:after',
-                            // 'menu-toggle:checked',
-                        ],
-                        formatJson: true,
-                        jsonsPath: obfuscatorJsonPath,
-                        srcPath: path.build.base,
-                        desPath: path.build.base,
-                        extensions: ['.js', '.html'],
-                        // * стабильная замена для кеширования
-                        fresh: env.buildMode.isDev || env.buildMode.isStaging ? false : true,
-                        keepData: env.buildMode.isDev || env.buildMode.isStaging ? true : false,
-                        showConfig: false,
-                    }),
-                ]),
-            )
-            .pipe(gulp.dest(path.build.styles)) // перезапишем CSS (уже с обфусцированными именами)
-            .on('end', () => {
-                // eslint-disable-next-line no-console
-                console.log('CSS/HTML/JS class obfuscation complete')
-            })
-    )
+    return gulp
+        .src(`${path.build.styles}/**/*.css`) // берём готовые CSS
+        .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.OBFUSCATE_SELECTORS))
+        .pipe(
+            postcss([
+                obfuscator({
+                    enable: true,
+                    length: 5,
+                    classMethod: 'random',
+                    classPrefix: '',
+                    classSuffix: '',
+                    classIgnore: [
+                        // * ignored classes
+                        'card--project:last-child',
+                        'card--project:nth-last-child',
+                    ],
+                    ids: false,
+                    idMethod: 'random',
+                    idPrefix: '',
+                    idSuffix: '',
+                    idIgnore: [
+                        // * ignored IDs
+                        // 'header',
+                        // 'header:after',
+                        // 'menu-toggle:checked',
+                    ],
+                    formatJson: true,
+                    jsonsPath: obfuscatorJsonPath,
+                    srcPath: path.build.base,
+                    desPath: path.build.base,
+                    extensions: ['.js', '.html'],
+                    // * стабильная замена для кеширования
+                    fresh: env.buildMode.isDev || env.buildMode.isStaging ? false : true,
+                    keepData: env.buildMode.isDev || env.buildMode.isStaging ? true : false,
+                    showConfig: false,
+                }),
+            ]),
+        )
+        .pipe(gulp.dest(path.build.styles)) // перезапишем CSS (уже с обфусцированными именами)
+        .on('end', () => {
+            // eslint-disable-next-line no-console
+            console.log('CSS/HTML/JS class obfuscation complete')
+        })
 }
 
 gulp.task('obfuscate-selectors', obfuscateSelectors)

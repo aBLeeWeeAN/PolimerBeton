@@ -14,11 +14,7 @@ import {
 export function misc() {
     return gulp
         .src(path.src.misc, { encoding: false })
-        .pipe(
-            env.buildMode.isDev
-                ? plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.MISC)
-                : through2.obj(), // passthrough
-        )
+        .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.MISC))
         .pipe(gulp.dest(path.build.misc))
         .on('end', () => {
             // * update dev server

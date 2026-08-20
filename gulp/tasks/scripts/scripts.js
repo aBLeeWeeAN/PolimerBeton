@@ -28,19 +28,7 @@ export function scripts() {
             // .src(path.src.getScripts(env.jsMode), { sourcemaps: env.buildMode.isDev || env.buildMode.isStaging })
             .src(path.src.getScripts(env.jsMode))
             // * подключаем plumber, чтобы gulp не падал при ошибке
-            // ! .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.SCRIPTS))
-            .pipe(
-                env.buildMode.isDev
-                    ? plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.SCRIPTS)
-                    : through2.obj(), // passthrough
-            )
-            // * чекаем чё пришло на вход
-            // .pipe(
-            //     through2.obj(function (file, enc, cb) {
-            //         console.log('🚀 GULP НАШЕЛ ФАЙЛ:', file.relative)
-            //         cb(null, file)
-            //     }),
-            // )
+            .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.SCRIPTS))
             // * билдим JS с помощью Esbuild
             .pipe(
                 gulpEsbuild({

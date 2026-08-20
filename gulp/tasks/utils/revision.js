@@ -35,11 +35,7 @@ function revision() {
                 },
             )
             // * подключаем plumber
-            .pipe(
-                env.buildMode.isDev
-                    ? plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.REVISION.DEFAULT)
-                    : through2.obj(), // passthrough
-            )
+            .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.REVISION.DEFAULT))
             // * добавляем ревизию к имени файлов
             .pipe(
                 through2.obj(function (file, enc, callback) {
@@ -83,11 +79,7 @@ function rewrite() {
             // * берем готовые собранные html
             .src(`${path.build.base}/**/*.{html,css,webmanifest}`)
             // * подключаем plumber
-            .pipe(
-                env.buildMode.isDev
-                    ? plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.REVISION.REWRITE)
-                    : through2.obj(), // passthrough
-            )
+            .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.REVISION.REWRITE))
             // * перезаписываем пути к новым ассетам с ревизиями
             .pipe(revRewrite({ manifest }))
             // * сохраняем обновленный html
