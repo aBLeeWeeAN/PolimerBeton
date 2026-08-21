@@ -45,7 +45,9 @@
 
         &::before {
             @extend %text__title--server-response__before;
+
             content: 'DEBUG';
+            // content: attr(data-variant);
 
             z-index: z('decoration');
             position: absolute;

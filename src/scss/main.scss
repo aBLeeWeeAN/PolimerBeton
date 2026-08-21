@@ -1,4 +1,4 @@
-// * source: https://dev.to/technoph1le/a-modern-sass-folder-structure-330f
+@charset "UTF-8";
 
 // ? --- 1. ABSTRACT
 @use 'abstracts';
@@ -23,3 +23,6 @@
 
 // ? --- 7. UTILITIES STYLES
 @use 'utils';
+
+// * --- TEMPLATE
+// * source: https://dev.to/technoph1le/a-modern-sass-folder-structure-330f

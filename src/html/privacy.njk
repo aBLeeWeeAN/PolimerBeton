@@ -1,140 +1,72 @@
 {% extends "base/base.njk" %}
 
+<!-- ? передаем ветку из ru.json для этой страницы -->
+{% set current_page_head = privacy.head %}
+
 {% block content %}
     <div class="my-shadow-group">
         <section id="privacy" class="my-privacy">
             <div class="container my-wrapper">
                 <div class="row justify-content-center">
-                    <h1 class="my-title my-title--privacy">{{ privacy.main_content.heading }}</h1>
+                    <h1 class="my-title my-title--privacy">{{ privacy.privacy_policy.heading }}</h1>
                 </div>
 
                 <div class="row">
-                    <nav class="my-table-of-contents" aria-label="Содержание политики конфиденциальности">
+                    <nav class="my-table-of-contents" aria-label="{{ privacy.privacy_policy.toc.a11y__aria_label }}">
                         <details class="my-table-of-contents__details">
                             <summary class="my-table-of-contents__summary">
                                 <svg class="my-table-of-contents__summary-svg" width="16" height="16" aria-hidden="true">
                                     <use href="@icons/other/summary-details-block.svg"></use>
                                 </svg>
-                                <h3 class="my-subtitle my-subtitle--table-of-contents">Содержание</h3>
+                                <h3 class="my-subtitle my-subtitle--table-of-contents">{{ privacy.privacy_policy.toc.title }}</h3>
                             </summary>
 
                             <ol class="my-table-of-contents__list">
-                                <li class="my-table-of-contents__list-item">
-                                    <a class="my-link my-link--table-of-contents" href="#privacy-general">1. Общие положения</a>
-                                </li>
+                                {% for section in privacy.privacy_policy.sections %}
+                                    {% set sectionIndex = loop.index %}
 
-                                <li class="my-table-of-contents__list-item">
-                                    <a class="my-link my-link--table-of-contents" href="#privacy-general">
-                                        2. Основные понятия, используемые в Политике
-                                    </a>
-                                </li>
+                                    {% if section.content.type == "grouped_list" and section.content.groups %}
+                                        <!-- Пункты со вложенными подсписками (разделы 3, 4) -->
+                                        <li class="my-table-of-contents__list-item">
+                                            <details class="my-table-of-contents__nested-details">
+                                                <summary class="my-table-of-contents__nested-summary">
+                                                    <svg
+                                                        class="my-table-of-contents__nested-summary-svg"
+                                                        width="16"
+                                                        height="16"
+                                                        aria-hidden="true">
+                                                        <use href="@icons/other/summary-details-block.svg"></use>
+                                                    </svg>
+                                                    <a
+                                                        class="my-link my-link--table-of-contents my-link--disable-transform"
+                                                        href="#privacy-section-{{ sectionIndex }}">
+                                                        {{ sectionIndex }}. {{ section.title }}
+                                                    </a>
+                                                </summary>
 
-                                <li class="my-table-of-contents__list-item">
-                                    <details class="my-table-of-contents__nested-details">
-                                        <summary class="my-table-of-contents__nested-summary">
-                                            <svg class="my-table-of-contents__nested-summary-svg" width="16" height="16" aria-hidden="true">
-                                                <use href="@icons/other/summary-details-block.svg"></use>
-                                            </svg>
-                                            <a
-                                                class="my-link my-link--table-of-contents my-link--disable-transform"
-                                                href="#privacy-operator-rights">
-                                                3. Основные права и обязанности Оператора
+                                                <ol class="my-table-of-contents__list">
+                                                    {% for group in section.content.groups %}
+                                                        <li class="my-table-of-contents__list-item">
+                                                            <a
+                                                                class="my-link my-link--table-of-contents"
+                                                                href="#privacy-section-{{ sectionIndex }}-{{ loop.index }}">
+                                                                {{ sectionIndex }}.{{ loop.index }}.
+                                                                {{ group.title | replace(":", "") | trim }}
+                                                            </a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ol>
+                                            </details>
+                                        </li>
+                                    {% else %}
+                                        <!-- Обычные одиночные пункты -->
+                                        <li class="my-table-of-contents__list-item">
+                                            <a class="my-link my-link--table-of-contents" href="#privacy-section-{{ sectionIndex }}">
+                                                {{ sectionIndex }}. {{ section.title }}
                                             </a>
-                                        </summary>
-
-                                        <ol class="my-table-of-contents__list">
-                                            <li class="my-table-of-contents__list-item">
-                                                <a class="my-link my-link--table-of-contents" href="#privacy-operator-rights">
-                                                    3.1. Оператор имеет право
-                                                </a>
-                                            </li>
-                                            <li class="my-table-of-contents__list-item">
-                                                <a class="my-link my-link--table-of-contents" href="#privacy-operator-rights">
-                                                    3.2. Оператор обязан
-                                                </a>
-                                            </li>
-                                        </ol>
-                                    </details>
-                                </li>
-
-                                <li class="my-table-of-contents__list-item">
-                                    <details class="my-table-of-contents__nested-details">
-                                        <summary class="my-table-of-contents__nested-summary">
-                                            <svg class="my-table-of-contents__nested-summary-svg" width="16" height="16" aria-hidden="true">
-                                                <use href="@icons/other/summary-details-block.svg"></use>
-                                            </svg>
-                                            <a
-                                                class="my-link my-link--table-of-contents my-link--disable-transform"
-                                                href="#privacy-subject-rights">
-                                                4. Основные права и обязанности субъектов персональных данных
-                                            </a>
-                                        </summary>
-
-                                        <ol class="my-table-of-contents__list">
-                                            <li class="my-table-of-contents__list-item">
-                                                <a class="my-link my-link--table-of-contents" href="#privacy-subject-rights">
-                                                    4.1. Субъекты персональных данных имеют право
-                                                </a>
-                                            </li>
-                                            <li class="my-table-of-contents__list-item">
-                                                <a class="my-link my-link--table-of-contents" href="#privacy-subject-rights">
-                                                    4.2. Субъекты персональных данных обязаны
-                                                </a>
-                                            </li>
-                                            <li class="my-table-of-contents__list-item">
-                                                <a class="my-link my-link--table-of-contents" href="#privacy-subject-rights">
-                                                    4.3. Лица, передавшие Оператору недостоверные сведения о себе...
-                                                </a>
-                                            </li>
-                                        </ol>
-                                    </details>
-                                </li>
-
-                                <li class="my-table-of-contents__list-item">
-                                    <a class="my-link my-link--table-of-contents" href="#privacy-principles">
-                                        5. Принципы обработки персональных данных
-                                    </a>
-                                </li>
-
-                                <li class="my-table-of-contents__list-item">
-                                    <a class="my-link my-link--table-of-contents" href="#privacy-purposes">
-                                        6. Цели обработки персональных данных
-                                    </a>
-                                </li>
-
-                                <li class="my-table-of-contents__list-item">
-                                    <a class="my-link my-link--table-of-contents" href="#privacy-conditions">
-                                        7. Условия обработки персональных данных
-                                    </a>
-                                </li>
-
-                                <li class="my-table-of-contents__list-item">
-                                    <a class="my-link my-link--table-of-contents" href="#privacy-order">
-                                        8. Порядок сбора, хранения, передачи и других видов обработки персональных данных
-                                    </a>
-                                </li>
-
-                                <li class="my-table-of-contents__list-item">
-                                    <a class="my-link my-link--table-of-contents" href="#privacy-actions">
-                                        9. Перечень действий, производимых Оператором с полученными персональными данными
-                                    </a>
-                                </li>
-
-                                <li class="my-table-of-contents__list-item">
-                                    <a class="my-link my-link--table-of-contents" href="#privacy-transborder">
-                                        10. Трансграничная передача персональных данных
-                                    </a>
-                                </li>
-
-                                <li class="my-table-of-contents__list-item">
-                                    <a class="my-link my-link--table-of-contents" href="#privacy-confidentiality">
-                                        11. Конфиденциальность персональных данных
-                                    </a>
-                                </li>
-
-                                <li class="my-table-of-contents__list-item">
-                                    <a class="my-link my-link--table-of-contents" href="#privacy-final">12. Заключительные положения</a>
-                                </li>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
                             </ol>
                         </details>
                     </nav>
@@ -142,29 +74,46 @@
 
                 <div class="row">
                     <ol class="my-list my-list--numeric">
-                        {% for point in privacy.main_content.policy_points %}
-                            <li class="my-list__item">
-                                <h3 class="my-subtitle my-subtitle--privacy">{{ point.title }}</h3>
+                        {% for section in privacy.privacy_policy.sections %}
+                            {% set sectionIndex = loop.index %}
 
-                                {% if point.paragraph and point.paragraph | length > 0 %}
-                                    <p class="my-paragraph my-paragraph--in-list">{{ point.paragraph }}</p>
+                            <li class="my-list__item">
+                                <h3 id="privacy-section-{{ loop.index }}" class="my-subtitle my-subtitle--privacy">{{ section.title }}</h3>
+
+                                {% if section.paragraph and section.paragraph | length > 0 %}
+                                    <p class="my-paragraph my-paragraph--in-list">{{ section.paragraph }}</p>
                                 {% endif %}
 
-                                {% if point.content %}
+                                {% if section.content %}
                                     <!-- ВАРИАНТ 1: Простой нумерованный список (как в пункте 1) --->
-                                    {% if point.content.type == "simple_numeric_list" %}
+                                    {% if section.content.type == "ordered_list" %}
                                         <ol class="my-list__sub-list">
-                                            {% for item in point.content.items %}
-                                                <li class="my-list__item my-paragraph my-paragraph--in-list">{{ item }}</li>
+                                            {% for item in section.content.items %}
+                                                <li class="my-list__item my-paragraph my-paragraph--in-list">
+                                                    {% if item | isArray %}
+                                                        <!-- Если item — это массив строк (несколько абзацев в одном li) -->
+                                                        {% for sub_item in item %}
+                                                            {{ sub_item }}
+                                                            {% if not loop.last %}<br />{% endif %}
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        <!-- Если item — обычная строка -->
+                                                        {{ item }}
+                                                    {% endif %}
+                                                </li>
                                             {% endfor %}
                                         </ol>
 
-                                        <!-- ВАРИАНТ 2: Сложные нумерованные списки с вложенными списками (как в пункте 3) --->
-                                    {% elif point.content.type == "numeric_list_with_nested_lists" %}
+                                        <!-- ВАРИАНТ 2: Сложные нумерованные списки с вложенными ненумерованными списками (как в пункте 3) --->
+                                    {% elif section.content.type == "grouped_list" %}
                                         <ol class="my-list__sub-list my-list__sub-list--with-nested-list">
-                                            {% for group in point.content.groups %}
+                                            {% for group in section.content.groups %}
                                                 <li class="my-list__item">
-                                                    <h4 class="my-subtitle my-subtitle--privacy-small">{{ group.title }}</h4>
+                                                    <h4
+                                                        id="privacy-section-{{ sectionIndex }}-{{ loop.index }}"
+                                                        class="my-subtitle my-subtitle--privacy-small">
+                                                        {{ group.title }}
+                                                    </h4>
                                                     {% if group.items and group.items | length > 0 %}
                                                         <ul class="my-list__sub-sub-list">
                                                             {% for item in group.items %}
@@ -177,11 +126,11 @@
                                         </ol>
 
                                         <!-- ВАРИАНТ 3: Только таблица (как в пункте 6) --->
-                                    {% elif point.content.type == "only_table" %}
+                                    {% elif section.content.type == "table" %}
                                         <div class="my-table-wrapper">
                                             <table class="my-table">
                                                 <tbody class="my-table__body">
-                                                    {% for row in point.content.rows %}
+                                                    {% for row in section.content.rows %}
                                                         <tr class="my-table__row">
                                                             <td class="my-table__item-header">
                                                                 <strong class="my-paragraph my-paragraph--strong">{{ row.label }}</strong>
@@ -202,7 +151,7 @@
                                         </div>
 
                                         <!-- ВАРИАНТ 4: Только параграф (как в пункте 11) --->
-                                        {# {% elif point.content.type == "only_paragraph" %} #}
+                                        {# {% elif section.content.type == "paragraph" %} #}
                                     {% endif %}
                                 {% endif %}
                             </li>
@@ -215,29 +164,29 @@
         <section id="cookie-policy" class="my-cookie-policy">
             <div class="container my-wrapper">
                 <div class="row justify-content-center">
-                    <h2 class="my-title my-title--cookie-policy">{{ privacy.cookies_content.heading }}</h2>
+                    <h2 class="my-title my-title--cookie-policy">{{ privacy.cookie_policy.heading }}</h2>
                 </div>
 
                 <div class="row">
-                    {% for point in privacy.cookies_content.policy_points %}
-                        {% if point.title and point.title | length > 0 %}
-                            <h3 class="my-subtitle my-subtitle--privacy">{{ point.title }}</h3>
+                    {% for section in privacy.cookie_policy.sections %}
+                        {% if section.title and section.title | length > 0 %}
+                            <h3 class="my-subtitle my-subtitle--privacy">{{ section.title }}</h3>
                         {% endif %}
 
-                        {% if point.paragraph and point.paragraph | length > 0 %}
-                            <p class="my-paragraph my-paragraph--privacy">{{ point.paragraph }}</p>
+                        {% if section.paragraph and section.paragraph | length > 0 %}
+                            <p class="my-paragraph my-paragraph--privacy">{{ section.paragraph }}</p>
                         {% endif %}
 
-                        {% if point.content %}
+                        {% if section.content %}
                             <!-- ВАРИАНТ 1: Простой параграф --->
-                            {% if point.content.type == "default_content" %}
-                                {% for item in point.content.items %}
+                            {% if section.content.type == "paragraphs" %}
+                                {% for item in section.content.items %}
                                     <p class="my-paragraph my-paragraph--privacy">{{ item }}</p>
                                 {% endfor %}
 
                                 <!-- ВАРИАНТ 2: Параграф с ненумерованным списком --->
-                            {% elif point.content.type == "content_with_non_numeric_list" %}
-                                {% for item in point.content.items %}
+                            {% elif section.content.type == "paragraphs_with_list" %}
+                                {% for item in section.content.items %}
                                     <p class="my-paragraph my-paragraph--privacy">{{ item.paragraph }}</p>
 
                                     {% if item.list and item.list | length > 0 %}

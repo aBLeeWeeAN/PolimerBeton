@@ -1,30 +1,25 @@
-<!-- TODO: вытянуть текст в json --->
-<!-- TODO: прогнать в ИИ для проверки семантики --->
 <header id="header" class="my-header">
     <div class="my-header__fixed-part">
         <div class="container my-wrapper">
-            <nav class="navbar my-navigation" aria-label="Главное меню сайта">
-                <!-- col-6 col-sm-5 col-md-6 -->
-                <a class="navbar-brand my-navigation__my-logo my-logo" href="/" aria-label="polimerbeton-vrn.ru — на главную">
+            <nav class="navbar my-navigation" aria-label="{{ header.navigation.a11y.aria_label.main }}">
+                <a class="navbar-brand my-navigation__my-logo my-logo" href="/" aria-label="{{ common.logo.a11y__aria_label }}">
                     <svg class="my-logo__svg" width="80" height="80" aria-hidden="true">
                         <use href="@icons/logo/logo.svg"></use>
                     </svg>
                     <div class="my-logo__company-name-and-motto-container">
-                        <span class="my-logo__company-name">ПОЛИМЕРБЕТОН</span>
-                        <span class="my-logo__motto">быстро и надёжно!</span>
+                        <span class="my-logo__company-name">{{ common.logo.company_name }}</span>
+                        <span class="my-logo__motto">{{ common.logo.motto }}</span>
                     </div>
                 </a>
 
-                <!-- col-2 col-sm-7 col-md-6 col-lg-5 -->
                 <div class="my-navigation__my-nav-control my-nav-control">
-                    <!-- col-auto -->
                     <div class="d-none d-md-flex my-nav-control__cs-group">
                         <div class="my-nav-control__contacts">
                             <div class="my-navigation-button">
                                 <a
                                     class="my-navigation-button__link"
-                                    href="tel:+79202261666"
-                                    aria-label="Связаться с нами по телефону: +7(920)226-16-66">
+                                    href="{{ common.href.phone }}"
+                                    aria-label="{{ header.navigation.a11y.buttons__aria_labels.phone }}">
                                     <svg class="my-navigation-button__svg" width="16" height="16" aria-hidden="true">
                                         <use href="@icons/contact/phone.svg"></use>
                                     </svg>
@@ -33,8 +28,8 @@
                             <div class="my-navigation-button">
                                 <a
                                     class="my-navigation-button__link"
-                                    href="mailto:Polimerbeton-vrn@yandex.ru"
-                                    aria-label="Связаться с нами по email: Polimerbeton-vrn@yandex.ru">
+                                    href="{{ common.href.email }}"
+                                    aria-label="{{ header.navigation.a11y.buttons__aria_labels.email }}">
                                     <svg class="my-navigation-button__svg" width="16" height="16" aria-hidden="true">
                                         <use href="@icons/contact/email.svg"></use>
                                     </svg>
@@ -43,8 +38,8 @@
                             <div class="my-navigation-button">
                                 <a
                                     class="my-navigation-button__link"
-                                    href="https://t.me/Polimerbeton_vrn"
-                                    aria-label="Связаться с нами в Telegram: @Polimerbeton_vrn"
+                                    href="{{ common.href.telegram }}"
+                                    aria-label="{{ header.navigation.a11y.buttons__aria_labels.telegram }}"
                                     target="_blank"
                                     rel="noopener noreferrer">
                                     <svg class="my-navigation-button__svg" width="16" height="16" aria-hidden="true">
@@ -55,8 +50,8 @@
                             <div class="my-navigation-button">
                                 <a
                                     class="my-navigation-button__link"
-                                    href="https://wa.me/79202261666"
-                                    aria-label="Связаться с нами в WhatsApp: +7(920)226-16-66"
+                                    href="{{ common.href.whatsapp }}"
+                                    aria-label="{{ header.navigation.a11y.buttons__aria_labels.whatsapp }}"
                                     target="_blank"
                                     rel="noopener noreferrer">
                                     <svg class="my-navigation-button__svg" width="16" height="16" aria-hidden="true">
@@ -73,7 +68,7 @@
                                 id="My-Toggle-Color-Scheme-Button"
                                 class="my-navigation-button"
                                 type="button"
-                                aria-label="Переключить расцветку сайта вручную">
+                                aria-label="{{ header.navigation.a11y.buttons__aria_labels.toggle_color_scheme }}">
                                 <svg id="My-Sun-Svg-Icon" class="my-navigation-button__svg" width="16" height="16" aria-hidden="true">
                                     <use href="@icons/theme/sun.svg"></use>
                                 </svg>
@@ -86,7 +81,7 @@
                                 id="My-Reset-Color-Scheme-Button"
                                 class="my-navigation-button"
                                 type="button"
-                                aria-label="Автоматически определить и переключить расцветку сайта">
+                                aria-label="{{ header.navigation.a11y.buttons__aria_labels.reset_color_scheme }}">
                                 <svg class="my-navigation-button__svg" width="16" height="16" aria-hidden="true">
                                     <use href="@icons/theme/system.svg"></use>
                                 </svg>
@@ -96,7 +91,6 @@
 
                     <hr class="d-none d-md-inline-block my-separator my-separator--vertical" />
 
-                    <!-- col-auto -->
                     <button
                         id="My-Hamburger-Menu-Button"
                         class="navbar-toggler my-nav-control__hamburger-button my-hamburger-button"
@@ -104,7 +98,7 @@
                         data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar"
                         aria-controls="offcanvasNavbar"
-                        aria-label="Открыть меню разделов страницы в шапке"
+                        aria-label="{{ header.navigation.a11y.buttons__aria_labels.hamburger }}"
                         aria-expanded="false">
                         <svg class="my-hamburger-button__svg" fill="var(--primary-color)" viewBox="0 0 100 100" aria-hidden="true">
                             <g class="my-hamburger-button__top-line-wrapper">
@@ -125,47 +119,13 @@
 
     <div class="offcanvas offcanvas-top my-header__hidden-part" data-bs-scroll="true" tabindex="-1" id="offcanvasNavbar">
         <div class="offcanvas-body my-offcanvas-body">
-            <nav class="h-100 container my-wrapper my-nav-menu__wrapper" aria-label="Меню разделов страницы в шапке">
+            <nav class="h-100 container my-wrapper my-nav-menu__wrapper" aria-label="{{ header.navigation.a11y.aria_label.offcanvas }}">
                 <ul class="col-12 my-nav-menu my-nav-menu--header" role="list">
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#hero">Главная</a>
-                    </li>
-
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#description">Описание</a>
-                    </li>
-
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#usage">Применение</a>
-                    </li>
-
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#examples">
-                            Примеры
-                            <br class="d-none d-md-block d-lg-none" />
-                            использования
-                        </a>
-                    </li>
-
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#advantages">Преимущества</a>
-                    </li>
-
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#legal">Сертификация</a>
-                    </li>
-
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#pricing">Цены</a>
-                    </li>
-
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#feedback-form">Оставить заявку</a>
-                    </li>
-
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#contact">Наши контакты</a>
-                    </li>
+                    {% for id, text in common.navigation.links %}
+                        <li class="my-nav-menu__item">
+                            <a class="my-nav-menu__link" href="#{{ id }}">{{ text }}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </nav>
 
@@ -179,8 +139,8 @@
                             <div class="my-navigation-button my-navigation-button--mobile">
                                 <a
                                     class="my-navigation-button__link"
-                                    href="tel:+79202261666"
-                                    aria-label="Связаться с нами по телефону: +7(920)226-16-66">
+                                    href="{{ common.href.phone }}"
+                                    aria-label="{{ header.navigation.a11y.buttons__aria_labels.phone }}">
                                     <svg class="my-navigation-button__svg" width="16" height="16" aria-hidden="true">
                                         <use href="@icons/contact/phone.svg"></use>
                                     </svg>
@@ -190,8 +150,8 @@
                             <div class="my-navigation-button my-navigation-button--mobile">
                                 <a
                                     class="my-navigation-button__link"
-                                    href="mailto:Polimerbeton-vrn@yandex.ru"
-                                    aria-label="Связаться с нами по email: Polimerbeton-vrn@yandex.ru">
+                                    href="{{ common.href.email }}"
+                                    aria-label="{{ header.navigation.a11y.buttons__aria_labels.email }}">
                                     <svg class="my-navigation-button__svg" width="16" height="16" aria-hidden="true">
                                         <use href="@icons/contact/email.svg"></use>
                                     </svg>
@@ -201,8 +161,8 @@
                             <div class="my-navigation-button my-navigation-button--mobile">
                                 <a
                                     class="my-navigation-button__link"
-                                    href="https://t.me/Polimerbeton_vrn"
-                                    aria-label="Связаться с нами в Telegram: @Polimerbeton_vrn"
+                                    href="{{ common.href.telegram }}"
+                                    aria-label="{{ header.navigation.a11y.buttons__aria_labels.telegram }}"
                                     target="_blank"
                                     rel="noopener noreferrer">
                                     <svg class="my-navigation-button__svg" width="16" height="16" aria-hidden="true">
@@ -214,8 +174,8 @@
                             <div class="my-navigation-button my-navigation-button--mobile">
                                 <a
                                     class="my-navigation-button__link"
-                                    href="https://wa.me/79202261666"
-                                    aria-label="Связаться с нами в WhatsApp: +7(920)226-16-66"
+                                    href="{{ common.href.whatsapp }}"
+                                    aria-label="{{ header.navigation.a11y.buttons__aria_labels.whatsapp }}"
                                     target="_blank"
                                     rel="noopener noreferrer">
                                     <svg class="my-navigation-button__svg" width="16" height="16" aria-hidden="true">
@@ -230,7 +190,7 @@
                                 class="my-navigation-button my-navigation-button--mobile"
                                 type="button"
                                 id="My-Toggle-Color-Scheme-Button--Mobile"
-                                aria-label="Переключить расцветку сайта вручную">
+                                aria-label="{{ header.navigation.a11y.buttons__aria_labels.toggle_color_scheme }}">
                                 <svg
                                     id="My-Sun-Svg-Icon--Mobile"
                                     class="my-navigation-button__svg"
@@ -253,7 +213,7 @@
                                 id="My-Reset-Color-Scheme-Button--Mobile"
                                 class="my-navigation-button my-navigation-button--mobile"
                                 type="button"
-                                aria-label="Автоматически определить и переключить расцветку сайта">
+                                aria-label="{{ header.navigation.a11y.buttons__aria_labels.reset_color_scheme }}">
                                 <svg class="my-navigation-button__svg" width="16" height="16" aria-hidden="true">
                                     <use href="@icons/theme/system.svg"></use>
                                 </svg>

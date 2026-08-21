@@ -3,82 +3,43 @@
     <div class="my-footer__decorative-square my-footer__decorative-square--right" aria-hidden="true"></div>
 
     <div class="container my-wrapper my-footer__content">
-        <!-- row  -->
         <div class="my-footer__information-container">
-            <!-- col-12 col-sm-7 col-xl-6 -->
-            <div class="my-footer__sitemap-container">
-                <a class="my-logo my-logo--footer" href="/" aria-label="polimerbeton-vrn.ru — на главную">
-                    <svg class="my-logo__svg" width="134" height="134" aria-hidden="true">
-                        <use href="@icons/logo/logo.svg"></use>
-                    </svg>
-                    <div class="my-logo__company-name-and-motto-container">
-                        <span class="my-logo__company-name">ПОЛИМЕРБЕТОН</span>
-                        <span class="my-logo__motto">быстро и надёжно!</span>
-                    </div>
-                </a>
-
-                <div class="d-none d-md-block">
-                    <h2 class="my-title my-title--footer">polimerbeton-vrn.ru</h2>
-
-                    <ul class="my-nav-menu my-nav-menu--footer" aria-label="Меню ссылок на другие страницы сайта" role="list">
-                        <li class="my-nav-menu__item">
-                            <button type="button" class="my-js-cookie-settings-btn my-nav-menu__link">Настройки Cookie</button>
-                        </li>
-                        <li class="my-nav-menu__item">
-                            <a class="my-nav-menu__link" href="@page/privacy.html" target="_self">Политика конфиденциальности</a>
-                        </li>
-                    </ul>
+            <a class="my-logo my-logo--footer my-footer__logo" href="/" aria-label="{{ common.logo.a11y__aria_label }}">
+                <svg class="my-logo__svg" width="134" height="134" aria-hidden="true">
+                    <use href="@icons/logo/logo.svg"></use>
+                </svg>
+                <div class="my-logo__company-name-and-motto-container">
+                    <span class="my-logo__company-name">{{ common.logo.company_name }}</span>
+                    <span class="my-logo__motto">{{ common.logo.motto }}</span>
                 </div>
+            </a>
+
+            <div class="my-footer__legal">
+                <h2 class="my-title my-title--footer">{{ footer.legal.domain }}</h2>
+
+                <ul class="my-nav-menu my-nav-menu--footer" aria-label="{{ footer.legal.a11y__aria_label }}" role="list">
+                    <li class="my-nav-menu__item">
+                        <button type="button" class="my-js-cookie-settings-btn my-nav-menu__link">
+                            {{ footer.legal.cookie_settings }}
+                        </button>
+                    </li>
+                    <li class="my-nav-menu__item">
+                        <a class="my-nav-menu__link" href="@page/privacy.html" target="_self">{{ footer.legal.privacy_policy }}</a>
+                    </li>
+                </ul>
             </div>
 
-            <!-- col-12 col-sm-4 col-xxl-3  -->
-            <nav class="d-flex d-md-block flex-column align-items-center" aria-label="Меню разделов страницы в подвале">
-                <h2 class="my-title my-title--footer">Навигация</h2>
+            <nav class="my-footer__navigation" aria-label="{{ footer.navigation.a11y.aria_label }}">
+                <h2 class="my-title my-title--footer">{{ footer.navigation.title }}</h2>
 
                 <ul class="my-nav-menu my-nav-menu--footer" role="list">
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#hero">Главная</a>
-                    </li>
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#description">Описание</a>
-                    </li>
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#usage">Применение</a>
-                    </li>
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#examples">Примеры использования</a>
-                    </li>
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#advantages">Преимущества</a>
-                    </li>
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#legal">Сертификация</a>
-                    </li>
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#pricing">Цены</a>
-                    </li>
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#feedback-form">Оставить заявку</a>
-                    </li>
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="#contact">Наши контакты</a>
-                    </li>
+                    {% for id, text in common.navigation.links %}
+                        <li class="my-nav-menu__item">
+                            <a class="my-nav-menu__link" href="#{{ id }}">{{ text }}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </nav>
-
-            <!-- col-12 -->
-            <div class="d-flex d-md-none flex-column align-items-center my-footer__sitemap-container">
-                <h2 class="my-title my-title--footer">polimerbeton-vrn.ru</h2>
-
-                <ul class="my-nav-menu my-nav-menu--footer" aria-label="Меню ссылок на другие страницы сайта" role="list">
-                    <li class="my-nav-menu__item">
-                        <button type="button" class="my-js-cookie-settings-btn my-nav-menu__link">Настройки Cookie</button>
-                    </li>
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="@page/privacy.html" target="_self">Политика конфиденциальности</a>
-                    </li>
-                </ul>
-            </div>
         </div>
 
         <hr class="col-12 my-separator" aria-hidden="true" />
@@ -86,7 +47,7 @@
         <div class="my-footer__copyright-container">
             <small class="my-footer__copyright-owner-text">
                 <span>&copy;</span>
-                <span class="d-none d-sm-inline">Copyright</span>
+                <span class="d-none d-sm-inline">{{ footer.copyright.title }}</span>
 
                 {% if IS_DJANGO_BUILD %}
                     2024-{% raw %}{% now "Y" %}{% endraw %}
@@ -97,18 +58,18 @@
                         </script>
                     </span>
                 {% endif %}
-                <span>Сергей Никулин.</span>
+                <span>{{ footer.copyright.owner.name }}</span>
 
                 <br class="d-block d-sm-none" />
 
                 <span class="d-none d-sm-inline">&#x20;</span>
-                <span>Все права защищены.</span>
+                <span>{{ footer.copyright.owner.license }}</span>
             </small>
 
             <small class="my-footer__copyright-developer-text">
-                <span>Built with love by</span>
+                <span>{{ footer.copyright.developer.text }}</span>
                 <a class="my-link my-link--copyright" href="https://github.com/aLeeTheY" target="_blank" rel="noopener noreferrer">
-                    aLeeTheY
+                    {{ footer.copyright.developer.github_nickname }}
                 </a>
             </small>
         </div>

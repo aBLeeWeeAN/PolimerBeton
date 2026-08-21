@@ -2,7 +2,6 @@
 {% from "macros/macro__hreflang_tags.njk" import hreflang_tags %}
 {% from "macros/macro__inline_script.njk" import inline_script %}
 
-<!-- TODO: dodelat' head dlya raznyh stranic' --->
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,22 +10,22 @@
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
 
     <!-- ! DO NOT REMOVE THIS NUNJUCKS BLOCK !!! | PAGE LOCALE TAGS --->
-    {% if allLocales and defaultLocale and siteUrl %}
+    {% if allAvailableLocales and defaultLocale and siteUrl %}
         {{
             hreflang_tags(
-                all_locales = allLocales,
-                default_locale = defaultLocale,
-                site_url = siteUrl
+                site_url = siteUrl,
+                all_locales = allAvailableLocales,
+                default_locale = defaultLocale
             )
         }}
     {% endif %}
 
     <!-- * Page title --->
-    <title>{{ common.head.title }}</title>
+    <title>{{ current_page_head.title }}</title>
 
     <!-- * Page description & keywords --->
-    <meta name="description" content="{{ common.head.description }}" />
-    <meta name="keywords" content="{{ common.head.keywords }}" />
+    <meta name="description" content="{{ current_page_head.description }}" />
+    <meta name="keywords" content="{{ current_page_head.keywords }}" />
 
     <!-- * Authors --->
     <link rel="author" href="@meta/humans.txt" />
@@ -49,7 +48,7 @@
     <meta property="og:title" content="{{ common.head.title }}" />
     <meta property="og:description" content="{{ common.head.description }}" />
 
-    <meta property="og:image" content="{{ opengraph_image_url }}" />
+    <meta property="og:image" content="{{ common.head.opengraph_image_url }}" />
     <meta property="og:image:alt" content="{{ common.head.open_graph_image.alt }}" />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -58,13 +57,13 @@
     <link rel="canonical" href="{{ page_url }}" />
 
     <!-- * If JS supports -> enable JS classes - -->
-    <script type="module">
+    <script>
         document.documentElement.classList.remove('no-js')
         document.documentElement.classList.add('js')
     </script>
 
     <!-- * Set current page name to body -->
-    <script type="module">
+    <script>
         const pageName =
             window.location.pathname
                 .split('/')
@@ -81,13 +80,7 @@
     <!-- ! DO NOT REMOVE THIS COMMENT !!! | CRITICAL CSS PLACEHOLDER --->
 
     <!-- * 2. Import vendors CSS --->
-    <!-- <link rel="preload" href="https://unpkg.com/aos@next/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'" /> -->
-    <!-- Basic Icons -->
-    <!-- <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet" /> -->
-    <!-- Filled Icons -->
-    <!-- <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet" /> -->
-    <!-- Brand Icons -->
-    <!-- <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet" /> -->
+    <!-- empty --->
 
     <!-- ! DO NOT REMOVE THIS COMMENT !!! | INLINE CSS START | DISABLED BY DEFAULT --->
     <!-- * 3. Import my CSS --->

@@ -1,4 +1,4 @@
-{% macro hreflang_tags(all_locales, default_locale, site_url) %}
+{% macro hreflang_tags(site_url, all_locales, default_locale) %}
     {# Убираем слэш в конце, чтобы избежать дубликатов типа // #}
     {% set clean_site_url = site_url | trim('/') %}
 

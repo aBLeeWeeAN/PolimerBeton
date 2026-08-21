@@ -68,6 +68,8 @@
     }
 
     &__link {
+        @extend %text__paragraph--cookie-consent-banner;
+
         color: var(--color__global__text--primary);
         text-decoration: none;
 

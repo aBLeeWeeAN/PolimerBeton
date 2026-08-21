@@ -44,25 +44,42 @@
     &__sub-sub-list {
         list-style-type: none;
         list-style-position: outside;
-        counter-reset: my-list__sub-sub-list-counter;
 
         padding-left: calc(1 * var(--layout__global__spacing));
 
         & > .my-list__item {
-            counter-increment: my-list__sub-sub-list-counter;
-
             &:not(:has(h1, h2, h3, h4, h5, h6, p)),
             & > :first-child:where(h1, h2, h3, h4, h5, h6, p) {
                 display: grid;
-                grid-template-columns: 3.6em 1fr;
+                grid-template-columns: auto 1fr;
             }
 
             &:not(:has(h1, h2, h3, h4, h5, h6, p))::before,
             & > :first-child:where(h1, h2, h3, h4, h5, h6, p)::before {
-                content: counter(my-list-counter) '.' counter(my-list__sub-list-counter) '.'
-                    counter(my-list__sub-sub-list-counter) '.\00a0';
-
+                content: '—\00a0';
                 font-variant-numeric: tabular-nums;
+            }
+        }
+
+        &--numeric {
+            counter-reset: my-list__sub-sub-list-counter;
+
+            & > .my-list__item {
+                counter-increment: my-list__sub-sub-list-counter;
+
+                &:not(:has(h1, h2, h3, h4, h5, h6, p)),
+                & > :first-child:where(h1, h2, h3, h4, h5, h6, p) {
+                    display: grid;
+                    grid-template-columns: 3.6em 1fr;
+                }
+
+                &:not(:has(h1, h2, h3, h4, h5, h6, p))::before,
+                & > :first-child:where(h1, h2, h3, h4, h5, h6, p)::before {
+                    content: counter(my-list-counter) '.' counter(my-list__sub-list-counter) '.'
+                        counter(my-list__sub-sub-list-counter) '.\00a0';
+
+                    font-variant-numeric: tabular-nums;
+                }
             }
         }
     }

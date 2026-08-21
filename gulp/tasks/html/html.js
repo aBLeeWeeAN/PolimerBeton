@@ -47,11 +47,11 @@ import htmlmin from 'gulp-html-minifier-terser'
 // TODO: доделать <source> для video, audio и 'hreflang' i18n
 function createHtmlStream({
     siteUrl,
-    locale,
-    localeData,
-    destPath,
-    allLocales,
+    allAvailableLocales,
     defaultLocale,
+    currentLocale,
+    jsonLocaleData,
+    destPathByLocale,
     // * инлайн аргументы
     cssContent = '',
     jsContent = '',
@@ -63,8 +63,19 @@ function createHtmlStream({
     }
 
     // ! формируем итоговый prefix для ассетов
-    const pathPrefix = env.isLocal ? (locale !== defaultLocale ? '../' : './') : env.assetPrefix
+    const pathPrefix = env.isLocal
+        ? currentLocale !== defaultLocale
+            ? '../'
+            : './'
+        : env.assetPrefix
     // console.log(`ASSET_PREFIX: ${env.assetPrefix}`)
+
+    // ? кастомный фильтр для проверки, что объект это массив
+    const nunjucksManageEnvironment = function (environment) {
+        environment.addFilter('isArray', function (obj) {
+            return Array.isArray(obj)
+        })
+    }
 
     return (
         gulp
@@ -97,11 +108,13 @@ function createHtmlStream({
                     ],
                     data: {
                         siteUrl,
-                        locale,
-                        ...localeData,
-                        allLocales,
+                        currentLocale,
                         defaultLocale,
+                        allAvailableLocales,
+                        ...jsonLocaleData,
                     },
+
+                    manageEnv: nunjucksManageEnvironment,
                 }),
             )
             // * генерируем <img> в <picture>/<source> + responsive + avif/webp
@@ -165,7 +178,7 @@ function createHtmlStream({
 
             // TODO: доделать это дерьмо
             // * замена ссылок между страницами сайта
-            .pipe(gulpReplace(/@page\//g), `${locale !== undefined ? locale : ''}/`)
+            .pipe(gulpReplace(/@page\//g), `${currentLocale !== undefined ? currentLocale : ''}/`)
 
             // .pipe(
             //     gulpReplace(
@@ -225,7 +238,7 @@ function createHtmlStream({
             // ! posthtml so bad...
             // .pipe(posthtml())
             // * кладем результат в папку сборки
-            .pipe(gulp.dest(destPath))
+            .pipe(gulp.dest(destPathByLocale))
         // * обновляем сервер разработки
         // .pipe(browserSync.stream())
     )
@@ -276,22 +289,22 @@ async function buildHtml() {
         )
         const { default_locale: defaultLocale, available_locales: locales } = i18nConfig
 
-        for (const locale of locales) {
-            const dataPath = `${path.src.i18n.base}/${locale}.json`
-            const localeData = JSON.parse(fs.readFileSync(dataPath, 'utf-8'))
+        for (const currentLocale of locales) {
+            const dataPath = `${path.src.i18n.base}/${currentLocale}.json`
+            const jsonLocaleData = JSON.parse(fs.readFileSync(dataPath, 'utf-8'))
 
-            const destPath =
-                locale === defaultLocale
+            const destPathByLocale =
+                currentLocale === defaultLocale
                     ? path.build.html
-                    : nodePath.join(path.build.html, String(locale).toLowerCase())
+                    : nodePath.join(path.build.html, String(currentLocale).toLowerCase())
 
             const stream = createHtmlStream({
                 siteUrl: env.siteUrl,
-                locale,
-                localeData,
-                destPath,
-                allLocales: locales,
+                allAvailableLocales: locales,
                 defaultLocale,
+                currentLocale,
+                jsonLocaleData,
+                destPathByLocale,
                 cssContent,
                 jsContent,
                 spriteContent,
@@ -305,7 +318,7 @@ async function buildHtml() {
         }
     } else {
         const stream = createHtmlStream({
-            destPath: path.build.html,
+            destPathByLocale: path.build.html,
             cssContent,
             jsContent,
             spriteContent,

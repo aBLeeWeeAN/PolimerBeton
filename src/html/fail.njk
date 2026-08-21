@@ -1,13 +1,11 @@
 {% extends "base/base.njk" %}
+
+<!-- ? передаем ветку из ru.json для этой страницы -->
+{% set current_page_head = fail.head %}
+
 {% block content %}
     <div class="my-shadow-group">
         <section id="fail" class="my-server-response">
-            <!-- <img class="d-none d-md-inline-block" id="ball-green" src="@images/balls/green.png" alt="" />
-        <img class="d-none d-sm-inline-block" id="ball-yellow" src="@images/balls/yellow.png" alt="" />
-        <img class="d-none d-md-inline-block" id="ball-white" src="@images/balls/white.png" alt="" />
-        <img class="d-none d-md-inline-block" id="ball-grey" src="@images/balls/grey.png" alt="" />
-        <img class="d-none d-sm-inline-block" id="ball-red" src="@images/balls/red.png" alt="" /> -->
-
             <div class="container my-wrapper my-server-response__content">
                 <div class="my-balls-group my-balls-group--decorative " data-variant="usage" aria-hidden="true">
                     {%
@@ -29,11 +27,11 @@
                     {% endfor %}
                 </div>
 
-                <h1 class="my-title my-title--server-response" data-variant="fail">{{ form_fail.main_content.heading }}</h1>
-                <h2 class="my-subtitle my-subtitle--server-response">{{ form_fail.main_content.subheading | nl2br }}</h2>
+                <h1 class="my-title my-title--server-response" data-variant="fail">{{ fail.main_content.heading }}</h1>
+                <h2 class="my-subtitle my-subtitle--server-response">{{ fail.main_content.subheading | nl2br }}</h2>
 
                 <div class="my-default-button">
-                    <a class="my-default-button__link" href="@page/index.html">{{ form_fail.main_content.button_text }}</a>
+                    <a class="my-default-button__link" href="@page/index.html">{{ fail.main_content.button_text }}</a>
                 </div>
             </div>
         </section>

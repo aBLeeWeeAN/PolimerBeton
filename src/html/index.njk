@@ -1,5 +1,9 @@
 {% extends "base/base.njk" %}
 
+<!-- ? передаем ветку из ru.json для этой страницы -->
+{% set current_page_head = index.head %}
+
+<!-- * шарики --->
 {% set my_balls = ["green", "yellow", "white", "grey", "red"] %}
 
 {% block content %}
@@ -28,8 +32,11 @@
             </div>
 
             <div class="row my-balls-group my-balls-group--hero-section">
+                <!-- ? Текст только для скринридеров -->
+                <span class="my-visually-hidden">{{ index.hero.a11y__balls_colors }}</span>
+
                 {% for ball in my_balls %}
-                    <div class="my-balls-group__ball-wrapper my-balls-group__ball-wrapper--{{ ball }}">
+                    <div class="my-balls-group__ball-wrapper my-balls-group__ball-wrapper--{{ ball }}" aria-hidden="true">
                         <img
                             data-my-picture-class="my-balls-group__picture"
                             class="my-balls-group__img"
@@ -43,7 +50,7 @@
                     </div>
 
                     {% if loop.index0 == 2 %}
-                        <div class="w-100 d-md-none"></div>
+                        <div class="w-100 d-md-none" aria-hidden="true"></div>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -565,10 +572,10 @@
                         <dd class="my-contact-list__item">
                             <a
                                 class="my-contact-list__link"
-                                href="{{ index.contact.contact_info.messengers.whats_app.href }}"
+                                href="{{ index.contact.contact_info.messengers.whatsapp.href }}"
                                 target="_blank"
                                 rel="noopener noreferrer">
-                                {{ index.contact.contact_info.messengers.whats_app.main_text }}
+                                {{ index.contact.contact_info.messengers.whatsapp.main_text }}
                             </a>
                         </dd>
                     </dl>

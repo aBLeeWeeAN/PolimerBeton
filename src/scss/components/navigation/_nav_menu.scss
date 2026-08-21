@@ -9,14 +9,6 @@
     width: 100%;
     height: auto;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    align-items: center;
-    justify-content: center;
-
-    row-gap: var(--layout__global__spacing);
-
     &__wrapper {
         @include bs.media-breakpoint-down(md) {
             overflow: hidden;
@@ -72,6 +64,14 @@
     }
 
     &--header {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        align-items: center;
+        justify-content: center;
+
+        row-gap: var(--layout__global__spacing);
+
         .my-nav-menu__item {
             &::before,
             &::after {
@@ -142,12 +142,18 @@
             @extend %list--navigation-menu__text--in-header;
             @include mixin.transition-for(color, transform);
         }
+
+        @include bs.media-breakpoint-down(md) {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(9, auto);
+        }
     }
 
     &--footer {
         display: block;
 
         .my-nav-menu__item {
+            height: auto;
             justify-content: flex-start;
 
             &:not(:last-child) {
@@ -171,10 +177,5 @@
                 justify-content: center;
             }
         }
-    }
-
-    @include bs.media-breakpoint-down(md) {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(9, auto);
     }
 }

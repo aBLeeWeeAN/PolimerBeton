@@ -5,14 +5,19 @@
             <svg class="my-cookie-consent-banner__title-svg" width="16" height="16" aria-hidden="true">
                 <use href="@icons/other/cookie.svg"></use>
             </svg>
-            Мы используем файлы Cookie
+            {{ common.cookie_consent_banner.title }}
         </h2>
 
         <p class="my-cookie-consent-banner__paragraph">
-            Мы используем аналитические Cookie от Google и Яндекс. Это помогает нам сделать наш сайт более удобным для Вас.
+            {{ common.cookie_consent_banner.paragraph.text }}
             <br />
-            <a class="my-cookie-consent-banner__link" href="@page/privacy.html#Cookie" target="_blank" rel="noopener noreferrer">
-                Узнать больше об этом...
+            <a
+                class="my-cookie-consent-banner__link"
+                href="@page/privacy.html#Cookie"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="{{ common.cookie_consent_banner.paragraph.link.a11y__aria_label }}">
+                {{ common.cookie_consent_banner.paragraph.link.text }}
             </a>
         </p>
     </div>
@@ -23,14 +28,14 @@
             class="my-default-button my-default-button--cookie-consent-banner"
             data-action="decline"
             type="button">
-            Нет, спасибо
+            {{ common.cookie_consent_banner.buttons.decline }}
         </button>
         <button
             id="cookie-accept-btn"
             class="my-default-button my-default-button--cookie-consent-banner"
             data-action="accept"
             type="button">
-            Хорошо
+            {{ common.cookie_consent_banner.buttons.accept }}
         </button>
     </div>
 </aside>
