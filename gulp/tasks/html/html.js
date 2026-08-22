@@ -121,6 +121,12 @@ function createHtmlStream({
             .pipe(
                 htmlImg2PictureTransformer(path.src.images.base, {
                     desktopFirst: !env.isMobileFirst,
+                    // ? cчитать и проставлять width/height
+                    setDimensions: true,
+                    // ? добавлять loading="lazy"
+                    setLazyLoading: false,
+                    // ? добавлять decoding="async"
+                    setAsyncDecoding: true,
                 }),
             )
 

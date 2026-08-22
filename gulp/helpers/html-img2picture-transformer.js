@@ -1,8 +1,8 @@
-/* eslint-disable no-console */
 // ! ------------------------------------------------------------
 // ! PRODUCTION CODEBASE: ASSISTED BY DEEPSEEK & GOOGLE AI
 // ! Logic verified by output results. Maintained by aLeeTheY.
 // ! ------------------------------------------------------------
+/* eslint-disable no-console */
 
 import path from 'path'
 import fs from 'fs/promises'
@@ -25,6 +25,9 @@ const FORMATS = ['image/avif', 'image/webp', 'image/jpeg', 'image/png']
 export function htmlImg2PictureTransformer(assetsSrcDir, options = {}) {
     const config = {
         desktopFirst: true,
+        setDimensions: false, // Проставлять width и height
+        setLazyLoading: false, // Автоматически добавлять loading="lazy"
+        setAsyncDecoding: false, // Добавлять decoding="async"
         ...options,
     }
 
@@ -99,10 +102,8 @@ export function htmlImg2PictureTransformer(assetsSrcDir, options = {}) {
                     return true
                 })
 
-                // СОЗДАЕМ PICTURE И ОБРАБАТЫВАЕМ КЛАССЫ
                 const picture = new Element('picture', {})
 
-                // Читаем кастомный атрибут для классов обертки
                 if (img.attribs['data-my-picture-class']) {
                     picture.attribs.class = img.attribs['data-my-picture-class']
                 }
@@ -110,7 +111,7 @@ export function htmlImg2PictureTransformer(assetsSrcDir, options = {}) {
                 const setupFallbackImg = (baseImg) => {
                     const clone = baseImg.cloneNode(true)
 
-                    // Удаляем технический дата-атрибут, чтобы он не летел в финальный HTML
+                    // Всегда подчищаем служебный атрибут обертки
                     if (clone.attribs['data-my-picture-class']) {
                         delete clone.attribs['data-my-picture-class']
                     }
@@ -119,17 +120,22 @@ export function htmlImg2PictureTransformer(assetsSrcDir, options = {}) {
                         ? src
                         : `${basePath}-mobile.${originalExt}`
 
-                    if (clone.attribs.fetchpriority === 'high') {
-                        delete clone.attribs.loading
-                    } else if (!clone.attribs.loading) {
-                        clone.attribs.loading = 'lazy'
+                    // 1. Установка loading="lazy" по флагу
+                    if (config.setLazyLoading) {
+                        if (clone.attribs.fetchpriority === 'high') {
+                            delete clone.attribs.loading
+                        } else if (!clone.attribs.loading) {
+                            clone.attribs.loading = 'lazy'
+                        }
                     }
 
-                    if (!clone.attribs.decoding) {
+                    // 2. Установка decoding="async" по флагу
+                    if (config.setAsyncDecoding && !clone.attribs.decoding) {
                         clone.attribs.decoding = 'async'
                     }
 
-                    if (originalWidth && metadata?.height) {
+                    // 3. Простановка размеров по флагу
+                    if (config.setDimensions && originalWidth && metadata?.height) {
                         clone.attribs.width = String(originalWidth)
                         clone.attribs.height = String(metadata.height)
                     }
