@@ -1,7 +1,10 @@
 {% extends "base/base.njk" %}
 
-<!-- ? передаем ветку из ru.json для этой страницы -->
-{% set current_page_head = privacy.head %}
+<!-- ? название текущей страницы в домене --->
+{% set current_page__page_name = 'privacy' %}
+
+<!-- ? передаем текстовые данные из файла переовдов *.json для <head> этой страницы -->
+{% set current_page__head_content = privacy.head %}
 
 {% block content %}
     <div class="my-shadow-group">

@@ -1,7 +1,10 @@
 {% extends "base/base.njk" %}
 
-<!-- ? передаем ветку из ru.json для этой страницы -->
-{% set current_page_head = index.head %}
+<!-- ? название текущей страницы в домене --->
+{% set current_page__page_name = 'index' %}
+
+<!-- ? передаем текстовые данные из файла переовдов *.json для <head> этой страницы -->
+{% set current_page__head_content = index.head %}
 
 <!-- * шарики --->
 {% set my_balls = ["green", "yellow", "white", "grey", "red"] %}
@@ -194,8 +197,7 @@
                                         id="My-Example-Img__{{ current_type | title }}-{{ current_state | title }}"
                                         class="my-gradient-image__link js-tilt"
                                         href="@images/examples/{{ current_img }}.jpg"
-                                        target="_blank"
-                                        rel="noopener noreferrer">
+                                        target="_blank">
                                         <img
                                             class="my-gradient-image__img"
                                             src="@images/examples/{{ current_img }}.jpg"
@@ -261,8 +263,7 @@
                                     id="My-Legal-Doc__{{ loop.index }}"
                                     class="my-gradient-image js-tilt"
                                     href="@images/legal/doc_{{ loop.index }}.jpg"
-                                    target="_blank"
-                                    rel="noopener noreferrer">
+                                    target="_blank">
                                     <img class="my-gradient-image__img" src="@images/legal/doc_{{ loop.index }}.jpg" alt="{{ img_alt }}" />
                                 </a>
                             </div>
@@ -359,7 +360,7 @@
                         id="my-custom-feedback-form"
                         class="col-12 col-md-6 my-custom-feedback-form"
                         method="post"
-                        action="@page/index.html"
+                        action="@page/index.njk"
                         onsubmit="this.querySelector('button[type=submit]').disabled = true;">
                         {% if is_django_build %}
                             {% raw %}
@@ -491,7 +492,7 @@
                                         <a
                                             class="my-custom-feedback-form__checkbox-link"
                                             aria-label="{{ index.feedback_form.checkbox.aria }}"
-                                            href="@page/privacy.html"
+                                            href="@page/privacy.njk"
                                             target="_self">
                                             {{ index.feedback_form.checkbox.main_text[1] }}
                                         </a>
@@ -502,8 +503,7 @@
                                             <a
                                                 class="my-custom-feedback-form__checkbox-link"
                                                 aria-label="{{ index.feedback_form.checkbox.aria }}"
-                                                href="@page/privacy.html"
-                                                target="_self">
+                                                href="@page/privacy.njk">
                                                 {{ index.feedback_form.checkbox.main_text[1] }}
                                             </a>
                                         </small>
@@ -564,8 +564,7 @@
                             <a
                                 class="my-contact-list__link"
                                 href="{{ index.contact.contact_info.messengers.telegram.href }}"
-                                target="_blank"
-                                rel="noopener noreferrer">
+                                target="_blank">
                                 {{ index.contact.contact_info.messengers.telegram.main_text }}
                             </a>
                         </dd>
@@ -573,8 +572,7 @@
                             <a
                                 class="my-contact-list__link"
                                 href="{{ index.contact.contact_info.messengers.whatsapp.href }}"
-                                target="_blank"
-                                rel="noopener noreferrer">
+                                target="_blank">
                                 {{ index.contact.contact_info.messengers.whatsapp.main_text }}
                             </a>
                         </dd>

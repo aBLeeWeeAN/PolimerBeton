@@ -4,7 +4,7 @@
 
     <div class="container my-wrapper my-footer__content">
         <div class="my-footer__information-container">
-            <a class="my-logo my-logo--footer my-footer__logo" href="/" aria-label="{{ common.logo.a11y__aria_label }}">
+            <a class="my-logo my-logo--footer my-footer__logo" href="@page/index.njk" aria-label="{{ common.logo.a11y__aria_label }}">
                 <svg class="my-logo__svg" width="134" height="134" aria-hidden="true">
                     <use href="@icons/logo/logo.svg"></use>
                 </svg>
@@ -24,7 +24,7 @@
                         </button>
                     </li>
                     <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="@page/privacy.html" target="_self">{{ footer.legal.privacy_policy }}</a>
+                        <a class="my-nav-menu__link" href="@page/privacy.njk" target="_self">{{ footer.legal.privacy_policy }}</a>
                     </li>
                 </ul>
             </div>
@@ -68,7 +68,7 @@
 
             <small class="my-footer__copyright-developer-text">
                 <span>{{ footer.copyright.developer.text }}</span>
-                <a class="my-link my-link--copyright" href="https://github.com/aLeeTheY" target="_blank" rel="noopener noreferrer">
+                <a class="my-link my-link--copyright" href="https://github.com/aLeeTheY" target="_blank">
                     {{ footer.copyright.developer.github_nickname }}
                 </a>
             </small>

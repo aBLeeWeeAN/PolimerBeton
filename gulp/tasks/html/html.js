@@ -1,10 +1,11 @@
+import { pathToFileURL } from 'node:url'
 import fs from 'fs'
 import gulp from 'gulp'
 import nodePath from 'path'
 import gulpIf from 'gulp-if'
 import through2 from 'through2'
 import { deleteAsync } from 'del'
-import prettier from 'gulp-prettier'
+// import prettier from 'gulp-prettier'
 import browserSync from 'browser-sync'
 
 import { env } from '../../config/env.js'
@@ -24,9 +25,10 @@ import nunjucksRender from 'gulp-nunjucks-render'
 // import fileInclude from 'gulp-file-include'
 // import nunjucksRender from 'gulp-nunjucks-render'
 
-// ! posthtml so bad...
-// import posthtml from 'gulp-posthtml'
-// import loadConfig from 'posthtml-load-config'
+import posthtml from 'gulp-posthtml'
+// import PHLoadConfig from 'posthtml-load-config'
+
+// ! posthtml-include so bad...
 // import include from 'posthtml-include'
 
 import gulpReplace from 'gulp-replace'
@@ -39,18 +41,17 @@ import htmlmin from 'gulp-html-minifier-terser'
 // import { pictureTransformer } from '../../helpers/picture-transformer.js'
 // import avifWebpHtml from 'gulp-avif-webp-html-universal'
 
-// TODO:
 // * --- CACHE VERSION
 // * -----------------
 // const cacheVersion = `?v=${Date.now()}`
 
-// TODO: доделать <source> для video, audio и 'hreflang' i18n
+// TODO: доделать <source> для video, audio
 function createHtmlStream({
-    siteUrl,
-    allAvailableLocales,
-    defaultLocale,
-    currentLocale,
-    jsonLocaleData,
+    posthtmlPlugins = [],
+    posthtmlOptions = {},
+    baseWebsiteUrl,
+    i18n = {},
+    localeDataFromJSON = {},
     destPathByLocale,
     // * инлайн аргументы
     cssContent = '',
@@ -62,20 +63,27 @@ function createHtmlStream({
         ignoreCustomComments.push(/CRITICAL CSS PLACEHOLDER/)
     }
 
-    // ! формируем итоговый prefix для ассетов
-    const pathPrefix = env.isLocal
-        ? currentLocale !== defaultLocale
-            ? '../'
-            : './'
-        : env.assetPrefix
-    // console.log(`ASSET_PREFIX: ${env.assetPrefix}`)
+    // ! сегмент URL (например "" для дефолтного или "en" для английского)
+    const urlSegment = (i18n.current?.url || '').trim().replace(/^\/|\/$/g, '')
 
-    // ? кастомный фильтр для проверки, что объект это массив
+    // ! итоговый prefix для ассетов | относительные пути для `--local` сборки: если подпапка — поднимаемся на уровень выше
+    const pathPrefix = env.isLocal ? (urlSegment !== '' ? '../' : './') : env.assetPrefix
+
+    // ? кастомные фильтры
     const nunjucksManageEnvironment = function (environment) {
+        // * фильтр для выброса ошибок
+        environment.addFilter('throwError', function (msg) {
+            throw new Error(`\n\x1b[31m${msg}\x1b[0m\n`)
+        })
+
+        // * фильтр для проверки, что переменная это массив
         environment.addFilter('isArray', function (obj) {
             return Array.isArray(obj)
         })
     }
+
+    // todo: можно будет добавить в env.js
+    const isCleanUrl = env.isCleanUrl ?? true
 
     return (
         gulp
@@ -84,19 +92,13 @@ function createHtmlStream({
             // * подключаем plumber, чтобы gulp не падал при ошибке
             .pipe(plumberWithErrorHandler(NOTIFICATION_HANDLER_TITLES.HTML))
             // * собираем все partials в полноценные html
-            // .pipe(
-            //     fileInclude({
-            //         prefix: '@@',
-            //         basepath: '@file',
-            //         context: {
-            //             placeholder__webpInCssPolyfill: `<script>\n${webpInCssPolyfillScript}\n</script>`,
-            //         },
-            //     }),
-            // )
-            // .pipe(posthtml())
             .pipe(
                 nunjucksRender({
-                    // path: [`${path.projectRootFolderName}/src/`, `${path.projectRootFolderName}/src/templates/`, `${path.projectRootFolderName}/`],
+                    envOptions: {
+                        throwOnUndefined: true,
+                        // trimBlocks: true,
+                        // lstripBlocks: true,
+                    },
                     path: [
                         './',
                         './src/html/',
@@ -107,11 +109,9 @@ function createHtmlStream({
                         './src/html/macros/',
                     ],
                     data: {
-                        siteUrl,
-                        currentLocale,
-                        defaultLocale,
-                        allAvailableLocales,
-                        ...jsonLocaleData,
+                        base_website_url: baseWebsiteUrl,
+                        i18n,
+                        ...localeDataFromJSON,
                     },
 
                     manageEnv: nunjucksManageEnvironment,
@@ -123,12 +123,6 @@ function createHtmlStream({
                     desktopFirst: !env.isMobileFirst,
                 }),
             )
-            // .pipe(
-            //     // nunjucksRender({
-            //     //     path: ['src/partials'], // CRITICAL: Tell Nunjucks where to find header/footer
-            //     // }),
-            //     nunjucksCompile(),
-            // )
 
             // * заменяем пути на корректные для каждого ресурса
             .pipe(gulpReplace(/@meta\//g, pathPrefix))
@@ -176,9 +170,31 @@ function createHtmlStream({
                 }),
             )
 
-            // TODO: доделать это дерьмо
-            // * замена ссылок между страницами сайта
-            .pipe(gulpReplace(/@page\//g), `${currentLocale !== undefined ? currentLocale : ''}/`)
+            // * замена межстраничных ссылок @page/ -> '' или 'en/'
+            .pipe(
+                gulpReplace(/@page\/([a-zA-Z0-9_/-]+)\.(njk|html)/g, (match, pageName) => {
+                    // ? 1. Если сборка под локальное открытие файлов (file://)
+                    if (env.isLocal) {
+                        const prefix = urlSegment !== '' ? '../' : './'
+                        const localeSegment = urlSegment ? `${urlSegment}/` : ''
+
+                        return `${prefix}${localeSegment}${pageName}.html`
+                    }
+
+                    // ? 2. Сборка под веб-сервер (абсолютные пути от корня сайта)
+                    const basePrefix = (env.assetPrefix || '/').replace(/\/$/, '') + '/'
+                    const localeSegment = urlSegment ? `${urlSegment}/` : ''
+
+                    // * главная страница
+                    if (pageName === 'index' || pageName === 'home') {
+                        return `${basePrefix}${localeSegment}`
+                    }
+
+                    // * остальные страницы
+                    const extension = isCleanUrl ? '' : '.html'
+                    return `${basePrefix}${localeSegment}${pageName}${extension}`
+                }),
+            )
 
             // .pipe(
             //     gulpReplace(
@@ -206,6 +222,10 @@ function createHtmlStream({
             // )
             // // * форматируем код через prettier
             // .pipe(prettier())
+
+            // * вызываем gulp-posthtml
+            .pipe(posthtml(posthtmlPlugins, posthtmlOptions))
+
             // * минифицируем html
             .pipe(
                 gulpIf(
@@ -245,7 +265,17 @@ function createHtmlStream({
 }
 
 async function buildHtml() {
-    // * инлайн-ресурсы (загружаем один раз)
+    // * --- LOAD POSTHTML CONFIG
+    // * ------------------------
+    const configPath = pathToFileURL(nodePath.resolve('posthtml.config.js')).href
+    const posthtmlConfigModule = await import(configPath)
+
+    // ? нативная ESM-загрузка файла конфигурации
+    const { plugins: posthtmlPlugins = [], options: posthtmlOptions = {} } =
+        posthtmlConfigModule.default
+
+    // * --- INLINE FILES TO HTML
+    // * ------------------------
     let cssContent = ''
     let jsContent = ''
     let spriteContent = ''
@@ -282,42 +312,53 @@ async function buildHtml() {
         }
     }
 
+    // * --- LOCALES (I18N)
+    // * ------------------
     if (env.isI18N) {
-        // * build for locales
         const i18nConfig = JSON.parse(
             fs.readFileSync(`${path.src.i18n.base}/languages.json`, 'utf-8'),
         )
-        const { default_locale: defaultLocale, available_locales: locales } = i18nConfig
+        const { default_locale: defaultLocaleKey, available_locales: allAvailableLocales } =
+            i18nConfig
 
-        for (const currentLocale of locales) {
-            const dataPath = `${path.src.i18n.base}/${currentLocale}.json`
-            const jsonLocaleData = JSON.parse(fs.readFileSync(dataPath, 'utf-8'))
+        for (const [localeKey, localeConfig] of Object.entries(allAvailableLocales)) {
+            const dataPath = `${path.src.i18n.base}/${localeKey}.json`
+            const localeDataFromJSON = JSON.parse(fs.readFileSync(dataPath, 'utf-8'))
 
-            const destPathByLocale =
-                currentLocale === defaultLocale
-                    ? path.build.html
-                    : nodePath.join(path.build.html, String(currentLocale).toLowerCase())
+            // ! сегмент URL (например "" для дефолтного или "en" для английского)
+            const urlSegment = (localeConfig.url || '').trim().replace(/^\/|\/$/g, '')
+            const destPathByLocale = urlSegment
+                ? nodePath.join(path.build.html, urlSegment)
+                : path.build.html
+
+            // ? собираем единый объект i18n
+            const i18n = {
+                currentLocale: localeKey,
+                defaultLocale: defaultLocaleKey,
+                current: localeConfig,
+                locales: allAvailableLocales,
+            }
 
             const stream = createHtmlStream({
-                siteUrl: env.siteUrl,
-                allAvailableLocales: locales,
-                defaultLocale,
-                currentLocale,
-                jsonLocaleData,
+                posthtmlPlugins,
+                posthtmlOptions,
+                baseWebsiteUrl: env.siteUrl,
+                i18n,
+                localeDataFromJSON,
                 destPathByLocale,
                 cssContent,
                 jsContent,
                 spriteContent,
             })
+
             await new Promise((resolve, reject) => {
                 stream.on('end', resolve).on('error', reject)
             })
-
-            // reload browserSync after every locale build
-            // browserSync.reload();
         }
     } else {
         const stream = createHtmlStream({
+            posthtmlPlugins,
+            posthtmlOptions,
             destPathByLocale: path.build.html,
             cssContent,
             jsContent,
@@ -329,7 +370,8 @@ async function buildHtml() {
         })
     }
 
-    // * update dev server
+    // * --- UPDATE DEV SERVER
+    // * ---------------------
     browserSync.reload()
 }
 

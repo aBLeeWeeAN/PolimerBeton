@@ -34,7 +34,7 @@ export function server(cb) {
         port: 3000,
         // * задержка при вызове reload в 500 мс
         reloadDelay: 500,
-        // * магия красивых путей начинается здесь
+        // * красивые пути в строке браузера
         middleware: [
             function (req, res, next) {
                 // Честно разделяем URL на чистый путь и строку параметров (query string)

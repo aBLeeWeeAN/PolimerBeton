@@ -1,14 +1,22 @@
-{% macro i18n_button__2_langs(current_locale, default_locale, alternate_locale, site_url, class, button_text) %}
-    {# Убираем слэш в конце, чтобы избежать дубликатов типа // #}
-    {% set clean_site_url = site_url | trim('/') %}
+{% macro i18n_button__2_langs(page_name, button_css_class, button_text) %}
+    <!-- ? определяем главная это страница или нет --->
+    {% set is_home = page_name in ['index', 'home'] %}
 
-    {%- if current_locale == default_locale -%}
-        {# Дэфолтный вариант, корень домена #}
-        {% set final_url = clean_site_url + '/' + (alternate_locale | lower) + '/' %}
-    {%- else -%}
-        {# Если встретили какой-либо язык, прибавить его в site_url #}
-        {% set final_url = clean_site_url + '/' %}
-    {%- endif -%}
+    <!-- ? если страница главная, то путь в домене к ней пустой, если не главная -> берем название страницы --->
+    {% set page_name_in_url = '' if is_home else page_name %}
 
-    <a href="{{ final_url }}" class="{{ class }}">{{ button_text }}</a>
+    {% for key, locale in i18n.locales %}
+        <!-- ? игнорируем текущую локаль страницы, берём только другие локали --->
+        {% if key != i18n.currentLocale %}
+            {% if key == i18n.defaultLocale %}
+                <!-- ? если другая локаль совпадает с дефолтной, то строим href на страницу с дефолтной локалью --->
+                {% set current_page__but_in_another_lang__url = base_website_url + '/' + page_name_in_url %}
+            {% else %}
+                <!-- ? если другая локаль НЕ совпадает с дефолтной, то строим href на страницу с другой локалью --->
+                {% set current_page__but_in_another_lang__url = base_website_url + '/' + locale.url + '/' + page_name_in_url %}
+            {% endif %}
+
+            <a href="{{ current_page__but_in_another_lang__url }}" class="{{ button_css_class }}">{{ button_text }}</a>
+        {% endif %}
+    {% endfor %}
 {% endmacro %}

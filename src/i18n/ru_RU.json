@@ -40,9 +40,7 @@
         }
     },
     "head": {
-        "open_graph_image": {
-            "alt": "Превью сайта: polimerbeton-vrn.ru"
-        }
+        "open_graph_img__alt": "Рекламный баннер: Полимербетон от производителя в г. Воронеж"
     },
     "header": {
         "navigation": {

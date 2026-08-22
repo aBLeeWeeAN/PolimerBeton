@@ -1,7 +1,10 @@
 {% extends "base/base.njk" %}
 
-<!-- ? передаем ветку из ru.json для этой страницы -->
-{% set current_page_head = page_not_found.head %}
+<!-- ? название текущей страницы в домене --->
+{% set current_page__page_name = '404' %}
+
+<!-- ? передаем текстовые данные из файла переовдов *.json для <head> этой страницы -->
+{% set current_page__head_content = page_not_found.head %}
 
 {% block content %}
     <div class="my-shadow-group">
@@ -31,7 +34,7 @@
                 <h2 class="my-subtitle my-subtitle--server-response">{{ page_not_found.main_content.subheading | nl2br }}</h2>
 
                 <div class="my-default-button">
-                    <a class="my-default-button__link" href="@page/index.html">{{ page_not_found.main_content.button_text }}</a>
+                    <a class="my-default-button__link" href="@page/index.njk">{{ page_not_found.main_content.button_text }}</a>
                 </div>
             </div>
         </section>

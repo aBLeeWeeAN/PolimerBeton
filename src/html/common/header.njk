@@ -2,7 +2,10 @@
     <div class="my-header__fixed-part">
         <div class="container my-wrapper">
             <nav class="navbar my-navigation" aria-label="{{ header.navigation.a11y.aria_label.main }}">
-                <a class="navbar-brand my-navigation__my-logo my-logo" href="/" aria-label="{{ common.logo.a11y__aria_label }}">
+                <a
+                    class="navbar-brand my-navigation__my-logo my-logo"
+                    href="@page/index.njk"
+                    aria-label="{{ common.logo.a11y__aria_label }}">
                     <svg class="my-logo__svg" width="80" height="80" aria-hidden="true">
                         <use href="@icons/logo/logo.svg"></use>
                     </svg>
@@ -40,8 +43,7 @@
                                     class="my-navigation-button__link"
                                     href="{{ common.href.telegram }}"
                                     aria-label="{{ header.navigation.a11y.buttons__aria_labels.telegram }}"
-                                    target="_blank"
-                                    rel="noopener noreferrer">
+                                    target="_blank">
                                     <svg class="my-navigation-button__svg" width="16" height="16" aria-hidden="true">
                                         <use href="@icons/contact/telegram.svg"></use>
                                     </svg>
@@ -52,8 +54,7 @@
                                     class="my-navigation-button__link"
                                     href="{{ common.href.whatsapp }}"
                                     aria-label="{{ header.navigation.a11y.buttons__aria_labels.whatsapp }}"
-                                    target="_blank"
-                                    rel="noopener noreferrer">
+                                    target="_blank">
                                     <svg class="my-navigation-button__svg" width="16" height="16" aria-hidden="true">
                                         <use href="@icons/contact/whatsapp.svg"></use>
                                     </svg>
@@ -163,8 +164,7 @@
                                     class="my-navigation-button__link"
                                     href="{{ common.href.telegram }}"
                                     aria-label="{{ header.navigation.a11y.buttons__aria_labels.telegram }}"
-                                    target="_blank"
-                                    rel="noopener noreferrer">
+                                    target="_blank">
                                     <svg class="my-navigation-button__svg" width="16" height="16" aria-hidden="true">
                                         <use href="@icons/contact/telegram.svg"></use>
                                     </svg>
@@ -176,8 +176,7 @@
                                     class="my-navigation-button__link"
                                     href="{{ common.href.whatsapp }}"
                                     aria-label="{{ header.navigation.a11y.buttons__aria_labels.whatsapp }}"
-                                    target="_blank"
-                                    rel="noopener noreferrer">
+                                    target="_blank">
                                     <svg class="my-navigation-button__svg" width="16" height="16" aria-hidden="true">
                                         <use href="@icons/contact/whatsapp.svg"></use>
                                     </svg>

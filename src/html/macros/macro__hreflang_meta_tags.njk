@@ -1,0 +1,19 @@
+{% macro hreflang_meta_tags(page_name) %}
+    <!-- ? определяем главная это страница или нет --->
+    {% set is_home = page_name in ['index', 'home'] %}
+
+    <!-- ? если страница главная, то путь в домене к ней пустой, если не главная -> берем название страницы --->
+    {% set page_name_in_url = '' if is_home else page_name %}
+
+    {% for key, locale in i18n.locales %}
+        {% if key == i18n.defaultLocale %}
+            {% set page_url = base_website_url + '/' + page_name_in_url %}
+        {% else %}
+            {% set page_url = base_website_url + '/' + locale.url + '/' + page_name_in_url %}
+        {% endif %}
+
+        <link rel="alternate" type="text/html" hreflang="{{ locale.hreflang }}" href="{{ page_url }}" />
+    {% endfor %}
+
+    <link rel="alternate" type="text/html" hreflang="x-default" href="{{ base_website_url + '/' + page_name_in_url }}" />
+{% endmacro %}

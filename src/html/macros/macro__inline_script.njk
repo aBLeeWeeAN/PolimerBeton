@@ -1,7 +1,11 @@
 {# prettier-ignore-start #}
-{% macro inline_script(path) %}
+{% macro inline_script(script_path) %}
+    {% if not script_path %}
+        <!-- ! вызов ошибки, если переменная underfined, null, '' или false --->
+        {{ "[nunjucks, macro] inline_script: Missing required arguments!" | throwError }}
+    {% endif %}
     <script>
-        {% include path %}
+        {% include script_path %}
     </script>
 {% endmacro %}
 {# prettier-ignore-end #}

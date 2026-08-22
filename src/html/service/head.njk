@@ -1,6 +1,9 @@
 <!-- ! DO NOT REMOVE THIS NUNJUCKS IMPORTS | PART OF GULP BUILD !!! --->
-{% from "macros/macro__hreflang_tags.njk" import hreflang_tags %}
+{% from "macros/macro__current_page__get_full_url.njk" import current_page__get_full_url with context %}
+{% from "macros/macro__hreflang_meta_tags.njk" import hreflang_meta_tags with context %}
 {% from "macros/macro__inline_script.njk" import inline_script %}
+
+{% set current_page__full_url = current_page__get_full_url(current_page__page_name) %}
 
 <head>
     <meta charset="UTF-8" />
@@ -10,22 +13,14 @@
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
 
     <!-- ! DO NOT REMOVE THIS NUNJUCKS BLOCK !!! | PAGE LOCALE TAGS --->
-    {% if allAvailableLocales and defaultLocale and siteUrl %}
-        {{
-            hreflang_tags(
-                site_url = siteUrl,
-                all_locales = allAvailableLocales,
-                default_locale = defaultLocale
-            )
-        }}
-    {% endif %}
+    {{ hreflang_meta_tags(current_page__page_name) }}
 
     <!-- * Page title --->
-    <title>{{ current_page_head.title }}</title>
+    <title>{{ current_page__head_content.title }}</title>
 
     <!-- * Page description & keywords --->
-    <meta name="description" content="{{ current_page_head.description }}" />
-    <meta name="keywords" content="{{ current_page_head.keywords }}" />
+    <meta name="description" content="{{ current_page__head_content.description }}" />
+    <meta name="keywords" content="{{ current_page__head_content.keywords }}" />
 
     <!-- * Authors --->
     <link rel="author" href="@meta/humans.txt" />
@@ -42,19 +37,22 @@
 
     <!-- * Open Graph --->
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="{{ page_locale }}" />
+    <meta property="og:locale" content="{{ i18n.current.ogLocale }}" />
 
-    <meta property="og:url" content="{{ page_url }}" />
-    <meta property="og:title" content="{{ common.head.title }}" />
-    <meta property="og:description" content="{{ common.head.description }}" />
+    <meta property="og:url" content="{{ current_page__full_url }}" />
+    <meta property="og:title" content="{{ current_page__head_content.title }}" />
+    <meta property="og:description" content="{{ current_page__head_content.description }}" />
 
-    <meta property="og:image" content="{{ common.head.opengraph_image_url }}" />
-    <meta property="og:image:alt" content="{{ common.head.open_graph_image.alt }}" />
+    <meta property="og:image" content="@images/open_graph/og_img.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="{{ head.open_graph_img__alt }}" />
 
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- * Canonical --->
-    <link rel="canonical" href="{{ page_url }}" />
+    <!-- * Canonical tag | Improving search engine rankings --->
+    <link rel="canonical" href="{{ current_page__full_url }}" />
 
     <!-- * If JS supports -> enable JS classes - -->
     <script>
