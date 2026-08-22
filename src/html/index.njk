@@ -40,6 +40,7 @@
                 {% for ball in my_balls %}
                     <div class="my-balls-group__ball-wrapper my-balls-group__ball-wrapper--{{ ball }}" aria-hidden="true">
                         <img
+                            fetchpriority="high"
                             data-my-picture-class="my-balls-group__picture"
                             class="my-balls-group__img"
                             src="@images/balls/{{ ball }}.png" />
