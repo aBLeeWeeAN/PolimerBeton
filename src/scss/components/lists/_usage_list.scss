@@ -68,5 +68,13 @@
             pointer-events: none;
             user-select: none;
         }
+
+        @include bs.media-breakpoint-down(lg) {
+            // выключить с планшетов и ниже
+
+            @include mixin.active {
+                transform: none;
+            }
+        }
     }
 }

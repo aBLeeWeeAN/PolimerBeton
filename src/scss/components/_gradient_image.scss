@@ -124,51 +124,88 @@
             // --gradient-color-3: var(--color__card-img__background--gradient-step-2);
         }
 
-        @include bs.media-breakpoint-between(sm, xxl) {
+        #My-Legal-Doc__1 &,
+        #My-Legal-Doc__3 &,
+        #My-Legal-Doc__5 & {
+            --spin-dir: -1; // Против часовой
+        }
+
+        #My-Legal-Doc__2 &,
+        #My-Legal-Doc__4 &,
+        #My-Legal-Doc__6 & {
+            --spin-dir: 1; // По часовой
+        }
+
+        #My-Legal-Doc__1 &,
+        #My-Legal-Doc__2 &,
+        #My-Legal-Doc__3 & {
+            --start-angle: 0deg;
+        }
+
+        #My-Legal-Doc__4 &,
+        #My-Legal-Doc__5 &,
+        #My-Legal-Doc__6 & {
+            --start-angle: 180deg;
+        }
+
+        @include bs.media-breakpoint-down(md) {
             #My-Example-Img__Road-Before & {
                 --start-angle: -180deg;
                 --spin-dir: 1;
-
-                // --gradient-color-2: var(--color__card-img__background--gradient-step-3);
-                // --gradient-color-3: var(--color__card-img__background--gradient-step-2);
             }
 
             #My-Example-Img__Road-After & {
                 --start-angle: 180deg;
                 --spin-dir: -1;
+            }
 
-                // --gradient-color-2: var(--color__card-img__background--gradient-step-2);
-                // --gradient-color-3: var(--color__card-img__background--gradient-step-3);
+            #My-Legal-Doc__1 &,
+            #My-Legal-Doc__4 &,
+            #My-Legal-Doc__5 & {
+                --spin-dir: -1;
+            }
+
+            #My-Legal-Doc__2 &,
+            #My-Legal-Doc__3 &,
+            #My-Legal-Doc__6 & {
+                --spin-dir: 1;
+            }
+
+            #My-Legal-Doc__1 &,
+            #My-Legal-Doc__2 &,
+            #My-Legal-Doc__5 &,
+            #My-Legal-Doc__6 & {
+                --start-angle: 0deg;
+            }
+
+            #My-Legal-Doc__3 &,
+            #My-Legal-Doc__4 & {
+                --start-angle: 180deg;
             }
         }
 
         @include bs.media-breakpoint-down(sm) {
             min-width: 200px;
 
-            #My-Example-Img__Pillar-Before & {
-                --start-angle: 0deg;
-                --spin-dir: 1;
-            }
-
-            #My-Example-Img__Pillar-After & {
-                --start-angle: 180deg;
+            #My-Legal-Doc__1 &,
+            #My-Legal-Doc__3 &,
+            #My-Legal-Doc__5 & {
                 --spin-dir: -1;
             }
 
-            #My-Example-Img__Road-Before & {
-                --start-angle: 0deg;
+            #My-Legal-Doc__2 &,
+            #My-Legal-Doc__4 &,
+            #My-Legal-Doc__6 & {
                 --spin-dir: 1;
-
-                // --gradient-color-2: var(--color__card-img__background--gradient-step-2);
-                // --gradient-color-3: var(--color__card-img__background--gradient-step-3);
             }
 
-            #My-Example-Img__Road-After & {
-                --start-angle: -180deg;
-                --spin-dir: -1;
-
-                // --gradient-color-2: var(--color__card-img__background--gradient-step-3);
-                // --gradient-color-3: var(--color__card-img__background--gradient-step-2);
+            #My-Legal-Doc__1 &,
+            #My-Legal-Doc__2 &,
+            #My-Legal-Doc__3 &,
+            #My-Legal-Doc__4 &,
+            #My-Legal-Doc__5 &,
+            #My-Legal-Doc__6 & {
+                --start-angle: 0deg;
             }
         }
 
