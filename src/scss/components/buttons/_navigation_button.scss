@@ -99,14 +99,10 @@
         transform-origin: center center;
 
         aspect-ratio: 1 / 1;
-        // width: 50%;
+
         width: mixin.fluid-with-range(20px, 24px, md, xxl);
 
         @include bs.media-breakpoint-down(md) {
-            // // width: 24px;
-            // width: 80%;
-            // min-width: 24px;
-
             width: mixin.fluid-with-range(24px, 28px, xs, md);
         }
     }
