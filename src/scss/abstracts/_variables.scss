@@ -2,5 +2,8 @@
 
 // * --- SASS VARIABLES
 // * ------------------
-$abstract__variable__transition-duration: 300ms;
-$abstract__variable__transition-timing-function: ease-in-out;
+$abstract__global__transition-duration: 300ms;
+$abstract__global__transition-timing-function: ease-in-out;
+
+$abstract__global__scale--hover: 1.025;
+$abstract__global__scale--active: 0.975;

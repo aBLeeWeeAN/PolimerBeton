@@ -1,3 +1,4 @@
+@use '../../abstracts/variables' as var;
 @use '../../abstracts/mixins' as mixin;
 @use '../../vendors/bootstrap' as bs;
 
@@ -51,7 +52,7 @@
         color: var(--color__global__text--alt--hover);
 
         .my-navigation-button__svg {
-            transform: translate(-50%, -50%) scale(1.1);
+            transform: translate(-50%, -50%) scale(var.$abstract__global__scale--hover);
         }
     }
 
@@ -60,7 +61,7 @@
         color: var(--color__global__text--alt--active);
 
         .my-navigation-button__svg {
-            transform: translate(-50%, -50%) scale(0.975);
+            transform: translate(-50%, -50%) scale(var.$abstract__global__scale--active);
         }
     }
 
@@ -133,18 +134,18 @@
             background-color: transparent;
             color: var(--color__global__text--hover);
 
-            .my-navigation-button__svg {
-                transform: translate(-50%, -50%) scale(1.1);
-            }
+            // .my-navigation-button__svg {
+            //     transform: translate(-50%, -50%) scale(var.$abstract__global__scale--hover);
+            // }
         }
 
         @include mixin.active-has('.my-navigation-button__link') {
             background-color: transparent;
             color: var(--color__global__text--active);
 
-            .my-navigation-button__svg {
-                transform: translate(-50%, -50%) scale(0.95);
-            }
+            // .my-navigation-button__svg {
+            //     transform: translate(-50%, -50%) scale(var.$abstract__global__scale--active);
+            // }
         }
 
         &:disabled,

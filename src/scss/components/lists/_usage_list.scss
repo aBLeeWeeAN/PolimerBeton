@@ -1,3 +1,4 @@
+@use '../../abstracts/variables' as var;
 @use '../../abstracts/mixins' as mixin;
 @use '../../abstracts/typography' as *;
 @use '../../abstracts/z_index' as *;
@@ -52,7 +53,7 @@
         }
 
         @include mixin.hover {
-            transform: scale(1.025);
+            transform: scale(var.$abstract__global__scale--hover);
             backdrop-filter: blur(12px);
 
             &::after {
@@ -61,7 +62,7 @@
         }
 
         @include mixin.active {
-            transform: scale(0.975);
+            transform: scale(var.$abstract__global__scale--active);
             backdrop-filter: blur(8px);
 
             &::after {
@@ -69,8 +70,8 @@
             }
         }
 
-        // для планшетов и ниже
-        @include bs.media-breakpoint-down(lg) {
+        // для планшетов и смартфонов
+        @media (pointer: coarse) {
             @include mixin.active {
                 transform: none;
                 backdrop-filter: blur(10px);

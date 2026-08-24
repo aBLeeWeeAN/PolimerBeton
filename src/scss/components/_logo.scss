@@ -1,3 +1,4 @@
+@use '../abstracts/variables' as var;
 @use '../abstracts/mixins' as mixin;
 @use '../abstracts/typography' as *;
 
@@ -15,18 +16,20 @@
     column-gap: 0.5em;
     padding: 0;
 
+    transform-origin: center center;
+
     &:focus {
         color: var(--color__global__primary--focus);
     }
 
     @include mixin.hover {
         color: var(--color__global__primary--hover);
-        transform: scale(1.025);
+        transform: scale(var.$abstract__global__scale--hover);
     }
 
     @include mixin.active {
         color: var(--color__global__primary--active);
-        transform: scale(0.975);
+        transform: scale(var.$abstract__global__scale--active);
     }
 
     &__svg {
@@ -56,6 +59,7 @@
 
     &--footer {
         @extend %text__logo--footer;
+        transform-origin: center left;
 
         .my-logo__company-name {
             @extend %text__logo__company-name--footer;
@@ -63,6 +67,10 @@
 
         .my-logo__motto {
             @extend %text__logo__motto--footer;
+        }
+
+        @include bs.media-breakpoint-down(md) {
+            transform-origin: center center;
         }
     }
 }

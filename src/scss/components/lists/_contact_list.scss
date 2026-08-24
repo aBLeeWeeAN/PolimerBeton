@@ -1,3 +1,4 @@
+@use '../../abstracts/variables' as var;
 @use '../../abstracts/mixins' as mixin;
 @use '../../abstracts/typography' as *;
 
@@ -34,12 +35,12 @@
 
         @include mixin.hover {
             color: var(--color__global__text--hover);
-            transform: scale(1.025);
+            transform: scale(var.$abstract__global__scale--hover);
         }
 
         @include mixin.active {
             color: var(--color__global__text--active);
-            transform: scale(0.975);
+            transform: scale(var.$abstract__global__scale--active);
         }
     }
 

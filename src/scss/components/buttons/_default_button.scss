@@ -1,4 +1,5 @@
 /* stylelint-disable custom-property-empty-line-before */
+@use '../../abstracts/variables' as var;
 @use '../../abstracts/mixins' as mixin;
 @use '../../abstracts/typography' as *;
 @use '../../abstracts/z_index' as *;
@@ -45,14 +46,14 @@
         background-color: var(--color__global__primary--hover);
         color: var(--color__global__text--alt--hover);
 
-        transform: scale(1.025);
+        transform: scale(var.$abstract__global__scale--hover);
     }
 
     @include mixin.active {
         background-color: var(--color__global__primary--active);
         color: var(--color__global__text--alt--active);
 
-        transform: scale(0.975);
+        transform: scale(var.$abstract__global__scale--active);
     }
 
     &:disabled,

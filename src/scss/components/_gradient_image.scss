@@ -1,6 +1,7 @@
 /* stylelint-disable selector-id-pattern */
 /* stylelint-disable keyframes-name-pattern */
 /* stylelint-disable custom-property-empty-line-before */
+@use '../abstracts/variables' as var;
 @use '../abstracts/mixins' as mixin;
 @use '../abstracts/typography' as *;
 @use '../abstracts/z_index' as *;
@@ -30,22 +31,22 @@
     align-items: center;
     justify-content: flex-start;
 
-    --my-scale: 1;
+    // --my-scale: 1;
 
-    // ! fallback | if vanilla tilt dont work (js not support) | hover only non-touch screens
-    .no-js & {
-        @include mixin.hover {
-            --my-scale: 1.025;
-        }
-    }
+    // // ! fallback | if vanilla tilt dont work (js not support) | hover only non-touch screens
+    // .no-js & {
+    //     @include mixin.hover {
+    //         --my-scale: 1.025;
+    //     }
+    // }
 
-    // ! work always | JS and non-JS | touch + non-touch screens
-    .js &,
-    .no-js & {
-        @include mixin.active {
-            --my-scale: 0.975;
-        }
-    }
+    // // ! work always | JS and non-JS | touch + non-touch screens
+    // .js &,
+    // .no-js & {
+    //     @include mixin.active {
+    //         --my-scale: 0.975;
+    //     }
+    // }
 
     &__link-wrapper {
         z-index: z('default');
@@ -91,7 +92,7 @@
                 var(--color__card-img__background--gradient-step-1) 100%
             );
 
-        transform: scale(var(--my-scale));
+        // transform: scale(var(--my-scale));
 
         // transition:
         //     transform 300ms ease-in-out,
@@ -100,12 +101,12 @@
         animation: gradient-image__colored-border__spin-effect 2s linear infinite;
 
         @include mixin.hover {
-            transform: scale(1.025);
+            transform: scale(var.$abstract__global__scale--hover);
             box-shadow: 7px 7px 14px 0 var(--color__global__shadow);
         }
 
         @include mixin.active {
-            transform: scale(0.975);
+            transform: scale(var.$abstract__global__scale--active);
             box-shadow: 3px 3px 4px 0 var(--color__global__shadow);
         }
 

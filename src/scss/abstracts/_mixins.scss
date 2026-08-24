@@ -142,8 +142,8 @@ $max-vw: 2560px;
         $transition-properties: list.append(
             $transition-properties,
             #{$property}
-                #{var.$abstract__variable__transition-duration}
-                #{var.$abstract__variable__transition-timing-function},
+                #{var.$abstract__global__transition-duration}
+                #{var.$abstract__global__transition-timing-function},
             comma
         );
     }
