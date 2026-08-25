@@ -4,19 +4,16 @@
 .my-background-bubbles {
     z-index: z('decoration');
 
+    overflow: hidden;
     position: absolute;
-    inset: 0;
 
-    // width: 100%;
-    // height: 100%;
-
-    margin-top: 100vh;
-    @supports (margin-top: 100dvh) {
-        margin-top: 100dvh;
+    inset: 100vh 0 0;
+    @supports (inset: 100dvh 0 0) {
+        inset: 100dvh 0 0;
     }
 
-    overflow: hidden;
     pointer-events: none;
+    user-select: none;
 
     @include bs.media-breakpoint-down(sm) {
         display: none;

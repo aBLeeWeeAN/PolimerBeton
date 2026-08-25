@@ -74,9 +74,10 @@
         animation: footer__fade-in-out-effect linear both;
 
         animation-timeline: scroll(root);
-        animation-range: calc(100% - 664px) 100%;
+        animation-range: calc(100% - var(--my-footer-height, 641px)) 100%;
 
         pointer-events: none;
+        user-select: none;
     }
 
     &__decorative-square {
@@ -149,6 +150,10 @@
     &__logo {
         grid-area: my-footer__logo;
         align-self: start;
+
+        @include bs.media-breakpoint-down(md) {
+            place-self: auto center;
+        }
     }
 
     &__legal {
@@ -204,8 +209,7 @@
         flex: 0 0 auto;
     }
 
-    // todo: перенастроить размеры высоты
-    @media (max-height: 640px) {
+    &--relative {
         position: relative;
 
         &::after {
@@ -213,42 +217,90 @@
         }
     }
 
-    @include bs.media-breakpoint-down(xl) {
-        @media (max-height: 620px) {
-            position: relative;
+    .no-js & {
+        @include bs.media-breakpoint-up(xxl) {
+            // &::after {
+            //     animation-range: calc(100% - var(--my-footer-height, 641px)) 100%;
+            // }
 
-            &::after {
-                display: none;
+            @media (max-height: 641px) {
+                position: relative;
+
+                &::after {
+                    display: none;
+                }
             }
         }
-    }
 
-    @include bs.media-breakpoint-down(lg) {
-        @media (max-height: 600px) {
-            position: relative;
+        @include bs.media-breakpoint-between(xl, xxl) {
+            --my-footer-height: 639.92px;
 
-            &::after {
-                display: none;
+            @media (max-height: 639.92px) {
+                position: relative;
+
+                &::after {
+                    display: none;
+                }
             }
         }
-    }
 
-    @include bs.media-breakpoint-down(md) {
-        @media (max-height: 610px) {
-            position: relative;
+        @include bs.media-breakpoint-between(lg, xl) {
+            --my-footer-height: 558.67px;
 
-            &::after {
-                display: none;
+            @media (max-height: 558.67px) {
+                position: relative;
+
+                &::after {
+                    display: none;
+                }
             }
         }
-    }
 
-    @include bs.media-breakpoint-down(sm) {
-        @media (max-height: 800px) {
-            position: relative;
+        @include bs.media-breakpoint-between(md, lg) {
+            --my-footer-height: 554.63px;
 
-            &::after {
-                display: none;
+            @media (max-height: 554.63px) {
+                position: relative;
+
+                &::after {
+                    display: none;
+                }
+            }
+        }
+
+        @include bs.media-breakpoint-between(sm, md) {
+            --my-footer-height: 780.17px;
+
+            @media (max-height: 780.17px) {
+                position: relative;
+
+                &::after {
+                    display: none;
+                }
+            }
+        }
+
+        @include bs.media-breakpoint-between(xs, sm) {
+            --my-footer-height: 767.61px;
+
+            @media (max-height: 767.61px) {
+                position: relative;
+
+                &::after {
+                    display: none;
+                }
+            }
+        }
+
+        @include bs.media-breakpoint-down(xs) {
+            --my-footer-height: 745.11px;
+
+            @media (max-height: 745.11px) {
+                position: relative;
+
+                &::after {
+                    display: none;
+                }
             }
         }
     }

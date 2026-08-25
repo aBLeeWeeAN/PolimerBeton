@@ -5,12 +5,9 @@ main {
     @include mixin.transition-for(background-color);
 
     z-index: z('main');
+
+    overflow-x: clip;
     position: relative;
 
     background-color: var(--color__page__background);
-
-    overflow-x: clip;
-    // margin-bottom: 664px; // footer height
-
-    // box-shadow: 0 8px 24px var(--color__global__shadow);
 }

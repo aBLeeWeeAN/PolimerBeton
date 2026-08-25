@@ -14,11 +14,15 @@ import { initSubmitButtonBlock } from 'modules/block_submit_button_after_form_da
 import { init3DBalls } from 'modules/ball-viewer'
 import { initVanillaTilt } from 'modules/init__vanilla_tilt'
 
+import { initFooterPositionStateManager } from 'modules/manager__footer_position_state'
+
 // * --- MAIN | START AFTER CONTENT LOADED
 // * -------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-    initOffcanvasScrollState()
     initMenuButtonState()
+
+    initOffcanvasScrollState()
+    initFooterPositionStateManager()
 
     initFeedbackFormMask()
     initSubmitButtonBlock()
