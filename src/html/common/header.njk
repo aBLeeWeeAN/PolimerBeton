@@ -124,7 +124,11 @@
                 <ul class="col-12 my-nav-menu my-nav-menu--header" role="list">
                     {% for id, text in common.navigation.links %}
                         <li class="my-nav-menu__item">
-                            <a class="my-nav-menu__link" href="#{{ id }}">{{ text }}</a>
+                            <a
+                                class="my-nav-menu__link"
+                                {% if current_page_name == 'index' %}href="#{{ id | replace('_', '-') }}"{% else %}href="@page/index.njk#{{ id | replace('_', '-') }}"{% endif %}>
+                                {{ text }}
+                            </a>
                         </li>
                     {% endfor %}
                 </ul>
