@@ -18,7 +18,7 @@
 <!doctype html>
 <html class="no-js" lang="{{ i18n.current.htmlLang }}">
     {% include "service/head.njk" %}
-    <body>
+    <body {% if current_page__page_name == 'index' %}id="back-to-top"{% endif %}>
         <!-- Preload scripts --->
         {% include "service/scripts__preload.njk" %}
 

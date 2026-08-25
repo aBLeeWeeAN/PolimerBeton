@@ -4,7 +4,7 @@
             <nav class="navbar my-navigation" aria-label="{{ header.navigation.a11y.aria_label.main }}">
                 <a
                     class="navbar-brand my-navigation__my-logo my-logo"
-                    href="@page/index.njk"
+                    href="{{- '#back-to-top' if current_page__page_name == 'index' else '@page/index.njk' -}}"
                     aria-label="{{ common.logo.a11y__aria_label }}">
                     <svg class="my-logo__svg" width="80" height="80" aria-hidden="true">
                         <use href="@icons/logo/logo.svg"></use>
