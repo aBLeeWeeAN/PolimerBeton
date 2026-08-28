@@ -1,0 +1,9 @@
+@use '../../abstracts/mixins' as mixin;
+
+// *:focus-visible {
+//     @include mixin.focus-styles;
+// }
+
+:where(:focus-visible:not([tabindex='-1'])) {
+    @include mixin.focus-styles;
+}

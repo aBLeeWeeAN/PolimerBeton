@@ -11,57 +11,95 @@
     justify-content: center;
 
     aspect-ratio: 1 / 1;
-    // width: mixin.fluid-with-range(36px, 48px, md, xxl);
-    width: auto;
     height: auto;
+    width: auto;
 
     padding: mixin.fluid-with-range(20px, 24px, md, xxl);
 
-    // border-radius: 16px;
-    // border-radius: 33.333%;
-    border-radius: 37%;
-
-    .houdini-squircle-ready & {
-        border-radius: 0;
-
-        --squircle-smooth: 1;
-        // --squircle-radius: 33.333%;
-        --squircle-radius: 37%;
-
-        /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-        mask-image: paint(squircle);
-        // -webkit-mask-image: paint(squircle);
-    }
-
-    background-color: var(--color__global__primary);
-    color: var(--color__global__text--alt); // icon color
-
-    border: none;
     outline: none;
+    background: transparent;
+    color: var(--color__global__text--alt); // ? icon color
 
     cursor: pointer;
 
-    &:focus,
-    &:has(.my-navigation-button__link:focus) {
-        background-color: var(--color__global__primary--focus);
-        color: var(--color__global__text--alt--focus);
+    // * все дочерние элементы наверх
+    & > * {
+        position: relative;
+        z-index: 0;
     }
 
-    @include mixin.hover-has('.my-navigation-button__link') {
-        background-color: var(--color__global__primary--hover);
-        color: var(--color__global__text--alt--hover);
+    // * обводка (fallback) для .houdini-squircle-ready
+    &::before {
+        content: '';
 
-        .my-navigation-button__svg {
-            transform: translate(-50%, -50%) scale(var.$abstract__global__scale--hover);
+        position: absolute;
+        inset: 0;
+
+        background: transparent;
+        border-radius: 37%;
+
+        @include mixin.focus-styles;
+
+        opacity: 0;
+        z-index: -1;
+    }
+
+    // * button background (default & squircle)
+    &::after {
+        content: '';
+
+        position: absolute;
+        inset: 0;
+
+        background-color: var(--color__global__primary);
+        border-radius: 37%;
+
+        z-index: -2;
+    }
+
+    // ? если есть фокус на кнопке (<button>) или дочерней ссылке (<a>), ::before делаем видимым
+    &:focus-visible::before,
+    &:has(:focus-visible)::before {
+        opacity: 1;
+    }
+
+    .houdini-squircle-ready & {
+        &::before {
+            border-radius: 0;
+            outline-offset: 1px;
+        }
+
+        &::after {
+            border-radius: 0;
+
+            --squircle-smooth: 1;
+            --squircle-radius: 37%;
+
+            mask-image: paint(squircle);
         }
     }
 
-    @include mixin.active-has('.my-navigation-button__link') {
-        background-color: var(--color__global__primary--active);
-        color: var(--color__global__text--alt--active);
+    @include mixin.state-with-has('hover', '.my-navigation-button__link') {
+        color: var(--color__global__text--alt--hover);
+
+        &::after {
+            background-color: var(--color__global__primary--hover);
+        }
 
         .my-navigation-button__svg {
-            transform: translate(-50%, -50%) scale(var.$abstract__global__scale--active);
+            transform: translate(-50%, -50%) scale(var.$abstract__global__scale--hover * 1.075);
+        }
+    }
+
+    @include mixin.state-with-has('active', '.my-navigation-button__link') {
+        color: var(--color__global__text--alt--active);
+
+        &::after {
+            background-color: var(--color__global__primary--active);
+        }
+
+        .my-navigation-button__svg {
+            transform: translate(-50%, -50%) scale(var.$abstract__global__scale--active / 1.075);
         }
     }
 
@@ -69,22 +107,27 @@
     &[disabled],
     &:has(.my-navigation-button__link:disabled),
     &:has(.my-navigation-button__link[disabled]) {
-        background-color: var(--color__global__primary--disabled);
         color: var(--color__global__text--alt--disabled);
+
+        .my-navigation-button__svg {
+            transform: translate(-50%, -50%);
+        }
+
+        &::after {
+            background-color: var(--color__global__primary--disabled);
+        }
 
         cursor: not-allowed;
     }
 
     &__link {
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        width: 100%;
-        height: 100%;
+        position: absolute;
+        inset: 0;
 
         color: inherit;
+        border-radius: inherit;
+
+        outline: none;
     }
 
     &__svg {
@@ -109,43 +152,46 @@
     }
 
     &--mobile {
-        border-radius: 50%;
+        border-radius: 0;
 
         .houdini-squircle-ready & {
-            border-radius: 50%;
+            border-radius: 0;
             mask-image: none;
         }
 
         border: none;
-        outline: none;
 
         background-color: transparent;
         color: var(--color__global__text); // icon color
 
         cursor: pointer;
 
-        &:focus,
-        &:has(.my-navigation-button__link:focus) {
-            background-color: transparent;
-            color: var(--color__global__text--focus);
+        &::before,
+        &::after {
+            display: none;
         }
 
-        @include mixin.hover-has('.my-navigation-button__link') {
+        &:focus-visible,
+        &:has(:focus-visible) {
+            @include mixin.focus-styles;
+        }
+
+        @include mixin.state-with-has('hover', '.my-navigation-button__link') {
             background-color: transparent;
             color: var(--color__global__text--hover);
 
-            // .my-navigation-button__svg {
-            //     transform: translate(-50%, -50%) scale(var.$abstract__global__scale--hover);
-            // }
+            .my-navigation-button__svg {
+                transform: translate(-50%, -50%) scale(var.$abstract__global__scale--hover * 1.125);
+            }
         }
 
-        @include mixin.active-has('.my-navigation-button__link') {
+        @include mixin.state-with-has('active', '.my-navigation-button__link') {
             background-color: transparent;
             color: var(--color__global__text--active);
 
-            // .my-navigation-button__svg {
-            //     transform: translate(-50%, -50%) scale(var.$abstract__global__scale--active);
-            // }
+            .my-navigation-button__svg {
+                transform: translate(-50%, -50%) scale(var.$abstract__global__scale--active / 1.125);
+            }
         }
 
         &:disabled,

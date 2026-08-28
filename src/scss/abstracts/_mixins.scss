@@ -1,10 +1,23 @@
 /* stylelint-disable scss/dollar-variable-pattern */
+/* stylelint-disable plugin/no-unsupported-browser-features */
+
 @use 'sass:math';
 @use 'sass:list';
 @use 'sass:map';
 
 @use './variables' as var;
 @use '../vendors/bootstrap' as bs;
+
+@mixin focus-styles {
+    outline: 3px dashed var(--color__global__primary--focus);
+    outline-offset: 3px;
+}
+
+// @mixin focus-visible {
+//     &:focus-visible {
+//         @content;
+//     }
+// }
 
 @mixin hover {
     @media (hover: hover) {
@@ -14,43 +27,55 @@
     }
 }
 
-@mixin hover-has($selectors) {
-    @media (hover: hover) {
-        // 1. Создаём список селекторов
-        $selector-list: '&:hover';
-
-        // 2. Дополняем список селекторов
-        @each $selector in $selectors {
-            $selector-list: '#{$selector-list}, &:has(#{$selector}:hover)';
-        }
-
-        // 3. Итоговый набор селекторов и их стили
-        #{$selector-list} {
-            @content;
-        }
-    }
-}
-
 @mixin active {
-    @media (hover: hover) or (hover: none) {
-        &:active {
+    // @media (hover: hover) or (hover: none) {
+    //     &:active {
+    //         @content;
+    //     }
+    // }
+
+    &:active {
+        @content;
+    }
+}
+
+// ! без базового состояния на самом родителе
+@mixin state-has($state, $selectors...) {
+    $result-list: ();
+
+    @each $selector in $selectors {
+        $result-list: list.append($result-list, '&:has(#{$selector}:#{$state})', $separator: comma);
+    }
+
+    @if $state == 'hover' {
+        @media (hover: hover) {
+            #{$result-list} {
+                @content;
+            }
+        }
+    } @else {
+        #{$result-list} {
             @content;
         }
     }
 }
 
-@mixin active-has($selectors) {
-    @media (hover: hover) or (hover: none) {
-        // 1. Создаём список селекторов
-        $selector-list: '&:active';
+// ! с базовым состоянием на самом родителе
+@mixin state-with-has($state, $selectors...) {
+    $result-list: ('&:#{$state}');
 
-        // 2. Дополняем список селекторов
-        @each $selector in $selectors {
-            $selector-list: '#{$selector-list}, &:has(#{$selector}:active)';
+    @each $selector in $selectors {
+        $result-list: list.append($result-list, '&:has(#{$selector}:#{$state})', $separator: comma);
+    }
+
+    @if $state == 'hover' {
+        @media (hover: hover) {
+            #{$result-list} {
+                @content;
+            }
         }
-
-        // 3. Итоговый набор селекторов и их стили
-        #{$selector-list} {
+    } @else {
+        #{$result-list} {
             @content;
         }
     }

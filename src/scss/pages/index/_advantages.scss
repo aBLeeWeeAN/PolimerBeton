@@ -1,3 +1,4 @@
+@use '../../abstracts/variables' as var;
 @use '../../abstracts/mixins' as mixin;
 @use '../../abstracts/z_index' as *;
 
@@ -140,14 +141,32 @@
     }
 
     &__img {
-        @include mixin.transition-for(filter);
+        // @include mixin.transition-for(filter);
 
         border: 0;
         border-radius: 50%;
-        filter: drop-shadow(1.75cqw 1.75cqw 1.15cqw var(--color__balls_group__shadow));
 
         aspect-ratio: 1 / 1;
         width: 100%;
+
+        filter: drop-shadow(1.75cqw 1.75cqw 1.15cqw var(--color__balls_group__shadow));
+        transition: filter 300ms ease-out;
+
+        // @media (pointer: fine) {
+        //     will-change: transform;
+
+        //     transition:
+        //         transform 300ms cubic-bezier(0.6, 0, 0.25, 3.5),
+        //         filter 300ms ease-out;
+
+        //     &:hover {
+        //         transform: scale(var.$abstract__global__scale--hover * 1.075);
+        //     }
+
+        //     &:active {
+        //         transform: scale(var.$abstract__global__scale--active / 1.075);
+        //     }
+        // }
     }
 
     @include bs.media-breakpoint-down(xl) {

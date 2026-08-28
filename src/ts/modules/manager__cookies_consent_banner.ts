@@ -159,7 +159,17 @@ export function initCookieConsentBanner() {
 
     // 2. Кнопки в футере
     footerCookieSettingsButtons.forEach((button) => {
-        button.addEventListener('click', showBanner)
+        button.addEventListener('click', () => {
+            showBanner()
+
+            // Фокус на ссылку в баннере | Первая в DOM
+            // const firstFocusable = cookieConsentBanner.querySelector<HTMLElement>('a[href], button')
+            // firstFocusable?.focus()
+
+            // Переносим фокус на первую кнопку баннера для удобства клавиатурной навигации
+            const firstBtn = cookieConsentBanner.querySelector<HTMLButtonElement>('button')
+            firstBtn?.focus()
+        })
     })
 
     // * --- START LOGIC

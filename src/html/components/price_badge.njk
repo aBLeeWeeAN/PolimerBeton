@@ -11,12 +11,14 @@
     </div>
 
     {% for ball in my_price_badge__balls %}
-        <div class="my-price-badge__ball-wrapper my-price-badge__ball-wrapper--ball-{{ ball }}">
-            <img
-                data-my-picture-class="my-price-badge__ball-picture"
-                class="my-price-badge__ball-img my-price-badge__ball-img--ball-{{ ball }}"
-                src="@images/balls/{{ ball }}.png"
-                alt="" />
+        <div class="my-price-badge__ball-rotate-wrapper my-price-badge__ball-rotate-wrapper--ball-{{ ball }}">
+            <div class="my-price-badge__ball-translate-wrapper">
+                <img
+                    data-my-picture-class="my-price-badge__ball-picture my-price-badge__ball-picture--ball-{{ ball }}"
+                    class="my-price-badge__ball-img"
+                    src="@images/balls/{{ ball }}.png"
+                    alt="" />
+            </div>
         </div>
     {% endfor %}
 </div>

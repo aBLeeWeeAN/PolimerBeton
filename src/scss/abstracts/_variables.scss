@@ -3,7 +3,7 @@
 // * --- SASS VARIABLES
 // * ------------------
 $abstract__global__transition-duration: 300ms;
-$abstract__global__transition-timing-function: ease-in-out;
+$abstract__global__transition-timing-function: cubic-bezier(0.03, 0.98, 0.52, 0.99);
 
 $abstract__global__scale--hover: 1.025;
 $abstract__global__scale--active: 0.975;

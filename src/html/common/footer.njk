@@ -4,32 +4,19 @@
 
     <div class="container my-wrapper my-footer__content">
         <div class="my-footer__information-container">
-            <a
-                class="my-logo my-logo--footer my-footer__logo"
-                href="{{- '#back-to-top' if current_page__page_name == 'index' else '@page/index.njk' -}}"
-                aria-label="{{ common.logo.a11y__aria_label }}">
-                <svg class="my-logo__svg" width="134" height="134" aria-hidden="true">
-                    <use href="@icons/logo/logo.svg"></use>
-                </svg>
-                <div class="my-logo__company-name-and-motto-container">
-                    <span class="my-logo__company-name">{{ common.logo.company_name }}</span>
-                    <span class="my-logo__motto">{{ common.logo.motto }}</span>
-                </div>
-            </a>
-
-            <div class="my-footer__legal">
-                <h2 class="my-title my-title--footer">{{ footer.legal.domain }}</h2>
-
-                <ul class="my-nav-menu my-nav-menu--footer" aria-label="{{ footer.legal.a11y__aria_label }}" role="list">
-                    <li class="my-nav-menu__item">
-                        <button type="button" class="my-js-cookie-settings-btn my-nav-menu__link">
-                            {{ footer.legal.cookie_settings }}
-                        </button>
-                    </li>
-                    <li class="my-nav-menu__item">
-                        <a class="my-nav-menu__link" href="@page/privacy.njk" target="_self">{{ footer.legal.privacy_policy }}</a>
-                    </li>
-                </ul>
+            <div class="my-footer__logo-wrapper">
+                <a
+                    class="my-logo my-logo--footer"
+                    href="{{- '#back-to-top' if current_page__page_name == 'index' else '@page/index.njk' -}}"
+                    aria-label="{{ common.logo.a11y__aria_label }}">
+                    <svg class="my-logo__svg" width="134" height="134" aria-hidden="true">
+                        <use href="@icons/logo/logo.svg"></use>
+                    </svg>
+                    <div class="my-logo__company-name-and-motto-container">
+                        <span class="my-logo__company-name">{{ common.logo.company_name }}</span>
+                        <span class="my-logo__motto">{{ common.logo.motto }}</span>
+                    </div>
+                </a>
             </div>
 
             <nav class="my-footer__navigation" aria-label="{{ footer.navigation.a11y.aria_label }}">
@@ -47,6 +34,21 @@
                     {% endfor %}
                 </ul>
             </nav>
+
+            <div class="my-footer__legal">
+                <h2 class="my-title my-title--footer">{{ footer.legal.domain }}</h2>
+
+                <ul class="my-nav-menu my-nav-menu--footer" aria-label="{{ footer.legal.a11y__aria_label }}" role="list">
+                    <li class="my-nav-menu__item">
+                        <button type="button" class="my-js-cookie-settings-btn my-nav-menu__link">
+                            {{ footer.legal.cookie_settings }}
+                        </button>
+                    </li>
+                    <li class="my-nav-menu__item">
+                        <a class="my-nav-menu__link" href="@page/privacy.njk" target="_self">{{ footer.legal.privacy_policy }}</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <hr class="col-12 my-separator" aria-hidden="true" />

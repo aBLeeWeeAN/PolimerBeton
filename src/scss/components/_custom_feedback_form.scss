@@ -31,14 +31,7 @@
         justify-content: center;
         align-items: stretch;
 
-        // row-gap: 24px;
-        // row-gap: 1.2em;
-        // row-gap: 1.333em;
-
-        // row-gap: var(--typography__global__base__form__margin-bottom);
         row-gap: calc(0.5 * var(--layout__global__spacing));
-
-        // font-size: inherit;
     }
 
     &__field-wrapper {
@@ -47,17 +40,11 @@
 
         justify-content: center;
         align-items: center;
-
-        // row-gap: 8px;
-        // row-gap: 0.4em;
-        // row-gap: 0.444em;
-        // row-gap: 0.555em;
-
-        // font-size: inherit;
     }
 
     &__text-field {
         @include mixin.transition-for(background-color);
+        position: relative;
 
         display: flex;
         flex-direction: row;
@@ -69,36 +56,122 @@
         height: 100%;
 
         padding: var(--my-feedback-form__field__outer-padding);
-        background-color: var(--color__global__primary);
 
-        border: none;
-        border-radius: var(--my-feedback-form__field__outer-element__radius);
+        outline: none;
+        background: transparent;
+
+        // * все дочерние элементы наверх
+        & > * {
+            position: relative;
+            z-index: 0;
+        }
+
+        // * обводка (fallback) для .houdini-squircle-ready
+        &::before {
+            content: '';
+
+            position: absolute;
+            inset: 0;
+
+            background: transparent;
+            border-radius: var(--my-feedback-form__field__outer-element__radius);
+
+            @include mixin.focus-styles;
+
+            opacity: 0;
+            z-index: -1;
+        }
+
+        // * button background (default & squircle)
+        &::after {
+            content: '';
+
+            position: absolute;
+            inset: 0;
+
+            background-color: var(--color__global__primary);
+            border-radius: var(--my-feedback-form__field__outer-element__radius);
+
+            z-index: -2;
+        }
+
+        // ? если есть фокус на кнопке (<button>) или дочерней ссылке (<a>), ::before делаем видимым
+        .no-js &,
+        .user-is-tabbing & {
+            &:focus-within::before {
+                opacity: 1;
+            }
+        }
 
         .houdini-squircle-ready & {
-            border-radius: 0;
+            &::before {
+                border-radius: 0;
+                outline-offset: 1px;
+            }
 
-            --squircle-smooth: var(--my-feedback-form__field__squircle-smooth);
-            --squircle-radius: var(--my-feedback-form__field__outer-element__radius--squircle);
+            &::after {
+                border-radius: 0;
 
-            /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-            mask-image: paint(squircle);
+                --squircle-smooth: var(--my-feedback-form__field__squircle-smooth);
+                --squircle-radius: var(--my-feedback-form__field__outer-element__radius--squircle);
+
+                mask-image: paint(squircle);
+            }
         }
 
-        &:focus {
-            background-color: var(--color__global__primary--focus);
+        @include mixin.state-with-has('hover', '.my-custom-feedback-form__input-element') {
+            &::after {
+                background-color: var(--color__global__primary--hover);
+            }
         }
 
-        @include mixin.hover {
-            background-color: var(--color__global__primary--hover);
+        @include mixin.state-with-has('active', '.my-custom-feedback-form__input-element') {
+            &::after {
+                background-color: var(--color__global__primary--active);
+            }
         }
 
-        @include mixin.active {
-            background-color: var(--color__global__primary--active);
-        }
+        // @include mixin.state-with-has('disabled', '.my-custom-feedback-form__input-element') {
+        //     &::after {
+        //         background-color: var(--color__global__primary--disabled);
+        //     }
 
-        &:has(:disabled),
-        &:has([disabled]) {
-            background-color: var(--color__global__primary--disabled);
+        //     cursor: not-allowed;
+        // }
+
+        // background-color: var(--color__global__primary);
+
+        // border: none;
+        // border-radius: var(--my-feedback-form__field__outer-element__radius);
+
+        // .houdini-squircle-ready & {
+        //     border-radius: 0;
+
+        //     --squircle-smooth: var(--my-feedback-form__field__squircle-smooth);
+        //     --squircle-radius: var(--my-feedback-form__field__outer-element__radius--squircle);
+
+        //     /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+        //     mask-image: paint(squircle);
+        // }
+
+        // &:focus-within {
+        //     @include mixin.focus-styles;
+        // }
+
+        // @include mixin.hover {
+        //     background-color: var(--color__global__primary--hover);
+        // }
+
+        // @include mixin.active {
+        //     background-color: var(--color__global__primary--active);
+        // }
+
+        &:has(.my-custom-feedback-form__input-element:disabled),
+        &:has(.my-custom-feedback-form__input-element[disabled]) {
+            &::after {
+                background-color: var(--color__global__primary--disabled);
+            }
+
             cursor: not-allowed;
         }
 
@@ -169,16 +242,6 @@
 
         align-items: center;
         justify-content: center;
-
-        // column-gap: 16px;
-        // column-gap: 0.875em;
-
-        // font-size: inherit;
-        // font-size: clamp(12px, 0.0037 * 100vw + 10.8148px, 16px);
-
-        // @include bs.media-breakpoint-down(xs) {
-        //     column-gap: 0.583em;
-        // }
     }
 
     &__checkbox-input-wrapper {
@@ -188,17 +251,19 @@
         position: relative;
 
         aspect-ratio: 1 / 1;
-
-        // height: 40px;
         height: clamp(36px, 0.0037 * 100vw + 34.8148px, 40px);
-
-        // font-size: inherit;
-        // height: 2.25em;
 
         background-color: var(--color__feedback-form__field-background);
 
         border: 3px solid var(--color__global__primary);
         border-radius: 50%;
+
+        .no-js &,
+        .user-is-tabbing & {
+            &:focus-within {
+                @include mixin.focus-styles;
+            }
+        }
 
         &:has([type='checkbox']:checked) {
             // transition: background-color 150ms ease-out;
@@ -245,21 +310,6 @@
         // }
     }
 
-    // &__checkbox-bg {
-    //     will-change: background-color;
-
-    //     z-index: z('background');
-    //     position: absolute;
-    //     inset: -1px;
-
-    //     background-color: var(--color__feedback-form__field-background);
-
-    //     border: 0;
-    //     border-radius: 50%;
-
-    //     transition: background-color 100ms ease-in-out;
-    // }
-
     &__checkbox-label {
         @extend %text__form__checkbox-label;
 
@@ -300,10 +350,14 @@
         // color: var(--color__global__text--primary);
         // text-decoration: none;
 
-        &:focus {
-            color: var(--color__global__text--primary--focus);
-            // text-decoration: none;
-        }
+        // &:focus {
+        //     color: var(--color__global__text--primary--focus);
+        //     // text-decoration: none;
+        // }
+
+        // @include mixin.focus {
+        //     // empty
+        // }
 
         @include mixin.hover {
             color: var(--color__global__text--primary--hover);
@@ -336,6 +390,14 @@
         caret-color: var(--color__global__text--primary--solid);
         caret-animation: auto;
         caret-shape: bar;
+
+        outline: none;
+
+        /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+        // &:focus,
+        // &:focus-visible {
+        //     outline: none;
+        // }
 
         &[type='text'],
         &[type='tel'] {
@@ -463,15 +525,6 @@
                 cursor: not-allowed;
             }
         }
-
-        // &[type='checkbox']:checked ~ .my-custom-feedback-form__checkbox-svg {
-        //     opacity: 1;
-        //     transform: translate(-50%, -45%) scale(1) rotate(0deg);
-        // }
-
-        // &[type='checkbox']:checked ~ .my-custom-feedback-form__checkbox-bg {
-        //     background-color: var(--color__global__primary);
-        // }
     }
 
     &__submit-button {

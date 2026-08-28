@@ -1,17 +1,17 @@
 export function initMenuButtonState() {
-    const offcanvasNavbar = document.getElementById('offcanvasNavbar')
-    const navbarToggler = document.getElementById('My-Hamburger-Menu-Button')
+    const myOffcanvas = document.getElementById('My-Offcanvas')
+    const myOffcanvasToggler = document.getElementById('My-Hamburger-Menu-Button')
 
     // 1. Наша стандартная защита
-    if (!offcanvasNavbar || !navbarToggler) {
+    if (!myOffcanvas || !myOffcanvasToggler) {
         return
     }
 
     // 2. ФИКС ДЛЯ TYPESCRIPT:
     // Создаем новые константы и явно говорим TS: "Они ТОЧНО HTMLElement, без всяких null".
     // Так как это константы, их тип железно зафиксируется для всех вложенных функций.
-    const toggler: HTMLElement = navbarToggler
-    const offcanvas: HTMLElement = offcanvasNavbar
+    const toggler: HTMLElement = myOffcanvasToggler
+    const offcanvas: HTMLElement = myOffcanvas
 
     // Функция для обновления атрибута aria-expanded
     function updateAriaExpanded(isExpanded: boolean) {

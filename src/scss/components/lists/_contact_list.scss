@@ -29,18 +29,18 @@
         //     color 0.3s ease-in-out,
         //     transform 0.3s ease-in-out;
 
-        &:focus {
-            color: var(--color__global__text--focus);
-        }
+        // &:focus {
+        //     color: var(--color__global__text--focus);
+        // }
 
         @include mixin.hover {
             color: var(--color__global__text--hover);
-            transform: scale(var.$abstract__global__scale--hover);
+            transform: scale(var.$abstract__global__scale--hover * 1.05);
         }
 
         @include mixin.active {
             color: var(--color__global__text--active);
-            transform: scale(var.$abstract__global__scale--active);
+            transform: scale(var.$abstract__global__scale--active / 1.05);
         }
     }
 

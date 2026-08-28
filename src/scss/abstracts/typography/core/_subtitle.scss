@@ -98,7 +98,9 @@
 %text__subtitle--advantage__before {
     @extend %text__base;
 
+    // todo: выставить цифры по правому краю, сделать через css grid
     font-variant-numeric: proportional-nums;
+    // font-variant-numeric: tabular-nums;
 
     font-weight: 100;
     font-size: 8em;

@@ -254,10 +254,10 @@
                 <div class="my-legal__grid">
                     {% if index.legal.imgs_alts and index.legal.imgs_alts | length > 0 %}
                         {% for img_alt in index.legal.imgs_alts %}
-                            <div class="my-legal__img my-gradient-image__wrapper js-tilt-wrapper">
+                            <div class="my-legal__img my-gradient-image js-tilt-wrapper">
                                 <a
                                     id="My-Legal-Doc__{{ loop.index }}"
-                                    class="my-gradient-image js-tilt"
+                                    class="my-gradient-image__link js-tilt"
                                     href="@images/legal/doc_{{ loop.index }}.jpg"
                                     target="_blank">
                                     <img class="my-gradient-image__img" src="@images/legal/doc_{{ loop.index }}.jpg" alt="{{ img_alt }}" />

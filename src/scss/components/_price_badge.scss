@@ -1,5 +1,6 @@
 /* stylelint-disable custom-property-empty-line-before */
 /* stylelint-disable keyframes-name-pattern */
+@use '../abstracts/variables' as var;
 @use '../abstracts/mixins' as mixin;
 @use '../abstracts/typography' as *;
 @use '../abstracts/z_index' as *;
@@ -146,7 +147,7 @@
         animation: price-badge__price-text__wobble-effect var(--animation-duration) infinite;
     }
 
-    &__ball-wrapper {
+    &__ball-rotate-wrapper {
         will-change: transform;
 
         z-index: z('default');
@@ -196,7 +197,7 @@
         }
     }
 
-    &__ball-picture {
+    &__ball-translate-wrapper {
         will-change: transform;
 
         transform-origin: center;
@@ -204,17 +205,8 @@
             ease-in-out alternate;
     }
 
-    &__ball-img {
-        @include mixin.transition-for(filter);
+    &__ball-picture {
         will-change: transform;
-
-        aspect-ratio: 1 / 1;
-        width: 100%;
-        height: auto;
-
-        border: 0;
-        border-radius: 50%;
-        filter: drop-shadow(1.75cqw 1.75cqw 1.15cqw var(--color__balls_group__shadow));
 
         transform-origin: center;
         transform: rotate(var(--ball__current-rotation-compensation-angle, 0deg));
@@ -251,6 +243,34 @@
                 -4 * var(--ball__angle-between-balls)
             );
         }
+    }
+
+    &__ball-img {
+        aspect-ratio: 1 / 1;
+        width: 100%;
+        height: auto;
+
+        border: 0;
+        border-radius: 50%;
+
+        filter: drop-shadow(1.75cqw 1.75cqw 1.15cqw var(--color__balls_group__shadow));
+        transition: filter 300ms ease-out;
+
+        // @media (pointer: fine) {
+        //     will-change: transform;
+
+        //     transition:
+        //         transform 300ms cubic-bezier(0.6, 0, 0.25, 3.5),
+        //         filter 300ms ease-out;
+
+        //     &:hover {
+        //         transform: scale(var.$abstract__global__scale--hover * 1.075);
+        //     }
+
+        //     &:active {
+        //         transform: scale(var.$abstract__global__scale--active / 1.075);
+        //     }
+        // }
     }
 
     @include bs.media-breakpoint-down(xs) {

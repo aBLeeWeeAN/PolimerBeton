@@ -20,6 +20,15 @@ export async function initFooterPositionStateManager() {
     // 2. event #2
     window.addEventListener('resize', updateFooterState, { passive: true })
 
+    // 3. event #3
+    footer.addEventListener('focusin', () => {
+        // * домотать scrollbar до конца, если на любом ребенке footer есть focus state
+        window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth',
+        })
+    })
+
     // last step
     updateFooterState()
 }

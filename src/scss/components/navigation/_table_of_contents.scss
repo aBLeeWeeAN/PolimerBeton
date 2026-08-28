@@ -1,3 +1,4 @@
+@use '../../abstracts/variables' as var;
 @use '../../abstracts/mixins' as mixin;
 @use '../../abstracts/placeholders' as *;
 
@@ -12,7 +13,11 @@
     &__details,
     &__nested-details {
         overflow: hidden;
-        margin-bottom: 0;
+        // margin-bottom: 0;
+
+        // ! компенсация overflow для корректного отображения focus state
+        margin: -6px;
+        padding: 6px;
 
         &::details-content {
             @include mixin.transition-for(block-size, content-visibility);
@@ -36,6 +41,9 @@
     // * -----------
     &__summary,
     &__nested-summary {
+        @include mixin.transition-for(color, transform);
+        will-change: transform;
+
         display: flex;
         list-style: none;
 
@@ -47,6 +55,37 @@
 
         gap: 8px;
         margin-bottom: 0;
+
+        transform-origin: left center;
+
+        svg,
+        h3 {
+            color: inherit;
+        }
+    }
+
+    &__summary {
+        @include mixin.hover {
+            transform: scale(var.$abstract__global__scale--hover);
+            color: var(--color__global__text--hover);
+        }
+
+        @include mixin.active {
+            transform: scale(var.$abstract__global__scale--active);
+            color: var(--color__global__text--active);
+        }
+    }
+
+    &__nested-summary {
+        @include mixin.hover {
+            transform: scale(var.$abstract__global__scale--hover * 1.025);
+            color: var(--color__global__text--hover);
+        }
+
+        @include mixin.active {
+            transform: scale(var.$abstract__global__scale--active / 1.025);
+            color: var(--color__global__text--active);
+        }
     }
 
     // * --- MARKER

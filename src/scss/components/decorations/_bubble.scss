@@ -31,6 +31,7 @@
 }
 
 .my-bubble {
+    display: none;
     will-change: transform;
 
     --bubble__pos-x: -50%;
@@ -40,6 +41,7 @@
     --bubble__scale-factor: 3;
 
     --bubble__animation-time: 10s;
+    --bubble__animation-time: 500ms;
 
     position: absolute;
 
@@ -86,6 +88,7 @@
         --bubble__scale-factor: 1.5;
 
         --bubble__animation-time: 180s;
+        --bubble__animation-time: 500ms;
 
         top: 1%;
         transform: translate(var(--bubble__pos-x), var(--bubble__pos-y));
@@ -136,6 +139,7 @@
         --bubble__scale-factor: 0.8;
 
         --bubble__animation-time: 180s;
+        --bubble__animation-time: 500ms;
 
         top: 30%;
         transform: translate(var(--bubble__pos-x), var(--bubble__pos-y));
@@ -192,6 +196,7 @@
         --bubble__scale-factor: 1.7;
 
         --bubble__animation-time: 180s;
+        --bubble__animation-time: 500ms;
 
         top: 70%;
         transform: translate(var(--bubble__pos-x), var(--bubble__pos-y));

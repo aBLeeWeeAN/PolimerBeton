@@ -54,6 +54,7 @@
     <!-- * Canonical tag | Improving search engine rankings --->
     <link rel="canonical" href="{{ current_page__full_url }}" />
 
+    <!-- ! CRITICAL JS <head> SCRIPTS --->
     <!-- * If JS supports -> enable JS classes - -->
     <script>
         document.documentElement.classList.remove('no-js')
@@ -69,6 +70,9 @@
                 .replace(/\.[^/.]+$/, '') || 'home'
         document.documentElement.classList.add(`page-${pageName}`)
     </script>
+
+    <!-- ! NON-CRITICAL JS <head> SCRIPTS --->
+    <script type="module" src="@ts/head__ncs.ts"></script>
 
     <!-- * 0. Inject inline avif/webp script polyfill --->
     <!-- ! STRONGLY RECOMMENDED PLACE IT BEFORE ANY CSS FILES --->

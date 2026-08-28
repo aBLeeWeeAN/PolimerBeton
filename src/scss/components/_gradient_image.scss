@@ -57,6 +57,14 @@
 
     &__link {
         display: block;
+
+        &:focus-visible {
+            outline: none;
+
+            .my-gradient-image__img {
+                @include mixin.focus-styles;
+            }
+        }
     }
 
     &__img {
@@ -95,8 +103,8 @@
         // transform: scale(var(--my-scale));
 
         // transition:
-        //     transform 300ms ease-in-out,
-        //     box-shadow 300ms ease-in-out;
+        //     transform 300ms cubic-bezier(0.03, 0.98, 0.52, 0.99),
+        //     box-shadow 300ms cubic-bezier(0.03, 0.98, 0.52, 0.99);
 
         animation: gradient-image__colored-border__spin-effect 2s linear infinite;
 

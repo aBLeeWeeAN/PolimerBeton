@@ -33,12 +33,16 @@
     color: var(--color__global__text--primary);
 
     border: 0;
-    outline: none;
+    // outline: none;
     box-shadow: none;
 
-    &:focus {
-        color: var(--color__global__text--primary--focus);
-    }
+    // &:focus {
+    //     color: var(--color__global__text--primary--focus);
+    // }
+
+    // @include mixin.focus {
+    //     // empty
+    // }
 
     @include mixin.hover {
         color: var(--color__global__text--primary--hover);

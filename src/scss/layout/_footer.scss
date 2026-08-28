@@ -147,9 +147,12 @@
         }
     }
 
-    &__logo {
+    &__logo-wrapper {
         grid-area: my-footer__logo;
         align-self: start;
+
+        display: flex;
+        justify-content: flex-start;
 
         @include bs.media-breakpoint-down(md) {
             place-self: auto center;
@@ -217,7 +220,12 @@
         }
     }
 
+    // todo: удалить говнокод, оставить просто relative при nojs
     .no-js & {
+        &:focus-within {
+            position: relative;
+        }
+
         @include bs.media-breakpoint-up(xxl) {
             // &::after {
             //     animation-range: calc(100% - var(--my-footer-height, 641px)) 100%;

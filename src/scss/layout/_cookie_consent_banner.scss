@@ -75,10 +75,14 @@
 
         cursor: pointer;
 
-        &:focus {
-            color: var(--color__global__text--primary--focus);
-            text-decoration: none;
-        }
+        // &:focus {
+        //     color: var(--color__global__text--primary--focus);
+        //     text-decoration: none;
+        // }
+
+        // @include mixin.focus {
+        //     // empty
+        // }
 
         @include mixin.hover {
             color: var(--color__global__text--primary--hover);

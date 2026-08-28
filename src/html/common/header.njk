@@ -1,9 +1,9 @@
 <header id="header" class="my-header">
     <div class="my-header__fixed-part">
         <div class="container my-wrapper">
-            <nav class="navbar my-navigation" aria-label="{{ header.navigation.a11y.aria_label.main }}">
+            <nav class="my-navigation" aria-label="{{ header.navigation.a11y.aria_label.main }}">
                 <a
-                    class="navbar-brand my-navigation__my-logo my-logo"
+                    class="my-navigation__my-logo my-logo"
                     href="{{- '#back-to-top' if current_page__page_name == 'index' else '@page/index.njk' -}}"
                     aria-label="{{ common.logo.a11y__aria_label }}">
                     <svg class="my-logo__svg" width="80" height="80" aria-hidden="true">
@@ -94,11 +94,11 @@
 
                     <button
                         id="My-Hamburger-Menu-Button"
-                        class="navbar-toggler my-nav-control__hamburger-button my-hamburger-button"
+                        class="my-nav-control__hamburger-button my-hamburger-button"
                         type="button"
                         data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasNavbar"
-                        aria-controls="offcanvasNavbar"
+                        data-bs-target="#My-Offcanvas"
+                        aria-controls="My-Offcanvas"
                         aria-label="{{ header.navigation.a11y.buttons__aria_labels.hamburger }}"
                         aria-expanded="false">
                         <svg class="my-hamburger-button__svg" fill="var(--primary-color)" viewBox="0 0 100 100" aria-hidden="true">
@@ -118,7 +118,7 @@
         </div>
     </div>
 
-    <div class="offcanvas offcanvas-top my-header__hidden-part" data-bs-scroll="true" tabindex="-1" id="offcanvasNavbar">
+    <div class="offcanvas offcanvas-top my-header__hidden-part" data-bs-scroll="true" tabindex="-1" id="My-Offcanvas">
         <div class="offcanvas-body my-offcanvas-body">
             <nav class="h-100 container my-wrapper my-nav-menu__wrapper" aria-label="{{ header.navigation.a11y.aria_label.offcanvas }}">
                 <ul class="col-12 my-nav-menu my-nav-menu--header" role="list">

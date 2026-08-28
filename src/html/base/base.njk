@@ -22,14 +22,14 @@
         <!-- Preload scripts --->
         {% include "service/scripts__preload.njk" %}
 
+        <!-- Cookie consent --->
+        {% include "components/cookie_consent.njk" %}
+
         <!-- Page content START --->
         {% include "common/header.njk" %}
         <main>{% block content %}{% endblock %}</main>
         {% include "common/footer.njk" %}
         <!-- Page content END --->
-
-        <!-- Cookie consent --->
-        {% include "components/cookie_consent.njk" %}
 
         <!-- Postload scripts --->
         {% include "service/scripts__postload.njk" %}
