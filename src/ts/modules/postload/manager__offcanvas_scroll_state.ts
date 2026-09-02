@@ -1,4 +1,4 @@
-export function initOffcanvasScrollState() {
+export function initOffcanvasScrollStateManager() {
     const SCROLL_THRESHOLD = 16
     const TOP_EDGE_BUFFER = 50
     const HIDDEN_CLASS = 'my-header__fixed-part--hidden'

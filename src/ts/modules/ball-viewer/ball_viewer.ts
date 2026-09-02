@@ -234,6 +234,9 @@ class BallViewer {
             }
         })
 
+        // --- Подгонка камеры под размеры шара ---
+        this.fitCameraToSphere()
+
         this.initialPitch = 0
         this.pitch = 0
         this.yaw = 0
@@ -267,6 +270,40 @@ class BallViewer {
             this.needsDeltaReset = true
             this.animate()
         }
+    }
+
+    private fitCameraToSphere() {
+        if (!this.ballGroup || !this.camera) {
+            return
+        }
+
+        const box = new THREE.Box3().setFromObject(this.ballGroup)
+        const size = new THREE.Vector3()
+        box.getSize(size)
+
+        const radius = Math.max(size.x, size.y, size.z) / 2
+        if (radius === 0) {
+            return
+        }
+
+        const center = new THREE.Vector3()
+        box.getCenter(center)
+        this.ballGroup.position.sub(center)
+
+        const vFovRad = THREE.MathUtils.degToRad(this.camera.fov) / 2
+        const aspect = this.camera.aspect
+        const hFovRad = Math.atan(Math.tan(vFovRad) * aspect)
+
+        const distV = radius / Math.sin(vFovRad)
+        const distH = radius / Math.sin(hFovRad)
+
+        // Коэффициент отступа: 1.01 дает 1% безопасного запаса вокруг сферы
+        const PADDING_FACTOR = 1.01
+        const distance = Math.max(distV, distH) * PADDING_FACTOR
+
+        this.camera.position.set(distance, 0, 0)
+        this.camera.lookAt(0, 0, 0)
+        this.camera.updateProjectionMatrix()
     }
 
     private updateCameraAspect() {
@@ -416,7 +453,11 @@ class BallViewer {
         this.elapsedTimeAfterLoad += delta
 
         if (this.ballGroup) {
-            if (!this.isDragging) {
+            const prefersReducedMotion = window.matchMedia(
+                '(prefers-reduced-motion: reduce)',
+            ).matches
+
+            if (!this.isDragging && !prefersReducedMotion) {
                 let speedFactor = 0
                 // Логика плавного разгона авто-вращения
                 if (this.elapsedTimeAfterLoad > this.START_DELAY) {

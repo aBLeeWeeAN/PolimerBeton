@@ -1,8 +1,15 @@
+/* stylelint-disable keyframes-name-pattern */
 @use '../../abstracts/mixins' as mixin;
 @use '../../abstracts/typography' as *;
 @use '../../abstracts/z_index' as *;
 
 @use '../../vendors/bootstrap' as bs;
+
+@keyframes title--server-response__before__running-gradient-effect {
+    to {
+        background-position: 0 var(--title--server-response__before__background-size);
+    }
+}
 
 .my-title {
     @extend %text__title;
@@ -43,20 +50,48 @@
         @extend %text__title--server-response;
         position: relative;
 
+        display: grid;
+        place-content: center;
+        place-items: end center;
+
+        & > span {
+            grid-area: 1 / 1;
+            z-index: 1;
+        }
+
         &::before {
             @extend %text__title--server-response__before;
 
             content: 'DEBUG';
             // content: attr(data-variant);
 
-            z-index: z('decoration');
-            position: absolute;
+            grid-area: 1 / 1;
+            z-index: 0;
 
-            bottom: 0;
-            // bottom: calc(-1 * var(--typography__global__title__margin-bottom));
+            // ? фикс обрезки верхних краёв цифры из за background-clip
+            // line-height: 1;
+            text-box-trim: none;
 
-            left: 50%;
-            transform: translate(-50%, 0);
+            --title--server-response__before__background-size: 200%;
+            background-image: linear-gradient(
+                0deg,
+                var(--color__decorative-element__background--gradient-step-1) 0%,
+                var(--color__decorative-element__background--gradient-step-2) 50%,
+                var(--color__decorative-element__background--gradient-step-1) 100%
+            );
+            background-position: 0 0;
+            background-size: 100% var(--title--server-response__before__background-size);
+
+            // ? используем шрифт как маску для background
+            background-clip: text;
+            color: transparent;
+
+            animation: title--server-response__before__running-gradient-effect 10s linear infinite;
+
+            // /* prettier-ignore */
+            // transform: translateY(
+            //     calc(var(--typography__global__title__margin-bottom) * clamp(0, (1080px - 100vh) / 360px, 1))
+            // );
 
             pointer-events: none;
             user-select: none;
@@ -64,27 +99,43 @@
             width: auto;
 
             @include bs.media-breakpoint-down(md) {
-                bottom: unset;
+                position: absolute;
+
                 top: calc(-1 * var(--typography__global__title__margin-bottom));
+                left: 50%;
 
                 transform: translate(-50%, -100%);
             }
         }
 
-        &[data-variant='success']::before {
-            content: 'SUCCESS';
+        &[data-variant='success'] {
+            & > span {
+                max-width: 20em;
+            }
 
-            @include bs.media-breakpoint-down(md) {
-                content: 'DONE';
+            &::before {
+                content: 'SUCCESS';
+
+                @include bs.media-breakpoint-down(md) {
+                    content: 'DONE';
+                }
             }
         }
 
-        &[data-variant='fail']::before {
-            content: 'FAIL';
+        &[data-variant='fail'] {
+            & > span {
+                max-width: 16em;
+            }
+
+            &::before {
+                content: 'FAIL';
+            }
         }
 
-        &[data-variant='404']::before {
-            content: '404';
+        &[data-variant='404'] {
+            &::before {
+                content: '404';
+            }
         }
     }
 }

@@ -7,7 +7,41 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 
+    // ? если нет подедржки ::-webkit-scrollbar
     scrollbar-width: none;
+
+    // ? если есть подедржка ::-webkit-scrollbar
+    @supports selector(::-webkit-scrollbar) {
+        scrollbar-width: auto;
+
+        &::-webkit-scrollbar {
+            height: 4px; // Высота горизонтального скроллбара
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            @include mixin.transition-for(background-color);
+
+            background-color: var(--color__global__text);
+
+            // * прозрачный border работает как padding слева и справа:
+            border-left: var(--layout__wrapper__padding--horizontal) solid transparent;
+            border-right: var(--layout__wrapper__padding--horizontal) solid transparent;
+
+            background-clip: padding-box;
+
+            @include mixin.hover {
+                background-color: var(--color__global__text--hover);
+            }
+
+            @include mixin.active {
+                background-color: var(--color__global__text--active);
+            }
+        }
+    }
 
     @include bs.media-breakpoint-down(sm) {
         // width: 100vw;
@@ -21,8 +55,6 @@
     width: 100%;
     height: auto;
 
-    min-width: 500px;
-
     // &__body {
     // }
 
@@ -35,8 +67,14 @@
         border: solid 1px var(--color__global__text--solid);
 
         vertical-align: middle;
-
-        // padding: 24px 32px;
         padding: calc(0.5 * var(--layout__global__spacing)) calc(1 * var(--layout__global__spacing));
+    }
+
+    @include bs.media-breakpoint-down(sm) {
+        min-width: 600px;
+    }
+
+    @include bs.media-breakpoint-down(xs) {
+        min-width: 500px;
     }
 }

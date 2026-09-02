@@ -1,3 +1,4 @@
+/* stylelint-disable selector-id-pattern */
 @use '../../abstracts/variables' as var;
 @use '../../abstracts/mixins' as mixin;
 @use '../../vendors/bootstrap' as bs;
@@ -134,16 +135,17 @@
         @include mixin.transition-for; // ? opacity + transform
         will-change: transform;
 
-        position: absolute;
+        // ! фикс бага | тайлинг на Firefox
+        transform-style: preserve-3d;
 
+        position: absolute;
         top: 50%;
         left: 50%;
 
-        transform: translate(-50%, -50%);
         transform-origin: center center;
+        transform: translate(-50%, -50%);
 
         aspect-ratio: 1 / 1;
-
         width: mixin.fluid-with-range(20px, 24px, md, xxl);
 
         @include bs.media-breakpoint-down(md) {
@@ -202,6 +204,15 @@
             color: var(--color__global__text--disabled);
 
             cursor: not-allowed;
+        }
+    }
+
+    .nojs & {
+        &#My-Toggle-Color-Scheme-Button,
+        &#My-Toggle-Color-Scheme-Button--Mobile,
+        &#My-Reset-Color-Scheme-Button,
+        &#My-Reset-Color-Scheme-Button--Mobile {
+            display: none;
         }
     }
 

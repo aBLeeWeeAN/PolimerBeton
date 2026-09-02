@@ -9,6 +9,9 @@
     @include mixin.transition-for(color, transform);
     will-change: transform;
 
+    // ! фикс бага | тайлинг на Firefox
+    transform-style: preserve-3d;
+
     display: flex;
     align-items: center;
 
@@ -36,6 +39,7 @@
     }
 
     &__svg {
+        // will-change: transform;
         flex: 0 0 auto;
 
         aspect-ratio: 1 / 1;
@@ -45,6 +49,8 @@
     }
 
     &__company-name-and-motto-container {
+        // will-change: transform;
+
         display: flex;
         flex-direction: column;
 
@@ -54,15 +60,27 @@
 
     &__company-name {
         @extend %text__logo__company-name--header;
+        // will-change: transform;
     }
 
     &__motto {
         @extend %text__logo__motto--header;
+        // will-change: transform;
     }
 
     &--footer {
         @extend %text__logo--footer;
         transform-origin: center left;
+
+        @include mixin.hover {
+            color: var(--color__global__text--hover);
+            transform: scale(var.$abstract__global__scale--hover);
+        }
+
+        @include mixin.active {
+            color: var(--color__global__text--active);
+            transform: scale(var.$abstract__global__scale--active);
+        }
 
         .my-logo__company-name {
             @extend %text__logo__company-name--footer;

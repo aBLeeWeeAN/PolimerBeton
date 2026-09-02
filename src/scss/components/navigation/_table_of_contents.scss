@@ -4,7 +4,6 @@
 
 @use '../../vendors/bootstrap' as bs;
 
-// todo: сделать фоллбэк через max-height для firefox и safari
 .my-table-of-contents {
     margin-bottom: var(--typography__global__title__margin-bottom);
 
@@ -12,27 +11,28 @@
     // * -----------
     &__details,
     &__nested-details {
-        overflow: hidden;
-        // margin-bottom: 0;
-
         // ! компенсация overflow для корректного отображения focus state
         margin: -6px;
         padding: 6px;
 
-        &::details-content {
-            @include mixin.transition-for(block-size, content-visibility);
-            // transition:
-            //     block-size ease-in-out 300ms,
-            //     content-visibility ease-in-out 300ms;
-
-            transition-behavior: allow-discrete;
-            block-size: 0%;
-        }
-
-        &:open,
-        &[open] {
+        // ! interpolate-size: allow-keywords; | REQUIRED
+        @supports (interpolate-size: allow-keywords) {
             &::details-content {
-                block-size: auto;
+                @include mixin.transition-for(block-size, content-visibility);
+                transition-behavior: allow-discrete;
+
+                overflow: hidden;
+
+                // ! interpolate-size: allow-keywords; | REQUIRED
+                block-size: 0;
+            }
+
+            &:open,
+            &[open] {
+                &::details-content {
+                    // ! interpolate-size: allow-keywords; | REQUIRED
+                    block-size: auto;
+                }
             }
         }
     }
@@ -43,6 +43,9 @@
     &__nested-summary {
         @include mixin.transition-for(color, transform);
         will-change: transform;
+
+        // ! фикс бага | тайлинг на Firefox
+        transform-style: preserve-3d;
 
         display: flex;
         list-style: none;
@@ -150,11 +153,11 @@
         margin-bottom: 0;
 
         details.my-table-of-contents__details > & {
-            margin-top: var(--typography__global__subtitle__margin-bottom);
+            padding-top: var(--typography__global__subtitle__margin-bottom);
         }
 
         details.my-table-of-contents__nested-details > & {
-            margin-top: var(--typography__global__base__margin-bottom);
+            padding-top: var(--typography__global__base__margin-bottom);
         }
     }
 

@@ -4,6 +4,8 @@
 @use '../../abstracts/mixins' as mixin;
 @use '../../vendors/bootstrap' as bs;
 
+// * --- CSS VARIABLES (PROPERTIES)
+// * ------------------------------
 @property --color__hero__slogan-text--gradient-step-1 {
     syntax: '<color>';
     inherits: true;
@@ -22,7 +24,6 @@
     initial-value: transparent;
 }
 
-// todo
 @property --color__footer__background--gradient-step-1 {
     syntax: '<color>';
     inherits: true;
@@ -79,9 +80,317 @@
 
 // * --- PAGE COLORS (+ DARK THEME)
 // * ------------------------------
+@mixin light-theme-colors {
+    // * --- GLOBAL (COMMON) COLORS
+    // * --------------------------
+    --color__global__primary: #4a148c; // 500
+    --color__global__primary--focus: #e65100;
+    // --color__global__primary--hover: #4a148c; // 700
+    --color__global__primary--hover: #{color.scale(#4a148c, $lightness: -16%)};
+    // --color__global__primary--active: #bf360c; // 900
+    --color__global__primary--active: #{color.scale(#4a148c, $lightness: -32%)};
+    --color__global__primary--disabled: #{color.mix(#4a148c, #fff, $weight: 38%, $method: rgb)};
+
+    --color__global__error: #b00020;
+    // --color__global__error--focus: #{color.mix(#fff, #d50020, $weight: 3.5%, $method: rgb)};
+    --color__global__error--hover: #{color.scale(#b00020, $lightness: -8%)};
+    --color__global__error--active: #{color.scale(#b00020, $lightness: -16%)};
+    --color__global__error--disabled: #{color.mix(#fff, #b00020, $weight: 38%, $method: rgb)};
+
+    --color__global__shadow: #{color.change(#000, $alpha: 38%)};
+    --color__global__fade: #000;
+
+    // ! typography | base
+    --color__global__text--solid: #000;
+    --color__global__text: #{color.change(#000, $alpha: 87%)};
+    --color__global__text--hint: #{color.change(#000, $alpha: 60%)};
+
+    // --color__global__text--focus: #{color.change(#000, $alpha: 87%)};
+    --color__global__text--hover: #{color.change(#000, $alpha: 100%)};
+    --color__global__text--active: #{color.change(#000, $alpha: 100%)};
+    --color__global__text--disabled: #{color.change(#000, $alpha: 38%)};
+
+    --color__global__text--alt--solid: #fff;
+    --color__global__text--alt: #{color.change(#fff, $alpha: 87%)};
+    --color__global__text--alt--hint: #{color.change(#fff, $alpha: 60%)};
+
+    // --color__global__text--alt--focus: #{color.change(#fff, $alpha: 87%)};
+    --color__global__text--alt--hover: #{color.change(#fff, $alpha: 100%)};
+    --color__global__text--alt--active: #{color.change(#fff, $alpha: 100%)};
+    --color__global__text--alt--disabled: #{color.change(#fff, $alpha: 38%)};
+
+    // ! typography | colored
+    --color__global__text--primary--solid: #4a148c;
+    --color__global__text--primary: #{color.change(#4a148c, $alpha: 87%)};
+    --color__global__text--primary--hint: #{color.change(#4a148c, $alpha: 60%)};
+
+    // --color__global__text--primary--focus: #{color.change(#6200ea, $alpha: 100%)};
+    --color__global__text--primary--hover: #{color.scale(#4a148c, $lightness: -16%)};
+    --color__global__text--primary--active: #{color.scale(#4a148c, $lightness: -32%)};
+    --color__global__text--primary--disabled: #{color.change(#4a148c, $alpha: 38%)};
+
+    --color__global__text--error--solid: #b00020;
+    --color__global__text--error: #{color.change(#b00020, $alpha: 87%)};
+    --color__global__text--error--hint: #{color.change(#b00020, $alpha: 60%)};
+
+    // --color__global__text--error--focus: #{color.change(#d50020, $alpha: 100%)};
+    --color__global__text--error--hover: #{color.scale(#b00020, $lightness: -16%)};
+    --color__global__text--error--active: #{color.scale(#b00020, $lightness: -32%)};
+    --color__global__text--error--disabled: #{color.change(#b00020, $alpha: 38%)};
+
+    // * --- PAGE DEFAULT COLORS (MAIN COLORS)
+    // * -------------------------------------
+    // --color__page__background: #{color.mix(#4a148c, #fff, $weight: 8%, $method: rgb)};
+    --color__page__background: #fff;
+
+    --color__page__scrollbar-color: #4a148c;
+    --color__page__scrollbar-color--hover: #{color.scale(#4a148c, $lightness: -16%)};
+    --color__page__scrollbar-color--active: #{color.scale(#4a148c, $lightness: -32%)};
+
+    // * --- HEADER SECTION
+    // * ------------------
+    --color__header__navigation-bar-background: #fff;
+    --color__header__navigation-menu-background: #{color.change(#fff, $alpha: 0.777)};
+
+    // * --- HERO SECTION
+    // * ----------------
+    --color__hero__background-image-overlay: #{color.change(#fff, $alpha: 0.16)};
+
+    --color__hero__slogan-text--gradient-step-1: #d50000;
+    --color__hero__slogan-text--gradient-step-2: #ffd600;
+    --color__hero__slogan-text--gradient-step-3: #00c853;
+
+    // * --- USAGE SECTION
+    // * -----------------
+    --color__usage__numeric-list-background: #{color.change(#fff, $alpha: 0.38)};
+
+    // * --- PRICING SECTION
+    // * -------------------
+    --color__pricing__price-badge-background: #d50000;
+
+    // * --- FEEDBACK FORM SECTION
+    // * -------------------------
+    --color__feedback-form__field-background: #fff;
+    --color__feedback-form__field-background--disabled: #fff;
+
+    // --color__feedback-form__field-autofill-background: #{color.change(#4a148c, $alpha: 14%)};
+    // --color__feedback-form__field-autofill-text: #4a148c;
+
+    // * --- FOOTER SECTION
+    // * ------------------
+    --color__footer__background--gradient-step-1: #{color.change(#ffd180, $alpha: 100%)};
+    --color__footer__background--gradient-step-2: #{color.change(#ea80fc, $alpha: 100%)};
+
+    --color__decorative-element__background: #{color.change(#fff, $alpha: 16%)};
+
+    // * --- COOKIE CONSENT BANNER
+    // * -------------------------
+    --color__cookie-consent-banner__background: #{color.change(#fff, $alpha: 0.777)};
+
+    // * --- CARD IMG
+    // * ------------
+    --color__card-img__background--gradient-step-1: #00c853;
+    --color__card-img__background--gradient-step-2: #ffd600;
+    --color__card-img__background--gradient-step-3: #d50000;
+
+    // * --- BALLS GROUP
+    // * ---------------
+    --color__balls_group__shadow: #{color.change(#000, $alpha: 87%)};
+
+    // * --- OTHER COLORS
+    // * ----------------
+    --color__decorative-text__color: #{color.mix(#000, #fff, $weight: 16%, $method: rgb)};
+
+    --color__decorative-element__background--gradient-step-1: #{color.change(#ea80fc, $alpha: 87%)};
+    --color__decorative-element__background--gradient-step-2: #{color.change(#ffd180, $alpha: 87%)};
+
+    // @include bs.media-breakpoint-down(md) {
+    //     // * --- FOOTER SECTION
+    //     // * ------------------
+    //     --color__footer__background--gradient-step-1: #{color.change(#ffd180, $alpha: 100%)};
+    //     --color__footer__background--gradient-step-2: #{color.change(#ea80fc, $alpha: 100%)};
+    // }
+}
+
+@mixin dark-theme-colors {
+    // * --- GLOBAL (COMMON) COLORS
+    // * --------------------------
+    --color__global__primary: #ffab91;
+    --color__global__primary--focus: #b39ddb;
+    --color__global__primary--hover: #{color.scale(#ffab91, $lightness: 16%)};
+    --color__global__primary--active: #{color.scale(#ffab91, $lightness: 32%)};
+    --color__global__primary--disabled: #{color.mix(
+            #ffab91,
+            color.mix(#bf360c, #121212, $weight: 8%, $method: rgb),
+            $weight: 38%,
+            $method: rgb
+        )};
+
+    --color__global__error: #cf6679;
+    // --color__global__error--focus: #{color.mix(#000, #cf6679, $weight: 3.5%, $method: rgb)};
+    --color__global__error--hover: #{color.scale(#cf6679, $lightness: 8%)};
+    --color__global__error--active: #{color.scale(#cf6679, $lightness: 16%)};
+    --color__global__error--disabled: #{color.mix(
+            #cf6679,
+            color.mix(#bf360c, #121212, $weight: 8%, $method: rgb),
+            $weight: 38%,
+            $method: rgb
+        )};
+
+    --color__global__shadow: #{color.change(#000, $alpha: 60%)};
+    --color__global__fade: #000;
+
+    // ! typography | base
+    --color__global__text--solid: #fff;
+    --color__global__text: #{color.change(#fff, $alpha: 87%)};
+    --color__global__text--hint: #{color.change(#fff, $alpha: 60%)};
+
+    // --color__global__text--focus: #{color.change(#fff, $alpha: 87%)};
+    --color__global__text--hover: #{color.change(#fff, $alpha: 100%)};
+    --color__global__text--active: #{color.change(#fff, $alpha: 100%)};
+    --color__global__text--disabled: #{color.change(#fff, $alpha: 38%)};
+
+    --color__global__text--alt--solid: #000;
+    --color__global__text--alt: #{color.change(#000, $alpha: 87%)};
+    --color__global__text--alt--hint: #{color.change(#000, $alpha: 60%)};
+
+    // --color__global__text--alt--focus: #{color.change(#000, $alpha: 87%)};
+    --color__global__text--alt--hover: #{color.change(#000, $alpha: 100%)};
+    --color__global__text--alt--active: #{color.change(#000, $alpha: 100%)};
+    --color__global__text--alt--disabled: #{color.change(#000, $alpha: 38%)};
+
+    // ! typography | colored
+    --color__global__text--primary--solid: #ffab91;
+    --color__global__text--primary: #{color.change(#ffab91, $alpha: 87%)};
+    --color__global__text--primary--hint: #{color.change(#ffab91, $alpha: 60%)};
+
+    // --color__global__text--primary--focus: #{color.change(#6200ea, $alpha: 100%)};
+    --color__global__text--primary--hover: #{color.scale(#ffab91, $lightness: 16%)};
+    --color__global__text--primary--active: #{color.scale(#ffab91, $lightness: 32%)};
+    --color__global__text--primary--disabled: #{color.change(#ffab91, $alpha: 38%)};
+
+    --color__global__text--error--solid: #cf6679;
+    --color__global__text--error: #{color.change(#cf6679, $alpha: 87%)};
+    --color__global__text--error--hint: #{color.change(#cf6679, $alpha: 60%)};
+
+    // --color__global__text--error--focus: #{color.change(#cf6679, $alpha: 100%)};
+    --color__global__text--error--hover: #{color.scale(#cf6679, $lightness: 16%)};
+    --color__global__text--error--active: #{color.scale(#cf6679, $lightness: 32%)};
+    --color__global__text--error--disabled: #{color.change(#cf6679, $alpha: 38%)};
+
+    // * --- PAGE DEFAULT COLORS (MAIN COLORS)
+    // * -------------------------------------
+    --color__page__background: #{color.mix(#bf360c, #121212, $weight: 8%, $method: rgb)};
+
+    --color__page__scrollbar-color: #ffab91;
+    --color__page__scrollbar-color--hover: #{color.scale(#ffab91, $lightness: 16%)};
+    --color__page__scrollbar-color--active: #{color.scale(#ffab91, $lightness: 32%)};
+
+    // * --- HEADER SECTION
+    // * ------------------
+    --color__header__navigation-bar-background: #{color.mix(
+            #bf360c,
+            #121212,
+            $weight: 8%,
+            $method: rgb
+        )};
+    --color__header__navigation-menu-background: #{color.change(
+            color.mix(#bf360c, #121212, $weight: 8%, $method: rgb),
+            $alpha: 0.777
+        )};
+
+    // * --- HERO SECTION
+    // * ----------------
+    --color__hero__background-image-overlay: #{color.change(
+            color.mix(#bf360c, #000, $weight: 8%, $method: rgb),
+            $alpha: 0.777
+        )};
+
+    --color__hero__slogan-text--gradient-step-1: #69f0ae;
+    --color__hero__slogan-text--gradient-step-2: #ffff00;
+    --color__hero__slogan-text--gradient-step-3: #ff5252;
+
+    // * --- USAGE SECTION
+    // * -----------------
+    --color__usage__numeric-list-background: #{color.change(
+            color.mix(#bf360c, #121212, $weight: 8%, $method: rgb),
+            $alpha: 0.38
+        )};
+
+    // * --- PRICING SECTION
+    // * -------------------
+    --color__pricing__price-badge-background: #ff8a80;
+
+    // * --- FEEDBACK FORM SECTION
+    // * -------------------------
+    --color__feedback-form__field-background: #{color.mix(
+            #bf360c,
+            #121212,
+            $weight: 8%,
+            $method: rgb
+        )};
+    --color__feedback-form__field-background--disabled: #{color.mix(
+            #bf360c,
+            #121212,
+            $weight: 8%,
+            $method: rgb
+        )};
+
+    // --color__feedback-form__field-autofill-background: #{color.change(#311b92, $alpha: 14%)};
+    // --color__feedback-form__field-autofill-text: #311b92;
+
+    // * --- FOOTER SECTION
+    // * ------------------
+    --color__footer__background--gradient-step-2: #{color.change(#dd2c00, $alpha: 87%)};
+    --color__footer__background--gradient-step-1: #{color.change(#6200ea, $alpha: 87%)};
+
+    --color__decorative-element__background: #{color.change(#000, $alpha: 8%)};
+
+    // * --- COOKIE CONSENT BANNER
+    // * -------------------------
+    --color__cookie-consent-banner__background: #{color.change(
+            color.mix(#bf360c, #121212, $weight: 8%, $method: rgb),
+            $alpha: 0.777
+        )};
+
+    // * --- CARD IMG
+    // * ------------
+    --color__card-img__background--gradient-step-1: #69f0ae;
+    --color__card-img__background--gradient-step-2: #ffff00;
+    --color__card-img__background--gradient-step-3: #ff5252;
+
+    // * --- BALLS GROUP
+    // * ---------------
+    --color__balls_group__shadow: #{color.change(#000, $alpha: 100%)};
+
+    // * --- OTHER COLORS
+    // * ----------------
+    --color__decorative-text__color: #{color.mix(
+            #fff,
+            color.mix(#bf360c, #121212, $weight: 8%, $method: rgb),
+            $weight: 16%,
+            $method: rgb
+        )};
+
+    --color__decorative-element__background--gradient-step-1: #{color.change(#6200ea, $alpha: 60%)};
+    // --color__decorative-element__background--gradient-step-1: transparent;
+
+    --color__decorative-element__background--gradient-step-2: #{color.change(#dd2c00, $alpha: 60%)};
+    // --color__decorative-element__background--gradient-step-2: transparent;
+
+    // @include bs.media-breakpoint-down(md) {
+    //     // * --- FOOTER SECTION
+    //     // * ------------------
+    //     --color__footer__background--gradient-step-1: #{color.change(#dd2c00, $alpha: 100%)};
+    //     --color__footer__background--gradient-step-2: #{color.change(#6200ea, $alpha: 100%)};
+    // }
+}
+
+// * --- ROOT COMPONENT
+// * ------------------
 :root {
-    // ! --- LIGHT THEME (DEFAULT)
-    // ! -------------------------
+    // ! --- COMMON TRANSITIONS
+    // ! ----------------------
     @include mixin.transition-for(
         --color__hero__slogan-text--gradient-step-1,
         --color__hero__slogan-text--gradient-step-2,
@@ -96,347 +405,21 @@
         scrollbar-color
     );
 
-    // * --- GLOBAL (COMMON) COLORS
-    // * --------------------------
-    --color__global__primary: #512da8;
-    --color__global__primary--focus: #6200ea;
-    --color__global__primary--hover: #{color.mix(#fafafa, #512da8, $weight: 12%, $method: rgb)};
-    --color__global__primary--active: #{color.mix(#121212, #512da8, $weight: 12%, $method: rgb)};
-    --color__global__primary--disabled: #{color.mix(#512da8, #fff, $weight: 38%, $method: rgb)};
+    // ! --- LIGHT THEME (DEFAULT)
+    // ! -------------------------
+    @include light-theme-colors;
 
-    --color__global__error: #b00020;
-    --color__global__error--focus: #{color.mix(#fff, #d50020, $weight: 3.5%, $method: rgb)};
-    --color__global__error--hover: #{color.mix(#fff, #b00020, $weight: 7%, $method: rgb)};
-    --color__global__error--active: #{color.mix(#121212, #d50020, $weight: 7%, $method: rgb)};
-    --color__global__error--disabled: #{color.mix(#fff, #b00020, $weight: 38%, $method: rgb)};
-
-    // --color__global__shadow: #{color.change(#121212, $alpha: 14%)};
-    // --color__global__shadow: #{color.change(#121212, $alpha: 40%)};
-    --color__global__shadow: #{color.change(#000, $alpha: 40%)};
-    --color__global__fade: #000;
-
-    // typography | base
-    --color__global__text--solid: #121212;
-    --color__global__text: #{color.change(#121212, $alpha: 87%)};
-    --color__global__text--hint: #{color.change(#121212, $alpha: 60%)};
-
-    --color__global__text--focus: #{color.change(#000, $alpha: 87%)};
-    --color__global__text--hover: #{color.change(#121212, $alpha: 100%)};
-    --color__global__text--active: #{color.change(#000, $alpha: 100%)};
-    --color__global__text--disabled: #{color.change(#121212, $alpha: 38%)};
-
-    --color__global__text--alt--solid: #fafafa;
-    --color__global__text--alt: #{color.change(#fafafa, $alpha: 87%)};
-    --color__global__text--alt--hint: #{color.change(#fafafa, $alpha: 60%)};
-
-    --color__global__text--alt--focus: #{color.change(#fff, $alpha: 87%)};
-    --color__global__text--alt--hover: #{color.change(#fafafa, $alpha: 100%)};
-    --color__global__text--alt--active: #{color.change(#fff, $alpha: 100%)};
-    --color__global__text--alt--disabled: #{color.change(#fafafa, $alpha: 38%)};
-
-    // typography | colored
-    --color__global__text--primary--solid: #512da8;
-    --color__global__text--primary: #{color.change(#512da8, $alpha: 87%)};
-    --color__global__text--primary--hint: #{color.change(#512da8, $alpha: 60%)};
-
-    --color__global__text--primary--focus: #{color.change(#6200ea, $alpha: 100%)};
-    --color__global__text--primary--hover: #{color.change(#512da8, $alpha: 100%)};
-    --color__global__text--primary--active: #{color.change(#311b92, $alpha: 100%)};
-    --color__global__text--primary--disabled: #{color.change(#512da8, $alpha: 38%)};
-
-    --color__global__text--error--solid: #b00020;
-    --color__global__text--error: #{color.change(#b00020, $alpha: 87%)};
-    --color__global__text--error--hint: #{color.change(#b00020, $alpha: 60%)};
-
-    --color__global__text--error--focus: #{color.change(#d50020, $alpha: 100%)};
-    --color__global__text--error--hover: #{color.change(#b00020, $alpha: 100%)};
-    --color__global__text--error--active: #{color.change(#b71c1c, $alpha: 100%)};
-    --color__global__text--error--disabled: #{color.change(#b00020, $alpha: 38%)};
-
-    // * --- PAGE DEFAULT COLORS (MAIN COLORS)
-    // * -------------------------------------
-    // --color__page__background: #{color.mix(#512da8, #fff, $weight: 8%, $method: rgb)};
-    --color__page__background: #fff;
-    --color__page__scrollbar-background: #{color.change(#757575, $alpha: 60%)};
-
-    // * --- HEADER SECTION
-    // * ------------------
-    --color__header__navigation-bar-background: #fff;
-    --color__header__navigation-menu-background: #{color.change(#fff, $alpha: 0.78)};
-
-    // * --- HERO SECTION
-    // * ----------------
-    // --color__hero__background-image-overlay: #{color.change(#fff, $alpha: 0.87)};
-    --color__hero__background-image-overlay: #000;
-
-    --color__hero__slogan-text--gradient-step-1: #00c853;
-    --color__hero__slogan-text--gradient-step-2: #ffd600;
-    --color__hero__slogan-text--gradient-step-3: #d50000;
-
-    // * --- EXAMPLES SECTION
-    // * --------------------
-    --color__examples__numeric-list-background: #{color.change(#fff, $alpha: 0.39)};
-
-    // * --- FEEDBACK FORM SECTION
-    // * -------------------------
-    --color__feedback-form__field-background: #fff;
-    --color__feedback-form__field-background--disabled: #fff;
-
-    --color__feedback-form__field-autofill-background: #{color.change(#512da8, $alpha: 14%)};
-    --color__feedback-form__field-autofill-text: #512da8;
-
-    // * --- PRICING SECTION
-    // * -------------------
-    --color__pricing__price-badge-background: #b71c1c;
-
-    // * --- FOOTER SECTION
-    // * ------------------
-    // --color__footer__background--gradient-step-1: #fff3e0;
-    // --color__footer__background--gradient-step-2: #ede7f6;
-
-    --color__footer__background--gradient-step-1: #ffd180;
-    --color__footer__background--gradient-step-2: #b388ff;
-
-    // * --- COOKIE CONSENT BANNER
-    // * -------------------------
-    --color__cookie-consent-banner__background: #{color.change(#fff, $alpha: 87%)};
-
-    // * --- CARD IMG
-    // * ------------
-    --color__card-img__background--gradient-step-1: #00c853;
-    --color__card-img__background--gradient-step-2: #ffd600;
-    --color__card-img__background--gradient-step-3: #d50000;
-
-    // * --- BALLS GROUP
-    // * ---------------
-    --color__balls_group__shadow: #{color.change(#000, $alpha: 80%)};
-
-    // * --- OTHER COLORS
-    // * ----------------
-    --color__decorative-element__background: #{color.change(#fff, $alpha: 0.1)};
-
-    // --color__decorative-element__background--gradient-step-1: #673ab7;
-    // --color__decorative-element__background--gradient-step-2: #ff9800;
-
-    --color__decorative-element__background--gradient-step-1: #b388ff;
-    --color__decorative-element__background--gradient-step-2: #ffd180;
-
-    @include bs.media-breakpoint-down(sm) {
-        --color__global__text--solid: #121212;
-        --color__global__text: #{color.change(#121212, $alpha: 100%)};
-        --color__global__text--hint: #{color.change(#121212, $alpha: 60%)};
-
-        --color__global__text--focus: #{color.change(#000, $alpha: 87%)};
-        --color__global__text--hover: #{color.change(#121212, $alpha: 100%)};
-        --color__global__text--active: #{color.change(#000, $alpha: 100%)};
-        --color__global__text--disabled: #{color.change(#121212, $alpha: 38%)};
-
-        --color__global__text--alt--solid: #fafafa;
-        --color__global__text--alt: #{color.change(#fafafa, $alpha: 100%)};
-        --color__global__text--alt--hint: #{color.change(#fafafa, $alpha: 60%)};
-
-        --color__global__text--alt--focus: #{color.change(#fff, $alpha: 87%)};
-        --color__global__text--alt--hover: #{color.change(#fafafa, $alpha: 100%)};
-        --color__global__text--alt--active: #{color.change(#fff, $alpha: 100%)};
-        --color__global__text--alt--disabled: #{color.change(#fafafa, $alpha: 38%)};
+    &[data-theme='dark'] {
+        // ! --- DARK THEME
+        // ! --------------
+        @include dark-theme-colors;
     }
 
-    // ! --- DARK THEME
-    // ! --------------
-    &[data-theme='dark'] {
-        // * --- GLOBAL (COMMON) COLORS
-        // * --------------------------
-        --color__global__primary: #b39ddb;
-        --color__global__primary--focus: #6200ea;
-        --color__global__primary--hover: #{color.mix(#fafafa, #b39ddb, $weight: 12%, $method: rgb)};
-        --color__global__primary--active: #{color.mix(#121212, #b39ddb, $weight: 12%, $method: rgb)};
-        --color__global__primary--disabled: #{color.mix(#b39ddb, #fff, $weight: 38%, $method: rgb)};
-
-        --color__global__error: #cf6679;
-        --color__global__error--focus: #{color.mix(#fff, #d50020, $weight: 3.5%, $method: rgb)};
-        --color__global__error--hover: #{color.mix(#fff, #cf6679, $weight: 7%, $method: rgb)};
-        --color__global__error--active: #{color.mix(#121212, #d50020, $weight: 7%, $method: rgb)};
-        --color__global__error--disabled: #{color.mix(#fff, #cf6679, $weight: 38%, $method: rgb)};
-
-        // --color__global__shadow: #{color.change(#000, $alpha: 14%)};
-        --color__global__shadow: #{color.change(#000, $alpha: 60%)};
-
-        --color__global__fade: #000;
-
-        // typography | base
-
-        --color__global__text--solid: #fafafa;
-        --color__global__text: #{color.change(#fafafa, $alpha: 87%)};
-        --color__global__text--hint: #{color.change(#fafafa, $alpha: 60%)};
-
-        --color__global__text--focus: #{color.change(#fff, $alpha: 87%)};
-        --color__global__text--hover: #{color.change(#fafafa, $alpha: 100%)};
-        --color__global__text--active: #{color.change(#fff, $alpha: 100%)};
-        --color__global__text--disabled: #{color.change(#fafafa, $alpha: 38%)};
-
-        --color__global__text--alt--solid: #121212;
-        --color__global__text--alt: #{color.change(#121212, $alpha: 87%)};
-        --color__global__text--alt--hint: #{color.change(#121212, $alpha: 60%)};
-
-        --color__global__text--alt--focus: #{color.change(#000, $alpha: 87%)};
-        --color__global__text--alt--hover: #{color.change(#121212, $alpha: 100%)};
-        --color__global__text--alt--active: #{color.change(#000, $alpha: 100%)};
-        --color__global__text--alt--disabled: #{color.change(#121212, $alpha: 38%)};
-
-        // typography | colored
-        --color__global__text--primary--solid: #b39ddb;
-        --color__global__text--primary: #{color.change(#b39ddb, $alpha: 87%)};
-        --color__global__text--primary--hint: #{color.change(#b39ddb, $alpha: 60%)};
-
-        --color__global__text--primary--focus: #{color.change(#6200ea, $alpha: 100%)};
-        --color__global__text--primary--hover: #{color.change(#b39ddb, $alpha: 100%)};
-        --color__global__text--primary--active: #{color.change(#311b92, $alpha: 100%)};
-        --color__global__text--primary--disabled: #{color.change(#b39ddb, $alpha: 38%)};
-
-        --color__global__text--error--solid: #cf6679;
-        --color__global__text--error: #{color.change(#cf6679, $alpha: 87%)};
-        --color__global__text--error--hint: #{color.change(#cf6679, $alpha: 60%)};
-
-        --color__global__text--error--focus: #{color.change(#d50020, $alpha: 100%)};
-        --color__global__text--error--hover: #{color.change(#cf6679, $alpha: 100%)};
-        --color__global__text--error--active: #{color.change(#b71c1c, $alpha: 100%)};
-        --color__global__text--error--disabled: #{color.change(#cf6679, $alpha: 38%)};
-
-        // * --- PAGE DEFAULT COLORS (MAIN COLORS)
-        // * -------------------------------------
-        --color__page__background: #{color.mix(#b39ddb, #121212, $weight: 8%, $method: rgb)};
-        --color__page__scrollbar-background: #{color.change(#eee, $alpha: 60%)};
-
-        // * --- HEADER SECTION
-        // * ------------------
-        --color__header__navigation-bar-background: #{color.mix(
-                #b39ddb,
-                #121212,
-                $weight: 8%,
-                $method: rgb
-            )};
-        --color__header__navigation-menu-background: #{color.change(
-                color.mix(#b39ddb, #121212, $weight: 8%, $method: rgb),
-                $alpha: 0.78
-            )};
-
-        // * --- HERO SECTION
-        // * ----------------
-        // --color__hero__background-image-overlay: #{color.change(#000, $alpha: 0.87)};
-        --color__hero__background-image-overlay: #000;
-
-        --color__hero__slogan-text--gradient-step-1: #69f0ae;
-        --color__hero__slogan-text--gradient-step-2: #ff0;
-        --color__hero__slogan-text--gradient-step-3: #ff5252;
-
-        // * --- EXAMPLES SECTION
-        // * --------------------
-        --color__examples__numeric-list-background: #{color.change(#fff, $alpha: 0.39)};
-
-        // * --- FEEDBACK FORM SECTION
-        // * -------------------------
-        --color__feedback-form__field-background: #121212;
-        --color__feedback-form__field-background--disabled: #121212;
-
-        --color__feedback-form__field-autofill-background: #{color.change(#512da8, $alpha: 14%)};
-        --color__feedback-form__field-autofill-text: #512da8;
-
-        // * --- PRICING SECTION
-        // * -------------------
-        --color__pricing__price-badge-background: #ef9a9a;
-
-        // * --- FOOTER SECTION
-        // * ------------------
-        // --color__footer__background--gradient-step-1: #ffcc80;
-        // --color__footer__background--gradient-step-2: #b39ddb;
-
-        --color__footer__background--gradient-step-1: #e65100;
-        --color__footer__background--gradient-step-2: #311b92;
-
-        // * --- COOKIE CONSENT BANNER
-        // * -------------------------
-        --color__cookie-consent-banner__background: #{color.change(
-                color.mix(#b39ddb, #121212, $weight: 8%, $method: rgb),
-                $alpha: 87%
-            )};
-
-        // * --- CARD IMG
-        // * ------------
-        --color__card-img__background--gradient-step-1: #69f0ae;
-        --color__card-img__background--gradient-step-2: #ff0;
-        --color__card-img__background--gradient-step-3: #ff5252;
-
-        // * --- BALLS GROUP
-        // * ---------------
-        --color__balls_group__shadow: #{color.change(#000, $alpha: 100%)};
-
-        // * --- OTHER COLORS
-        // * ----------------
-        --color__decorative-element__background: #{color.change(#121212, $alpha: 0.1)};
-
-        --color__decorative-element__background--gradient-step-1: #{color.change(
-                #121212,
-                $alpha: 87%
-            )};
-        --color__decorative-element__background--gradient-step-2: #{color.change(
-                #121212,
-                $alpha: 87%
-            )};
-
-        // ! OLD
-        // // new colors
-        // --bc-color: #121212;
-        // --cookie-consent-banner-bc-color: rgb(18 18 18 / 87%);
-        // --primary-color: #ffab91;
-        // --secondary-color: #b39ddb;
-        // --primary-color--hover: #ffccbc;
-        // --primary-color--active: #ff8a65;
-        // --primary-color--focus: var(--primary-color--active);
-        // --primary-color--disabled: var(--primary-color--active);
-        // --primary-color--tone-100: #2e2c31ff;
-        // --secondary-color--tone-100: #2e2c31ff;
-
-        // // --primary-color--tone-500: rgba(255, 255, 255, 0.07);
-        // // --secondary-color--tone-500: rgba(255, 255, 255, 0.07);
-
-        // --primary-color--tone-500: #ffab91;
-        // --secondary-color--tone-500: #b39ddb;
-        // --bc-circle-gradient-color-1: rgb(255 255 255 / 14%);
-        // --bc-circle-gradient-color-2: rgb(255 255 255 / 14%);
-        // --finally-bc-color: color-mix(in srgb, var(--bc-color) 100%, var(--secondary-color) 8%);
-
-        // // text colors
-        // --text-color-60: #fff9;
-        // --text-color-alt-60: #12121299;
-        // --text-color-87: #ffffffde;
-        // --text-color-alt-87: #121212de;
-        // --text-color-100: #ffff;
-        // --text-color-alt-100: #121212ff;
-
-        // // form fields colors
-        // --form-field-bc-color: color-mix(
-        //     in srgb,
-        //     var(--finally-bc-color) 100%,
-        //     var(--primary-color) 5%
-        // );
-
-        // // accent colors
-        // --accent-color-green: #a5d6a7;
-        // --accent-color-yellow: #fff59d;
-        // --accent-color-red: #ef9a9a;
-        // --header-decoration-1--color: rgb(255 255 255 / 7%);
-        // --header-decoration-2--color: rgb(255 255 255 / 7%);
-        // --footer-decoration-1--color: rgb(255 255 255 / 7%);
-        // --footer-decoration-2--color: rgb(255 255 255 / 7%);
-
-        // // --offcanvas-bc-color: rgba(18, 18, 18, 0.37);
-        // --offcanvas-bc-color: color-mix(in srgb, var(--bc-color) 37%, var(--secondary-color) 8%);
-        // --box-shadow-color: rgb(0 0 0 / 10%);
-        // --hero-bc-color: #121212;
-        // --hero--accent-color-green: #a5d6a7;
-        // --hero--accent-color-yellow: #fff59d;
-        // --hero--accent-color-red: #ef9a9a;
-        // --usage--card-block-bc-color: rgb(255 255 255 / 5%);
-        // --prices--price-block-bc-color: #ef9a9a;
+    &.nojs {
+        @media (prefers-color-scheme: dark) {
+            // ! --- DARK THEME
+            // ! --------------
+            @include dark-theme-colors;
+        }
     }
 }

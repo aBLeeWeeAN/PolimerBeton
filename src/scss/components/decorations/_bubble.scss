@@ -7,32 +7,26 @@
 // * ---------------------------
 @keyframes bubble__outer-el__scale-effect {
     from {
-        transform: translate(var(--bubble__pos-x), var(--bubble__pos-y)) scale(1);
+        transform: translateX(var(--bubble__pos-x)) scale(1);
     }
 
     to {
-        transform: translate(var(--bubble__pos-x), var(--bubble__pos-y))
-            scale(var(--bubble__scale-factor));
+        transform: translateX(var(--bubble__pos-x)) scale(var(--bubble__scale-factor));
     }
 }
 
 @keyframes bubble__inner-el__rotation-effect {
-    0% {
-        transform: rotate(calc(var(--bubble__clockwise-rotation) * 0deg));
+    from {
+        transform: rotate(var(--bubble__clockwise-rotation));
     }
 
-    50% {
-        transform: rotate(calc(var(--bubble__clockwise-rotation) * 180deg));
-    }
-
-    100% {
+    to {
         transform: rotate(calc(var(--bubble__clockwise-rotation) * 360deg));
     }
 }
 
 .my-bubble {
-    display: none;
-    will-change: transform;
+    // display: none !important;
 
     --bubble__pos-x: -50%;
     --bubble__pos-y: 0;
@@ -40,168 +34,55 @@
     --bubble__clockwise-rotation: 1;
     --bubble__scale-factor: 3;
 
-    --bubble__animation-time: 10s;
-    --bubble__animation-time: 500ms;
+    // --bubble__animation-time: 500ms;
+    --bubble__animation-time: 30s;
+
+    will-change: transform;
+
+    // // ! фикс бага | тайлинг на Firefox
+    // transform-style: preserve-3d;
 
     position: absolute;
-
-    top: 500px;
+    top: var(--bubble__pos-y);
     left: 50%;
 
     transform-origin: center center;
-    transform: translate(var(--bubble__pos-x), var(--bubble__pos-y));
+    transform: translateX(var(--bubble__pos-x));
 
     aspect-ratio: 1 / 1;
-    width: 500px; // * default
+    width: 500px; // * default width | for debug
 
     background: transparent;
-    pointer-events: none;
-
     animation: bubble__outer-el__scale-effect var(--bubble__animation-time) ease-in-out alternate
         infinite;
 
+    pointer-events: none;
+    user-select: none;
+
+    // ! калл
+    // filter: blur(1000px);
+
     &::before {
-        // ? linear-gradient анимируется через @property
+        // ? linear-gradient анимируется через @property самого цвета в _themes.scss
         // @include mixin.transition-for(background);
 
         will-change: transform;
-
         content: '';
 
         position: absolute;
         inset: 0;
 
-        background: linear-gradient(90deg, red, blue); // * default
-        pointer-events: none;
-
-        border: 0;
         border-radius: 50%;
+        background: linear-gradient(90deg, red, blue); // * default gradient | for debug
 
         animation: bubble__inner-el__rotation-effect var(--bubble__animation-time) linear infinite;
+
+        pointer-events: none;
+        user-select: none;
     }
 
-    &--description {
-        --bubble__pos-x: -77%;
-        --bubble__pos-y: 0;
-
-        --bubble__clockwise-rotation: 1;
-        --bubble__scale-factor: 1.5;
-
-        --bubble__animation-time: 180s;
-        --bubble__animation-time: 500ms;
-
-        top: 1%;
-        transform: translate(var(--bubble__pos-x), var(--bubble__pos-y));
-
-        width: 1920px;
-
-        &::before {
-            background: linear-gradient(
-                135deg,
-                var(--color__decorative-element__background--gradient-step-1) 0%,
-                var(--color__decorative-element__background--gradient-step-2) 100%
-            );
-        }
-
-        @include bs.media-breakpoint-down(xl) {
-            --bubble__pos-x: -73.8%;
-
-            top: 2%;
-            width: 2160px;
-        }
-
-        @include bs.media-breakpoint-down(lg) {
-            --bubble__pos-x: -73.4%;
-
-            top: 1.7%;
-            width: 2144px;
-        }
-
-        @include bs.media-breakpoint-down(md) {
-            --bubble__pos-x: -73.4%;
-
-            width: 2280px;
-        }
-
-        @include bs.media-breakpoint-down(sm) {
-            --bubble__pos-x: -73.4%;
-
-            top: 1.1%;
-            width: 1600px;
-        }
-    }
-
-    &--examples {
-        --bubble__pos-x: -34%;
-        --bubble__pos-y: 0;
-
+    &:nth-child(odd) {
         --bubble__clockwise-rotation: -1;
-        --bubble__scale-factor: 0.8;
-
-        --bubble__animation-time: 180s;
-        --bubble__animation-time: 500ms;
-
-        top: 30%;
-        transform: translate(var(--bubble__pos-x), var(--bubble__pos-y));
-
-        width: 2480px;
-
-        &::before {
-            background: linear-gradient(
-                135deg,
-                var(--color__decorative-element__background--gradient-step-2) 0%,
-                var(--color__decorative-element__background--gradient-step-1) 70%,
-                var(--color__decorative-element__background--gradient-step-1) 100%
-            );
-        }
-
-        @include bs.media-breakpoint-down(xxl) {
-            --bubble__pos-x: -39%;
-
-            top: 28%;
-        }
-
-        @include bs.media-breakpoint-down(xl) {
-            --bubble__pos-x: -39%;
-
-            width: 2160px;
-        }
-
-        @include bs.media-breakpoint-down(lg) {
-            --bubble__pos-x: -39%;
-
-            top: 31%;
-            width: 1984px;
-        }
-
-        @include bs.media-breakpoint-down(md) {
-            --bubble__pos-x: -39%;
-
-            width: 1840px;
-        }
-
-        @include bs.media-breakpoint-down(sm) {
-            --bubble__pos-x: -39%;
-
-            top: 25%;
-            width: 1700px;
-        }
-    }
-
-    &--legal {
-        --bubble__pos-x: -71%;
-        --bubble__pos-y: 0;
-
-        --bubble__clockwise-rotation: -1;
-        --bubble__scale-factor: 1.7;
-
-        --bubble__animation-time: 180s;
-        --bubble__animation-time: 500ms;
-
-        top: 70%;
-        transform: translate(var(--bubble__pos-x), var(--bubble__pos-y));
-
-        width: 2848px;
 
         &::before {
             background: linear-gradient(
@@ -211,39 +92,224 @@
                 var(--color__decorative-element__background--gradient-step-2) 100%
             );
         }
+    }
+
+    &:nth-child(even) {
+        // --bubble__clockwise-rotation: 1;
+
+        &::before {
+            background: linear-gradient(
+                135deg,
+                var(--color__decorative-element__background--gradient-step-2) 0%,
+                var(--color__decorative-element__background--gradient-step-1) 70%,
+                var(--color__decorative-element__background--gradient-step-1) 100%
+            );
+        }
+    }
+
+    &:nth-child(1) {
+        --bubble__pos-x: -77%;
+        --bubble__pos-y: 1%;
+
+        --bubble__scale-factor: 1.5;
+
+        transform: translateX(var(--bubble__pos-x));
+        width: 2600px;
 
         @include bs.media-breakpoint-down(xxl) {
-            --bubble__pos-x: -75.2%;
-
-            top: 60%;
-            width: 4160px;
+            width: 2200px;
         }
 
         @include bs.media-breakpoint-down(xl) {
-            --bubble__pos-x: -76.6%;
-
-            width: 3760px;
+            width: 2000px;
         }
 
         @include bs.media-breakpoint-down(lg) {
-            --bubble__pos-x: -76.6%;
-
-            top: 53%;
-            width: 4200px;
+            --bubble__scale-factor: 1.27;
+            width: 1500px;
         }
 
         @include bs.media-breakpoint-down(md) {
-            --bubble__pos-x: -76.6%;
+            --bubble__pos-y: 2%;
+            --bubble__scale-factor: 1.2;
 
-            top: 62%;
-            width: 2916px;
+            width: 800px;
         }
 
         @include bs.media-breakpoint-down(sm) {
-            --bubble__pos-x: -76.6%;
+            --bubble__pos-y: -2%;
+            --bubble__scale-factor: 1.318;
 
-            top: 64%;
-            width: 2600px;
+            width: 820px;
+        }
+    }
+
+    &:nth-child(2) {
+        --bubble__pos-x: -34%;
+        --bubble__pos-y: 31%;
+
+        --bubble__scale-factor: 0.4;
+
+        transform: translateX(var(--bubble__pos-x));
+        width: 1800px;
+
+        animation-delay: calc(var(--bubble__animation-time) / -2);
+
+        @include bs.media-breakpoint-down(lg) {
+            --bubble__pos-y: 27%;
+            width: 1200px;
+        }
+
+        @include bs.media-breakpoint-down(md) {
+            --bubble__pos-y: 15%;
+            --bubble__scale-factor: 0.8;
+
+            width: 1200px;
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            --bubble__pos-y: 13%;
+            --bubble__scale-factor: 0.6;
+
+            width: 700px;
+        }
+    }
+
+    &:nth-child(3) {
+        --bubble__pos-x: -71%;
+        --bubble__pos-y: 58%;
+
+        --bubble__scale-factor: 1.55;
+
+        transform: translateX(var(--bubble__pos-x));
+        width: 4000px;
+
+        @include bs.media-breakpoint-down(xxl) {
+            --bubble__scale-factor: 1.4;
+            width: 3400px;
+        }
+
+        @include bs.media-breakpoint-down(xl) {
+            --bubble__scale-factor: 1.3;
+            width: 3000px;
+        }
+
+        @include bs.media-breakpoint-down(lg) {
+            --bubble__pos-x: -85%;
+            --bubble__pos-y: 49%;
+
+            --bubble__scale-factor: 1.3;
+
+            width: 1800px;
+        }
+
+        @include bs.media-breakpoint-down(md) {
+            --bubble__pos-y: 34%;
+            width: 1400px;
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            --bubble__pos-y: 27.5%;
+            --bubble__scale-factor: 1.55;
+
+            width: 860px;
+        }
+    }
+
+    &:nth-child(4) {
+        display: none;
+
+        --bubble__pos-x: -27%;
+        --bubble__pos-y: 80%;
+
+        --bubble__scale-factor: 0.9;
+
+        transform: translateX(var(--bubble__pos-x));
+        width: 1300px;
+
+        @include bs.media-breakpoint-down(lg) {
+            display: block;
+        }
+
+        @include bs.media-breakpoint-down(md) {
+            --bubble__pos-y: 56%;
+            width: 1100px;
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            --bubble__pos-x: -21%;
+            --bubble__pos-y: 46%;
+
+            --bubble__scale-factor: 1.13;
+
+            width: 1000px;
+        }
+    }
+
+    &:nth-child(5) {
+        display: none;
+
+        --bubble__pos-x: -97%;
+        --bubble__pos-y: 73%;
+
+        --bubble__scale-factor: 1.23;
+
+        transform: translateX(var(--bubble__pos-x));
+        width: 500px;
+
+        @include bs.media-breakpoint-down(md) {
+            display: block;
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            --bubble__pos-y: 64%;
+            width: 570px;
+        }
+
+        @include bs.media-breakpoint-down(xs) {
+            --bubble__pos-x: -83%;
+            --bubble__pos-y: 63.5%;
+        }
+    }
+
+    &:nth-child(6) {
+        display: none;
+
+        --bubble__pos-x: -17%;
+        --bubble__pos-y: 84%;
+
+        --bubble__scale-factor: 1.4;
+
+        transform: translateX(var(--bubble__pos-x));
+        width: 980px;
+
+        @include bs.media-breakpoint-down(md) {
+            display: block;
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            --bubble__pos-x: -24%;
+            --bubble__pos-y: 78%;
+
+            --bubble__scale-factor: 1.6;
+
+            width: 740px;
+        }
+    }
+
+    &:nth-child(7) {
+        display: none;
+
+        --bubble__pos-x: -79%;
+        --bubble__pos-y: 91%;
+
+        --bubble__scale-factor: 0.555;
+
+        transform: translateX(var(--bubble__pos-x));
+        width: 777px;
+
+        @include bs.media-breakpoint-down(sm) {
+            display: block;
         }
     }
 }

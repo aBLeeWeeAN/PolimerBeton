@@ -63,13 +63,33 @@
         left: -25px;
         right: -25px;
         padding: 0 25px;
-
         padding-top: var(--layout__header__navigation-bar-height);
 
         background-color: var(--color__header__navigation-menu-background);
         box-shadow: 0 2px 16px var(--color__global__shadow);
 
         backdrop-filter: blur(18px);
+
+        // transform: translateY(-100%);
+        // visibility: hidden;
+
+        // // ? hiding animation
+        // transition:
+        //     transform 700ms cubic-bezier(0.165, 0.84, 0.44, 1),
+        //     visibility 700ms ease-in-out,
+        //     background-color 300ms ease-in-out,
+        //     box-shadow 300ms ease-in-out;
+
+        // .my-header__nav-menu-toggle:checked ~ & {
+        //     transform: translateY(0);
+        //     visibility: visible;
+
+        //     // ? opening animation
+        //     transition:
+        //         transform 1000ms cubic-bezier(0.165, 0.84, 0.44, 1),
+        //         background-color 300ms ease-in-out,
+        //         box-shadow 300ms ease-in-out;
+        // }
 
         &.showing {
             transition:
@@ -86,8 +106,13 @@
         }
 
         @include bs.media-breakpoint-down(md) {
-            --#{bs.$prefix}offcanvas-height: 100vh;
-            max-height: 100vh;
+            // --#{bs.$prefix}offcanvas-height: 100vh;
+
+            min-height: 100vh;
+
+            @supports (min-height: 100dvh) {
+                min-height: 100dvh;
+            }
         }
 
         .my-offcanvas-body {
@@ -105,5 +130,9 @@
                 padding: calc(2 * var(--layout__global__spacing)) 0 calc(2 * var(--layout__global__spacing) + var(--layout__header__navigation-bar__control-group__height));
             }
         }
+    }
+
+    &__nav-menu-toggle {
+        outline: none;
     }
 }

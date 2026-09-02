@@ -16,7 +16,12 @@
         align-items: center;
 
         &--mobile {
+            justify-content: space-between;
             height: calc(var(--layout__header__navigation-bar__control-group__height) - 1px);
+
+            .nojs & {
+                justify-content: center;
+            }
         }
     }
 
@@ -29,6 +34,10 @@
 
         &--mobile {
             column-gap: mixin.fluid-with-range(10px, 14px, xs, md);
+
+            .nojs & {
+                column-gap: mixin.fluid-with-range(20px, 28px, xs, md);
+            }
         }
     }
 

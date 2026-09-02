@@ -98,7 +98,8 @@
 %text__subtitle--advantage__before {
     @extend %text__base;
 
-    // todo: выставить цифры по правому краю, сделать через css grid
+    // ? fallback для font-variant-numeric
+    font-feature-settings: 'pnum' 1;
     font-variant-numeric: proportional-nums;
     // font-variant-numeric: tabular-nums;
 
@@ -107,13 +108,12 @@
 
     color: inherit;
 
-    line-height: 0.7em;
-
+    line-height: 0.75em;
     letter-spacing: 0;
     margin-right: 0;
 
     text-transform: uppercase;
-    text-align: left;
+    text-align: right;
 
     margin-bottom: 0;
     max-width: unset;
@@ -125,13 +125,11 @@
 
     @include bs.media-breakpoint-down(lg) {
         font-variant-numeric: tabular-nums;
-
         font-weight: 600;
         font-size: 22em;
 
+        color: var(--color__decorative-text__color);
         text-align: center;
-
-        opacity: 0.16;
     }
 
     @include bs.media-breakpoint-down(sm) {

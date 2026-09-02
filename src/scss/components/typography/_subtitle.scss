@@ -5,6 +5,26 @@
 
 @use '../../vendors/bootstrap' as bs;
 
+@property --subtitle__advantage-number__gradient-angle {
+    syntax: '<angle>';
+    initial-value: 180deg;
+    inherits: true;
+}
+
+@keyframes subtitle__advantage-number__gradient-rotation-effect {
+    from {
+        --subtitle__advantage-number__gradient-angle: calc(
+            var(--subtitle__advantage-number__rotation-spin, 1) * 180deg
+        );
+    }
+
+    to {
+        --subtitle__advantage-number__gradient-angle: calc(
+            var(--subtitle__advantage-number__rotation-spin, 1) * 540deg
+        );
+    }
+}
+
 @keyframes subtitle__advantage-number__parallax-move-effect {
     from {
         transform: translateY(var(--slide-start));
@@ -29,233 +49,146 @@
     &--advantage {
         @extend %text__subtitle--advantage;
 
-        view-timeline-name: --my-advantage;
-
-        display: flex;
-        flex-flow: row nowrap;
+        display: grid;
+        grid-template-columns: min-content min-content;
 
         align-items: center;
-        justify-content: flex-start;
+        column-gap: calc(var(--layout__global__spacing));
 
-        column-gap: 0.75em;
-        max-width: 18em;
+        // ? компенсация отступов символов самого шрифта
+        $digit-offsets: (
+            1: -0.09em,
+            4: 0.035em,
+        );
 
-        .my-advantages__advantage:nth-child(1) &,
-        .my-advantages__advantage:nth-child(2) & {
-            max-width: 14.25em;
+        @each $digit, $offset in $digit-offsets {
+            .my-advantages__advantage:nth-child(#{$digit}) &::before {
+                margin-right: $offset;
+            }
         }
 
-        .my-advantages__advantage:nth-child(1) & {
-            column-gap: 0;
-        }
-
-        .my-advantages__advantage:nth-child(4) & {
-            max-width: 14.75em;
-            column-gap: 1.25em;
+        // ? меняем спин анимации вращения градиента у нечётных advantage
+        .my-advantages__advantage:nth-child(odd) &::before {
+            --subtitle__advantage-number__rotation-spin: -1;
         }
 
         &::before {
             @extend %text__subtitle--advantage__before;
+            content: counter(advantage-counter);
 
-            content: counter(advantage-counter) + ' ';
-            display: inline-block;
+            display: block;
+            justify-self: end;
+
             pointer-events: none;
+            user-select: none;
 
             @include bs.media-breakpoint-down(lg) {
-                will-change: transform;
+                will-change: background-image;
 
                 z-index: z('background');
-                // z-index: z('higher');
                 position: absolute;
 
-                animation: subtitle__advantage-number__parallax-move-effect linear both;
+                // ? фикс обрезки верхних краёв цифры из за background-clip
+                // line-height: 1;
+                text-box-trim: none;
 
-                animation-timeline: --my-advantage;
-                animation-range: cover -50% cover 150%;
+                background-image: linear-gradient(
+                    var(--subtitle__advantage-number__gradient-angle, 180deg),
+                    var(--color__decorative-element__background--gradient-step-1) 0%,
+                    var(--color__decorative-element__background--gradient-step-2) 100%
+                );
 
-                // ! debug
-                // top: 50%;
-                // left: 50%;
+                // ? используем шрифт как маску для background
+                background-clip: text;
+                color: transparent;
 
-                // transform: translate(-50%, -50%);
+                animation: subtitle__advantage-number__gradient-rotation-effect 10s linear infinite;
 
-                // ! new
-                left: -7%;
+                // ! --- digit vertical position
+                // ! ---------------------------
+                top: 50%;
+                transform: translateY(-50%);
+
+                // ! --- digit horizontal position
+                // ! -----------------------------
+                left: -2.5%;
                 right: unset;
 
                 .my-advantages__advantage:nth-child(even) & {
                     left: unset;
-                    right: -7%;
-                }
-
-                // ! old
-                --slide-start: calc(-50% + 150%);
-                --slide-end: calc(-50%);
-
-                transform: translateY(var(--slide-start));
-
-                .my-advantages__advantage:nth-child(1) & {
-                    --slide-start: calc(-50% + 150%);
-                    --slide-end: calc(-45%);
-                }
-
-                .my-advantages__advantage:nth-child(2) & {
-                    --slide-start: calc(-50% + 135%);
-                    --slide-end: calc(-50%);
-                }
-
-                .my-advantages__advantage:nth-child(3) & {
-                    --slide-start: calc(-50% + 135%);
-                    --slide-end: calc(-45%);
-                }
-
-                .my-advantages__advantage:nth-child(4) & {
-                    --slide-start: calc(-50% + 150%);
-                    --slide-end: calc(-30%);
-                }
-
-                .my-advantages__advantage:nth-child(5) & {
-                    --slide-start: calc(-50% + 150%);
-                    --slide-end: calc(-40%);
-                }
-
-                .my-advantages__advantage:nth-child(6) & {
-                    --slide-start: calc(-50% + 135%);
-                    --slide-end: calc(-40%);
+                    right: -2.5%;
                 }
             }
 
             @include bs.media-breakpoint-down(md) {
-                left: -15%;
+                // ! --- digit horizontal position
+                // ! -----------------------------
+                left: -3.5%;
                 right: unset;
 
                 .my-advantages__advantage:nth-child(even) & {
                     left: unset;
-                    right: -15%;
-                }
-
-                .my-advantages__advantage:nth-child(1) & {
-                    --slide-start: calc(-50% + 115%);
-                    --slide-end: calc(-40%);
-                }
-
-                .my-advantages__advantage:nth-child(2) & {
-                    --slide-start: calc(-50% + 115%);
-                    --slide-end: calc(-40%);
-                }
-
-                .my-advantages__advantage:nth-child(3) & {
-                    --slide-start: calc(-50% + 135%);
-                    --slide-end: calc(-40%);
-                }
-
-                .my-advantages__advantage:nth-child(4) & {
-                    --slide-start: calc(-50% + 150%);
-                    --slide-end: calc(-17.5%);
-                }
-
-                .my-advantages__advantage:nth-child(5) & {
-                    --slide-start: calc(-50% + 150%);
-                    --slide-end: calc(-40%);
-                }
-
-                .my-advantages__advantage:nth-child(6) & {
-                    --slide-start: calc(-50% + 135%);
-                    --slide-end: calc(-40%);
+                    right: -3.5%;
                 }
             }
 
             @include bs.media-breakpoint-down(sm) {
-                left: -20%;
+                // ! --- digit horizontal position
+                // ! -----------------------------
+                left: -22.5%;
                 right: unset;
 
                 .my-advantages__advantage:nth-child(even) & {
                     left: unset;
-                    right: -20%;
-                }
-
-                .my-advantages__advantage:nth-child(1) & {
-                    --slide-start: calc(-50% + 100%);
-                    --slide-end: calc(-12.5%);
-                }
-
-                .my-advantages__advantage:nth-child(2) & {
-                    --slide-start: calc(-50% + 100%);
-                    --slide-end: calc(-15%);
-                }
-
-                .my-advantages__advantage:nth-child(3) & {
-                    --slide-start: calc(-50% + 110%);
-                    --slide-end: calc(-12.5%);
-                }
-
-                .my-advantages__advantage:nth-child(4) & {
-                    --slide-start: calc(-50% + 140%);
-                    --slide-end: calc(-10%);
-                }
-
-                .my-advantages__advantage:nth-child(5) & {
-                    --slide-start: calc(-50% + 135%);
-                    --slide-end: calc(-25%);
-                }
-
-                .my-advantages__advantage:nth-child(6) & {
-                    --slide-start: calc(-50% + 115%);
-                    --slide-end: calc(-25%);
+                    right: -22.5%;
                 }
             }
 
             @include bs.media-breakpoint-down(xs) {
-                // font-size: 21em;
-
-                left: -30%;
+                // ! --- digit horizontal position
+                // ! -----------------------------
+                left: -28.75%;
                 right: unset;
 
                 .my-advantages__advantage:nth-child(even) & {
                     left: unset;
-                    right: -30%;
+                    right: -28.75%;
                 }
+            }
+        }
 
-                .my-advantages__advantage:nth-child(1) & {
-                    --slide-start: calc(-50% + 100%);
-                    --slide-end: calc(-7.5%);
-                }
+        @supports (animation-timeline: view()) {
+            view-timeline-name: --my-advantage;
 
-                .my-advantages__advantage:nth-child(2) & {
-                    --slide-start: calc(-50% + 100%);
-                    --slide-end: calc(-5%);
-                }
+            &::before {
+                @include bs.media-breakpoint-down(lg) {
+                    will-change: transform, background-image;
 
-                .my-advantages__advantage:nth-child(3) & {
-                    --slide-start: calc(-50% + 110%);
-                    --slide-end: calc(-12.5%);
-                }
+                    // ? добавлена анимация на скролл
+                    animation:
+                        subtitle__advantage-number__parallax-move-effect linear both,
+                        subtitle__advantage-number__gradient-rotation-effect 30s linear infinite;
 
-                .my-advantages__advantage:nth-child(4) & {
-                    --slide-start: calc(-50% + 140%);
-                    --slide-end: calc(-2.5%);
-                }
+                    animation-timeline: --my-advantage, auto;
+                    animation-range:
+                        cover -50% cover 150%,
+                        normal;
 
-                .my-advantages__advantage:nth-child(5) & {
-                    --slide-start: calc(-50% + 135%);
-                    --slide-end: calc(-20%);
-                }
+                    // ! --- digit vertical position
+                    // ! ---------------------------
+                    --slide-start: calc(-50% + 25%);
+                    --slide-end: calc(-50% - 25%);
 
-                .my-advantages__advantage:nth-child(6) & {
-                    --slide-start: calc(-50% + 115%);
-                    --slide-end: calc(-5%);
+                    transform: translateY(var(--slide-start));
                 }
             }
         }
 
         @include bs.media-breakpoint-down(lg) {
-            max-width: 13em;
-            column-gap: 0;
-
-            .my-advantages__advantage:nth-child(1) &,
-            .my-advantages__advantage:nth-child(2) &,
-            .my-advantages__advantage:nth-child(4) & {
-                max-width: 9em;
+            @each $digit, $offset in $digit-offsets {
+                .my-advantages__advantage:nth-child(#{$digit}) &::before {
+                    margin-right: 0;
+                }
             }
         }
     }

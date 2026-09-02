@@ -176,16 +176,17 @@
     @extend %text__base;
 
     font-variant-numeric: tabular-nums;
-
     font-weight: 600;
-    font-size: clamp(72px, 0.2095 * 100vw - 17.0182px, 360px);
 
-    color: var(--color__global__text);
+    font-size: clamp(72px, 0.2095 * 100vw - 17.0182px, 360px);
+    // font-size: min(clamp(72px, 0.2095 * 100vw - 17.0182px, 360px), 30vh);
+
+    color: var(--color__decorative-text__color);
 
     letter-spacing: var(--typography__global__title__letter-spacing);
     margin-right: calc(-1 * var(--typography__global__title__letter-spacing));
 
-    line-height: 0.725em;
+    line-height: 0.75em;
 
     text-align: center;
     text-transform: uppercase;
@@ -194,10 +195,6 @@
     max-width: unset;
 
     text-wrap-mode: nowrap;
-    opacity: 0.09;
-
-    // todo: for night mode
-    // opacity: 0.11;
 
     @supports (text-box: trim-both cap alphabetic) {
         text-box-trim: trim-both;

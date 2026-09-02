@@ -4,9 +4,9 @@
 
 @use '../../vendors/bootstrap' as bs;
 
-@keyframes paragraph__background__running-gradient-effect {
+@keyframes paragraph--hero-slogan__background__running-gradient-effect {
     to {
-        background-position: var(--bg-size) 0;
+        background-position: var(--paragraph--hero-slogan__background-size) 0;
     }
 }
 
@@ -17,24 +17,23 @@
         @extend %text__paragraph--hero-slogan;
         will-change: background-position;
 
-        --bg-size: 200%;
+        --paragraph--hero-slogan__background-size: 200%;
+        background-image: linear-gradient(
+            90deg,
+            var(--color__hero__slogan-text--gradient-step-1) 0%,
+            var(--color__hero__slogan-text--gradient-step-2) 25%,
+            var(--color__hero__slogan-text--gradient-step-3) 50%,
+            var(--color__hero__slogan-text--gradient-step-2) 75%,
+            var(--color__hero__slogan-text--gradient-step-1) 100%
+        );
+        background-position: 0 0;
+        background-size: var(--paragraph--hero-slogan__background-size) 100%;
 
-        background: linear-gradient(
-                90deg,
-                var(--color__hero__slogan-text--gradient-step-1) 0%,
-                var(--color__hero__slogan-text--gradient-step-2) 25%,
-                var(--color__hero__slogan-text--gradient-step-3) 50%,
-                var(--color__hero__slogan-text--gradient-step-2) 75%,
-                var(--color__hero__slogan-text--gradient-step-1) 100%
-            )
-            0 0 / var(--bg-size) 100%;
-
+        // ? используем шрифт как маску для background
         background-clip: text;
-
         color: transparent;
-        -webkit-text-fill-color: transparent;
 
-        animation: paragraph__background__running-gradient-effect 10s linear infinite;
+        animation: paragraph--hero-slogan__background__running-gradient-effect 10s linear infinite;
     }
 
     &--advantage {

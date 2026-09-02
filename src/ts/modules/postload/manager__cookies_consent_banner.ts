@@ -1,7 +1,7 @@
 const GA_ID = 'G-XSZP3WXDN6'
 const YANDEX_ID = 98233807
 
-export function initCookieConsentBanner() {
+export function initCookieConsentBannerManager() {
     const cookieConsentBanner = document.getElementById('my-cookie-consent-banner')
     const cookieConsentButtons = document.querySelectorAll<HTMLButtonElement>(
         '.my-default-button--cookie-consent-banner',

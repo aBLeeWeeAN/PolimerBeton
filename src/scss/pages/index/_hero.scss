@@ -6,11 +6,11 @@
 
 @keyframes hero__background-image__parallax-move-effect {
     from {
-        transform: translateY(0);
+        transform: translateY(-35%);
     }
 
     to {
-        transform: translateY(800px);
+        transform: translateY(35%);
     }
 }
 
@@ -34,50 +34,41 @@
         row-gap: mixin.fluid(32px, 120px);
     }
 
-    view-timeline-name: --hero-section;
-
     &__bg-wrapper {
         will-change: transform;
 
         z-index: z('background');
         position: absolute;
 
-        inset: -50px;
-        top: -800px;
+        // ! --- оставляем растяжение даже без параллакса
+        // inset: 0;
+        inset: -40% 0;
 
         pointer-events: none;
         user-select: none;
 
-        animation: hero__background-image__parallax-move-effect linear;
-
-        // animation-timeline: scroll(root block);
-        animation-timeline: --hero-section;
-
         &::after {
             @include mixin.transition-for(opacity, background-color, box-shadow);
-            // will-change: opacity, background-color, box-shadow;
 
             content: '';
+            z-index: 1;
 
-            z-index: z('background');
             position: absolute;
             inset: 0;
 
-            opacity: 0.2;
-            mix-blend-mode: multiply;
-
+            // opacity: 0.2;
+            // mix-blend-mode: overlay;
             background-color: var(--color__hero__background-image-overlay);
-            // background-color: #616161;
 
             // transition:
             //     background-color 0.5s ease-out,
             //     opacity 0.5s ease-out;
 
             // * work
-            [data-bs-theme='dark'] & {
-                opacity: 0.8;
-                mix-blend-mode: multiply;
-            }
+            // [data-bs-theme='dark'] & {
+            //     // opacity: 0.8;
+            //     mix-blend-mode: multiply;
+            // }
 
             pointer-events: none;
             user-select: none;
@@ -87,23 +78,58 @@
             //     opacity: 1;
             // }
         }
+
+        .nojs & {
+            will-change: auto;
+
+            @supports (animation-timeline: view()) {
+                will-change: transform;
+                inset: -40% 0;
+
+                animation: hero__background-image__parallax-move-effect linear both;
+                animation-timeline: --hero-section;
+            }
+        }
     }
 
     &__bg-picture {
-        z-index: z('background');
+        z-index: 0;
+
         position: absolute;
         inset: 0;
     }
 
     &__bg-img {
-        // will-change: filter;
-
         width: 100%;
         height: 100%;
 
         object-fit: cover;
-        object-position: 50% 25%;
+        object-position: 50% 50%;
 
-        filter: blur(20px);
+        @include bs.media-breakpoint-down(xxl) {
+            object-position: 55% 50%;
+        }
+
+        @include bs.media-breakpoint-down(xl) {
+            object-position: 45% 50%;
+        }
+
+        @include bs.media-breakpoint-down(lg) {
+            object-position: 30% 50%;
+        }
+
+        @include bs.media-breakpoint-down(md) {
+            object-position: 18% 50%;
+        }
+
+        @include bs.media-breakpoint-down(sm) {
+            object-position: 20% 50%;
+        }
+    }
+
+    .nojs & {
+        @supports (animation-timeline: view()) {
+            view-timeline-name: --hero-section;
+        }
     }
 }

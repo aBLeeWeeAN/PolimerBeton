@@ -1,17 +1,5 @@
-// Функция для ожидания полной загрузки картинки
-function waitForImageLoad(img: HTMLImageElement | null): Promise<void> {
-    return new Promise((resolve) => {
-        if (!img || img.complete) {
-            resolve()
-        } else {
-            img.onload = () => resolve()
-            img.onerror = () => resolve()
-        }
-    })
-}
-
 // Главная функция инициализации темы
-export async function initColorScheme() {
+export async function initColorSchemeManager() {
     // --- ЧАСТЬ 1: МГНОВЕННАЯ (Синхронно красим страницу до рендеринга DOM) ---
     const getSystemTheme = (): string =>
         window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'

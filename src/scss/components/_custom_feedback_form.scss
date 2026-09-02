@@ -96,7 +96,7 @@
         }
 
         // ? если есть фокус на кнопке (<button>) или дочерней ссылке (<a>), ::before делаем видимым
-        .no-js &,
+        .nojs &,
         .user-is-tabbing & {
             &:focus-within::before {
                 opacity: 1;
@@ -258,7 +258,7 @@
         border: 3px solid var(--color__global__primary);
         border-radius: 50%;
 
-        .no-js &,
+        .nojs &,
         .user-is-tabbing & {
             &:focus-within {
                 @include mixin.focus-styles;

@@ -50,7 +50,9 @@
     // ! 20.8/1.333^15
     // letter-spacing: 0.35em;
     letter-spacing: 0.28em;
-    transform: translateX(calc(0.28em / 2));
+
+    margin-right: calc(-1 * (0.28em / 2));
+    // transform: translateX(calc(0.28em / 2));
 
     line-height: mixin.fluid(1.425 * 0.8 * 11px, 1.35 * 0.8 * 26px);
     // line-height: 1.35em;
@@ -100,7 +102,9 @@
     // ! 20.8/1.333^15
     // letter-spacing: 0.35em;
     letter-spacing: 0.28em;
-    transform: translateX(calc(0.28em / 2));
+
+    margin-right: calc(-1 * (0.28em / 2));
+    // transform: translateX(calc(0.28em / 2));
 
     line-height: mixin.fluid(1.425 * 0.8 * 16px, 1.35 * 0.8 * 36px);
     // line-height: 1.35em;

@@ -1,4 +1,4 @@
-export function initMenuButtonState() {
+export function initMenuButtonStateManager() {
     const myOffcanvas = document.getElementById('My-Offcanvas')
     const myOffcanvasToggler = document.getElementById('My-Hamburger-Menu-Button')
 

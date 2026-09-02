@@ -29,7 +29,9 @@
                     {% endfor %}
                 </div>
 
-                <h1 class="my-title my-title--server-response" data-variant="404">{{ page_not_found.main_content.heading }}</h1>
+                <h1 class="my-title my-title--server-response" data-variant="404">
+                    <span>{{ page_not_found.main_content.heading }}</span>
+                </h1>
                 <h2 class="my-subtitle my-subtitle--server-response">{{ page_not_found.main_content.subheading | nl2br }}</h2>
 
                 <div class="my-default-button">

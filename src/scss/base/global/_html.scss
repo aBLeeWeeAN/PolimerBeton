@@ -10,10 +10,37 @@ html {
 
     overflow-x: hidden;
     scroll-behavior: smooth;
-
-    scrollbar-color: var(--color__page__scrollbar-background) var(--color__page__background);
     scrollbar-gutter: stable;
-    scrollbar-width: thin;
+
+    @supports not selector(::-webkit-scrollbar) {
+        scrollbar-width: thin;
+        scrollbar-color: var(--color__page__scrollbar-color) var(--color__page__background);
+    }
+
+    @supports selector(::-webkit-scrollbar) {
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: var(--color__page__background);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            @include mixin.transition-for(background-color);
+
+            background-color: var(--color__page__scrollbar-color);
+            border-radius: 4px;
+
+            @include mixin.hover {
+                background-color: var(--color__page__scrollbar-color--hover);
+            }
+
+            @include mixin.active {
+                background-color: var(--color__page__scrollbar-color--active);
+            }
+        }
+    }
 
     margin: 0 auto;
 

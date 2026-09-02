@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { MaskedTextChangedListener } from 'ts-input-mask'
 
-export function initFeedbackFormMask() {
+export function initFeedbackFormInputMask() {
     const phoneInput = document.getElementById('client_phone') as HTMLInputElement | null
     const nameInput = document.getElementById('client_name') as HTMLInputElement | null
 

@@ -15,7 +15,7 @@
     pointer-events: none;
     user-select: none;
 
-    @include bs.media-breakpoint-down(sm) {
-        display: none;
-    }
+    // @include bs.media-breakpoint-down(sm) {
+    //     display: none;
+    // }
 }

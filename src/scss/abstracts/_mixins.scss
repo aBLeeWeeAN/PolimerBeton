@@ -86,31 +86,27 @@ $min-vw: 425px;
 $max-vw: 2560px;
 
 @function fluid($min-size, $max-size) {
-    // 0. Очищаем брейкпоинты и размеры от единиц (px), чтобы не было конфликтов
+    // 1. Определяем единицу измерения ($min-size и $max-size должны быть одной единицы)
+    $unit: math.unit($min-size);
+
+    // 2. Извлекаем чистые числа
     $min-vw_num: math.div($min-vw, $min-vw * 0 + 1);
     $max-vw_num: math.div($max-vw, $max-vw * 0 + 1);
     $min-size_num: math.div($min-size, $min-size * 0 + 1);
     $max-size_num: math.div($max-size, $max-size * 0 + 1);
 
-    // 1. Вычисляем наклон линии (slope)
+    // 3. Вычисляем slope и точку пересечения
     $slope: math.div($max-size_num - $min-size_num, $max-vw_num - $min-vw_num);
-
-    // 2. Вычисляем точку пересечения с осью Y
     $y-axis-intersection: -1 * $min-vw_num * $slope + $min-size_num;
-
-    // 3. Переводим наклон в vw
     $slope-vw: $slope * 100;
 
-    // Жестко собираем строку calc, контролируя, чтобы там были именно px и vw
-    $fluid-value: calc(#{$y-axis-intersection}px + #{$slope-vw}vw);
+    // 4. Подставляем родную единицу измерения ($unit), а не жесткий px
+    $fluid-value: calc(#{$y-axis-intersection}#{$unit} + #{$slope-vw}vw);
 
-    // ! --- УМНАЯ ПРОВЕРКА ДЛЯ CLAMP ---
-    // ! По умолчанию считаем, что min-size меньше max-size
+    // 5. Корректируем порядок для clamp
     $clamp-min: $min-size;
     $clamp-max: $max-size;
 
-    // ! Если переданные значения идут на уменьшение (как в твоем трекинге)
-    // ! меняем их местами только для обертки clamp(), чтобы не ломать CSS
     @if $min-size_num > $max-size_num {
         $clamp-min: $max-size;
         $clamp-max: $min-size;
@@ -120,35 +116,31 @@ $max-vw: 2560px;
 }
 
 @function fluid-with-range($min-size, $max-size, $breakpoint-start, $breakpoint-end) {
-    // -1. Вытаскиваем значения из брейкпоинтов
+    // 1. Извлекаем значения из брейкпоинтов
     $range-start: map.get(bs.$grid-breakpoints, $breakpoint-start);
     $range-end: map.get(bs.$grid-breakpoints, $breakpoint-end);
 
-    // 0. Очищаем брейкпоинты и размеры от единиц (px), чтобы не было конфликтов
+    // 2. Динамически определяем единицу измерения ($min-size и $max-size)
+    $unit: math.unit($min-size);
+
+    // 3. Очищаем значения от единиц для вычислений
     $range-start_num: math.div($range-start, $range-start * 0 + 1);
     $range-end_num: math.div($range-end, $range-end * 0 + 1);
     $min-size_num: math.div($min-size, $min-size * 0 + 1);
     $max-size_num: math.div($max-size, $max-size * 0 + 1);
 
-    // 1. Вычисляем наклон линии (slope)
+    // 4. Вычисляем наклон линии (slope) и точку пересечения с осью Y
     $slope: math.div($max-size_num - $min-size_num, $range-end_num - $range-start_num);
-
-    // 2. Вычисляем точку пересечения с осью Y
     $y-axis-intersection: -1 * $range-start_num * $slope + $min-size_num;
-
-    // 3. Переводим наклон в vw
     $slope-vw: $slope * 100;
 
-    // Жестко собираем строку calc, контролируя, чтобы там были именно px и vw
-    $fluid-value: calc(#{$y-axis-intersection}px + #{$slope-vw}vw);
+    // 5. Собираем calc с динамической единицей измерения ($unit) вместо жесткого px
+    $fluid-value: calc(#{$y-axis-intersection}#{$unit} + #{$slope-vw}vw);
 
-    // ! --- УМНАЯ ПРОВЕРКА ДЛЯ CLAMP ---
-    // ! По умолчанию считаем, что min-size меньше max-size
+    // 6. Корректируем границы для clamp (на случай уменьшения значений)
     $clamp-min: $min-size;
     $clamp-max: $max-size;
 
-    // ! Если переданные значения идут на уменьшение (как в твоем трекинге)
-    // ! меняем их местами только для обертки clamp(), чтобы не ломать CSS
     @if $min-size_num > $max-size_num {
         $clamp-min: $max-size;
         $clamp-max: $min-size;

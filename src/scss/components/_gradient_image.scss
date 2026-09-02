@@ -34,7 +34,7 @@
     // --my-scale: 1;
 
     // // ! fallback | if vanilla tilt dont work (js not support) | hover only non-touch screens
-    // .no-js & {
+    // .nojs & {
     //     @include mixin.hover {
     //         --my-scale: 1.025;
     //     }
@@ -42,7 +42,7 @@
 
     // // ! work always | JS and non-JS | touch + non-touch screens
     // .js &,
-    // .no-js & {
+    // .nojs & {
     //     @include mixin.active {
     //         --my-scale: 0.975;
     //     }

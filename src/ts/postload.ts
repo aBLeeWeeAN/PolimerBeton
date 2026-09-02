@@ -4,33 +4,34 @@ import 'bootstrap'
 
 // * --- MY SCRIPTS
 // * --------------
-import { initOffcanvasScrollState } from 'modules/manager__offcanvas_scroll_state'
-import { initMenuButtonState } from 'modules/change_menu_button_state'
-
-import { initFeedbackFormMask } from 'modules/inputmask_feedback_form'
-import { initCookieConsentBanner } from 'modules/manager__cookies_consent_banner'
-import { initSubmitButtonBlock } from 'modules/block_submit_button_after_form_data_is_successfully_submitted'
-
 import { init3DBalls } from 'modules/ball-viewer'
-import { initVanillaTilt } from 'modules/init__vanilla_tilt'
+import { initVanillaTilt } from 'modules/postload/init__vanilla_tilt'
 
-import { initFooterPositionStateManager } from 'modules/manager__footer_position_state'
+import { initCookieConsentBannerManager } from 'modules/postload/manager__cookies_consent_banner'
+
+import { initMenuButtonStateManager } from 'modules/postload/manager__menu_button_state'
+import { initOffcanvasScrollStateManager } from 'modules/postload/manager__offcanvas_scroll_state'
+import { initHeroBackgroundImageParallaxManager } from 'modules/postload/manager__hero__background_image_parallax'
+import { initFooterPositionStateManager } from 'modules/postload/manager__footer_position_state'
+
+import { initFeedbackFormInputMask } from 'modules/postload/init__feedback_form__inputmask'
 
 // * --- MAIN | START AFTER CONTENT LOADED
 // * -------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-    initMenuButtonState()
-
-    initOffcanvasScrollState()
-    initFooterPositionStateManager()
-
-    initFeedbackFormMask()
-    initSubmitButtonBlock()
-
-    // initHeroParallax()
+    // ! --- вызываются первыми !!!
+    // ! --------------------------
     init3DBalls()
     initVanillaTilt()
 
-    // ! вызываем последним !!!
-    initCookieConsentBanner()
+    initCookieConsentBannerManager()
+    // ! --------------------------
+
+    initMenuButtonStateManager()
+    initOffcanvasScrollStateManager()
+    initHeroBackgroundImageParallaxManager()
+    initFooterPositionStateManager()
+
+    // ! feedback form input mask
+    initFeedbackFormInputMask()
 })

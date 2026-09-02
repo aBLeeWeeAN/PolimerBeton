@@ -29,7 +29,9 @@
                     {% endfor %}
                 </div>
 
-                <h1 class="my-title my-title--server-response" data-variant="success">{{ success.main_content.heading }}</h1>
+                <h1 class="my-title my-title--server-response" data-variant="success">
+                    <span>{{ success.main_content.heading }}</span>
+                </h1>
                 <h2 class="my-subtitle my-subtitle--server-response">{{ success.main_content.subheading | nl2br }}</h2>
 
                 <div class="my-default-button">

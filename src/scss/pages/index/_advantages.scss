@@ -26,21 +26,14 @@
         counter-reset: advantage-counter;
 
         @include bs.media-breakpoint-down(lg) {
-            // row-gap: 180px;
             row-gap: calc(6 * var(--layout__global__spacing));
         }
 
-        // @include bs.media-breakpoint-down(md) {
-        //     row-gap: 140px;
-        // }
-
         @include bs.media-breakpoint-down(sm) {
-            // row-gap: 80px;
             row-gap: calc(3 * var(--layout__global__spacing));
         }
 
         @include bs.media-breakpoint-down(xs) {
-            // row-gap: 30px;
             row-gap: calc(1.5 * var(--layout__global__spacing));
         }
     }
@@ -62,10 +55,6 @@
         &:nth-child(odd) {
             flex-direction: row-reverse;
         }
-
-        // @include bs.media-breakpoint-down(xl) {
-        //     padding: 56px 0;
-        // }
 
         @include bs.media-breakpoint-down(lg) {
             position: relative; // ! ловит номер advantage на малых экранах
@@ -125,6 +114,9 @@
     &__picture {
         will-change: transform;
         container-type: inline-size;
+
+        // ! фикс бага | тайлинг на Firefox
+        transform-style: preserve-3d;
 
         aspect-ratio: 1 / 1;
         width: 100%;

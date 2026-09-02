@@ -42,4 +42,11 @@
             margin: 0 10px;
         }
     }
+
+    .nojs & {
+        /* stylelint-disable-next-line selector-id-pattern */
+        &#My-Small-Navigation-Separator {
+            display: none;
+        }
+    }
 }
