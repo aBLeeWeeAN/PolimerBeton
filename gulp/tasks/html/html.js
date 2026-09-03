@@ -21,6 +21,7 @@ import { htmlImg2PictureTransformer } from '../../helpers/html-img2picture-trans
 // * html plugins
 // import { nunjucksCompile } from 'gulp-nunjucks'
 import nunjucksRender from 'gulp-nunjucks-render'
+import CleanFileSystemNunjucksLoader from './clean-file-system-nunjucks-loader.js'
 
 // import fileInclude from 'gulp-file-include'
 // import nunjucksRender from 'gulp-nunjucks-render'
@@ -94,26 +95,28 @@ function createHtmlStream({
             // * собираем все partials в полноценные html
             .pipe(
                 nunjucksRender({
+                    loaders: [
+                        // ! Исправление неправильных окончаний комментариев плагина "Comment headers v1.12.1" | REQUIRED !!!
+                        new CleanFileSystemNunjucksLoader([
+                            './',
+                            './src/html/',
+                            './src/html/base/',
+                            './src/html/common/',
+                            './src/html/components/',
+                            './src/html/service/',
+                            './src/html/macros/',
+                        ]),
+                    ],
                     envOptions: {
                         throwOnUndefined: true,
                         // trimBlocks: true,
                         // lstripBlocks: true,
                     },
-                    path: [
-                        './',
-                        './src/html/',
-                        './src/html/base/',
-                        './src/html/common/',
-                        './src/html/components/',
-                        './src/html/service/',
-                        './src/html/macros/',
-                    ],
                     data: {
                         base_website_url: baseWebsiteUrl,
                         i18n,
                         ...localeDataFromJSON,
                     },
-
                     manageEnv: nunjucksManageEnvironment,
                 }),
             )
@@ -162,7 +165,7 @@ function createHtmlStream({
             // * вставка инлайн файлов, если включена
             .pipe(
                 through2.obj(function (file, enc, callback) {
-                    let html = file.contents.toString()
+                    let html = file.contents.toString('utf-8')
                     html = inlineAssetsInHtml(html, {
                         inlineCss: env.isInlineCSS,
                         cssContent,
@@ -171,7 +174,7 @@ function createHtmlStream({
                         inlineSprite: env.isInlineSprite,
                         spriteContent,
                     })
-                    file.contents = Buffer.from(html)
+                    file.contents = Buffer.from(html, 'utf-8')
                     callback(null, file)
                 }),
             )
