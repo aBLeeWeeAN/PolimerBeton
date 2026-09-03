@@ -70,27 +70,6 @@
 
         backdrop-filter: blur(18px);
 
-        // transform: translateY(-100%);
-        // visibility: hidden;
-
-        // // ? hiding animation
-        // transition:
-        //     transform 700ms cubic-bezier(0.165, 0.84, 0.44, 1),
-        //     visibility 700ms ease-in-out,
-        //     background-color 300ms ease-in-out,
-        //     box-shadow 300ms ease-in-out;
-
-        // .my-header__nav-menu-toggle:checked ~ & {
-        //     transform: translateY(0);
-        //     visibility: visible;
-
-        //     // ? opening animation
-        //     transition:
-        //         transform 1000ms cubic-bezier(0.165, 0.84, 0.44, 1),
-        //         background-color 300ms ease-in-out,
-        //         box-shadow 300ms ease-in-out;
-        // }
-
         &.showing {
             transition:
                 transform 1000ms cubic-bezier(0.165, 0.84, 0.44, 1),
@@ -105,9 +84,30 @@
                 box-shadow 300ms ease-in-out;
         }
 
-        @include bs.media-breakpoint-down(md) {
-            // --#{bs.$prefix}offcanvas-height: 100vh;
+        .nojs & {
+            transform: translateY(-100%);
+            visibility: hidden;
 
+            // ? hiding animation
+            transition:
+                transform 700ms cubic-bezier(0.165, 0.84, 0.44, 1),
+                visibility 700ms ease-in-out,
+                background-color 300ms ease-in-out,
+                box-shadow 300ms ease-in-out;
+
+            &:target {
+                transform: translateY(0);
+                visibility: visible;
+
+                // ? opening animation
+                transition:
+                    transform 1000ms cubic-bezier(0.165, 0.84, 0.44, 1),
+                    background-color 300ms ease-in-out,
+                    box-shadow 300ms ease-in-out;
+            }
+        }
+
+        @include bs.media-breakpoint-down(md) {
             min-height: 100vh;
 
             @supports (min-height: 100dvh) {

@@ -7,7 +7,7 @@ export function initCookieConsentBannerManager() {
         '.my-default-button--cookie-consent-banner',
     )
     const footerCookieSettingsButtons = document.querySelectorAll<HTMLButtonElement>(
-        '.my-js-cookie-settings-btn',
+        '.my-nav-menu__link--cookie-settings-btn',
     )
 
     // ? Проверяем только то, без чего баннер физически не работает

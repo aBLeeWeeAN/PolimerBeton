@@ -24,6 +24,11 @@
     }
 }
 
+.my-hamburger-button-noscript-wrapper {
+    display: grid;
+    grid-template-areas: 1 / 1;
+}
+
 .my-hamburger-button {
     @include mixin.transition-for(color);
 
@@ -99,7 +104,8 @@
 
     // * --- IS CLOSED -> IS OPENED
     // * --------------------------
-    &[aria-expanded='true'] &__middle-line {
+    &[aria-expanded='true'] &__middle-line,
+    .my-header:has(.my-header__hidden-part:target) &__middle-line {
         opacity: 0;
 
         animation: button-hamburger__middle-line__shake-effect 300ms linear;
@@ -109,32 +115,70 @@
         transition-delay: 600ms;
     }
 
-    &[aria-expanded='true'] &__top-line {
+    &[aria-expanded='true'] &__top-line,
+    .my-header:has(.my-header__hidden-part:target) &__top-line {
         transform: translateY(23px);
 
         transition: transform 300ms cubic-bezier(0.75, -2.5, 0.25, 3.5);
         transition-delay: 300ms;
     }
 
-    &[aria-expanded='true'] &__bottom-line {
+    &[aria-expanded='true'] &__bottom-line,
+    .my-header:has(.my-header__hidden-part:target) &__bottom-line {
         transform: translateY(-23px);
 
         transition: transform 300ms cubic-bezier(0.75, -2.5, 0.25, 3.5);
         transition-delay: 300ms;
     }
 
-    &[aria-expanded='true'] &__top-line-wrapper {
+    &[aria-expanded='true'] &__top-line-wrapper,
+    .my-header:has(.my-header__hidden-part:target) &__top-line-wrapper {
         transform: rotate(45deg);
 
         transition: transform 400ms cubic-bezier(0.75, -1.5, 0.25, 2.5);
         transition-delay: 600ms;
     }
 
-    &[aria-expanded='true'] &__bottom-line-wrapper {
+    &[aria-expanded='true'] &__bottom-line-wrapper,
+    .my-header:has(.my-header__hidden-part:target) &__bottom-line-wrapper {
         transform: rotate(-45deg);
 
         transition: transform 400ms cubic-bezier(0.75, -1.5, 0.25, 2.5);
         transition-delay: 600ms;
+    }
+
+    &--noscript-open,
+    &--noscript-close {
+        grid-area: 1 / 1;
+    }
+
+    &--noscript-open {
+        z-index: 1;
+        visibility: visible;
+
+        .my-header:has(.my-header__hidden-part:target) & {
+            z-index: 0;
+            visibility: hidden;
+        }
+    }
+
+    &--noscript-close {
+        z-index: 0;
+        visibility: hidden;
+
+        .my-header:has(.my-header__hidden-part:target) & {
+            z-index: 1;
+            visibility: visible;
+        }
+    }
+
+    .nojs & {
+        display: none;
+
+        &--noscript-open,
+        &--noscript-close {
+            display: block;
+        }
     }
 
     @include bs.media-breakpoint-down(md) {

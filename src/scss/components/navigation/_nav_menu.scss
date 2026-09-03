@@ -32,6 +32,10 @@
         height: 100%;
 
         color: inherit;
+
+        .nojs .my-nav-menu &--cookie-settings-btn {
+            display: none;
+        }
     }
 
     &__link {
@@ -69,6 +73,10 @@
         &:disabled,
         &[disabled] {
             color: var(--color__global__text--disabled);
+        }
+
+        &--cookie-settings-button {
+            // empty
         }
     }
 

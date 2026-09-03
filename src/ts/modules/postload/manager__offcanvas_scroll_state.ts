@@ -5,7 +5,7 @@ export function initOffcanvasScrollStateManager() {
     const NO_SCROLL_BREAKPOINT_VW_WIDTH = 768
 
     const header = document.querySelector('.my-header__fixed-part') as HTMLElement | null
-    const offcanvas = document.getElementById('My-Offcanvas') as HTMLElement | null
+    const offcanvas = document.getElementById('nav-offcanvas') as HTMLElement | null
     const navMenu = offcanvas?.querySelector('.my-nav-menu') as HTMLElement | null
 
     if (!header || !offcanvas || !navMenu) {

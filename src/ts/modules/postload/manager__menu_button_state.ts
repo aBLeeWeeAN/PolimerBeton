@@ -1,5 +1,5 @@
 export function initMenuButtonStateManager() {
-    const myOffcanvas = document.getElementById('My-Offcanvas')
+    const myOffcanvas = document.getElementById('nav-offcanvas')
     const myOffcanvasToggler = document.getElementById('My-Hamburger-Menu-Button')
 
     // 1. Наша стандартная защита

@@ -39,8 +39,8 @@
                 <h2 class="my-title my-title--footer">{{ footer.legal.domain }}</h2>
 
                 <ul class="my-nav-menu my-nav-menu--footer" aria-label="{{ footer.legal.a11y__aria_label }}" role="list">
-                    <li class="my-nav-menu__item">
-                        <button type="button" class="my-js-cookie-settings-btn my-nav-menu__link">
+                    <li class="my-nav-menu__item my-nav-menu__item--cookie-settings-btn">
+                        <button type="button" class="my-nav-menu__link my-nav-menu__link--cookie-settings-btn">
                             {{ footer.legal.cookie_settings }}
                         </button>
                     </li>
@@ -65,6 +65,9 @@
                         <script>
                             document.currentScript.parentElement.textContent = `2024-${new Date().getFullYear()}`
                         </script>
+
+                        <!--! Затычка для .nojs --->
+                        <noscript>2024-2026</noscript>
                     </span>
                 {% endif %}
                 <span>{{ footer.copyright.owner.name }}</span>

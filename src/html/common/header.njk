@@ -97,8 +97,8 @@
                         class="my-nav-control__hamburger-button my-hamburger-button"
                         type="button"
                         data-bs-toggle="offcanvas"
-                        data-bs-target="#My-Offcanvas"
-                        aria-controls="My-Offcanvas"
+                        data-bs-target="#nav-offcanvas"
+                        aria-controls="nav-offcanvas"
                         aria-label="{{ header.navigation.a11y.buttons__aria_labels.hamburger }}"
                         aria-expanded="false">
                         <svg class="my-hamburger-button__svg" fill="var(--primary-color)" viewBox="0 0 100 100" aria-hidden="true">
@@ -113,12 +113,53 @@
                             </g>
                         </svg>
                     </button>
+
+                    <noscript class="my-hamburger-button-noscript-wrapper">
+                        <a
+                            id="#nav-offcanvas-open-button"
+                            href="#nav-offcanvas"
+                            class="my-nav-control__hamburger-button my-hamburger-button my-hamburger-button--noscript-open"
+                            role="button"
+                            aria-label="{{ header.navigation.a11y.buttons__aria_labels.hamburger }}"
+                            tabindex="0">
+                            <svg class="my-hamburger-button__svg" fill="var(--primary-color)" viewBox="0 0 100 100" aria-hidden="true">
+                                <g class="my-hamburger-button__top-line-wrapper">
+                                    <rect class="my-hamburger-button__top-line" width="90" height="10" x="5" y="22" rx="5"></rect>
+                                </g>
+                                <g class="my-hamburger-button__middle-line-wrapper">
+                                    <rect class="my-hamburger-button__middle-line" width="90" height="10" x="5" y="45" rx="5"></rect>
+                                </g>
+                                <g class="my-hamburger-button__bottom-line-wrapper">
+                                    <rect class="my-hamburger-button__bottom-line" width="90" height="10" x="5" y="68" rx="5"></rect>
+                                </g>
+                            </svg>
+                        </a>
+                        <a
+                            id="#nav-offcanvas-close-button"
+                            href="#nav-offcanvas-close-button"
+                            class="my-nav-control__hamburger-button my-hamburger-button my-hamburger-button--noscript-close"
+                            role="button"
+                            aria-label="{{ header.navigation.a11y.buttons__aria_labels.hamburger }}"
+                            tabindex="0">
+                            <svg class="my-hamburger-button__svg" fill="var(--primary-color)" viewBox="0 0 100 100" aria-hidden="true">
+                                <g class="my-hamburger-button__top-line-wrapper">
+                                    <rect class="my-hamburger-button__top-line" width="90" height="10" x="5" y="22" rx="5"></rect>
+                                </g>
+                                <g class="my-hamburger-button__middle-line-wrapper">
+                                    <rect class="my-hamburger-button__middle-line" width="90" height="10" x="5" y="45" rx="5"></rect>
+                                </g>
+                                <g class="my-hamburger-button__bottom-line-wrapper">
+                                    <rect class="my-hamburger-button__bottom-line" width="90" height="10" x="5" y="68" rx="5"></rect>
+                                </g>
+                            </svg>
+                        </a>
+                    </noscript>
                 </div>
             </nav>
         </div>
     </div>
 
-    <div class="offcanvas offcanvas-top my-header__hidden-part" data-bs-scroll="true" tabindex="-1" id="My-Offcanvas">
+    <div class="offcanvas offcanvas-top my-header__hidden-part" data-bs-scroll="true" tabindex="-1" id="nav-offcanvas">
         <div class="offcanvas-body my-offcanvas-body">
             <nav class="h-100 container my-wrapper my-nav-menu__wrapper" aria-label="{{ header.navigation.a11y.aria_label.offcanvas }}">
                 <ul class="col-12 my-nav-menu my-nav-menu--header" role="list">

@@ -29,7 +29,6 @@
         display: flex;
         flex-flow: row nowrap;
 
-        // column-gap: 8px;
         column-gap: mixin.fluid-with-range(4px, 8px, md, xxl);
 
         &--mobile {

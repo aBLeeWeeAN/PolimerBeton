@@ -69,4 +69,13 @@ html {
 
     // * allows smooth transitions to/from intrinsic sizing keywords like 'auto'
     interpolate-size: allow-keywords;
+
+    // ! затычка при .nojs
+    &.nojs {
+        @include bs.media-breakpoint-down(md) {
+            &:has(.my-header__hidden-part:target) {
+                overflow-y: hidden !important;
+            }
+        }
+    }
 }
