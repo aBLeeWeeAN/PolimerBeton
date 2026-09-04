@@ -52,6 +52,9 @@
 }
 
 .my-table {
+    // ? схлопывает смежные border's в одну линию
+    border-collapse: collapse;
+
     width: 100%;
     height: auto;
 
