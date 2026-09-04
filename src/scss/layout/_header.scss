@@ -1,3 +1,4 @@
+@use '../abstracts/variables' as var;
 @use '../abstracts/mixins' as mixin;
 @use '../abstracts/z_index' as *;
 
@@ -68,7 +69,7 @@
         background-color: var(--color__header__navigation-menu-background);
         box-shadow: 0 2px 16px var(--color__global__shadow);
 
-        backdrop-filter: blur(18px);
+        backdrop-filter: blur(var.$abstract__global__panel-blur);
 
         &.showing {
             transition:

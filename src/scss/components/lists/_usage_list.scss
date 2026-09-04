@@ -20,7 +20,7 @@
         list-style: inherit;
 
         background-color: var(--color__usage__numeric-list-background);
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(var.$abstract__global__card-blur--default);
 
         padding: 0.666em 1.333em;
 
@@ -54,7 +54,7 @@
 
         @include mixin.hover {
             transform: scale(var.$abstract__global__scale--hover);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(var.$abstract__global__card-blur--hover);
 
             &::after {
                 box-shadow: 0.15em 0.15em 0.4em var(--color__global__shadow);
@@ -63,7 +63,7 @@
 
         @include mixin.active {
             transform: scale(var.$abstract__global__scale--active);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(var.$abstract__global__card-blur--active);
 
             &::after {
                 box-shadow: 0.05em 0.05em 0.2em var(--color__global__shadow);
@@ -74,7 +74,7 @@
         @media (pointer: coarse) {
             @include mixin.active {
                 transform: none;
-                backdrop-filter: blur(10px);
+                backdrop-filter: blur(var.$abstract__global__card-blur--default);
 
                 &::after {
                     box-shadow: 0.1em 0.1em 0.3em var(--color__global__shadow);
