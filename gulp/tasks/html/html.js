@@ -21,7 +21,7 @@ import { htmlImg2PictureTransformer } from '../../helpers/html-img2picture-trans
 // * html plugins
 // import { nunjucksCompile } from 'gulp-nunjucks'
 import nunjucksRender from 'gulp-nunjucks-render'
-import CleanFileSystemNunjucksLoader from './clean-file-system-nunjucks-loader.js'
+import CleanFileSystemNunjucksLoader from './nunjucks/clean-file-system-nunjucks-loader.js'
 
 // import fileInclude from 'gulp-file-include'
 // import nunjucksRender from 'gulp-nunjucks-render'

@@ -17,11 +17,11 @@ export function server(cb) {
         // * control `http` or `https` mode
         https: env.isHttps,
         // ? ghost mode | enabled by default
-        // ghostMode: {
-        //     clicks: false,
-        //     scroll: false,
-        //     forms: false,
-        // },
+        ghostMode: {
+            clicks: false,
+            scroll: false,
+            forms: false,
+        },
         // ? online mode
         // online: false,
         // * open localhost url
