@@ -111,8 +111,7 @@
         gap: calc(var(--layout__global__spacing) / 2);
 
         @include bs.media-breakpoint-down(sm) {
-            // flex-direction: column-reverse;
-            flex-direction: column;
+            flex-direction: column-reverse;
         }
     }
 
