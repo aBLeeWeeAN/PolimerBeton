@@ -15,15 +15,11 @@ export async function initFooterPositionStateManager() {
         return
     }
 
+    // * Храним высоту футера отдельно, чтобы не пересчитывать её на каждый скролл
+    let cachedFooterHeight = footer.offsetHeight
+
     const updateFooterState = () => {
-        // ? получаем текущую высоту footer
-        const footerHeight = footer.offsetHeight
-        // document.documentElement.style.setProperty('--my-footer-height', `${footerHeight}px`)
-
-        const isOverflowing = footerHeight >= window.innerHeight
-        footer.classList.toggle('my-footer--relative', isOverflowing)
-
-        // * --- FADE EFFECT при скролле
+        // ! --- СНАЧАЛА ЧТЕНИЕ
         // ? получаем полную высоту всего документа
         const scrollHeight = document.documentElement.scrollHeight
 
@@ -36,30 +32,63 @@ export async function initFooterPositionStateManager() {
         // ? вычисляем расстояние до конца страницы
         const distanceToBottom = scrollHeight - (scrollTop + clientHeight)
 
-        if (footerHeight > 0) {
+        // ? определить, влезает ли футер во viewport или нет
+        const isOverflowing = cachedFooterHeight >= clientHeight
+
+        // * --- FADE EFFECT при скролле
+        let afterOpacity = '0'
+        if (cachedFooterHeight > 0) {
             // ? рассчитываем процент открытия футера | от 0 (закрыт) до 1 (открыт)
-            const rawProgress = 1 - distanceToBottom / footerHeight
+            const rawProgress = 1 - distanceToBottom / cachedFooterHeight
 
             // ? обрезаем rawProgress чётко по диапазону 0 и 1 | на случай если юзер ещё не доскроллил до футера (rawProgress будет отрицательным)
             const progress = Math.min(Math.max(rawProgress, 0), 1)
 
             // ? вычисляем текущее значение opacity (для footer::after) до 2 знаков после запятой
-            const afterOpacity = (1 - progress).toFixed(2)
+            afterOpacity = (1 - progress).toFixed(3)
+        }
+
+        requestAnimationFrame(() => {
+            // ? переключаем модификатор футера, если overflowing
+            footer.classList.toggle('my-footer--relative', isOverflowing)
 
             // ? обновляем CSS-переменную
             footer.style.setProperty('--footer__fade__opacity', afterOpacity)
-        }
+        })
     }
 
     // 1. event #1
-    const observer = new ResizeObserver(updateFooterState)
+    const observer = new ResizeObserver(() => {
+        cachedFooterHeight = footer.offsetHeight
+        updateFooterState()
+    })
     observer.observe(footer)
 
     // 2. event #2
-    window.addEventListener('scroll', updateFooterState, { passive: true })
+    let ticking = false // ? Троттлинг через requestAnimationFrame для скролла
+    window.addEventListener(
+        'scroll',
+        () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateFooterState()
+                    ticking = false
+                })
+                ticking = true
+            }
+        },
+        { passive: true },
+    )
 
-    // 3. event #3
-    window.addEventListener('resize', updateFooterState, { passive: true })
+    // // 3. event #3
+    // window.addEventListener(
+    //     'resize',
+    //     () => {
+    //         cachedFooterHeight = footer.offsetHeight
+    //         updateFooterState()
+    //     },
+    //     { passive: true },
+    // )
 
     // 4. event #4
     footer.addEventListener('focusin', () => {

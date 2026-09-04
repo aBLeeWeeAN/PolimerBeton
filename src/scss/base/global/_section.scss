@@ -1,4 +1,5 @@
 @use '../../abstracts/mixins' as mixin;
+@use '../../vendors/bootstrap' as bs;
 
 section {
     // * base section on every page
@@ -24,4 +25,23 @@ section {
         // * padding bottom | only for hero section
         padding-bottom: calc(3 * var(--layout__global__spacing));
     }
+
+    // ! обрезает декор | бесполезен
+    // &:not(#hero, #privacy, #success, #fail, #page-not-found, .my-footer) {
+    //     content-visibility: auto;
+    //     contain-intrinsic-size: auto 1280px;
+
+    //     @include bs.media-breakpoint-down(sm) {
+    //         contain-intrinsic-size: auto 772px;
+    //     }
+    // }
+
+    // &.my-footer {
+    //     content-visibility: auto;
+    //     contain-intrinsic-size: auto 640px;
+
+    //     @include bs.media-breakpoint-down(sm) {
+    //         contain-intrinsic-size: auto 746px;
+    //     }
+    // }
 }

@@ -38,11 +38,8 @@
     --bubble__animation-time: 30s;
 
     will-change: transform;
-
-    // // ! фикс бага | тайлинг на Firefox
-    // transform-style: preserve-3d;
-
     position: absolute;
+
     top: var(--bubble__pos-y);
     left: 50%;
 

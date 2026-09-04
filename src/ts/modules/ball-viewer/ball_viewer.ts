@@ -21,6 +21,9 @@ class BallViewer {
     private readonly START_DELAY = 0.3 // Задержка перед началом авто-вращения (сек)
     private readonly RAMP_UP_DURATION = 2.7 // Длительность плавного разгона авто-вращения (сек)
 
+    // --- Prefers Reduced Motion ---
+    private prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
     // --- DOM и ссылки ---
     private container: HTMLElement
     private modelUrl: string
@@ -96,6 +99,11 @@ class BallViewer {
 
         this.addObservers()
         this.addEventListeners()
+
+        // prefers reduced motion
+        window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
+            this.prefersReducedMotion = e.matches
+        })
     }
 
     private async loadModel(): Promise<GLTF> {
@@ -202,6 +210,8 @@ class BallViewer {
                         // Клонируем материал, чтобы изменение цвета не затронуло другие мячи на странице
                         const clonedMat = material.clone()
                         clonedMat.color.set(variant.color)
+                        clonedMat.roughness = 0.475
+                        // clonedMat.needsUpdate = true
 
                         // Глубокое клонирование карты нормалей для применения уникальных оффсетов
                         if (clonedMat.normalMap) {
@@ -218,10 +228,9 @@ class BallViewer {
                             clonedMat.normalMap.minFilter = THREE.LinearMipMapLinearFilter
                             clonedMat.normalMap.generateMipmaps = true
                             clonedMat.normalMap.anisotropy = maxAnisotropy
-                            clonedMat.normalMap.needsUpdate = true
+
+                            // clonedMat.normalMap.needsUpdate = true
                         }
-                        clonedMat.roughness = 0.475
-                        clonedMat.needsUpdate = true
 
                         // Сохраняем для последующей очистки памяти
                         this.instancedMaterials.push(clonedMat)
@@ -453,11 +462,7 @@ class BallViewer {
         this.elapsedTimeAfterLoad += delta
 
         if (this.ballGroup) {
-            const prefersReducedMotion = window.matchMedia(
-                '(prefers-reduced-motion: reduce)',
-            ).matches
-
-            if (!this.isDragging && !prefersReducedMotion) {
+            if (!this.isDragging && !this.prefersReducedMotion) {
                 let speedFactor = 0
                 // Логика плавного разгона авто-вращения
                 if (this.elapsedTimeAfterLoad > this.START_DELAY) {

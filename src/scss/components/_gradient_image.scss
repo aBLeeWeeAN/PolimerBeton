@@ -56,6 +56,12 @@
     }
 
     &__link {
+        // ! --- оптимизация для JS Tilt
+        // ! ---------------------------
+        will-change: transform;
+        transform-style: preserve-3d;
+        // ! ---------------------------
+
         display: block;
 
         &:focus-visible {

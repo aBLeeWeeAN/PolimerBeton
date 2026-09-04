@@ -21,17 +21,18 @@ import { initFeedbackFormInputMask } from 'modules/postload/init__feedback_form_
 document.addEventListener('DOMContentLoaded', () => {
     // ! --- вызываются первыми !!!
     // ! --------------------------
-    init3DBalls()
-    initVanillaTilt()
-
     initCookieConsentBannerManager()
+    initHeroBackgroundImageParallaxManager()
     // ! --------------------------
 
     initMenuButtonStateManager()
     initOffcanvasScrollStateManager()
-    initHeroBackgroundImageParallaxManager()
+    initFeedbackFormInputMask()
     initFooterPositionStateManager()
 
-    // ! feedback form input mask
-    initFeedbackFormInputMask()
+    // ! --- вызываются последними | сначала обсчитываем более важные скрипты страницы !!!
+    // ! ---------------------------------------------------------------------------------
+    initVanillaTilt()
+    init3DBalls()
+    // ! --------------------------
 })
