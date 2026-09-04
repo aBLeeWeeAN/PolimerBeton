@@ -12,15 +12,6 @@
     display: inline-block;
     transform-origin: center center;
 
-    // &:focus {
-    //     color: var(--color__global__text--focus);
-    //     text-decoration: none;
-    // }
-
-    // @include mixin.focus {
-    //     // empty
-    // }
-
     @include mixin.hover {
         color: var(--color__global__text--hover);
         text-decoration: none;
