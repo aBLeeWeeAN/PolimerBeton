@@ -43,6 +43,9 @@
 
         opacity: 0;
         z-index: -1;
+
+        user-select: none;
+        pointer-events: none;
     }
 
     // * button background (default & squircle)
@@ -56,6 +59,9 @@
         border-radius: 37%;
 
         z-index: -2;
+
+        user-select: none;
+        pointer-events: none;
     }
 
     // ? если есть фокус на кнопке (<button>) или дочерней ссылке (<a>), ::before делаем видимым

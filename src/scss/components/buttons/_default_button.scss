@@ -11,17 +11,19 @@
     @include mixin.transition-for(color, transform, background-color);
 
     will-change: transform;
+    transform-style: preserve-3d; // ! фикс бага | тайлинг на Firefox
+
     position: relative;
-
-    // ! фикс бага | тайлинг на Firefox
-    transform-style: preserve-3d;
-
     width: 100%;
-    padding: 1.025em 0;
 
     outline: none;
     background: transparent;
     color: var(--color__global__text--alt); // ? icon color
+
+    // ? альтернатива &:is(button)
+    @at-root button#{&} {
+        padding: 1.025em 0;
+    }
 
     // * все дочерние элементы наверх
     & > * {
@@ -43,6 +45,9 @@
 
         opacity: 0;
         z-index: -1;
+
+        user-select: none;
+        pointer-events: none;
     }
 
     // * button background (default & squircle)
@@ -56,6 +61,9 @@
         border-radius: var(--layout__button__radius-value);
 
         z-index: -2;
+
+        user-select: none;
+        pointer-events: none;
     }
 
     // ? если есть фокус на кнопке (<button>) или дочерней ссылке (<a>), ::before делаем видимым
@@ -114,6 +122,15 @@
 
     &__link {
         @extend %text__button__link;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        height: auto;
+
+        padding: 1.025em 0;
         outline: none;
     }
 
